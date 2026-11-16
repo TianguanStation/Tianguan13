@@ -42,7 +42,9 @@
 
 /obj/structure/mirror/proc/update_choices()
 	for(var/i in mirror_options)
-		mirror_options[i] = icon('icons/hud/radial.dmi', i)
+		// ZH EDIT CHANGE - I18N: pass image() so radial extract_image() routes through lang_hud_icon().
+		// ORIGINAL: mirror_options[i] = icon('icons/hud/radial.dmi', i)
+		mirror_options[i] = image(icon = 'icons/hud/radial.dmi', icon_state = i)
 
 	if(CHANGE_RACE in mirror_options)
 		selectable_races = list()

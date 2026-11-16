@@ -178,7 +178,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		var/elements_to_add = max_elements - elements.len
 		for(var/i in 1 to elements_to_add) //Create all elements
 			var/atom/movable/screen/radial/slice/new_element = new /atom/movable/screen/radial/slice
-			new_element.icon = icon_path //SKYRAT EDIT ADDITION - GUNPOINT
+			new_element.icon = lang_hud_icon(icon_path) //SKYRAT EDIT ADDITION - GUNPOINT // ZH EDIT CHANGE - I18N: icon_path 可指 radial_pets/coffee 等变体表路径。ORIGINAL: new_element.icon = icon_path
 			new_element.tooltips = use_tooltips
 			new_element.set_parent(src)
 			if(button_animation_flags & BUTTON_FADE_IN)
@@ -338,6 +338,10 @@ GLOBAL_LIST_EMPTY(radial_menus)
 
 	var/mutable_appearance/MA = new /mutable_appearance(to_extract_from)
 	if(MA)
+		// ZH EDIT ADDITION - I18N: 选项图（image/icon/appearance）若来自已登记的 HUD dmi
+		// （radial*.dmi、implants.dmi 等），换成中文变体；未登记路径恒等。
+		MA.icon = lang_hud_icon(MA.icon)
+		// ZH EDIT ADDITION END
 		SET_PLANE_EXPLICIT(MA, ABOVE_HUD_PLANE, anchor)
 		MA.layer = RADIAL_CONTENT_LAYER
 		MA.appearance_flags |= RESET_TRANSFORM

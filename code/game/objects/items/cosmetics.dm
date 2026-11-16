@@ -114,10 +114,17 @@
 	)
 //SPLURT EDIT END
 /obj/item/lipstick/proc/display_radial_menu(mob/living/carbon/human/user)
+	// ZH EDIT CHANGE - I18N: pass image() so radial extract_image() routes through lang_hud_icon().
+	// ORIGINAL:
+	//	var/style_options = list(
+	//		UPPER_LIP = icon('icons/hud/radial.dmi', UPPER_LIP),
+	//		MIDDLE_LIP = icon('icons/hud/radial.dmi', MIDDLE_LIP),
+	//		LOWER_LIP = icon('icons/hud/radial.dmi', LOWER_LIP),
+	//	)
 	var/style_options = list(
-		UPPER_LIP = icon('icons/hud/radial.dmi', UPPER_LIP),
-		MIDDLE_LIP = icon('icons/hud/radial.dmi', MIDDLE_LIP),
-		LOWER_LIP = icon('icons/hud/radial.dmi', LOWER_LIP),
+		UPPER_LIP = image(icon = 'icons/hud/radial.dmi', icon_state = UPPER_LIP),
+		MIDDLE_LIP = image(icon = 'icons/hud/radial.dmi', icon_state = MIDDLE_LIP),
+		LOWER_LIP = image(icon = 'icons/hud/radial.dmi', icon_state = LOWER_LIP),
 	)
 	var/pick = show_radial_menu(user, src, style_options, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!pick)

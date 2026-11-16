@@ -5,8 +5,12 @@
 /datum/asset/simple/body_zones
 
 /datum/asset/simple/body_zones/register()
-	assets["body_zones.base_midnight.png"] = icon('icons/hud/screen_midnight.dmi', "zone_sel")
-	assets["body_zones.base_slimecore.png"] = icon('icons/hud/screen_slimecore.dmi', "zone_sel")
+	// ZH EDIT CHANGE - I18N: TGUI 区域选择器底图经 lang_hud_icon() 取中文变体；en locale 下恒等。
+	// ORIGINAL:
+	//	assets["body_zones.base_midnight.png"] = icon('icons/hud/screen_midnight.dmi', "zone_sel")
+	//	assets["body_zones.base_slimecore.png"] = icon('icons/hud/screen_slimecore.dmi', "zone_sel")
+	assets["body_zones.base_midnight.png"] = icon(lang_hud_icon('icons/hud/screen_midnight.dmi'), "zone_sel")
+	assets["body_zones.base_slimecore.png"] = icon(lang_hud_icon('icons/hud/screen_slimecore.dmi'), "zone_sel")
 
 	add_limb(BODY_ZONE_HEAD)
 	add_limb(BODY_ZONE_CHEST)

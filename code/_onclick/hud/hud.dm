@@ -188,7 +188,10 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 		hud_key = REF(new_object)
 
 	if (!isnull(ui_icon))
-		new_object.icon = ui_icon
+		// ZH EDIT CHANGE - I18N: ui_icon 路径经注册表换中文变体；locale==en 恒等。
+		// ORIGINAL: new_object.icon = ui_icon
+		new_object.icon = lang_hud_icon(ui_icon)
+		// ZH EDIT CHANGE END
 
 	if (!isnull(ui_loc))
 		new_object.screen_loc = ui_loc
@@ -486,10 +489,17 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	if (initial(ui_style) || ui_style == new_ui_style)
 		return
 
+	// ZH EDIT CHANGE - I18N: screen_objects 里存的是换过的中文变体，比较与赋值两侧都要经注册表。
+	// ORIGINAL:
+	//	for(var/hud_key in screen_objects)
+	//		var/atom/item = screen_objects[hud_key]
+	//		if (item?.icon == ui_style)
+	//			item.icon = new_ui_style
 	for(var/hud_key in screen_objects)
 		var/atom/item = screen_objects[hud_key]
-		if (item?.icon == ui_style)
-			item.icon = new_ui_style
+		if (item?.icon == lang_hud_icon(ui_style))
+			item.icon = lang_hud_icon(new_ui_style)
+	// ZH EDIT CHANGE END
 
 	ui_style = new_ui_style
 	build_hand_slots(update_hud = TRUE)

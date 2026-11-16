@@ -9,7 +9,9 @@
 	return assoc_to_keys(GLOB.available_ui_styles)
 
 /datum/preference/choiced/ui_style/icon_for(value)
-	var/ui_icons = GLOB.available_ui_styles[value]
+	// ZH EDIT CHANGE - I18N: 偏好设置 UI 样式预览图标经 lang_hud_icon() 取中文变体。
+	// ORIGINAL: var/ui_icons = GLOB.available_ui_styles[value]
+	var/ui_icons = lang_hud_icon(GLOB.available_ui_styles[value])
 
 	var/datum/universal_icon/icon = uni_icon(ui_icons, "hand_l")
 	icon.crop(1 - ICON_SIZE_X, 1, ICON_SIZE_Y, ICON_SIZE_X)

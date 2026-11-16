@@ -1,0 +1,5902 @@
+{
+ "_comment": "HUD dmi 中文化配置。每个 state: {text, lines?, size?/sizes?, color?(#rrggbb), outline?(#hex/false/auto), rect?(检测限框), search?(检测范围), maskrect?(强制擦除区), mask_color/mask_bright/mask_red?(像素过滤), fill?(scanline/flat/transparent), bg?(#hex), box?(落字框), dx/dy?, keep_blue_x?, button?, parts?}。keep:true 表示显式跳过。",
+ "groups": {
+  "human_actions": {
+   "pull": {
+    "text": "拖拽",
+    "maskrect": [
+     4,
+     21,
+     28,
+     28
+    ],
+    "box": [
+     4,
+     20,
+     28,
+     29
+    ],
+    "clip_y": [
+     21,
+     28
+    ],
+    "fill": "template_row",
+    "ref_y": 21,
+    "ref_pt": [
+     4,
+     21
+    ],
+    "even_pt": [
+     4,
+     28
+    ],
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "act_resist": {
+    "text": "挣脱",
+    "maskrect": [
+     4,
+     21,
+     29,
+     28
+    ],
+    "box": [
+     4,
+     20,
+     28,
+     29
+    ],
+    "clip_y": [
+     21,
+     28
+    ],
+    "fill": "template_row",
+    "ref_y": 21,
+    "ref_pt": [
+     4,
+     21
+    ],
+    "even_pt": [
+     4,
+     28
+    ],
+    "mirror_x28": true,
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "act_resist_on": {
+    "text": "挣脱",
+    "maskrect": [
+     4,
+     21,
+     29,
+     28
+    ],
+    "box": [
+     4,
+     20,
+     28,
+     29
+    ],
+    "clip_y": [
+     21,
+     28
+    ],
+    "fill": "template_row",
+    "ref_y": 21,
+    "ref_pt": [
+     4,
+     21
+    ],
+    "even_pt": [
+     4,
+     28
+    ],
+    "mirror_x28": true,
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "act_throw": {
+    "text": "投掷",
+    "maskrect": [
+     4,
+     21,
+     28,
+     28
+    ],
+    "box": [
+     4,
+     20,
+     28,
+     29
+    ],
+    "clip_y": [
+     21,
+     28
+    ],
+    "fill": "template_row",
+    "ref_y": 21,
+    "ref_pt": [
+     4,
+     21
+    ],
+    "even_pt": [
+     4,
+     28
+    ],
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "act_throw_on": {
+    "text": "投掷",
+    "maskrect": [
+     4,
+     21,
+     28,
+     28
+    ],
+    "box": [
+     4,
+     20,
+     28,
+     29
+    ],
+    "clip_y": [
+     21,
+     28
+    ],
+    "fill": "template_row",
+    "ref_y": 21,
+    "ref_pt": [
+     4,
+     21
+    ],
+    "even_pt": [
+     4,
+     28
+    ],
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "act_sleep": {
+    "text": "睡眠",
+    "maskrect": [
+     4,
+     21,
+     28,
+     28
+    ],
+    "box": [
+     4,
+     20,
+     28,
+     29
+    ],
+    "clip_y": [
+     21,
+     28
+    ],
+    "fill": "template_row",
+    "ref_y": 21,
+    "ref_pt": [
+     4,
+     21
+    ],
+    "even_pt": [
+     4,
+     28
+    ],
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "act_sleep_flick": {
+    "text": "睡眠",
+    "maskrect": [
+     4,
+     21,
+     28,
+     28
+    ],
+    "box": [
+     4,
+     20,
+     28,
+     29
+    ],
+    "clip_y": [
+     21,
+     28
+    ],
+    "fill": "template_row",
+    "ref_y": 21,
+    "ref_pt": [
+     4,
+     21
+    ],
+    "even_pt": [
+     4,
+     28
+    ],
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "act_rest": {
+    "text": "休息",
+    "maskrect": [
+     4,
+     21,
+     28,
+     28
+    ],
+    "box": [
+     4,
+     20,
+     28,
+     29
+    ],
+    "clip_y": [
+     21,
+     28
+    ],
+    "fill": "template_row",
+    "ref_y": 21,
+    "ref_pt": [
+     4,
+     21
+    ],
+    "even_pt": [
+     4,
+     28
+    ],
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "act_rest_on": {
+    "text": "休息",
+    "maskrect": [
+     4,
+     21,
+     28,
+     28
+    ],
+    "box": [
+     4,
+     20,
+     28,
+     29
+    ],
+    "clip_y": [
+     21,
+     28
+    ],
+    "fill": "template_row",
+    "ref_y": 21,
+    "ref_pt": [
+     4,
+     21
+    ],
+    "even_pt": [
+     4,
+     28
+    ],
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "act_drop": {
+    "text": "丢弃",
+    "maskrect": [
+     6,
+     25,
+     26,
+     32
+    ],
+    "box": [
+     4,
+     24,
+     28,
+     33
+    ],
+    "clip_y": [
+     25,
+     32
+    ],
+    "fill": "template_col",
+    "ref_x": 5,
+    "ignore_ys": [
+     31
+    ],
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "act_swap": {
+    "text": "换手",
+    "maskrect": [
+     6,
+     25,
+     26,
+     32
+    ],
+    "box": [
+     4,
+     24,
+     28,
+     33
+    ],
+    "clip_y": [
+     25,
+     32
+    ],
+    "fill": "template_col",
+    "ref_x": 5,
+    "ignore_ys": [
+     31
+    ],
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "combat": {
+    "text": "战斗",
+    "maskrect": [
+     3,
+     3,
+     29,
+     10
+    ],
+    "box": [
+     3,
+     2,
+     29,
+     11
+    ],
+    "clip_y": [
+     3,
+     10
+    ],
+    "fill": "scanline_ref",
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "combat_off": {
+    "text": "战斗",
+    "maskrect": [
+     3,
+     3,
+     29,
+     10
+    ],
+    "box": [
+     3,
+     2,
+     29,
+     11
+    ],
+    "clip_y": [
+     3,
+     10
+    ],
+    "fill": "scanline_ref",
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "walking": {
+    "text": "行走",
+    "maskrect": [
+     3,
+     3,
+     29,
+     10
+    ],
+    "box": [
+     3,
+     2,
+     29,
+     11
+    ],
+    "clip_y": [
+     3,
+     10
+    ],
+    "fill": "scanline_ref",
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "running": {
+    "text": "奔跑",
+    "maskrect": [
+     3,
+     3,
+     29,
+     10
+    ],
+    "box": [
+     3,
+     2,
+     29,
+     11
+    ],
+    "clip_y": [
+     3,
+     10
+    ],
+    "fill": "scanline_ref",
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   }
+  },
+  "hands_rl": {
+   "hand_r": {
+    "text": "右",
+    "maskrect": [
+     4,
+     4,
+     10,
+     11
+    ],
+    "box": [
+     4,
+     3,
+     13,
+     12
+    ],
+    "clip_y": [
+     4,
+     11
+    ],
+    "fill": "template_col",
+    "ref_x": 10,
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "hand_l": {
+    "text": "左",
+    "maskrect": [
+     21,
+     4,
+     28,
+     11
+    ],
+    "box": [
+     19,
+     3,
+     28,
+     12
+    ],
+    "clip_y": [
+     4,
+     11
+    ],
+    "fill": "template_col",
+    "ref_x": 20,
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "rhandactive": {
+    "text": "右",
+    "maskrect": [
+     4,
+     4,
+     10,
+     11
+    ],
+    "box": [
+     4,
+     4,
+     13,
+     13
+    ],
+    "fill": "transparent",
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   },
+   "lhandactive": {
+    "text": "左",
+    "maskrect": [
+     22,
+     4,
+     28,
+     11
+    ],
+    "box": [
+     19,
+     4,
+     28,
+     13
+    ],
+    "fill": "transparent",
+    "auto_halo": true,
+    "sizes": [
+     8
+    ]
+   }
+  },
+  "zone_rl": {
+   "zone_sel": {
+    "parts": [
+     {
+      "text": "右",
+      "maskrect": [
+       4,
+       3,
+       9,
+       10
+      ],
+      "box": [
+       4,
+       2,
+       13,
+       11
+      ],
+      "clip_y": [
+       3,
+       10
+      ],
+      "fill": "template_col",
+      "ref_x": 9,
+      "auto_halo": true,
+      "sizes": [
+       8
+      ]
+     },
+     {
+      "text": "左",
+      "maskrect": [
+       22,
+       3,
+       28,
+       10
+      ],
+      "box": [
+       19,
+       2,
+       28,
+       11
+      ],
+      "clip_y": [
+       3,
+       10
+      ],
+      "fill": "template_col",
+      "ref_x": 21,
+      "auto_halo": true,
+      "sizes": [
+       8
+      ]
+     }
+    ]
+   }
+  },
+  "cyborg_common": {
+   "radio": {
+    "text": "通讯",
+    "maskrect": [
+     7,
+     4,
+     29,
+     10
+    ],
+    "box": [
+     8,
+     2,
+     30,
+     11
+    ],
+    "fill": "cyborg_glare",
+    "glare_mode": "panel",
+    "color": "#ff0000",
+    "even_color": "#cc0000",
+    "sizes": [
+     8
+    ],
+    "outline": false
+   },
+   "panel": {
+    "text": "面板",
+    "maskrect": [
+     7,
+     4,
+     29,
+     10
+    ],
+    "box": [
+     8,
+     2,
+     30,
+     11
+    ],
+    "fill": "cyborg_glare",
+    "glare_mode": "panel",
+    "color": "#ff0000",
+    "even_color": "#cc0000",
+    "sizes": [
+     8
+    ],
+    "outline": false
+   },
+   "store": {
+    "text": "存取",
+    "maskrect": [
+     7,
+     4,
+     29,
+     10
+    ],
+    "box": [
+     8,
+     2,
+     30,
+     11
+    ],
+    "fill": "cyborg_glare",
+    "glare_mode": "panel",
+    "color": "#ff0000",
+    "even_color": "#cc0000",
+    "sizes": [
+     8
+    ],
+    "outline": false
+   },
+   "health0": {
+    "text": "完好",
+    "maskrect": [
+     8,
+     3,
+     29,
+     8
+    ],
+    "box": [
+     8,
+     1,
+     29,
+     10
+    ],
+    "fill": "cyborg_glare",
+    "glare_mode": "health",
+    "color": "#00ff00",
+    "even_color": "#00a300",
+    "sizes": [
+     8
+    ],
+    "outline": false
+   },
+   "health1": {
+    "text": "良好",
+    "maskrect": [
+     8,
+     3,
+     29,
+     8
+    ],
+    "box": [
+     8,
+     1,
+     29,
+     10
+    ],
+    "fill": "cyborg_glare",
+    "glare_mode": "health",
+    "color": "#ff0000",
+    "even_color": "#ba0000",
+    "sizes": [
+     8
+    ],
+    "outline": false
+   },
+   "health2": {
+    "text": "正常",
+    "maskrect": [
+     8,
+     3,
+     29,
+     8
+    ],
+    "box": [
+     8,
+     1,
+     29,
+     10
+    ],
+    "fill": "cyborg_glare",
+    "glare_mode": "health",
+    "color": "#ff0000",
+    "even_color": "#ba0000",
+    "sizes": [
+     8
+    ],
+    "outline": false
+   },
+   "health3": {
+    "text": "受损",
+    "maskrect": [
+     8,
+     3,
+     29,
+     8
+    ],
+    "box": [
+     8,
+     1,
+     29,
+     10
+    ],
+    "fill": "cyborg_glare",
+    "glare_mode": "health",
+    "color": "#ff0000",
+    "even_color": "#ba0000",
+    "sizes": [
+     8
+    ],
+    "outline": false
+   },
+   "health4": {
+    "text": "严重",
+    "maskrect": [
+     8,
+     3,
+     29,
+     8
+    ],
+    "box": [
+     8,
+     1,
+     29,
+     10
+    ],
+    "fill": "cyborg_glare",
+    "glare_mode": "health",
+    "color": "#ff0000",
+    "even_color": "#ba0000",
+    "sizes": [
+     8
+    ],
+    "outline": false
+   },
+   "health5": {
+    "text": "警报",
+    "maskrect": [
+     8,
+     3,
+     29,
+     8
+    ],
+    "box": [
+     8,
+     1,
+     29,
+     10
+    ],
+    "fill": "cyborg_glare",
+    "glare_mode": "health5",
+    "color": "#ff0000",
+    "even_color": "#ba0000",
+    "sizes": [
+     8
+    ],
+    "outline": false
+   },
+   "combat": {
+    "text": "伤害",
+    "maskrect": [
+     6,
+     5,
+     26,
+     10
+    ],
+    "mask_sat": 170,
+    "box": [
+     8,
+     3,
+     28,
+     11
+    ],
+    "fill": "template_col",
+    "ref_x": 26,
+    "color": "#ff0000",
+    "even_color": "#cc0000",
+    "sizes": [
+     8
+    ],
+    "outline": false
+   },
+   "combat_off": {
+    "text": "帮助",
+    "maskrect": [
+     6,
+     5,
+     26,
+     10
+    ],
+    "mask_sat": 170,
+    "box": [
+     8,
+     3,
+     28,
+     11
+    ],
+    "fill": "template_col",
+    "ref_x": 26,
+    "color": "#00ff00",
+    "even_color": "#00bb00",
+    "sizes": [
+     8
+    ],
+    "outline": false
+   },
+   "zone_sel": {
+    "parts": [
+     {
+      "text": "右",
+      "maskrect": [
+       4,
+       4,
+       9,
+       9
+      ],
+      "box": [
+       3,
+       2,
+       11,
+       10
+      ],
+      "fill": "flat",
+      "bg": "#000000",
+      "color": "#00cc00",
+      "even_color": "#008e00",
+      "sizes": [
+       8
+      ],
+      "outline": false
+     },
+     {
+      "text": "左",
+      "maskrect": [
+       23,
+       4,
+       28,
+       9
+      ],
+      "box": [
+       21,
+       2,
+       29,
+       10
+      ],
+      "fill": "flat",
+      "bg": "#000000",
+      "color": "#00cc00",
+      "even_color": "#008e00",
+      "sizes": [
+       8
+      ],
+      "outline": false
+     }
+    ]
+   }
+  }
+ },
+ "files": {
+  "icons/hud/screen_gen.dmi": {
+   "states": {
+    "internal0": {
+     "text": "关",
+     "maskrect": [
+      18,
+      24,
+      32,
+      30
+     ],
+     "box": [
+      19,
+      22,
+      31,
+      31
+     ],
+     "fill": "transparent",
+     "color": "#2e2e2e",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "internal1": {
+     "text": "开",
+     "maskrect": [
+      20,
+      23,
+      30,
+      29
+     ],
+     "box": [
+      19,
+      21,
+      31,
+      30
+     ],
+     "fill": "transparent",
+     "color": "#c7c8ca",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "internal2": {
+     "text": "开",
+     "maskrect": [
+      21,
+      24,
+      29,
+      29
+     ],
+     "mask_color": "#c7c8ca",
+     "box": [
+      20,
+      22,
+      30,
+      30
+     ],
+     "color": "#c7c8ca",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "disarm/kill": {
+     "text": "击杀",
+     "rect": [
+      7,
+      11,
+      26,
+      20
+     ],
+     "box": [
+      4,
+      9,
+      28,
+      23
+     ],
+     "pick": "sat",
+     "sizes": [
+      10
+     ],
+     "outline": false
+    },
+    "disarm/kill1": {
+     "text": "击杀",
+     "rect": [
+      7,
+      11,
+      26,
+      20
+     ],
+     "box": [
+      4,
+      9,
+      28,
+      23
+     ],
+     "pick": "#990033",
+     "sizes": [
+      10
+     ],
+     "outline": false
+    },
+    "reinforce": {
+     "text": "升级",
+     "outline": false
+    },
+    "!reinforce": {
+     "text": "升级",
+     "maskrect": [
+      5,
+      7,
+      27,
+      20
+     ],
+     "box": [
+      4,
+      5,
+      28,
+      26
+     ],
+     "fill": "flat",
+     "bg": "#908f8d",
+     "color": "#000000",
+     "keep_blue_x": true,
+     "sizes": [
+      12
+     ],
+     "outline": false
+    },
+    "pull": {
+     "text": "松手",
+     "maskrect": [
+      4,
+      7,
+      28,
+      25
+     ],
+     "fill": "template_row",
+     "ref_y": 6,
+     "color": "#d0d4d9",
+     "outline": "#000000"
+    },
+    "off": {
+     "text": "关",
+     "maskrect": [
+      8,
+      8,
+      31,
+      20
+     ],
+     "box": [
+      9,
+      9,
+      30,
+      18
+     ],
+     "clip_y": [
+      10,
+      18
+     ],
+     "fill": "pill_box",
+     "pill_rect": [
+      9,
+      9,
+      30,
+      19
+     ],
+     "border_pt": [
+      10,
+      9
+     ],
+     "bg_pt": [
+      10,
+      9
+     ],
+     "fg_pt": [
+      13,
+      10
+     ],
+     "outline": "#cc00336e",
+     "sizes": [
+      8
+     ]
+    },
+    "health6": {
+     "text": "危重",
+     "maskrect": [
+      5,
+      5,
+      26,
+      14
+     ],
+     "box": [
+      6,
+      5,
+      25,
+      13
+     ],
+     "fill": "pill_box",
+     "pill_rect": [
+      6,
+      5,
+      25,
+      14
+     ],
+     "border_pt": [
+      7,
+      6
+     ],
+     "bg_pt": [
+      7,
+      7
+     ],
+     "fg_pt": [
+      9,
+      7
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "health7": {
+     "text": "死亡",
+     "maskrect": [
+      5,
+      5,
+      26,
+      14
+     ],
+     "box": [
+      6,
+      5,
+      25,
+      13
+     ],
+     "fill": "pill_box",
+     "pill_rect": [
+      6,
+      5,
+      25,
+      14
+     ],
+     "border_pt": [
+      8,
+      6
+     ],
+     "bg_pt": [
+      8,
+      7
+     ],
+     "fg_pt": [
+      10,
+      7
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "combo": {
+     "text": "连击",
+     "maskrect": [
+      1,
+      3,
+      31,
+      14
+     ],
+     "box": [
+      2,
+      2,
+      30,
+      15
+     ],
+     "fill": "transparent",
+     "color": "#ff0000",
+     "outline": "#401010",
+     "sizes": [
+      12,
+      10
+     ]
+    },
+    "talk_help": {
+     "text": "帮助",
+     "maskrect": [
+      0,
+      8,
+      32,
+      26
+     ],
+     "box": [
+      4,
+      5,
+      28,
+      26
+     ],
+     "fill": "template_row",
+     "ref_y": 6,
+     "color": "#ffffff",
+     "outline": "#000000",
+     "compw": 32,
+     "comph": 24
+    },
+    "talk_hello": {
+     "text": "你好",
+     "maskrect": [
+      0,
+      8,
+      32,
+      26
+     ],
+     "box": [
+      4,
+      5,
+      28,
+      26
+     ],
+     "fill": "template_row",
+     "ref_y": 6,
+     "color": "#ffffff",
+     "outline": "#000000",
+     "compw": 32,
+     "comph": 24
+    },
+    "talk_stop": {
+     "text": "停下",
+     "maskrect": [
+      0,
+      8,
+      32,
+      26
+     ],
+     "box": [
+      4,
+      5,
+      28,
+      26
+     ],
+     "fill": "template_row",
+     "ref_y": 6,
+     "color": "#ffffff",
+     "outline": "#000000",
+     "compw": 32,
+     "comph": 24
+    },
+    "talk_bye": {
+     "text": "再见",
+     "maskrect": [
+      0,
+      8,
+      32,
+      26
+     ],
+     "box": [
+      4,
+      5,
+      28,
+      26
+     ],
+     "fill": "template_row",
+     "ref_y": 6,
+     "color": "#ffffff",
+     "outline": "#000000",
+     "compw": 32,
+     "comph": 24
+    },
+    "talk_come": {
+     "text": "过来",
+     "maskrect": [
+      0,
+      8,
+      32,
+      26
+     ],
+     "box": [
+      4,
+      5,
+      28,
+      26
+     ],
+     "fill": "template_row",
+     "ref_y": 6,
+     "color": "#ffffff",
+     "outline": "#000000",
+     "compw": 32,
+     "comph": 24
+    },
+    "talk_thanks": {
+     "text": "谢谢",
+     "maskrect": [
+      0,
+      8,
+      32,
+      26
+     ],
+     "box": [
+      4,
+      5,
+      28,
+      26
+     ],
+     "fill": "template_row",
+     "ref_y": 6,
+     "color": "#ffffff",
+     "outline": "#000000",
+     "compw": 32,
+     "comph": 24
+    },
+    "talk_out": {
+     "text": "离开",
+     "maskrect": [
+      0,
+      8,
+      32,
+      26
+     ],
+     "box": [
+      4,
+      5,
+      28,
+      26
+     ],
+     "fill": "template_row",
+     "ref_y": 6,
+     "color": "#ffffff",
+     "outline": "#000000",
+     "compw": 32,
+     "comph": 24
+    },
+    "talk_yes": {
+     "text": "是",
+     "maskrect": [
+      0,
+      8,
+      32,
+      26
+     ],
+     "box": [
+      4,
+      5,
+      28,
+      26
+     ],
+     "fill": "template_row",
+     "ref_y": 6,
+     "color": "#ffffff",
+     "outline": "#000000",
+     "compw": 32,
+     "comph": 24
+    },
+    "talk_no": {
+     "text": "否",
+     "maskrect": [
+      0,
+      8,
+      32,
+      26
+     ],
+     "box": [
+      4,
+      5,
+      28,
+      26
+     ],
+     "fill": "template_row",
+     "ref_y": 6,
+     "color": "#ffffff",
+     "outline": "#000000",
+     "compw": 32,
+     "comph": 24
+    }
+   }
+  },
+  "icons/hud/screen_midnight.dmi": {
+   "include": [
+    "human_actions",
+    "hands_rl",
+    "zone_rl"
+   ]
+  },
+  "icons/hud/screen_operative.dmi": {
+   "include": [
+    "human_actions",
+    "zone_rl"
+   ],
+   "states": {
+    "walking": {
+     "keep": true
+    },
+    "running": {
+     "keep": true
+    },
+    "combat": {
+     "keep": true
+    },
+    "combat_off": {
+     "keep": true
+    },
+    "zone_sel": {
+     "parts": [
+      {
+       "text": "右",
+       "maskrect": [
+        3,
+        4,
+        8,
+        9
+       ],
+       "box": [
+        2,
+        3,
+        10,
+        11
+       ],
+       "fill": "flat",
+       "color": "#f6633e",
+       "grad_color": "#b01232",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      },
+      {
+       "text": "左",
+       "maskrect": [
+        24,
+        4,
+        28,
+        9
+       ],
+       "box": [
+        22,
+        3,
+        30,
+        11
+       ],
+       "fill": "flat",
+       "color": "#f6633e",
+       "grad_color": "#b01232",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      }
+     ]
+    },
+    "pull": {
+     "text": "拖拽",
+     "maskrect": [
+      4,
+      20,
+      28,
+      29
+     ],
+     "box": [
+      3,
+      20,
+      29,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#282831",
+     "color": "#f6633e",
+     "grad_color": "#b01232",
+     "shadow": "#13121b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_resist": {
+     "text": "挣脱",
+     "maskrect": [
+      4,
+      20,
+      28,
+      29
+     ],
+     "box": [
+      3,
+      20,
+      29,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#282831",
+     "color": "#f6633e",
+     "grad_color": "#b01232",
+     "shadow": "#13121b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_resist_on": {
+     "text": "挣脱",
+     "maskrect": [
+      4,
+      20,
+      28,
+      29
+     ],
+     "box": [
+      3,
+      20,
+      29,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#282831",
+     "color": "#f6633e",
+     "grad_color": "#b01232",
+     "shadow": "#13121b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_sleep": {
+     "text": "睡眠",
+     "maskrect": [
+      4,
+      20,
+      28,
+      29
+     ],
+     "box": [
+      3,
+      20,
+      29,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#282831",
+     "color": "#f6633e",
+     "grad_color": "#b01232",
+     "shadow": "#13121b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_sleep_flick": {
+     "text": "睡眠",
+     "maskrect": [
+      4,
+      20,
+      28,
+      29
+     ],
+     "box": [
+      3,
+      20,
+      29,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#282831",
+     "color": "#f6633e",
+     "grad_color": "#b01232",
+     "shadow": "#13121b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_throw_on": {
+     "text": "投掷",
+     "maskrect": [
+      4,
+      20,
+      28,
+      29
+     ],
+     "box": [
+      3,
+      20,
+      29,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#282831",
+     "color": "#f6633e",
+     "grad_color": "#b01232",
+     "shadow": "#13121b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_rest_on": {
+     "text": "休息",
+     "maskrect": [
+      4,
+      20,
+      28,
+      29
+     ],
+     "box": [
+      3,
+      20,
+      29,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#282831",
+     "color": "#f6633e",
+     "grad_color": "#b01232",
+     "shadow": "#13121b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_throw": {
+     "text": "投掷",
+     "maskrect": [
+      4,
+      20,
+      28,
+      29
+     ],
+     "box": [
+      3,
+      20,
+      29,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#282831",
+     "color": "#610633",
+     "shadow": "#13121b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_rest": {
+     "text": "休息",
+     "maskrect": [
+      4,
+      20,
+      28,
+      29
+     ],
+     "box": [
+      3,
+      20,
+      29,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#282831",
+     "color": "#610633",
+     "shadow": "#13121b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_drop": {
+     "text": "丢弃",
+     "maskrect": [
+      10,
+      23,
+      28,
+      28
+     ],
+     "box": [
+      9,
+      22,
+      28,
+      29
+     ],
+     "fill": "flat",
+     "bg": "#282831",
+     "color": "#4d4d51",
+     "grad_color": "#7d7d82",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_swap": {
+     "text": "换手",
+     "maskrect": [
+      4,
+      23,
+      22,
+      28
+     ],
+     "box": [
+      3,
+      22,
+      22,
+      29
+     ],
+     "fill": "flat",
+     "bg": "#282831",
+     "color": "#4d4d51",
+     "grad_color": "#7d7d82",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    }
+   }
+  },
+  "icons/hud/screen_trasenknox.dmi": {
+   "include": [
+    "human_actions",
+    "zone_rl"
+   ],
+   "states": {
+    "hand_r": {
+     "text": "右",
+     "maskrect": [
+      5,
+      5,
+      13,
+      12
+     ],
+     "box": [
+      5,
+      5,
+      13,
+      13
+     ],
+     "fill": "flat",
+     "bg": "#151417",
+     "color": "#3ce375",
+     "shadow_top": "#19493f",
+     "shadow_bottom": "#4a301b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "hand_l": {
+     "text": "左",
+     "maskrect": [
+      19,
+      5,
+      27,
+      12
+     ],
+     "box": [
+      19,
+      5,
+      27,
+      13
+     ],
+     "fill": "flat",
+     "bg": "#151417",
+     "color": "#3ce375",
+     "shadow_top": "#19493f",
+     "shadow_bottom": "#4a301b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "rhandactive": {
+     "text": "右",
+     "maskrect": [
+      5,
+      5,
+      11,
+      11
+     ],
+     "box": [
+      3,
+      4,
+      12,
+      12
+     ],
+     "fill": "flat",
+     "bg": "#3ce375",
+     "color": "#151417",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "lhandactive": {
+     "text": "左",
+     "maskrect": [
+      22,
+      5,
+      28,
+      11
+     ],
+     "box": [
+      20,
+      4,
+      29,
+      12
+     ],
+     "fill": "flat",
+     "bg": "#3ce375",
+     "color": "#151417",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "combat": {
+     "text": "战斗",
+     "maskrect": [
+      4,
+      4,
+      28,
+      9
+     ],
+     "box": [
+      4,
+      2,
+      28,
+      10
+     ],
+     "fill": "flat",
+     "bg": "#ea6758",
+     "color": "#292b2e",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "combat_off": {
+     "text": "战斗",
+     "maskrect": [
+      3,
+      3,
+      29,
+      10
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "clip_y": [
+      3,
+      10
+     ],
+     "fill": "flat",
+     "bg": "#151417",
+     "color": "#3ce375",
+     "shadow_top": "#19493f",
+     "shadow_bottom": "#4a301b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "walking": {
+     "text": "行走",
+     "maskrect": [
+      3,
+      3,
+      29,
+      10
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "clip_y": [
+      3,
+      10
+     ],
+     "fill": "flat",
+     "bg": "#151417",
+     "color": "#3ce375",
+     "shadow_top": "#19493f",
+     "shadow_bottom": "#4a301b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "running": {
+     "text": "奔跑",
+     "maskrect": [
+      3,
+      3,
+      29,
+      10
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "clip_y": [
+      3,
+      10
+     ],
+     "fill": "flat",
+     "bg": "#151417",
+     "color": "#3ce375",
+     "shadow_top": "#19493f",
+     "shadow_bottom": "#4a301b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "zone_sel": {
+     "parts": [
+      {
+       "text": "右",
+       "maskrect": [
+        3,
+        2,
+        10,
+        10
+       ],
+       "box": [
+        3,
+        2,
+        11,
+        11
+       ],
+       "clip_y": [
+        2,
+        10
+       ],
+       "fill": "flat",
+       "bg": "#151417",
+       "color": "#3ce375",
+       "shadow_top": "#19493f",
+       "shadow_bottom": "#4a301b",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      },
+      {
+       "text": "左",
+       "maskrect": [
+        22,
+        2,
+        28,
+        10
+       ],
+       "box": [
+        21,
+        2,
+        29,
+        11
+       ],
+       "clip_y": [
+        2,
+        10
+       ],
+       "fill": "flat",
+       "bg": "#151417",
+       "color": "#3ce375",
+       "shadow_top": "#19493f",
+       "shadow_bottom": "#4a301b",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      }
+     ]
+    },
+    "pull": {
+     "text": "拖拽",
+     "maskrect": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "fill": "template_col",
+     "ref_x": 4,
+     "color": "#3c3b42",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_resist": {
+     "text": "挣脱",
+     "maskrect": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "fill": "template_col",
+     "ref_x": 4,
+     "color": "#3c3b42",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_resist_on": {
+     "text": "挣脱",
+     "maskrect": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "fill": "template_col",
+     "ref_x": 4,
+     "color": "#3c3b42",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_throw": {
+     "text": "投掷",
+     "maskrect": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "fill": "template_col",
+     "ref_x": 4,
+     "color": "#3c3b42",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_throw_on": {
+     "text": "投掷",
+     "maskrect": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "fill": "template_col",
+     "ref_x": 4,
+     "color": "#3c3b42",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_sleep": {
+     "text": "睡眠",
+     "maskrect": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "fill": "template_col",
+     "ref_x": 4,
+     "color": "#3c3b42",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_sleep_flick": {
+     "text": "睡眠",
+     "maskrect": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "fill": "template_col",
+     "ref_x": 4,
+     "color": "#3c3b42",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_rest": {
+     "text": "休息",
+     "maskrect": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "fill": "template_col",
+     "ref_x": 4,
+     "color": "#3c3b42",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_rest_on": {
+     "text": "休息",
+     "maskrect": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      27
+     ],
+     "fill": "template_col",
+     "ref_x": 4,
+     "color": "#3c3b42",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_drop": {
+     "text": "丢弃",
+     "maskrect": [
+      6,
+      26,
+      26,
+      31
+     ],
+     "box": [
+      4,
+      25,
+      28,
+      32
+     ],
+     "fill": "flat",
+     "bg": "#998e81",
+     "color": "#3c3b42",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_swap": {
+     "text": "换手",
+     "maskrect": [
+      6,
+      26,
+      26,
+      31
+     ],
+     "box": [
+      4,
+      25,
+      28,
+      32
+     ],
+     "fill": "flat",
+     "bg": "#998e81",
+     "color": "#3c3b42",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    }
+   }
+  },
+  "icons/hud/screen_plasmafire.dmi": {
+   "include": [
+    "human_actions",
+    "hands_rl",
+    "zone_rl"
+   ]
+  },
+  "icons/hud/screen_slimecore.dmi": {
+   "include": [
+    "human_actions",
+    "hands_rl",
+    "zone_rl"
+   ]
+  },
+  "icons/hud/screen_clockwork.dmi": {
+   "include": [
+    "human_actions",
+    "hands_rl",
+    "zone_rl"
+   ]
+  },
+  "icons/hud/screen_glass.dmi": {
+   "include": [
+    "human_actions",
+    "hands_rl",
+    "zone_rl"
+   ]
+  },
+  "icons/hud/screen_detective.dmi": {
+   "include": [
+    "human_actions",
+    "zone_rl"
+   ],
+   "states": {
+    "uniform": {
+     "text": "内",
+     "maskrect": [
+      13,
+      11,
+      18,
+      17
+     ],
+     "box": [
+      11,
+      10,
+      20,
+      19
+     ],
+     "fill": "flat",
+     "color": "#2c0f0c",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "suit": {
+     "text": "外",
+     "maskrect": [
+      13,
+      14,
+      18,
+      20
+     ],
+     "box": [
+      11,
+      13,
+      20,
+      22
+     ],
+     "fill": "flat",
+     "color": "#2c0f0c",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "hand_r": {
+     "text": "右",
+     "maskrect": [
+      4,
+      2,
+      9,
+      7
+     ],
+     "box": [
+      3,
+      2,
+      11,
+      10
+     ],
+     "fill": "flat",
+     "color": "#221c1a",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "hand_l": {
+     "text": "左",
+     "maskrect": [
+      23,
+      2,
+      27,
+      7
+     ],
+     "box": [
+      21,
+      2,
+      29,
+      10
+     ],
+     "fill": "flat",
+     "color": "#221c1a",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "rhandactive": {
+     "keep": true
+    },
+    "lhandactive": {
+     "keep": true
+    },
+    "walking": {
+     "lines": [
+      "行",
+      "走"
+     ],
+     "maskrect": [
+      20,
+      5,
+      27,
+      26
+     ],
+     "box": [
+      19,
+      5,
+      28,
+      26
+     ],
+     "fill": "flat",
+     "bg": "#3d302c",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "running": {
+     "lines": [
+      "奔",
+      "跑"
+     ],
+     "maskrect": [
+      20,
+      5,
+      27,
+      26
+     ],
+     "box": [
+      19,
+      5,
+      28,
+      26
+     ],
+     "fill": "flat",
+     "bg": "#3d302c",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "combat": {
+     "text": "战斗",
+     "maskrect": [
+      5,
+      4,
+      27,
+      10
+     ],
+     "box": [
+      4,
+      3,
+      28,
+      10
+     ],
+     "fill": "flat",
+     "bg": "#340d07",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "combat_off": {
+     "text": "战斗",
+     "maskrect": [
+      5,
+      4,
+      27,
+      10
+     ],
+     "box": [
+      4,
+      3,
+      28,
+      10
+     ],
+     "fill": "flat",
+     "bg": "#340d07",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "pull": {
+     "text": "拖拽",
+     "maskrect": [
+      3,
+      21,
+      29,
+      28
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#49241a",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_resist": {
+     "text": "挣脱",
+     "maskrect": [
+      3,
+      21,
+      29,
+      28
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#49241a",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_resist_on": {
+     "text": "挣脱",
+     "maskrect": [
+      3,
+      21,
+      29,
+      28
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#49241a",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_throw": {
+     "text": "投掷",
+     "maskrect": [
+      3,
+      21,
+      29,
+      28
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#49241a",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_throw_on": {
+     "text": "投掷",
+     "maskrect": [
+      3,
+      21,
+      29,
+      28
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#49241a",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_sleep": {
+     "text": "睡眠",
+     "maskrect": [
+      3,
+      21,
+      29,
+      28
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#49241a",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_sleep_flick": {
+     "text": "睡眠",
+     "maskrect": [
+      3,
+      21,
+      29,
+      28
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#49241a",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_rest": {
+     "text": "休息",
+     "maskrect": [
+      3,
+      21,
+      29,
+      28
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#49241a",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_rest_on": {
+     "text": "休息",
+     "maskrect": [
+      3,
+      21,
+      29,
+      28
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "fill": "flat",
+     "bg": "#49241a",
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_drop": {
+     "text": "丢弃",
+     "maskrect": [
+      14,
+      24,
+      30,
+      29
+     ],
+     "box": [
+      13,
+      24,
+      30,
+      31
+     ],
+     "fill": "template_col",
+     "ref_x": 30,
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_swap": {
+     "text": "换手",
+     "maskrect": [
+      2,
+      24,
+      18,
+      29
+     ],
+     "box": [
+      2,
+      24,
+      19,
+      31
+     ],
+     "fill": "template_col",
+     "ref_x": 19,
+     "color": "#c7b08b",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "zone_sel": {
+     "parts": [
+      {
+       "text": "右",
+       "maskrect": [
+        3,
+        3,
+        8,
+        8
+       ],
+       "box": [
+        3,
+        3,
+        10,
+        11
+       ],
+       "fill": "flat",
+       "color": "#c7b08b",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      },
+      {
+       "text": "左",
+       "maskrect": [
+        24,
+        3,
+        28,
+        8
+       ],
+       "box": [
+        22,
+        3,
+        29,
+        11
+       ],
+       "fill": "flat",
+       "color": "#c7b08b",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      }
+     ]
+    }
+   }
+  },
+  "icons/hud/screen_retro.dmi": {
+   "states": {
+    "template_active": {
+     "keep": true
+    },
+    "template_small": {
+     "keep": true
+    },
+    "act_throw": {
+     "keep": true
+    },
+    "act_throw_on": {
+     "keep": true
+    },
+    "uniform": {
+     "text": "内",
+     "maskrect": [
+      13,
+      13,
+      19,
+      20
+     ],
+     "box": [
+      11,
+      11,
+      21,
+      21
+     ],
+     "fill": "flat",
+     "color": "#006900",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "suit": {
+     "text": "外",
+     "maskrect": [
+      13,
+      13,
+      19,
+      20
+     ],
+     "box": [
+      11,
+      11,
+      21,
+      21
+     ],
+     "fill": "flat",
+     "color": "#006900",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "suit_storage": {
+     "text": "外",
+     "maskrect": [
+      13,
+      14,
+      19,
+      20
+     ],
+     "box": [
+      11,
+      12,
+      21,
+      21
+     ],
+     "fill": "flat",
+     "color": "#004400",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "hand_r": {
+     "text": "右",
+     "maskrect": [
+      4,
+      4,
+      9,
+      10
+     ],
+     "box": [
+      3,
+      3,
+      11,
+      11
+     ],
+     "fill": "flat",
+     "color": "#003366",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "hand_l": {
+     "text": "左",
+     "maskrect": [
+      23,
+      4,
+      28,
+      10
+     ],
+     "box": [
+      21,
+      3,
+      29,
+      11
+     ],
+     "fill": "flat",
+     "color": "#003366",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_drop": {
+     "text": "丢弃",
+     "maskrect": [
+      6,
+      26,
+      26,
+      31
+     ],
+     "box": [
+      4,
+      25,
+      28,
+      32
+     ],
+     "fill": "template_row",
+     "ref_y": 25,
+     "color": "#000000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_swap": {
+     "text": "换手",
+     "maskrect": [
+      6,
+      26,
+      26,
+      31
+     ],
+     "box": [
+      4,
+      25,
+      28,
+      32
+     ],
+     "fill": "template_row",
+     "ref_y": 25,
+     "color": "#000000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "walking": {
+     "text": "走",
+     "maskrect": [
+      17,
+      4,
+      30,
+      9
+     ],
+     "box": [
+      18,
+      2,
+      29,
+      10
+     ],
+     "fill": "template_row",
+     "ref_y": 3,
+     "color": "#003366",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "running": {
+     "text": "跑",
+     "maskrect": [
+      17,
+      4,
+      30,
+      9
+     ],
+     "box": [
+      18,
+      2,
+      29,
+      10
+     ],
+     "fill": "template_row",
+     "ref_y": 3,
+     "color": "#003366",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "combat_off": {
+     "text": "战斗",
+     "maskrect": [
+      2,
+      4,
+      30,
+      9
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "fill": "template_row",
+     "ref_y": 3,
+     "color": "#b70000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "combat": {
+     "text": "战斗",
+     "maskrect": [
+      2,
+      4,
+      30,
+      9
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "fill": "template_row",
+     "ref_y": 3,
+     "color": "#b70000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "zone_sel": {
+     "parts": [
+      {
+       "text": "右",
+       "maskrect": [
+        4,
+        3,
+        9,
+        9
+       ],
+       "box": [
+        3,
+        2,
+        11,
+        10
+       ],
+       "fill": "flat",
+       "color": "#003366",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      },
+      {
+       "text": "左",
+       "maskrect": [
+        23,
+        3,
+        28,
+        9
+       ],
+       "box": [
+        21,
+        2,
+        29,
+        10
+       ],
+       "fill": "flat",
+       "color": "#003366",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      }
+     ]
+    }
+   }
+  },
+  "icons/hud/screen_alien.dmi": {
+   "states": {
+    "suit": {
+     "text": "胸部",
+     "maskrect": [
+      3,
+      3,
+      29,
+      10
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_drop": {
+     "text": "丢弃",
+     "maskrect": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "box": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_rest": {
+     "text": "休息",
+     "maskrect": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "box": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_rest_on": {
+     "text": "休息",
+     "maskrect": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "box": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_sleep": {
+     "text": "睡眠",
+     "maskrect": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "box": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_sleep_flick": {
+     "text": "睡眠",
+     "maskrect": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "box": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_throw": {
+     "text": "投掷",
+     "maskrect": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "box": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_throw_on": {
+     "text": "投掷",
+     "maskrect": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "box": [
+      3,
+      19,
+      29,
+      29
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "swap_1": {
+     "text": "换",
+     "maskrect": [
+      22,
+      24,
+      32,
+      31
+     ],
+     "box": [
+      21,
+      23,
+      31,
+      31
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "swap_2": {
+     "text": "手",
+     "maskrect": [
+      0,
+      24,
+      11,
+      31
+     ],
+     "box": [
+      1,
+      23,
+      11,
+      31
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "harm": {
+     "text": "伤害",
+     "maskrect": [
+      3,
+      3,
+      29,
+      10
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "help": {
+     "text": "帮助",
+     "maskrect": [
+      3,
+      3,
+      29,
+      10
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "disarm": {
+     "text": "扑倒",
+     "maskrect": [
+      3,
+      3,
+      29,
+      10
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "grab": {
+     "text": "抓取",
+     "maskrect": [
+      3,
+      3,
+      29,
+      10
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "walking": {
+     "text": "潜行",
+     "maskrect": [
+      3,
+      3,
+      29,
+      10
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "running": {
+     "text": "狩猎",
+     "maskrect": [
+      3,
+      3,
+      29,
+      10
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "leap_off": {
+     "text": "跳跃",
+     "maskrect": [
+      3,
+      3,
+      29,
+      10
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "leap_on": {
+     "text": "跳跃",
+     "maskrect": [
+      3,
+      3,
+      29,
+      10
+     ],
+     "box": [
+      3,
+      2,
+      29,
+      10
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "health6": {
+     "text": "危重",
+     "maskrect": [
+      2,
+      13,
+      27,
+      19
+     ],
+     "box": [
+      2,
+      11,
+      27,
+      20
+     ],
+     "mask_bright": 150,
+     "pick": "bright",
+     "outline": "#000000",
+     "sizes": [
+      8
+     ]
+    },
+    "health7": {
+     "text": "死亡",
+     "maskrect": [
+      5,
+      11,
+      27,
+      19
+     ],
+     "box": [
+      4,
+      10,
+      28,
+      20
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "outline": "#000000",
+     "sizes": [
+      10,
+      8
+     ]
+    },
+    "hand_r": {
+     "text": "右",
+     "maskrect": [
+      2,
+      2,
+      11,
+      11
+     ],
+     "box": [
+      2,
+      2,
+      11,
+      11
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "hand_l": {
+     "text": "左",
+     "maskrect": [
+      21,
+      2,
+      30,
+      11
+     ],
+     "box": [
+      21,
+      2,
+      30,
+      11
+     ],
+     "mask_red": 80,
+     "color": "#ff0000",
+     "even_color": "#ca0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "zone_sel": {
+     "parts": [
+      {
+       "text": "右",
+       "maskrect": [
+        2,
+        2,
+        10,
+        10
+       ],
+       "box": [
+        2,
+        2,
+        11,
+        11
+       ],
+       "mask_red": 80,
+       "color": "#ff0000",
+       "even_color": "#ca0000",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      },
+      {
+       "text": "左",
+       "maskrect": [
+        22,
+        2,
+        30,
+        10
+       ],
+       "box": [
+        21,
+        2,
+        30,
+        11
+       ],
+       "mask_red": 80,
+       "color": "#ff0000",
+       "even_color": "#ca0000",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      }
+     ]
+    }
+   }
+  },
+  "icons/hud/screen_cyborg.dmi": {
+   "include": [
+    "cyborg_common"
+   ]
+  },
+  "modular_skyrat/master_files/icons/hud/screen_cyborg.dmi": {
+   "include": [
+    "cyborg_common"
+   ],
+   "out": "screen_cyborg_skyrat.dmi"
+  },
+  "modular_skyrat/modules/borgs/icons/screen_cyborg.dmi": {
+   "out": "screen_cyborg_borgs.dmi",
+   "states": {
+    "k9": {
+     "text": "警犬",
+     "maskrect": [
+      5,
+      6,
+      26,
+      17
+     ],
+     "box": [
+      5,
+      6,
+      27,
+      17
+     ],
+     "fill": "flat",
+     "bg": "#f61818",
+     "color": "#181010",
+     "sizes": [
+      10,
+      8
+     ],
+     "outline": false
+    }
+   }
+  },
+  "modular_zubbers/code/modules/silicons/borgs/sprites/screen_robot.dmi": {
+   "states": {
+    "temp0": {
+     "text": "正常",
+     "maskrect": [
+      8,
+      3,
+      29,
+      8
+     ],
+     "box": [
+      8,
+      1,
+      29,
+      10
+     ],
+     "fill": "cyborg_glare",
+     "glare_mode": "health",
+     "color": "#ff0000",
+     "even_color": "#ba0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "temp1": {
+     "text": "微热",
+     "maskrect": [
+      8,
+      3,
+      29,
+      9
+     ],
+     "box": [
+      8,
+      2,
+      29,
+      10
+     ],
+     "fill": "cyborg_glare",
+     "glare_mode": "health",
+     "color": "#ff0000",
+     "even_color": "#ba0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "temp2": {
+     "text": "过热",
+     "maskrect": [
+      8,
+      3,
+      29,
+      9
+     ],
+     "box": [
+      8,
+      2,
+      29,
+      10
+     ],
+     "fill": "cyborg_glare",
+     "glare_mode": "health",
+     "color": "#ff0000",
+     "even_color": "#ba0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "temp-1": {
+     "text": "微凉",
+     "maskrect": [
+      8,
+      3,
+      29,
+      8
+     ],
+     "box": [
+      8,
+      1,
+      29,
+      10
+     ],
+     "fill": "cyborg_glare",
+     "glare_mode": "health",
+     "color": "#ff0000",
+     "even_color": "#ba0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "temp-2": {
+     "text": "过冷",
+     "maskrect": [
+      8,
+      3,
+      29,
+      8
+     ],
+     "box": [
+      8,
+      1,
+      29,
+      10
+     ],
+     "fill": "cyborg_glare",
+     "glare_mode": "health",
+     "color": "#ff0000",
+     "even_color": "#ba0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "research": {
+     "lines": [
+      "科",
+      "研"
+     ],
+     "maskrect": [
+      4,
+      6,
+      10,
+      17
+     ],
+     "box": [
+      3,
+      4,
+      12,
+      19
+     ],
+     "fill": "flat",
+     "bg": "#ffffff",
+     "color": "#9900ff",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    }
+   }
+  },
+  "icons/hud/screen_ghost.dmi": {
+   "states": {
+    "mafia": {
+     "text": "黑手党",
+     "maskrect": [
+      5,
+      18,
+      26,
+      23
+     ],
+     "box": [
+      3,
+      16,
+      29,
+      25
+     ],
+     "fill": "template_row",
+     "ref_y": 17,
+     "even_ref_y": 16,
+     "color": "#000000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "mafia_anim": {
+     "text": "黑手党",
+     "maskrect": [
+      5,
+      18,
+      26,
+      23
+     ],
+     "box": [
+      3,
+      16,
+      29,
+      25
+     ],
+     "fill": "template_row",
+     "ref_y": 17,
+     "even_ref_y": 16,
+     "color": "#000000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "minigames": {
+     "text": "小游戏",
+     "maskrect": [
+      4,
+      3,
+      28,
+      16
+     ],
+     "mask_wb": true,
+     "box": [
+      3,
+      2,
+      29,
+      16
+     ],
+     "fill": "template_row",
+     "ref_y": 5,
+     "ref_pt": [
+      25,
+      5
+     ],
+     "even_pt": [
+      25,
+      4
+     ],
+     "top_pt": [
+      26,
+      3
+     ],
+     "top_y": 3,
+     "color": "#ffffff",
+     "outline": "#000000",
+     "outline_mode": "cross",
+     "sizes": [
+      8
+     ]
+    },
+    "minigames_anim": {
+     "text": "小游戏",
+     "maskrect": [
+      4,
+      3,
+      28,
+      16
+     ],
+     "mask_wb": true,
+     "box": [
+      3,
+      2,
+      29,
+      16
+     ],
+     "fill": "template_row",
+     "ref_y": 5,
+     "ref_pt": [
+      25,
+      5
+     ],
+     "even_pt": [
+      25,
+      4
+     ],
+     "top_pt": [
+      26,
+      3
+     ],
+     "top_y": 3,
+     "color": "#ffffff",
+     "outline": "#000000",
+     "outline_mode": "cross",
+     "sizes": [
+      8
+     ]
+    },
+    "dnr": {
+     "text": "不复活",
+     "maskrect": [
+      5,
+      5,
+      27,
+      16
+     ],
+     "mask_red": 100,
+     "box": [
+      3,
+      5,
+      29,
+      16
+     ],
+     "fill": "row_mode",
+     "color": "#9a0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    }
+   }
+  },
+  "icons/hud/screen_voidwalker.dmi": {
+   "states": {
+    "pull0": {
+     "keep": true
+    },
+    "pull": {
+     "keep": true
+    },
+    "act_resist": {
+     "keep": true
+    },
+    "act_resist_on": {
+     "keep": true
+    },
+    "act_drop": {
+     "text": "丢弃",
+     "maskrect": [
+      6,
+      25,
+      26,
+      30
+     ],
+     "box": [
+      4,
+      24,
+      28,
+      32
+     ],
+     "fill": "scanline_hex",
+     "even_bg": "#000000",
+     "odd_bg": "#0e0e11",
+     "color": "#ac6beb",
+     "grad_color": "#775acf",
+     "shadow": "#4b1d8f",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_swap": {
+     "text": "换手",
+     "maskrect": [
+      6,
+      25,
+      26,
+      30
+     ],
+     "box": [
+      4,
+      24,
+      28,
+      32
+     ],
+     "fill": "scanline_hex",
+     "even_bg": "#000000",
+     "odd_bg": "#0e0e11",
+     "color": "#ac6beb",
+     "grad_color": "#775acf",
+     "shadow": "#4b1d8f",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_throw": {
+     "text": "投掷",
+     "maskrect": [
+      5,
+      21,
+      27,
+      27
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "fill": "scanline_hex",
+     "even_bg": "#0e0e11",
+     "odd_bg": "#000000",
+     "color": "#ac6beb",
+     "grad_color": "#775acf",
+     "shadow": "#4b1d8f",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_throw_on": {
+     "text": "投掷",
+     "maskrect": [
+      5,
+      21,
+      27,
+      27
+     ],
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "fill": "scanline_hex",
+     "even_bg": "#0e0e11",
+     "odd_bg": "#000000",
+     "color": "#ac6beb",
+     "grad_color": "#775acf",
+     "shadow": "#4b1d8f",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "combat": {
+     "text": "战斗",
+     "maskrect": [
+      2,
+      6,
+      30,
+      11
+     ],
+     "mask_sat": 50,
+     "box": [
+      3,
+      4,
+      29,
+      12
+     ],
+     "fill": "scanline_hex",
+     "even_bg": "#000000",
+     "odd_bg": "#0e0e11",
+     "color": "#ac6beb",
+     "grad_color": "#775acf",
+     "shadow": "#4b1d8f",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "combat_off": {
+     "text": "战斗",
+     "maskrect": [
+      2,
+      6,
+      30,
+      11
+     ],
+     "mask_sat": 50,
+     "box": [
+      3,
+      4,
+      29,
+      12
+     ],
+     "fill": "scanline_hex",
+     "even_bg": "#000000",
+     "odd_bg": "#0e0e11",
+     "color": "#ac6beb",
+     "grad_color": "#775acf",
+     "shadow": "#4b1d8f",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "hand_r": {
+     "text": "右",
+     "maskrect": [
+      4,
+      5,
+      10,
+      10
+     ],
+     "mask_sat": 50,
+     "box": [
+      4,
+      4,
+      12,
+      12
+     ],
+     "fill": "scanline_hex",
+     "even_bg": "#0e0e11",
+     "odd_bg": "#000000",
+     "color": "#ac6beb",
+     "grad_color": "#775acf",
+     "shadow": "#4b1d8f",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "hand_l": {
+     "text": "左",
+     "maskrect": [
+      22,
+      5,
+      27,
+      10
+     ],
+     "mask_sat": 50,
+     "box": [
+      20,
+      4,
+      28,
+      12
+     ],
+     "fill": "scanline_hex",
+     "even_bg": "#0e0e11",
+     "odd_bg": "#000000",
+     "color": "#ac6beb",
+     "grad_color": "#775acf",
+     "shadow": "#4b1d8f",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "zone_sel": {
+     "parts": [
+      {
+       "text": "右",
+       "maskrect": [
+        4,
+        4,
+        9,
+        9
+       ],
+       "mask_sat": 50,
+       "box": [
+        4,
+        3,
+        12,
+        11
+       ],
+       "fill": "scanline_hex",
+       "even_bg": "#000000",
+       "odd_bg": "#0e0e11",
+       "color": "#ac6beb",
+       "grad_color": "#775acf",
+       "shadow": "#4b1d8f",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      },
+      {
+       "text": "左",
+       "maskrect": [
+        23,
+        4,
+        28,
+        9
+       ],
+       "mask_sat": 50,
+       "box": [
+        20,
+        3,
+        28,
+        11
+       ],
+       "fill": "scanline_hex",
+       "even_bg": "#000000",
+       "odd_bg": "#0e0e11",
+       "color": "#ac6beb",
+       "grad_color": "#775acf",
+       "shadow": "#4b1d8f",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      }
+     ]
+    }
+   }
+  },
+  "modular_zubbers/master_files/icons/hud/screen_blue98.dmi": {
+   "states": {
+    "pull": {
+     "text": "拖拽",
+     "maskrect": [
+      4,
+      5,
+      28,
+      11
+     ],
+     "mask_color": "#fee9d4",
+     "fill": "row_mode",
+     "box": [
+      4,
+      4,
+      28,
+      12
+     ],
+     "color": "#fee9d4",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_resist": {
+     "text": "挣脱",
+     "maskrect": [
+      4,
+      21,
+      28,
+      27
+     ],
+     "mask_color": "#a0fbfc",
+     "fill": "row_mode",
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "color": "#a0fbfc",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_drop": {
+     "text": "丢弃",
+     "maskrect": [
+      4,
+      21,
+      28,
+      27
+     ],
+     "mask_color": "#a0fbfc",
+     "fill": "row_mode",
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "color": "#a0fbfc",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_throw_off": {
+     "text": "投掷",
+     "maskrect": [
+      4,
+      5,
+      28,
+      11
+     ],
+     "mask_color": "#a0fbfc",
+     "fill": "row_mode",
+     "box": [
+      4,
+      4,
+      28,
+      12
+     ],
+     "color": "#a0fbfc",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_throw_on": {
+     "text": "投掷",
+     "maskrect": [
+      4,
+      5,
+      28,
+      11
+     ],
+     "mask_color": "#fee9d4",
+     "fill": "row_mode",
+     "box": [
+      4,
+      4,
+      28,
+      12
+     ],
+     "color": "#fee9d4",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_rest0": {
+     "text": "休息",
+     "maskrect": [
+      4,
+      21,
+      28,
+      27
+     ],
+     "mask_color": "#fee9d4",
+     "fill": "row_mode",
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "color": "#fee9d4",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_rest": {
+     "text": "休息",
+     "maskrect": [
+      4,
+      21,
+      28,
+      27
+     ],
+     "mask_color": "#a0fbfc",
+     "fill": "row_mode",
+     "box": [
+      4,
+      20,
+      28,
+      28
+     ],
+     "color": "#a0fbfc",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "act_equip": {
+     "text": "装",
+     "maskrect": [
+      5,
+      22,
+      11,
+      28
+     ],
+     "mask_color": "#a0fbfc",
+     "fill": "row_mode",
+     "box": [
+      4,
+      21,
+      13,
+      29
+     ],
+     "color": "#a0fbfc",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "swap_1": {
+     "keep": true
+    },
+    "swap_2": {
+     "keep": true
+    },
+    "swap_1_m": {
+     "keep": true
+    },
+    "uniform": {
+     "text": "内",
+     "maskrect": [
+      13,
+      10,
+      19,
+      17
+     ],
+     "mask_color": "#8589bf",
+     "box": [
+      11,
+      9,
+      21,
+      19
+     ],
+     "color": "#8589bf",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "hand_r": {
+     "text": "右",
+     "maskrect": [
+      2,
+      3,
+      8,
+      9
+     ],
+     "mask_color": "#a0fbfc",
+     "fill": "row_mode",
+     "box": [
+      2,
+      2,
+      10,
+      10
+     ],
+     "color": "#a0fbfc",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "hand_l": {
+     "text": "左",
+     "maskrect": [
+      24,
+      3,
+      29,
+      9
+     ],
+     "mask_color": "#a0fbfc",
+     "fill": "row_mode",
+     "box": [
+      22,
+      2,
+      30,
+      10
+     ],
+     "color": "#a0fbfc",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "rhandactive": {
+     "text": "右",
+     "maskrect": [
+      2,
+      3,
+      8,
+      9
+     ],
+     "mask_color": "#fee9d4",
+     "fill": "row_mode",
+     "box": [
+      2,
+      2,
+      10,
+      10
+     ],
+     "color": "#fee9d4",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "lhandactive": {
+     "text": "左",
+     "maskrect": [
+      24,
+      3,
+      29,
+      9
+     ],
+     "mask_color": "#fee9d4",
+     "fill": "row_mode",
+     "box": [
+      22,
+      2,
+      30,
+      10
+     ],
+     "color": "#fee9d4",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "zone_sel": {
+     "parts": [
+      {
+       "text": "右",
+       "maskrect": [
+        2,
+        2,
+        8,
+        9
+       ],
+       "mask_color": "#a0fbfc",
+       "fill": "row_mode",
+       "box": [
+        2,
+        2,
+        10,
+        10
+       ],
+       "color": "#a0fbfc",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      },
+      {
+       "text": "左",
+       "maskrect": [
+        24,
+        2,
+        29,
+        9
+       ],
+       "mask_color": "#a0fbfc",
+       "fill": "row_mode",
+       "box": [
+        22,
+        2,
+        30,
+        10
+       ],
+       "color": "#a0fbfc",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      }
+     ]
+    }
+   }
+  },
+  "icons/hud/radial.dmi": {
+   "states": {
+    "radial_pull": {
+     "text": "拖拽",
+     "search": [
+      0,
+      0,
+      32,
+      12
+     ],
+     "button": true
+    },
+    "radial_pickup": {
+     "text": "拾取",
+     "search": [
+      0,
+      0,
+      32,
+      18
+     ],
+     "button": true
+    },
+    "radial_examine": {
+     "text": "检查",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_examine2": {
+     "text": "检查",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_lookat": {
+     "text": "查看",
+     "search": [
+      0,
+      0,
+      32,
+      18
+     ],
+     "button": true
+    },
+    "radial_use": {
+     "text": "使用",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_point": {
+     "text": "指向",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_eject": {
+     "text": "弹出",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_next": {
+     "text": "翻页",
+     "search": [
+      0,
+      0,
+      32,
+      14
+     ],
+     "button": true
+    },
+    "radial_next_noicon": {
+     "text": "翻页",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "radial_reset": {
+     "text": "重置",
+     "search": [
+      0,
+      0,
+      32,
+      14
+     ],
+     "button": true
+    },
+    "radial_grind": {
+     "text": "研磨",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_juice": {
+     "text": "榨汁",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_mix": {
+     "text": "混合",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_set_mana": {
+     "text": "法力",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_set_slots": {
+     "text": "槽位",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_set_life": {
+     "text": "生命",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_damage": {
+     "text": "伤害",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_open": {
+     "text": "打开",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_close": {
+     "text": "关闭",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_disinfect": {
+     "text": "消毒",
+     "search": [
+      0,
+      0,
+      32,
+      18
+     ],
+     "button": true
+    },
+    "radial_unlock": {
+     "text": "解锁",
+     "search": [
+      0,
+      0,
+      32,
+      14
+     ],
+     "button": true
+    },
+    "radial_lock": {
+     "text": "上锁",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_drop": {
+     "text": "丢弃",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_buy": {
+     "text": "购买",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_sell": {
+     "text": "出售",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_buying": {
+     "text": "收购",
+     "search": [
+      0,
+      0,
+      32,
+      24
+     ],
+     "button": true
+    },
+    "radial_selling": {
+     "text": "售卖",
+     "search": [
+      0,
+      0,
+      32,
+      23
+     ],
+     "button": true
+    },
+    "radial_talk": {
+     "text": "交谈",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_yes": {
+     "text": "是",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "radial_no": {
+     "text": "否",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "radial_rotate": {
+     "text": "旋转",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_reskin": {
+     "text": "换肤",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "radial_draw": {
+     "text": "抽牌",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_shuffle": {
+     "text": "洗牌",
+     "search": [
+      0,
+      0,
+      32,
+      14
+     ],
+     "button": true
+    },
+    "radial_flip": {
+     "text": "翻面",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_tap": {
+     "text": "点牌",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_mark": {
+     "text": "标记",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_modify": {
+     "text": "修改",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "radial_recolor": {
+     "text": "染色",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "radial_create": {
+     "text": "创建",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "radial_full_list": {
+     "text": "全部",
+     "search": [
+      0,
+      0,
+      32,
+      14
+     ],
+     "button": true
+    },
+    "radial_lore": {
+     "text": "描述",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "radial_mob": {
+     "text": "生物",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "radial_charge": {
+     "text": "充能",
+     "search": [
+      0,
+      0,
+      32,
+      14
+     ],
+     "button": true
+    },
+    "radial_cook": {
+     "text": "烹饪",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "Change Eyes": {
+     "text": "眼睛",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "Change Beard": {
+     "text": "胡须",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "Change Hair": {
+     "text": "发型",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "Change Name": {
+     "text": "名字",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "Change Sex": {
+     "text": "性别",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "Change Race": {
+     "text": "种族",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "Upper": {
+     "text": "上半",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "Lower": {
+     "text": "下半",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "Middle": {
+     "text": "中段",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "point": {
+     "text": "指向",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "danger": {
+     "text": "危险",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "guard": {
+     "text": "守卫",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "attack": {
+     "text": "攻击",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "mine": {
+     "text": "挖矿",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "move": {
+     "text": "移动",
+     "search": [
+      0,
+      0,
+      32,
+      26
+     ],
+     "button": true
+    },
+    "mail_sort": {
+     "text": "分拣",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "mail_dump": {
+     "text": "倾倒",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    }
+   }
+  },
+  "icons/hud/radial_pets.dmi": {
+   "states": {
+    "attack": {
+     "text": "攻击",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "play_dead": {
+     "text": "装死",
+     "search": [
+      0,
+      0,
+      32,
+      17
+     ],
+     "button": true
+    },
+    "fetch": {
+     "text": "取回",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "halt": {
+     "text": "停下",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "breed": {
+     "text": "繁殖",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "fish": {
+     "text": "捕鱼",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "free": {
+     "text": "放生",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "follow": {
+     "text": "跟随",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "move": {
+     "text": "移动",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    },
+    "mine": {
+     "text": "挖矿",
+     "search": [
+      0,
+      0,
+      32,
+      16
+     ],
+     "button": true
+    }
+   }
+  },
+  "icons/hud/radial_coffee.dmi": {
+   "states": {
+    "radial_brew": {
+     "text": "冲泡",
+     "search": [
+      0,
+      0,
+      32,
+      15
+     ],
+     "button": true
+    },
+    "radial_eject_pot": {
+     "text": "取壶",
+     "search": [
+      0,
+      0,
+      32,
+      24
+     ],
+     "button": true
+    },
+    "radial_eject_cartridge": {
+     "text": "取盒",
+     "search": [
+      0,
+      0,
+      32,
+      24
+     ],
+     "button": true
+    },
+    "radial_take_cup": {
+     "text": "取杯",
+     "search": [
+      0,
+      0,
+      32,
+      24
+     ],
+     "button": true
+    },
+    "radial_take_sugar": {
+     "text": "取糖",
+     "search": [
+      0,
+      0,
+      32,
+      24
+     ],
+     "button": true
+    },
+    "radial_take_sweetener": {
+     "text": "甜剂",
+     "search": [
+      0,
+      0,
+      32,
+      24
+     ],
+     "button": true
+    },
+    "radial_take_creamer": {
+     "text": "奶精",
+     "search": [
+      0,
+      0,
+      32,
+      24
+     ],
+     "button": true
+    }
+   }
+  },
+  "modular_zubbers/icons/hud/radial.dmi": {
+   "out": "radial_zubbers.dmi",
+   "states": {
+    "open": {
+     "parts": [
+      {
+       "text": "左键",
+       "maskrect": [
+        3,
+        3,
+        16,
+        8
+       ],
+       "box": [
+        1,
+        1,
+        16,
+        9
+       ],
+       "fill": "transparent",
+       "color": "#7ef2fc",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      },
+      {
+       "text": "右键",
+       "maskrect": [
+        16,
+        23,
+        29,
+        28
+       ],
+       "box": [
+        16,
+        22,
+        31,
+        30
+       ],
+       "fill": "transparent",
+       "color": "#7ef2fc",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      }
+     ]
+    },
+    "reveal all": {
+     "text": "显示",
+     "search": [
+      0,
+      22,
+      32,
+      28
+     ],
+     "box": [
+      0,
+      21,
+      32,
+      29
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false,
+     "button": true
+    },
+    "ears": {
+     "text": "耳朵",
+     "search": [
+      0,
+      22,
+      32,
+      28
+     ],
+     "box": [
+      0,
+      21,
+      32,
+      29
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false,
+     "button": true
+    },
+    "horns": {
+     "text": "角",
+     "search": [
+      0,
+      22,
+      32,
+      28
+     ],
+     "box": [
+      0,
+      21,
+      32,
+      29
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false,
+     "button": true
+    },
+    "moth_wings": {
+     "text": "蛾翅",
+     "search": [
+      0,
+      22,
+      32,
+      28
+     ],
+     "box": [
+      0,
+      21,
+      32,
+      29
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false,
+     "button": true
+    },
+    "wings": {
+     "text": "翅膀",
+     "search": [
+      0,
+      22,
+      32,
+      28
+     ],
+     "box": [
+      0,
+      21,
+      32,
+      29
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false,
+     "button": true
+    },
+    "tail": {
+     "text": "尾巴",
+     "search": [
+      0,
+      22,
+      32,
+      28
+     ],
+     "box": [
+      0,
+      21,
+      32,
+      29
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false,
+     "button": true
+    },
+    "ipc_antenna": {
+     "text": "天线",
+     "search": [
+      0,
+      22,
+      32,
+      28
+     ],
+     "box": [
+      0,
+      21,
+      32,
+      29
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false,
+     "button": true
+    },
+    "moth_antennae": {
+     "text": "触角",
+     "search": [
+      0,
+      22,
+      32,
+      28
+     ],
+     "box": [
+      0,
+      21,
+      32,
+      29
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false,
+     "button": true
+    },
+    "frills": {
+     "text": "颈褶",
+     "search": [
+      0,
+      22,
+      32,
+      28
+     ],
+     "box": [
+      0,
+      21,
+      32,
+      29
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false,
+     "button": true
+    },
+    "xenodorsal": {
+     "text": "背鳍",
+     "search": [
+      0,
+      22,
+      32,
+      28
+     ],
+     "box": [
+      0,
+      21,
+      32,
+      29
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false,
+     "button": true
+    },
+    "spines": {
+     "text": "棘刺",
+     "search": [
+      0,
+      22,
+      32,
+      28
+     ],
+     "box": [
+      0,
+      21,
+      32,
+      29
+     ],
+     "sizes": [
+      8
+     ],
+     "outline": false,
+     "button": true
+    }
+   }
+  },
+  "icons/hud/guardian.dmi": {
+   "states": {
+    "pull": {
+     "text": "松手",
+     "maskrect": [
+      3,
+      7,
+      29,
+      25
+     ],
+     "box": [
+      3,
+      7,
+      29,
+      25
+     ],
+     "fill": "template_row",
+     "ref_y": 5,
+     "even_ref_y": 6,
+     "color": "#a2a4aa",
+     "outline": "#000000",
+     "sizes": [
+      12,
+      10
+     ]
+    }
+   }
+  },
+  "icons/hud/implants.dmi": {
+   "states": {
+    "minimap": {
+     "text": "地图",
+     "maskrect": [
+      14,
+      3,
+      29,
+      7
+     ],
+     "box": [
+      13,
+      2,
+      29,
+      10
+     ],
+     "fill": "flat",
+     "color": "#2db313",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "minimap_drawing": {
+     "text": "地图",
+     "maskrect": [
+      14,
+      3,
+      29,
+      7
+     ],
+     "box": [
+      13,
+      2,
+      29,
+      10
+     ],
+     "fill": "flat",
+     "color": "#2db313",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    }
+   }
+  },
+  "icons/hud/screen_alert.dmi": {
+   "states": {
+    "low_mech_integrity1": {
+     "text": "受损",
+     "maskrect": [
+      8,
+      3,
+      29,
+      8
+     ],
+     "box": [
+      8,
+      1,
+      29,
+      10
+     ],
+     "fill": "cyborg_glare",
+     "glare_mode": "health",
+     "color": "#ffcc00",
+     "even_color": "#ea8c00",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "low_mech_integrity2": {
+     "text": "严重",
+     "maskrect": [
+      8,
+      3,
+      29,
+      8
+     ],
+     "box": [
+      8,
+      1,
+      29,
+      10
+     ],
+     "fill": "cyborg_glare",
+     "glare_mode": "health",
+     "color": "#ff9900",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "low_mech_integrity3": {
+     "text": "警报",
+     "maskrect": [
+      8,
+      3,
+      29,
+      8
+     ],
+     "box": [
+      8,
+      1,
+      29,
+      10
+     ],
+     "fill": "cyborg_glare",
+     "glare_mode": "health5",
+     "color": "#ff0000",
+     "even_color": "#ba0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "not_enough_plas": {
+     "text": "电浆",
+     "maskrect": [
+      7,
+      23,
+      26,
+      28
+     ],
+     "box": [
+      6,
+      22,
+      26,
+      29
+     ],
+     "fill": "flat",
+     "bg": "#320642",
+     "color": "#fbfbfb",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "too_much_plas": {
+     "text": "电浆",
+     "maskrect": [
+      7,
+      23,
+      26,
+      28
+     ],
+     "box": [
+      6,
+      22,
+      26,
+      29
+     ],
+     "fill": "flat",
+     "bg": "#9b0000",
+     "color": "#fbfbfb",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "hacked": {
+     "text": "故障",
+     "maskrect": [
+      6,
+      7,
+      27,
+      13
+     ],
+     "mask_red": 100,
+     "box": [
+      5,
+      5,
+      27,
+      14
+     ],
+     "fill": "cyborg_glare",
+     "glare_mode": "alert",
+     "color": "#ff0000",
+     "even_color": "#dd0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "locked": {
+     "text": "锁定",
+     "maskrect": [
+      4,
+      5,
+      28,
+      11
+     ],
+     "mask_red": 100,
+     "box": [
+      5,
+      3,
+      27,
+      12
+     ],
+     "fill": "cyborg_glare",
+     "glare_mode": "alert",
+     "color": "#ff0000",
+     "even_color": "#dd0000",
+     "sizes": [
+      8
+     ],
+     "outline": false
+    },
+    "newlaw": {
+     "parts": [
+      {
+       "text": "新",
+       "maskrect": [
+        6,
+        5,
+        26,
+        11
+       ],
+       "mask_red": 100,
+       "box": [
+        6,
+        4,
+        26,
+        12
+       ],
+       "fill": "cyborg_glare",
+       "glare_mode": "alert",
+       "color": "#ff0000",
+       "even_color": "#dd0000",
+       "sizes": [
+        8
+       ],
+       "outline": false
+      },
+      {
+       "text": "法则",
+       "maskrect": [
+        4,
+        13,
+        28,
+        24
+       ],
+       "mask_red": 100,
+       "box": [
+        5,
+        13,
+        27,
+        24
+       ],
+       "fill": "cyborg_glare",
+       "glare_mode": "alert",
+       "color": "#ff0000",
+       "even_color": "#dd0000",
+       "sizes": [
+        10,
+        8
+       ],
+       "outline": false
+      }
+     ]
+    }
+   }
+  }
+ }
+}

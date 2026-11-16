@@ -36,10 +36,17 @@
 		DEPARTMENT_SERVICE,
 		DEPARTMENT_COMMAND,
 	)
+	// ZH EDIT CHANGE - I18N: pass image() so radial extract_image() routes through lang_hud_icon().
+	// ORIGINAL:
+	//	var/static/list/choices = list(
+	//		"Eject" = icon('icons/hud/radial.dmi', "radial_eject"),
+	//		"Dump" = icon('icons/hud/radial.dmi', "mail_dump"),
+	//		"Sort" = icon('icons/hud/radial.dmi', "mail_sort"),
+	//	)
 	var/static/list/choices = list(
-		"Eject" = icon('icons/hud/radial.dmi', "radial_eject"),
-		"Dump" = icon('icons/hud/radial.dmi', "mail_dump"),
-		"Sort" = icon('icons/hud/radial.dmi', "mail_sort"),
+		"Eject" = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_eject"),
+		"Dump" = image(icon = 'icons/hud/radial.dmi', icon_state = "mail_dump"),
+		"Sort" = image(icon = 'icons/hud/radial.dmi', icon_state = "mail_sort"),
 	)
 
 /// Steps one tile in the `output_dir`. Returns `turf`.

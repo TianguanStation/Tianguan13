@@ -313,7 +313,7 @@
 	if(!button_icon || !button_icon_state || (current_button.icon_state == button_icon_state && !force))
 		return
 
-	current_button.icon = button_icon
+	current_button.icon = lang_hud_icon(button_icon) // ZH EDIT CHANGE - I18N: button_icon 可指 implants/guardian 等已登记路径。ORIGINAL: current_button.icon = button_icon
 	current_button.icon_state = button_icon_state
 
 /**

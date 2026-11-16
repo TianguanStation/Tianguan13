@@ -5,7 +5,7 @@
 /datum/hud/dextrous/voidwalker/initialize_screen_objects()
 	. = ..()
 	var/atom/movable/screen/floor_change = screen_objects[HUD_MOB_FLOOR_CHANGER]
-	floor_change.icon = ui_style
+	floor_change.icon = lang_hud_icon(ui_style) // ZH EDIT CHANGE - I18N. ORIGINAL: floor_change.icon = ui_style
 	floor_change.screen_loc = ui_below_throw
 
 	add_screen_object(/atom/movable/screen/resist, HUD_MOB_RESIST, HUD_GROUP_HOTKEYS, ui_style, ui_voidwalker_left_of_hands)

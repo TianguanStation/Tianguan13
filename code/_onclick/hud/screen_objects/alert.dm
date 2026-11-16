@@ -148,7 +148,8 @@
 	if(istype(our_master) && !QDELETED(our_master))
 		. += add_atom_icon(our_master)
 	if(overlay_state)
-		. += mutable_appearance(overlay_icon, overlay_state)
+		// ZH EDIT CHANGE - I18N: overlay_icon 默认 screen_alert.dmi，换中文变体。ORIGINAL: . += mutable_appearance(overlay_icon, overlay_state)
+		. += mutable_appearance(lang_hud_icon(overlay_icon), overlay_state)
 
 ///Returns a copy of the appearance of the atom, with its base pixel coordinates. Useful for overlays
 /atom/movable/screen/alert/proc/add_atom_icon(atom/atom)
@@ -1221,10 +1222,10 @@
 		var/atom/movable/screen/alert/alert = alerts[alerts[i]]
 		switch(alert.use_user_hud_icon)
 			if(USER_HUD_STYLE_INHERIT)
-				alert.icon = ui_style
+				alert.icon = lang_hud_icon(ui_style) // ZH EDIT CHANGE - I18N. ORIGINAL: alert.icon = ui_style
 			if(USER_HUD_STYLE_PREFS)
 				if(user_pref_hud)
-					alert.icon = user_pref_hud
+					alert.icon = lang_hud_icon(user_pref_hud) // ZH EDIT CHANGE - I18N. ORIGINAL: alert.icon = user_pref_hud
 		alert.screen_loc = get_ui_alert_placement(i)
 		screenmob.client.screen |= alert
 	if(!viewmob)

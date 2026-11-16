@@ -357,9 +357,13 @@
 	var/list/choices = list()
 
 	if (locked)
-		choices["unlock"] = icon('icons/hud/radial.dmi', "radial_unlock")
+		// ZH EDIT CHANGE - I18N: pass image() so radial extract_image() routes through lang_hud_icon().
+		// ORIGINAL: choices["unlock"] = icon('icons/hud/radial.dmi', "radial_unlock")
+		choices["unlock"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_unlock")
 	else if (state_open)
-		choices["close"] = icon('icons/hud/radial.dmi', "radial_close")
+		// ZH EDIT CHANGE - I18N: pass image() so radial extract_image() routes through lang_hud_icon().
+		// ORIGINAL: choices["close"] = icon('icons/hud/radial.dmi', "radial_close")
+		choices["close"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_close")
 
 		for (var/item_key in items)
 			var/item = vars[item_key]
@@ -369,9 +373,14 @@
 				// If the item doesn't exist, put a silhouette in its place
 				choices[item_key] = items[item_key]
 	else
-		choices["open"] = icon('icons/hud/radial.dmi', "radial_open")
-		choices["disinfect"] = icon('icons/hud/radial.dmi', "radial_disinfect")
-		choices["lock"] = icon('icons/hud/radial.dmi', "radial_lock")
+		// ZH EDIT CHANGE - I18N: pass image() so radial extract_image() routes through lang_hud_icon().
+		// ORIGINAL:
+		//	choices["open"] = icon('icons/hud/radial.dmi', "radial_open")
+		//	choices["disinfect"] = icon('icons/hud/radial.dmi', "radial_disinfect")
+		//	choices["lock"] = icon('icons/hud/radial.dmi', "radial_lock")
+		choices["open"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_open")
+		choices["disinfect"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_disinfect")
+		choices["lock"] = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_lock")
 
 	var/choice = show_radial_menu(
 		user,

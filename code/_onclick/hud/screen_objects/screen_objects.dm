@@ -51,6 +51,11 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 
 /atom/movable/screen/Initialize(mapload, datum/hud/hud_owner)
 	. = ..()
+	// ZH EDIT ADDITION - I18N: 类型级字面量 icon 的换图收口（screen_gen 底座、screen_alert、
+	// radial、lobby 按钮、navigate/craft 等）。locale==en 时恒等。经 ui_icon 赋值的路径
+	// 另有 add_screen_object 兜底。
+	icon = lang_hud_icon(icon)
+	// ZH EDIT ADDITION END
 	if(isnull(hud_owner)) //some screens set their hud owners on /new, this prevents overriding them with null post atoms init
 		return
 	set_new_hud(hud_owner)
@@ -496,6 +501,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 /atom/movable/screen/spacesuit/update_overlays()
 	. = ..()
 	if(!cached_thermal_on && icon_state)
+		// ZH EDIT ADDITION - I18N: 共享静态 MA 的 icon 原地换成中文变体（locale 全服固定，幂等）。
+		off_overlay.icon = lang_hud_icon(off_overlay.icon)
+		// ZH EDIT ADDITION END
 		. |= off_overlay
 
 /atom/movable/screen/mov_intent
@@ -817,7 +825,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	. = ..()
 	if(!hud?.mymob)
 		return
-	. += mutable_appearance(overlay_icon, "[hud.mymob.zone_selected]")
+	. += mutable_appearance(lang_hud_icon(overlay_icon), "[hud.mymob.zone_selected]") // ZH EDIT CHANGE - I18N. ORIGINAL: . += mutable_appearance(overlay_icon, "[hud.mymob.zone_selected]")
 
 /atom/movable/screen/zone_sel/alien
 	icon = 'icons/hud/screen_alien.dmi'
