@@ -25,6 +25,7 @@ import {
 } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
+import { searchableText } from '../i18n/search';
 import { Window } from '../layouts';
 
 const STORAGE_FAVOURITES = 'adminverbpanel-favourites';
@@ -161,8 +162,10 @@ export function AdminVerbPanel() {
   };
 
   const filteredVerbs = searchText
-    ? verbs.filter((verb) =>
-        verb.name.toLowerCase().includes(searchText.toLowerCase()),
+    ? verbs.filter(
+        (verb) =>
+          searchableText(verb.name).includes(searchText.toLowerCase()) ||
+          searchableText(verb.description).includes(searchText.toLowerCase()),
       )
     : verbs;
 

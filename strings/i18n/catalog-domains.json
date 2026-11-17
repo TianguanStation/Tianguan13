@@ -62,6 +62,8 @@
 		"tgui.json": { "domain": "tgui", "owner": "tgui" }
 	},
 	"scoped_files": {
+		"counted_labels.json": {"domain": "scoped:counted_labels", "owner": "manual"},
+		"admin_buildmode_labels.json": {"domain": "scoped:admin_buildmode_labels", "owner": "manual"},
 		"mkultra_texts.json": { "domain": "scoped:mkultra_texts", "owner": "manual" },
 		"alarm_types.json": { "domain": "scoped:alarm_types", "owner": "manual" },
 		"armor_classes.json": { "domain": "scoped:armor_classes", "owner": "manual" },

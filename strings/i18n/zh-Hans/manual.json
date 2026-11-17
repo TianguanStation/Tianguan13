@@ -70,5 +70,7 @@
 	"_root.job_estimation_named": "* {0}（{1}）",
 	"_root.job_estimation_mysterious": "* 一位神秘的{0}",
 	"datum.allergy_quirk_name": "极端{0}过敏",
-	"datum.allergy_medical_record": "患者的免疫系统对{0}反应剧烈"
+	"datum.allergy_medical_record": "患者的免疫系统对{0}反应剧烈",
+	"manual.station_report_title": "中央指挥部状态摘要",
+	"manual.station_report_orders": "{0}的特别指令："
 }

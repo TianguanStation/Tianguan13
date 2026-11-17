@@ -59,7 +59,9 @@ export function CreateObject(props: CreateObjectProps) {
     (key: string) => {
       const item = allObjects[key];
       if (!item) return key;
-      return searchBy ? key : `${key} ${item.name || ''}`;
+      return searchBy
+        ? key
+        : `${key} ${item.name || ''} ${item.display_name || ''}`;
     },
     [searchBy, allObjects],
   );
@@ -301,13 +303,18 @@ export function CreateObject(props: CreateObjectProps) {
                 }}
               >
                 <Stack vertical>
-                  <Stack.Item bold>{allObjects[selectedObj].name}</Stack.Item>
+                  <Stack.Item bold>
+                    {allObjects[selectedObj].display_name ||
+                      allObjects[selectedObj].name}
+                  </Stack.Item>
                   <Stack.Item
                     grow
                     italic
                     style={{ color: 'rgba(200, 200, 200, 0.7)' }}
                   >
-                    {allObjects[selectedObj].description || 'no description'}
+                    {allObjects[selectedObj].display_description ||
+                      allObjects[selectedObj].description ||
+                      'no description'}
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
@@ -454,7 +461,7 @@ export function CreateObject(props: CreateObjectProps) {
                     obj
                   ) : (
                     <>
-                      {allObjects[obj]?.name}
+                      {allObjects[obj]?.display_name || allObjects[obj]?.name}
                       <span
                         className="label label-info"
                         style={{

@@ -118,7 +118,7 @@ GLOBAL_DATUM_INIT(communications_controller, /datum/communciations_controller, n
 			continue
 		trait_list_strings += "[station_trait.get_report()]<BR>"
 	if(trait_list_strings.len > 0)
-		. += "<hr><h4>Identified shift divergencies:</h4>" + trait_list_strings.Join()
+		. += LANG("datum.6065c9f0867bede7", list(trait_list_strings.Join()))
 
 	if(length(command_report_footnotes))
 		var/footnote_pile = ""

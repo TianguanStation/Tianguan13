@@ -26,6 +26,8 @@ export interface AtomData {
   icon: string;
   icon_state: string;
   name: string;
+  display_name?: string;
+  display_description?: string;
   description?: string;
   mapping: BooleanLike;
   type: 'Objects' | 'Turfs' | 'Mobs';
