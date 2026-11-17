@@ -14,7 +14,7 @@ bash tools/build/build.sh
 DreamDaemon tgstation.dmb -trusted
 ```
 
-启动前根据部署环境配置 `config/`，特别是数据库、管理员和联网设置。构建使用 BYOND 516.1688、Bun 1.3.5、rust_g 6.2.0 和 dreamluau 0.1.2；其他平台参照上游 [README](README.md) 和 `dependencies.sh` 配置依赖。
+启动前根据部署环境配置 `config/`，特别是数据库、管理员和联网设置。构建使用 BYOND 516.1689、Bun 1.3.5、rust_g 6.2.0 和 dreamluau 0.1.2；其他平台参照上游 [README](README.md) 和 `dependencies.sh` 配置依赖。
 
 ## 汉化维护
 
