@@ -119,17 +119,13 @@ SUBSYSTEM_DEF(tianguan_employers)
 		return 0
 
 	var/injected = 0
-	var/disabled = 0
-	var/list/injected_names = list()
 	for(var/entry in entries)
 		// JSON 的 false 解码成 0，而 null == 0 在 BYOND 里成立，所以必须先判 null：
 		// 没写 enabled 的条目要当作启用，而不是当作禁用的 0。
 		if(islist(entry) && !isnull(entry["enabled"]) && !entry["enabled"])
-			disabled++
 			continue
 		if(inject_tianguan_single_employer(entry, flavor_table))
 			injected++
-			injected_names += entry["name"]
 
 	return injected
 

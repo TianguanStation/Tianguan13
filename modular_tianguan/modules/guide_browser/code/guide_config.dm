@@ -106,19 +106,14 @@ GLOBAL_LIST_INIT(tianguan_guide_round_forced, list())
 		"default_id" = null,
 		"modes" = list(),
 	)
-	var/disabled = 0
-	var/skipped = 0
 	for(var/entry in decoded)
 		// JSON 的 false 解码成 0，而 null == 0 在 BYOND 里成立，所以必须先判 null：
 		// 没写 enabled 的条目要当作启用，而不是当作禁用的 0。
 		if(islist(entry) && !isnull(entry["enabled"]) && !entry["enabled"])
-			disabled++
 			continue
 		var/list/node = tianguan_guide_build_node(entry, 1, state, TIANGUAN_GUIDE_OPEN_DEFAULT)
 		if(node)
 			state["tree"] += list(node)
-		else
-			skipped++
 
 	GLOB.tianguan_guide_raw_snapshot = raw_file
 	GLOB.tianguan_guide_raw_md5 = file_md5
