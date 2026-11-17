@@ -1401,17 +1401,9 @@
 	density = 1;
 	anchored = 1
 	},
-/obj/structure/stripper_pole{
-	pixel_y = 0;
-	light_on = 1
-	},
 /obj/item/clothing/under/costume/playbunny/centcom{
 	pixel_x = -18;
 	pixel_y = 6
-	},
-/obj/item/clothing/neck/mind_collar{
-	pixel_x = -19;
-	pixel_y = 17
 	},
 /obj/item/clothing/head/playbunnyears/centcom{
 	pixel_x = -18;
@@ -2305,14 +2297,6 @@
 	},
 /area/misc/condo)
 "zj" = (
-/obj/machinery/vending/dorms{
-	pixel_x = 1;
-	pixel_y = 0;
-	desc = "It's almost as if those housing companies intentionally leave zero space for proper kitchens to force you to buy from those built-in vendors...";
-	all_products_free = 1;
-	scan_id = 0;
-	name = "integrated LustWish"
-	},
 /obj/structure/decorative{
 	icon_state = "siding_plain";
 	pixel_y = 0;
@@ -4541,11 +4525,6 @@
 /obj/item/kirbyplants/synthetic/plant27{
 	pixel_x = 4;
 	pixel_y = 12
-	},
-/obj/item/mind_controller{
-	pixel_x = -6;
-	pixel_y = 5;
-	name = "devious controller"
 	},
 /turf/open/floor/wood,
 /area/misc/condo)

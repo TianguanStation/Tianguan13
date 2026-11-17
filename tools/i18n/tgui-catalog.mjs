@@ -842,9 +842,6 @@ const DM_LABEL_SOURCES = [
   // {displayText,value}: value 回传给 act 保持英文=安全，仅 displayText 走前端目录翻显示。整行只是
   // 一个首字母大写引号串(选项列表项)才取，避开 `savefile_key="…"`(行内有 `key=`、且小写)。
   ['modular_zubbers/code/modules/client/verbs/character_directory.dm', false, /^\s*"([A-Z][^"]*)",?\s*$/gm],
-  // ERP 偏好下拉(角色 setup,同上 choiced 机制):erp_status/erp_status_nc/_v/_mechanics/_hypno/
-  // erp_sexuality 的字面量选项("No"/"Ask (L)OOC"/"Yes - Dom"/"Roleplay only"/"Gay"…)。
-  ['modular_skyrat/master_files/code/modules/client/preferences/erp_preferences.dm', false, /^\s*"([A-Z][^"]*)"\s*,?\s*$/gm],
   // 角色预览背景(background_state)下拉选项("Black"/"White Tiles"/"Reinforced Floor"…,角色 setup 可见)。
   ['modular_zubbers/code/modules/character_preview_background/character_preview_background.dm', false, /^\s*"([A-Z][^"]*)"\s*,?\s*$/gm],
   // entombed 任务者套装外观/硬光主题下拉(entombed_skin/entombed_hardlight_theme 的 init_possible_values

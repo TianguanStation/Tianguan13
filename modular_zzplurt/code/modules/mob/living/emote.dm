@@ -80,9 +80,6 @@
 	message = pick(fart_emotes)
 	. = ..()
 
-/datum/emote/living/fart/get_sound(mob/living/user)
-	return pick(GLOB.brap_noises)
-
 /datum/emote/living/speen
 	key = "speen"
 	key_third_person ="speens"
@@ -137,10 +134,7 @@
 		timbre = H.physique
 
 	if(timbre == FEMALE)
-		if(H.arousal >= 50)
-			sound = pick('modular_zzplurt/sound/voice/moan_fsex (8).ogg','modular_zzplurt/sound/voice/moan_fsex (9).ogg','modular_zzplurt/sound/voice/moan_fsex (10).ogg','modular_zzplurt/sound/voice/moan_fsex (11).ogg','modular_zzplurt/sound/voice/moan_fsex (12).ogg','modular_zzplurt/sound/voice/moan_fsex (13).ogg','modular_zzplurt/sound/voice/moan_fsex (14).ogg','modular_zzplurt/sound/voice/moan_fsex (15).ogg')
-		else
-			sound = pick('modular_zzplurt/sound/voice/moan_f1.ogg','modular_zzplurt/sound/voice/moan_f2.ogg','modular_zzplurt/sound/voice/moan_f3.ogg','modular_zzplurt/sound/voice/moan_f4.ogg','modular_zzplurt/sound/voice/moan_f5.ogg','modular_zzplurt/sound/voice/moan_f6.ogg','modular_zzplurt/sound/voice/moan_f7.ogg', 'modular_zzplurt/sound/voice/moan_fsexlight (7).ogg', 'modular_zzplurt/sound/voice/moan_fsexlight (8).ogg', 'modular_zzplurt/sound/voice/moan_fsexlight (9).ogg', 'modular_zzplurt/sound/voice/moan_fsexlight (10).ogg', 'modular_zzplurt/sound/voice/moan_fsexlight (11).ogg', 'modular_zzplurt/sound/voice/moan_fsexlight (12).ogg', 'modular_zzplurt/sound/voice/moan_fsexlight (13).ogg')
+		sound = pick('modular_zzplurt/sound/voice/moan_f1.ogg','modular_zzplurt/sound/voice/moan_f2.ogg','modular_zzplurt/sound/voice/moan_f3.ogg','modular_zzplurt/sound/voice/moan_f4.ogg','modular_zzplurt/sound/voice/moan_f5.ogg','modular_zzplurt/sound/voice/moan_f6.ogg','modular_zzplurt/sound/voice/moan_f7.ogg')
 	else
 		sound = pick('modular_zzplurt/sound/voice/moan_m1.ogg','modular_zzplurt/sound/voice/moan_m2.ogg','modular_zzplurt/sound/voice/moan_m3.ogg')
 	return sound
@@ -876,17 +870,6 @@
 	. = ..()
 	return pick('modular_zzplurt/sound/voice/gachi/scream1.ogg', 'modular_zzplurt/sound/voice/gachi/scream2.ogg', 'modular_zzplurt/sound/voice/gachi/scream3.ogg', 'modular_zzplurt/sound/voice/gachi/scream4.ogg')
 
-/datum/emote/living/moan2
-	key = "moan2"
-	key_third_person = "moans2"
-	message = "moans somewhat manly!!"
-	message_mime = "acts out a rather manly scream!"
-	sound = 'modular_zzplurt/sound/voice/gachi/moan1.ogg'
-
-/datum/emote/living/scream3/get_sound(mob/living/user)
-	. = ..()
-	return pick('modular_zzplurt/sound/voice/gachi/moan1.ogg', 'modular_zzplurt/sound/voice/gachi/moan2.ogg', 'modular_zzplurt/sound/voice/gachi/moan3.ogg', 'modular_zzplurt/sound/voice/gachi/moan4.ogg')
-
 /datum/emote/living/woop
 	key = "woop"
 	key_third_person = "woops"
@@ -1425,23 +1408,6 @@
 	sound = 'modular_zzplurt/sound/voice/wawa_yawn.ogg'
 	emote_type = EMOTE_AUDIBLE
 	sound_volume = 30
-
-/datum/emote/living/carbon/human/piss
-	key = "piss"
-
-/datum/emote/living/carbon/human/piss/can_run_emote(mob/user, status_check = TRUE, intentional, params)
-	var/obj/item/organ/bladder/bladder = user.get_organ_slot(ORGAN_SLOT_BLADDER)
-	if(bladder)
-		return ..()
-	return FALSE
-
-/datum/emote/living/carbon/human/piss/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	if(!user.get_organ_slot(ORGAN_SLOT_BLADDER) || !ishuman(user))
-		to_chat(user, LANG("datum.00b4421f5f3a5e13", null))
-		return
-	var/obj/item/organ/bladder/bladder = user.get_organ_slot(ORGAN_SLOT_BLADDER)
-	bladder.urinate()
 
 /particles/smoke/steam/billow
 	icon = 'icons/effects/particles/smoke.dmi'

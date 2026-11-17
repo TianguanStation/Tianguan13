@@ -1,8 +1,11 @@
 // ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
-/datum/preference/toggle/erp/vore_enable
+/datum/preference/toggle/vore_enable
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	savefile_identifier = PREFERENCE_PLAYER
 	savefile_key = "vore_enable_pref"
+	default_value = FALSE
 
-/datum/preference/toggle/erp/vore_enable/apply_to_client(client/client, value)
+/datum/preference/toggle/vore_enable/apply_to_client(client/client, value)
 	var/mob/living/L = client.mob
 	if(istype(L))
 		// Only add if in vore_allowed_mob_types, but always remove
@@ -15,6 +18,26 @@
 			var/datum/component/C = L.GetComponent(/datum/component/vore)
 			if(C)
 				qdel(C)
+
+/datum/preference/toggle/vore_overlays
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	savefile_identifier = PREFERENCE_PLAYER
+	savefile_key = "vore_overlays"
+	default_value = FALSE
+
+/datum/preference/toggle/vore_overlays/apply_to_client_updated(client/client, value)
+	apply_to_client(client, value)
+	var/mob/living/target = client?.mob
+	if(!value && istype(target))
+		var/atom/movable/screen/fullscreen/carrier/screen = target.screens["carrier"]
+		if(istype(screen) && screen.vore_overlay)
+			target.clear_fullscreen("carrier", FALSE)
+
+/datum/preference/toggle/vore_overlay_options
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	savefile_identifier = PREFERENCE_PLAYER
+	savefile_key = "vore_overlay_options"
+	default_value = FALSE
 
 /proc/get_player_save_folder(ckey)
 	return "data/player_saves/[ckey[1]]/[ckey]"
@@ -29,7 +52,7 @@
 
 	// do not create the prefs at all for normies
 	// default pref values are not safe for them and they cannot configure them without the vore component
-	var/enable_vore = prefs.read_preference(/datum/preference/toggle/erp/vore_enable)
+	var/enable_vore = prefs.read_preference(/datum/preference/toggle/vore_enable)
 	if(!enable_vore)
 		return null
 	vore_prefs = new(src)

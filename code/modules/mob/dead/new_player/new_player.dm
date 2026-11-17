@@ -134,6 +134,9 @@
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return LANG("_root.c0df588fb7b43555", list(jobtitle)) // ZH EDIT - i18n - ORIGINAL: return "[jobtitle] is already filled to capacity."
 		//SKYRAT EDIT ADDITION
+		// TIANGUAN EDIT ADDITION
+		if(JOB_NOT_TIANGUAN_STAR)
+			return LANG("_root.f01aafa29fcac727", list(jobtitle)) // TIANGUAN EDIT - i18n - ORIGINAL: return "You need to be a TianGuan Star to join as [jobtitle]."
 		if(JOB_UNAVAILABLE_QUIRK)
 			return LANG("_root.18edf26380e4a234", list(jobtitle)) // ZH EDIT - i18n - ORIGINAL: return "[jobtitle] is restricted due to your selected quirks."
 		if(JOB_UNAVAILABLE_LANGUAGE)
@@ -179,6 +182,9 @@
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
 	//SKYRAT EDIT ADDITION
+	// TIANGUAN EDIT ADDITION
+	if(GLOB.tianguan_star_restrictions && job.tianguan_stars_only && !SSplayer_ranks.is_tianguan_star(client))
+		return JOB_NOT_TIANGUAN_STAR
 	if(!job.has_required_languages(client.prefs))
 		return JOB_UNAVAILABLE_LANGUAGE
 	if(job.has_banned_quirk(client.prefs))

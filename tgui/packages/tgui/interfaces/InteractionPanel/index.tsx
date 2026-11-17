@@ -1,33 +1,20 @@
 // THIS IS A NOVA SECTOR UI FILE
-import { Section, Stack } from 'tgui-core/components';
-import type { BooleanLike } from 'tgui-core/react';
+import { Stack } from 'tgui-core/components';
 import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
-import { InfoSection } from './InfoSection';
 import { MainContent } from './MainContent';
 
 type Interaction = {
-  self;
-  erp_interaction: BooleanLike;
+  self: string;
 };
 
 export function InteractionPanel() {
-  const { act, data } = useBackend<Interaction>();
-  const { self, erp_interaction } = data;
+  const { data } = useBackend<Interaction>();
+  const { self } = data;
 
   return (
     <Window width={500} height={600} title={`Interact - ${self}`}>
       <Window.Content scrollable>
-        {erp_interaction && (
-          <Section>
-            <Stack vertical fill>
-              <Stack.Item grow>
-                <InfoSection />
-              </Stack.Item>
-            </Stack>
-          </Section>
-        )}
-
         <Stack>
           <Stack.Item grow>
             <MainContent />

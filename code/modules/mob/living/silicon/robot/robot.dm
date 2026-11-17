@@ -991,11 +991,6 @@
 
 	return ..()
 
-/mob/living/silicon/robot/buckle_mob(mob/living/M, force, check_loc, buckle_mob_flags)
-	if(!GetComponent(/datum/component/bellyriding/borg)) //SPLURT ADDITION - Allows for bellyriding
-		buckle_mob_flags = RIDER_NEEDS_ARM // just in case
-	return ..()
-
 /mob/living/silicon/robot/post_buckle_mob(mob/living/victim_to_boot)
 	if(HAS_TRAIT(src, TRAIT_GOT_DAMPENED))
 		eject_riders()

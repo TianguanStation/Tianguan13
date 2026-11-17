@@ -7,7 +7,7 @@ import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
-const ROWS = 6; // SKYRAT EDIT CHANGE
+const ROWS = 5;
 const COLUMNS = 6;
 
 const BUTTON_DIMENSIONS = '64px';
@@ -290,32 +290,7 @@ const SLOTS: Record<
     image: 'inventory-pocket.png',
   },
 
-  // SKYRAT EDIT ADDITION
-  vagina: {
-    displayName: 'vagina',
-    gridSpot: getGridSpotKey([5, 1]),
-    image: 'inventory-pocket.png',
-  },
-
-  anus: {
-    displayName: 'anus',
-    gridSpot: getGridSpotKey([5, 2]),
-    image: 'inventory-pocket.png',
-  },
-
-  nipples: {
-    displayName: 'nipples',
-    gridSpot: getGridSpotKey([5, 3]),
-    image: 'inventory-pocket.png',
-  },
-
-  penis: {
-    displayName: 'penis',
-    gridSpot: getGridSpotKey([5, 4]),
-    image: 'inventory-pocket.png',
-  },
 };
-// SKYRAT EDIT END
 
 enum ObscuringLevel {
   Completely = 1,

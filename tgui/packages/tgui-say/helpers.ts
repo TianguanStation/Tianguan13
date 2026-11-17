@@ -49,7 +49,8 @@ function setWindowVisibility(visible: boolean, scale: boolean): void {
   });
 }
 
-const CHANNEL_REGEX = /^[:.]\w\s/;
+// TIANGUAN EDIT CHANGE - UAR
+const CHANNEL_REGEX = /^[:.]\w{1,2}\s/;
 
 /** Tests for a channel prefix, returning it or none */
 export function getPrefix(
@@ -58,6 +59,17 @@ export function getPrefix(
   if (!value || value.length < 3 || !CHANNEL_REGEX.test(value)) {
     return;
   }
+
+  // TIANGUAN EDIT ADDITION START - UAR
+  const twoChar = value
+    .slice(0, 4)
+    ?.toLowerCase()
+    ?.replace('.', ':') as keyof typeof RADIO_PREFIXES;
+
+  if (RADIO_PREFIXES[twoChar]) {
+    return twoChar;
+  }
+  // TIANGUAN EDIT ADDITION END
 
   const adjusted = value
     .slice(0, 3)

@@ -50,10 +50,9 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(show_player_panel, R_ADMIN, "显示玩家面板", /
 
 		if(SSplayer_ranks.is_mentor(player.client, admin_bypass = FALSE))
 			player_ranks += "Mentor"
-		//BUBBER ADDITION START
-		if(SSplayer_ranks.is_vetted(player.client, admin_bypass = FALSE))
-			player_ranks |= "Vetted"
-		// BUBBER ADDITION END
+
+		if(SSplayer_ranks.is_tianguan_star(player.client, admin_bypass = FALSE))
+			player_ranks += "TianGuan Star"
 		body += "<br><br><b>Player Ranks: </b>[length(player_ranks) ? player_ranks.Join(", ") : "None"]"
 		// SKYRAT EDIT END
 		body += "<br><br><b>CentCom Galactic Ban DB: </b> "

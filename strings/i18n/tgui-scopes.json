@@ -26,6 +26,9 @@
   "\"What even IS a Separatist?\"": [
     "tgui:AntagInfoSeparatist"
   ],
+  "#RRGGBB 或色名（如 gold）": [
+    "tgui:TianGuanCountdown"
+  ],
   "'Dagger' Designer Mantle": [
     "dm:labels"
   ],
@@ -110,9 +113,6 @@
   ],
   "(YOU)": [
     "tgui:MafiaPanel"
-  ],
-  "(You can close this window)": [
-    "tgui:Plug13"
   ],
   "(e.g. coughing, sneezing)": [
     "tgui:IDCBook"
@@ -400,9 +400,6 @@
     "dm:antagonists",
     "tgui:syndicateboarder"
   ],
-  "A portion of your flavor text that is stored in examine, used for Silicons. Used to store visual sexual details.": [
-    "tgui:species_features"
-  ],
   "A question is currently being asked!": [
     "tgui:EightBallVote"
   ],
@@ -450,9 +447,6 @@
   ],
   "A:": [
     "tgui:Generators"
-  ],
-  "ABCDE-FGHIJ": [
-    "tgui:Plug13"
   ],
   "ACCESSIBILITY": [
     "tgui:accessibility"
@@ -888,7 +882,6 @@
   ],
   "Active": [
     "tgui:CrimeWatcher",
-    "tgui:GenitalTab",
     "tgui:NaniteChamberControl",
     "tgui:NaniteProgrammer",
     "tgui:NifProgram",
@@ -1454,7 +1447,6 @@
     "tgui:ChemMaster",
     "tgui:CircuitAccessChecker",
     "tgui:LogViewer",
-    "tgui:MilkingMachine",
     "tgui:Search"
   ],
   "All Admins": [
@@ -1471,9 +1463,6 @@
   ],
   "All Designs": [
     "tgui:DesignBrowser"
-  ],
-  "All ERP status preferences are merely markers to other players of your preference towards various broad categories of ERP. Selecting no will virtually isolate you from all directed ERP.": [
-    "tgui:genitals"
   ],
   "All Emotes": [
     "tgui:EmotePanel"
@@ -1550,13 +1539,13 @@
   "All-American Diner Staff": [
     "dm:labels"
   ],
+  "Alliance Inspector": [
+    "dm:labels"
+  ],
   "Allied Sectors": [
     "tgui:Main"
   ],
   "Allow Emissives": [
-    "tgui:species_features"
-  ],
-  "Allow Genital Parts": [
     "tgui:species_features"
   ],
   "Allow Mass PDA": [
@@ -1568,24 +1557,8 @@
   "Allow Mismatched Parts": [
     "tgui:species_features"
   ],
-  "Allow custom genital fluids.": [
-    "tgui:erp_preferences"
-  ],
-  "Allow interactions to knot.": [
-    "tgui:erp_preferences"
-  ],
-  "Allow interations to knot.": [
-    "tgui:ContentPreferencesTab"
-  ],
   "Allow shuttle docking": [
     "tgui:Blueprints"
-  ],
-  "Allow smothering interactions.": [
-    "tgui:ContentPreferencesTab",
-    "tgui:erp_preferences"
-  ],
-  "Allow your genitals to get cumflated.": [
-    "tgui:erp_preferences"
   ],
   "Allows parts from any species to be picked.": [
     "tgui:species_features"
@@ -1595,9 +1568,6 @@
   ],
   "Allows you to possess any non-sentient mob.": [
     "tgui:GhostMenu"
-  ],
-  "Allows your character to get stomped on. (Characters below 50% size have this enabled by default)": [
-    "tgui:erp_preferences"
   ],
   "Alloys": [
     "tgui:OreRedemptionMachine",
@@ -1648,20 +1618,8 @@
   "Always Human as Operative": [
     "tgui:operative_species"
   ],
-  "Always On": [
-    "dm:labels"
-  ],
-  "Always accessible": [
-    "tgui:GenitalTab"
-  ],
   "Always randomize": [
     "tgui:RandomizationButton"
-  ],
-  "Always show": [
-    "tgui:GenitalTab"
-  ],
-  "Always/Whenever": [
-    "dm:labels"
   ],
   "Amanitin": [
     "dm:labels"
@@ -1940,24 +1898,6 @@
   "Anubus": [
     "dm:labels"
   ],
-  "Anus": [
-    "dm:labels"
-  ],
-  "Anus Choice": [
-    "tgui:genitals"
-  ],
-  "Anus Color": [
-    "tgui:genitals"
-  ],
-  "Anus Emissives": [
-    "tgui:genitals"
-  ],
-  "Anus uses Skin Color": [
-    "tgui:genitals"
-  ],
-  "Anus uses Skin Tone": [
-    "tgui:genitals"
-  ],
   "Any": [
     "dm:labels"
   ],
@@ -1984,15 +1924,6 @@
   ],
   "Apathetic": [
     "dm:labels"
-  ],
-  "Aphrodisiac Type": [
-    "tgui:aphrodisiacal_bite"
-  ],
-  "Aphrodisiacal Bite": [
-    "dm:labels"
-  ],
-  "Aphrodisiacs": [
-    "tgui:erp_preferences"
   ],
   "Apparel": [
     "dm:labels"
@@ -2041,7 +1972,6 @@
     "tgui:BountyBoard",
     "tgui:Filterrific",
     "tgui:GreyscaleModifyMenu",
-    "tgui:MaturityPrompt",
     "tgui:NtosVirtualPet"
   ],
   "Apply Changes": [
@@ -2148,9 +2078,6 @@
   "Archives from the Nanotrasen News Network!": [
     "tgui:NtosNewsArchive"
   ],
-  "Are you 18+?": [
-    "tgui:MaturityPrompt"
-  ],
   "Are you absolutely sure you want to proceed?": [
     "tgui:Forbidden"
   ],
@@ -2249,21 +2176,6 @@
   "Armored Harness": [
     "dm:labels"
   ],
-  "Aro/Ace": [
-    "dm:labels"
-  ],
-  "Aromantic": [
-    "dm:labels"
-  ],
-  "Arousal Flavor - Low": [
-    "tgui:species_features"
-  ],
-  "Arousal Flavor - Medium": [
-    "tgui:species_features"
-  ],
-  "Arousal Flavor - Strong": [
-    "tgui:species_features"
-  ],
   "Arrest. Target must have valid crimes to set this status.": [
     "tgui:constants"
   ],
@@ -2274,9 +2186,6 @@
     "tgui:NtosPortraitPrinter"
   ],
   "Art Reference": [
-    "tgui:species_features"
-  ],
-  "Art Reference (NSFW)": [
     "tgui:species_features"
   ],
   "Art Reference that others can see for your character Requires a link ending with .png, .jpeg, or .jpg, starting with https://, and hosted on Catbox, Imgbox, Gyazo, Lensdump, or F-List.": [
@@ -2327,9 +2236,6 @@
   "Ascetic": [
     "dm:labels"
   ],
-  "Asexual": [
-    "dm:labels"
-  ],
   "Asexual Flag": [
     "dm:labels"
   ],
@@ -2346,12 +2252,6 @@
     "dm:labels"
   ],
   "Ashtongue": [
-    "dm:labels"
-  ],
-  "Ask": [
-    "dm:labels"
-  ],
-  "Ask (L)OOC": [
     "dm:labels"
   ],
   "Ask For Update": [
@@ -2528,9 +2428,6 @@
   "Attempts to enable the module.": [
     "tgui:Installed"
   ],
-  "Attraction": [
-    "tgui:ZubbersCharacterDirectory"
-  ],
   "Attraction: Demihumans?": [
     "tgui:species_features"
   ],
@@ -2560,9 +2457,6 @@
   ],
   "Augumentation:": [
     "tgui:LimbsPage"
-  ],
-  "Aura": [
-    "tgui:dominant_aura"
   ],
   "Australian Shepherd": [
     "dm:labels"
@@ -2612,15 +2506,6 @@
   ],
   "Auto Arm": [
     "tgui:ProximitySensor"
-  ],
-  "Auto Emote": [
-    "tgui:erp_preferences"
-  ],
-  "Auto Interaction": [
-    "tgui:InteractionsTab"
-  ],
-  "Auto Interaction: {0}": [
-    "tgui:InteractionsTab"
   ],
   "Auto Launch": [
     "tgui:MassDriverControl"
@@ -2672,9 +2557,6 @@
   ],
   "Auto-scroll timeline to the latest event": [
     "tgui:ControlBar"
-  ],
-  "Autocum": [
-    "tgui:erp_preferences"
   ],
   "Autogrow active - providing light, reclaiming water and reducing weed and pest levels.": [
     "tgui:Tray"
@@ -2842,6 +2724,9 @@
     "tgui:ColorSetter",
     "tgui:Generators"
   ],
+  "B@L00NY skillchip": [
+    "dm:labels"
+  ],
   "BASE LOCKED": [
     "tgui:ShuttleConsole"
   ],
@@ -2975,15 +2860,6 @@
   "Baldium": [
     "dm:labels"
   ],
-  "Ball Gag": [
-    "dm:labels"
-  ],
-  "Ball Mittens": [
-    "dm:labels"
-  ],
-  "Ballet Heels": [
-    "dm:labels"
-  ],
   "Balloon Mace": [
     "dm:labels"
   ],
@@ -3048,12 +2924,6 @@
     "dm:labels"
   ],
   "Bar of Soap": [
-    "dm:labels"
-  ],
-  "Barbed, Knotted": [
-    "dm:labels"
-  ],
-  "Barbed, Knotted (Alt)": [
     "dm:labels"
   ],
   "Barber": [
@@ -3150,21 +3020,6 @@
   "Bay": [
     "tgui:PodBays"
   ],
-  "Be Commanded With *snap": [
-    "tgui:well_trained"
-  ],
-  "Be Commanded With *snap2": [
-    "tgui:well_trained"
-  ],
-  "Be Commanded With *snap3": [
-    "tgui:well_trained"
-  ],
-  "Be Commanded With Clicker": [
-    "tgui:well_trained"
-  ],
-  "Be Embarassed Upon Examining Dom": [
-    "tgui:well_trained"
-  ],
   "Be Round Removed": [
     "tgui:round_remove"
   ],
@@ -3218,12 +3073,6 @@
   ],
   "Beaker:": [
     "tgui:ChemSeparator"
-  ],
-  "Beaker: none": [
-    "tgui:MilkingMachine"
-  ],
-  "Beaker: {0}": [
-    "tgui:MilkingMachine"
   ],
   "Beaker: {0}{1}{2}{3}{4}{5}": [
     "tgui:RecipeLibrary"
@@ -3484,17 +3333,8 @@
   "Belly Button": [
     "dm:labels"
   ],
-  "Belly Choice": [
-    "tgui:genitals"
-  ],
-  "Belly Color": [
-    "tgui:genitals"
-  ],
   "Belly Contents": [
     "tgui:Inside"
-  ],
-  "Belly Emissives": [
-    "tgui:genitals"
   ],
   "Belly Mode": [
     "tgui:BellyUI"
@@ -3508,9 +3348,6 @@
   "Belly Savefile Management": [
     "tgui:index"
   ],
-  "Belly Size": [
-    "tgui:genitals"
-  ],
   "Belly Slim": [
     "dm:labels"
   ],
@@ -3523,20 +3360,8 @@
   "Belly and Butt": [
     "dm:labels"
   ],
-  "Belly enlargement": [
-    "tgui:erp_preferences"
-  ],
-  "Belly shrinkage": [
-    "tgui:erp_preferences"
-  ],
   "Belly trim": [
     "dm:labels"
-  ],
-  "Belly uses Skin Color": [
-    "tgui:genitals"
-  ],
-  "Belly uses Skin Tone": [
-    "tgui:genitals"
   ],
   "Beltpack": [
     "dm:labels"
@@ -3664,9 +3489,6 @@
   "Bilk": [
     "dm:labels"
   ],
-  "Bimbofication": [
-    "tgui:erp_preferences"
-  ],
   "Bin": [
     "dm:labels"
   ],
@@ -3689,12 +3511,6 @@
     "tgui:Biogenerator"
   ],
   "Biotech Compatibility": [
-    "dm:labels"
-  ],
-  "Birthday Options": [
-    "tgui:MaturityPrompt"
-  ],
-  "Bisexual": [
     "dm:labels"
   ],
   "Bisexual Flag": [
@@ -4493,15 +4309,6 @@
   "Bottles": [
     "tgui:ChemPress"
   ],
-  "Bottom - Dom": [
-    "dm:labels"
-  ],
-  "Bottom - Sub": [
-    "dm:labels"
-  ],
-  "Bottom - Switch": [
-    "dm:labels"
-  ],
   "Bouncer": [
     "dm:labels"
   ],
@@ -4549,9 +4356,6 @@
   "Box of Candles": [
     "dm:labels"
   ],
-  "Box of Condoms": [
-    "dm:labels"
-  ],
   "Box of Crayons": [
     "dm:labels"
   ],
@@ -4585,9 +4389,6 @@
   "Bra - Bee-kini": [
     "dm:labels"
   ],
-  "Bra - Chastity": [
-    "dm:labels"
-  ],
   "Bra - Commie": [
     "dm:labels"
   ],
@@ -4601,12 +4402,6 @@
     "dm:labels"
   ],
   "Bra - Halterneck (Alt)": [
-    "dm:labels"
-  ],
-  "Bra - Latex": [
-    "dm:labels"
-  ],
-  "Bra - Lingerie": [
     "dm:labels"
   ],
   "Bra - Neko": [
@@ -4720,39 +4515,6 @@
   "Breakout": [
     "dm:labels"
   ],
-  "Breast Choice": [
-    "tgui:genitals"
-  ],
-  "Breast Color": [
-    "tgui:genitals"
-  ],
-  "Breast Emissives": [
-    "tgui:genitals"
-  ],
-  "Breast Lactation": [
-    "tgui:genitals"
-  ],
-  "Breast Size": [
-    "tgui:genitals"
-  ],
-  "Breast enlargement": [
-    "tgui:erp_preferences"
-  ],
-  "Breast shrinkage": [
-    "tgui:erp_preferences"
-  ],
-  "Breasts": [
-    "tgui:MilkingMachine"
-  ],
-  "Breasts Fluid": [
-    "tgui:genitals"
-  ],
-  "Breasts use Skin Color": [
-    "tgui:genitals"
-  ],
-  "Breasts use Skin Tone": [
-    "tgui:genitals"
-  ],
   "Breathing Tube": [
     "dm:labels"
   ],
@@ -4764,9 +4526,6 @@
     "dm:labels"
   ],
   "Bridge Pipe": [
-    "dm:labels"
-  ],
-  "Bridle": [
     "dm:labels"
   ],
   "Brief outfit": [
@@ -5065,13 +4824,7 @@
   "Bunny Lunchbox": [
     "dm:labels"
   ],
-  "Bunny Suit": [
-    "dm:labels"
-  ],
   "Bunny Tailcoat": [
-    "dm:labels"
-  ],
-  "Buns of Thunder": [
     "dm:labels"
   ],
   "Bureaucratic Goat Plush": [
@@ -5141,34 +4894,7 @@
   "Butt": [
     "dm:labels"
   ],
-  "Butt Choice": [
-    "tgui:genitals"
-  ],
-  "Butt Color": [
-    "tgui:genitals"
-  ],
-  "Butt Emissives": [
-    "tgui:genitals"
-  ],
-  "Butt Size": [
-    "tgui:genitals"
-  ],
-  "Butt enlargement": [
-    "tgui:erp_preferences"
-  ],
-  "Butt shrinkage": [
-    "tgui:erp_preferences"
-  ],
-  "Butt uses Skin Color": [
-    "tgui:genitals"
-  ],
-  "Butt uses Skin Tone": [
-    "tgui:genitals"
-  ],
   "Butter": [
-    "dm:labels"
-  ],
-  "Buttplug": [
     "dm:labels"
   ],
   "Buy": [
@@ -5371,9 +5097,6 @@
   "Calculate": [
     "tgui:FishingCalculator"
   ],
-  "Calendar Picker": [
-    "tgui:MaturityPrompt"
-  ],
   "Calibrate": [
     "tgui:Teleporter"
   ],
@@ -5448,9 +5171,6 @@
   "Camouflage Uniform": [
     "dm:labels"
   ],
-  "Camphor": [
-    "dm:labels"
-  ],
   "Can Run": [
     "tgui:ZubbersStoryteller"
   ],
@@ -5472,9 +5192,6 @@
   "Can only be used on ghosts": [
     "tgui:PlayerPanel"
   ],
-  "Can't be aroused": [
-    "tgui:GenitalTab"
-  ],
   "Can't delete the default loadout entry.": [
     "tgui:index"
   ],
@@ -5494,7 +5211,6 @@
     "tgui:InputButtons",
     "tgui:Installed",
     "tgui:Main",
-    "tgui:MaturityPrompt",
     "tgui:MessageModal",
     "tgui:NanopaintNewDialog",
     "tgui:NanopaintSelectDialog",
@@ -6064,7 +5780,7 @@
   "Change light color": [
     "tgui:LightController"
   ],
-  "Change size, gender, genitals, and mutant parts.": [
+  "Change size, gender, and mutant parts.": [
     "tgui:BodyMorpher"
   ],
   "Change the color and sorting scheme of observable items.": [
@@ -6133,9 +5849,6 @@
     "tgui:ExaminePanel",
     "tgui:species_features"
   ],
-  "Character Attraction": [
-    "tgui:species_features"
-  ],
   "Character Basics": [
     "tgui:MainPage"
   ],
@@ -6153,9 +5866,6 @@
   ],
   "Character Name": [
     "tgui:SavefileManagement"
-  ],
-  "Character Prefs": [
-    "tgui:MainContent"
   ],
   "Character Preview": [
     "tgui:ExaminePanel",
@@ -6238,12 +5948,6 @@
   "Chassis": [
     "dm:labels"
   ],
-  "Chastity Belt": [
-    "dm:labels"
-  ],
-  "Chastity Cage": [
-    "dm:labels"
-  ],
   "Chat Client": [
     "dm:labels"
   ],
@@ -6280,14 +5984,8 @@
   "Check OOC": [
     "dm:labels"
   ],
-  "Check OOC Notes": [
-    "dm:labels"
-  ],
   "Check Tram Controller!": [
     "tgui:TramControl"
-  ],
-  "Check this to save your full birthday date for features below": [
-    "tgui:MaturityPrompt"
   ],
   "Check-In": [
     "tgui:Checkout"
@@ -6494,9 +6192,6 @@
     "dm:labels"
   ],
   "Chlorine": [
-    "dm:labels"
-  ],
-  "Choke Slut": [
     "dm:labels"
   ],
   "Choker": [
@@ -6809,9 +6504,6 @@
   "Click a target...": [
     "tgui:ControlBar"
   ],
-  "Click here to {0}": [
-    "tgui:MainContent"
-  ],
   "Click on a gene to reveal it.": [
     "tgui:DnaConsoleSequencer"
   ],
@@ -6845,9 +6537,6 @@
   "Click your target...": [
     "tgui:index"
   ],
-  "Clicker": [
-    "dm:labels"
-  ],
   "Clicking on something as a ghost will examine it.": [
     "tgui:ghost"
   ],
@@ -6857,9 +6546,6 @@
   "Clipboard": [
     "dm:labels",
     "tgui:Clipboard"
-  ],
-  "Cloaca": [
-    "dm:labels"
   ],
   "Clock In": [
     "tgui:TimeClock"
@@ -7012,15 +6698,6 @@
     "dm:labels"
   ],
   "Clumsy Tail": [
-    "dm:labels"
-  ],
-  "Clussy gloves": [
-    "dm:labels"
-  ],
-  "Clussy heels": [
-    "dm:labels"
-  ],
-  "Clussy outfit": [
     "dm:labels"
   ],
   "Cobra Hood": [
@@ -7375,26 +7052,11 @@
   "Command": [
     "dm:labels"
   ],
-  "Command Bikini": [
-    "dm:labels"
-  ],
   "Command Boatcloak": [
     "dm:labels"
   ],
   "Command Consoles": [
     "dm:labels"
-  ],
-  "Command Subs With *snap": [
-    "tgui:dominant_aura"
-  ],
-  "Command Subs With *snap2": [
-    "tgui:dominant_aura"
-  ],
-  "Command Subs With *snap3": [
-    "tgui:dominant_aura"
-  ],
-  "Command Subs With Clicker": [
-    "tgui:dominant_aura"
   ],
   "Command Utility Uniform": [
     "dm:labels"
@@ -7479,9 +7141,6 @@
   "Complete Spy Bounties to earn rewards from your employer. Use these rewards to sow chaos and mischief!": [
     "dm:antagonists"
   ],
-  "Complete breast shrinkage": [
-    "tgui:erp_preferences"
-  ],
   "Complexity": [
     "tgui:MODsuit",
     "tgui:SkillStation"
@@ -7515,9 +7174,6 @@
   "Concrete": [
     "dm:labels"
   ],
-  "Concubus": [
-    "dm:labels"
-  ],
   "Condense": [
     "tgui:ProduceConsole"
   ],
@@ -7539,9 +7195,6 @@
     "tgui:ChemMixingChamber",
     "tgui:ChemReactionChamber",
     "tgui:SpawnersMenu"
-  ],
-  "Condom": [
-    "dm:labels"
   ],
   "Confetti": [
     "dm:labels"
@@ -7576,7 +7229,6 @@
     "tgui:ExodroneConsole",
     "tgui:ExoscannerConsole",
     "tgui:HilbertsHotelRoomControl",
-    "tgui:MaturityPrompt",
     "tgui:PlaneMenus",
     "tgui:PresetsPage",
     "tgui:SelectEquipment"
@@ -7613,7 +7265,6 @@
   ],
   "Connect": [
     "tgui:ExperimentConfigure",
-    "tgui:Plug13",
     "tgui:ServerControlPanel",
     "tgui:constants"
   ],
@@ -7642,14 +7293,10 @@
   "Connected Clients": [
     "tgui:QuantumConsole"
   ],
-  "Connected to account": [
-    "tgui:Plug13"
-  ],
   "Connected to {0}": [
     "tgui:Port"
   ],
   "Connection": [
-    "tgui:Plug13",
     "tgui:RBMK2"
   ],
   "Connection Secure": [
@@ -7706,9 +7353,6 @@
   "Construction Mode": [
     "tgui:ModulesPane"
   ],
-  "Consultant Bikini": [
-    "dm:labels"
-  ],
   "Consumable": [
     "dm:labels"
   ],
@@ -7745,9 +7389,6 @@
   ],
   "Contains the design for {0}:{1}{2}": [
     "tgui:disks"
-  ],
-  "Content Prefs": [
-    "tgui:MainContent"
   ],
   "Content:": [
     "tgui:NoteKeeper",
@@ -7871,7 +7512,6 @@
     "tgui:Temperatures"
   ],
   "Cooldown": [
-    "tgui:MKUltraUI",
     "tgui:ModulesPane",
     "tgui:SkillStation"
   ],
@@ -8358,9 +7998,6 @@
   "Criticality": [
     "tgui:RBMK2"
   ],
-  "Crocin": [
-    "dm:labels"
-  ],
   "Crop Top Turtleneck": [
     "dm:labels"
   ],
@@ -8415,9 +8052,6 @@
   "Cryoxadone": [
     "dm:labels"
   ],
-  "Cryptic pregnancies cannot be medically detected, no matter the stage.": [
-    "tgui:pregnancy"
-  ],
   "Cryptid Antlers": [
     "dm:labels"
   ],
@@ -8442,20 +8076,11 @@
   "Cuisines": [
     "tgui:index"
   ],
-  "Cult": [
-    "dm:labels"
-  ],
   "Cultist": [
     "dm:antagonists"
   ],
   "Cultivator": [
     "dm:labels"
-  ],
-  "Cumflates Partners": [
-    "tgui:genitals"
-  ],
-  "Cumflation": [
-    "tgui:erp_preferences"
   ],
   "Cup": [
     "tgui:GlassBlowing"
@@ -8692,9 +8317,6 @@
   "Custom Damage": [
     "tgui:constants"
   ],
-  "Custom Dildo": [
-    "dm:labels"
-  ],
   "Custom Outfit Manager": [
     "tgui:OutfitManager"
   ],
@@ -8723,9 +8345,6 @@
     "tgui:Crayon",
     "tgui:unique_blood_color",
     "tgui:water_drop_color"
-  ],
-  "Custom genital fluids": [
-    "tgui:erp_preferences"
   ],
   "Custom voices are a donor perk. You can still listen to and delete voices you made before.": [
     "tgui:TtsVoiceStudio"
@@ -8844,9 +8463,6 @@
   "Cybernetic Wolf (Inverted)": [
     "dm:labels"
   ],
-  "Cybernetic bladder": [
-    "dm:labels"
-  ],
   "Cybernetic eyes": [
     "dm:labels"
   ],
@@ -8868,9 +8484,6 @@
   "Cyborg": [
     "dm:labels"
   ],
-  "Cyborg Advanced Xenoarchaeology Bag": [
-    "dm:labels"
-  ],
   "Cyborg Body Size": [
     "tgui:genitals"
   ],
@@ -8878,9 +8491,6 @@
     "dm:labels"
   ],
   "Cyborg Modules": [
-    "dm:labels"
-  ],
-  "Cyborg Obedience Module": [
     "dm:labels"
   ],
   "Cyborg chest": [
@@ -9218,9 +8828,6 @@
   "Date": [
     "tgui:StoryManager"
   ],
-  "Date of Birth": [
-    "tgui:MaturityPrompt"
-  ],
   "Datetime": [
     "tgui:Modify"
   ],
@@ -9234,11 +8841,7 @@
     "dm:labels"
   ],
   "Day": [
-    "tgui:AdminTicketStats",
-    "tgui:MaturityPrompt"
-  ],
-  "Day:": [
-    "tgui:MaturityPrompt"
+    "tgui:AdminTicketStats"
   ],
   "Deactivate": [
     "tgui:Gateway",
@@ -9572,9 +9175,6 @@
   "Demonic Powers": [
     "tgui:AntagInfoDemon"
   ],
-  "Dentata": [
-    "dm:labels"
-  ],
   "Deny": [
     "tgui:Interview",
     "tgui:OpposingForcePanel"
@@ -9648,9 +9248,6 @@
   "Depression": [
     "dm:labels"
   ],
-  "Deprivation Helmet": [
-    "dm:labels"
-  ],
   "Deputy Hat": [
     "dm:labels"
   ],
@@ -9680,7 +9277,6 @@
     "tgui:ExodroneConsole",
     "tgui:ExoscannerConsole",
     "tgui:FishCatalog",
-    "tgui:MKUltraUI",
     "tgui:MessageMonitor",
     "tgui:MicrofusionGunControl",
     "tgui:MutationInfo",
@@ -9841,42 +9437,6 @@
   "Determination": [
     "dm:labels"
   ],
-  "Determines if you wish to allow forced gender changing.": [
-    "tgui:erp_preferences"
-  ],
-  "Determines if you wish to allow hypnosis/hypnosis chemicals in a lewd manner.": [
-    "tgui:erp_preferences"
-  ],
-  "Determines if you wish to receive the effects of belly enlargement chemicals.": [
-    "tgui:erp_preferences"
-  ],
-  "Determines if you wish to receive the effects of belly shrinkage chemicals.": [
-    "tgui:erp_preferences"
-  ],
-  "Determines if you wish to receive the effects of breast enlargement chemicals.": [
-    "tgui:erp_preferences"
-  ],
-  "Determines if you wish to receive the effects of breast shrinkage chemicals.": [
-    "tgui:erp_preferences"
-  ],
-  "Determines if you wish to receive the effects of butt enlargement chemicals.": [
-    "tgui:erp_preferences"
-  ],
-  "Determines if you wish to receive the effects of butt shrinkage chemicals.": [
-    "tgui:erp_preferences"
-  ],
-  "Determines if you wish to receive the effects of forced neverboner chemicals.": [
-    "tgui:erp_preferences"
-  ],
-  "Determines if you wish to receive the effects of penis enlargement chemicals.": [
-    "tgui:erp_preferences"
-  ],
-  "Determines if you wish to receive the effects of penis shrinkage chemicals.": [
-    "tgui:erp_preferences"
-  ],
-  "Determines if you wish to receive the full effects of breast shrinkage chemicals.": [
-    "tgui:erp_preferences"
-  ],
   "Determines product mass, reagent volume and strength of effects.": [
     "tgui:Seed"
   ],
@@ -9982,9 +9542,6 @@
     "dm:labels"
   ],
   "Digitigrade prosthetic right leg": [
-    "dm:labels"
-  ],
-  "Dildo": [
     "dm:labels"
   ],
   "Diligent": [
@@ -10126,8 +9683,7 @@
     "tgui:AvatarHelp",
     "tgui:ExodroneConsole",
     "tgui:ExperimentConfigure",
-    "tgui:IVDrip",
-    "tgui:Plug13"
+    "tgui:IVDrip"
   ],
   "Disconnect Sensor": [
     "tgui:Home"
@@ -10317,7 +9873,7 @@
     "tgui:NtosNotepad"
   ],
   "Do you want to see fullscreen vore overlays as an option for soulcatcher overlays?": [
-    "tgui:erp_preferences"
+    "tgui:vore"
   ],
   "Do you want to see tooltips when hovering over items?": [
     "tgui:tooltips"
@@ -10352,25 +9908,10 @@
   "Dolled Up": [
     "dm:labels"
   ],
-  "Dom Sense": [
-    "tgui:well_trained"
-  ],
   "Domain Information": [
     "tgui:AvatarHelp"
   ],
   "Dome": [
-    "dm:labels"
-  ],
-  "Dominant Aura": [
-    "dm:labels"
-  ],
-  "Dominant Cap": [
-    "dm:labels"
-  ],
-  "Dominant Heels": [
-    "dm:labels"
-  ],
-  "Dominatrix Dress": [
     "dm:labels"
   ],
   "Don gamer cloak": [
@@ -10422,9 +9963,6 @@
   "Doors": [
     "dm:labels"
   ],
-  "Dopamine": [
-    "dm:labels"
-  ],
   "Dorsal Down": [
     "dm:labels"
   ],
@@ -10432,9 +9970,6 @@
     "dm:labels"
   ],
   "Double Bun": [
-    "dm:labels"
-  ],
-  "Double Dildo": [
     "dm:labels"
   ],
   "Double Drills": [
@@ -10643,9 +10178,6 @@
   "Dullahan": [
     "dm:labels"
   ],
-  "Dumb For Cum": [
-    "dm:labels"
-  ],
   "Dump": [
     "tgui:ModulesPane"
   ],
@@ -10743,42 +10275,6 @@
   ],
   "ENGINES:": [
     "tgui:EmergencyShuttleConsole"
-  ],
-  "ENT-PET Mk.II ULTRA skillchip": [
-    "dm:labels"
-  ],
-  "ERP": [
-    "tgui:ZubbersCharacterDirectory",
-    "tgui:erp_preferences",
-    "tgui:nsfw_flavor_text"
-  ],
-  "ERP Free Use Status": [
-    "tgui:genitals"
-  ],
-  "ERP Genitalia Removal": [
-    "tgui:erp_preferences"
-  ],
-  "ERP Hypnosis Status": [
-    "tgui:genitals",
-    "tgui:hypno_status"
-  ],
-  "ERP Mechanical Status": [
-    "tgui:genitals"
-  ],
-  "ERP New Genitalia Growth": [
-    "tgui:erp_preferences"
-  ],
-  "ERP Non-Con Status": [
-    "tgui:genitals"
-  ],
-  "ERP Status": [
-    "tgui:genitals"
-  ],
-  "ERP Vore Status": [
-    "tgui:genitals"
-  ],
-  "ERP sounds": [
-    "tgui:erp_preferences"
   ],
   "ERROR": [
     "dm:labels",
@@ -11051,9 +10547,6 @@
   "Eject Attachment": [
     "tgui:MicrofusionGunControl"
   ],
-  "Eject Beaker": [
-    "tgui:MilkingMachine"
-  ],
   "Eject Board": [
     "tgui:Flatpacker"
   ],
@@ -11125,9 +10618,6 @@
   ],
   "Eject beaker": [
     "tgui:SpaceHeater"
-  ],
-  "Eject creature": [
-    "tgui:MilkingMachine"
   ],
   "Eject pAI": [
     "tgui:MODsuit",
@@ -11211,9 +10701,6 @@
   "Emagged": [
     "tgui:BorgPanel"
   ],
-  "Embarass Subs If They Examine You": [
-    "tgui:dominant_aura"
-  ],
   "Embrace the dark, and tap into your soul. You can recharge very long recharge spells like Ei Nath by jumping into new bodies with Mind Swap and starting Soul Tap anew.": [
     "tgui:constants"
   ],
@@ -11256,9 +10743,6 @@
   "Emergency Toolbox": [
     "dm:labels"
   ],
-  "Emergency aphrodisiac shot": [
-    "dm:labels"
-  ],
   "Emission's Helmet": [
     "dm:labels"
   ],
@@ -11269,7 +10753,6 @@
     "tgui:emissive_bloom"
   ],
   "Emissive parts glow in the dark.": [
-    "tgui:genitals",
     "tgui:species_features"
   ],
   "Emitter Configuration": [
@@ -11382,7 +10865,7 @@
     "tgui:looc"
   ],
   "Enable Mechanical Vore": [
-    "tgui:erp_preferences"
+    "tgui:vore"
   ],
   "Enable OOC": [
     "tgui:legacy_chat_toggles"
@@ -11543,9 +11026,6 @@
   "Enables download of a unique personality.": [
     "tgui:SimpleBot"
   ],
-  "Enables if you want to have genitals on your character.": [
-    "tgui:species_features"
-  ],
   "Enables screen tips, the text you see when hovering over something. When set to \"Only with tips\", will only show when there is more information than just the name, such as what right-clicking it does.": [
     "tgui:screentips"
   ],
@@ -11628,9 +11108,6 @@
     "dm:labels"
   ],
   "Engineering Bomber Jacket": [
-    "dm:labels"
-  ],
-  "Engineering Cyborg Rapid Lighting Device Upgrade": [
     "dm:labels"
   ],
   "Engineering Cyborgs": [
@@ -11821,9 +11298,6 @@
     "tgui:ApcControl",
     "tgui:PowerMonitor"
   ],
-  "Equine": [
-    "dm:labels"
-  ],
   "Equipment": [
     "dm:labels",
     "tgui:ExodroneConsole",
@@ -11841,9 +11315,6 @@
   ],
   "Erase": [
     "tgui:PaiCard"
-  ],
-  "Erotic Roleplay Interaction": [
-    "tgui:erp_preferences"
   ],
   "Err": [
     "tgui:HilbertsHotelRoomControl"
@@ -12117,9 +11588,6 @@
   "Explore": [
     "tgui:ExodroneConsole"
   ],
-  "Explorer Stripper Outfit": [
-    "dm:labels"
-  ],
   "Explosion": [
     "tgui:PlayerPanel"
   ],
@@ -12204,9 +11672,6 @@
   "Extra height shot": [
     "dm:labels"
   ],
-  "Extra-Productive Genitals": [
-    "dm:labels"
-  ],
   "Extract": [
     "tgui:SkillStation"
   ],
@@ -12232,17 +11697,10 @@
     "dm:labels"
   ],
   "Extreme": [
-    "tgui:ZubbersCharacterDirectory",
     "tgui:calculateDangerLevel"
   ],
   "Extreme Cold": [
     "tgui:AntagInfoBloodWorm"
-  ],
-  "Extreme ERP verbs": [
-    "tgui:genitals"
-  ],
-  "Extreme Harm": [
-    "tgui:ZubbersCharacterDirectory"
   ],
   "Extreme Medicine Allergy": [
     "dm:labels"
@@ -12914,12 +12372,6 @@
   "Flare": [
     "dm:labels"
   ],
-  "Flared": [
-    "dm:labels"
-  ],
-  "Flared (Alt)": [
-    "dm:labels"
-  ],
   "Flash": [
     "dm:labels",
     "tgui:BrigTimer"
@@ -12966,9 +12418,6 @@
     "tgui:SoulcatcherUser",
     "tgui:species_features"
   ],
-  "Flavor Text (NSFW)": [
-    "tgui:species_features"
-  ],
   "Flavor text": [
     "tgui:dirty"
   ],
@@ -12979,9 +12428,6 @@
     "tgui:BattleArcade"
   ],
   "Fleet Admiral": [
-    "dm:labels"
-  ],
-  "Fleshlight": [
     "dm:labels"
   ],
   "Fleshy Belly": [
@@ -13249,9 +12695,6 @@
   "Forbidden Lore": [
     "tgui:PopoutMenu"
   ],
-  "Force Emote": [
-    "tgui:MODsuitremote"
-  ],
   "Force Emote:": [
     "tgui:PlayerPanel"
   ],
@@ -13293,12 +12736,6 @@
   ],
   "Forced Temp": [
     "tgui:constants"
-  ],
-  "Forced gender change": [
-    "tgui:erp_preferences"
-  ],
-  "Forced neverboner": [
-    "tgui:erp_preferences"
   ],
   "Forces the silicon to state laws. Only states inherent / core laws.": [
     "tgui:Lawpanel"
@@ -13647,9 +13084,6 @@
   "Fully Immerse Everyone": [
     "tgui:Secrets"
   ],
-  "Fully aroused": [
-    "tgui:GenitalTab"
-  ],
   "Fun": [
     "tgui:PlayerPanel",
     "tgui:Secrets"
@@ -13681,9 +13115,6 @@
     "tgui:NtosScipaper"
   ],
   "Furniture": [
-    "dm:labels"
-  ],
-  "Furred": [
     "dm:labels"
   ],
   "Furred Jacket": [
@@ -13764,7 +13195,8 @@
     "tgui:preferred_map",
     "tgui:see_credits",
     "tgui:status_indicators",
-    "tgui:typing_indicator"
+    "tgui:typing_indicator",
+    "tgui:vore"
   ],
   "GB: {0}": [
     "tgui:Colormate"
@@ -13842,16 +13274,10 @@
   "Game Panel": [
     "tgui:PodStatusPage"
   ],
-  "Gameplay Only": [
-    "dm:labels"
-  ],
   "Gamer": [
     "dm:labels"
   ],
   "Games": [
-    "dm:labels"
-  ],
-  "Gaping": [
     "dm:labels"
   ],
   "Garibaldi": [
@@ -13904,9 +13330,6 @@
   ],
   "Gateway Unpowered": [
     "tgui:Gateway"
-  ],
-  "Gay": [
-    "dm:labels"
   ],
   "Gear": [
     "dm:labels"
@@ -14019,12 +13442,6 @@
     "dm:labels"
   ],
   "Genetics Machines": [
-    "dm:labels"
-  ],
-  "Genital Options": [
-    "tgui:MainContent"
-  ],
-  "Genital Sniffer": [
     "dm:labels"
   ],
   "Genome Sequencer™": [
@@ -14164,9 +13581,6 @@
   ],
   "Gin": [
     "dm:labels"
-  ],
-  "Girlcum": [
-    "tgui:MilkingMachine"
   ],
   "Girly Corgi Plushie": [
     "dm:labels"
@@ -14775,9 +14189,6 @@
   "Hairfre": [
     "dm:labels"
   ],
-  "Hairy": [
-    "dm:labels"
-  ],
   "Hakka-Mate": [
     "dm:labels"
   ],
@@ -14786,9 +14197,6 @@
   ],
   "Half Height Aperture:": [
     "tgui:NtosCamera"
-  ],
-  "Half Latex Catsuit": [
-    "dm:labels"
   ],
   "Half Mask Respirator": [
     "dm:labels"
@@ -14970,9 +14378,6 @@
   "Harlequin Reversed": [
     "dm:labels"
   ],
-  "Harmful ERP verbs": [
-    "tgui:genitals"
-  ],
   "Harmful Effects": [
     "tgui:constants"
   ],
@@ -15126,9 +14531,6 @@
   "Headpat": [
     "dm:interactions"
   ],
-  "Headpat Slut": [
-    "dm:labels"
-  ],
   "Headphones": [
     "dm:labels"
   ],
@@ -15138,15 +14540,6 @@
   "Headshot": [
     "tgui:ExaminePanel",
     "tgui:headshot"
-  ],
-  "Headshot (NSFW)": [
-    "tgui:species_features"
-  ],
-  "Headshot, but for NSFW references on Silicons. Requires a link ending with .png, .jpeg, or .jpg, starting with https://, and hosted on Catbox, Imgbox, Gyazo, Lensdump, or F-List. Renders the image underneath your character preview in the examine more window. Image larger than 250x250 will be resized to 250x250. Aim for 250x250 whenever possible": [
-    "tgui:species_features"
-  ],
-  "Headshot, but for NSFW references. Requires a link ending with .png, .jpeg, or .jpg, starting with https://, and hosted on Catbox, Imgbox, Gyazo, Lensdump, or F-List. Renders the image underneath your character preview in the examine more window. Image larger than 250x250 will be resized to 250x250. Aim for 250x250 whenever possible": [
-    "tgui:species_features"
   ],
   "Headstrong Halo": [
     "dm:labels"
@@ -15326,12 +14719,6 @@
   "Helpful": [
     "tgui:Secrets"
   ],
-  "Hemi": [
-    "dm:labels"
-  ],
-  "Hemi (Alt)": [
-    "dm:labels"
-  ],
   "Hemiplegic": [
     "dm:labels",
     "tgui:hemiplegic"
@@ -15398,9 +14785,6 @@
     "tgui:ColorSetter"
   ],
   "Hexacrete": [
-    "dm:labels"
-  ],
-  "Hexacrocin": [
     "dm:labels"
   ],
   "Hexagon": [
@@ -15745,17 +15129,11 @@
   "How fast your TTS voice speaks, as a percentage of normal.": [
     "tgui:tts_voice"
   ],
-  "How likely your character is to get pregnant whenever any of their valid genitals gets inseminated.": [
-    "tgui:pregnancy"
-  ],
   "How long a particle spends fading in in when it is spawned in ticks. When this ends, starts ticking down lifespan. Can use a generator.": [
     "tgui:Tutorial"
   ],
   "How long should it take to see a tooltip when hovering over items?": [
     "tgui:tooltips"
-  ],
-  "How long, in minutes, your characters pregnancy will last.": [
-    "tgui:pregnancy"
   ],
   "How many Multi-Z levels are rendered before they start getting culled. Decrease this to improve performance in case of lag on multi-z maps.": [
     "tgui:multiz_performance"
@@ -15800,18 +15178,6 @@
     "tgui:PlaneMenus"
   ],
   "How you would like to be approached for RP scenes, if at all. Shows on your Character Advert.": [
-    "tgui:species_features"
-  ],
-  "How you would like your NSFW flavor text to be shown. Silicons always show NSFW flavor text, unless set to \"never\".": [
-    "tgui:nsfw_flavor_text"
-  ],
-  "How your character can be perceived to be highly aroused": [
-    "tgui:species_features"
-  ],
-  "How your character can be perceived to be slightly aroused": [
-    "tgui:species_features"
-  ],
-  "How your character can be perceived to be somewhat aroused": [
     "tgui:species_features"
   ],
   "How, and if, you would like to engage in RP wih human characters. You know what a human is.": [
@@ -15862,9 +15228,6 @@
     "tgui:OrionGame"
   ],
   "Human": [
-    "dm:labels"
-  ],
-  "Human (Alt)": [
     "dm:labels"
   ],
   "Human Authority Whitelist Setting": [
@@ -15970,38 +15333,11 @@
   "Hypersensitive": [
     "dm:labels"
   ],
-  "Hypersexual": [
-    "dm:labels"
-  ],
   "Hypertorus Fusion Reactor control panel": [
     "tgui:index"
   ],
-  "Hypno": [
-    "tgui:ZubbersCharacterDirectory"
-  ],
   "Hypnodemon's Ring": [
     "dm:labels"
-  ],
-  "Hypnophrase": [
-    "dm:labels"
-  ],
-  "Hypnosis": [
-    "tgui:erp_preferences"
-  ],
-  "Hypnotic": [
-    "dm:labels"
-  ],
-  "Hypnotic Gaze": [
-    "dm:labels"
-  ],
-  "Hypnotic Goggles": [
-    "dm:labels"
-  ],
-  "Hypnotic Optics": [
-    "dm:labels"
-  ],
-  "Hypnotic Text Examine": [
-    "tgui:hypnotic_quirk"
   ],
   "Hypovial": [
     "dm:labels"
@@ -16196,12 +15532,6 @@
   "If blank, will use the mob's default name. For example, 'axolotl' or 'chinchilla'.": [
     "tgui:pet_owner"
   ],
-  "If checked, allows drugs to grow new genitalia on your character.": [
-    "tgui:erp_preferences"
-  ],
-  "If checked, allows drugs to remove existing genitalia on your character.": [
-    "tgui:erp_preferences"
-  ],
   "If checked, random events that spawn antags or dynamic rulesets can trigger.": [
     "tgui:DynamicAdmin"
   ],
@@ -16235,9 +15565,6 @@
   "If no criteria is met, outputting to:": [
     "tgui:ManufacturingSorter"
   ],
-  "If the chosen taur body has a penis sprite, it will be used instead of the usual.": [
-    "tgui:genitals"
-  ],
   "If the reactor is considered active or not.": [
     "tgui:RBMK2"
   ],
@@ -16252,18 +15579,6 @@
   ],
   "If true, you will be permanently killed on permaghost as well.": [
     "tgui:death_degradation"
-  ],
-  "If unchecked, compatible subs will not be alerted to your presence automatically, and will not recieve a positive moodlet for being near you.": [
-    "tgui:dominant_aura"
-  ],
-  "If unchecked, compatible subs will not blush and turn when inspecting you.": [
-    "tgui:dominant_aura"
-  ],
-  "If unchecked, you will not be alerted to the presence of compatible doms automatically, and will not recieve a positive moodlet for being near them.": [
-    "tgui:well_trained"
-  ],
-  "If unchecked, you will not blush and turn when inspecting a compatible dom.": [
-    "tgui:well_trained"
   ],
   "If unchecked, you'll only be able to understand the language, but not speak it.": [
     "tgui:language"
@@ -16488,7 +15803,6 @@
     "tgui:TtsVoiceStudio"
   ],
   "Inactive": [
-    "tgui:GenitalTab",
     "tgui:NaniteChamberControl",
     "tgui:NaniteProgrammer",
     "tgui:constants",
@@ -16539,9 +15853,6 @@
   "Incuboi Plushie": [
     "dm:labels"
   ],
-  "Incubus draft autoinjector": [
-    "dm:labels"
-  ],
   "Indebted": [
     "dm:labels"
   ],
@@ -16554,9 +15865,6 @@
   "Industrious": [
     "dm:labels"
   ],
-  "Inert pregnancies will only create eggs, which will not grow into player mobs.": [
-    "tgui:pregnancy"
-  ],
   "Inexorable": [
     "dm:labels"
   ],
@@ -16567,9 +15875,6 @@
     "dm:labels"
   ],
   "Inferno Suit": [
-    "dm:labels"
-  ],
-  "Infertile": [
     "dm:labels"
   ],
   "Infinite": [
@@ -16914,17 +16219,11 @@
   "Interact - {0}": [
     "tgui:index"
   ],
-  "Interacting with: {0}": [
-    "tgui:InteractionsTab"
-  ],
   "Interaction Priorities": [
     "tgui:index"
   ],
   "Interactions": [
     "tgui:MainContent"
-  ],
-  "Interdimensional Terrorist Plushie": [
-    "dm:labels"
   ],
   "Interdyne": [
     "dm:labels"
@@ -16960,7 +16259,6 @@
     "dm:labels"
   ],
   "Internal": [
-    "dm:labels",
     "tgui:AtmosControls"
   ],
   "Internal & External": [
@@ -17095,21 +16393,6 @@
   "Is Active": [
     "tgui:SkillStation"
   ],
-  "Is Dom To Any Other Genders": [
-    "tgui:dominant_aura"
-  ],
-  "Is Dom To He/Him": [
-    "tgui:dominant_aura"
-  ],
-  "Is Dom To It/Its": [
-    "tgui:dominant_aura"
-  ],
-  "Is Dom To She/Her": [
-    "tgui:dominant_aura"
-  ],
-  "Is Dom To They/Them": [
-    "tgui:dominant_aura"
-  ],
   "Is the mob able to emote as the container?": [
     "tgui:Soulcatcher"
   ],
@@ -17136,9 +16419,6 @@
   ],
   "Is the mob able to speak?": [
     "tgui:Soulcatcher"
-  ],
-  "Is your reference picture NSFW?": [
-    "tgui:species_features"
   ],
   "Isolate this light for a bit": [
     "tgui:LightController"
@@ -17355,9 +16635,6 @@
   ],
   "Jobs": [
     "tgui:TrackedPlaytime"
-  ],
-  "Jockstrap": [
-    "dm:labels"
   ],
   "Joestar": [
     "dm:labels"
@@ -17584,12 +16861,6 @@
   "Kinetic prosthetic right leg": [
     "dm:labels"
   ],
-  "Kinky Collar": [
-    "dm:labels"
-  ],
-  "Kiss Slut": [
-    "dm:labels"
-  ],
   "Kitchen Machines": [
     "dm:labels"
   ],
@@ -17713,21 +16984,6 @@
   "Knot": [
     "tgui:StripMenu"
   ],
-  "Knotted": [
-    "dm:labels"
-  ],
-  "Knotted (Alt)": [
-    "dm:labels"
-  ],
-  "Knotted Hemi": [
-    "dm:labels"
-  ],
-  "Knotted Hemi (Alt)": [
-    "dm:labels"
-  ],
-  "Knotting": [
-    "tgui:erp_preferences"
-  ],
   "Knowledge Shop": [
     "tgui:AntagInfoHeretic"
   ],
@@ -17820,9 +17076,6 @@
   ],
   "LUCKY SPIN!": [
     "tgui:SlotMachine"
-  ],
-  "La Coom Bomb": [
-    "dm:labels"
   ],
   "Labcoat": [
     "dm:labels"
@@ -17968,42 +17221,6 @@
   "Latejoin Start": [
     "tgui:DynamicAdmin"
   ],
-  "Latex Catsuit": [
-    "dm:labels"
-  ],
-  "Latex Gas Mask": [
-    "dm:labels"
-  ],
-  "Latex Gloves": [
-    "dm:labels"
-  ],
-  "Latex Half-Catsuit": [
-    "dm:labels"
-  ],
-  "Latex Heels": [
-    "dm:labels"
-  ],
-  "Latex Maid Apron": [
-    "dm:labels"
-  ],
-  "Latex Maid Costume": [
-    "dm:labels"
-  ],
-  "Latex Paw Mittens": [
-    "dm:labels"
-  ],
-  "Latex Sleeping Bag": [
-    "dm:labels"
-  ],
-  "Latex Socks": [
-    "dm:labels"
-  ],
-  "Latex Straight Jacket": [
-    "dm:labels"
-  ],
-  "Latex sleeves": [
-    "dm:labels"
-  ],
   "Lauded Halo": [
     "dm:labels"
   ],
@@ -18109,7 +17326,6 @@
     "tgui:LanguagesMenu"
   ],
   "Leash": [
-    "dm:labels",
     "tgui:PaiCard"
   ],
   "Leather Apron": [
@@ -18137,9 +17353,6 @@
     "dm:labels"
   ],
   "Leather Satchel": [
-    "dm:labels"
-  ],
-  "Leather Whip": [
     "dm:labels"
   ],
   "Leather coat with fur": [
@@ -18263,9 +17476,6 @@
   "Leporid": [
     "dm:labels"
   ],
-  "Lesbian": [
-    "dm:labels"
-  ],
   "Lesbian Flag": [
     "dm:labels"
   ],
@@ -18290,15 +17500,6 @@
   ],
   "Level: [{0}]": [
     "tgui:SkillPanel"
-  ],
-  "Lewd Items": [
-    "tgui:MainContent"
-  ],
-  "Lewd Toys": [
-    "dm:labels"
-  ],
-  "Lewd medipen box": [
-    "dm:labels"
   ],
   "Lexorin": [
     "dm:labels"
@@ -19059,9 +18260,6 @@
   "Lorecaster story manager{0}{1}{2}{3}": [
     "tgui:StoryManager"
   ],
-  "Loss of libido": [
-    "dm:labels"
-  ],
   "Loudmode Off": [
     "tgui:AiVoiceChanger"
   ],
@@ -19151,19 +18349,13 @@
   "Lunar Halo": [
     "dm:labels"
   ],
+  "Luna娃娃": [
+    "dm:labels"
+  ],
   "Lungs": [
     "dm:labels"
   ],
-  "Lust tolerance multiplier": [
-    "tgui:genitals"
-  ],
   "Lustrous": [
-    "dm:labels"
-  ],
-  "Lustwish": [
-    "dm:labels"
-  ],
-  "Lustwish MOD Plating": [
     "dm:labels"
   ],
   "Luxuries": [
@@ -19212,23 +18404,11 @@
   "MELTDOWN": [
     "tgui:RBMK2"
   ],
-  "MKUltra": [
-    "dm:labels"
-  ],
-  "MKUltra Commands": [
-    "tgui:MKUltraUI"
-  ],
-  "MOD Hypnotic Visor Module": [
-    "dm:labels"
-  ],
   "MOD Interface Panel": [
     "tgui:MODsuit"
   ],
   "MOD Modules": [
     "dm:labels"
-  ],
-  "MOD Remote Interface": [
-    "tgui:MODsuitremote"
   ],
   "MOD Suits": [
     "dm:labels"
@@ -19290,9 +18470,6 @@
   "Machine Settings": [
     "tgui:Jukebox"
   ],
-  "Machine control": [
-    "tgui:MilkingMachine"
-  ],
   "Machinery": [
     "dm:labels",
     "tgui:RecipeContent"
@@ -19303,9 +18480,6 @@
     "tgui:MinigamesMenu"
   ],
   "Magic Eightball": [
-    "dm:labels"
-  ],
-  "Magic Wand": [
     "dm:labels"
   ],
   "Magical Transportation": [
@@ -19708,9 +18882,6 @@
   "Masks": [
     "dm:labels"
   ],
-  "Masochism": [
-    "dm:labels"
-  ],
   "Masquerade Mask": [
     "dm:labels"
   ],
@@ -19870,12 +19041,6 @@
   ],
   "Mechanical Status": [
     "tgui:TramController"
-  ],
-  "Mechanical and Roleplay": [
-    "dm:labels"
-  ],
-  "Mechanical only": [
-    "dm:labels"
   ],
   "Mechanist Fox Plushie": [
     "dm:labels"
@@ -20044,9 +19209,6 @@
     "dm:labels"
   ],
   "Medical Scrying Lens Disk": [
-    "dm:labels"
-  ],
-  "Medical Skulldog Plushie": [
     "dm:labels"
   ],
   "Medical Technical Jacket (Black)": [
@@ -20307,8 +19469,7 @@
     "dm:labels"
   ],
   "Milk": [
-    "dm:labels",
-    "tgui:MilkingMachine"
+    "dm:labels"
   ],
   "Milky Plushie": [
     "dm:labels"
@@ -20508,9 +19669,6 @@
   "Mob": [
     "tgui:PlayerPanel"
   ],
-  "Mob Interaction": [
-    "tgui:index"
-  ],
   "Mob Type:": [
     "tgui:PlayerPanel"
   ],
@@ -20690,6 +19848,9 @@
   "Monarch Antlers": [
     "dm:labels"
   ],
+  "Mona娃娃": [
+    "dm:labels"
+  ],
   "Money Available: {0}cr": [
     "tgui:NtosSpaceBetting"
   ],
@@ -20745,11 +19906,7 @@
     "tgui:AntagInfoDemon"
   ],
   "Month": [
-    "tgui:AdminTicketStats",
-    "tgui:MaturityPrompt"
-  ],
-  "Month:": [
-    "tgui:MaturityPrompt"
+    "tgui:AdminTicketStats"
   ],
   "Mood is disabled on this server. You can still select personalities, but they will have no effect.": [
     "tgui:PersonalityPage"
@@ -21330,15 +20487,6 @@
   "NRTI Hoodie": [
     "dm:labels"
   ],
-  "NSFW (Warning)": [
-    "tgui:ExaminePanel"
-  ],
-  "NSFW Flavor Visibility": [
-    "tgui:nsfw_flavor_text"
-  ],
-  "NSFW Reference Image": [
-    "tgui:ExaminePanel"
-  ],
   "NT CIMS": [
     "dm:labels"
   ],
@@ -21414,9 +20562,6 @@
   "Naked": [
     "dm:labels"
   ],
-  "Naked - Aroused": [
-    "dm:labels"
-  ],
   "Naloxone": [
     "dm:labels"
   ],
@@ -21442,7 +20587,6 @@
     "tgui:HypnoChair",
     "tgui:ImplantChair",
     "tgui:LanguageMenu",
-    "tgui:MKUltraUI",
     "tgui:MODsuit",
     "tgui:MicrofusionGunControl",
     "tgui:ModularShieldConsole",
@@ -21491,9 +20635,6 @@
     "tgui:NtosCamera",
     "tgui:PaiCard",
     "tgui:PlayerPanel"
-  ],
-  "Name: {0}": [
-    "tgui:MilkingMachine"
   ],
   "Nameless": [
     "dm:labels"
@@ -21758,11 +20899,7 @@
     "tgui:FoodPreferences"
   ],
   "Never": [
-    "dm:labels",
     "tgui:GeneralPrefs"
-  ],
-  "Never show": [
-    "tgui:GenitalTab"
   ],
   "New": [
     "tgui:ColorSetter",
@@ -21992,9 +21129,6 @@
   "No Disk Inserted": [
     "tgui:DopplerArray",
     "tgui:TankCompressor"
-  ],
-  "No ERP": [
-    "dm:labels"
   ],
   "No Experiment Machine Detected": [
     "tgui:AbductorConsole"
@@ -22286,9 +21420,6 @@
   "No cost": [
     "tgui:OreRedemptionMachine"
   ],
-  "No creature in machine loaded": [
-    "tgui:MilkingMachine"
-  ],
   "No current vote": [
     "tgui:VotePanel"
   ],
@@ -22497,7 +21628,6 @@
     "tgui:OpposingForcePanel"
   ],
   "No one": [
-    "tgui:InteractionsTab",
     "tgui:constants"
   ],
   "No open rooms now...": [
@@ -22824,15 +21954,6 @@
   "Nonbinary": [
     "dm:labels"
   ],
-  "Noncon": [
-    "tgui:ZubbersCharacterDirectory"
-  ],
-  "Nondescript": [
-    "dm:labels"
-  ],
-  "Nondescript (Alt)": [
-    "dm:labels"
-  ],
   "None": [
     "dm:labels",
     "tgui:AlarmStatus",
@@ -22956,9 +22077,6 @@
   "Normal Stirrups (Greyscale)": [
     "dm:labels"
   ],
-  "Normal accessibility": [
-    "tgui:GenitalTab"
-  ],
   "Normal range": [
     "tgui:AtmosControls"
   ],
@@ -23044,9 +22162,6 @@
   ],
   "Not active": [
     "tgui:NifProgram"
-  ],
-  "Not aroused": [
-    "tgui:GenitalTab"
   ],
   "Not cast yet.": [
     "tgui:SpellTabDisplay"
@@ -23177,12 +22292,6 @@
     "dm:antagonists"
   ],
   "Nude": [
-    "dm:labels"
-  ],
-  "Nude Only": [
-    "dm:labels"
-  ],
-  "Nudist": [
     "dm:labels"
   ],
   "Nuke": [
@@ -23563,9 +22672,6 @@
   "Omnigender": [
     "dm:labels"
   ],
-  "Omnisexual": [
-    "dm:labels"
-  ],
   "Omnizine": [
     "dm:labels"
   ],
@@ -23620,9 +22726,6 @@
   ],
   "On Silent Mode this device will make the same sounds and sights as an actual Forensics Scanner.": [
     "tgui:ForensicsSpoofer"
-  ],
-  "On your birthday, server and Discord will notify players. (WIP) Age and birth year are NOT revealed.": [
-    "tgui:MaturityPrompt"
   ],
   "On/Off": [
     "tgui:ApcControl"
@@ -23739,9 +22842,6 @@
     "tgui:Vendatray",
     "tgui:constants",
     "tgui:index"
-  ],
-  "Open Calendar": [
-    "tgui:MaturityPrompt"
   ],
   "Open Chemical Injector": [
     "dm:labels"
@@ -23975,15 +23075,6 @@
   ],
   "Ores can be loaded here via a mining satchel or by hand. Boulders can also be stored here{0}Gibtonite is not accepted.": [
     "tgui:OreBox"
-  ],
-  "Organ control": [
-    "tgui:MilkingMachine"
-  ],
-  "Organ: none": [
-    "tgui:MilkingMachine"
-  ],
-  "Organ: {0}": [
-    "tgui:MilkingMachine"
   ],
   "Organic ears": [
     "dm:labels"
@@ -24224,9 +23315,6 @@
   "Overwrite Objectives Data": [
     "tgui:constants"
   ],
-  "Oviparity": [
-    "dm:labels"
-  ],
   "Owl (Splurt)": [
     "dm:labels"
   ],
@@ -24424,12 +23512,6 @@
   "Painting Information": [
     "tgui:PaintingAdminPanel"
   ],
-  "Pair": [
-    "dm:labels"
-  ],
-  "Pair (Alt)": [
-    "dm:labels"
-  ],
   "Pair of Binoculars": [
     "dm:labels"
   ],
@@ -24447,9 +23529,6 @@
   ],
   "Panic Siphon": [
     "tgui:Home"
-  ],
-  "Pansexual": [
-    "dm:labels"
   ],
   "Pansexual Flag": [
     "dm:labels"
@@ -24476,12 +23555,6 @@
     "dm:labels"
   ],
   "Panties - Freedom": [
-    "dm:labels"
-  ],
-  "Panties - Latex": [
-    "dm:labels"
-  ],
-  "Panties - Lingerie": [
     "dm:labels"
   ],
   "Panties - Neko": [
@@ -24589,9 +23662,6 @@
   "Parted (Side)": [
     "dm:labels"
   ],
-  "Partially aroused": [
-    "tgui:GenitalTab"
-  ],
   "Particle spawn rate in particles per tick. Does not need to be an integer as this is the spawn RATE not spawn COUNT.": [
     "tgui:Tutorial"
   ],
@@ -24638,16 +23708,13 @@
   "Past Security Records": [
     "tgui:RecordView"
   ],
-  "Pasties": [
-    "dm:labels"
-  ],
-  "Pasties (Alt)": [
-    "dm:labels"
-  ],
   "Pastry": [
     "dm:labels"
   ],
   "Pat": [
+    "dm:interactions"
+  ],
+  "Pat their head!": [
     "dm:interactions"
   ],
   "Pat their shoulder; perhaps if to comfort them.": [
@@ -24752,43 +23819,7 @@
   "Pendetide": [
     "dm:labels"
   ],
-  "Penis Choice": [
-    "tgui:genitals"
-  ],
-  "Penis Color": [
-    "tgui:genitals"
-  ],
-  "Penis Emissives": [
-    "tgui:genitals"
-  ],
-  "Penis Girth": [
-    "tgui:genitals"
-  ],
-  "Penis Length": [
-    "tgui:genitals"
-  ],
-  "Penis Sheath": [
-    "tgui:genitals"
-  ],
-  "Penis Taur Mode": [
-    "tgui:genitals"
-  ],
-  "Penis enlargement": [
-    "tgui:erp_preferences"
-  ],
-  "Penis shrinkage": [
-    "tgui:erp_preferences"
-  ],
-  "Penis uses Skin Color": [
-    "tgui:genitals"
-  ],
-  "Penis uses Skin Tone": [
-    "tgui:genitals"
-  ],
   "Penlight": [
-    "dm:labels"
-  ],
-  "Pentacamphor": [
     "dm:labels"
   ],
   "Pentaerythritol": [
@@ -24847,9 +23878,6 @@
   "Permanent Traumas": [
     "tgui:resilient_traumas"
   ],
-  "Permanent hormonal disruption": [
-    "dm:labels"
-  ],
   "Permanent paint": [
     "tgui:Crayon"
   ],
@@ -24883,9 +23911,6 @@
   ],
   "Personal Gene Therapy": [
     "tgui:DnaVault"
-  ],
-  "Personal Space": [
-    "dm:labels"
   ],
   "Personal View": [
     "tgui:AtmosControlPanel"
@@ -24946,9 +23971,6 @@
   "Petri Dish Sample": [
     "tgui:Microscope"
   ],
-  "Phallic Ball Gag (Dangerous)": [
-    "dm:labels"
-  ],
   "Phantom Glasses": [
     "dm:labels"
   ],
@@ -24960,9 +23982,6 @@
   ],
   "Phase emitter is damaged!": [
     "tgui:MicrofusionGunControl"
-  ],
-  "Phase: {0}{1}{2}": [
-    "tgui:MKUltraUI"
   ],
   "Phazon": [
     "dm:labels"
@@ -25165,25 +24184,10 @@
   "Pink": [
     "dm:labels"
   ],
-  "Pink Clown Gloves": [
-    "dm:labels"
-  ],
-  "Pink Clown Heels": [
-    "dm:labels"
-  ],
   "Pink Clown Shoes": [
     "dm:labels"
   ],
-  "Pink Clown Skirt": [
-    "dm:labels"
-  ],
-  "Pink Clown Wig": [
-    "dm:labels"
-  ],
   "Pink Fannypack": [
-    "dm:labels"
-  ],
-  "Pink Heels": [
     "dm:labels"
   ],
   "Pink Scarf": [
@@ -25353,7 +24357,6 @@
   "Play": [
     "tgui:AdventureBrowser",
     "tgui:ChemRecipeDebug",
-    "tgui:InteractionsTab",
     "tgui:Jukebox"
   ],
   "Play Sound To": [
@@ -25693,9 +24696,6 @@
   "Polyjuice": [
     "dm:labels"
   ],
-  "Polysexual": [
-    "dm:labels"
-  ],
   "Pompadour": [
     "dm:labels"
   ],
@@ -25821,9 +24821,6 @@
     "dm:labels"
   ],
   "Port Tarkon neckpin": [
-    "dm:labels"
-  ],
-  "Portal Fleshlight and Underwear": [
     "dm:labels"
   ],
   "Portrait Picker": [
@@ -26007,36 +25004,6 @@
   ],
   "Prefix Name": [
     "tgui:nameless"
-  ],
-  "Pregnancy: Anal insemination": [
-    "tgui:pregnancy"
-  ],
-  "Pregnancy: Belly inflation": [
-    "tgui:pregnancy"
-  ],
-  "Pregnancy: Chance": [
-    "tgui:pregnancy"
-  ],
-  "Pregnancy: Cryptic": [
-    "tgui:pregnancy"
-  ],
-  "Pregnancy: Duration": [
-    "tgui:pregnancy"
-  ],
-  "Pregnancy: Egg Skin": [
-    "tgui:pregnancy"
-  ],
-  "Pregnancy: Inert": [
-    "tgui:pregnancy"
-  ],
-  "Pregnancy: Nausea": [
-    "tgui:pregnancy"
-  ],
-  "Pregnancy: Oral insemination": [
-    "tgui:pregnancy"
-  ],
-  "Pregnancy: Vaginal insemination": [
-    "tgui:pregnancy"
   ],
   "Prelate": [
     "tgui:constants"
@@ -26395,9 +25362,6 @@
   "Produce Offspring": [
     "dm:labels"
   ],
-  "Produce an Egg": [
-    "dm:labels"
-  ],
   "Produced automatically from factories, these are weak, but can be rallied to attack enemies. They will also attack enemies near the factory and attempt to zombify corpses.": [
     "tgui:AntagInfoBlob"
   ],
@@ -26537,9 +25501,6 @@
   "Protective Custody Prisoner Jumpsuit": [
     "dm:labels"
   ],
-  "Protective Protogen Plushie": [
-    "dm:labels"
-  ],
   "Protein": [
     "dm:labels"
   ],
@@ -26649,9 +25610,6 @@
     "dm:labels"
   ],
   "Puffer Vest": [
-    "dm:labels"
-  ],
-  "Puffy": [
     "dm:labels"
   ],
   "Pull": [
@@ -26820,12 +25778,6 @@
     "dm:labels"
   ],
   "Quaalude": [
-    "dm:labels"
-  ],
-  "Quad": [
-    "dm:labels"
-  ],
-  "Quad (Alt)": [
     "dm:labels"
   ],
   "Quad Antennae": [
@@ -28037,14 +26989,8 @@
   "Remember: Do not forget to prepare your spells.": [
     "tgui:AntagInfoWizard"
   ],
-  "Remote Control": [
-    "tgui:MODsuitremote"
-  ],
   "Remote Robot Control": [
     "tgui:RemoteRobotControl"
-  ],
-  "Remote Vibroegg": [
-    "dm:labels"
   ],
   "Remotely Controlled": [
     "tgui:PortableTurret"
@@ -28387,21 +27333,6 @@
   "Research Tree": [
     "tgui:AntagInfoHeretic"
   ],
-  "Research cyborg BlueSpace Experi-Scanner": [
-    "dm:labels"
-  ],
-  "Research cyborg Rapid Part Exchange Device Upgrade": [
-    "dm:labels"
-  ],
-  "Research cyborg advanced Health Analyzer": [
-    "dm:labels"
-  ],
-  "Research cyborg synthetic repair tool": [
-    "dm:labels"
-  ],
-  "Research integrated power inducer": [
-    "dm:labels"
-  ],
   "Research is required to unlock this.": [
     "tgui:ClockworkSlab"
   ],
@@ -28705,13 +27636,7 @@
   "Revealing Christmas Suit": [
     "dm:labels"
   ],
-  "Revealing Dress": [
-    "dm:labels"
-  ],
   "Revealing Green Christmas Suit": [
-    "dm:labels"
-  ],
-  "Revealing office uniform": [
     "dm:labels"
   ],
   "Reveals the per-limb transparency sliders for your arms and legs. While off, those limbs stay fully opaque.": [
@@ -28782,9 +27707,6 @@
   "Rigel Prime, the center of the Rigel system, burns hot, basking its planetary bodies in warmth and radiation.": [
     "tgui:OrionGame"
   ],
-  "Rigger": [
-    "dm:labels"
-  ],
   "Right": [
     "tgui:ChemFilter",
     "tgui:ChemSplitter"
@@ -28845,9 +27767,6 @@
   ],
   "Rights are currently extended to {0} only.": [
     "tgui:BubberChangelog"
-  ],
-  "Ring Gag": [
-    "dm:labels"
   ],
   "Ring Tail (Long)": [
     "dm:labels"
@@ -28976,9 +27895,6 @@
   "Role list{0}": [
     "tgui:MafiaPanel"
   ],
-  "Roleplay only": [
-    "dm:labels"
-  ],
   "Roll target random job. You can re-roll or cancel your random job if you don't like it.": [
     "tgui:JobSelection"
   ],
@@ -29034,9 +27950,6 @@
     "tgui:HilbertsHotelCheckout"
   ],
   "Rootroll": [
-    "dm:labels"
-  ],
-  "Rope bunny": [
     "dm:labels"
   ],
   "Rose": [
@@ -29311,9 +28224,6 @@
   "Saddlebags": [
     "dm:labels"
   ],
-  "Sadism": [
-    "dm:labels"
-  ],
   "Sadness": [
     "dm:labels"
   ],
@@ -29494,9 +28404,6 @@
   ],
   "Save log as...": [
     "tgui:NtosNetChat"
-  ],
-  "Save my birthday (day included, not just month and year)": [
-    "tgui:MaturityPrompt"
   ],
   "Save the record selected to an inserted data disk.": [
     "tgui:DopplerArray",
@@ -29903,12 +28810,6 @@
   "Search for a camera": [
     "tgui:CameraConsole"
   ],
-  "Search for a content preference": [
-    "tgui:MainContent"
-  ],
-  "Search for a genital": [
-    "tgui:MainContent"
-  ],
   "Search for a reagent by name": [
     "tgui:Lookup"
   ],
@@ -29919,12 +28820,7 @@
     "tgui:index"
   ],
   "Search for an interaction": [
-    "tgui:MainContent",
-    "tgui:constants"
-  ],
-  "Search for an item": [
-    "tgui:MainContent",
-    "tgui:constants"
+    "tgui:MainContent"
   ],
   "Search for an item...": [
     "tgui:index"
@@ -30023,10 +28919,6 @@
   "Searching for available contracts...": [
     "tgui:SyndContractor",
     "tgui:SyndicateContractor"
-  ],
-  "Searching is unavailable for this tab": [
-    "tgui:MainContent",
-    "tgui:constants"
   ],
   "Searching...": [
     "tgui:constants"
@@ -30254,9 +29146,6 @@
   "Security Soft Cap": [
     "dm:labels"
   ],
-  "Security Stripper Outfit": [
-    "dm:labels"
-  ],
   "Security Systems": [
     "tgui:NtosNetMonitor"
   ],
@@ -30425,9 +29314,6 @@
   "Selected: {0}": [
     "tgui:DynamicAdmin"
   ],
-  "Selected: {0} {1}, {2}": [
-    "tgui:MaturityPrompt"
-  ],
   "Self Destruct": [
     "tgui:NtosRobotact"
   ],
@@ -30439,9 +29325,6 @@
   ],
   "Self-Destruct": [
     "tgui:ExodroneConsole"
-  ],
-  "Semen": [
-    "tgui:MilkingMachine"
   ],
   "Semi-Randomize": [
     "tgui:Randomize"
@@ -30806,12 +29689,6 @@
   "Set to 100%": [
     "tgui:DynamicAdmin"
   ],
-  "Set your lust tolerance multiplier. (0.5 = half tolerance, 2 = double tolerance)": [
-    "tgui:genitals"
-  ],
-  "Set your sexual potency multiplier. (0.5 = half potency, 2 = double potency)": [
-    "tgui:genitals"
-  ],
   "Sets TGUI Say to use a light mode.": [
     "tgui:tgui"
   ],
@@ -30857,24 +29734,6 @@
   ],
   "Severity": [
     "tgui:Virus"
-  ],
-  "Sex Holosign Projector": [
-    "dm:labels"
-  ],
-  "Sex toy interaction": [
-    "tgui:erp_preferences"
-  ],
-  "Sex toy sounds": [
-    "tgui:erp_preferences"
-  ],
-  "Sextuple": [
-    "dm:labels"
-  ],
-  "Sextuple (Alt)": [
-    "dm:labels"
-  ],
-  "Sexual potency multiplier": [
-    "tgui:genitals"
   ],
   "Sexy Snoodle Plushie": [
     "dm:labels"
@@ -31050,12 +29909,6 @@
   "Shears": [
     "tgui:GlassBlowing"
   ],
-  "Sheath": [
-    "dm:labels"
-  ],
-  "Sheathed pair": [
-    "dm:labels"
-  ],
   "Shell": [
     "tgui:AirlockElectronics"
   ],
@@ -31069,15 +29922,6 @@
     "dm:labels"
   ],
   "Sheriff Hat": [
-    "dm:labels"
-  ],
-  "Shibari": [
-    "dm:labels"
-  ],
-  "Shibari Ropes": [
-    "dm:labels"
-  ],
-  "Shibari Sleeves": [
     "dm:labels"
   ],
   "Shield Strength": [
@@ -31212,13 +30056,7 @@
   "Shochu": [
     "dm:labels"
   ],
-  "Shock Collar Kit": [
-    "dm:labels"
-  ],
   "Shock Touch": [
-    "dm:labels"
-  ],
-  "Shockcollar": [
     "dm:labels"
   ],
   "Shockwave Radius": [
@@ -31391,9 +30229,6 @@
   "Shortest": [
     "dm:labels"
   ],
-  "Shot of concentrated lust": [
-    "dm:labels"
-  ],
   "Should it be sent to everyone?": [
     "tgui:AdminPDA"
   ],
@@ -31475,12 +30310,6 @@
   ],
   "Show only admins with ticket activity": [
     "tgui:AdminTicketStats"
-  ],
-  "Show when naked": [
-    "tgui:GenitalTab"
-  ],
-  "Show/Hide Erotic Roleplay Preferences": [
-    "tgui:erp_preferences"
   ],
   "Show/Hide my emote effect overlays": [
     "tgui:emote_overlay"
@@ -31653,9 +30482,6 @@
   "Silicon Headshot": [
     "tgui:species_features"
   ],
-  "Silicon Headshot (NSFW)": [
-    "tgui:species_features"
-  ],
   "Silicon Manager": [
     "dm:labels"
   ],
@@ -31663,9 +30489,6 @@
     "tgui:species_features"
   ],
   "Silicon Model Name": [
-    "tgui:species_features"
-  ],
-  "Silicon NSFW Flavor Text": [
     "tgui:species_features"
   ],
   "Silicon Preferences": [
@@ -31783,9 +30606,6 @@
     "tgui:NtosFileManager",
     "tgui:PlayerPanel"
   ],
-  "Size Collar": [
-    "dm:labels"
-  ],
   "Skateboard": [
     "dm:labels"
   ],
@@ -31829,9 +30649,6 @@
     "tgui:index"
   ],
   "Skittish": [
-    "dm:labels"
-  ],
-  "Skoliosexual": [
     "dm:labels"
   ],
   "Skreking Vox Plushie": [
@@ -31981,9 +30798,6 @@
   "Slimeperson": [
     "dm:labels"
   ],
-  "Slit": [
-    "dm:labels"
-  ],
   "Slither": [
     "dm:labels"
   ],
@@ -32060,9 +30874,6 @@
   ],
   "Smooth-Headed": [
     "dm:labels"
-  ],
-  "Smothering": [
-    "tgui:erp_preferences"
   ],
   "Smuggler's Flying Cap": [
     "dm:labels"
@@ -32167,9 +30978,6 @@
     "dm:labels"
   ],
   "Sock": [
-    "dm:labels"
-  ],
-  "Socks - Latex": [
     "dm:labels"
   ],
   "Socks color": [
@@ -32358,9 +31166,6 @@
   "Spaniel (Le Goom)": [
     "dm:labels"
   ],
-  "Spanking Pad": [
-    "dm:labels"
-  ],
   "Spare Cassette Tape": [
     "dm:labels"
   ],
@@ -32465,9 +31270,6 @@
     "tgui:PlayerPanel",
     "tgui:RaptorDex",
     "tgui:TrainingMachine"
-  ],
-  "Speed: {0}": [
-    "tgui:InteractionsTab"
   ],
   "Spellbook": [
     "tgui:AntagInfoWizard",
@@ -32703,9 +31505,6 @@
   "Squish-Me-Tesh Plush": [
     "dm:labels"
   ],
-  "Squished": [
-    "dm:labels"
-  ],
   "Squishy Shadekin Plush": [
     "dm:labels"
   ],
@@ -32869,9 +31668,6 @@
     "tgui:NtosRobotact",
     "tgui:StateLawUi"
   ],
-  "State: {0}": [
-    "tgui:MilkingMachine"
-  ],
   "States": [
     "tgui:StateSelectModal",
     "tgui:index"
@@ -32939,7 +31735,6 @@
     "tgui:OrbitTooltip",
     "tgui:Photocopier",
     "tgui:PipeScrubber",
-    "tgui:Plug13",
     "tgui:PortableAtmos",
     "tgui:PortableGenerator",
     "tgui:PortableTurret",
@@ -33095,9 +31890,6 @@
   "Stomach": [
     "dm:labels"
   ],
-  "Stomping": [
-    "tgui:erp_preferences"
-  ],
   "Stoner": [
     "dm:labels"
   ],
@@ -33107,7 +31899,6 @@
     "tgui:ControlBar",
     "tgui:ExosuitFabricator",
     "tgui:Holopad",
-    "tgui:InteractionsTab",
     "tgui:Jukebox",
     "tgui:MassDriverControl",
     "tgui:Mule",
@@ -33141,9 +31932,6 @@
   "Stop Wiping": [
     "tgui:Intellicard"
   ],
-  "Stop all auto interactions": [
-    "tgui:InteractionsTab"
-  ],
   "Stop current domain first.": [
     "tgui:QuantumConsole"
   ],
@@ -33152,9 +31940,6 @@
   ],
   "Stop {0}": [
     "tgui:index"
-  ],
-  "Stopped": [
-    "tgui:InteractionsTab"
   ],
   "Stopping": [
     "tgui:index"
@@ -33259,9 +32044,6 @@
   "Strapless Two-Piece Swimsuit": [
     "dm:labels"
   ],
-  "Strapon": [
-    "dm:labels"
-  ],
   "Strawberry Daiquiri": [
     "dm:labels"
   ],
@@ -33320,9 +32102,6 @@
     "dm:labels"
   ],
   "Striped tail": [
-    "dm:labels"
-  ],
-  "Stripper Outfit": [
     "dm:labels"
   ],
   "Stripping {0}": [
@@ -33391,8 +32170,7 @@
     "tgui:CircuitSignalHandler",
     "tgui:CodexGigas",
     "tgui:InputButtons",
-    "tgui:Interview",
-    "tgui:MaturityPrompt"
+    "tgui:Interview"
   ],
   "Submit Application": [
     "tgui:OpposingForcePanel"
@@ -33425,21 +32203,6 @@
   "Submitted": [
     "tgui:Interview",
     "tgui:TtsVoiceReview"
-  ],
-  "Subs To Any Other Genders": [
-    "tgui:well_trained"
-  ],
-  "Subs To He/Him": [
-    "tgui:well_trained"
-  ],
-  "Subs To It/Its": [
-    "tgui:well_trained"
-  ],
-  "Subs To She/Her": [
-    "tgui:well_trained"
-  ],
-  "Subs To They/Them": [
-    "tgui:well_trained"
   ],
   "Subspace Radio": [
     "tgui:Intellicard"
@@ -33478,9 +32241,6 @@
     "dm:labels"
   ],
   "Succubus Tattoo 3 Layer": [
-    "dm:labels"
-  ],
-  "Succubus milk autoinjector": [
     "dm:labels"
   ],
   "Suffix": [
@@ -33644,9 +32404,6 @@
     "dm:labels"
   ],
   "Suspicious Spider Plushie": [
-    "dm:labels"
-  ],
-  "Suspiciously Glossy Headphones": [
     "dm:labels"
   ],
   "Suspiciously Glossy Ring": [
@@ -34415,9 +33172,6 @@
   "Tank → Buffer": [
     "tgui:PipeScrubber"
   ],
-  "Tanks status": [
-    "tgui:MilkingMachine"
-  ],
   "Tap Ore Vents": [
     "tgui:Secrets"
   ],
@@ -34425,12 +33179,6 @@
     "tgui:NtosPhysScanner"
   ],
   "Taperecorder": [
-    "dm:labels"
-  ],
-  "Tapered": [
-    "dm:labels"
-  ],
-  "Tapered (Alt)": [
     "dm:labels"
   ],
   "Tarantula": [
@@ -34742,12 +33490,6 @@
   "Tentacle, Alt": [
     "dm:labels"
   ],
-  "Tentacled": [
-    "dm:labels"
-  ],
-  "Tentacled (Alt)": [
-    "dm:labels"
-  ],
   "Tequila": [
     "dm:labels"
   ],
@@ -34962,30 +33704,6 @@
   "Test Quirk": [
     "dm:labels"
   ],
-  "Testicles": [
-    "tgui:MilkingMachine"
-  ],
-  "Testicles Choice": [
-    "tgui:genitals"
-  ],
-  "Testicles Color": [
-    "tgui:genitals"
-  ],
-  "Testicles Emissives": [
-    "tgui:genitals"
-  ],
-  "Testicles Fluid": [
-    "tgui:genitals"
-  ],
-  "Testicles Size": [
-    "tgui:genitals"
-  ],
-  "Testicles uses Skin Color": [
-    "tgui:genitals"
-  ],
-  "Testicles uses Skin Tone": [
-    "tgui:genitals"
-  ],
   "Testing": [
     "tgui:AntagInfoBloodWorm"
   ],
@@ -35000,9 +33718,6 @@
   ],
   "Text": [
     "tgui:Crayon"
-  ],
-  "Text Color Selection": [
-    "tgui:hypnotic_quirk"
   ],
   "Text Drop": [
     "dm:labels"
@@ -35052,9 +33767,6 @@
   ],
   "The Hollow Heart": [
     "dm:labels"
-  ],
-  "The NSFW part of your flavor text. Used to store visual sexual details.": [
-    "tgui:species_features"
   ],
   "The NtOS operating system and its user interface are protected by trademark and other pending or existing intellectual property rights in the Sol system and other regions.": [
     "tgui:NtosNotepad"
@@ -35147,9 +33859,6 @@
   "The degradation you will start with.": [
     "tgui:death_degradation"
   ],
-  "The examine text portrayed from your character. Use third person (Their, He, She, etc)": [
-    "tgui:hypnotic_quirk"
-  ],
   "The fastest rate the reaction can go, in units per second. This is the plateu region shown in the rate profile above.": [
     "tgui:RecipeLookup"
   ],
@@ -35225,7 +33934,7 @@
   "The minimum temperature needed for this reaction to start. Heating it up past this point will increase the reaction rate.": [
     "tgui:RecipeLookup"
   ],
-  "The name of the module for your Silicon company, such as \"Armadyne Pleasure Model.\"": [
+  "The name of the module for your Silicon company, such as \"Armadyne Service Model.\"": [
     "tgui:species_features"
   ],
   "The name of your custom species. If left blank, you will use your selected species name (E.g. Human, Lizardperson).": [
@@ -35330,15 +34039,6 @@
   "The transport page has mobility spells, very important aspect of staying alive and getting things done.": [
     "tgui:AntagInfoWizard"
   ],
-  "The type of fluid produced by the breasts.": [
-    "tgui:genitals"
-  ],
-  "The type of fluid produced by the testicles.": [
-    "tgui:genitals"
-  ],
-  "The type of fluid produced by the vagina.": [
-    "tgui:genitals"
-  ],
   "The type of sound you will make when you walk around barefoot.": [
     "tgui:footstep_sounds"
   ],
@@ -35437,9 +34137,6 @@
   ],
   "These powerful spells change the very fabric of reality. Not always in your favour.": [
     "tgui:constants"
-  ],
-  "They...{0}{1}": [
-    "tgui:InfoSection"
   ],
   "They/Them": [
     "dm:labels"
@@ -35648,9 +34345,6 @@
   "This frame is too large.": [
     "tgui:ShuttleBlueprints"
   ],
-  "This informs players of if you wish to engage in ERP.": [
-    "tgui:erp_preferences"
-  ],
   "This interface is locked.": [
     "tgui:NaniteRemote"
   ],
@@ -35666,9 +34360,6 @@
   "This is a color matrix. Think of it as editing the image in 3 layers, red, green, and blue, rather than editing the final image like with RGB.": [
     "tgui:MODpaint"
   ],
-  "This is a community with a minimum age requirement. Please submit your date of birth. We only retain the year and month, the day is discarded after the initial check unless you opt in to birthday celebrations below.": [
-    "tgui:MaturityPrompt"
-  ],
   "This is a gameplay suggestion for bored traitors. You don't have to follow it, unless you want some ideas for how to spend the round.": [
     "tgui:AntagInfoTraitor"
   ],
@@ -35680,9 +34371,6 @@
   ],
   "This is appended to any deployed pieces of MODsuit gear, like the chest, helmet, etc. The default is 'fused' - try to use an adjective, if you can.": [
     "tgui:entombed"
-  ],
-  "This is mechanical brainwashing and it is only available to the MKUltra chemical.": [
-    "tgui:MKUltraUI"
   ],
   "This is the beginning of your chat with {0}.": [
     "tgui:ChatScreen"
@@ -35801,9 +34489,6 @@
   "This server has disabled tracking.": [
     "tgui:TrackedPlaytime"
   ],
-  "This shows/hides ERP preferences.": [
-    "tgui:erp_preferences"
-  ],
   "This shows/hides the animated overlays displayed on emotes for yourself.": [
     "tgui:emote_overlay"
   ],
@@ -35854,18 +34539,6 @@
     "dm:labels"
   ],
   "Thong": [
-    "dm:labels"
-  ],
-  "Thong (Alt)": [
-    "dm:labels"
-  ],
-  "Thong - Cheetah": [
-    "dm:labels"
-  ],
-  "Thong - Cow": [
-    "dm:labels"
-  ],
-  "Thong - Zebra": [
     "dm:labels"
   ],
   "Thread-Waisted Wasp": [
@@ -35922,6 +34595,9 @@
   ],
   "Tian Dress": [
     "dm:labels"
+  ],
+  "TianGuan Stars Only": [
+    "tgui:JobsPage"
   ],
   "Tibbets": [
     "dm:labels"
@@ -36338,20 +35014,11 @@
   "Toggles if to take power from cable.": [
     "tgui:Portagrav"
   ],
-  "Toggles if you are able to react to the effects of bimbofication.": [
-    "tgui:erp_preferences"
-  ],
   "Toggles if you are able to use vore mechanics.": [
-    "tgui:erp_preferences"
-  ],
-  "Toggles if you want to hear sounds from ERP mechanics.": [
-    "tgui:erp_preferences"
+    "tgui:vore"
   ],
   "Toggles if you want to play a sparking animation when deleting things as an admin.": [
     "tgui:delete_sparks"
-  ],
-  "Toggles if you will hear sounds from sex toys.": [
-    "tgui:erp_preferences"
   ],
   "Toggles the ability for the NIF to use your food as an energy source. Enabling this may result in increased hunger.": [
     "tgui:NifSettings"
@@ -36361,12 +35028,6 @@
   ],
   "Toggles whether eyecolor matches the color of the light.": [
     "tgui:HighLuminosityEyesMenu"
-  ],
-  "Toggles whether you automatically cum using the arousal system, or if you need to do it manually.": [
-    "tgui:erp_preferences"
-  ],
-  "Toggles whether you automatically emote using the arousal system, or if you need to do it manually.": [
-    "tgui:erp_preferences"
   ],
   "Toggles whether you broadcast your bitrun to station Entertainment Monitors.": [
     "tgui:QuantumConsole"
@@ -36385,9 +35046,6 @@
   ],
   "Toggles whether you wish to have the action to join a soulcatcher as a ghost shown to you. You still have access to the verb regardless.": [
     "tgui:ghost"
-  ],
-  "Toggles whether you wish to receive the effects of aphrodisiacs": [
-    "tgui:erp_preferences"
   ],
   "Toggles whether your examine panel is hidden when unknown.": [
     "tgui:obscurity_examine"
@@ -36427,15 +35085,6 @@
     "dm:labels"
   ],
   "Top (White)": [
-    "dm:labels"
-  ],
-  "Top - Dom": [
-    "dm:labels"
-  ],
-  "Top - Sub": [
-    "dm:labels"
-  ],
-  "Top - Switch": [
     "dm:labels"
   ],
   "Top Hat": [
@@ -36581,9 +35230,6 @@
     "tgui:CrewConsoleBubbers",
     "tgui:CrewConsoleBubbersSec",
     "tgui:SolarControl"
-  ],
-  "Tracking Collar": [
-    "dm:labels"
   ],
   "Tracks": [
     "tgui:ZubbersStoryteller"
@@ -36853,7 +35499,6 @@
     "tgui:ScannerGate"
   ],
   "Triggers": [
-    "tgui:MKUltraUI",
     "tgui:NaniteChamberControl"
   ],
   "Trim Flat": [
@@ -36996,9 +35641,6 @@
   ],
   "Type Filter": [
     "tgui:RequestManager"
-  ],
-  "Type of egg used for oviposition pregnancy.": [
-    "tgui:pregnancy"
   ],
   "Type some details...": [
     "tgui:CrimeWatcher"
@@ -37205,12 +35847,6 @@
   "Unfreeze Subsystem": [
     "tgui:AtmosControlPanel"
   ],
-  "Unholy": [
-    "tgui:ZubbersCharacterDirectory"
-  ],
-  "Unholy ERP verbs": [
-    "tgui:genitals"
-  ],
   "Uni": [
     "dm:labels"
   ],
@@ -37230,6 +35866,9 @@
     "tgui:NifProgram"
   ],
   "Unintelligible": [
+    "dm:labels"
+  ],
+  "Union of Allied Republics": [
     "dm:labels"
   ],
   "Unique Enzyme": [
@@ -37356,9 +35995,6 @@
   "Unnamed Species": [
     "tgui:ExaminePanel"
   ],
-  "Unplug": [
-    "tgui:MilkingMachine"
-  ],
   "Unread Messages": [
     "tgui:ChatScreen"
   ],
@@ -37478,9 +36114,6 @@
   "Urban Puffer Vest": [
     "dm:labels"
   ],
-  "Urine": [
-    "dm:labels"
-  ],
   "Use": [
     "tgui:TtsVoiceStudio",
     "tgui:constants"
@@ -37530,9 +36163,6 @@
   ],
   "Use modern player panel": [
     "tgui:admin"
-  ],
-  "Use my birthday for integration and contests": [
-    "tgui:MaturityPrompt"
   ],
   "Use template": [
     "tgui:LightController"
@@ -37646,27 +36276,6 @@
   "Vacuum Adaptation": [
     "dm:labels"
   ],
-  "Vagina": [
-    "tgui:MilkingMachine"
-  ],
-  "Vagina Choice": [
-    "tgui:genitals"
-  ],
-  "Vagina Color": [
-    "tgui:genitals"
-  ],
-  "Vagina Emissives": [
-    "tgui:genitals"
-  ],
-  "Vagina Fluid": [
-    "tgui:genitals"
-  ],
-  "Vagina uses Skin Color": [
-    "tgui:genitals"
-  ],
-  "Vagina uses Skin Tone": [
-    "tgui:genitals"
-  ],
   "Valid Plushie": [
     "dm:labels"
   ],
@@ -37678,12 +36287,6 @@
   ],
   "Value Drifted AI": [
     "dm:antagonists"
-  ],
-  "Value is circumference, measured in inches. This value is limited to 15 for characters with a body size <= 1, or without the oversized trait. The maximum allowed value scales up based on the body size of a character, up to a max of 20.": [
-    "tgui:genitals"
-  ],
-  "Value is measured in inches. This value is limited to 20 for characters with a body size <= 1, or without the oversized trait. The maximum allowed value scales up based on the body size of a character, up to a max of 36.": [
-    "tgui:genitals"
   ],
   "Value:": [
     "tgui:ChemRecipeDebug",
@@ -37734,9 +36337,6 @@
   "Vegetarian": [
     "dm:labels"
   ],
-  "Velvet": [
-    "dm:labels"
-  ],
   "Velvet Kiss": [
     "dm:labels"
   ],
@@ -37750,9 +36350,6 @@
     "dm:labels"
   ],
   "Venom": [
-    "dm:labels"
-  ],
-  "Venom Siphon": [
     "dm:labels"
   ],
   "Venom Type": [
@@ -37771,9 +36368,6 @@
   ],
   "Vent Direction": [
     "tgui:RBMK2"
-  ],
-  "Vent Pinpointer": [
-    "dm:labels"
   ],
   "Vent Power": [
     "tgui:RBMK2"
@@ -37800,33 +36394,6 @@
     "tgui:System"
   ],
   "Vermouth": [
-    "dm:labels"
-  ],
-  "Verse - Dom": [
-    "dm:labels"
-  ],
-  "Verse - Sub": [
-    "dm:labels"
-  ],
-  "Verse - Switch": [
-    "dm:labels"
-  ],
-  "Verse-Bottom - Dom": [
-    "dm:labels"
-  ],
-  "Verse-Bottom - Sub": [
-    "dm:labels"
-  ],
-  "Verse-Bottom - Switch": [
-    "dm:labels"
-  ],
-  "Verse-Top - Dom": [
-    "dm:labels"
-  ],
-  "Verse-Top - Sub": [
-    "dm:labels"
-  ],
-  "Verse-Top - Switch": [
     "dm:labels"
   ],
   "Version 7815696ecbf1c96e6894b779456d330e": [
@@ -37870,9 +36437,6 @@
   ],
   "Vials": [
     "tgui:ChemPress"
-  ],
-  "Vibrator": [
-    "dm:labels"
   ],
   "Vice Officer Jumpsuit": [
     "dm:labels"
@@ -38172,12 +36736,6 @@
   "Volume of vocal AI announcements (also known as \"VOX\").": [
     "tgui:sounds"
   ],
-  "Volume: n/a": [
-    "tgui:MilkingMachine"
-  ],
-  "Volume: {0} / {1}": [
-    "tgui:MilkingMachine"
-  ],
   "Volume:{0}": [
     "tgui:InstrumentEditor"
   ],
@@ -38191,10 +36749,10 @@
     "tgui:ZubbersCharacterDirectory"
   ],
   "Vore Overlay Options": [
-    "tgui:erp_preferences"
+    "tgui:vore"
   ],
   "Vore Overlays": [
-    "tgui:erp_preferences"
+    "tgui:vore"
   ],
   "Vore Panel - WARNING: Saving is disabled": [
     "tgui:index"
@@ -38761,9 +37319,6 @@
   "Welded": [
     "tgui:LawRack"
   ],
-  "Well-Trained": [
-    "dm:labels"
-  ],
   "Well-worn Graphic Shirt": [
     "dm:labels"
   ],
@@ -38779,9 +37334,6 @@
   "Wench's Dress": [
     "dm:labels"
   ],
-  "Werewolf": [
-    "dm:labels"
-  ],
   "West": [
     "tgui:AirlockElectronics"
   ],
@@ -38792,9 +37344,6 @@
     "dm:labels"
   ],
   "What classifies as the gender for your character. This is displayed in the Directory.": [
-    "tgui:species_features"
-  ],
-  "What classifies what your character is attracted to. This is displayed in the Directory.": [
     "tgui:species_features"
   ],
   "What does it do?": [
@@ -38924,7 +37473,7 @@
     "tgui:gameplay"
   ],
   "When enabled, will you be shown fullscreen vore overlays while inside of a soulcatcher?": [
-    "tgui:erp_preferences"
+    "tgui:vore"
   ],
   "When enabled, you will automatically deadmin as a head of staff.": [
     "tgui:legacy_toggles"
@@ -38952,9 +37501,6 @@
   ],
   "When enabled, you will be able to hear all whispers as a ghost. When disabled, you will only be able to hear nearby whispers.": [
     "tgui:legacy_chat_toggles"
-  ],
-  "When enabled, you will be able to interact with sex toys.": [
-    "tgui:erp_preferences"
   ],
   "When enabled, you will be notified as a ghost for new crew.": [
     "tgui:legacy_toggles"
@@ -38986,12 +37532,6 @@
   "When toggled, experiencing screen shake will darken your screen.": [
     "tgui:accessibility"
   ],
-  "When toggled, pregnancy will make your character nauseous.": [
-    "tgui:pregnancy"
-  ],
-  "When toggled, pregnancy will make your characters belly increase in size.": [
-    "tgui:pregnancy"
-  ],
   "When toggled, some important events will make your game icon flash on your task tray.": [
     "tgui:window_flashing"
   ],
@@ -39000,15 +37540,6 @@
   ],
   "When toggled, will replace many instances of real-world time with AM/PM instead.": [
     "tgui:accessibility"
-  ],
-  "When toggled, you can get impregnated from anal insemination.": [
-    "tgui:pregnancy"
-  ],
-  "When toggled, you can get impregnated from oral insemination.": [
-    "tgui:pregnancy"
-  ],
-  "When toggled, you can get impregnated from vaginal insemination.": [
-    "tgui:pregnancy"
   ],
   "When toggled, you will now face towards the cursor with combat mode enabled.": [
     "tgui:face_cursor_combat_mode"
@@ -39378,9 +37909,6 @@
   "Wolfcut": [
     "dm:labels"
   ],
-  "Womb Choice": [
-    "tgui:genitals"
-  ],
   "Work Boots": [
     "dm:labels"
   ],
@@ -39557,11 +38085,7 @@
     "dm:labels"
   ],
   "Year": [
-    "tgui:AdminTicketStats",
-    "tgui:MaturityPrompt"
-  ],
-  "Year:": [
-    "tgui:MaturityPrompt"
+    "tgui:AdminTicketStats"
   ],
   "Yeet Organs": [
     "tgui:constants"
@@ -39573,9 +38097,6 @@
     "dm:labels"
   ],
   "Yellow Fannypack": [
-    "dm:labels"
-  ],
-  "Yellow Flashy": [
     "dm:labels"
   ],
   "Yellow Gloves": [
@@ -39616,21 +38137,6 @@
     "tgui:SentienceFunBalloon",
     "tgui:TurretControl",
     "tgui:ZubbersStoryteller"
-  ],
-  "Yes - Dom": [
-    "dm:labels"
-  ],
-  "Yes - Pred": [
-    "dm:labels"
-  ],
-  "Yes - Prey": [
-    "dm:labels"
-  ],
-  "Yes - Sub": [
-    "dm:labels"
-  ],
-  "Yes - Switch": [
-    "dm:labels"
   ],
   "Yes.": [
     "tgui:AntagInfoSeparatist"
@@ -40097,9 +38603,6 @@
     "tgui:LanguagesMenu",
     "tgui:constants"
   ],
-  "You...{0}{1}": [
-    "tgui:InfoSection"
-  ],
   "Your Base:": [
     "tgui:ClockworkSlab"
   ],
@@ -40140,16 +38643,8 @@
   "Your blob reagent is: {0}": [
     "tgui:AntagInfoBlob"
   ],
-  "Your character cumflates partners.": [
-    "tgui:ContentPreferencesTab",
-    "tgui:genitals"
-  ],
   "Your character has very little to say about something that's neutral.": [
     "tgui:FoodPreferences"
-  ],
-  "Your character knots partners.": [
-    "tgui:ContentPreferencesTab",
-    "tgui:genitals"
   ],
   "Your character will almost immediately throw up on eating anything toxic.": [
     "tgui:FoodPreferences"
@@ -40557,15 +39052,6 @@
   "borg artistic module": [
     "dm:labels"
   ],
-  "borg dominatrix module": [
-    "dm:labels"
-  ],
-  "borg model picker (Security)": [
-    "dm:labels"
-  ],
-  "borg module picker (Centcom)": [
-    "dm:labels"
-  ],
   "borg module picker (Syndicate)": [
     "dm:labels"
   ],
@@ -40577,6 +39063,9 @@
   ],
   "box": [
     "tgui:Tutorial"
+  ],
+  "box of long balloons": [
+    "dm:labels"
   ],
   "breaking the Masquerade": [
     "tgui:AntagInfoBloodsucker"
@@ -40620,9 +39109,6 @@
   ],
   "citations": [
     "tgui:CrimeWatcher"
-  ],
-  "clicker": [
-    "dm:labels"
   ],
   "cobolterium": [
     "dm:labels"
@@ -40700,9 +39186,6 @@
   "cube": [
     "tgui:Tutorial"
   ],
-  "cum": [
-    "dm:labels"
-  ],
   "cup of frisky kitty": [
     "dm:labels"
   ],
@@ -40723,9 +39206,6 @@
   ],
   "default": [
     "dm:labels"
-  ],
-  "degenerate": [
-    "dm:interactions"
   ],
   "deluxe [initial(language.name)] manual": [
     "dm:labels"
@@ -40804,12 +39284,6 @@
   ],
   "false": [
     "tgui:Fax"
-  ],
-  "fashionable sheer miniskirt": [
-    "dm:labels"
-  ],
-  "femcum": [
-    "dm:labels"
   ],
   "filters": [
     "tgui:AppearanceInfo"
@@ -41128,9 +39602,6 @@
   "insect right leg": [
     "dm:labels"
   ],
-  "integrated cable coil": [
-    "dm:labels"
-  ],
   "interactions": [
     "tgui:InteractionsTab"
   ],
@@ -41165,9 +39636,6 @@
     "tgui:BubberChangelog",
     "tgui:Changelog"
   ],
-  "janitor detailing toolset": [
-    "dm:labels"
-  ],
   "k": [
     "tgui:FishAnalyzer"
   ],
@@ -41180,9 +39648,6 @@
   ],
   "keg of nord king": [
     "dm:labels"
-  ],
-  "knots Partners": [
-    "tgui:genitals"
   ],
   "knowledge points": [
     "tgui:AntagInfoHeretic",
@@ -41511,9 +39976,6 @@
   "pulsating tumor": [
     "dm:labels"
   ],
-  "r.u.t.t. ring": [
-    "dm:labels"
-  ],
   "r4407 release. The changelog for changes up to r4407 can be seen": [
     "tgui:BubberChangelog",
     "tgui:Changelog"
@@ -41601,9 +40063,6 @@
     "dm:labels"
   ],
   "shadowling tumor": [
-    "dm:labels"
-  ],
-  "sheer dress": [
     "dm:labels"
   ],
   "sheet": [
@@ -42064,9 +40523,6 @@
   "{0} 4 uses to teleport wherever you want. You will not be able to come back to the den, so be sure you have everything ready before departing.{1}{2} Used to cast most spells. Your spellbook will let you know which spells cannot be cast without a garb.": [
     "tgui:AntagInfoWizard"
   ],
-  "{0} Arousal": [
-    "tgui:InfoSection"
-  ],
   "{0} Building items...": [
     "tgui:DesignBrowser"
   ],
@@ -42161,14 +40617,8 @@
     "tgui:AuditScreen",
     "tgui:index"
   ],
-  "{0} Pain": [
-    "tgui:InfoSection"
-  ],
   "{0} Player Panel": [
     "tgui:PlayerPanel"
-  ],
-  "{0} Pleasure": [
-    "tgui:InfoSection"
   ],
   "{0} Purifying... {1}s": [
     "tgui:MassSpec"
@@ -42290,9 +40740,6 @@
   "{0} does not have any invocations.": [
     "tgui:ReligiousTool"
   ],
-  "{0} favorites": [
-    "tgui:InteractionsTab"
-  ],
   "{0} in stock": [
     "tgui:BlackMarketUplink"
   ],
@@ -42332,9 +40779,6 @@
   "{0} member{1}": [
     "tgui:CTFPanel"
   ],
-  "{0} minutes": [
-    "tgui:MKUltraUI"
-  ],
   "{0} of {1} units": [
     "tgui:Biogenerator"
   ],
@@ -42372,7 +40816,6 @@
   "{0} seconds": [
     "tgui:DopplerArray",
     "tgui:Graft",
-    "tgui:MKUltraUI",
     "tgui:MatMarket"
   ],
   "{0} sheets": [
@@ -42626,14 +41069,8 @@
   "{0}{1} Votes": [
     "tgui:VotePanel"
   ],
-  "{0}{1}MODsuit Not Worn": [
-    "tgui:MODsuitremote"
-  ],
   "{0}{1}NOTE: Custom sounds from outside the base game files will not save! :(": [
     "tgui:PresetsPage"
-  ],
-  "{0}{1}Not installed": [
-    "tgui:MODsuitremote"
   ],
   "{0}{1}Physical Age: {2}{3}Chronological Age: {4}{5}Bloodtype: {6}{7}Minor Disabilities:{8}Major Disabilities:{9}{10}Notes: {11}": [
     "tgui:NtosRecords"
@@ -42682,6 +41119,24 @@
   ],
   "∞ minutes": [
     "tgui:ExoscannerConsole"
+  ],
+  "「阶段」= 倒计时开始后到第 N 分钟时，把上方标题换成指定文本；可以设任意多条。 没到第一条阶段之前显示静态标题。只影响标题那一行，倒计时数字与结束文本不受影响。 「新增阶段」会自动接着上一条 +1 分钟，所以连点几次就是 1 分、2 分、3 分…各变一次。": [
+    "tgui:TianGuanCountdownStages"
+  ],
+  "回合开始时不自动显示左上角的「指南浏览器」按钮。勾/取消不会当场改变按钮，下个回合开始（或重新进服）时生效；当前回合的显示/隐藏请用 OOC 栏的指令。": [
+    "tgui:tianguan_guide_button"
+  ],
+  "复用「点唱机上传音乐」（.ogg / .mp3 均可；文件名需 标题+节拍）": [
+    "tgui:TianGuanCountdown"
+  ],
+  "想让标题随倒计时变化（开始后第 N 秒换成别的文本）⇒ 用「标题阶段」": [
+    "tgui:TianGuanCountdown"
+  ],
+  "支持 .ogg / .mp3。上传的自动开始传输；曲库里已有的点「传输」才传": [
+    "tgui:TianGuanSoundBoard"
+  ],
+  "点唱机曲库为空 —— 先用「点唱机上传音乐」上传 .ogg / .mp3": [
+    "tgui:TianGuanCountdown"
   ],
   "📊 No data available": [
     "tgui:AdminTicketStats"

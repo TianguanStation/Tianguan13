@@ -115,7 +115,6 @@
 /obj/item/clothing/accessory/medal/gold/ordom,
 /obj/item/clothing/accessory/medal/silver/bureaucracy,
 /obj/item/hand_labeler,
-/obj/structure/sign/poster/official/no_erp/directional/north,
 /obj/item/taperecorder{
 	name = "Captain's Log"
 	},

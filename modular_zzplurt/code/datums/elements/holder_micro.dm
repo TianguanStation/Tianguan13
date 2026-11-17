@@ -5,12 +5,7 @@
 	. = ..()
 
 	RegisterSignal(target, COMSIG_CLICK_ALT, PROC_REF(mob_try_pickup_micro), TRUE)
-	RegisterSignal(target, COMSIG_MICRO_PICKUP_FEET, PROC_REF(mob_pickup_micro_feet))
 	RegisterSignal(target, COMSIG_MOB_RESIZED, PROC_REF(on_resize))
-
-/datum/element/mob_holder/micro/Detach(datum/source, force)
-	. = ..()
-	UnregisterSignal(source, COMSIG_MICRO_PICKUP_FEET)
 
 /datum/element/mob_holder/micro/proc/on_resize(mob/living/micro, new_size, old_size)
 	var/obj/item/mob_holder/holder = micro.loc
@@ -44,14 +39,6 @@
 		return
 
 	user.put_in_hands(holder)
-	return
-
-//shoehorned (get it?) and lazy way to do instant foot pickups cause haha funny.
-/datum/element/mob_holder/micro/proc/mob_pickup_micro_feet(mob/living/source, mob/user)
-	var/obj/item/mob_holder/micro/holder = new(get_turf(source), source, worn_state, alt_worn, right_hand, left_hand, inv_slots)
-	if(!holder)
-		return
-	user.equip_to_slot(holder, ITEM_SLOT_FEET)
 	return
 
 /datum/element/mob_holder/micro/proc/mob_try_pickup_micro(mob/living/carbon/source, mob/living/carbon/user)

@@ -9,6 +9,7 @@
 		"thermomachine",
 		"space_heater",
 		"scrubber",
+		"light_liquid_siphon", // TIANGUAN EDIT ADDITION - LIQUID_SIPHON
 		"generic_tank",
 		"oxygen_tank",
 		"plasma_tank",

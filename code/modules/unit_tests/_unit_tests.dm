@@ -407,8 +407,10 @@
 #include "~zh\slime_naming.dm"
 #include "~zh\vore_default_i18n.dm"
 #include "~zh\tts_controls.dm"
-#include "~zh\splurt_i18n.dm"
 // ZH EDIT END
+// TIANGUAN EDIT START
+#include "~tianguan\sponsor_loadout.dm"
+// TIANGUAN EDIT END
 // END_INCLUDE
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"

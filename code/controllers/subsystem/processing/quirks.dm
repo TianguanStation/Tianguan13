@@ -45,7 +45,6 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/echolocation, /datum/quirk/item_quirk/blindness, /datum/quirk/item_quirk/nearsighted, /datum/quirk/item_quirk/deafness),
 	list(/datum/quirk/featherweight, /datum/quirk/oversized),
 	list(/datum/quirk/overweight, /datum/quirk/obese),
-	list(/datum/quirk/dominant_aura, /datum/quirk/well_trained),
 	list(/datum/quirk/equipping/entombed, /datum/quirk/equipping/seamless_clothes),
 	list(/datum/quirk/equipping/entombed, /datum/quirk/badback),
 	list(/datum/quirk/unblinking, /datum/quirk/item_quirk/fluoride_stare),
@@ -64,39 +63,13 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	// Bloodfledges do not use standard thirst
 	list(/datum/quirk/item_quirk/bloodfledge, /datum/quirk/thirsty),
 
-	// Causes a direct mechanical conflict.
-	//list(/datum/quirk/jiggly_ass,/datum/quirk/buns_of_steel),
-	list(/datum/quirk/jiggly_ass,/datum/quirk/personalspace),
 
 	// SPLURT EDIT: Glow seperated from rad fiend - Rad fiend made incompatible with budget version
 	list(/datum/quirk/rad_fiend, /datum/quirk/isotropic_stability),
 
-	// You have an irremovable suit.
-	list(/datum/quirk/nudist,/datum/quirk/equipping/entombed),
-
 	// Conflicting health add-remove effect.
 	//list(/datum/quirk/flimsy,/datum/quirk/tough),
 
-	// You must have working eyes for hypnotic gaze.
-	// NOTE: Quirk was replaced by NIFsoft
-	list(/datum/quirk/hypnotic_gaze,/datum/quirk/item_quirk/blindness),
-	list(/datum/quirk/hypnotic_gaze,/datum/quirk/echolocation),
-
-	// You can't smell anything!
-	list(/datum/quirk/cum_sniff,/datum/quirk/item_quirk/anosmia),
-
-	// You can't choke if you don't breathe
-	list(/datum/quirk/choke_slut, /datum/quirk/breathless),
-
-	// Direct mechanical conflict
-	list(/datum/quirk/bad_touch, /datum/quirk/headpat_slut),
-	list(/datum/quirk/bad_touch, /datum/quirk/excitable),
-
-	// Addict quirks fail if the mob has TRAIT_LIVERLESS_METABOLISM
-	// Any quirk that gives this trait should be blacklisted
-	list(/datum/quirk/item_quirk/addict/alcoholic, /datum/quirk/concubus),
-	list(/datum/quirk/item_quirk/addict/junkie, /datum/quirk/concubus),
-	list(/datum/quirk/item_quirk/addict/smoker, /datum/quirk/concubus),
 	list(/datum/quirk/hemophage, /datum/quirk/item_quirk/immunodeficiency),
 	list(/datum/quirk/paraplegic, /datum/quirk/paraplegic/motorized),
 	//SPLURT EDIT ADDITION END
@@ -156,9 +129,6 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	for(var/type in quirk_list)
 		var/datum/quirk/quirk_type = type
 		// SKYRAT EDIT ADDITION START
-
-		if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
-			continue
 		// Hidden quirks aren't visible to TGUI or the player
 		#if !defined(UNIT_TESTS)
 		if (initial(quirk_type.hidden_quirk))

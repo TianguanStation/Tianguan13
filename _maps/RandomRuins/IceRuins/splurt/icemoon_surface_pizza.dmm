@@ -1168,7 +1168,6 @@
 /turf/open/misc/asteroid/snow/icemoon/do_not_chasm,
 /area/icemoon/surface/outdoors/nospawn)
 "qY" = (
-/obj/item/vending_refill/lustwish,
 /obj/item/circuitboard/machine/vendor,
 /obj/structure/closet/crate/trashcart,
 /obj/effect/spawner/random/trash/food_packaging,

@@ -34,7 +34,6 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
-/obj/item/reagent_containers/cup/bottle/hexacrocin,
 /obj/structure/table,
 /turf/open/floor/carpet/royalblue,
 /area/misc/condo)
@@ -319,7 +318,6 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
-/obj/machinery/vending/dorms,
 /turf/open/floor/carpet/royalblue,
 /area/misc/condo)
 "CU" = (
@@ -335,7 +333,6 @@
 /area/misc/condo)
 "CY" = (
 /obj/machinery/light_switch/directional/east,
-/obj/machinery/vending/dorms,
 /turf/open/floor/wood,
 /area/misc/condo)
 "CZ" = (

@@ -32,9 +32,6 @@
 	item_path = /obj/item/clothing/shoes/highheels
 
 
-/datum/loadout_item/shoes/latex
-	name = "Latex Socks"
-	item_path = /obj/item/clothing/shoes/latex_socks
 */
 
 
@@ -42,7 +39,3 @@
 	name = "High-heel Sandals"
 	item_path = /obj/item/clothing/shoes/highheel_sandals
 
-/datum/loadout_item/shoes/clussy_heels
-	name = "Clussy heels"
-	item_path = /obj/item/clothing/shoes/clown_shoes/clussy_heels
-	restricted_roles = list(JOB_CLOWN)

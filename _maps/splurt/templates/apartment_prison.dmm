@@ -9,7 +9,6 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
-/obj/machinery/vending/dorms,
 /obj/machinery/camera/directional/north{
 	network = list("prison-dorm");
 	c_tag = "Cell Access"
@@ -76,11 +75,6 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
-/obj/item/restraints/handcuffs/lewd{
-	pixel_y = 4;
-	pixel_x = -3
-	},
-/obj/item/restraints/handcuffs/lewd,
 /turf/open/floor/iron/dark,
 /area/misc/condo)
 "gE" = (
@@ -176,8 +170,6 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
-/obj/item/clothing/sextoy/dildo/custom_dildo,
-/obj/item/clothing/sextoy/dildo/double_dildo,
 /turf/open/floor/iron/dark,
 /area/misc/condo)
 "mk" = (
@@ -416,8 +408,6 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
-/obj/item/clothing/mask/leatherwhip,
-/obj/item/clothing/head/domina_cap,
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/misc/condo)
@@ -635,15 +625,9 @@
 "RP" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/item/clothing/glasses/blindfold/kinky,
-/obj/item/clothing/glasses/blindfold/kinky,
-/obj/item/clothing/glasses/blindfold/kinky,
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 4
 	},
-/obj/item/clothing/mask/ballgag,
-/obj/item/clothing/mask/ballgag,
-/obj/item/clothing/mask/ballgag,
 /turf/open/floor/iron,
 /area/misc/condo)
 "RS" = (
@@ -735,7 +719,6 @@
 /area/misc/condo)
 "Vz" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/item/clothing/erp_leash,
 /obj/structure/table,
 /turf/open/floor/iron/dark,
 /area/misc/condo)

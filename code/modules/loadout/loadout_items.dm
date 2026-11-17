@@ -77,8 +77,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	var/donator_only
 	/// Whether the item requires a specific season in order to be available
 	var/required_season = null
-	/// If the item won't appear when the ERP config is disabled
-	var/erp_item = FALSE
 	// BUBBER EDIT END
 
 /datum/loadout_item/New(category)

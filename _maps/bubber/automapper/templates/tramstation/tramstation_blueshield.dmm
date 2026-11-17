@@ -262,7 +262,6 @@
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/captain)
 "H" = (
-/obj/structure/sign/poster/official/no_erp/directional/north,
 /obj/structure/bed,
 /obj/item/bedsheet/nanotrasen,
 /obj/machinery/light/small/directional/east,

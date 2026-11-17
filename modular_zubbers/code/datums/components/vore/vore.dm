@@ -378,13 +378,13 @@
 	if(!check_vore_preferences(parent, pred, prey))
 		return
 	#ifdef VORE_DELAY
-	pred.visible_message(span_danger(LANG("datum.d162a0f01d1a4daf", list(pred, LOWER_TEXT(selected_belly.insert_verb), prey, LOWER_TEXT(selected_belly.name)))), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	pred.visible_message(span_danger(LANG("datum.d162a0f01d1a4daf", list(pred, LOWER_TEXT(selected_belly.insert_verb), prey, LOWER_TEXT(selected_belly.name)))), pref_to_check = /datum/preference/toggle/vore_enable)
 	if(!do_after(pred, VORE_DELAY, prey))
 		return
 	if((!check_vore_grab(pred) && !istype(prey.loc, /obj/item/mob_holder)) || !check_vore_preferences(parent, pred, prey, assume_active_consent = TRUE))
 		return
 	#endif
-	pred.visible_message(span_danger(LANG("datum.8af2838287d68ab5", list(pred, LOWER_TEXT(selected_belly.insert_verb), prey, LOWER_TEXT(selected_belly.name)))), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	pred.visible_message(span_danger(LANG("datum.8af2838287d68ab5", list(pred, LOWER_TEXT(selected_belly.insert_verb), prey, LOWER_TEXT(selected_belly.name)))), pref_to_check = /datum/preference/toggle/vore_enable)
 	complete_vore(prey)
 
 /datum/component/vore/proc/feed_self_to_other()
@@ -398,13 +398,13 @@
 	// check_vore_preferences asserts this exists
 	var/datum/component/vore/pred_component = pred.GetComponent(/datum/component/vore)
 	#ifdef VORE_DELAY
-	prey.visible_message(span_danger(LANG("datum.a85ac441a57b9048", list(prey, pred, LOWER_TEXT(pred_component.selected_belly.insert_verb), prey, LOWER_TEXT(pred_component.selected_belly.name)))), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	prey.visible_message(span_danger(LANG("datum.a85ac441a57b9048", list(prey, pred, LOWER_TEXT(pred_component.selected_belly.insert_verb), prey, LOWER_TEXT(pred_component.selected_belly.name)))), pref_to_check = /datum/preference/toggle/vore_enable)
 	if(!do_after(prey, VORE_DELAY, pred))
 		return
 	if(!check_vore_grab(prey) || !check_vore_preferences(parent, pred, prey, assume_active_consent = TRUE))
 		return
 	#endif
-	prey.visible_message(span_danger(LANG("datum.043b7c7167ca78e2", list(prey, pred, LOWER_TEXT(pred_component.selected_belly.insert_verb), prey, LOWER_TEXT(pred_component.selected_belly.name)))), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	prey.visible_message(span_danger(LANG("datum.043b7c7167ca78e2", list(prey, pred, LOWER_TEXT(pred_component.selected_belly.insert_verb), prey, LOWER_TEXT(pred_component.selected_belly.name)))), pref_to_check = /datum/preference/toggle/vore_enable)
 	pred_component.complete_vore(prey)
 
 /datum/component/vore/proc/feed_other_to_other(mob/living/pred, mob/living/prey)
@@ -421,7 +421,7 @@
 	// check_vore_preferences asserts this exists
 	var/datum/component/vore/pred_component = pred.GetComponent(/datum/component/vore)
 	#ifdef VORE_DELAY
-	feeder.visible_message(span_danger(LANG("datum.a85ac441a57b9048", list(feeder, pred, LOWER_TEXT(pred_component.selected_belly.insert_verb), prey, LOWER_TEXT(pred_component.selected_belly.name)))), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	feeder.visible_message(span_danger(LANG("datum.a85ac441a57b9048", list(feeder, pred, LOWER_TEXT(pred_component.selected_belly.insert_verb), prey, LOWER_TEXT(pred_component.selected_belly.name)))), pref_to_check = /datum/preference/toggle/vore_enable)
 	if(!do_after(feeder, VORE_DELAY, pred))
 		return
 	if((!check_vore_grab(pred) && !istype(prey.loc, /obj/item/mob_holder)) || !check_vore_preferences(feeder, pred, prey, assume_active_consent = TRUE))
@@ -429,7 +429,7 @@
 	if(!feeder.can_perform_action(pred, pred.interaction_flags_click | FORBID_TELEKINESIS_REACH))
 		return
 	#endif
-	feeder.visible_message(span_danger(LANG("datum.043b7c7167ca78e2", list(feeder, pred, LOWER_TEXT(pred_component.selected_belly.insert_verb), prey, LOWER_TEXT(pred_component.selected_belly.name)))), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	feeder.visible_message(span_danger(LANG("datum.043b7c7167ca78e2", list(feeder, pred, LOWER_TEXT(pred_component.selected_belly.insert_verb), prey, LOWER_TEXT(pred_component.selected_belly.name)))), pref_to_check = /datum/preference/toggle/vore_enable)
 	pred_component.complete_vore(prey)
 
 /datum/component/vore/proc/complete_vore(mob/living/prey)

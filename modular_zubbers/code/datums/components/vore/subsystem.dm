@@ -21,7 +21,7 @@ PROCESSING_SUBSYSTEM_DEF(vore)
 /datum/controller/subsystem/processing/vore/proc/on_mob_login(datum/source, mob/new_login)
 	SIGNAL_HANDLER
 	if(is_type_in_typecache(new_login, GLOB.vore_allowed_mob_types) && new_login.client)
-		var/enable_vore = new_login.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable)
+		var/enable_vore = new_login.client.prefs.read_preference(/datum/preference/toggle/vore_enable)
 		if(enable_vore)
 			// vore is COMPONENT_DUPE_UNIQUE so this is safe to just call even if they already had vore enabled
 			new_login._AddComponent(list(/datum/component/vore))

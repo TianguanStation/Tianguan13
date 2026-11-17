@@ -30,14 +30,8 @@
 
 #define TRAIT_TORPOR "torpor"
 
-//lipstick trait
-#define TRAIT_HYPNO_KISS "hypno kiss"
-
 // Shows extended examine option when worn
 #define TRAIT_WORN_EXAMINE "worn_examine"
-
-// MK Ultra Skillchip
-#define TRAIT_PET_SKILLCHIP "mkii_ultra"
 
 #define TRAIT_SIGN_LANGUAGE_BLOCKED "sign_language_blocked"
 
@@ -96,3 +90,6 @@
 
 /// Prevents from being buckled to anything
 #define TRAIT_NO_BUCKLE "trait_no_buckle"
+
+/// Applied to a mob wearing gloves that allow delicate hand surgery (e.g. cat paw gloves).
+#define TRAIT_GLOVE_SURGERY_PASSTHROUGH "glove_surgery_passthrough"

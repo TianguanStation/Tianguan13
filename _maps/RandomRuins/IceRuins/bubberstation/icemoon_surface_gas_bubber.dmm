@@ -766,7 +766,6 @@
 /turf/open/floor/plating/lavaland_atmos,
 /area/ruin/thelizardsgas_lavaland)
 "kr" = (
-/obj/machinery/vending/dorms,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 8
 	},

@@ -3,7 +3,6 @@
 	name = "Abductor"
 	id = SPECIES_ABDUCTOR
 	sexes = TRUE // BUBBER EDIT: Lets abductors have pronouns. Abductors are asexual/agender, but they still can present however they wish for cosmetic purposes.
-	can_have_genitals = TRUE // BUBBER EDIT: Lets abductors have genitals.
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS, //BUBBER EDIT: Lets abductors change their skin color
 		TRAIT_ABDUCTOR_HUD,

@@ -144,7 +144,6 @@
 /area/misc/condo)
 "sU" = (
 /obj/structure/flora/bush/flowers_br/style_random,
-/obj/machinery/vending/dorms,
 /turf/open/floor/grass,
 /area/misc/condo)
 "tu" = (

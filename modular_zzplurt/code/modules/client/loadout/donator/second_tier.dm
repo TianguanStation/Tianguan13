@@ -1,9 +1,4 @@
 //Backpack
-/datum/loadout_item/inhand/donator/backpack/crocinpen/plus
-	name = "Shot of concentrated lust"
-	item_path = /obj/item/reagent_containers/hypospray/medipen/crocin/plus
-	donator_tier = DONATOR_TIER_2
-
 /datum/loadout_item/inhand/donator/backpack/prospen
 	name = "Extra height shot"
 	item_path = /obj/item/reagent_containers/hypospray/medipen/prospacillin

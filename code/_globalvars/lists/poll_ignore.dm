@@ -43,7 +43,6 @@
 #define POLL_IGNORE_RECOVERED_CREW "recovered_crew"
 #define POLL_IGNORE_EXPERIMENTAL_CLONER "experimental_cloner"
 #define POLL_IGNORE_FREE_SPORE "free_spore"
-#define POLL_IGNORE_PREGNANCY "pregnancy" // SPLURT EDIT ADDITION
 
 GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_ACADEMY_WIZARD = "Academy Wizard Defender",
@@ -87,7 +86,6 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_VENUSHUMANTRAP = "Venus Human Traps",
 	POLL_IGNORE_RECOVERED_CREW = "Recovered Crew",
 	POLL_IGNORE_FREE_SPORE = "Free spore",
-	POLL_IGNORE_PREGNANCY = "Pregnancy", // SPLURT EDIT ADDITION
 ))
 GLOBAL_LIST_INIT(poll_ignore, init_poll_ignore())
 

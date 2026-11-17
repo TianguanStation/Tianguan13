@@ -7,31 +7,6 @@
 
 	if(href_list["lookup_info"])
 		switch(href_list["lookup_info"])
-			if("genitals")
-				var/list/line = list()
-				for(var/genital in GLOB.possible_genitals)
-					if(!dna.species.mutant_bodyparts[genital])
-						continue
-					var/datum/sprite_accessory/genital/G = SSaccessories.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
-					if(!G)
-						continue
-					if(G.is_hidden(src))
-						continue
-					var/obj/item/organ/genital/ORG = get_organ_slot(G.associated_organ_slot)
-					if(!ORG)
-						continue
-					//SPLURT EDIT - Adds genital sniffing to examine text and bodywriting
-					var/genital_sniff = ""
-					var/bodywriting = ""
-					if(ORG.written_text)
-						bodywriting = ". It has \"[html_encode(ORG.written_text)]\" written on it."
-					if(HAS_TRAIT(usr, TRAIT_GFLUID_DETECT))
-						var/datum/reagent/cummies = GLOB.chemical_reagents_list[ORG.internal_fluid_datum]
-						genital_sniff = cummies ? ". You smell <span style='color:[cummies.color]';>[cummies.name]</span> brewing inside..." : ""
-					line += ORG.get_description_string(G) + genital_sniff + bodywriting
-					//SPLURT EDIT END
-				if(length(line))
-					to_chat(usr, span_notice("[jointext(line, "\n")]"))
 			if("open_examine_panel")
 				tgui.holder = src
 				tgui.ui_interact(usr) //datum has a tgui component, here we open the window
@@ -84,7 +59,7 @@
 /mob/living/carbon/human/species/serpentid
 	race = /datum/species/gas
 
-GAME_VERB_DESC(/mob/living/carbon/human, toggle_undies, "切换内衣可见性", "Allows you to toggle which underwear should show or be hidden. Underwear will obscure genitals.", "IC")
+GAME_VERB_DESC(/mob/living/carbon/human, toggle_undies, "切换内衣可见性", "Allows you to toggle which underwear should show or be hidden.", "IC")
 	if(IS_UNCONSCIOUS_OR_CRIT(src))
 		to_chat(usr, span_warning(LANG("mob.f9be4f776be7059d", null)))
 		return

@@ -344,38 +344,6 @@
 			if(src_tail && !(src_tail.wag_flags & WAG_WAGGING))
 				emote("wag")
 		//SKYRAT EDIT ADDITION END
-		// SPLURT EDIT BEGIN - Headpat Slut quirk
-		if(HAS_TRAIT(src, TRAIT_HEADPAT_SLUT))
-			// Display messages to participants
-			to_chat(helper, span_purple(LANG("mob.d37d75df1f11a897", list(src))))
-			to_chat(src, span_purple(LANG("mob.646f4f3e5751bfe3", list(helper, helper.p_their()))))
-
-			// Add mood events
-			add_mood_event(QMOOD_HEADPAT_SLUT, /datum/mood_event/headpat_slut/recipient, helper)
-			helper.add_mood_event("petting_bonus", /datum/mood_event/headpat_slut/giver, src)
-
-			// Define target
-			var/mob/living/carbon/human/target_mob = src
-
-			// Increase arousal
-			target_mob?.adjust_arousal(5)
-			target_mob?.adjust_pleasure(2.5)
-			target_mob.client?.plug13.send_emote(PLUG13_EMOTE_FACE, PLUG13_STRENGTH_MEDIUM, PLUG13_DURATION_SHORT)
-
-			// Small chance of additional effects
-			if(prob(10))
-				// Attempt to auto-emote
-				try_lewd_autoemote(pick("moan", "blush"))
-
-				// Increase dizziness
-				set_dizzy_if_lower(3 SECONDS)
-
-				// Check for well trained
-				if(has_quirk(/datum/quirk/well_trained))
-					// Induce helplessness
-					Stun(5)
-
-		// SPLURT EDIT END
 
 	else if ((helper.zone_selected == BODY_ZONE_PRECISE_GROIN) && !isnull(src.get_organ_by_type(/obj/item/organ/tail)))
 		helper.visible_message(span_notice(LANG("mob.b3db66bbd9d9e03a", list(helper, src))), \
@@ -431,7 +399,6 @@
 					add_mood_event("hug", /datum/mood_event/hug) // Receiver always gets a mood for being hugged
 				else
 					add_mood_event("hug", /datum/mood_event/warmhug, helper) // You got a warm hug
-			helper.client?.plug13.send_emote(PLUG13_EMOTE_BASIC, PLUG13_STRENGTH_LOW_PLUS, PLUG13_DURATION_TINY)
 		else
 			if (helper.grab_state >= GRAB_AGGRESSIVE)
 				add_mood_event("hug", /datum/mood_event/bad_touch_bear_hug)

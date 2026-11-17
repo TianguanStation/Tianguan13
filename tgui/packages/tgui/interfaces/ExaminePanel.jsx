@@ -52,15 +52,12 @@ export const ExaminePanel = () => {
     obscured,
     assigned_map,
     flavor_text,
-    flavor_text_nsfw,
     ooc_notes,
     custom_species,
     custom_species_lore,
     character_ad,
     headshot,
-    headshot_nsfw,
     art_ref,
-    art_ref_nsfw,
   } = data;
 
   const handlePageChange = (page, newPage) => {
@@ -86,10 +83,8 @@ export const ExaminePanel = () => {
           <>
             {art_ref && (
               <Button
-                color={data.art_ref_nsfw ? 'pink' : 'green'}
-                tooltip={
-                  data.art_ref_nsfw ? 'NSFW Reference Image' : 'Reference Image'
-                }
+                color="green"
+                tooltip="Reference Image"
                 icon="image"
                 style={{
                   position: 'absolute',
@@ -144,11 +139,7 @@ export const ExaminePanel = () => {
                       style={{ textAlign: 'center' }}
                     >
                       <img
-                        src={
-                          tabIndex === 2
-                            ? resolveAsset(headshot_nsfw)
-                            : resolveAsset(headshot)
-                        }
+                        src={resolveAsset(headshot)}
                         height="250px"
                         width="250px"
                       />
@@ -175,16 +166,6 @@ export const ExaminePanel = () => {
                     >
                       <Section
                         fitted
-                        title={'NSFW (Warning)'}
-                        style={{ textAlign: 'center' }}
-                      />
-                    </Tabs.Tab>
-                    <Tabs.Tab
-                      selected={tabIndex === 3}
-                      onClick={() => setTabIndex(3)}
-                    >
-                      <Section
-                        fitted
                         title={
                           custom_species ? custom_species : 'Unnamed Species'
                         }
@@ -207,20 +188,6 @@ export const ExaminePanel = () => {
                     </Section>
                   )}
                   {tabIndex === 2 && (
-                    <Section
-                      style={{ 'overflow-y': 'scroll' }}
-                      fitted
-                      preserveWhitespace
-                      minHeight="50%"
-                      maxHeight="50%"
-                      fontSize="14px"
-                      lineHeight="1.7"
-                      textIndent="3em"
-                    >
-                      {formatURLs(flavor_text_nsfw)}
-                    </Section>
-                  )}
-                  {tabIndex === 3 && (
                     <Section
                       style={{ 'overflow-y': 'scroll' }}
                       fitted

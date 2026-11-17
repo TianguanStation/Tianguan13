@@ -40,8 +40,6 @@
 	var/list/ckey_whitelist
 	var/uses_emissives = FALSE
 	var/color_layer_names
-	/// If this sprite accessory will be inaccessable if ERP config is disabled
-	var/erp_accessory = FALSE
 	// If this sprite accessory should use something other than the feature_key to decide its sprite key
 	// For example, if TG has it different in their icon files (e.g. "_fish_tail_" instead of "_tail_")
 	// This should hopefully prevent the need to copy paste TG icons into tails.dmi
@@ -371,12 +369,6 @@
 	icon_state = "leggings-stir"
 	use_static = null
 
-/datum/sprite_accessory/clothing/socks/leggings/latex
-	name = "Socks - Latex"
-	icon_state = "socks_latex"
-	use_static = TRUE
-	erp_accessory = TRUE
-
 /datum/sprite_accessory/clothing/underwear
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	///Whether the underwear uses a special sprite for digitigrade style (i.e. briefs, not panties). Adds a "_d" suffix to the icon state
@@ -431,12 +423,6 @@
 	gender = FEMALE
 	use_static = TRUE
 
-/datum/sprite_accessory/clothing/underwear/female_kinky
-	name = "Panties - Kinky Black"
-	icon_state = "panties_kinky"
-	gender = FEMALE
-	use_static = TRUE
-
 /datum/sprite_accessory/clothing/underwear/panties_uk
 	name = "Panties - UK"
 	icon_state = "panties_uk"
@@ -488,34 +474,6 @@
 	gender = FEMALE
 	use_static = TRUE
 	hides_breasts = TRUE
-
-/datum/sprite_accessory/clothing/underwear/thong
-	name = "Thong"
-	icon_state = "thong"
-	gender = FEMALE
-
-/datum/sprite_accessory/clothing/underwear/thong_babydoll
-	name = "Thong - Alt"
-	icon_state = "thong_babydoll"
-	gender = FEMALE
-
-/datum/sprite_accessory/clothing/underwear/chastbelt
-	name = "Chastity Belt"
-	icon_state = "chastbelt"
-	use_static = TRUE
-	erp_accessory = TRUE
-
-/datum/sprite_accessory/clothing/underwear/chastcage
-	name = "Chastity Cage"
-	icon_state = "chastcage"
-	use_static = null
-	erp_accessory = TRUE
-
-/datum/sprite_accessory/clothing/underwear/latex
-	name = "Panties - Latex"
-	icon_state = "panties_latex"
-	use_static = TRUE
-	erp_accessory = TRUE
 
 /datum/sprite_accessory/clothing/undershirt/lizared
 	name = "LIZARED Top"
@@ -625,12 +583,6 @@
 	gender = FEMALE
 	use_static = null
 
-/datum/sprite_accessory/clothing/bra/bra_kinky
-	name = "Bra - Kinky Black"
-	icon_state = "bra_kinky"
-	gender = FEMALE
-	use_static = TRUE
-
 /datum/sprite_accessory/clothing/bra/bra_freedom
 	name = "Bra - Freedom"
 	icon_state = "bra_assblastusa"
@@ -697,13 +649,6 @@
 	gender = FEMALE
 	use_static = null
 
-/datum/sprite_accessory/clothing/bra/bra_latex
-	name = "Bra, Latex"
-	icon_state = "bra_latex"
-	gender = FEMALE
-	use_static = TRUE
-	erp_accessory = TRUE
-
 /datum/sprite_accessory/clothing/bra/striped_bra
 	name = "Bra - Striped"
 	icon_state = "striped_bra"
@@ -737,41 +682,6 @@
 	name = "Fishnet - Sleeveless (Greyscale)"
 	icon_state = "fishnet_body_alt"
 	use_static = null
-
-/datum/sprite_accessory/clothing/bra/chastbra
-	name = "Chastity Bra"
-	icon_state = "chastbra"
-	gender = FEMALE
-	use_static = TRUE
-	erp_accessory = TRUE
-
-/datum/sprite_accessory/clothing/bra/pasties
-	name = "Pasties"
-	icon_state = "pasties"
-	gender = FEMALE
-	use_static = null
-	erp_accessory = TRUE
-
-/datum/sprite_accessory/clothing/bra/pasties_alt
-	name = "Pasties - Alt"
-	icon_state = "pasties_alt"
-	gender = FEMALE
-	use_static = null
-	erp_accessory = TRUE
-
-/datum/sprite_accessory/clothing/bra/shibari
-	name = "Shibari"
-	icon_state = "shibari"
-	gender = FEMALE
-	use_static = null
-	erp_accessory = TRUE
-
-/datum/sprite_accessory/clothing/bra/shibari_sleeves
-	name = "Shibari Sleeves"
-	icon_state = "shibari_sleeves"
-	gender = FEMALE
-	use_static = null
-	erp_accessory = TRUE
 
 /datum/sprite_accessory/clothing/bra/swimsuit
 	name = "Swimsuit Top"

@@ -1162,7 +1162,6 @@
 /area/ruin/space/has_grav/hotel/bar)
 "lh" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/structure/sign/poster/official/no_erp/directional/north,
 /turf/open/floor/iron/dark/side,
 /area/ruin/space/has_grav/hotel)
 "lj" = (

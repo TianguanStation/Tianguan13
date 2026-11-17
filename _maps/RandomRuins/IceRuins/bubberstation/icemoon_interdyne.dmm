@@ -6989,10 +6989,6 @@
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/main)
 "Xz" = (
-/obj/machinery/vending/dorms{
-	onstation = 0;
-	onstation_override = 1
-	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "XN" = (

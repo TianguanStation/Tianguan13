@@ -1,26 +1,4 @@
-//Misc
-
-/datum/loadout_item/inhand/donator/portal_fleshlight
-	name = "Portal Fleshlight and Underwear"
-	item_path = /obj/item/storage/box/portal_fleshlight
-	donator_tier = DONATOR_TIER_1
-
 //Backpack
-/datum/loadout_item/inhand/donator/backpack/crocinpen
-	name = "Emergency aphrodisiac shot"
-	item_path = /obj/item/reagent_containers/hypospray/medipen/crocin
-	donator_tier = DONATOR_TIER_1
-
-/datum/loadout_item/inhand/donator/backpack/succupen
-	name = "Succubus milk autoinjector"
-	item_path = /obj/item/reagent_containers/hypospray/medipen/breastgrowth
-	donator_tier = DONATOR_TIER_1
-
-/datum/loadout_item/inhand/donator/backpack/incupen
-	name = "Incubus draft autoinjector"
-	item_path = /obj/item/reagent_containers/hypospray/medipen/penisgrowth
-	donator_tier = DONATOR_TIER_1
-
 /datum/loadout_item/inhand/donator/backpack/plushbox/deluxe
 	name = "Deluxe Plushie Choice Box"
 	item_path = /obj/item/choice_beacon/box/plushie/deluxe

@@ -31,6 +31,7 @@ $_channel_map: (
   // BUBBER EDIT - START
   'LOOC': hsl(48, 41%, 49%),
   'Whis': hsl(336, 41%, 65%), // BUBBER EDIT - END
+  'UAR': hsl(0, 100%, 27.3%), // TIANGUAN EDIT ADDITION - UAR
 );
 
 $channel_keys: map.keys($_channel_map) !default;

@@ -2,20 +2,6 @@
 	name = "Straight razor"
 	item_path = /obj/item/razor/straightrazor
 
-// Hyper stuff
-
-/datum/loadout_item/pocket_items/condom
-	name = "Condom"
-	item_path = /obj/item/condom_pack
-
-/datum/loadout_item/pocket_items/condom_box
-	name = "Box of Condoms"
-	item_path = /obj/item/storage/box/condoms
-
-// /datum/loadout_item/pocket_items/sounding // No-no-no-no
-// 	name = "Sounding rod"
-// 	item_path = /obj/item/genital_equipment/sounding
-
 //Lipstick
 /datum/loadout_item/pocket_items/lipstick/yellow
 	name = "Yellow Lipstick"
@@ -86,42 +72,6 @@
 /datum/loadout_item/pocket_items/hugbox
 	name = "Box of Hugs"
 	item_path = /obj/item/storage/box/hug
-
-/datum/loadout_item/pocket_items/shockcollar
-	name = "Shock Collar Kit"
-	item_path = /obj/item/electropack/shockcollar
-
-// /datum/loadout_item/pocket_items/standard_chastity_box // No-no-no-no
-// 	name = "Chastity Box"
-// 	item_path = /obj/item/storage/box/chastity_cage
-
-// /datum/loadout_item/pocket_items/metal_chastity_box
-// 	name = "Metal Chastity Box"
-// 	item_path = /obj/item/storage/box/chastity_cage/metal
-
-// /datum/loadout_item/pocket_items/belt_chastity_box
-// 	name = "Chastity Belt Box"
-// 	item_path = /obj/item/storage/box/chastity_cage/belt
-
-// /datum/loadout_item/pocket_items/estim_chastity_box
-// 	name = "E-Stim Chastity Box"
-// 	item_path = /obj/item/storage/box/chastity_cage/estim
-
-// /datum/loadout_item/pocket_items/chastity_hypno/magazine
-// 	name = "Hypnotic Chastity Magazine"
-// 	item_path = /obj/item/chastity_hypno/magazine
-
-// /datum/loadout_item/pocket_items/chastity_hypno/watch
-// 	name = "Hypnotic Chastity Watch"
-// 	item_path = /obj/item/chastity_hypno/watch
-
-// /datum/loadout_item/pocket_items/electropack/vibrator
-// 	name = "Vibrator"
-// 	item_path = /obj/item/clothing/sextoy/vibrator
-
-/datum/loadout_item/pocket_items/electropack/vibrator/small
-	name = "Remote Vibroegg"
-	item_path = /obj/item/clothing/sextoy/eggvib
 
 //
 /datum/loadout_item/pocket_items/plushbox

@@ -577,7 +577,6 @@
 "DD" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
-/obj/machinery/vending/dorms,
 /turf/open/indestructible/hotelwood{
 	force_no_gravity = 1
 	},

@@ -2138,7 +2138,6 @@
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/radio/intercom/directional/north,
-/obj/structure/sign/poster/official/no_erp/directional/east,
 /turf/open/floor/plating,
 /area/station/commons/dorms)
 "aDm" = (
@@ -61439,7 +61438,6 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/department/medical)
 "qpJ" = (
-/obj/structure/sign/poster/official/no_erp/directional/north,
 /obj/effect/turf_decal/tile/dark_green/half/contrasted{
 	dir = 1
 	},

@@ -305,9 +305,6 @@
 /turf/open/floor/fake_snow/safe,
 /area/misc/condo)
 "Wu" = (
-/obj/machinery/vending/dorms{
-	pixel_y = -10
-	},
 /turf/closed/indestructible/wood,
 /area/misc/condo)
 "XT" = (

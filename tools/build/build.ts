@@ -239,6 +239,7 @@ export const DmTarget = new Juke.Target({
     'modular_zubbers/**', ///BUBBER EDIT ADDITION - Making the CBT work
     'modular_zzplurt/**', ///SPLURT EDIT ADDITION - Making the CBT work
     'modular_zh/**', // ZH EDIT ADDITION - localization modules
+    'modular_tianguan/**', // TIANGUAN EDIT ADDITION - TianGuan modules
     'sound/**',
     'tgui/public/tgui.html',
     `${DME_NAME}.dme`,

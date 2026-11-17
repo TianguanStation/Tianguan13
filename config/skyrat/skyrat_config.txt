@@ -96,11 +96,6 @@ SSDECAY_DISABLE_NESTS
 ## Intensity of dirt generation for SSDecay (1-4) or set to 5 for random
 SSDECAY_INTENSITY 5
 
-## Disables any ERP preferences for codebases that don't want it.
-#DISABLE_ERP_PREFERENCES
-#DISABLE_LEWD_ITEMS
-#ERP_EMOTES_TO_DISABLE cum
-
 ## Disables mismatched parts for codebases that don't want it.
 #DISABLE_MISMATCHED_PARTS
 
@@ -147,6 +142,9 @@ SIZE_COLLAR_MINIMUM 15
 ## These flags are automatically enabled if SQL_ENABLED isn't.
 DONATOR_LEGACY_SYSTEM
 MENTOR_LEGACY_SYSTEM
+TIANGUAN_STAR_LEGACY_SYSTEM
+## Comment out to disable TianGuan Star rank restrictions (e.g. UAR Inspector)
+ENABLE_TIANGUAN_STAR_RESTRICTIONS
 
 ## How much time arrivals shuttle should stay at station after its engines recharged before returning to interlink. In deciseconds. 150 - 15 seconds. 0 - disables autoreturn.
 ARRIVALS_WAIT 150

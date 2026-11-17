@@ -12,45 +12,13 @@ import {
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
-const erpTagColor = {
-  Unset: '#000000',
-  'Top - Dom': '#410308',
-  'Top - Switch': '#410308',
-  'Top - Sub': '#410308',
-  'Verse-Top - Dom': '#3d003b',
-  'Verse-Top - Switch': '#3d003b',
-  'Verse-Top - Sub': '#3d003b',
-  'Verse - Dom': '#310042',
-  'Verse - Switch': '#310042',
-  'Verse - Sub': '#310042',
-  'Verse-Bottom - Dom': '#29084b',
-  'Verse-Bottom - Switch': '#29084b',
-  'Verse-Bottom - Sub': '#29084b',
-  'Bottom - Dom': '#002f51',
-  'Bottom - Switch': '#002f51',
-  'Bottom - Sub': '#002f51',
-  'Check OOC Notes': '#333333',
-  'Ask (L)OOC': '#333333',
-  No: '#131313',
-  Yes: '#002901',
-};
-
 export const ZubbersCharacterDirectory = (props) => {
   const { data } = useBackend();
 
   const {
     personalVisibility,
-    personalAttraction,
     personalGender,
-    personalErpTag,
     personalVoreTag,
-    personalHypnoTag,
-    personalNonconTag,
-    // SPLURT EDIT START: EXTRA TAGS
-    personalExtremeTag,
-    personalExtremeHarmTag,
-    personalUnholyTag,
-    // SPLURT EDIT END: EXTRA TAGS
   } = data;
 
   return (
@@ -63,35 +31,12 @@ export const ZubbersCharacterDirectory = (props) => {
                 {personalVisibility ? 'Shown' : 'Not Shown'}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Attraction">
-              <Button fluid>{personalAttraction}</Button>
-            </LabeledList.Item>
             <LabeledList.Item label="Gender">
               <Button fluid>{personalGender}</Button>
-            </LabeledList.Item>
-            <LabeledList.Item label="ERP">
-              <Button fluid>{personalErpTag}</Button>
             </LabeledList.Item>
             <LabeledList.Item label="Vore">
               <Button fluid>{personalVoreTag}</Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Hypno">
-              <Button fluid>{personalHypnoTag}</Button>
-            </LabeledList.Item>
-            <LabeledList.Item label="Noncon">
-              <Button fluid>{personalNonconTag}</Button>
-            </LabeledList.Item>
-            {/* SPLURT EDIT START: EXTRA TAGS */}
-            <LabeledList.Item label="Extreme">
-              <Button fluid>{personalExtremeTag}</Button>
-            </LabeledList.Item>
-            <LabeledList.Item label="Extreme Harm">
-              <Button fluid>{personalExtremeHarmTag}</Button>
-            </LabeledList.Item>
-            <LabeledList.Item label="Unholy">
-              <Button fluid>{personalUnholyTag}</Button>
-            </LabeledList.Item>
-            {/* SPLURT EDIT END: EXTRA TAGS */}
           </LabeledList>
         </Section>
         <CharacterDirectoryList />
@@ -130,36 +75,7 @@ const CharacterDirectoryList = (props) => {
     character.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
-  const erpOrder = [
-    'Top - Dom',
-    'Top - Switch',
-    'Top - Sub',
-    'Bottom - Dom',
-    'Bottom - Switch',
-    'Bottom - Sub',
-    'Verse - Dom',
-    'Verse - Switch',
-    'Verse - Sub',
-    'Verse-Top - Dom',
-    'Verse-Top - Switch',
-    'Verse-Top - Sub',
-    'Verse-Bottom - Dom',
-    'Verse-Bottom - Switch',
-    'Verse-Bottom - Sub',
-    'Yes',
-    'Check OOC Notes',
-    'Ask (L)OOC',
-    'No',
-    'Unset',
-  ];
-
   const sortedDirectory = filteredDirectory.slice().sort((a, b) => {
-    if (sortId === 'erp') {
-      const indexA = erpOrder.indexOf(a.erp);
-      const indexB = erpOrder.indexOf(b.erp);
-      return sortOrder === 'desc' ? indexA - indexB : indexB - indexA; // Toggle between descending and ascending
-    }
-
     const sortOrderValue = sortOrder === 'asc' ? 1 : -1;
     return sortOrderValue * a[sortId].localeCompare(b[sortId]);
   });
@@ -205,28 +121,12 @@ const CharacterDirectoryList = (props) => {
             Species
           </SortButton>
           <SortButton
-            id="attraction"
-            sortId={sortId}
-            sortOrder={sortOrder}
-            onClick={handleSort}
-          >
-            Attraction
-          </SortButton>
-          <SortButton
             id="gender"
             sortId={sortId}
             sortOrder={sortOrder}
             onClick={handleSort}
           >
             Gender
-          </SortButton>
-          <SortButton
-            id="erp"
-            sortId={sortId}
-            sortOrder={sortOrder}
-            onClick={handleSort}
-          >
-            ERP
           </SortButton>
           <SortButton
             id="vore"
@@ -236,58 +136,15 @@ const CharacterDirectoryList = (props) => {
           >
             Vore
           </SortButton>
-          <SortButton
-            id="hypno"
-            sortId={sortId}
-            sortOrder={sortOrder}
-            onClick={handleSort}
-          >
-            Hypno
-          </SortButton>
-          <SortButton
-            id="noncon"
-            sortId={sortId}
-            sortOrder={sortOrder}
-            onClick={handleSort}
-          >
-            Noncon
-          </SortButton>
-          {/* SPLURT EDIT START: EXTRA TAGS */}
-          <SortButton
-            id="extreme"
-            sortId={sortId}
-            sortOrder={sortOrder}
-            onClick={handleSort}
-          >
-            Extreme
-          </SortButton>
-          <SortButton
-            id="extremeharm"
-            sortId={sortId}
-            sortOrder={sortOrder}
-            onClick={handleSort}
-          >
-            Extreme Harm
-          </SortButton>
-          <SortButton
-            id="unholy"
-            sortId={sortId}
-            sortOrder={sortOrder}
-            onClick={handleSort}
-          >
-            Unholy
-          </SortButton>
-          {/* SPLURT EDIT END: EXTRA TAGS */}
           <Table.Cell collapsing textAlign="right">
             Advert
           </Table.Cell>
         </Table.Row>
         {sortedDirectory.map((character, i) => (
-          <Table.Row key={i} backgroundColor={erpTagColor[character.erp]}>
+          <Table.Row key={i}>
             <Table.Cell p={1}>
               {canOrbit ? (
                 <Button
-                  color={erpTagColor[character.erp]}
                   icon="ghost"
                   tooltip="Orbit"
                   onClick={() => act('orbit', { ref: character.ref })}
@@ -299,17 +156,8 @@ const CharacterDirectoryList = (props) => {
               )}
             </Table.Cell>
             <Table.Cell>{character.species}</Table.Cell>
-            <Table.Cell>{character.attraction}</Table.Cell>
             <Table.Cell>{character.gender}</Table.Cell>
-            <Table.Cell>{character.erp}</Table.Cell>
             <Table.Cell>{character.vore}</Table.Cell>
-            <Table.Cell>{character.hypno}</Table.Cell>
-            <Table.Cell>{character.noncon}</Table.Cell>
-            {/* SPLURT EDIT START: EXTRA TAGS */}
-            <Table.Cell>{character.extreme}</Table.Cell>
-            <Table.Cell>{character.extremeharm}</Table.Cell>
-            <Table.Cell>{character.unholy}</Table.Cell>
-            {/* SPLURT EDIT END: EXTRA TAGS */}
             <Table.Cell collapsing textAlign="right">
               <Button
                 onClick={() => act('view', { ref: character.ref })}

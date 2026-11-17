@@ -7,8 +7,6 @@
 
 #define MODULAR_SAVEFILE_UP_TO_DATE -1
 
-#define VERSION_GENITAL_TOGGLES 1
-#define VERSION_BREAST_SIZE_CHANGE 2
 #define VERSION_SYNTH_REFACTOR 3
 #define VERSION_UNDERSHIRT_BRA_SPLIT 4
 #define VERSION_CHRONOLOGICAL_AGE 5
@@ -98,36 +96,6 @@
 /// Brings a savefile up to date with modular preferences. Called if savefile_needs_update_skyrat() returned a value higher than 0
 /datum/preferences/proc/update_character_skyrat(current_version, list/save_data)
 	to_chat(parent, custom_boxed_message("red_box", span_bolddanger("Updating preference values, if you don't see the second half of this message, ahelp immediately!")))
-	if(current_version < VERSION_GENITAL_TOGGLES)
-		// removed genital toggles, with the new choiced prefs paths as assoc
-		var/static/list/old_toggles
-		if(!old_toggles)
-			old_toggles = list(
-				"penis_toggle" = /datum/preference/choiced/genital/penis,
-				"testicles_toggle" = /datum/preference/choiced/genital/testicles,
-				"vagina_toggle" = /datum/preference/choiced/genital/vagina,
-				"womb_toggle" = /datum/preference/choiced/genital/womb,
-				"breasts_toggle" = /datum/preference/choiced/genital/breasts,
-				"anus_toggle" = /datum/preference/choiced/genital/anus,
-			)
-
-		for(var/toggle in old_toggles)
-			var/has_genital = save_data[toggle]
-			if(!has_genital) // The toggle was off, so we make sure they have it set to the default "None" in the dropdown pref.
-				var/datum/preference/genital = GLOB.preference_entries[old_toggles[toggle]]
-				write_preference(genital, genital.create_default_value())
-
-		if(save_data["skin_tone_toggle"])
-			for(var/pref_type in subtypesof(/datum/preference/toggle/genital_skin_tone))
-				write_preference(GLOB.preference_entries[pref_type], TRUE)
-
-	if(current_version < VERSION_BREAST_SIZE_CHANGE)
-		var/list/old_breast_prefs
-		old_breast_prefs = save_data["breasts_size"]
-		if(isnum(old_breast_prefs)) // Can't be too careful
-			// You weren't meant to be able to pick sizes over this anyways.
-			write_preference(GLOB.preference_entries[/datum/preference/choiced/breasts_size], GLOB.breast_size_translation["[min(old_breast_prefs, 10)]"])
-
 	if(current_version < VERSION_SYNTH_REFACTOR)
 		var/old_species = save_data["species"]
 		if(istext(old_species) && (old_species in list("synthhuman", "synthliz", "synthmammal", "ipc")))
@@ -171,7 +139,7 @@
 			"Bralette w/ Boyshorts" = list("Boyshorts (Alt)", "Bra, Sports"),
 			"Sports Bra w/ Boyshorts" = list("Boyshorts", "Bra, Sports - Alt"),
 			"Strapless Bikini" = list("Panties - Slim", "Strapless Swimsuit Top (Alt)"),
-			"Babydoll" = list("Thong - Alt", null), // Got moved to an undershirt, actual underwear part is now a thong.
+			"Babydoll" = list("Panties - Slim", null), // Got moved to an undershirt.
 			"Two-Piece Swimsuit" = list("Panties - Swimsuit", "Swimsuit Top"),
 			"Strapless Two-Piece Swimsuit" = list("Panties - Swimsuit", "Strapless Swimsuit Top"),
 			"Halter Swimsuit" = list("Panties - Basic", "Bra - Halterneck - (Alt)"),
@@ -198,7 +166,7 @@
 		var/current_undershirt = save_data["undershirt"]
 
 		// This one has a different treatment because it's an underwear that has been moved mainly to an undershirt,
-		// ending up as a thong for the underwear part itself. We only want to override the undershirt if there's none,
+		// ending up with panties for the underwear part itself. We only want to override the undershirt if there's none,
 		// though.
 		if(current_underwear == "Babydoll" && current_undershirt == "Nude")
 			var/migrated_color = save_data["underwear_color"]
@@ -352,8 +320,6 @@
 #undef MODULAR_SAVEFILE_VERSION_MAX
 #undef MODULAR_SAVEFILE_UP_TO_DATE
 
-#undef VERSION_GENITAL_TOGGLES
-#undef VERSION_BREAST_SIZE_CHANGE
 #undef VERSION_SYNTH_REFACTOR
 #undef VERSION_UNDERSHIRT_BRA_SPLIT
 #undef VERSION_CHRONOLOGICAL_AGE

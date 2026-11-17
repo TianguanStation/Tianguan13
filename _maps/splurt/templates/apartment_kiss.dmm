@@ -5246,10 +5246,6 @@
 	},
 /area/misc/condo)
 "YD" = (
-/obj/machinery/vending/dorms{
-	pixel_y = 0;
-	shut_up = 1
-	},
 /turf/open/floor/iron/shuttle/exploration/blanktile,
 /area/misc/condo)
 "YL" = (

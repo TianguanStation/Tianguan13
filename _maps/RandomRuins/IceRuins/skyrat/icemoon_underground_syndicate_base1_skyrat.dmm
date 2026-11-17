@@ -4428,9 +4428,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "CC" = (
-/obj/machinery/vending/dorms{
-	onstation = 0
-	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/main)
 "CE" = (

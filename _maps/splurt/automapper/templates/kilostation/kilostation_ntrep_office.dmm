@@ -421,7 +421,6 @@
 /obj/item/flashlight/lamp/green{
 	pixel_y = 4
 	},
-/obj/structure/sign/poster/official/no_erp/directional/east,
 /obj/machinery/newscaster/directional/north,
 /turf/open/floor/carpet/royalblue,
 /area/station/command/heads_quarters/nt_rep)

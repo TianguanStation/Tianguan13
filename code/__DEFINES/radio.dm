@@ -62,6 +62,13 @@
 #define RADIO_KEY_CENTCOM "y"
 #define RADIO_TOKEN_CENTCOM ":y"
 #define RADIO_COLOR_CENTCOM "#2681a5"
+// TIANGUAN EDIT ADDITION START - UAR
+#define RADIO_CHANNEL_UAR "UAR"
+#define RADIO_KEY_UAR "ua"
+#define RADIO_TOKEN_UAR ":ua"
+#define RADIO_COLOR_UAR "#8b0000"
+#define FREQ_UAR 1361
+// TIANGUAN EDIT ADDITION END
 
 #define RADIO_CHANNEL_UPLINK "Uplink"
 #define RADIO_KEY_UPLINK "z"
@@ -169,6 +176,8 @@
 #define RADIO_SPECIAL_CENTCOM (1<<1)
 ///Bitflag for if a headset can use the binary radio channel
 #define RADIO_SPECIAL_BINARY (1<<2)
+///Bitflag for if a headset can use the UAR radio channel // TIANGUAN EDIT ADDITION - UAR
+#define RADIO_SPECIAL_UAR (1<<3)
 
 /// Past this amount of compression, the resulting gibberish will actually
 /// replace characters, making it even harder to understand.

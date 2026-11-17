@@ -23,7 +23,3 @@
 	var/sleeper_garbage
 	var/sleeper_occupant
 	var/sleeper_enviroment
-
-/mob/living/silicon/robot/Initialize(mapload)
-	. = ..()
-	simulated_genitals[ORGAN_SLOT_TAIL] = TRUE

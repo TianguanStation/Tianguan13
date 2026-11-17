@@ -1,20 +1,4 @@
 // ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
-/datum/reagent/consumable/ethanol/panty_dropper
-	name = "Liquid Panty Dropper"
-	description = "You feel it's not named like that for nothing."
-	color = "#ce3b01" // rgb: 206, 59, 1
-	boozepwr = 70
-	quality = DRINK_VERYGOOD
-	taste_description = "cloth ripping and tearing"
-
-/datum/reagent/consumable/ethanol/panty_dropper/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
-	. = ..()
-	if(!drinker.client)
-		return
-	if(drinker.client.prefs.read_preference(/datum/preference/toggle/erp/aphro))
-		return
-	drinker.clothing_burst(TRUE)
-
 /datum/reagent/consumable/ethanol/lean
 	name = "Lean (Brainrot)"
 	description = "The choice drink of space-pop stars, composed of soda, cough syrup and candies."
@@ -45,20 +29,6 @@
 					H.visible_message(span_userdanger(LANG("datum.a043844a532a0911", list(H, H.p_their(), H.p_their())))) // too much lean :(
 	..()
 
-/datum/reagent/consumable/ethanol/cum_in_a_hot_tub
-	name = "Cum in the Hot Tub"
-	description = "Doesn't really leave it to the imagination, eh?"
-	boozepwr = 80
-	color = "#D2D7D9"
-	quality = DRINK_VERYGOOD
-	taste_description = "smooth cream"
-
-/datum/reagent/consumable/ethanol/cum_in_a_hot_tub/semen
-	name = "Actual Cum in the Hot Tub"
-	boozepwr = 65
-	taste_description = "viscous cream"
-	description = "The name is probably exactly what it is."
-
 /datum/reagent/consumable/ethanol/mech_rider
 	name = "Mech Rider"
 	description = "Who would even drink this?"
@@ -66,40 +36,6 @@
 	color = rgb(111, 127, 63)
 	quality = DRINK_GOOD
 	taste_description = "the sweat of a certain Mauler pilot"
-
-/datum/reagent/consumable/ethanol/isolation_cell
-	name = "Isolation Cell"
-	description = "Ice cubes in a padded Cell."
-	color = "#b4b4b4"
-	quality = DRINK_FANTASTIC
-	taste_description = "cloth dissolved in sulphuric acid."
-
-/datum/reagent/consumable/ethanol/isolation_cell/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
-	. = ..()
-	if(!(current_cycle % 10)) //Every 10 cycles
-		drinker.reagents.add_reagent(/datum/reagent/drug/aphrodisiac, 2)
-
-/datum/reagent/consumable/ethanol/isolation_cell/morphine
-	name = "Isolation Cell (Morphine)"
-	description = "It has a distinct, sour smell, much like morphine."
-	taste_description = "cloth dissolved in sulphuric acid. Something feels off about it."
-
-/datum/reagent/consumable/ethanol/isolation_cell/morphine/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
-	. = ..()
-	if(!(current_cycle % 10)) //Every 10 cycles
-		drinker.reagents.add_reagent_list(list(/datum/reagent/medicine/morphine = 2, /datum/reagent/consumable/ethanol/hippies_delight = 1))
-
-/datum/reagent/consumable/ethanol/chemical_ex
-	name = "Chemical Ex"
-	description = "Date rape in a glass, a mixture courtesy of the Chief Witchdoctor. The stench of cigar smoke permeates the air wherever it goes."
-	color = rgb(14, 14, 14)
-	quality = DRINK_FANTASTIC
-	taste_description = "ghost peppers, carbonated water and oil. Burns your tongue."
-
-/datum/reagent/consumable/ethanol/chemical_ex/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
-	. = ..()
-	if(!(current_cycle % 10)) //Every 10 cycles
-		drinker.reagents.add_reagent_list(list(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin = 2, /datum/reagent/medicine/morphine = 4, /datum/reagent/mkultra = 1))
 
 /datum/reagent/consumable/ethanol/heart_of_gold
 	name = "Heart Of Gold"
@@ -143,43 +79,6 @@
 	drinker.AdjustUnconscious(-60, FALSE)
 	drinker.adjust_stamina_loss(-20*REAGENTS_EFFECT_MULTIPLIER, updating_stamina = FALSE)
 
-/datum/reagent/consumable/ethanol/skullfucker_deluxe
-	name = "Skullfucker Deluxe"
-	description = "The Rosewater secret to becoming psychotically retarded. It has many warning labels."
-	boozepwr = 75
-	color = "#cb4d8b"
-	quality = DRINK_VERYGOOD
-	taste_description = "being violated by a tiny fish with crayons"
-	overdose_threshold = 25
-
-/datum/reagent/consumable/ethanol/skullfucker_deluxe/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
-	. = ..()
-	//Do nothing if they haven't metabolized enough
-	if(!current_cycle >= 15)
-		return
-	//Make them giggle
-	if(prob(40))
-		drinker.emote("giggle")
-	//Make them jitter
-	if(prob(20))
-		drinker.set_jitter(50)
-
-/* Doesn't seem to exist
-/datum/reagent/consumable/ethanol/skullfucker_deluxe/overdose_process(mob/living/M)
-	. = ..()
-	//Do nothing if they're already fwuffy OwO
-	var/obj/item/organ/tongue/T = M.get_organ_slot(ORGAN_SLOT_TONGUE)
-	if(istype(T, /obj/item/organ/tongue/fluffy))
-		return
-
-	//Replace their tongue with a fwuffy one
-	var/obj/item/organ/tongue/nT = new /obj/item/organ/tongue/fluffy
-	T.Remove(M, special = TRUE)
-	nT.Insert(M, special = TRUE)
-	qdel(T)
-	to_chat(M, span_big_warning("Your tongue feels... weally fwuffy!!"))
-*/
-
 /datum/reagent/consumable/ethanol/ionstorm
 	name = "Ion Storm"
 	description = "A highly chaotic mixture that looks like it may react violently at any moment, but is surprisingly stable"
@@ -198,38 +97,6 @@
 		drinker.adjust_tox_loss(0.25)
 	else
 		drinker.adjust_oxy_loss(0.25)
-
-/datum/reagent/consumable/ethanol/twinkjuice
-	name = "Twink Juice"
-	description = "A long slender fruity drink with a green thick liquid inside. It smells nice and, and probably tastes fruity."
-	color = "#3fd2ff"
-	taste_description = "a concoction of dubious origins, and dubious purposes"
-	ph = 6.5
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	boozepwr = 5
-	quality = DRINK_FANTASTIC
-	var/drinkerWasAlreadySubmissive = FALSE
-
-/datum/reagent/consumable/ethanol/twinkjuice/on_mob_metabolize(mob/living/affected_mob)
-	. = ..()
-	if (ishuman(affected_mob))
-		if(affected_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/aphro))
-			affected_mob.log_message("drank [src], but ignored it due to aphrodisiac preference.", LOG_EMOTE)
-			return
-
-		if(!affected_mob.has_quirk(/datum/quirk/well_trained))
-			affected_mob.log_message("is now under the effect of [src].", LOG_EMOTE)
-			affected_mob.add_quirk(/datum/quirk/well_trained)
-		else
-			drinkerWasAlreadySubmissive = TRUE
-
-/datum/reagent/consumable/ethanol/twinkjuice/on_mob_end_metabolize(mob/living/affected_mob)
-	. = ..()
-	if (ishuman(affected_mob))
-		var/mob/living/carbon/human/M = affected_mob
-		if(M.has_quirk(/datum/quirk/well_trained) && !drinkerWasAlreadySubmissive)
-			M.log_message("is no longer under the effect of [src].", LOG_EMOTE)
-			M.remove_quirk(/datum/quirk/well_trained)
 
 /datum/reagent/consumable/ethanol/midnight_tears
 	name = "Midnight Tears"

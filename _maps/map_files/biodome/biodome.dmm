@@ -32997,7 +32997,6 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 6
 	},
-/obj/machinery/vending/dorms/prison,
 /turf/open/floor/iron,
 /area/station/security/prison)
 "lzw" = (
@@ -46161,7 +46160,6 @@
 /obj/structure/railing,
 /obj/effect/turf_decal/siding/thinplating_new,
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/vending/dorms,
 /turf/open/floor/iron/herringbone,
 /area/station/biodome)
 "qft" = (
@@ -69090,7 +69088,6 @@
 /area/station/maintenance/aft)
 "xIs" = (
 /obj/structure/platform/wood/stage,
-/obj/item/construction_kit/pole,
 /mob/living/basic/goose/vomit,
 /turf/open/floor/plating,
 /area/station/maintenance/fore)

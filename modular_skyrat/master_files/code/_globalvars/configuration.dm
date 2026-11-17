@@ -1,5 +1,7 @@
 // LOOC Module
 GLOBAL_VAR_INIT(looc_allowed, TRUE)
+/// TIANGUAN EDIT ADDITION - TianGuan Star restrictions enabled
+GLOBAL_VAR_INIT(tianguan_star_restrictions, FALSE)
 
 /datum/config_entry/number/rockplanet_budget
 	config_entry_value = 60

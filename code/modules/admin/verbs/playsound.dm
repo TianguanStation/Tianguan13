@@ -5,41 +5,11 @@
 #define SHELLEO_STDERR 3
 
 ADMIN_VERB(play_sound, R_SOUND, "播放全局音效", "Play a sound to all connected players.", ADMIN_CATEGORY_FUN)
-	VERB_ARG(sound, VERB_ARG_TYPE_SOUND, VERB_ARG_SOURCE_INPUT)
-	var/freq = 1
-	var/vol = tgui_input_number(user, LANG("datum.71bfda441f757f9e", null), max_value = 100)
-	if(!vol)
-		return
-	vol = clamp(vol, 1, 100)
-
-	var/sound/admin_sound = new
-	admin_sound.file = sound
-	admin_sound.priority = 250
-	admin_sound.channel = CHANNEL_ADMIN
-	admin_sound.frequency = freq
-	admin_sound.wait = 1
-	admin_sound.repeat = FALSE
-	admin_sound.status = SOUND_STREAM
-	admin_sound.volume = vol
-
-	var/res = tgui_alert(user, LANG("datum.61b0a770b85be768", null), LANG("datum.87f06ba11ff1e4dd", null), list("Yes", "No", "Cancel"))
-	switch(res)
-		if("Yes")
-			to_chat(world, span_boldannounce(LANG("datum.1f3d7edadfda7683", list(sound))), confidential = TRUE)
-		if("Cancel")
-			return
-
-	log_admin("[key_name(user)] played sound [sound]")
-	message_admins("[key_name_admin(user)] played sound [sound]")
-
-	for(var/mob/M in GLOB.player_list)
-		var/volume_modifier = M.client.prefs.read_preference(/datum/preference/numeric/volume/sound_midi)
-		if(volume_modifier > 0)
-			admin_sound.volume = vol * M.client.admin_music_volume * (volume_modifier/100)
-			SEND_SOUND(M, admin_sound)
-			admin_sound.volume = vol
-
-	BLACKBOX_LOG_ADMIN_VERB("Play Global Sound")
+	// TIANGUAN EDIT ADDITION START - ADMIN_SOUND_BOARD
+	tianguan_sound_board_open(user)
+	return
+	// TIANGUAN EDIT ADDITION END
+	// TIANGUAN EDIT REMOVAL: legacy single-file prompt replaced by tianguan_sound_board_open().
 
 ADMIN_VERB(play_local_sound, R_SOUND, "播放本地音效", "Plays a sound only you can hear.", ADMIN_CATEGORY_FUN)
 	VERB_ARG(sound, VERB_ARG_TYPE_SOUND, VERB_ARG_SOURCE_INPUT)

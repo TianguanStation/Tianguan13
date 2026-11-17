@@ -38835,7 +38835,6 @@
 	dir = 1
 	},
 /obj/effect/spawner/random/vending/colavend,
-/obj/structure/sign/poster/official/no_erp/directional/north,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "npM" = (
@@ -66571,7 +66570,6 @@
 	},
 /obj/effect/spawner/random/entertainment/arcade,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/official/no_erp/directional/north,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "wTs" = (

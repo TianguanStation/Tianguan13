@@ -10,16 +10,6 @@
 /obj/item/pen/proc/write_on_bodypart(mob/living/M, mob/living/user, params)
 	var/obj/item/bodypart/selected_bodypart = null
 
-	var/list/obj/item/organ/genital/possible_genitals = list()
-	for(var/genital_slot in GLOB.possible_genitals)
-		var/obj/item/organ/genital/ORG = M.get_organ_slot(genital_slot)
-		if(ORG?.bodypart_overlay.sprite_datum.is_hidden(M))
-			continue
-		possible_genitals += ORG
-
-	if(length(possible_genitals))
-		selected_bodypart = tgui_input_list(user, LANG("obj.bf682f25ca248702", list(user == M ? "your" : "[M]'s", user.zone_selected)), LANG("obj.b88b28ee70359c02", null), possible_genitals)
-
 	if(!selected_bodypart)
 		var/obj/item/bodypart/BP = M.get_bodypart(user.zone_selected)
 		if(!BP)

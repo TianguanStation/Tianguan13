@@ -48,11 +48,9 @@
 
 	owner.dna.features["custom_species"] = original.dna.features["custom_species"]
 	owner.dna.features["flavor_text"] = original.dna.features["flavor_text"]
-	owner.dna.features["flavor_text_nsfw"] = original.dna.features["flavor_text_nsfw"]
 	owner.dna.features["custom_species_lore"] = original.dna.features["custom_species_lore"]
 
 	owner.dna.features["headshot"] = original.dna.features["headshot"]
-	owner.dna.features["headshot_nsfw"] = original.dna.features["headshot_nsfw"]
 	owner.dna.features["art_ref"] = original.dna.features["art_ref"]
 
 	/// Limb bullshit so worn sprites don't fuck up.

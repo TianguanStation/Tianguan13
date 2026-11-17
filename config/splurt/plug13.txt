@@ -1,3 +1,0 @@
-## Plug13 sex toys integration
-#PLUG13_URL http://localhost:3000
-#PLUG13_SECRET VerySecretString

@@ -383,7 +383,7 @@
  * Preference names still live on the mob (underwear/undershirt/socks/bra); visuals come from w_* items.
  */
 /mob/living/carbon/human/proc/update_underwear()
-	var/dummy_test = istype(src, /mob/living/carbon/human/dummy) && (usr?.client?.prefs.preview_pref == PREVIEW_PREF_NAKED || usr?.client?.prefs.preview_pref == PREVIEW_PREF_NAKED_AROUSED)
+	var/dummy_test = istype(src, /mob/living/carbon/human/dummy) && (usr?.client?.prefs.preview_pref == PREVIEW_PREF_NAKED)
 
 	if(HAS_TRAIT(src, TRAIT_NO_UNDERWEAR) || dummy_test)
 		dropItemToGround(w_underwear)

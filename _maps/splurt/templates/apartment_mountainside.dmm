@@ -579,14 +579,6 @@
 	dir = 1
 	},
 /obj/structure/bed/dogbed,
-/obj/item/clothing/erp_leash{
-	pixel_x = -4;
-	pixel_y = 1
-	},
-/obj/item/clothing/neck/mind_collar{
-	pixel_x = 5;
-	pixel_y = -5
-	},
 /turf/open/floor/wood/tile,
 /area/misc/condo)
 "ds" = (
@@ -1067,7 +1059,6 @@
 	use_holiday_colors = 0
 	},
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner,
-/obj/structure/sign/poster/contraband/yes_erp/directional/west,
 /turf/open/floor/wood/tile,
 /area/misc/condo)
 "gd" = (
@@ -2477,11 +2468,6 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/mind_controller{
-	pixel_x = -6;
-	pixel_y = 7;
-	name = "devious controller"
-	},
 /obj/structure/decorative{
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi';
 	dir = 8;
@@ -2896,7 +2882,7 @@
 /obj/item/stack/medical/bandage{
 	pixel_x = 0;
 	pixel_y = 10;
-	desc = "Don't cum on the servers."
+	desc = "Keep liquids away from the servers."
 	},
 /obj/item/clothing/mask/muzzle/tape/surgical{
 	pixel_x = -7;
@@ -3925,7 +3911,7 @@
 /obj/item/training_toolbox{
 	name = "ambiguous toolbox";
 	icon_state = "coroner";
-	desc = "Don't cum on the servers.";
+	desc = "Keep liquids away from the servers.";
 	pixel_x = 1;
 	pixel_y = 10
 	},
@@ -4618,8 +4604,8 @@
 	density = 1;
 	pixel_y = 0;
 	uses_integrity = 0;
-	name = "Dr. Bright's homework folder";
-	desc = "400TB of SCP porn and \[REDACTED]"
+	name = "Copium Mining Server";
+	desc = "400TB of various tears and crashouts from maintainers and contributors alike. We're not sure how you got this many, but it's probably best not to ask."
 	},
 /turf/open/floor/plating,
 /area/misc/condo)
@@ -7531,9 +7517,6 @@
 	},
 /area/misc/condo)
 "RH" = (
-/obj/structure/stripper_pole{
-	pixel_y = 0
-	},
 /obj/structure/decorative{
 	icon = 'icons/obj/smooth_structures/fancy_table_purple.dmi';
 	dir = 8;
@@ -8797,14 +8780,6 @@
 	},
 /area/misc/condo)
 "Za" = (
-/obj/machinery/vending/dorms{
-	pixel_x = 1;
-	pixel_y = 0;
-	desc = "It's almost as if those housing companies intentionally leave zero space for proper kitchens to force you to buy from those built-in vendors...";
-	all_products_free = 1;
-	scan_id = 0;
-	name = "integrated LustWish"
-	},
 /obj/structure/decorative{
 	icon_state = "siding_plain";
 	pixel_y = 0;

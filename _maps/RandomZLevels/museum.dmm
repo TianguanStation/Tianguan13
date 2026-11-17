@@ -1767,7 +1767,6 @@
 /turf/open/floor/iron/dark,
 /area/awaymission/museum)
 "nY" = (
-/obj/structure/sign/poster/official/no_erp/directional/north,
 /turf/open/floor/iron/white/small,
 /area/awaymission/museum/cafeteria)
 "nZ" = (

@@ -4,10 +4,6 @@
 	dir = 6;
 	color = "#634f33"
 	},
-/obj/item/reagent_containers/hypospray/medipen/lewdbomb{
-	pixel_x = -3;
-	pixel_y = -5
-	},
 /obj/item/toy/tennis{
 	pixel_x = 4;
 	pixel_y = 4
@@ -5521,10 +5517,6 @@
 	desc = "An adorable stuffed toy that resembles a green lizardperson. This one fills you with bad memories of linter fails."
 	},
 /obj/structure/marker_beacon/purple,
-/obj/item/reagent_containers/hypospray/medipen/lewdbomb{
-	pixel_x = 3;
-	pixel_y = -5
-	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/condo)
 "Gm" = (
@@ -6117,10 +6109,6 @@
 /obj/machinery/washing_machine{
 	pixel_y = 3
 	},
-/obj/item/condom_pack{
-	pixel_x = 0;
-	pixel_y = 13
-	},
 /turf/open/floor/iron{
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/evac_shuttle.dmi';
 	icon_state = "8,2";
@@ -6213,10 +6201,6 @@
 /obj/effect/turf_decal/siding/wood/end{
 	color = "#634f33";
 	dir = 4
-	},
-/obj/item/clothing/gloves/ring/reagent_clothing/rutt{
-	pixel_x = 6;
-	pixel_y = -6
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "black";
@@ -8523,7 +8507,6 @@
 	dir = 6;
 	color = "#634f33"
 	},
-/obj/machinery/vending/dorms,
 /obj/structure/marker_beacon/purple,
 /turf/open/floor/wood,
 /area/misc/condo)

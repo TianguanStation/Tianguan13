@@ -28,6 +28,7 @@ export const RADIO_PREFIXES = {
   ':o ': 'AI',
   ':p ': 'Ent',
   ':s ': 'Sec',
+  ':ua ': 'UAR', // TIANGUAN EDIT ADDITION - UAR
   ':t ': 'Synd',
   ':u ': 'Supp',
   ':v ': 'Svc',

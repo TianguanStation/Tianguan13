@@ -24,34 +24,6 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 /datum/preference/text/character_ad/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
-/datum/preference/choiced/attraction
-	savefile_key = "attraction"
-	category = PREFERENCE_CATEGORY_OOC_PREFS
-	savefile_identifier = PREFERENCE_CHARACTER
-
-/datum/preference/choiced/attraction/init_possible_values()
-	return list(
-		"Unset",
-		"Check OOC",
-		"Straight",
-		"Lesbian",
-		"Gay",
-		"Bisexual",
-		"Pansexual",
-		"Polysexual",
-		"Asexual",
-		"Aromantic",
-		"Aro/Ace",
-		"Skoliosexual",
-		"Omnisexual",
-	)
-
-/datum/preference/choiced/attraction/create_default_value()
-	return "Unset"
-
-/datum/preference/choiced/attraction/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	return FALSE
-
 /datum/preference/choiced/display_gender
 	savefile_key = "display_gender"
 	category = PREFERENCE_CATEGORY_OOC_PREFS
@@ -110,14 +82,14 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 /datum/preference/choiced/approach_pref/create_default_value()
 	return "Unset"
 
-/// Pref for all the things with the same "Yes", "No", "No ERP", "Check OOC", "Unset", "Maybe" setting
+/// Pref for all the things with the same "Yes", "No", "Check OOC", "Unset", "Maybe" setting
 /// Saves us on copypaste code
 /datum/preference/choiced/directory_character_prefs
 	savefile_key = "char_directory_char_prefs" // This is so unit checks don't scream
 	abstract_type = /datum/preference/choiced/directory_character_prefs
 
 /datum/preference/choiced/directory_character_prefs/init_possible_values()
-	return list("Yes", "No", "No ERP", "Check OOC", "Unset", "Maybe")
+	return list("Yes", "No", "Check OOC", "Unset", "Maybe")
 
 /datum/preference/choiced/directory_character_prefs/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
@@ -188,12 +160,8 @@ GAME_VERB_DESC(/client, show_character_directory, "角色目录", "Shows a listi
 //Collect the user's own preferences for the top of the UI
 	if (user?.client?.prefs)
 		data["personalVisibility"] = READ_PREFS(user, toggle/show_in_directory)
-		data["personalAttraction"] = READ_PREFS(user, choiced/attraction)
 		data["personalGender"] = READ_PREFS(user, choiced/display_gender)
-		data["personalErpTag"] = READ_PREFS(user, choiced/erp_status)
-		data["personalVoreTag"] = READ_PREFS(user, choiced/erp_status_v)
-		data["personalHypnoTag"] = READ_PREFS(user, choiced/erp_status_hypno)
-		data["personalNonconTag"] = READ_PREFS(user, choiced/erp_status_nc)
+		data["personalVoreTag"] = READ_PREFS(user, toggle/vore_enable) ? "Yes" : "No"
 		data["prefsOnly"] = TRUE
 
 	data["canOrbit"] = isobserver(user)
@@ -212,18 +180,8 @@ GAME_VERB_DESC(/client, show_character_directory, "角色目录", "Shows a listi
 		var/species = "Ask"
 		var/ooc_notes = ""
 		var/flavor_text = ""
-		var/nsfw_flavor_text = ""
-		var/attraction = "Unset"
 		var/gender = "Nonbinary"
-		var/erp = "Ask"
-		var/vore = "Ask"
-		var/hypno = "Ask"
-		var/noncon = "Ask"
-		// SPLURT EDIT START: INTERACTION PANEL
-		var/extreme = "Ask"
-		var/extremeharm = "Ask"
-		var/unholy = "Ask"
-		// SPLURT EDIT END: INTERACTION PANEL
+		var/vore = "No"
 		var/character_ad = ""
 		var/exploitable = ""
 		var/ref = REF(mob)
@@ -241,37 +199,19 @@ GAME_VERB_DESC(/client, show_character_directory, "角色目录", "Shows a listi
 			species = (READ_PREFS(human, text/custom_species))
 			if(species == "Unset")
 				species = "[human.dna.species.name]"
-			//Load standard flavor text preference
 			flavor_text = READ_PREFS(human, text/flavor_text)
-			if((READ_PREFS(human, choiced/show_nsfw_flavor_text) == "Always On") || ((READ_PREFS(human, choiced/show_nsfw_flavor_text) == "Nude Only") && !(human.w_uniform)))
-				nsfw_flavor_text = READ_PREFS(human, text/flavor_text_nsfw)
-			else nsfw_flavor_text = "Unavailable"
 
 		else if(issilicon(mob))
 			var/mob/living/silicon/silicon = mob
 			//If the target is a silicon, we want it to show its brain as its species
 			species = READ_PREFS(silicon, choiced/brain_type)
-			//Load silicon flavor text in place of normal flavor text
 			flavor_text = READ_PREFS(silicon, text/silicon_flavor_text)
-			if(READ_PREFS(silicon, choiced/show_nsfw_flavor_text) != "Never")
-				nsfw_flavor_text = READ_PREFS(silicon, text/flavor_text_nsfw/silicon)
-			else nsfw_flavor_text = "Unavailable"
 		//Don't show if they are not a human or a silicon
 		else continue
-		//List of all the shown ERP preferences in the Directory. If there is none, return "Unset"
-		attraction = READ_PREFS(mob, choiced/attraction)
 		gender = READ_PREFS(mob, choiced/display_gender)
-		erp = READ_PREFS(mob, choiced/erp_status)
-		vore = READ_PREFS(mob, choiced/erp_status_v)
-		hypno = READ_PREFS(mob, choiced/erp_status_hypno)
-		noncon = READ_PREFS(mob, choiced/erp_status_nc)
+		vore = mob.client?.prefs?.read_preference(/datum/preference/toggle/vore_enable) ? "Yes" : "No"
 		character_ad = READ_PREFS(mob, text/character_ad)
 		ooc_notes = READ_PREFS(mob, text/ooc_notes)
-		// SPLURT EDIT START: INTERACTION PANEL
-		extreme = READ_PREFS(mob, choiced/erp_status_extm)
-		extremeharm = READ_PREFS(mob, choiced/erp_status_extmharm)
-		unholy = READ_PREFS(mob, choiced/erp_status_unholy)
-		// SPLURT EDIT END: INTERACTION PANEL
 		//If the user is an antagonist or Observer, we want them to be able to see exploitables in the Directory.
 		if(user.mind?.has_antag_datum(/datum/antagonist) || isobserver(user))
 			if(exploitable == EXPLOITABLE_DEFAULT_TEXT)
@@ -285,20 +225,10 @@ GAME_VERB_DESC(/client, show_character_directory, "角色目录", "Shows a listi
 			"name" = name,
 			"species" = species,
 			"ooc_notes" = ooc_notes,
-			"attraction" = attraction,
 			"gender" = gender,
-			"erp" = erp,
 			"vore" = vore,
-			"hypno" = hypno,
-			"noncon" = noncon,
-			// SPLURT EDIT START: INTERACTION PANEL
-			"extreme" = extreme,
-			"extremeharm" = extremeharm,
-			"unholy" = unholy,
-			// SPLURT EDIT END: INTERACTION PANEL
 			"character_ad" = character_ad,
 			"flavor_text" = flavor_text,
-			"nsfw_flavor_text" = nsfw_flavor_text,
 			"ref" = ref
 		)))
 

@@ -1,12 +1,12 @@
 // ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
-ADMIN_VERB(upload_jukebox_music, R_SERVER, "点唱机上传音乐", "Upload a valid .ogg file to be accessed via the jukebox.", ADMIN_CATEGORY_SERVER)
+ADMIN_VERB(upload_jukebox_music, R_SERVER, "点唱机上传音乐", "Upload a valid .ogg or .mp3 file to be accessed via the jukebox.", ADMIN_CATEGORY_SERVER) // TIANGUAN EDIT CHANGE - ADMIN_SOUND_BOARD
 	var/file = input(user, LANG("datum.756b08bf193eb68a", null)) as sound|null
 	if(!file)
 		return
 
-	// we could theorticly support other sound types but OGG is the better format from what I am aware and I am 100% sure its length is properly fetched.
-	if(!IS_OGG_FILE(file))
-		tgui_alert(user, LANG("datum.f9fede34ab022030", null), LANG("datum.e990db784bda09f4", null), list("Ok"))
+	// TIANGUAN EDIT: replaced IS_OGG_FILE check with IS_SOUND_FILE_SAFE to support both .ogg and .mp3
+	if(!IS_SOUND_FILE_SAFE(file))
+		tgui_alert(user, "文件类型无效。请选择 .ogg 或 .mp3 音频文件。", "无效的文件类型", list("Ok"))
 		return
 
 	var/list/track_data = splittext(file, "+")

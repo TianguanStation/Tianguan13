@@ -28,10 +28,6 @@
 	name = "Purple Armband"
 	item_path = /obj/item/clothing/accessory/armband/science/nonsec
 
-/datum/loadout_item/accessory/lewdapron
-	name = "Latex Maid Apron"
-	item_path = /obj/item/clothing/accessory/lewdapron
-
 //No red armband for obvious reasons.
 
 /*

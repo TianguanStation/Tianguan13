@@ -85,12 +85,9 @@
 	if(isprotean(user))
 		return
 	if(slot == ITEM_SLOT_BACK && user)
-		RegisterSignal(user, COMSIG_OOC_ESCAPE, PROC_REF(ooc_escape))
 		if(modlocked)
 			ADD_TRAIT(src, TRAIT_NODROP, "protean")
 			to_chat(user, span_warning(LANG("obj.d5636231f341f730", null)))
-	else
-		UnregisterSignal(user, COMSIG_OOC_ESCAPE)
 
 /obj/item/mod/control/pre_equipped/protean/choose_deploy(mob/user)
 	if(!isprotean(user) && modlocked && active)
@@ -229,15 +226,6 @@
 		to_chat(protean, span_boldwarning(LANG("obj.15647ee3de2a4f92", list(B))))
 		protean.take_overall_damage(300)
 	return ..()
-
-/obj/item/mod/control/pre_equipped/protean/proc/ooc_escape(mob/living/carbon/user)
-	SIGNAL_HANDLER
-
-	if(isprotean(wearer))
-		return
-	drop_suit()
-	if(modlocked)
-		toggle_lock(TRUE)
 
 /**
  * Protean stripping while they're in the suit.

@@ -1,6 +1,6 @@
 // ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
 /**
- *  Returns a list of lines containing silicon flavourtext, temporary flavourtext, ERP preferences and a link to "look closer" and open the examine panel.
+ *  Returns a list of lines containing silicon flavourtext, temporary flavourtext and a link to "look closer" and open the examine panel.
  *  Intended to be appended at the end of examine() result.
  */
 /mob/living/silicon/proc/get_silicon_flavortext()
@@ -15,11 +15,7 @@
 		. += flavor_text_link
 
 	if(client)
-		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
-		var/free_use_pref = client.prefs.read_preference(/datum/preference/toggle/erp_free_use)
-		if(erp_status_pref && !CONFIG_GET(flag/disable_erp_preferences))
-			. += span_info(LANG("mob.f8f349e80c16a293", list(span_revenboldnotice(erp_status_pref), free_use_pref ? "[span_revenboldnotice(" - Free Use")]" : "")))
-		var/line = get_gender_attraction_string(client.prefs.read_preference(/datum/preference/choiced/display_gender), client.prefs.read_preference(/datum/preference/choiced/attraction))
+		var/line = get_gender_attraction_string(client.prefs.read_preference(/datum/preference/choiced/display_gender))
 		if(line)
 			. += span_info(line)
 	if(temporary_flavor_text)

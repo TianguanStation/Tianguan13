@@ -373,7 +373,6 @@
 /area/misc/condo)
 "VV" = (
 /obj/structure/flora/bush/flowers_br/style_random,
-/obj/machinery/vending/dorms,
 /obj/structure/spacevine,
 /turf/open/floor/grass,
 /area/misc/condo)

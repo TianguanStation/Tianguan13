@@ -561,7 +561,7 @@
 	worn_icon_digi = 'modular_zubbers/icons/mob/clothing/under/scimed_suit_digi.dmi'
 	inhand_icon_state = "w_suit"
 	can_adjust = FALSE
-	equip_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg'
+	equip_sound = SFX_CLOTH_PICKUP
 	/*
 	lefthand_file = 'modular_zubbers/icons/mob/inhands/clothing/scimed_suit_lefthand.dmi'
 	righthand_file = 'modular_zubbers/icons/mob/inhands/clothing/scimed_suit_righthand.dmi'

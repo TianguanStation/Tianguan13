@@ -429,10 +429,6 @@
 "IY" = (
 /obj/item/flashlight/flare,
 /obj/structure/cable,
-/obj/machinery/vending/dorms{
-	density = 0;
-	pixel_y = -32
-	},
 /turf/open/floor/iron/dark/smooth_half,
 /area/misc/condo)
 "Jn" = (

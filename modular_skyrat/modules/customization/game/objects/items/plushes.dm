@@ -7,7 +7,6 @@
 /obj/item/toy/plush/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	inhand_icon_state = null
-	plappable = TRUE //SPLURT EDIT - What are you doing cutting a hole in that plushie?!
 
 /obj/item/toy/plush/skyrat/borbplushie
 	name = "borb plushie"
@@ -16,7 +15,6 @@
 	attack_verb_continuous = list("pecks", "peeps")
 	attack_verb_simple = list("peck", "peep")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1)
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/deer
 	name = "deer plushie"
@@ -25,7 +23,6 @@
 	attack_verb_continuous = list("headbutts", "boops", "bapps", "bumps")
 	attack_verb_simple = list("headbutt", "boop", "bap", "bump")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/fermis
 	name = "medcat plushie"
@@ -35,7 +32,6 @@
 	attack_verb_simple = list("cuddle", "petpatt", "wigglepurr")
 	squeak_override = list('modular_zubbers/sound/voice/merowr.ogg' = 1)
 	gender = FEMALE
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/fermis/chen
 	name = "securicat plushie"
@@ -102,7 +98,6 @@
 	attack_verb_continuous = list("geckers", "boops", "nuzzles")
 	attack_verb_simple = list("gecker", "boop", "nuzzle")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/duffmoth
 	name = "suspicious moth plushie"
@@ -121,7 +116,6 @@
 	attack_verb_simple = list("headbutt", "plap")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/leaplush.ogg' = 1)
 	gender = FEMALE
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/sarmieplush
 	name = "cosplayer plushie"
@@ -141,7 +135,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg' = 1)
 	young = TRUE //No.
-	plappable = FALSE //SPLURT EDIT - Has its own inventory thingy
 
 /obj/item/toy/plush/skyrat/sharknet/Initialize(mapload) //SPLURT EDIT - Fix the path
 	. = ..()
@@ -181,13 +174,11 @@
 	attack_verb_simple = list("lick", "nuzzle", "bite")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark2.ogg' = 1)
 	young = TRUE //No.
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/ian/small
 	name = "small plush corgi"
 	desc = "A plushie of an adorable corgi! Don't you just want to hug it and squeeze it and call it \"Ian\"?"
 	icon_state = "corgi"
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/ian/lisa
 	name = "plush girly corgi"
@@ -195,7 +186,6 @@
 	icon_state = "girlycorgi"
 	attack_verb_continuous = list("barks", "woofs", "wags her tail at")
 	gender = FEMALE
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/cat
 	name = "cat plushie"
@@ -204,17 +194,14 @@
 	attack_verb_continuous = list("cuddles", "meows", "hisses")
 	attack_verb_simple = list("cuddle", "meow", "hiss")
 	squeak_override = list('modular_zubbers/sound/voice/merowr.ogg' = 1)
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/cat/tux
 	name = "tux cat plushie"
 	icon_state = "tuxedocat"
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/cat/white
 	name = "white cat plushie"
 	icon_state = "whitecat"
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/seaduplush
 	name = "sneed plushie"
@@ -263,7 +250,6 @@
 	attack_verb_continuous = list("boops", "dances next to")
 	attack_verb_simple = list("boop", "dance next to")
 	squeak_override = list('sound/machines/ping.ogg' = 1)
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/skreking_vox
 	name = "skreking vox plushie"
@@ -304,7 +290,6 @@
 	attack_verb_continuous = list("punches", "explodes on", "peeps")
 	attack_verb_simple = list("punch", "explode on", "peep")
 	squeak_override = list('sound/machines/sm/accent/delam/1.ogg' = 1)
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/blue_cat
 	name = "blue cat plushie"
@@ -313,7 +298,6 @@
 	attack_verb_continuous = list("kisses", "nuzzles", "cuddles", "purrs against")
 	attack_verb_simple = list("kiss", "nuzzle", "cuddle", "purr against")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/nya.ogg' = 1)
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/igneous_synth
 	name = "igneous synth plushie"
@@ -330,13 +314,11 @@
 	attack_verb_continuous = list("pecks", "teleports behind", "caws at")
 	attack_verb_simple = list("peck", "teleport behind", "caw at")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1)
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/fox/mia
 	name = "silver fox plushie"
 	desc = "A small stuffed silver fox with a collar tag that says “Eavy” and a tiny bell in its fluffy tail."
 	icon_state = "miafox"
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/skyrat/fox/kailyn
 	name = "teasable fox plushie"
@@ -606,7 +588,6 @@
 	attack_verb_continuous = list("nibbles", "squeaks", "nose twitches", "thumps", "whops")
 	attack_verb_simple = list("nibble", "squeak", "nose twitch", "thump", "whop")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 // Donation reward for SomeRandomOwl
 /obj/item/toy/plush/skyrat/snow_owl
@@ -616,7 +597,6 @@
 	attack_verb_continuous = list("hoots", "screms", "hugs")
 	attack_verb_simple = list("hoot", "screm", "hug")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/hoot.ogg' = 1)
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 // Donation reward for Jolly66
 /obj/item/toy/plush/skyrat/derg_plushie
@@ -649,14 +629,13 @@
 
 //Donation reward for Kitsun
 /obj/item/toy/plush/skyrat/jecca
-	name = "sexy snoodle plushie"
-	desc = "For some reason, this plushie is rather shiny, with glistening, glittering scales, and its ruby colored eyes seem to be rather enticing and full of mischievous, lewd thoughts behind them."
+	name = "snoodle plushie"
+	desc = "For some reason, this plushie is rather shiny, with glistening, glittering scales and ruby colored eyes."
 	icon_state = "plushie_jecca"
 	attack_verb_continuous = list("sighs")
 	attack_verb_simple = list("sigh")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_sigh.ogg' = 1)
 	gender = FEMALE
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 //Donation reward for BriareosBlue
 /obj/item/toy/plush/skyrat/courier_synth

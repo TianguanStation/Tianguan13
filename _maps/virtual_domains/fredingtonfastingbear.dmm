@@ -49,8 +49,6 @@
 /turf/open/floor/iron/kitchen,
 /area/virtual_domain)
 "cY" = (
-/obj/structure/sign/poster/official/no_erp/directional/north,
-/obj/structure/sign/poster/official/no_erp/directional/north,
 /turf/closed/indestructible/reinforced,
 /area/virtual_domain)
 "dl" = (
@@ -932,7 +930,6 @@
 /turf/open/floor/iron/kitchen,
 /area/virtual_domain)
 "UW" = (
-/obj/structure/sign/poster/official/no_erp/directional/north,
 /turf/closed/indestructible/reinforced,
 /area/virtual_domain)
 "Vd" = (

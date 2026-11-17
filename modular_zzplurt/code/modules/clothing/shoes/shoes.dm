@@ -61,14 +61,6 @@
 	. = ..()
 	AddComponent(/datum/component/squeak, list('modular_zzplurt/sound/effects/footstep/highheel1.ogg' = 1,'modular_zzplurt/sound/effects/footstep/highheel2.ogg' = 1), 20)
 
-/obj/item/clothing/shoes/clown_shoes/clussy_heels
-	name = "Clussy heels"
-	desc = "The silliest footjob of all time."
-	icon = 'modular_zzplurt/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/shoes.dmi'
-	worn_icon_digi = 'modular_zzplurt/icons/mob/clothing/shoes_digi.dmi'
-	icon_state = "clussy_heels"
-
 /obj/item/clothing/shoes/jackboots/puttee
 	name = "Putte Boots"
 	desc = "A World War 1 era set of wool british puttees wrapped over the leg and boots."

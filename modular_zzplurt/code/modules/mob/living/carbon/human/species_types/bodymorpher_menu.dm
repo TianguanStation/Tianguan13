@@ -156,17 +156,6 @@
 		"secondary" = alterer.dna.features[FEATURE_MUTANT_COLOR_TWO],
 		"tertiary" = alterer.dna.features[FEATURE_MUTANT_COLOR_THREE],
 	)
-	var/list/genitals = list(
-		"breasts_lactation" = alterer.dna.features["breasts_lactation"],
-		"breasts_size" = alterer.dna.features["breasts_size"],
-		"penis_girth" = alterer.dna.features["penis_girth"],
-		"penis_size" = alterer.dna.features["penis_size"],
-		"penis_sheath" = alterer.dna.features["penis_sheath"],
-		"penis_taur_mode" = alterer.dna.features["penis_taur_mode"],
-		"balls_size" = alterer.dna.features["balls_size"],
-		"butt_size" = alterer.dna.features["butt_size"],
-		"belly_size" = alterer.dna.features["belly_size"],
-	)
 	return list(
 		"name" = preset_name || "",
 		"is_base" = is_base,
@@ -175,7 +164,6 @@
 		"mutant_colors" = mutant_colors,
 		"body_markings" = deep_copy_list(alterer.dna.species.body_markings),
 		"mutant_bodyparts" = deep_copy_list(alterer.dna.species.mutant_bodyparts),
-		"genitals" = genitals,
 	)
 
 /datum/action/innate/alter_form/proc/build_bodymorpher_preset_ui_data(mob/living/carbon/human/alterer)
@@ -297,7 +285,6 @@
 		alterer.dna.species.body_markings = body_markings
 
 	apply_bodymorpher_mutant_parts(alterer, preset["mutant_bodyparts"])
-	apply_bodymorpher_genitals(alterer, preset["genitals"])
 
 	alterer.dna.update_ui_block(/datum/dna_block/identity/gender)
 	alterer.mutant_renderkey = ""
@@ -338,8 +325,6 @@
 /datum/action/innate/alter_form/proc/get_bodymorpher_mutant_blocks(mob/living/carbon/human/alterer)
 	var/list/mutant_part_list = list()
 	for(var/datum/dna_block/feature/mutant/block as anything in subtypesof(/datum/dna_block/feature/mutant))
-		if(CONFIG_GET(flag/disable_erp_preferences) && (block::feature_key in ORGAN_ERP_LIST))
-			continue
 		mutant_part_list[block::feature_key] = block
 	return mutant_part_list
 
@@ -432,48 +417,6 @@
 		if(!option?.factual)
 			return option
 	return null
-
-/datum/action/innate/alter_form/proc/apply_bodymorpher_genitals(mob/living/carbon/human/alterer, list/genital_data)
-	if(!islist(genital_data))
-		return
-
-	var/obj/item/organ/genital/breasts/breasts = alterer.get_organ_slot(ORGAN_SLOT_BREASTS)
-	if(breasts)
-		if(!isnull(genital_data["breasts_lactation"]))
-			alterer.dna.features["breasts_lactation"] = !!genital_data["breasts_lactation"]
-			breasts.lactates = alterer.dna.features["breasts_lactation"]
-		if(!isnull(genital_data["breasts_size"]))
-			alterer.dna.features["breasts_size"] = genital_data["breasts_size"]
-			breasts.set_size(alterer.dna.features["breasts_size"])
-
-	var/obj/item/organ/genital/penis/penis = alterer.get_organ_slot(ORGAN_SLOT_PENIS)
-	if(penis)
-		if(!isnull(genital_data["penis_size"]))
-			alterer.dna.features["penis_size"] = genital_data["penis_size"]
-			penis.set_size(alterer.dna.features["penis_size"])
-		if(!isnull(genital_data["penis_girth"]))
-			alterer.dna.features["penis_girth"] = min(genital_data["penis_girth"], max(alterer.dna.features["penis_size"] - 1, 1))
-			penis.girth = alterer.dna.features["penis_girth"]
-		if(genital_data["penis_sheath"] in SHEATH_MODES)
-			alterer.dna.features["penis_sheath"] = genital_data["penis_sheath"]
-			penis.sheath = genital_data["penis_sheath"]
-		if(!isnull(genital_data["penis_taur_mode"]))
-			alterer.dna.features["penis_taur_mode"] = !!genital_data["penis_taur_mode"]
-
-	var/obj/item/organ/genital/testicles/testicles = alterer.get_organ_slot(ORGAN_SLOT_TESTICLES)
-	if(testicles && !isnull(genital_data["balls_size"]))
-		alterer.dna.features["balls_size"] = genital_data["balls_size"]
-		testicles.set_size(alterer.dna.features["balls_size"])
-
-	var/obj/item/organ/genital/butt/butt = alterer.get_organ_slot(ORGAN_SLOT_BUTT)
-	if(butt && !isnull(genital_data["butt_size"]))
-		alterer.dna.features["butt_size"] = genital_data["butt_size"]
-		butt.set_size(alterer.dna.features["butt_size"])
-
-	var/obj/item/organ/genital/belly/belly = alterer.get_organ_slot(ORGAN_SLOT_BELLY)
-	if(belly && !isnull(genital_data["belly_size"]))
-		alterer.dna.features["belly_size"] = genital_data["belly_size"]
-		belly.set_size(alterer.dna.features["belly_size"])
 
 /datum/action/innate/alter_form/proc/log_bodymorph_if_changed(mob/living/carbon/human/alterer, list/before_state, detail)
 	var/list/after_state = capture_bodymorpher_snapshot(alterer)

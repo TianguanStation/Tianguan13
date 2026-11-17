@@ -61,7 +61,7 @@
 	name = "\improper nanotrasen consultant figure"
 	desc = "A figurine depicting the glorious head of the Internal Affairs department."
 	icon_state = "ntc"
-	toysay = "The Captain is having sex with the Blueshield!? On RED!?"
+	toysay = "The Captain is missing from the bridge!? On RED!?"
 
 /obj/item/toy/figure/blueshield
 	name = "\improper blueshield figure"
@@ -290,7 +290,7 @@
 	name = "\improper emergency response team janitor figure"
 	desc = "A figurine depicting a Nanotrasen Emergency Response Team Janitor in their responsory modsuit holding an advanced mop."
 	icon_state = "ert_jan"
-	toysay = "How the FUCK is there so much cum in dorms!?"
+	toysay = "How the FUCK is there so much blood in dorms!?"
 
 /obj/item/toy/figure/dsquad
 	name = "\improper death squadron figure"

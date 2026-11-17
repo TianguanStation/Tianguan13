@@ -7,9 +7,6 @@
 #define SUBTLE_ONE_TILE_TEXT "1-Tile Range"
 #define SUBTLE_SAME_TILE_TEXT "Same Tile"
 
-#define PORTAL_ONE_TILE_TEXT "Portal 1-Tile Range"
-#define PORTAL_SAME_TILE_TEXT "Portal Tile"
-
 /datum/emote/living/subtle
 	key = "subtle"
 	message = null
@@ -117,9 +114,6 @@
 			in_view.Remove(mob)
 
 		var/list/targets = list(SUBTLE_ONE_TILE_TEXT, SUBTLE_SAME_TILE_TEXT) + in_view
-		var/obj/structure/lewd_portal/portal = user?.buckled
-		if(istype(portal, /obj/structure/lewd_portal))
-			targets.Insert(1, PORTAL_ONE_TILE_TEXT, PORTAL_SAME_TILE_TEXT)
 		target = tgui_input_list(user, LANG("datum.153e9cb537804b6c", null), LANG("datum.eb4c7c3f77033760", null), targets)
 		if(!target)
 			return FALSE
@@ -160,28 +154,8 @@
 		if(hologram.Impersonation?.client)
 			hologram.Impersonation.show_message(subtler_message, alt_msg = subtler_message)
 			subtler_sound(hologram.Impersonation)
-	else if(istype(target, /obj/lewd_portal_relay)) //Direct Message to a portal user
-		var/obj/lewd_portal_relay/portal_relay = target
-		user.show_message(subtler_message, alt_msg = subtler_message)
-		if(portal_relay.owner?.client)
-			subtler_message = span_subtler("<b>Unknown</b>[space]<i>[user.apply_message_emphasis(subtler_emote)]</i>")
-			portal_relay.owner.show_message(subtler_message, alt_msg = subtler_message)
-			subtler_sound(portal_relay.owner)
 	else
-		var/ghostless
-		if(target == PORTAL_SAME_TILE_TEXT || target == PORTAL_ONE_TILE_TEXT)
-			switch(target)
-				if(PORTAL_ONE_TILE_TEXT)
-					target = SUBTLE_ONE_TILE
-				if(PORTAL_SAME_TILE_TEXT)
-					target = SUBTLE_SAME_TILE_DISTANCE
-			var/obj/structure/lewd_portal/portal_reference = user.buckled
-			var/obj/lewd_portal_relay/output_portal = portal_reference?.relayed_body
-			ghostless = get_hearers_in_view(target, output_portal) //Broadcast message through portal
-			user.show_message(subtler_message, alt_msg = subtler_message)
-			subtler_message = span_subtler("<b>[output_portal]</b>[space]<i>[user.apply_message_emphasis(subtler_emote)]</i>")
-		else
-			ghostless = get_hearers_in_view(target, user) - GLOB.dead_mob_list
+		var/ghostless = get_hearers_in_view(target, user) - GLOB.dead_mob_list
 
 		var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
 		if(hologram)
@@ -195,12 +169,6 @@
 			receiver.show_message(subtler_message, alt_msg = subtler_message)
 			// Optional sound notification
 			subtler_sound(receiver)
-
-		for(var/obj/lewd_portal_relay/portal in ghostless) //Message portal owners caught in range
-			if(portal?.owner?.client && portal.owner != user)
-				subtler_message = span_subtler("<b>Unknown</b>[space]<i>[user.apply_message_emphasis(subtler_emote)]</i>")
-				portal.owner.show_message(subtler_message, alt_msg = subtler_message)
-			subtler_sound(portal.owner)
 
 	return TRUE
 
@@ -244,5 +212,3 @@ GAME_VERB(/mob/living, subtler, "轻微动作（幽灵不可见）", "IC")
 #undef SUBTLE_ONE_TILE_TEXT
 #undef SUBTLE_SAME_TILE_TEXT
 
-#undef PORTAL_ONE_TILE_TEXT
-#undef PORTAL_SAME_TILE_TEXT

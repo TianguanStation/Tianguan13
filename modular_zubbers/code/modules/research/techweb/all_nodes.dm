@@ -165,8 +165,6 @@
 	. = ..()
 	design_ids += list(
 		"blanksynth",
-		"dominatrixmodule",
-		"obediencemodule",
 		"borg_upgrade_expand",
 		"borg_upgrade_shrink",
 		"waddle_module"
@@ -260,10 +258,7 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SECURITY)
 
-// Modsuit tech
-/datum/techweb_node/mod_equip/New()
-	. = ..()
-	design_ids += list("mod_remote_module")
+// TIANGUAN EDIT REMOVAL: mod_remote_module (ERP MODsuitremote) removed from build
 
 /datum/techweb_node/nerd
 	id = TECHWEB_NODE_NERD

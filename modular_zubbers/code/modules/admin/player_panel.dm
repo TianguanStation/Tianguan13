@@ -131,8 +131,6 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			player_ranks += "Donator"
 		if(SSplayer_ranks.is_mentor(target_client, admin_bypass = FALSE))
 			player_ranks += "Mentor"
-		if(SSplayer_ranks.is_vetted(target_client, admin_bypass = FALSE))
-			player_ranks += "Vetted"
 		.["ranks"] = length(player_ranks) ? player_ranks.Join(", ") : null
 
 		if(CONFIG_GET(flag/use_exp_tracking))

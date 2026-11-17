@@ -116,7 +116,7 @@ SUBSYSTEM_DEF(job)
 
 	overflow_jobs = list()
 	for (var/datum/job/check_job in joinable_occupations)
-		if (!check_job.allow_bureaucratic_error)
+		if (!check_job.allow_bureaucratic_error || check_job.tianguan_stars_only)
 			continue
 		overflow_jobs += check_job
 	return overflow_jobs
@@ -995,6 +995,12 @@ SUBSYSTEM_DEF(job)
 		return JOB_UNAVAILABLE_AGE
 
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	// TIANGUAN EDIT ADDITION BEGIN
+	if(GLOB.tianguan_star_restrictions && possible_job.tianguan_stars_only && !SSplayer_ranks.is_tianguan_star(player.client))
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_NOT_TIANGUAN_STAR, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_NOT_TIANGUAN_STAR
+	// TIANGUAN EDIT ADDITION END
+
 	if(possible_job.has_banned_quirk(player.client.prefs))
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_QUIRK)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_QUIRK

@@ -1425,7 +1425,6 @@
 /turf/open/misc/dirt/dark/station,
 /area/misc/condo)
 "NR" = (
-/obj/machinery/vending/dorms,
 /turf/closed/indestructible/hotelwall,
 /area/misc/condo)
 "Od" = (

@@ -11649,7 +11649,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
-/obj/structure/sign/poster/official/no_erp/directional/west,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/bubbers/persistance/service)
 "xZ" = (
@@ -20020,9 +20019,6 @@
 	dir = 4
 	},
 /obj/structure/table/greyscale,
-/obj/item/condom_pack{
-	pixel_x = 11
-	},
 /obj/structure/towel_bin{
 	pixel_x = -5;
 	pixel_y = 5
@@ -23654,9 +23650,6 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/bubbers/persistance/service)
 "WZ" = (
-/obj/machinery/vending/dorms{
-	all_products_free = 1
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 4
 	},

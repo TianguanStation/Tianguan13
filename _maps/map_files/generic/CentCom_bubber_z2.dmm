@@ -1023,7 +1023,6 @@
 /area/centcom/holding/cafe/park)
 "ayh" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/condom_pack,
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
@@ -3097,9 +3096,6 @@
 /turf/open/floor/iron/pool,
 /area/centcom/holding/cafe/park)
 "cbX" = (
-/obj/machinery/vending/dorms{
-	shut_up = 1
-	},
 /turf/open/floor/iron/showroomfloor,
 /area/centcom/holding/cafe/station/service/kitchen/coldroom)
 "cdj" = (
@@ -5493,7 +5489,6 @@
 /turf/open/floor/plating,
 /area/centcom/interlink)
 "eGS" = (
-/obj/item/condom_pack,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/large,
@@ -8442,7 +8437,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
-/obj/item/condom_pack,
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
@@ -8585,7 +8579,6 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/condom_pack,
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
@@ -8996,7 +8989,6 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "ilp" = (
-/obj/item/condom_pack,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
@@ -12817,9 +12809,6 @@
 /turf/open/floor/wood,
 /area/centcom/interlink)
 "mpu" = (
-/obj/machinery/vending/dorms{
-	shut_up = 1
-	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe/station/commons/fitness/locker_room)
 "mrc" = (
@@ -13937,7 +13926,6 @@
 /area/centcom/holding/cafe/station/security)
 "nBb" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/condom_pack,
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
@@ -15268,9 +15256,6 @@
 /turf/open/indestructible/plating,
 /area/centcom/holding/cafe/station/maint)
 "pcM" = (
-/obj/machinery/vending/dorms{
-	shut_up = 1
-	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
@@ -20355,9 +20340,6 @@
 /area/centcom/interlink)
 "uAz" = (
 /obj/effect/turf_decal/siding/white,
-/obj/machinery/vending/dorms{
-	shut_up = 1
-	},
 /turf/open/floor/carpet/black,
 /area/centcom/interlink)
 "uCK" = (
@@ -20811,9 +20793,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
 "uYO" = (
-/obj/machinery/vending/dorms{
-	shut_up = 1
-	},
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/white,
 /area/centcom/interlink)
@@ -22160,7 +22139,6 @@
 /area/centcom/holding/cafe/dorms)
 "wpZ" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/condom_pack,
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},

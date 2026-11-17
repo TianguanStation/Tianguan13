@@ -302,14 +302,6 @@
 		. += LANG("mob.8bd56559fb1a369e", list(get_quirk_string(FALSE, CAT_QUIRK_ALL)))
 
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(!isnull(dna?.species))
-		for(var/genital in GLOB.possible_genitals)
-			if(dna.species.mutant_bodyparts[genital])
-				var/datum/sprite_accessory/genital/G = SSaccessories.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
-				if(G)
-					if(!(G.is_hidden(src)))
-						. += LANG("mob.ea9f1c5765e2907e", list(t_He, t_has, REF(src)))
-						break
 
 	var/flavor_text_link = get_flavor_text()
 	if(flavor_text_link)
@@ -332,12 +324,7 @@
 			. += span_revennotice(LANG("mob.e709f289acec8e9a", list(copytext_char(temporary_flavor_text, 1, TEMPORARY_FLAVOR_PREVIEW_LIMIT), REF(src))))
 
 	if(client)
-		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
-		var/free_use_pref = client.prefs.read_preference(/datum/preference/toggle/erp_free_use)
-		if(erp_status_pref && !CONFIG_GET(flag/disable_erp_preferences))
-			. += EXAMINE_SECTION_BREAK
-			. += span_info(LANG("mob.f8f349e80c16a293", list(span_revenboldnotice(erp_status_pref), free_use_pref ? "[span_revenboldnotice(" - Free Use")]" : "")))
-		var/line = get_gender_attraction_string(client.prefs.read_preference(/datum/preference/choiced/display_gender), client.prefs.read_preference(/datum/preference/choiced/attraction))
+		var/line = get_gender_attraction_string(client.prefs.read_preference(/datum/preference/choiced/display_gender))
 		if(line)
 			. += span_info(line)
 	// SKYRAT EDIT END

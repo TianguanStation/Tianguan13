@@ -245,7 +245,6 @@
 /area/misc/condo)
 "pE" = (
 /obj/effect/turf_decal/tile/neutral/full,
-/obj/machinery/vending/dorms,
 /turf/open/indestructible/dark/smooth_large,
 /area/misc/condo)
 "rr" = (

@@ -1,34 +1,5 @@
 // ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
 
-/obj/item/toy/plush/Initialize(mapload)
-	. = ..()
-	if(plappable)
-		create_storage(max_slots = 1, max_specific_storage = WEIGHT_CLASS_SMALL, canhold = list(/obj/item/clothing/sextoy/dildo, /obj/item/clothing/sextoy/fleshlight, /obj/item/clothing/sextoy/portal_fleshlight))
-
-/obj/item/toy/plush/examine(mob/user)
-	. = ..()
-	if(!plappable)
-		return
-	if(locate(/obj/item/clothing/sextoy/dildo) in src)
-		. += span_notice(LANG("obj.14c08c0ce9d8ff22", null))
-	else if(locate(/obj/item/clothing/sextoy/fleshlight) in src)
-		. += span_notice(LANG("obj.2ba20347eb290f47", null))
-	else if(locate(/obj/item/clothing/sextoy/portal_fleshlight) in src)
-		. += span_notice(LANG("obj.9e6df31d0298178c", null))
-	else
-		. += span_notice(LANG("obj.c0cee03c45d63eaf", null))
-
-/obj/item/toy/plush/attack(mob/living/target, mob/living/user, params)
-	if(!istype(target) || !plappable)
-		return ..()
-
-	var/obj/item/clothing/sextoy/foundToy = locate(/obj/item/clothing/sextoy) in src
-	if(foundToy)
-		foundToy.attack(target, user, params)
-		src.GetComponent(/datum/component/squeak)?.play_squeak()
-	else
-		return ..()
-
 /obj/item/toy/plush/chaotic_toaster
 	name = "Chaotic toaster"
 	desc = "You arent sure if this plushie want a hug, or harvest your organs, or both"
@@ -114,8 +85,8 @@
 	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
 	icon_state = "plushie_mossy"
 	worn_icon_state = "plushie_mossy"
-	attack_verb_simple = list("lick", "nuzzle", "hump", "bark")
-	attack_verb_continuous = list("licks", "nuzzles", "humps", "barks")
+	attack_verb_simple = list("lick", "nuzzle", "boop", "bark")
+	attack_verb_continuous = list("licks", "nuzzles", "boops", "barks")
 	squeak_override = list('modular_zzplurt/sound/voice/bork.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/bark1.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg' = 1)
 
 /obj/item/toy/plush/panic
@@ -164,45 +135,6 @@
 	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
 	icon_state = "glitchy_protogen"
 	worn_icon_state = "glitchy_protogen"
-	plappable = FALSE // Can already plap
-
-/obj/item/toy/plush/glitchy_protogen/Initialize(mapload)
-	. = ..()
-	register_context()
-
-/obj/item/toy/plush/glitchy_protogen/add_context(atom/source, list/context, obj/item/held_item, mob/user)
-	. = ..()
-	context[SCREENTIP_CONTEXT_ALT_LMB] = "Transform into a dildo"
-	return CONTEXTUAL_SCREENTIP_SET
-
-/obj/item/toy/plush/glitchy_protogen/click_alt(mob/user)
-	user.put_in_hands(new /obj/item/clothing/sextoy/dildo/glitchy_protogen(loc))
-	qdel(src)
-	return CLICK_ACTION_SUCCESS
-
-/obj/item/clothing/sextoy/dildo/glitchy_protogen
-	name = "Glitchy Protogen Dildo"
-	desc = "A dildo of a glitchy protogen, It's lights appear to flicker once in awhile."
-	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
-	icon_state = "glitchy_protogen_dildo"
-	base_icon_state = "glitchy_protogen_dildo"
-	inhand_icon_state = null
-	worn_icon_state = "glitchy_protogen_dildo"
-	change_sprite = FALSE
-
-/obj/item/clothing/sextoy/dildo/glitchy_protogen/Initialize(mapload)
-	. = ..()
-	register_context()
-
-/obj/item/clothing/sextoy/dildo/glitchy_protogen/add_context(atom/source, list/context, obj/item/held_item, mob/user)
-	. = ..()
-	context[SCREENTIP_CONTEXT_ALT_LMB] = "Transform into a plushie"
-	return CONTEXTUAL_SCREENTIP_SET
-
-/obj/item/clothing/sextoy/dildo/glitchy_protogen/click_alt(mob/user)
-	user.put_in_hands(new /obj/item/toy/plush/glitchy_protogen(loc))
-	qdel(src)
-	return CLICK_ACTION_SUCCESS
 
 /obj/item/toy/plush/incuboi
 	name = "Incuboi Plushie"
@@ -231,7 +163,6 @@
 	attack_verb_simple = list("beat", "bully", "assault", "harass", "abuse", "yap")
 	attack_verb_continuous = list("beats", "bullies", "assaults", "harasses", "abuses", "yaps")
 	squeak_override = list('modular_zzplurt/sound/voice/yap.ogg' = 19, 'modular_skyrat/modules/alerts/sound/security_levels/delta.ogg' = 1)
-	plappable = FALSE // Doesn't want
 
 /obj/item/toy/plush/doctoraddy
 	name = "Doctor Addy Plushie"

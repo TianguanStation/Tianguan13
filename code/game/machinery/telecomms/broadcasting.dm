@@ -152,7 +152,9 @@
 		if (TRANSMISSION_SUPERSPACE)
 			// Only radios which are independent
 			for(var/obj/item/radio/independent_radio in GLOB.all_radios["[frequency]"])
-				if((independent_radio.special_channels & RADIO_SPECIAL_CENTCOM) && independent_radio.can_receive(frequency, signal_reaches_every_z_level))
+				// TIANGUAN EDIT ADDITION - UAR
+				var/req_special = (frequency == FREQ_UAR) ? RADIO_SPECIAL_UAR : RADIO_SPECIAL_CENTCOM
+				if((independent_radio.special_channels & req_special) && independent_radio.can_receive(frequency, signal_reaches_every_z_level))
 					radios += independent_radio
 
 	for(var/obj/item/radio/called_radio as anything in radios)

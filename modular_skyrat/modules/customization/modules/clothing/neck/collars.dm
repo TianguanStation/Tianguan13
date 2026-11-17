@@ -1,10 +1,7 @@
 // ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
 /obj/item
-	/// If this collar counts as a pet collar for kink purposes, such as with MKUltra
-	var/kink_collar = FALSE
 
 /obj/item/clothing/neck/petcollar
-	kink_collar = TRUE
 
 /datum/storage/pockets/small/collar
 	max_slots = 1
@@ -31,7 +28,6 @@
 	greyscale_colors = "#44BBEE#FFCC00"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	alternate_worn_layer = UNDER_SUIT_LAYER
-	kink_collar = TRUE
 	/// What's the name on the tag, if any?
 	var/tagname = null
 	/// What treat item spawns inside the collar?
@@ -58,7 +54,7 @@
 
 /obj/item/clothing/neck/human_petcollar/choker
 	name = "choker"
-	desc = "Quite fashionable... if you're somebody who's just read their first BDSM-themed erotica novel."
+	desc = "A fashionable dark fabric choker."
 	icon_state = "/obj/item/clothing/neck/human_petcollar/choker"
 	post_init_icon_state = "choker"
 	greyscale_config = /datum/greyscale_config/collar/choker
@@ -117,7 +113,7 @@
 
 /obj/item/clothing/neck/human_petcollar/locked/choker
 	name = "choker"
-	desc = "Quite fashionable... if you're somebody who's just read their first BDSM-themed erotica novel."
+	desc = "A fashionable dark fabric choker."
 	icon_state = "/obj/item/clothing/neck/human_petcollar/locked/choker"
 	post_init_icon_state = "choker"
 	greyscale_config = /datum/greyscale_config/collar/choker

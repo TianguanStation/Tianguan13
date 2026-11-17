@@ -9,6 +9,7 @@
 
 #define INJECTION_AMOUNT 10
 #define INJECTION_COST 750
+#define SLEEPER_HEARCHECK 4
 
 /obj/item/dogborg/sleeper
 	name = "Hound Sleeper"
@@ -116,7 +117,7 @@
 		return ..()
 
 	var/voracious = TRUE
-	if(!target.client || !hound.client || !check_preference(target, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(target, /datum/vore_pref/toggle/cyborg_sleepers) || !check_preference(hound, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(hound, /datum/vore_pref/toggle/cyborg_sleepers))
+	if(!target.client || !hound.client || !check_preference(target, /datum/preference/toggle/vore_enable) || !check_vore_preference(target, /datum/vore_pref/toggle/cyborg_sleepers) || !check_preference(hound, /datum/preference/toggle/vore_enable) || !check_vore_preference(hound, /datum/vore_pref/toggle/cyborg_sleepers))
 		voracious = FALSE
 
 	user.visible_message(LANG("obj.f33fef69ac4c3fc9", list(hound.name, target.name, src.name)), LANG("obj.4f1d304017f78a31", list(target, src.name)))
@@ -153,7 +154,7 @@
 		return
 
 	var/voracious = TRUE
-	if(!user.client || !hound.client || !check_preference(user, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(user, /datum/vore_pref/toggle/cyborg_sleepers) || !check_preference(hound, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(hound, /datum/vore_pref/toggle/cyborg_sleepers))
+	if(!user.client || !hound.client || !check_preference(user, /datum/preference/toggle/vore_enable) || !check_vore_preference(user, /datum/vore_pref/toggle/cyborg_sleepers) || !check_preference(hound, /datum/preference/toggle/vore_enable) || !check_vore_preference(hound, /datum/vore_pref/toggle/cyborg_sleepers))
 		voracious = FALSE
 
 	if(prob(escape_chance) && !escape_pending)
@@ -176,11 +177,11 @@
 	var/voracious = hound ? TRUE : FALSE
 	var/list/targets = target && hound ? list(target) : contents
 	if(hound)
-		if(!hound.client || !check_preference(hound, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(hound, /datum/vore_pref/toggle/cyborg_sleepers))
+		if(!hound.client || !check_preference(hound, /datum/preference/toggle/vore_enable) || !check_vore_preference(hound, /datum/vore_pref/toggle/cyborg_sleepers))
 			voracious = FALSE
 		else
 			for(var/mob/this_mob in targets)
-				if(!this_mob.client || !check_preference(this_mob, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(this_mob, /datum/vore_pref/toggle/cyborg_sleepers))
+				if(!this_mob.client || !check_preference(this_mob, /datum/preference/toggle/vore_enable) || !check_vore_preference(this_mob, /datum/vore_pref/toggle/cyborg_sleepers))
 					voracious = FALSE
 	if(length(targets))
 		if(hound)
@@ -306,7 +307,7 @@
 				patient_laststat = patient.stat
 			prociconupdate = TRUE
 
-		if(!patient.client || !check_preference(patient, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(patient, /datum/vore_pref/toggle/cyborg_sleepers))
+		if(!patient.client || !check_preference(patient, /datum/preference/toggle/vore_enable) || !check_vore_preference(patient, /datum/vore_pref/toggle/cyborg_sleepers))
 			hound.sleeper_enviroment = TRUE
 		else
 			hound.sleeper_enviroment = FALSE
@@ -376,7 +377,7 @@
 					to_chat(hound,LANG("obj.6e87c2c65ef207b8", list(this_target)))
 					to_chat(this_target,LANG("obj.754d1bcb816b3576", list(hound, hound)))
 					hound.cell.give(30000) // yummers
-					if((world.time - NORMIE_HEARCHECK) > last_hearcheck)
+					if((world.time - SLEEPER_HEARCHECK) > last_hearcheck)
 						var/turf/source = get_turf(hound)
 						LAZYCLEARLIST(hearing_mobs)
 						for(var/mob/hearer in get_hearers_in_view(3, source))
@@ -427,7 +428,7 @@
 
 	// Sound effects
 	if(prob(50))
-		if((world.time - NORMIE_HEARCHECK) > last_hearcheck)
+		if((world.time - SLEEPER_HEARCHECK) > last_hearcheck)
 			var/turf/source = get_turf(hound)
 			LAZYCLEARLIST(hearing_mobs)
 			for(var/mob/hearer in get_hearers_in_view(3, source))

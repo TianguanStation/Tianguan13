@@ -38,7 +38,7 @@ const actions = [
   {
     id: 'alter_dna',
     title: 'DNA',
-    description: 'Change size, gender, genitals, and mutant parts.',
+    description: 'Change size, gender, and mutant parts.',
     icon: 'dna',
   },
   {

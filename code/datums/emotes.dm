@@ -191,10 +191,6 @@
 					continue
 				if(is_visual && viewer.is_blind())
 					continue
-			// SKYRAT EDIT BEGIN - Pref checked emotes
-			if(!pref_check_emote(viewer))
-				continue
-			// SKYRAT EDIT END
 			if(user.runechat_prefs_check(viewer, EMOTE_MESSAGE))
 				viewer.create_chat_message(
 					speaker = user,
@@ -217,10 +213,6 @@
 	// The emote has some important information, and should always be shown to the user
 	else if(is_important)
 		for(var/mob/viewer as anything in viewers(user))
-			// SKYRAT EDIT BEGIN - Pref checked emotes
-			if(!pref_check_emote(viewer))
-				continue
-			// SKYRAT EDIT END
 			to_chat(viewer, span_emote("<b>[user_display]</b> [msg]"))
 			if(user.runechat_prefs_check(viewer, EMOTE_MESSAGE))
 				viewer.create_chat_message(
@@ -236,8 +228,7 @@
 			deaf_message = span_emote(LANG("datum.925c6790ca04918f", list(user, msg))),
 			self_message = msg,
 			audible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE|additional_message_flags,
-			separation = space, // SKYRAT EDIT ADDITION
-			pref_to_check = pref_to_check // SKYRAT EDIT ADDITION - Pref checked emotes
+			separation = space // SKYRAT EDIT ADDITION
 		)
 	// Emote is entirely audible, no visible component
 	else if(is_audible)
@@ -245,8 +236,7 @@
 			message = msg,
 			self_message = msg,
 			audible_message_flags = EMOTE_MESSAGE|additional_message_flags,
-			separation = space, // SKYRAT EDIT ADDITION
-			pref_to_check = pref_to_check // SKYRAT EDIT ADDITION - Pref checked emotes
+			separation = space // SKYRAT EDIT ADDITION
 		)
 	// Emote is entirely visible, no audible component
 	else if(is_visual)
@@ -254,8 +244,7 @@
 			message = msg,
 			self_message = msg,
 			visible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE|additional_message_flags,
-			separation = space, // SKYRAT EDIT ADDITION
-			pref_to_check = pref_to_check // SKYRAT EDIT ADDITION - Pref checked emotes
+			separation = space // SKYRAT EDIT ADDITION
 		)
 	else
 		CRASH("Emote [type] has no valid emote type set!")
@@ -265,8 +254,6 @@
 	if(hologram)
 		if(is_important)
 			for(var/mob/living/viewer in viewers(world.view, hologram))
-				if(!pref_check_emote(viewer))
-					continue
 				to_chat(viewer, msg)
 		else if(is_visual && is_audible)
 			hologram.audible_message(
@@ -275,7 +262,6 @@
 				self_message = msg,
 				audible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE,
 				separation = space,
-				pref_to_check = pref_to_check,
 			)
 		else if(is_audible)
 			hologram.audible_message(
@@ -283,7 +269,6 @@
 				self_message = msg,
 				audible_message_flags = EMOTE_MESSAGE,
 				separation = space,
-				pref_to_check = pref_to_check,
 			)
 		else if(is_visual)
 			hologram.visible_message(
@@ -291,7 +276,6 @@
 				self_message = msg,
 				visible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE,
 				separation = space,
-				pref_to_check = pref_to_check,
 			)
 	// SKYRAT EDIT -- END
 
@@ -302,10 +286,6 @@
 				continue
 			if(!(get_chat_toggles(ghost.client) & CHAT_GHOSTSIGHT))
 				continue
-			// SKYRAT EDIT BEGIN - Pref checked emotes
-			if(!pref_check_emote(ghost))
-				continue
-			// SKYRAT EDIT END
 			to_chat(ghost, span_emote("[FOLLOW_LINK(ghost, user)] [dchatmsg]"))
 
 	return

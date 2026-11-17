@@ -103,14 +103,6 @@
 		"DO NOT REPOST"
 	)
 
-	if(!CONFIG_GET(flag/disable_erp_preferences))
-		possible_bad_instructions += list(
-			"DO NOT USE DURING SEX",
-			"DO NOT USE WHILE PREGNANT OR BREASTFEEDING",
-			"KEEP OUT OF DORMS",
-			"KEEP AWAY FROM SIZE QUEENS",
-		)
-
 	var/total_good_length_mod = FLOOR(length(possible_good_instructions) * 0.5, 1)
 
 	//Generate the first half. Always useful.

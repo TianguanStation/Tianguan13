@@ -19,7 +19,7 @@ window "mainwindow"
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
-		icon = 'modular_zzplurt\\icons\\UI_Icons\\common\\splurt_64.png'
+		icon = 'modular_tianguan\\icons\\tianguan_logo.png'
 		macro = "default"
 	elem "split"
 		type = CHILD

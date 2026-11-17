@@ -1503,10 +1503,6 @@
 /area/ruin/space/has_grav/thelizardsgas)
 "Ww" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/vending/dorms{
-	pixel_y = -32;
-	density = 0
-	},
 /obj/machinery/duct,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{

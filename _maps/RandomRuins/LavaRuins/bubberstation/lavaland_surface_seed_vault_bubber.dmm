@@ -101,9 +101,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
-/obj/machinery/vending/dorms{
-	shut_up = 1
-	},
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 6
 	},

@@ -3,8 +3,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species
 	mutant_bodyparts = list()
 	digitigrade_customization = DIGITIGRADE_OPTIONAL // Doing this so that the legs preference actually works for everyone.
-	///Self explanatory
-	var/can_have_genitals = TRUE
 	/// Whether or not the gender shaping is disabled for this species
 	var/no_gender_shaping
 	///A list of actual body markings on the owner of the species. Associative lists with keys named by limbs defines, pointing to a list with names and colors for the marking to be rendered. This is also stored in the DNA
@@ -65,12 +63,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species/plasmaman
 	mutant_bodyparts = list()
-	can_have_genitals = FALSE
 	can_augment = FALSE
 
 /datum/species/ethereal
 	mutant_bodyparts = list()
-	can_have_genitals = FALSE
 	can_augment = FALSE
 
 /datum/species/pod
@@ -96,9 +92,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		mutantpart_list = existing_mutant_bodyparts.Copy()
 	var/list/default_bodypart_data = GLOB.default_mutant_bodyparts[name]
 	var/list/bodyparts_to_add = default_bodypart_data.Copy()
-	if(CONFIG_GET(flag/disable_erp_preferences))
-		for(var/genital in GLOB.possible_genitals)
-			bodyparts_to_add.Remove(genital)
 	for(var/key in bodyparts_to_add)
 		if(LAZYLEN(existing_mutant_bodyparts) && existing_mutant_bodyparts[key])
 			continue

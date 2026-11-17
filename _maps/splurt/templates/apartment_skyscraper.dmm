@@ -3917,14 +3917,6 @@
 /turf/open/floor/carpet/black,
 /area/misc/condo)
 "vS" = (
-/obj/machinery/vending/dorms{
-	pixel_x = 1;
-	pixel_y = 3;
-	desc = "It's almost as if those housing companies intentionally leave zero space for proper kitchens to force you to buy from those built-in vendors...";
-	all_products_free = 1;
-	scan_id = 0;
-	name = "built-in LustWish"
-	},
 /obj/structure/decorative{
 	icon_state = "siding_plain_end";
 	pixel_y = 0;
@@ -4172,10 +4164,6 @@
 	pixel_x = 7;
 	pixel_y = 3;
 	color = "#b88d97"
-	},
-/obj/item/condom_pack{
-	pixel_x = -11;
-	pixel_y = 1
 	},
 /turf/open/floor/circuit/red/off,
 /area/misc/condo)

@@ -1,12 +1,6 @@
 /datum/reagent
 	var/hydration = 0
 
-/datum/reagent/consumable/cum
-	hydration = 8 * REAGENTS_METABOLISM
-
-/datum/reagent/consumable/femcum
-	hydration = 6 * REAGENTS_METABOLISM
-
 /datum/reagent/consumable
 	hydration = 4 * REAGENTS_METABOLISM
 

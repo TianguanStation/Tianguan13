@@ -12,6 +12,12 @@
 	resistance_flags = FREEZE_PROOF
 	var/obj/item/holosign_creator/projector
 	var/use_vis_overlay = TRUE
+	// TIANGUAN EDIT ADDITION START - HOLOSIGN_Z_LAYER_FIX
+	/// Alpha applied to src. The vis overlay is what is actually rendered, so this is usually 0.
+	var/overlay_alpha = 0
+	/// Appearance flags applied to the vis overlay.
+	var/overlay_appearance_flags = KEEP_APART|RESET_ALPHA
+	// TIANGUAN EDIT ADDITION END - HOLOSIGN_Z_LAYER_FIX
 
 /datum/armor/structure_holosign
 	bullet = 50
@@ -67,11 +73,20 @@
 		return
 
 	var/turf/our_turf = get_turf(src)
-	alpha = 0
+	// TIANGUAN EDIT CHANGE - HOLOSIGN_Z_LAYER_FIX
+	alpha = overlay_alpha
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
-	var/obj/effect/overlay/vis/overlay = SSvis_overlays.add_vis_overlay(src, icon, icon_state, ABOVE_MOB_LAYER, MUTATE_PLANE(GAME_PLANE, our_turf), dir, add_appearance_flags = KEEP_APART|RESET_ALPHA) //you see mobs under it, but you hit them like they are above it
+	var/obj/effect/overlay/vis/overlay = SSvis_overlays.add_vis_overlay(src, icon, icon_state, ABOVE_MOB_LAYER, MUTATE_PLANE(GAME_PLANE, our_turf), dir, add_appearance_flags = overlay_appearance_flags) //you see mobs under it, but you hit them like they are above it
+	if(isnull(overlay)) // Signs being deleted get no vis overlays
+		return
 	if (color || cached_color_filter)
 		overlay.add_atom_colour(cached_color_filter || color, FIXED_COLOUR_PRIORITY)
+
+// TIANGUAN EDIT ADDITION START - HOLOSIGN_Z_LAYER_FIX
+/obj/structure/holosign/update_overlays()
+	. = ..()
+	create_vis_overlay()
+// TIANGUAN EDIT ADDITION END - HOLOSIGN_Z_LAYER_FIX
 
 /obj/structure/holosign/wetsign
 	name = "wet floor sign"
@@ -131,7 +146,7 @@
 	else
 		icon_state = pass_icon_state
 
-	create_vis_overlay()
+	// TIANGUAN EDIT CHANGE - HOLOSIGN_Z_LAYER_FIX
 	. = ..()
 
 /obj/structure/holosign/barrier/proc/open(user)
@@ -152,7 +167,8 @@
 		opened = FALSE
 		playsound(src, 'sound/machines/door/door_close.ogg', 50, TRUE)
 
-	update_icon_state()
+	// TIANGUAN EDIT CHANGE - HOLOSIGN_Z_LAYER_FIX
+	update_appearance(UPDATE_ICON_STATE | UPDATE_OVERLAYS)
 	COOLDOWN_START(src, cooldown_open, 1 SECONDS)
 
 /obj/structure/holosign/barrier/wetsign
@@ -192,20 +208,25 @@
 	alpha = 150
 	rad_insulation = RAD_LIGHT_INSULATION
 	resistance_flags = FIRE_PROOF | FREEZE_PROOF
+	// TIANGUAN EDIT ADDITION START - HOLOSIGN_Z_LAYER_FIX
+	var/clearview = FALSE
+	// TIANGUAN EDIT ADDITION END - HOLOSIGN_Z_LAYER_FIX
 
 /obj/structure/holosign/barrier/atmos/proc/clearview_transparency()
+	// TIANGUAN EDIT CHANGE - HOLOSIGN_Z_LAYER_FIX
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	alpha = 25
-	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
-	var/turf/our_turf = get_turf(src)
-	SSvis_overlays.add_vis_overlay(src, icon, icon_state, ABOVE_MOB_LAYER, MUTATE_PLANE(GAME_PLANE, our_turf), dir)
+	clearview = TRUE
+	overlay_alpha = 25
+	overlay_appearance_flags = NONE
+	create_vis_overlay()
 
 /obj/structure/holosign/barrier/atmos/proc/reset_transparency()
+	// TIANGUAN EDIT CHANGE - HOLOSIGN_Z_LAYER_FIX
 	mouse_opacity = initial(mouse_opacity)
-	alpha = initial(alpha)
-	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
-	var/turf/our_turf = get_turf(src)
-	SSvis_overlays.add_vis_overlay(src, icon, icon_state, ABOVE_MOB_LAYER, MUTATE_PLANE(GAME_PLANE, our_turf), dir, add_appearance_flags = RESET_ALPHA)
+	clearview = FALSE
+	overlay_alpha = initial(overlay_alpha)
+	overlay_appearance_flags = initial(overlay_appearance_flags)
+	create_vis_overlay()
 
 /obj/structure/holosign/barrier/atmos/sturdy
 	name = "sturdy holofirelock"
@@ -253,6 +274,16 @@
 	max_integrity = 1
 	openable = FALSE
 	COOLDOWN_DECLARE(virus_detected)
+	// TIANGUAN EDIT ADDITION START - HOLOSIGN_Z_LAYER_FIX
+	var/deny = FALSE
+
+/obj/structure/holosign/barrier/medical/update_icon_state()
+	. = ..()
+	if(!deny)
+		return
+	icon_state = "holo_medical-deny"
+	create_vis_overlay()
+	// TIANGUAN EDIT ADDITION END - HOLOSIGN_Z_LAYER_FIX
 
 /obj/structure/holosign/barrier/medical/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
@@ -267,8 +298,9 @@
 
 /obj/structure/holosign/barrier/medical/Bumped(atom/movable/AM)
 	. = ..()
-	icon_state = base_icon_state
-	update_icon_state()
+	// TIANGUAN EDIT CHANGE - HOLOSIGN_Z_LAYER_FIX
+	deny = FALSE
+	update_appearance(UPDATE_ICON_STATE | UPDATE_OVERLAYS)
 	if(!ishuman(AM) && CheckHuman(AM))
 		return
 
@@ -277,8 +309,9 @@
 
 	playsound(get_turf(src),'sound/machines/buzz/buzz-sigh.ogg', 65, TRUE, 4)
 	COOLDOWN_START(src, virus_detected, 1 SECONDS)
-	icon_state = "holo_medical-deny"
-	update_icon_state()
+	// TIANGUAN EDIT CHANGE - HOLOSIGN_Z_LAYER_FIX
+	deny = TRUE
+	update_appearance(UPDATE_ICON_STATE | UPDATE_OVERLAYS)
 
 /obj/structure/holosign/barrier/medical/proc/CheckHuman(mob/living/carbon/human/sickboi)
 	var/threat = sickboi.check_virus()

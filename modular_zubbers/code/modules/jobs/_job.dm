@@ -1,4 +1,6 @@
 /datum/job
+	/// Is this job restricted to TianGuan Star players when enable_tianguan_star_restrictions is enabled?
+	var/tianguan_stars_only = FALSE
 	/// The job's outfit that will be assigned for Vox
 	var/vox_outfit = null
 	/// The job's outfit that will be assigned for Akula

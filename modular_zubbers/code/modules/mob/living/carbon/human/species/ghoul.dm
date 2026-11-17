@@ -3,7 +3,6 @@
 	name = "\improper Ghoul"
 	id = SPECIES_GHOUL
 	examine_limb_id = SPECIES_GHOUL
-	can_have_genitals = FALSE
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,

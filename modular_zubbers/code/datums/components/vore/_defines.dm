@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(vore_sounds_death_fancy_prey, list(
 
 GLOBAL_LIST_INIT(digest_messages_pred, list(
 		"You feel %prey's body succumb to your digestive system, which breaks it apart into soft slurry.",
-		"You hear a lewd glorp as your %belly muscles grind %prey into a warm pulp.",
+		"You hear a wet glorp as your %belly muscles grind %prey into a warm pulp.",
 		"Your %belly lets out a rumble as it melts %prey into sludge.",
 		"You feel a soft gurgle as %prey's body loses form in your %belly. They're nothing but a soft mass of churning slop now.",
 		"Your %belly begins gushing %prey's remains through your system, adding some extra weight to your thighs.",
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(digest_messages_pred, list(
 
 GLOBAL_LIST_INIT(digest_messages_prey, list(
 		"Your body succumbs to %pred's digestive system, which breaks you apart into soft slurry.",
-		"%pred's %belly lets out a lewd glorp as their muscles grind you into a warm pulp.",
+		"%pred's %belly lets out a wet glorp as their muscles grind you into a warm pulp.",
 		"%pred's %belly lets out a rumble as it melts you into sludge.",
 		"%pred feels a soft gurgle as your body loses form in their %belly. You're nothing but a soft mass of churning slop now.",
 		"%pred's %belly begins gushing your remains through their system, adding some extra weight to %pred's thighs.",

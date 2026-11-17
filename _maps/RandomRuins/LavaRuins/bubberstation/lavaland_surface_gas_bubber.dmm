@@ -3399,7 +3399,6 @@
 	},
 /area/ruin/thelizardsgas_lavaland)
 "Ta" = (
-/obj/machinery/vending/dorms,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 8
 	},

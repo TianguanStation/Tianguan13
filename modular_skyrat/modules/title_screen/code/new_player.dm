@@ -5,44 +5,8 @@
 /mob/dead/new_player
 	/// Title screen is ready to receive signals
 	var/title_screen_is_ready = FALSE
-	/// Whether the player (if unvetted) has acknowledged the deadline warning
-	var/unvetted_notified = FALSE
-
-/**
- * Check player vetting status and if necessary warn about upcoming deadline
- *
- * Returns FALSE if unvetted and deadline has passed, TRUE otherwise
- */
-/mob/dead/new_player/proc/trigger_unvetted_warning()
-	if(!CONFIG_GET(flag/check_vetted))
-		unvetted_notified = TRUE
-		return TRUE
-	if(!SSplayer_ranks.initialized)
-		return TRUE
-	if(SSplayer_ranks.is_vetted(client, admin_bypass = FALSE))
-		unvetted_notified = TRUE
-		return TRUE
-
-	// // Time's up
-	// if(DEADLINE_TIMESTAMP - world.realtime <= 0)
-	// 	tgui_alert(
-	// 		src,
-	// 		"Unvetted players are no longer allowed to join or observe rounds, please visit #get-vetted in the Discord to submit a vetting application",
-	// 		"You are unvetted!",
-	// 		timeout = 10 SECONDS,
-	// 	)
-	// 	return FALSE
-
-	// var/remaining_time = round((DEADLINE_TIMESTAMP - world.realtime) / (1 DAYS), 1)
-	// tgui_deadline_alert(
-	// 	src,
-	// 	"Unvetted players will lose the ability to join or observe rounds in [remaining_time] day\s!",
-	// 	"Get vetted by [time2text(DEADLINE_TIMESTAMP, "Month DD YYYY")]!",
-	// 	days_remaining = remaining_time,
-	// 	timeout = 10 SECONDS,
-	// )
-	unvetted_notified = TRUE
-	return TRUE
+	/// TIANGUAN EDIT: 侧边栏是否收起（唯一真相在服务端）
+	var/tg_sidebar_collapsed = FALSE
 
 /mob/dead/new_player/Topic(href, href_list)
 	if(src != usr)
@@ -56,15 +20,29 @@
 
 	if(href_list["observe"])
 		play_lobby_button_sound()
-		if(!unvetted_notified && !trigger_unvetted_warning())
-			return FALSE
 		make_me_an_observer()
+		return
+
+	if(href_list["tg_sidebar_toggle"])
+		play_lobby_button_sound()
+		tg_sidebar_collapsed = !tg_sidebar_collapsed
+		client << output(tg_sidebar_collapsed ? "1" : "0", "title_browser:tg_set_collapsed")
+		return
+
+	if(href_list["tg_ext"])
+		play_lobby_button_sound()
+		var/url
+		switch(href_list["tg_ext"])
+			if("wiki")
+				url = "https://tianguanstation.miraheze.org/wiki/%E4%B8%BB%E9%A1%B5"
+			if("afdian")
+				url = "https://afdian.com/a/lanhongqiu"
+		if(url)
+			client << link(url)
 		return
 
 	if(href_list["job_traits"])
 		play_lobby_button_sound()
-		if(!unvetted_notified && !trigger_unvetted_warning())
-			return FALSE
 		show_job_traits()
 		return
 
@@ -87,7 +65,7 @@
 		play_lobby_button_sound()
 		var/datum/preferences/preferences = client.prefs
 		preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/be_antag], !preferences.read_preference(/datum/preference/toggle/be_antag))
-		client << output(preferences.read_preference(/datum/preference/toggle/be_antag), "title_browser:toggle_antag")
+		client << output(preferences.read_preference(/datum/preference/toggle/be_antag) ? "1" : "0", "title_browser:toggle_antag")
 		return
 
 	if(href_list["character_setup"])
@@ -123,16 +101,12 @@
 				to_chat(src, span_notice(LANG("mob.f663b075e26d4ad2", list(CONFIG_GET(number/flavor_text_character_requirement), length_char(client.prefs.read_preference(/datum/preference/text/flavor_text))))))
 				return
 
-		if(!unvetted_notified && !trigger_unvetted_warning())
-			return FALSE
 		ready = is_ready_to_play() ? PLAYER_NOT_READY : PLAYER_READY_TO_PLAY
-		client << output(ready, "title_browser:toggle_ready")
+		client << output((ready == PLAYER_READY_TO_PLAY) ? "1" : "0", "title_browser:toggle_ready")
 		return
 
 	if(href_list["late_join"])
 		play_lobby_button_sound()
-		if(!unvetted_notified && !trigger_unvetted_warning())
-			return FALSE
 		GLOB.latejoin_menu.ui_interact(usr)
 		return
 
@@ -173,7 +147,7 @@
 	var/dat = get_title_html()
 	//SPLURT EDIT START - Splashscreen toggle
 	//src << browse(SStitle.current_title_screen, "file=loading_screen.gif;display=0")
-	var/hide_splashscreen = (client && client.prefs.read_preference(/datum/preference/toggle/hide_splashscreen)) || (!client?.maturity_prompt_whitelist && CONFIG_GET(flag/age_prompt_system))
+	var/hide_splashscreen = (client && client.prefs.read_preference(/datum/preference/toggle/hide_splashscreen))
 	var/splashscreen_to_load = SStitle.current_title_screen
 	if(splashscreen_to_load && splashscreen_to_load != DEFAULT_TITLE_LOADING_SCREEN && hide_splashscreen)
 		splashscreen_to_load = DEFAULT_TITLE_SCREEN_IMAGE
@@ -195,7 +169,7 @@
 		winset(client, "status_bar", "is-visible=true")
 
 /mob/dead/new_player/proc/play_lobby_button_sound()
-	SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
+	SEND_SOUND(src, sound('modular_tianguan/modules/tg_lobby/sound/button_click.ogg'))
 
 /**
  * Allows the player to select a server to join from any loaded servers.

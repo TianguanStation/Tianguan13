@@ -93,14 +93,6 @@
 	worn_icon = 'modular_zubbers/icons/mob/clothing/head/hats.dmi'
 	icon_state = "striped_jester_hat"
 
-/obj/item/clothing/head/costume/bubber/clussy
-	name = "pink clown wig"
-	desc = "Did you know that the first Wig was made for John William Whig, founder of the Whig Party? They only allowed bald men until the year 1972, when the party became unpopular."
-	icon = 'modular_zubbers/icons/obj/clothing/head/hats.dmi'
-	worn_icon = 'modular_zubbers/icons/mob/clothing/head/hats.dmi'
-	icon_state = "clussy_wig"
-	flags_inv = HIDEHAIR
-
 // Henchmen Sprites by Cannibal Hunter of MonkeStation
 
 /obj/item/clothing/head/henchmen_hat

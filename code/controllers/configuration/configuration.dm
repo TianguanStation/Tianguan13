@@ -119,10 +119,9 @@
 	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()
 
-	// SKYRAT EDIT ADDITION START
-	//populate_interaction_instances() //SPLURT EDIT REMOVAL - Interactions
-	remove_erp_things()
-	// SKYRAT EDIT ADDITION END
+	// TIANGUAN EDIT ADDITION START
+	GLOB.tianguan_star_restrictions = CONFIG_GET(flag/enable_tianguan_star_restrictions)
+	// TIANGUAN EDIT ADDITION END
 
 	loaded = TRUE
 

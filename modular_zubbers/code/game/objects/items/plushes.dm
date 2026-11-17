@@ -1,5 +1,4 @@
 /obj/item/toy/plush //SPLURT EDIT - What are you doing cutting a hole in that plushie?!
-	plappable = TRUE
 
 /obj/item/toy/plush/chaotic_toaster
 	name = "Chaotic toaster"
@@ -48,7 +47,6 @@
 	lefthand_file = 'modular_zubbers/icons/mob/inhands/items/plushes_lefthand.dmi'
 	righthand_file = 'modular_zubbers/icons/mob/inhands/items/plushes_righthand.dmi'
 	inhand_icon_state = "bigdeer"
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/bubbledragon
 	name = "bubbledragon plushie"
@@ -128,7 +126,6 @@
 	lefthand_file = 'modular_zubbers/icons/mob/inhands/items/plushes_lefthand.dmi'
 	righthand_file = 'modular_zubbers/icons/mob/inhands/items/plushes_righthand.dmi'
 	inhand_icon_state = "tunafish"
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/secoff
 	name = "GalFed Secoff"
@@ -138,29 +135,6 @@
 	attack_verb_continuous = list("shoots (and misses)", "batongs", "annoys", "harmbatons", "magdumps")
 	attack_verb_simple = list("shot (and missed)", "batong", "annoy", "harmbaton", "magdump")
 	squeak_override = list('sound/items/weapons/gun/general/bolt_rack.ogg' = 1)
-
-/obj/item/toy/plush/cescrewsplush
-	name = "Chief Screws Plush" //Plush for Steals The Screwdriver/SteamStucKobold, sprited by stickygoat. and Amorbis
-	desc = "An adorable blue Lizard plushie wearing a Chief Engineer's Uniform, Rocket Boots, and Meson Goggles. It has a strange, silicone pocket on its underside..."
-	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
-	icon_state = "cescrewsplush"
-	attack_verb_continuous = list("slaps", "plaps", "smears")
-	attack_verb_simple = list("slap", "plap", "smear")
-	gender = FEMALE
-	squeak_override = list('sound/misc/soggy.ogg'=1)
-	plappable = FALSE //SPLURT EDIT - Already can plap
-
-/obj/item/toy/plush/cescrewsplush/examine(mob/user)
-	. = ..()
-	. += span_notice(LANG("obj.a32836df27915e5c", null))
-
-/obj/item/toy/plush/cescrewsplush/click_alt(mob/user)
-	user.visible_message(span_notice(LANG("obj.cfe81f9f6e91a121", list(user, src))), span_notice(LANG("obj.d90510ec6990d845", list(src))))
-	playsound(user, 'sound/effects/blob/blobattack.ogg', 50, TRUE)
-	var/obj/item/toy/plush/fleshlight/screws/toy = new(null)
-	qdel(src)
-	user.put_in_hands(toy)
-	return TRUE
 
 /obj/item/toy/plush/internshiba
 	name = "Intern Shiba Plush" //Plush for Kazumi Hasegawa/sprited by Amorbis
@@ -194,7 +168,6 @@
 		'modular_skyrat/modules/emotes/sound/voice/scream_m1.ogg' = 1,
 		'modular_skyrat/modules/emotes/sound/voice/scream_m2.ogg' = 1,
 	)
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/cat_annoying/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/toy/plush))
@@ -225,60 +198,6 @@
 	icon_state = "pinkproot"
 	gender = FEMALE
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/dwoop.ogg' = 1)
-	var/lewd = FALSE
-	plappable = FALSE //SPLURT EDIT - Doesn't want
-
-/obj/item/toy/plush/suspicious_protogen/Initialize(mapload)
-	. = ..()
-	update_plush_state()
-
-/obj/item/toy/plush/suspicious_protogen/proc/update_plush_state()
-	if(lewd)
-		name = "\improper Extra suspicious protogen plush"
-		icon_state = "pinkproot"
-		hitsound = null
-	else
-		name = "\improper Suspicious protogen plush"
-		icon_state = "pinkproot"
-		hitsound = initial(hitsound)
-	inhand_icon_state = null
-	update_appearance()
-	update_inhand_icon()
-
-/obj/item/toy/plush/suspicious_protogen/examine(mob/user)
-	. = ..()
-	if(lewd)
-		. += span_purple(LANG("obj.ebd7ba03d3650f10", null))
-
-/obj/item/toy/plush/suspicious_protogen/update_desc()
-	..()
-	if(lewd)
-		desc = LANG("obj.791194bd95f6344d", null)
-	else
-		desc = LANG("obj.1e36206178e0b35d", null)
-
-/obj/item/toy/plush/suspicious_protogen/click_ctrl_shift(mob/user)
-	lewd = !lewd
-	if(lewd)
-		user.visible_message(span_notice(LANG("obj.647aece55e6f92c6", list(user, src))), span_notice(LANG("obj.ed4e90c9f816d1fd", list(src))))
-		playsound(user, 'sound/items/zip/zip.ogg', 50, TRUE)
-	else
-		user.visible_message(span_notice(LANG("obj.5e5500ded0030397", list(user, src))), span_notice(LANG("obj.a43d6970b1f08eae", list(src))))
-		playsound(user, 'sound/items/zip/zip_up.ogg', 50, TRUE)
-	update_plush_state()
-	return TRUE
-
-/obj/item/toy/plush/suspicious_protogen/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
-	if(!lewd)
-		return ..()
-	var/obj/item/clothing/sextoy/fleshlight/proxy = new(loc)
-	proxy.name = name
-	proxy.desc = desc
-	proxy.icon = icon
-	proxy.icon_state = icon_state
-	. = proxy.attack(target, user)
-	playsound(user, 'modular_skyrat/modules/emotes/sound/emotes/dwoop.ogg', 50, TRUE)
-	qdel(proxy)
 
 // Plush for ZeferwasnttakenFR
 /obj/item/toy/plush/foxy_plush
@@ -354,7 +273,6 @@
 	attack_verb_simple = list("mothroach", "moth", "roach")
 	gender = MALE
 	squeak_override = list( 'sound/mobs/humanoids/moth/scream_moth.ogg' = 1, )
-	plappable = FALSE //SPLURT EDIT - Too real to plap
 
 /obj/item/toy/plush/moth/lovers
 	name = "lovers moth plushie"
@@ -381,7 +299,6 @@
 	var/going_hard = FALSE
 	/// Whether or not this goat has been flattened like a funny pancake
 	var/splat = FALSE
-	plappable = FALSE //SPLURT EDIT - Underage maybe ovO
 
 /obj/item/toy/plush/goatplushie/Initialize(mapload)
 	. = ..()
@@ -733,97 +650,6 @@
 		return
 	plushie_absorb(kisser)
 
-/obj/item/toy/plush/aeri
-	name = "Interdimensional Terrorist Plushie"
-	desc = "A highly controversial silicone 'plushie' modeled after its infamous namesake. Pulled from most storefronts after a spectacular public backlash, it now survives mainly through grey-market resellers. Rumor has it a few limited-run units shipped with a functional handheld railgun."
-	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
-	icon_state = "aeri"
-	inhand_icon_state = null
-	attack_verb_continuous = list("cuddles", "squeaks", "hugs", "caresses")
-	attack_verb_simple = list("cuddle", "squeak", "hug", "caress")
-	squeak_override = list(
-		'modular_zubbers/sound/lewd/rubber1.ogg' = 1,
-		'modular_zubbers/sound/lewd/rubber2.ogg' = 1,
-		'modular_zubbers/sound/lewd/rubber3.ogg' = 1
-	)
-	var/clothed = TRUE
-
-/obj/item/toy/plush/aeri/Initialize(mapload)
-	. = ..()
-	update_plush_state()
-
-/obj/item/toy/plush/aeri/proc/update_plush_state()
-	if(clothed)
-		name = "Interdimensional Terrorist Plushie"
-		desc = LANG("obj.f4e37664fcbc25da", null)
-		icon_state = "aeri"
-		//probably not necessary to put the verb and squeak override once again here but it kinda bugs out if I don't
-		attack_verb_continuous = list("cuddles", "squeaks", "hugs", "caresses")
-		attack_verb_simple = list("cuddle", "squeak", "hug", "caress")
-		squeak_override = list(
-			'modular_zubbers/sound/lewd/rubber1.ogg' = 1,
-			'modular_zubbers/sound/lewd/rubber2.ogg' = 1,
-			'modular_zubbers/sound/lewd/rubber3.ogg' = 1
-		)
-		hitsound = initial(hitsound)
-	else
-		name = "Interdimensional terrorist Doll"
-		desc = LANG("obj.cde3d7bf88e1bc59", null)
-		icon_state = "aeri-alt"
-		attack_verb_continuous = list("cuddles", "squeaks", "hugs", "caresses")
-		attack_verb_simple = list("cuddle", "squeak", "hug", "caress")
-		squeak_override = list(
-			'modular_zubbers/sound/lewd/rubber1.ogg' = 1,
-			'modular_zubbers/sound/lewd/rubber2.ogg' = 1,
-			'modular_zubbers/sound/lewd/rubber3.ogg' = 1
-		)
-		hitsound = null
-	inhand_icon_state = null
-	update_appearance()
-	update_inhand_icon()
-
-/obj/item/toy/plush/aeri/update_desc()
-	..()
-	if(clothed)
-		desc = LANG("obj.f4e37664fcbc25da", null)
-	else
-		desc = LANG("obj.cde3d7bf88e1bc59", null)
-
-/obj/item/toy/plush/aeri/examine(mob/user)
-	. = ..()
-	if(clothed)
-		. += span_purple(LANG("obj.90631d756a79fc23", null))
-	else
-		. += span_purple(LANG("obj.59845dfac5bd7a15", null))
-
-/obj/item/toy/plush/aeri/click_alt(mob/user)
-	clothed = !clothed
-	if(clothed)
-		to_chat(user, span_notice(LANG("obj.952f96f36a95a24d", list(src))))
-	else
-		to_chat(user, span_notice(LANG("obj.580a1e6c11f98eec", list(src))))
-	playsound(user, 'modular_zubbers/sound/lewd/rubber1.ogg', 50, TRUE)
-	update_plush_state()
-	return TRUE
-
-/obj/item/toy/plush/aeri/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
-	if(clothed)
-		return ..()
-	var/obj/item/toy/plush/fleshlight/proxy = new(loc)
-	proxy.name = name
-	proxy.desc = desc
-	proxy.icon = icon
-	proxy.icon_state = icon_state
-	. = proxy.attack(target, user)
-	qdel(proxy)
-
-//If you suicide with this toy it just summons a BSA smite on you
-/obj/item/toy/plush/aeri/suicide_act(mob/living/carbon/human/user)
-	user.visible_message(span_suicide(LANG("obj.3d5fd0b3cd2bd9e1", list(user, user.p_them(), user.p_theyre(), user.p_them()))))
-	var/datum/smite/bsa/bluespace_smite = new()
-	bluespace_smite.effect(user.client, user)
-	return BRUTELOSS
-
 //Sprite from SS14 Main. Sprited by Orsoniks (rivey0 on discord)
 /obj/item/toy/plush/expie
 	name = "Experiment Plushie"
@@ -910,72 +736,6 @@
 /obj/item/toy/plush/tangerine/interact(mob/user)
 	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/trills.ogg', 50, TRUE)
 
-// Updated plush for Noble
-/obj/item/toy/plush/noble	// Updated version of item/toy/plush/nobl
-	name = "\improper Medical skulldog plushie"
-	desc = "A small and fluffy skulldog plushie wearing a tiny paramedic coat, he's extremely squishy."
-	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
-	icon_state = "nobl2"
-	squeak_override = list('modular_zubbers/sound/misc/dog_toy.ogg' = 1)
-	var/clothed = TRUE
-	plappable = FALSE //SPLURT EDIT - Already can plap
-
-/obj/item/toy/plush/noble/Initialize(mapload)
-	. = ..()
-	update_plush_state()
-
-/obj/item/toy/plush/noble/proc/update_plush_state()
-	if(clothed)
-		name = "\improper Medical skulldog plushie"
-		icon_state = "nobl2" //sprited by BitSynergy
-		squeak_override = list('modular_zubbers/sound/misc/dog_toy.ogg' = 1)
-		hitsound = initial(hitsound)
-	else
-		name = "\improper Fluffy skulldog plushie"
-		icon_state = "nobl2-alt"
-		squeak_override = list('modular_zubbers/sound/misc/dog_toy.ogg' = 1)
-		hitsound = null
-	inhand_icon_state = null
-	update_appearance()
-	update_inhand_icon()
-
-/obj/item/toy/plush/noble/examine(mob/user)
-	. = ..()
-	if(clothed)
-		. += span_purple(LANG("obj.891a4c97ef115d13", null))
-	else
-		. += span_purple(LANG("obj.39a4ddb994fd35b0", null))
-
-/obj/item/toy/plush/noble/update_desc() // update_plush_state() doesn't update the description properly but this worked for me
-	..()
-	if(clothed)
-		desc = LANG("obj.882baed579be5098", null)
-	else
-		desc = LANG("obj.61fa04548820dd13", null)
-
-/obj/item/toy/plush/noble/click_alt(mob/user)
-	clothed = !clothed
-	if(clothed)
-		user.visible_message(span_notice(LANG("obj.7a6cddf6e919be50", list(user, src))), span_notice(LANG("obj.05be6a0cec606d80", list(src))))
-		playsound(user, 'sound/items/zip/zip_up.ogg', 50, TRUE)
-	else
-		user.visible_message(span_notice(LANG("obj.229d9ac6ff92dd80", list(user, src))), span_notice(LANG("obj.d71ca2910dbda293", list(src))))
-		playsound(user, 'sound/items/zip/zip.ogg', 50, TRUE)
-	update_plush_state()
-	return TRUE
-
-/obj/item/toy/plush/noble/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
-	if(clothed)
-		return ..()
-	var/obj/item/clothing/sextoy/fleshlight/proxy = new(loc)
-	proxy.name = name
-	proxy.desc = desc
-	proxy.icon = icon
-	proxy.icon_state = icon_state
-	. = proxy.attack(target, user)
-	playsound(user, 'modular_zubbers/sound/misc/dog_toy.ogg', 50, TRUE)
-	qdel(proxy)
-
 // Plush for Bit_Synergy
 /obj/item/toy/plush/blue_synth
 	name = "\improper Blue synth plushie"
@@ -1006,83 +766,3 @@
 	icon_state = "dominic_new"
 	gender = MALE
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/dwoop.ogg' = 1)
-	var/obj/item/inserted_item = null
-	var/static/list/contained_item = list(
-		/obj/item/clothing/sextoy/dildo,
-	)
-	plappable = FALSE //SPLURT EDIT - Already can plap
-
-/obj/item/toy/plush/protective_protogen/Initialize(mapload)
-	. = ..()
-	if(inserted_item)
-		inserted_item = new inserted_item(src)
-
-/obj/item/toy/plush/protective_protogen/Destroy()
-	if(istype(inserted_item))
-		QDEL_NULL(inserted_item)
-	return ..()
-
-/obj/item/toy/plush/protective_protogen/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	. = ..()
-	if(.)
-		return .
-	if(!is_type_in_list(tool, contained_item))
-		return NONE
-	if(!user.transferItemToLoc(tool, src))
-		return ITEM_INTERACT_BLOCKING
-	else
-		balloon_alert(user, LANG("obj.07b7e630c2be57ee", list(tool)))
-		inserted_item = tool
-		playsound(src, 'modular_zubbers/sound/lewd/rubber3.ogg', 50, TRUE)
-		update_plush_state()
-	return ITEM_INTERACT_SUCCESS
-
-/obj/item/toy/plush/protective_protogen/proc/remove_item(mob/user)
-	if(inserted_item)
-		balloon_alert(user, LANG("obj.c6b4aa687c2eb2c1", list(inserted_item)))
-		user.put_in_hands(inserted_item)
-		inserted_item = null
-		playsound(src, 'modular_zubbers/sound/lewd/rubber2.ogg', 50, TRUE)
-		update_plush_state()
-
-/obj/item/toy/plush/protective_protogen/click_alt(mob/user)
-	remove_item(user)
-	return CLICK_ACTION_SUCCESS
-
-/obj/item/toy/plush/protective_protogen/proc/update_plush_state()
-	if(!inserted_item)
-		name = "\improper Protective protogen plushie"
-		icon_state = "dominic_new"
-		hitsound = initial(hitsound)
-	else
-		icon_state = "dominic_dildo"
-		hitsound = null
-	inhand_icon_state = null
-	update_appearance()
-	update_inhand_icon()
-
-/obj/item/toy/plush/protective_protogen/examine(mob/user)
-	. = ..()
-	if(!inserted_item)
-		. += span_purple(LANG("obj.a834d3e8bf8ffc18", null))
-	else
-		. += span_purple(LANG("obj.4f08b372367a82f5", null))
-
-/obj/item/toy/plush/protective_protogen/update_desc()
-	..()
-	if(!inserted_item)
-		desc = LANG("obj.9f9d0ef645ddc7d3", null)
-	else
-		desc = LANG("obj.9ca110887892a57b", null)
-
-/obj/item/toy/plush/protective_protogen/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
-	if(!inserted_item)
-		return ..()
-	var/obj/item/clothing/sextoy/dildo/proxy = new(loc)
-	proxy.name = name
-	proxy.desc = desc
-	proxy.icon = icon
-	proxy.icon_state = icon_state
-	. = proxy.attack(target, user)
-	playsound(user, 'modular_skyrat/modules/emotes/sound/emotes/dwoop.ogg', 50, TRUE)
-	qdel(proxy)

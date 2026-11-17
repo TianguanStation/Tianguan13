@@ -46819,7 +46819,6 @@
 /area/station/medical/surgery/theatre)
 "gTY" = (
 /obj/structure/chair/sofa/left/brown,
-/obj/structure/sign/poster/official/no_erp/directional/north,
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/grimy,
 /area/station/maintenance/port/central)
@@ -141514,7 +141513,6 @@
 /obj/effect/turf_decal/tile/neutral/opposingcorners{
 	dir = 1
 	},
-/obj/structure/sign/poster/official/no_erp/directional/west,
 /obj/machinery/light/small/directional/west,
 /obj/effect/turf_decal/siding/dark_blue{
 	dir = 4

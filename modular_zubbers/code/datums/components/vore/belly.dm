@@ -455,7 +455,7 @@
 /obj/vore_belly/proc/release(atom/movable/AM)
 	var/mob/living/living_parent = owner.parent
 	AM.forceMove(living_parent.loc)
-	AM.visible_message(span_warning(LANG("obj.83570f2651e9b7ae", list(living_parent, LOWER_TEXT(release_verb), AM, LOWER_TEXT(name)))), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	AM.visible_message(span_warning(LANG("obj.83570f2651e9b7ae", list(living_parent, LOWER_TEXT(release_verb), AM, LOWER_TEXT(name)))), pref_to_check = /datum/preference/toggle/vore_enable)
 
 /// Plays sound just to pred and prey in this stomach
 /obj/vore_belly/proc/play_vore_sound_preypred(preysound, predsound, volume = VORE_SOUND_VOLUME, range = 2, vary = FALSE, pref = /datum/vore_pref/toggle/eating_noises)

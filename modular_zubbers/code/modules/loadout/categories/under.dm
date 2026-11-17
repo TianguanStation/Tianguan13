@@ -15,16 +15,6 @@
 	name = "Camouflage Uniform"
 	item_path = /obj/item/clothing/under/rank/civilian/bubber/camo
 
-/datum/loadout_item/uniform/command/stripper //Sprites by SierraGenevese
-	name = "Command Bikini"
-	item_path = /obj/item/clothing/under/rank/civilian/head_of_personnel/stripper
-	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_CHIEF_ENGINEER, JOB_CHIEF_MEDICAL_OFFICER, JOB_QUARTERMASTER, JOB_NT_REP)
-
-/datum/loadout_item/uniform/nanotrasen_consultant/stripper //Sprites by SierraGenevese
-	name = "Consultant Bikini"
-	item_path = /obj/item/clothing/under/rank/nanotrasen_consultant/stripper
-	restricted_roles = list(JOB_NT_REP)
-
 /datum/loadout_item/uniform/command/blueshield_suit
 	name = "Blueshield's Suit"
 	item_path = /obj/item/clothing/under/rank/blueshield
@@ -164,10 +154,6 @@
 	item_path = /obj/item/clothing/under/rank/civilian/bubber/clown/skirt
 	restricted_roles = list(JOB_CLOWN)
 
-/datum/loadout_item/uniform/miscellaneous/bubber/clown/skirt/pink //Shouldn't do too much harm having these unlocked...Right?
-	name = "Pink Clown Skirt"
-	item_path = /obj/item/clothing/under/rank/civilian/bubber/clown/skirt/clussy
-
 /datum/loadout_item/uniform/miscellaneous/bubber/clown/jester/amazing
 	name = "Amazing Jester Uniform"
 	item_path = /obj/item/clothing/under/rank/civilian/bubber/clown/jester
@@ -201,10 +187,6 @@
 	name = "Pirate Outfit"
 	item_path = /obj/item/clothing/under/costume/pirate
 
-/datum/loadout_item/uniform/miscellaneous/bunny_suit
-	name = "Bunny Suit"
-	item_path = /obj/item/clothing/under/costume/bunnylewd
-
 /datum/loadout_item/uniform/miscellaneous/centcom_officer_replica
 	name = "CentCom turtleneck replica"
 	item_path = /obj/item/clothing/under/rank/centcom/officer/replica
@@ -212,14 +194,6 @@
 /datum/loadout_item/uniform/miscellaneous/centcom_officer_skirt_replica
 	name = "CentCom skirtleneck replica"
 	item_path = /obj/item/clothing/under/rank/centcom/officer_skirt/replica
-
-/datum/loadout_item/uniform/miscellaneous/latex_catsuit
-	name = "Latex Catsuit"
-	item_path = /obj/item/clothing/under/misc/latex_catsuit
-
-/datum/loadout_item/uniform/miscellaneous/latex_halfcatsuit
-	name = "Latex Half-Catsuit"
-	item_path = /obj/item/clothing/under/misc/latex_halfcatsuit
 
 /datum/loadout_item/uniform/miscellaneous/custom_bunnysuit
 	name = "Custom Bunnysuit"
@@ -248,14 +222,6 @@
 /datum/loadout_item/uniform/miscellaneous/giant_scarf
 	name = "Giant Scarf"
 	item_path = /obj/item/clothing/under/dress/bubber/giant_scarf
-
-/datum/loadout_item/uniform/miscellaneous/lewdmaid
-	name = "Latex Maid Costume"
-	item_path = /obj/item/clothing/under/costume/lewdmaid
-
-/datum/loadout_item/uniform/miscellaneous/stripper_outfit
-	name = "Stripper Outfit"
-	item_path = /obj/item/clothing/under/stripper_outfit
 
 /datum/loadout_item/uniform/miscellaneous/greyscale_turtleneck
 	name = "Greyscale Turtleneck and Pants"

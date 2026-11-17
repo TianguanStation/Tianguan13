@@ -111,8 +111,6 @@
 		"borg_upgrade_shrink"
 	)
 	design_ids += list(
-		"hypnoticmodule",
-		"borg_upgrade_bellyriding_harness",
 		"borg_upgrade_resize",
 	)
 

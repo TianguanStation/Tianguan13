@@ -216,7 +216,7 @@
 
 		if("change_overlay")
 			var/mob/living/user = usr
-			var/disable_vore_overlays = CONFIG_GET(flag/disable_erp_preferences) || !safe_read_pref(user.client, /datum/preference/toggle/erp/vore_overlay_options)
+			var/disable_vore_overlays = !safe_read_pref(user.client, /datum/preference/toggle/vore_overlay_options)
 			var/list/available_overlays = list()
 
 			for(var/path in subtypesof(/atom/movable/screen/fullscreen/carrier))

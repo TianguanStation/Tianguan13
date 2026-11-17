@@ -593,14 +593,6 @@
 	dir = 1
 	},
 /obj/structure/bed/dogbed,
-/obj/item/clothing/erp_leash{
-	pixel_x = -4;
-	pixel_y = 1
-	},
-/obj/item/clothing/neck/mind_collar{
-	pixel_x = 5;
-	pixel_y = -5
-	},
 /turf/open/floor/wood/tile,
 /area/misc/condo)
 "ds" = (
@@ -2433,11 +2425,6 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/mind_controller{
-	pixel_x = -6;
-	pixel_y = 7;
-	name = "devious controller"
-	},
 /obj/item/kirbyplants/synthetic/plant27{
 	pixel_x = 3;
 	pixel_y = 25
@@ -2839,7 +2826,7 @@
 	},
 /obj/item/stack/medical/bandage{
 	pixel_y = 10;
-	desc = "Don't cum on the servers."
+	desc = "Keep liquids away from the servers."
 	},
 /turf/open/floor/plating,
 /area/misc/condo)
@@ -3824,7 +3811,7 @@
 /obj/item/training_toolbox{
 	name = "ambiguous toolbox";
 	icon_state = "coroner";
-	desc = "Don't cum on the servers.";
+	desc = "Keep liquids away from the servers.";
 	pixel_x = 1;
 	pixel_y = 10
 	},
@@ -7319,7 +7306,6 @@
 	},
 /area/misc/condo)
 "RH" = (
-/obj/structure/stripper_pole,
 /obj/structure/decorative{
 	icon = 'icons/obj/smooth_structures/fancy_table_purple.dmi';
 	dir = 8;
@@ -8525,13 +8511,6 @@
 	},
 /area/misc/condo)
 "Za" = (
-/obj/machinery/vending/dorms{
-	pixel_x = 1;
-	desc = "It's almost as if those housing companies intentionally leave zero space for proper kitchens to force you to buy from those built-in vendors...";
-	all_products_free = 1;
-	scan_id = 0;
-	name = "integrated LustWish"
-	},
 /obj/structure/decorative{
 	icon_state = "siding_plain";
 	icon = 'icons/turf/decals.dmi';

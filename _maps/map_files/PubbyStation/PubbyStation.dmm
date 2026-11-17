@@ -7806,7 +7806,6 @@
 /turf/open/floor/plating,
 /area/station/cargo/storage)
 "aGI" = (
-/obj/structure/sign/poster/official/no_erp/directional/west,
 /obj/machinery/shower/directional/east,
 /turf/open/floor/iron/freezer,
 /area/station/commons/toilet/restrooms)
@@ -25482,7 +25481,6 @@
 /turf/open/floor/iron/freezer,
 /area/station/commons/toilet/restrooms)
 "dra" = (
-/obj/machinery/vending/dorms/prison,
 /obj/effect/turf_decal/tile/red/anticorner/contrasted,
 /turf/open/floor/iron,
 /area/station/security/prison)
@@ -25975,7 +25973,6 @@
 /area/station/maintenance/department/science/central)
 "dKu" = (
 /obj/structure/cable,
-/obj/machinery/vending/dorms,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "dKA" = (

@@ -36,25 +36,6 @@
 	can_adjust = FALSE
 	supports_variations_flags = NONE
 
-/obj/item/clothing/under/latex
-	name = "full latex jumpsuit"
-	desc = "A tight fitting jumpsuit made of latex."
-	icon_state = "latex_full"
-	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_zzplurt/icons/mob/clothing/uniform_digi.dmi'
-	can_adjust = FALSE
-
-/obj/item/clothing/under/latex/half
-	name = "latex bodysuit"
-	desc = "A tight fitting outfit made of latex, that covers the wearers torso."
-	icon_state = "latex_half"
-	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_zzplurt/icons/mob/clothing/uniform_digi.dmi'
-	body_parts_covered = CHEST
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-
 /obj/item/clothing/under/wshort
 	name = "Red workout short"
 	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
@@ -76,17 +57,6 @@
 	name = "Pink workout short"
 	icon_state = "pinkwshort"
 
-/obj/item/clothing/under/domina
-	name = "Dominatrix Dress"
-	desc = "This dress makes you feel like you wanna get on all fours and beg for more!"
-	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
-	icon_state = "domina"
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	body_parts_covered = CHEST|GROIN|LEGS
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-
 /obj/item/clothing/under/bluedress
 	name = "Blue Royal Dress"
 	desc = "This dress is made with fine blue silks, it also smells of expensive perfumes and oils."
@@ -100,7 +70,7 @@
 
 /obj/item/clothing/under/performer
 	name = "Performers one piece"
-	desc = "This outfit smells a bit like cum and lube."
+	desc = "A sleek one-piece stage performer's outfit."
 	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
 	icon_state = "performer"
@@ -127,15 +97,6 @@
 	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
 	can_adjust = FALSE
-
-/obj/item/clothing/under/officesexy
-	name = "Revealing office uniform"
-	desc = "A sexy office uniform, that has a low cropped front to show off some chest, or bra. And a tall dress that covers the stomach, complete with a set of buttons."
-	icon_state = "office_revealing"
-	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/vaultsuit
 	name = "vault suit"
@@ -281,25 +242,6 @@
 	icon_file = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
 
 //
-/obj/item/clothing/under/rank/security/stripper
-	name = "secstripper"
-	icon_state = "secstripper"
-	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
-	armor_type = /datum/armor/clothing_under
-	body_parts_covered = CHEST|GROIN
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/under/rank/cargo/miner/lavaland/stripper
-	name = "explorer stripper outfit"
-	desc = "This can't be dress code compliant, can it?"
-	icon_state = "explorerstripper"
-	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-//
 /* They exist nonmodularly and adding them causes issues with the loadout.
 /obj/item/clothing/under/suit/pencil
 	name = "black pencilskirt"
@@ -407,15 +349,6 @@
 	icon_state = "helltakerskirt"
 */
 
-//
-/obj/item/clothing/under/rank/civilian/clown/clussy_outfit
-	name = "Clussy outfit"
-	desc = "Uniform for clowns who really enjoy being honked."
-	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
-	icon_state = "clussy_outfit"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 // Vore station import/improvement // Greyscale Dresses //
 /obj/item/clothing/under/misc/wench
 	name = "Wench's Dress"
@@ -462,22 +395,6 @@
 	greyscale_colors = "#1c1c1c"
 	greyscale_config = /datum/greyscale_config/vneck
 	greyscale_config_worn = /datum/greyscale_config/vneck/worn
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	flags_1 = IS_PLAYER_COLORABLE_1
-
-/obj/item/clothing/under/misc/revealingdress
-	name = "Revealing Dress"
-	desc = "A very revealing dress. Is this work appropriate?"
-	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
-	icon_state = "revealingdress"
-	post_init_icon_state = "revealingdress"
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	body_parts_covered = CHEST|GROIN|LEGS
-	greyscale_colors = "#211919#4ce2ff"
-	greyscale_config = /datum/greyscale_config/revealingdress
-	greyscale_config_worn = /datum/greyscale_config/revealingdress/worn
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	flags_1 = IS_PLAYER_COLORABLE_1
 
@@ -563,22 +480,6 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/under/misc/sheer
-	name = "sheer dress"
-	desc = "An entirely sheer dress. Best worn with nothing underneath!"
-	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
-	icon_state = "sheer"
-	post_init_icon_state = "sheer"
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	body_parts_covered = CHEST|GROIN|LEGS
-	greyscale_colors = "#3e769c"
-	greyscale_config = /datum/greyscale_config/sheer
-	greyscale_config_worn = /datum/greyscale_config/sheer/worn
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	flags_1 = IS_PLAYER_COLORABLE_1
-
 /obj/item/clothing/under/misc/corsetdress
 	name = "corset dress"
 	desc = "A polychromatic dress with a corset, really makes the gals pop."
@@ -611,22 +512,6 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/under/misc/miniskirt_sheer
-	name = "fashionable sheer miniskirt"
-	desc = "An impractically short miniskirt, can it even be called clothing though?"
-	icon = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
-	icon_state = "miniskirt_sheer"
-	post_init_icon_state = "miniskirt_sheer"
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	body_parts_covered = GROIN
-	greyscale_colors = "#0e0e0e"
-	greyscale_config = /datum/greyscale_config/miniskirt_sheer
-	greyscale_config_worn = /datum/greyscale_config/miniskirt_sheer/worn
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	flags_1 = IS_PLAYER_COLORABLE_1
-
 // Configs for Greyscale Dresses //
 /datum/greyscale_config/wench
 	name = "Wench Outfit"
@@ -653,15 +538,6 @@
 
 /datum/greyscale_config/vneck/worn
 	name = "V-neck Dress (Worn)"
-	icon_file = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
-
-/datum/greyscale_config/revealingdress
-	name = "Revealing Dress"
-	icon_file = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	json_config = 'modular_zzplurt/code/datums/greyscale/json_configs/revealingdress.json'
-
-/datum/greyscale_config/revealingdress/worn
-	name = "Revealing Dress (Worn)"
 	icon_file = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
 
 /datum/greyscale_config/rippedpunk
@@ -713,15 +589,6 @@
 	name = "Asymmetrical Slit Skirt (Worn)"
 	icon_file = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
 
-/datum/greyscale_config/sheer
-	name = "Sheer Dress"
-	icon_file = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	json_config = 'modular_zzplurt/code/datums/greyscale/json_configs/sheer.json'
-
-/datum/greyscale_config/sheer/worn
-	name = "Sheer Dress (Worn)"
-	icon_file = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
-
 /datum/greyscale_config/corsetdress
 	name = "Corset Dress"
 	icon_file = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
@@ -740,14 +607,6 @@
 	name = "Miniskirt (Worn)"
 	icon_file = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
 
-/datum/greyscale_config/miniskirt_sheer
-	name = "Sheer Miniskirt"
-	icon_file = 'modular_zzplurt/icons/obj/clothing/uniforms.dmi'
-	json_config = 'modular_zzplurt/code/datums/greyscale/json_configs/miniskirt_sheer.json'
-
-/datum/greyscale_config/miniskirt_sheer/worn
-	name = "Sheer Miniskirt (Worn)"
-	icon_file = 'modular_zzplurt/icons/mob/clothing/uniform.dmi'
 
 //Urban Clothing
 

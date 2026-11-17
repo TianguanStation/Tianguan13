@@ -450,7 +450,6 @@
 /obj/item/bedsheet/centcom/double{
 	dir = 1
 	},
-/obj/structure/sign/poster/official/no_erp/directional/west,
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/carpet/royalblack,
 /area/station/command/heads_quarters/nt_rep)

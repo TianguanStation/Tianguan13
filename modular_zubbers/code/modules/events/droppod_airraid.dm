@@ -70,7 +70,6 @@
 			/area/station/solars,
 			/area/station/maintenance,
 		))
-		blacklisted_areas += GLOB.expected_erp_areas.Copy()
 
 		valid_spawn_areas = typecache_filter_list(GLOB.areas, make_associative(GLOB.the_station_areas) - blacklisted_areas + whitelisted_areas)
 

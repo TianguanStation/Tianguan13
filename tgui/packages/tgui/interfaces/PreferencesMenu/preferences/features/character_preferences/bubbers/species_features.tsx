@@ -1,11 +1,9 @@
 import {
-  CheckboxInput,
   type Feature,
   type FeatureChoiced,
   FeatureShortTextInput,
   FeatureTextInput,
   FeatureTriColorInput,
-  type FeatureToggle,
 } from '../../base';
 import { FeatureDropdownInput } from '../../dropdowns';
 
@@ -72,50 +70,11 @@ export const character_ad: Feature<string> = {
   component: FeatureTextInput,
 };
 
-export const attraction: FeatureChoiced = {
-  name: 'Character Attraction',
-  description:
-    'What classifies what your character is attracted to. This is displayed in the Directory.',
-  component: FeatureDropdownInput,
-};
-
 export const display_gender: FeatureChoiced = {
   name: 'Character Gender',
   description:
     'What classifies as the gender for your character. This is displayed in the Directory.',
   component: FeatureDropdownInput,
-};
-
-export const flavor_text_nsfw: Feature<string> = {
-  name: 'Flavor Text (NSFW)',
-  description:
-    'The NSFW part of your flavor text. Used to store visual sexual details.',
-  component: FeatureTextInput,
-};
-
-export const low_arousal_text: Feature<string> = {
-  name: 'Arousal Flavor - Low',
-  description: 'How your character can be perceived to be slightly aroused',
-  component: FeatureShortTextInput,
-};
-
-export const medium_arousal_text: Feature<string> = {
-  name: 'Arousal Flavor - Medium',
-  description: 'How your character can be perceived to be somewhat aroused',
-  component: FeatureShortTextInput,
-};
-
-export const high_arousal_text: Feature<string> = {
-  name: 'Arousal Flavor - Strong',
-  description: 'How your character can be perceived to be highly aroused',
-  component: FeatureShortTextInput,
-};
-
-export const silicon_flavor_text_nsfw: Feature<string> = {
-  name: 'Silicon NSFW Flavor Text',
-  description:
-    'A portion of your flavor text that is stored in examine, used for Silicons. Used to store visual sexual details.',
-  component: FeatureTextInput,
 };
 
 export const headshot_silicon: Feature<string> = {
@@ -129,30 +88,6 @@ export const headshot_silicon: Feature<string> = {
   component: FeatureShortTextInput,
 };
 
-export const headshot_nsfw: Feature<string> = {
-  name: 'Headshot (NSFW)',
-  description:
-    'Headshot, but for NSFW references. \
-    Requires a link ending with .png, .jpeg, or .jpg, starting with \
-    https://, and hosted on Catbox, Imgbox, Gyazo, Lensdump, or F-List. \
-    Renders the image underneath your character preview in the examine more window. \
-    Image larger than 250x250 will be resized to 250x250. \
-    Aim for 250x250 whenever possible',
-  component: FeatureShortTextInput,
-};
-
-export const headshot_silicon_nsfw: Feature<string> = {
-  name: 'Silicon Headshot (NSFW)',
-  description:
-    'Headshot, but for NSFW references on Silicons. \
-    Requires a link ending with .png, .jpeg, or .jpg, starting with \
-    https://, and hosted on Catbox, Imgbox, Gyazo, Lensdump, or F-List. \
-    Renders the image underneath your character preview in the examine more window. \
-    Image larger than 250x250 will be resized to 250x250. \
-    Aim for 250x250 whenever possible',
-  component: FeatureShortTextInput,
-};
-
 export const ooc_notes_silicon: Feature<string> = {
   name: 'OOC Notes (Silicon)',
   description: 'Same as OOC notes, but for your silicon character!',
@@ -162,7 +97,7 @@ export const ooc_notes_silicon: Feature<string> = {
 export const custom_species_silicon: Feature<string> = {
   name: 'Silicon Model Name',
   description:
-    'The name of the module for your Silicon company, such as "Armadyne Pleasure Model."',
+    'The name of the module for your Silicon company, such as "Armadyne Service Model."',
   component: FeatureShortTextInput,
 };
 
@@ -180,12 +115,6 @@ export const art_ref: Feature<string> = {
     Requires a link ending with .png, .jpeg, or .jpg, starting with \
     https://, and hosted on Catbox, Imgbox, Gyazo, Lensdump, or F-List.',
   component: FeatureShortTextInput,
-};
-
-export const art_ref_nsfw: FeatureToggle = {
-  name: 'Art Reference (NSFW)',
-  description: 'Is your reference picture NSFW?',
-  component: CheckboxInput,
 };
 
 export const mutant_colors_color: Feature<string[]> = {

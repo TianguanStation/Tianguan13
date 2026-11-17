@@ -361,26 +361,6 @@
 	if(cyborg.emagged)
 		return ..()
 
-/// Dominatrix time
-/obj/item/borg/upgrade/dominatrixmodule
-	name = "borg dominatrix module"
-	desc = "A module that greatly upgrades the ability of borgs to display affection."
-	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
-	icon_state = "module_lust"
-	custom_materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
-	)
-	custom_price = 0
-
-	items_to_add = list(/obj/item/kinky_shocker,
-						/obj/item/clothing/mask/leatherwhip,
-						/obj/item/spanking_pad,
-						/obj/item/tickle_feather,
-						/obj/item/clothing/erp_leash,
-						/obj/item/clicker
-						)
-
 /// Cyborgs are bad at dancing too
 /obj/item/borg/upgrade/waddle_module
 	name = "borg waddle module"

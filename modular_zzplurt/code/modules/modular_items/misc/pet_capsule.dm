@@ -56,15 +56,6 @@
 
 		var/selected_icon = show_radial_menu(loc, loc , pet_icons,  radius = 42, require_near = TRUE)
 		switch(selected_icon)
-			// if("Femclaw")
-			// 	selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw
-			// 	pet_picked = TRUE
-			// if("Deathclaw")
-			// 	selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw
-			// 	pet_picked = TRUE
-			// if("Rouny")
-			// 	selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw/rouny
-			// 	pet_picked = TRUE
 			if("Ice Wolf")
 				selected_pet = /mob/living/basic/mining/wolf
 				pet_picked = TRUE
@@ -74,12 +65,6 @@
 			if("Spider")
 				selected_pet = /mob/living/basic/spider/giant/guard
 				pet_picked = TRUE
-			// if("Mommyclaw")
-			// 	selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw/pet_mommyclaw
-			// 	pet_picked = TRUE
-			// if("Alphaclaw")
-			// 	selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw/pet_alphaclaw
-			// 	pet_picked = TRUE
 			else
 				pet_picked = FALSE
 				return FALSE
@@ -104,14 +89,6 @@
 		var/datum/effect_system/basic/spark_spread/sparks = new(targetloc, 10, TRUE)
 		sparks.start()
 
-		//setting owners only for pets which can be interacted with
-		////// Need funclawes
-		// if(istype(stored_pet, /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw))
-		// 	var/mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw/ownable = stored_pet
-		// 	ownable.capsule_owner = owner
-		// else if(istype(stored_pet,/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw))
-		// 	var/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw/ownable = stored_pet
-		// 	ownable.capsule_owner = owner
 
 
 	//recall pet

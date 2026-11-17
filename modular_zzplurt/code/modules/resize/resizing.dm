@@ -46,10 +46,6 @@
 /mob/living/proc/handle_micro_bump_other(mob/living/target)
 	ASSERT(isliving(target))
 
-	// if the target has the preference off, stop the interaction.
-	if(get_size(target) > RESIZE_TINY)
-		if(target.client?.prefs?.read_preference(/datum/preference/toggle/erp/stomping) == FALSE)
-			return FALSE
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/user = src
@@ -110,23 +106,11 @@
 						user.add_movespeed_modifier(/datum/movespeed_modifier/stomp, TRUE)
 						addtimer(CALLBACK(user, TYPE_PROC_REF(/mob, remove_movespeed_modifier), MOVESPEED_ID_STOMP, TRUE), 7)//About 3/4th a second
 						if(iscarbon(user))
-							var/feetCover = (user.wear_suit && (user.wear_suit.body_parts_covered & FEET)) || (user.w_uniform && (user.w_uniform.body_parts_covered & FEET) || (user.shoes && (user.shoes.body_parts_covered & FEET)))
-							if(feetCover)
-								if(user?.dna?.features["taur"] == "Naga" || user?.dna?.features["taur"] == "Tentacle")
-									target.visible_message(span_danger(LANG("mob.c09ae88c15cc243e", list(src, target))), span_danger(LANG("mob.31e64365730609cf", list(src))))
-								else
-									target.visible_message(span_danger(LANG("mob.2f2488e06d260c66", list(src, target))), span_danger(LANG("mob.2b973f5fe48e2459", list(src))))
-								return TRUE
+							if(user?.dna?.features["taur"] == "Naga" || user?.dna?.features["taur"] == "Tentacle")
+								target.visible_message(span_danger(LANG("mob.c09ae88c15cc243e", list(src, target))), span_danger(LANG("mob.31e64365730609cf", list(src))))
 							else
-								if(user?.dna?.features["taur"] == "Naga" || user?.dna?.features["taur"] == "Tentacle")
-									target.visible_message(span_danger(LANG("mob.2fa500a6ce958bf2", list(user, target))), span_userdanger(LANG("mob.c14c5bc8e1e7442c", list(src))))
-									//target.mob_pickup_micro_feet(user)
-									SEND_SIGNAL(target, COMSIG_MICRO_PICKUP_FEET, user)
-								else
-									target.visible_message(span_danger(LANG("mob.5f360316c7a4ce15", list(user, target))), span_userdanger(LANG("mob.ab46c26776de1f4b", list(src))))
-									//target.mob_pickup_micro_feet(user)
-									SEND_SIGNAL(target, COMSIG_MICRO_PICKUP_FEET, user)
-								return TRUE
+								target.visible_message(span_danger(LANG("mob.2f2488e06d260c66", list(src, target))), span_danger(LANG("mob.2b973f5fe48e2459", list(src))))
+							return TRUE
 
 		if(COMPARE_SIZES(target, user) >= 2)
 			user.forceMove(target.loc)

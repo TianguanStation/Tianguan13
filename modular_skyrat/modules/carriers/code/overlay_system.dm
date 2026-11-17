@@ -36,7 +36,7 @@
 	if(!occupant_prefs.read_preference(/datum/preference/toggle/carrier_overlays))
 		return FALSE
 
-	if(initial(current_overlay_path.vore_overlay) && !occupant_prefs.read_preference(/datum/preference/toggle/erp/vore_overlays))
+	if(initial(current_overlay_path.vore_overlay) && !occupant_prefs.read_preference(/datum/preference/toggle/vore_overlays))
 		return FALSE
 
 	if(!ispath(current_overlay_path))

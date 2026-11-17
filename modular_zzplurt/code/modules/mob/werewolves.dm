@@ -46,15 +46,11 @@
 
 /mob/living/basic/werewolf/funwolf/
 	name = "Docile Werewolf"
-	desc = "A massive, wolfish creature with powerful muscles, razor-sharp claws, and aggression to match. His sheath is lipsticking."
-	simulated_genitals = list(
-		ORGAN_SLOT_PENIS = TRUE,
-		ORGAN_SLOT_ANUS = TRUE
-	)
+	desc = "A massive, wolfish creature that seems unexpectedly calm."
 	gold_core_spawnable = FRIENDLY_SPAWN
 
 /mob/living/basic/werewolf/funwolf/alpha
-	desc = "I hope you enjoy being stuck on a knot for 5 hours."
+	desc = "A massive, towering alpha werewolf."
 	name = "Alpha Werewolf"
 	maxHealth = 1400
 	health = 1400
@@ -65,17 +61,11 @@
 
 /mob/living/basic/werewolf/funwolf/bitch
 	gender = FEMALE
-	name = "Werewolf Bitch"
-	desc = "Look at her massive tracts of land."
+	name = "Werewolf Matriarch"
+	desc = "A massive female werewolf."
 	maxHealth = 400
 	health = 400
 	armour_penetration = 45
-	simulated_genitals = list(
-		ORGAN_SLOT_PENIS = FALSE,
-		ORGAN_SLOT_ANUS = TRUE,
-		ORGAN_SLOT_VAGINA = TRUE,
-		ORGAN_SLOT_BREASTS = TRUE
-	)
 
 /mob/living/basic/werewolf/funwolf/mosley
 	name = "Mosley?"
@@ -85,17 +75,11 @@
 
 /mob/living/basic/werewolf/funwolf/hellhound
 	name = "Hellhound"
-	desc = "A hellish red beast from the pits of tartarus, looking to desecrate any virgins it comes across."
+	desc = "A hellish red beast from the pits of tartarus."
 	icon_state = "Hell_Hound_idle"
 	icon_dead = "Hell_Hound_dead"
 
 /mob/living/basic/werewolf/funwolf/hellhound/loona
-	name = "Hellhound Bitch"
-	desc = "A hellish red beast from the pits of tartarus, looking to desecrate any virgins it comes across. It has tits."
+	name = "Fiery Hellhound"
+	desc = "A hellish red beast from the pits of tartarus."
 	gender = FEMALE
-	simulated_genitals = list(
-		ORGAN_SLOT_PENIS = FALSE,
-		ORGAN_SLOT_ANUS = TRUE,
-		ORGAN_SLOT_VAGINA = TRUE,
-		ORGAN_SLOT_BREASTS = TRUE
-	)

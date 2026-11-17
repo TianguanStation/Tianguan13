@@ -1,6 +1,7 @@
 import { BlockQuote, Button, Section, Stack } from 'tgui-core/components';
 import type { BooleanLike } from 'tgui-core/react';
 
+import { resolveAsset } from '../assets'; // TIANGUAN EDIT ADDITION - TRAITOR_BACKGROUND
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import { Rules } from './AntagInfoRules'; // BUBBER EDIT ADDITION
@@ -197,9 +198,22 @@ const CodewordsSection = (props) => {
 export const AntagInfoTraitor = (props) => {
   const { data } = useBackend<Info>();
   const { theme, given_uplink } = data;
+  // TIANGUAN EDIT ADDITION - TRAITOR_BACKGROUND
+  const isUnionTheme = theme === 'uar';
   return (
     <Window width={620} height={580} theme={theme}>
-      <Window.Content>
+      <Window.Content
+        style={
+          isUnionTheme
+            ? {
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("${resolveAsset('tianguan_traitor_background.png')}")`,
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+              }
+            : undefined
+        }
+      >
         <Stack vertical fill>
           <Stack.Item grow>
             <Stack fill>

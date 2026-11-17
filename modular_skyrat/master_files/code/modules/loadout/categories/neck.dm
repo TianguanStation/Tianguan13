@@ -129,11 +129,6 @@
 	name = "Cross Collar"
 	item_path = /obj/item/clothing/neck/human_petcollar/locked/cross
 
-/datum/loadout_item/neck/kinkycollar
-	name = "Kinky Collar"
-	item_path = /obj/item/clothing/neck/kink_collar
-	erp_item = TRUE
-
 /*
 *	PONCHOS
 */

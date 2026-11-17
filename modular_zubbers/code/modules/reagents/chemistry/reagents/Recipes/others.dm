@@ -39,12 +39,12 @@
 
 /datum/chemical_reaction/mutationtoxin/felinid
 	results = list(/datum/reagent/mutationtoxin/felinid = 1)
-	required_reagents  = list(/datum/reagent/toxin/mindbreaker = 5, /datum/reagent/consumable/ethanol/frisky_kitty = 3, /datum/reagent/drug/aphrodisiac/crocin = 2, /datum/reagent/mutationtoxin = 1)
+	required_reagents  = list(/datum/reagent/toxin/mindbreaker = 5, /datum/reagent/consumable/ethanol/frisky_kitty = 3, /datum/reagent/consumable/catnip_tea = 2, /datum/reagent/mutationtoxin = 1)
 	required_temp = 320
 
 /datum/chemical_reaction/mutationtoxin/felinid/primitive
 	results = list(/datum/reagent/mutationtoxin/felinid/primitive = 1)
-	required_reagents  = list(/datum/reagent/consumable/frostoil = 5, /datum/reagent/consumable/ethanol/frisky_kitty = 3, /datum/reagent/drug/aphrodisiac/crocin = 2, /datum/reagent/mutationtoxin = 1)
+	required_reagents  = list(/datum/reagent/consumable/frostoil = 5, /datum/reagent/consumable/ethanol/frisky_kitty = 3, /datum/reagent/consumable/catnip_tea = 2, /datum/reagent/mutationtoxin = 1)
 	required_temp = 270
 
 /datum/chemical_reaction/mutationtoxin/fly

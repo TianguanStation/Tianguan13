@@ -9353,12 +9353,6 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/port_tarkon/trauma)
 "GX" = (
-/obj/machinery/vending/dorms{
-	pixel_y = -32;
-	all_products_free = 1;
-	density = 0;
-	pixel_x = 1
-	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/port_tarkon/centerhall)
 "GY" = (

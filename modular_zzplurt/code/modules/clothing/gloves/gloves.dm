@@ -1,20 +1,6 @@
-/obj/item/clothing/gloves/latexsleeves
-	name = "latex sleeves"
-	desc = "A pair of shiny latex sleeves that covers ones arms."
-	icon_state = "latex"
-	icon = 'modular_zzplurt/icons/obj/clothing/gloves.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/gloves.dmi'
-
-/obj/item/clothing/gloves/clussy_gloves
-	name = "Clussy gloves"
-	desc = "Why honking horns when you can honk someone's balls?"
-	icon = 'modular_zzplurt/icons/obj/clothing/gloves.dmi'
-	worn_icon = 'modular_zzplurt/icons/mob/clothing/hands.dmi'
-	icon_state = "clussy_gloves"
-
 /obj/item/clothing/gloves/evening/black
 	name = "Midnight gloves"
-	desc = "Thin, pretty gloves intended for use in sexy feminine attire. A tag on the hem claims they pair great with black stockings."
+	desc = "Thin, elegant evening gloves. A tag on the hem claims they pair great with black stockings."
 	icon = 'modular_zzplurt/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_zzplurt/icons/mob/clothing/hands.dmi'
 	icon_state = "eveningblack"

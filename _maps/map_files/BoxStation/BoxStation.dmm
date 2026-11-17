@@ -7468,7 +7468,6 @@
 	},
 /area/station/commons/locker)
 "aQQ" = (
-/obj/machinery/vending/dorms,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
@@ -27862,7 +27861,6 @@
 "dCG" = (
 /obj/item/bedsheet/purple,
 /obj/structure/bed,
-/obj/effect/decal/cleanable/cum,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
@@ -38232,7 +38230,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
 "hxK" = (
-/obj/machinery/vending/dorms,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
@@ -46552,7 +46549,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/official/no_erp/directional/west,
 /turf/open/floor/iron/freezer,
 /area/station/maintenance/starboard/fore)
 "kwe" = (
@@ -47722,7 +47718,6 @@
 /turf/open/floor/wood,
 /area/station/commons/vacant_room/office)
 "kOB" = (
-/obj/machinery/vending/dorms,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
@@ -56042,7 +56037,6 @@
 /area/station/security/holding_cell)
 "nOH" = (
 /obj/effect/spawner/random/structure/closet_private,
-/obj/item/stack/shibari_rope/full,
 /turf/open/floor/wood/tile,
 /area/station/commons/dorms)
 "nPd" = (
@@ -68124,7 +68118,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
 "suK" = (
-/obj/item/electropack/shockcollar,
 /obj/item/assembly/signaler{
 	pixel_x = 3;
 	pixel_y = -4
@@ -72679,7 +72672,6 @@
 	},
 /obj/structure/closet/crate/bin,
 /obj/item/reagent_containers/cup/glass/bottle/hooch,
-/obj/item/reagent_containers/applicator/pill/crocin,
 /turf/open/floor/wood,
 /area/station/maintenance/dorm_room)
 "uam" = (
@@ -75320,9 +75312,6 @@
 	},
 /area/station/security/prison)
 "uWg" = (
-/obj/machinery/vending/dorms/prison{
-	onstation = 0
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /turf/open/floor/plating,

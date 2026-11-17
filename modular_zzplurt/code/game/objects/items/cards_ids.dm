@@ -14,11 +14,6 @@
 	assignment = "Bloodsucker Fledgling"
 	trim = /datum/id_trim/quirk/bloodfledge
 
-// Quirk: Concubus
-/obj/item/card/id/advanced/quirk/concubus
-	name = "concubus identification card"
-	trim = /datum/id_trim/quirk/concubus
-
 // Quirk: Gargoyle
 /obj/item/card/id/advanced/quirk/gargoyle
 	name = "gargoyle identification card"

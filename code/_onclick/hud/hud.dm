@@ -18,29 +18,8 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	"Blue - 98" = 'modular_zubbers/master_files/icons/hud/screen_blue98.dmi' // Bubber Addition
 ))
 
-//SKYRAT EDIT - ADDITION - ERP ICONS FIX
-
-GLOBAL_LIST_INIT(available_erp_ui_styles, list(
-	"Midnight" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/midnight.dmi',
-	"Retro" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/retro.dmi',
-	"Plasmafire" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/plasmafire.dmi',
-	"Slimecore" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/slimecore.dmi',
-	"Operative" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/operative.dmi',
-	"Clockwork" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/clockwork.dmi',
-	"Glass" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/glass.dmi'
-))
-
-//SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
-
 /proc/ui_style2icon(ui_style)
 	return GLOB.available_ui_styles[ui_style] || GLOB.available_ui_styles[GLOB.available_ui_styles[1]]
-
-//SKYRAT EDIT - ADDITION - ERP ICONS FIX
-
-/proc/erp_ui_style2icon(ui_style)
-	return GLOB.available_erp_ui_styles[ui_style] || GLOB.available_erp_ui_styles[GLOB.available_erp_ui_styles[1]]
-
-//SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
 
 /datum/hud
 	var/mob/mymob
@@ -53,7 +32,6 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	/// This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
 	var/atom/movable/screen/ammo_counter //SKYRAT EDIT ADDITION
-	var/atom/movable/screen/text/activation_text/activation // BUBBER EDIT ADDITION
 	var/hotkey_ui_hidden = FALSE
 
 	/// Assoc list of key => "plane master groups"
@@ -102,7 +80,6 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 
 	/// List of typepaths of /datum/inventory_slot which will be used to automatically create inventory slot UI elements
 	/// If assigned a typepath instead of a list, it will instead use all valid subtypes of said typepath
-	var/erp_ui_style //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 	/// Can be changed in initialize_screen_objects() to add/remove slots
 	var/list/datum/inventory_slot/default_inventory_slots = null
 	/// Alist of slot_id -> inventory_slot datum of our slots
@@ -120,7 +97,6 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	if (!ui_style)
 		// will fall back to the default if any of these are null
 		ui_style = ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style))
-		erp_ui_style = erp_ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style)) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 	add_screen_object(/atom/movable/screen/button_palette, HUD_MOB_TOGGLE_PALETTE)
 	add_screen_object(/atom/movable/screen/palette_scroll/down, HUD_MOB_PALETTE_DOWN)
@@ -134,9 +110,6 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	screentips_enabled = preferences?.read_preference(/datum/preference/choiced/enable_screentips)
 	screentip_images = preferences?.read_preference(/datum/preference/toggle/screentip_images)
 	screentip_text = add_screen_object(/atom/movable/screen/screentip, HUD_MOB_SCREENTIP)
-
-	activation = new(null, src) // BUBBER EDIT ADDITION
-	add_screen_object(activation, null, HUD_GROUP_STATIC) // BUBBER EDIT ADDITION
 
 	for(var/mytype in subtypesof(/atom/movable/plane_master_controller))
 		var/atom/movable/plane_master_controller/controller_instance = new mytype(null,src)
@@ -175,7 +148,6 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	QDEL_LIST_ASSOC_VAL(master_groups)
 	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
 	mymob = null
-	QDEL_NULL(activation) // BUBBER EDIT ADDITION
 
 	return ..()
 

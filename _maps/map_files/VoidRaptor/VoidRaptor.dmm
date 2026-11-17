@@ -31900,7 +31900,6 @@
 /turf/open/floor/plating/airless,
 /area/station/medical/chemistry)
 "jji" = (
-/obj/structure/sign/poster/contraband/crocin_pool/directional/south,
 /obj/effect/spawner/liquids_spawner,
 /turf/open/floor/iron/pool,
 /area/station/common/pool)
@@ -49870,7 +49869,6 @@
 	},
 /area/station/cargo/storage)
 "nWu" = (
-/obj/machinery/vending/dorms,
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/large,
 /area/station/commons/toilet)
@@ -66852,7 +66850,6 @@
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 5
 	},
-/obj/machinery/vending/dorms,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
@@ -78402,7 +78399,6 @@
 /area/station/science/ordnance/burnchamber)
 "vNq" = (
 /obj/structure/table,
-/obj/item/bdsm_candle,
 /turf/open/floor/glass/reinforced,
 /area/station/maintenance/port/fore)
 "vNs" = (
@@ -80900,7 +80896,6 @@
 /obj/effect/turf_decal/trimline/green/arrow_cw{
 	dir = 1
 	},
-/obj/structure/sign/poster/official/no_erp/directional/north,
 /obj/effect/turf_decal/box,
 /turf/open/floor/iron/small,
 /area/station/commons/dorms)

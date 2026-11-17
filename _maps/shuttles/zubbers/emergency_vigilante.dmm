@@ -1245,7 +1245,6 @@
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/escape)
 "sA" = (
-/obj/machinery/vending/dorms,
 /obj/machinery/light/directional/east,
 /obj/structure/sign/poster/contraband/random/directional/east,
 /turf/open/floor/carpet/black,

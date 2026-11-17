@@ -35,6 +35,10 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		return FALSE
 	if(job.job_flags & JOB_CANNOT_OPEN_SLOTS)
 		return FALSE
+	// TIANGUAN EDIT ADDITION START
+	if(GLOB.tianguan_star_restrictions && job.tianguan_stars_only)
+		return FALSE
+	// TIANGUAN EDIT ADDITION END
 	return TRUE
 
 

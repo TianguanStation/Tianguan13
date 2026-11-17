@@ -26,10 +26,6 @@
 	if(!isliving(victim))
 		return SECONDARY_ATTACK_CALL_NORMAL
 
-	if(!victim.client?.prefs?.read_preference(/datum/preference/toggle/erp/hypnosis)) // Checks their hypno pref, if it's set to off, it fails!
-		to_chat(user, span_notice(LANG("obj.bc79e734c697e695", list(victim))))
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-
 	user.visible_message(span_notice(LANG("obj.1d3ac647224e6bb2", list(user, victim)))) // prepping the action....
 
 	if(!do_after(user, 3 SECONDS, target = victim, // Adds a 3 second action bar, if the move away the action fails

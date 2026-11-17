@@ -282,6 +282,17 @@ const FunTab = (props) => {
     <Stack fill vertical>
       <Stack.Item>
         <Stack fill>
+          {/* TIANGUAN EDIT ADDITION START - ADMIN_COUNTDOWN */}
+          <Stack.Item>
+            <Button
+              icon="hourglass-half"
+              lineHeight={lineHeightNormal}
+              width={buttonWidthNormal}
+              content="全局倒计时"
+              onClick={() => act('tianguan_countdown_open')}
+            />
+          </Stack.Item>
+          {/* TIANGUAN EDIT ADDITION END */}
           <Stack.Item>
             <Button
               icon="robot"

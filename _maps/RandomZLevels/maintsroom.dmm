@@ -765,9 +765,6 @@
 /area/awaymission/caves/maintsroom)
 "cF" = (
 /obj/structure/closet/crate,
-/obj/item/clothing/sextoy/vibrator,
-/obj/item/clothing/sextoy/vibroring,
-/obj/item/clothing/sextoy/dildo,
 /obj/effect/light_emitter/fake_outdoors,
 /turf/open/floor/white,
 /area/awaymission/caves/maintsroom)
@@ -5577,7 +5574,6 @@
 	dir = 8
 	},
 /obj/structure/safe/floor,
-/obj/item/clothing/sextoy/dildo,
 /turf/open/floor/engine{
 	slowdown = 2
 	},
@@ -6682,7 +6678,6 @@
 /turf/open/floor/plating,
 /area/awaymission/caves/maintsroom)
 "vC" = (
-/obj/machinery/vending/dorms,
 /turf/open/floor/iron/chapel{
 	dir = 8
 	},
@@ -10190,7 +10185,6 @@
 	},
 /area/awaymission/caves/maintsroom)
 "GY" = (
-/obj/machinery/vending/dorms,
 /turf/open/floor/plating,
 /area/awaymission/caves/maintsroom)
 "GZ" = (

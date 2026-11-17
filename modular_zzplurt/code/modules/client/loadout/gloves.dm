@@ -2,19 +2,9 @@
 	name = "A ring, renameable"
 	item_path = /obj/item/clothing/gloves/ring/custom
 
-//Hyper stuff
-/datum/loadout_item/gloves/latexsleeves
-	name = "Latex sleeves"
-	item_path = /obj/item/clothing/gloves/latexsleeves
-
 // /datum/loadout_item/gloves/syntech/ring // Механ над добавить.
 // 	name = "Normalizer Ring"
 // 	item_path = /obj/item/clothing/accessory/ring/syntech
-
-/datum/loadout_item/gloves/clussy_gloves
-	name = "Clussy gloves"
-	item_path = /obj/item/clothing/gloves/clussy_gloves
-	restricted_roles = list(JOB_CLOWN)
 
 /datum/loadout_item/gloves/midnight
 	name = "Midnight gloves"

@@ -160,11 +160,6 @@
 	icon_state = "leggings-stir"
 	use_static = FALSE
 
-/datum/sprite_accessory/clothing/socks/leggings/latex
-	name = "Socks - Latex"
-	icon_state = "socks_latex"
-	erp_accessory = TRUE
-
 /datum/sprite_accessory/clothing/socks/thigh_m
 	name = "Thigh-high Socks - Shaded"
 	icon_state = "socks_thigh_m"

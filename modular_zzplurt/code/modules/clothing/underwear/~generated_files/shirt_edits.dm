@@ -27,9 +27,6 @@
 /obj/item/clothing/underwear/shirt/bra/bra_commie
 	desc = "Seize the mammaries of production."
 
-/obj/item/clothing/underwear/shirt/bra/bra_kinky
-	desc = "Kinky."
-
 /obj/item/clothing/underwear/shirt/bra/bra_neko
 	desc = "Favored by cat \"girls\"."
 

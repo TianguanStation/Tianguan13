@@ -5,19 +5,6 @@
 //
 
 /**
- * Triggered when adding Cum or Femcum
- * * Used by quirk: Concubus
- * * Used by quirk: Dumb For Cum
- */
-#define COMSIG_REAGENT_ADD_CUM "reagent_add_cum"
-
-/**
- * Triggered when adding Breast Milk
- * * Used by quirk: Concubus
- */
-#define COMSIG_REAGENT_ADD_BREASTMILK "reagent_add_breastmilk"
-
-/**
  * Triggered when adding Blood
  * * Used by quirk: Bloodfledge
  */

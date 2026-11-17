@@ -63,27 +63,6 @@
 	gender = FEMALE
 	use_static = TRUE
 
-/datum/sprite_accessory/clothing/underwear/thong_cheetah
-	name = "Thong - Cheetah"
-	icon = 'modular_zubbers/master_files/icons/mob/sprite_accessory/clothing.dmi'
-	icon_state = "thong_cheetah"
-	gender = FEMALE
-	use_static = TRUE
-
-/datum/sprite_accessory/clothing/underwear/thong_cow
-	name = "Thong - Cow"
-	icon = 'modular_zubbers/master_files/icons/mob/sprite_accessory/clothing.dmi'
-	icon_state = "thong_cow"
-	gender = FEMALE
-	use_static = TRUE
-
-/datum/sprite_accessory/clothing/underwear/thong_zebra
-	name = "Thong - Zebra"
-	icon = 'modular_zubbers/master_files/icons/mob/sprite_accessory/clothing.dmi'
-	icon_state = "thong_zebra"
-	gender = FEMALE
-	use_static = TRUE
-
 /datum/sprite_accessory/clothing/socks/leggings/stockings
 	name = "Stockings - Recolorable"
 	icon = 'modular_zubbers/master_files/icons/mob/sprite_accessory/clothing.dmi'

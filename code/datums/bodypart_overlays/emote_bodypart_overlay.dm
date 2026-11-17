@@ -29,8 +29,6 @@
 /datum/bodypart_overlay/simple/emote/Destroy()
 	var/obj/item/bodypart/referenced_bodypart = attached_bodypart?.resolve()
 	referenced_bodypart?.remove_bodypart_overlay(src)
-	if(!isnull(usr))
-		SEND_SIGNAL(usr, COMSIG_EMOTE_OVERLAY_EXPIRE) //BUBBER EDIT ADDITION - Used for lewd portals, blush expiring breaks it
 	return ..()
 
 /**

@@ -21,9 +21,6 @@
 /obj/item/clothing/underwear/socks/uk_knee
 	desc = "Brexit or something."
 
-/obj/item/clothing/underwear/socks/leggings/latex
-	desc = "A pair of latex socks."
-
 /obj/item/clothing/underwear/socks/pantyhose
 	desc = "Pantyhose."
 

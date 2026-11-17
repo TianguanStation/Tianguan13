@@ -128,6 +128,12 @@
 		add_appearance_flags = RESET_ALPHA,
 	)
 
+// TIANGUAN EDIT ADDITION START - HOLOSIGN_Z_LAYER_FIX
+/obj/structure/plasticflaps/update_overlays()
+	. = ..()
+	gen_overlay()
+// TIANGUAN EDIT ADDITION END - HOLOSIGN_Z_LAYER_FIX
+
 /obj/structure/plasticflaps/vv_edit_var(var_name, var_val)
 	. = ..()
 	var/list/relevant_vars = list(

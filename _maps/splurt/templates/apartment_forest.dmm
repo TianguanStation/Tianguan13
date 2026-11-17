@@ -126,7 +126,6 @@
 /turf/open/floor/grass,
 /area/misc/condo)
 "od" = (
-/obj/machinery/vending/dorms,
 /turf/open/misc/beach/sand,
 /area/misc/condo)
 "oF" = (

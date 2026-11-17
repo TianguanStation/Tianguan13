@@ -13,9 +13,8 @@
 	var/wall_external = FALSE
 	//The amount of pixels to shift when mounted
 	var/pixel_shift
-	var/multi_use = 0 //BUBBER EDIT ADDITION - User for lewd portals to allow you to place more than one
-	var/bypass_unpowered = FALSE //BUBBER EDIT ADDITION - Some wallframes can be placed in unpowered areas, specifically lewd portals in this case
-	var/bypass_floor = FALSE //BUBBER EDIT ADDITION - Some wallframes can be placed in areas without floors, specifically lewd portals in this case
+	var/bypass_unpowered = FALSE
+	var/bypass_floor = FALSE
 
 /obj/item/wallframe/Initialize(mapload)
 	. = ..()
@@ -76,11 +75,6 @@
 				hanging_object.pixel_x = -pixel_shift
 	hanging_object.find_and_mount_on_atom()
 	after_attach(hanging_object)
-	//BUBBER EDIT START - For lewd_portals, you can place multiple with the same frame.
-	if(multi_use > 1)
-		multi_use--
-		return
-	//BUBBER EDIT END
 	qdel(src)
 
 	return ITEM_INTERACT_SUCCESS

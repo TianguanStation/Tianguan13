@@ -1,6 +1,6 @@
 #define FIND_PARTNER_COOLDOWN 1 MINUTES
 
-/// Find someone to erp with
+/// Find someone to interact with
 /datum/bt_node/ai_behavior/find_partner
 	var/target_key
 	var/partner_types_key

@@ -10,7 +10,6 @@
 /datum/storage/wallet/New()
 	. = ..()
 	add_holdable(list(
-		/obj/item/condom_pack,
 		/obj/item/gbp_punchcard,
 		)
 	)

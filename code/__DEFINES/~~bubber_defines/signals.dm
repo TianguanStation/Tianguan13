@@ -12,8 +12,6 @@
 #define COMSIG_MOB_ALWAYS_APPLY_DAMAGE "mob_always_apply_damage"
 /// From modular_zubbers/code/modules/disease/disease_transmission.dm
 #define COMSIG_DISEASE_COUNT_UPDATE "disease_count_update"
-/// From [/mob/living/carbon/human/verb/safeword]: (mob/living/carbon)
-#define COMSIG_OOC_ESCAPE "ooc_escape"
 /// From [/datum/outfit]: (datum/outfit)
 #define COMSIG_OUTFIT_EQUIP "outfit_equip"
 /// at the end of /mob/living/proc/can_enter_vent(obj/machinery/atmospherics/components/ventcrawl_target, provide_feedback = TRUE)
@@ -30,14 +28,6 @@
 #define COMSIG_HUMAN_TOGGLE_UNDERWEAR "human_toggle_undies"
 /// From /obj/item/restraints/handcuffs/proc/apply_cuffs()
 #define COMSIG_MOB_HANDCUFFED "mob_handcuffed"
-/// From /datum/bodypart_overlay/simple/emote/Destroy() - Calls when an emote that applies a temporary visual effect expires
-#define COMSIG_EMOTE_OVERLAY_EXPIRE "emote_overlay_exprie"
-/// From /mob/living/carbon/human/proc/adjust_arousal() - Triggered by status
-#define COMSIG_HUMAN_ADJUST_AROUSAL "human_adjust_arousal"
-/// from /mob/living/carbon/human/verb/toggle_arousal() - Triggered by player toggle
-#define COMSIG_HUMAN_TOGGLE_AROUSAL "human_toggle_arousal"
-/// From /mob/living/carbon/human/verb/toggle_genitals()
-#define COMSIG_HUMAN_TOGGLE_GENITALS "human_toggle_genitals"
 
 /// /datum/component/tameable/try_tame(atom/source, obj/item/food, mob/living/attacker) in
 #define COMSIG_MOB_TRY_TAME "mob_try_tame"

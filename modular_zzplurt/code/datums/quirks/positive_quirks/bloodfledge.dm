@@ -1020,7 +1020,7 @@
 
 		if(BODY_ZONE_PRECISE_EYES)
 			// Check if eyes exist and are exposed
-			if(!bite_target.has_eyes() == REQUIRE_GENITAL_EXPOSED)
+			if(!bite_target.get_organ_slot(ORGAN_SLOT_EYES) || bite_target.is_eyes_covered())
 				// Warn user and return
 				to_chat(action_owner, span_warning(LANG("datum.c1cb78ae73731ef8", list(bite_target))))
 				owner.balloon_alert(owner, LANG("datum.30fb9bccfe695a9c", null))
@@ -1292,10 +1292,8 @@
 		// Play splatter sound
 		playsound(get_turf(target), 'sound/effects/splat.ogg', 40, 1)
 
-		// Check for masochism
-		if(!HAS_TRAIT(bite_target, TRAIT_MASOCHISM))
-			// Force bite_target to play the scream emote
-			bite_target.emote("scream")
+		// Force bite_target to play the scream emote
+		bite_target.emote("scream")
 
 		// Log the biting action failure
 		log_combat(action_owner,bite_target,"bloodfledge bitten (interrupted)")
@@ -1314,13 +1312,10 @@
 			bite_bodypart.receive_damage(brute = rand(4,8), sharpness = SHARP_POINTY)
 
 		// Add negative mood event for failure
-		// Ignored if the holder is a sadist
-		if(!HAS_TRAIT(bite_target, TRAIT_SADISM))
-			// Uses different flavor text for evil holder
-			if(action_owner_evil)
-				action_owner.add_mood_event(QMOOD_BFLED_BITE_INTERRUPT, /datum/mood_event/bloodfledge/drankblood/bite_failed/evil)
-			else
-				action_owner.add_mood_event(QMOOD_BFLED_BITE_INTERRUPT, /datum/mood_event/bloodfledge/drankblood/bite_failed)
+		if(action_owner_evil)
+			action_owner.add_mood_event(QMOOD_BFLED_BITE_INTERRUPT, /datum/mood_event/bloodfledge/drankblood/bite_failed/evil)
+		else
+			action_owner.add_mood_event(QMOOD_BFLED_BITE_INTERRUPT, /datum/mood_event/bloodfledge/drankblood/bite_failed)
 
 		// Start cooldown early
 		// This is to prevent bite interrupt spam

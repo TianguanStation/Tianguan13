@@ -59,7 +59,6 @@
 	var/datum/preferences/preferences = holder.client?.prefs
 
 	var/flavor_text
-	var/flavor_text_nsfw
 	var/custom_species
 	var/custom_species_lore
 	var/obscured
@@ -67,12 +66,9 @@
 	var/obscurity_examine_pref = preferences?.read_preference(/datum/preference/toggle/obscurity_examine)
 	var/ooc_notes = ""
 	var/headshot = ""
-	var/headshot_nsfw = ""
 	var/art_ref = ""
-	var/art_ref_nsfw = preferences?.read_preference(/datum/preference/toggle/art_ref_nsfw)
 	var/character_ad = ""
 
-	var/attraction = preferences?.read_preference(/datum/preference/choiced/attraction)
 	var/display_gender = preferences?.read_preference(/datum/preference/choiced/display_gender)
 	var/emote_length = preferences?.read_preference(/datum/preference/choiced/emote_length)
 	var/approach = preferences?.read_preference(/datum/preference/choiced/approach_pref)
@@ -81,38 +77,11 @@
 	var/others = preferences?.read_preference(/datum/preference/choiced/directory_character_prefs/other_pref)
 	var/demihumans = preferences?.read_preference(/datum/preference/choiced/directory_character_prefs/demihuman_pref)
 	var/humans = preferences?.read_preference(/datum/preference/choiced/directory_character_prefs/human_pref)
-	var/show_nsfw_flavor_text = preferences?.read_preference(/datum/preference/choiced/show_nsfw_flavor_text)
 
 	//  Handle OOC notes first
 	if(preferences)
-		if(preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-			var/e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
-			var/e_prefs_free_use = preferences.read_preference(/datum/preference/toggle/erp_free_use)
-			var/e_prefs_hypno = preferences.read_preference(/datum/preference/choiced/erp_status_hypno)
-			var/e_prefs_v = preferences.read_preference(/datum/preference/choiced/erp_status_v)
-			var/e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
-			var/e_prefs_mechanical = preferences.read_preference(/datum/preference/choiced/erp_status_mechanics)
-			// SPLURT EDIT ADDITION - Interaction preferences
-			var/e_prefs_extm = preferences.read_preference(/datum/preference/choiced/erp_status_extm)
-			var/e_prefs_extmharm = preferences.read_preference(/datum/preference/choiced/erp_status_extmharm)
-			var/e_prefs_unholy = preferences.read_preference(/datum/preference/choiced/erp_status_unholy)
-			// SPLURT EDIT END
-			ooc_notes += "ERP: [e_prefs][e_prefs_free_use ? " - Free Use" : ""]\n"
-			ooc_notes += "Hypnosis: [e_prefs_hypno]\n"
-			ooc_notes += "Vore: [e_prefs_v]\n"
-			ooc_notes += "Non-Con: [e_prefs_nc]\n"
-			// SPLURT EDIT ADDITION - Interaction preferences
-			ooc_notes += "Extreme ERP verbs: [e_prefs_extm]\n"
-			ooc_notes += "Harmful ERP verbs: [e_prefs_extmharm]\n"
-			ooc_notes += "Unholy ERP verbs: [e_prefs_unholy]\n"
-			// SPLURT EDIT END
-			ooc_notes += "ERP Mechanics: [e_prefs_mechanical]\n"
-			ooc_notes += "\n"
-
 		if(display_gender != "Unset")
 			character_ad += "Gender: [display_gender]\n"
-		if(attraction != "Unset")
-			character_ad += "Sexuality: [attraction]\n"
 		character_ad += "Preferred Emote Length: [emote_length]\n"
 		character_ad += "How to Approach: [approach]\n"
 		character_ad += "Furries: [furries] | Scalies: [scalies] | Other: [others]\n"
@@ -130,9 +99,6 @@
 			ooc_notes += preferences.read_preference(/datum/preference/text/ooc_notes/silicon)
 			headshot += preferences.read_preference(/datum/preference/text/headshot/silicon)
 			name = holder.name
-			if(show_nsfw_flavor_text != "Never")
-				flavor_text_nsfw = preferences.read_preference(/datum/preference/text/flavor_text_nsfw/silicon)
-				headshot_nsfw = preferences.read_preference(/datum/preference/text/headshot/silicon/nsfw)
 
 		//Round Removal opt in stuff
 		if(CONFIG_GET(flag/use_rr_opt_in_preferences))
@@ -157,9 +123,6 @@
 			flavor_text = holder_human.dna.features["flavor_text"]
 			art_ref = holder_human.dna.features["art_ref"]
 			name = holder.name
-			if(show_nsfw_flavor_text == "Always On" || (show_nsfw_flavor_text == "Nude Only" && !(holder_human.w_uniform)))
-				flavor_text_nsfw = holder_human.dna.features["flavor_text_nsfw"]
-				headshot_nsfw = holder_human.dna.features["headshot_nsfw"]
 
 		//Custom species handling. Reports the normal custom species if there is not one set.
 			if(holder_human.dna.species.lore_protected || holder_human.dna.features["custom_species"] == "")
@@ -186,13 +149,10 @@
 	data["character_name"] = name
 	data["assigned_map"] = viewer_screen?.assigned_map
 	data["flavor_text"] = flavor_text
-	data["flavor_text_nsfw"] = flavor_text_nsfw
 	data["ooc_notes"] = ooc_notes
 	data["custom_species"] = custom_species
 	data["custom_species_lore"] = custom_species_lore
 	data["headshot"] = headshot
-	data["headshot_nsfw"] = headshot_nsfw
 	data["art_ref"] = art_ref
-	data["art_ref_nsfw"] = art_ref_nsfw
 	data["character_ad"] = character_ad
 	return data

@@ -82,8 +82,8 @@
 		to_chat(preferences.parent, span_warning(LANG("datum.b673d67f5c09d517", null)))
 		return
 	// SKYRAT EDIT END
-	// SPLURT EDIT START: Donator tier check
-	if(selected_item.donator_tier && GLOB.donator_list[preferences?.parent?.ckey] < selected_item.donator_tier)
+	// SPLURT EDIT START: Donator tier check (TIANGUAN EDIT: respect admin bypass matching SSplayer_ranks.is_donator)
+	if(selected_item.donator_tier && !is_admin(preferences.parent) && (GLOB.donator_list[preferences?.parent?.ckey] || DONATOR_TIER_NONE) < selected_item.donator_tier)
 		to_chat(preferences.parent, span_warning(LANG("datum.ee7d56312b848a3d", list(selected_item.donator_tier))))
 		return
 	// SPLURT EDIT END

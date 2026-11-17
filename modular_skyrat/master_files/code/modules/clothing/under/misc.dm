@@ -25,13 +25,13 @@
 
 /obj/item/clothing/under/misc/skyrat/gear_harness/eve
 	name = "collection of leaves"
-	desc = "Three leaves, designed to cover the nipples and genetalia of the wearer. A foe so proud will first the weaker seek."
+	desc = "Three decorative leaves fashioned into a makeshift primal outfit."
 	icon_state = "eve"
 	body_parts_covered = CHEST|GROIN
 
 /obj/item/clothing/under/misc/skyrat/gear_harness/adam
 	name = "leaf"
-	desc = "A single leaf, designed to cover the genitalia of the wearer. Seek not temptation."
+	desc = "A single large leaf fashioned into a makeshift loincloth."
 	icon_state = "adam"
 	body_parts_covered = GROIN
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY

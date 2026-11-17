@@ -107,11 +107,6 @@
 	gender = MALE
 	digi_icon_state = "longjohns"
 
-/datum/sprite_accessory/clothing/underwear/male_kinky
-	name = "Jockstrap"
-	icon_state = "male_kinky"
-	gender = MALE
-
 /datum/sprite_accessory/clothing/underwear/male_mankini
 	name = "Mankini"
 	icon_state = "male_mankini"

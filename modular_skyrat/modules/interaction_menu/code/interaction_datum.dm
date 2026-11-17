@@ -27,54 +27,31 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/sound_range = 1
 	/// Stores the sound for later.
 	var/sound_cache = null
-	/// Is this lewd?
-	var/lewd = FALSE
 	/// What parts do WE need(IMPORTANT TO GET IT TO THE CORRECT DEFINE, ORGAN SLOT)?
 	var/list/user_required_parts = list()
 	/// What parts do they need(IMPORTANT TO GET IT TO THE CORRECT DEFINE, ORGAN SLOT)?
 	var/list/target_required_parts = list()
-	/// The amount of pleasure the target receives from this interaciton.
-	var/target_pleasure = 0
-	/// The amount of arousal the target receives from this interaction.
-	var/target_arousal = 0
-	/// The amount of pain the target receives.
-	var/target_pain = 0
-	/// The amount of pleasure the user receives.
-	var/user_pleasure = 0
-	/// The amount of arousal the user receives.
-	var/user_arousal = 0
-	/// The amount of pain the user receives.
-	var/user_pain = 0
 	/// A list of possible sounds.
 	var/list/sound_possible = list()
 	/// What requirements does this interaction have? See defines.
 	var/list/interaction_requires = list()
 	/// What color should the interaction button be?
 	var/color = "blue"
-	/* SPLURT EDIT REMOVAL - Interactions
-	/// What sexuality preference do we display for.
-	var/sexuality = ""
-	*/
 
-/* SPLURT EDIT REMOVAL - Interactions - Refractored in modular
-/datum/interaction/proc/allow_act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/proc/allow_act(mob/living/user, mob/living/target)
 	if(target == user && usage == INTERACTION_OTHER)
 		return FALSE
+	if(target != user && usage == INTERACTION_SELF)
+		return FALSE
 
-	if(user_required_parts.len)
+	if(length(user_required_parts))
 		for(var/thing in user_required_parts)
-			var/obj/item/organ/genital/required_part = user.get_organ_slot(thing)
-			if(isnull(required_part))
-				return FALSE
-			if(!required_part.is_exposed())
+			if(!user.get_organ_slot(thing))
 				return FALSE
 
-	if(target_required_parts.len)
+	if(length(target_required_parts))
 		for(var/thing in target_required_parts)
-			var/obj/item/organ/genital/required_part = target.get_organ_slot(thing)
-			if(isnull(required_part))
-				return FALSE
-			if(!required_part.is_exposed())
+			if(!target.get_organ_slot(thing))
 				return FALSE
 
 	for(var/requirement in interaction_requires)
@@ -88,9 +65,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 			else
 				CRASH("Unimplemented interaction requirement '[requirement]'")
 	return TRUE
-*/ //SPLURT EDIT END
 
-/datum/interaction/proc/act(mob/living/user, mob/living/target, obj/body_relay = null) // SPLURT EDIT - INTERACTIONS - Any mob can initiate an interaction
+/datum/interaction/proc/act(mob/living/user, mob/living/target)
 	if(!allow_act(user, target))
 		return
 	if(!message)
@@ -101,37 +77,18 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		message = list(message)
 	var/msg = pick(message)
 	msg = lang_reverse_text(msg) // ZH EDIT - translate the template before replacing its tokens
-	if(!isnull(body_relay))
-		msg = replacetext(msg, "%TARGET%", "\the [body_relay.name]")
-	var/knot = "knot"
-	if(cum_genital[CLIMAX_POSITION_USER] == CLIMAX_PENIS)
-		if(iscarbon(user))
-			var/obj/item/organ/genital/penis/penis = user.get_organ_slot(ORGAN_SLOT_PENIS)
-			knot = penis.override_string_knot
-	else if(cum_genital[CLIMAX_POSITION_TARGET] == CLIMAX_PENIS)
-		if(iscarbon(target))
-			var/obj/item/organ/genital/penis/penis = target.get_organ_slot(ORGAN_SLOT_PENIS)
-			knot = penis.override_string_knot
 	// We replace %USER% with nothing because manual_emote already prepends it.
-	msg = trim(replacetext(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", ""), "%KNOT%", "[knot]"), INTERACTION_MAX_CHAR)
-	if(lewd)
-		//SPLURT EDIT: msg -> span_lewd(msg) to give it the lewd color
-		user.emote("subtle", null, span_lewd(msg), TRUE)
-	else
-		user.manual_emote(msg)
+	msg = trim(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", ""), INTERACTION_MAX_CHAR)
+	user.manual_emote(msg)
 	if(user_messages.len)
 		var/user_msg = pick(user_messages)
 		user_msg = lang_reverse_text(user_msg) // ZH EDIT - preserve player names when substituting tokens
-		if(!isnull(body_relay))
-			user_msg = replacetext(user_msg, "%TARGET%", "\the [body_relay.name]")
-		user_msg = replacetext(replacetext(replacetext(user_msg, "%TARGET%", "[target]"), "%USER%", "[user]"), "%KNOT%", "[knot]")
+		user_msg = replacetext(replacetext(user_msg, "%TARGET%", "[target]"), "%USER%", "[user]")
 		to_chat(user, user_msg)
 	if(target_messages.len)
 		var/target_msg = pick(target_messages)
 		target_msg = lang_reverse_text(target_msg) // ZH EDIT - preserve player names when substituting tokens
-		if(!isnull(body_relay))
-			target_msg = replacetext(target_msg, "%USER%", "Unknown")
-		target_msg = replacetext(replacetext(replacetext(target_msg, "%TARGET%", "[target]"), "%USER%", "[user]"), "%KNOT%", "[knot]")
+		target_msg = replacetext(replacetext(target_msg, "%TARGET%", "[target]"), "%USER%", "[user]")
 		to_chat(target, target_msg)
 	if(sound_use)
 		if(!sound_possible)
@@ -141,26 +98,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 			message_admins("Deprecated sound handling for '[name]'. Correct format is a list with one entry. This message will only show once.")
 			sound_possible = list(sound_possible)
 		sound_cache = pick(sound_possible)
-		//SPLURT EDIT CHANGE BEGIN - INTERACTIONS - Keep ERP sound pref gating
-		//playsound(source = user, soundin = sound_cache, vol = 50, vary = FALSE, extrarange = sound_range - SOUND_RANGE, ignore_walls = FALSE, volume_preference = /datum/preference/numeric/volume/sound_emote) - SPLURT EDIT - ORIGINAL
-		conditional_pref_sound(user, sound_cache, 80, TRUE, falloff_distance = sound_range, pref_to_check = /datum/preference/toggle/erp/sounds)
-		//SPLURT EDIT CHANGE END
-	//SPLURT EDIT ADDITION BEGIN - INTERACTIONS - nonhuman interactions
-	var/mob/living/carbon/human/human_user = user
-	var/mob/living/carbon/human/human_target = target
-	//SPLURT EDIT ADDITION END
-	if(lewd)
-		user.adjust_pleasure(user_pleasure * (istype(human_user) ? human_user.dna.features["sexual_potency"] || 1 : 1), target, src, CLIMAX_POSITION_USER) //SPLURT EDIT - Interactions
-		user.adjust_arousal(user_arousal)
-		user.adjust_pain(user_pain, target, src, CLIMAX_POSITION_USER) //SPLURT EDIT - Interactions
-		if(user != target) //SPLURT EDIT - Interactions
-			target.adjust_pleasure(target_pleasure * (istype(human_target) ? human_target.dna.features["sexual_potency"] || 1 : 1), user, src, CLIMAX_POSITION_TARGET) //SPLURT EDIT - Interactions
-			target.adjust_arousal(target_arousal)
-			target.adjust_pain(target_pain, user, src, CLIMAX_POSITION_TARGET) //SPLURT EDIT - Interactions
-		if(body_relay)
-			var/obj/lewd_portal_relay/body_portal_relay = body_relay
-			body_portal_relay.update_visuals()
-	post_interaction(user, target) //SPLURT EDIT - Interactions
+		conditional_pref_sound(user, sound_cache, 50, TRUE, falloff_distance = sound_range, pref_to_check = /datum/preference/numeric/volume/sound_ambience_volume)
 	return TRUE
 
 /datum/interaction/proc/load_from_json(path)
@@ -185,16 +123,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 	user_messages = sanitize_islist(json["user_messages"], list())
 	user_required_parts = sanitize_islist(json["user_required_parts"], list())
-	user_arousal = sanitize_integer(json["user_arousal"], 0, 100, 0)
-	user_pleasure = sanitize_integer(json["user_pleasure"], 0, 100, 0)
-	user_pain = sanitize_integer(json["user_pain"], 0, 100, 0)
 	target_messages = sanitize_islist(json["target_messages"], list())
 	target_required_parts = sanitize_islist(json["target_required_parts"], list())
-	target_arousal = sanitize_integer(json["target_arousal"], 0, 100, 0)
-	target_pleasure = sanitize_integer(json["target_pleasure"], 0, 100, 0)
-	target_pain = sanitize_integer(json["target_pain"], 0, 100, 0)
-	lewd = sanitize_integer(json["lewd"], 0, 1, 0)
-	// sexuality = sanitize_text(json["sexuality"]) //SPLURT EDIT REMOVAL - Interactions
 	return TRUE
 
 /datum/interaction/proc/json_save(path)
@@ -215,16 +145,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		"color" = color,
 		"user_messages" = user_messages,
 		"user_required_parts" = user_required_parts,
-		"user_arousal" = user_arousal,
-		"user_pleasure" = user_pleasure,
-		"user_pain" = user_pain,
 		"target_messages" = target_messages,
 		"target_required_parts" = target_required_parts,
-		"target_arousal" = target_arousal,
-		"target_pleasure" = target_pleasure,
-		"target_pain" = target_pain,
-		"lewd" = lewd,
-		// "sexuality" = sexuality, //SPLURT EDIT REMOVAL - Interactions
 	)
 	var/file = file(fpath)
 	WRITE_FILE(file, json_encode(json))
@@ -289,16 +211,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 		interaction.user_messages = sanitize_islist(ijson["user_messages"], list())
 		interaction.user_required_parts = sanitize_islist(ijson["user_required_parts"], list())
-		interaction.user_arousal = sanitize_integer(ijson["user_arousal"], 0, 100, 0)
-		interaction.user_pleasure = sanitize_integer(ijson["user_pleasure"], 0, 100, 0)
-		interaction.user_pain = sanitize_integer(ijson["user_pain"], 0, 100, 0)
 		interaction.target_messages = sanitize_islist(ijson["target_messages"], list())
 		interaction.target_required_parts = sanitize_islist(ijson["target_required_parts"], list())
-		interaction.target_arousal = sanitize_integer(ijson["target_arousal"], 0, 100, 0)
-		interaction.target_pleasure = sanitize_integer(ijson["target_pleasure"], 0, 100, 0)
-		interaction.target_pain = sanitize_integer(ijson["target_pain"], 0, 100, 0)
-		interaction.lewd = sanitize_integer(ijson["lewd"], 0, 1, 0)
-		// interaction.sexuality = sanitize_text(ijson["sexuality"]) //SPLURT EDIT REMOVAL - Interactions
 
 		SSinteractions.interactions[iname] = interaction //SPLURT EDIT - Interactions subsystem - Original: GLOB.interaction_instances[iname] = interaction
 

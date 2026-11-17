@@ -226,7 +226,6 @@
 #define CYBORG_ICON_SERV_SKIFF 'modular_zubbers/code/modules/silicons/borgs/sprites/skiff/skiff_serv.dmi'
 #define CYBORG_ICON_GEN_SKIFF 'modular_zubbers/code/modules/silicons/borgs/sprites/skiff/skiff_standard.dmi'
 #define CYBORG_ICON_SYNDIE_SKIFF 'modular_zubbers/code/modules/silicons/borgs/sprites/skiff/skiff_syndie.dmi'
-#define CYBORG_ICON_LUST_SKIFF 'modular_zubbers/code/modules/silicons/borgs/sprites/skiff/skiff_lustwish.dmi'
 
 /************************************************************
 				CYBORG HAT OFFSETS GO BELOW

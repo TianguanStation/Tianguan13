@@ -1,2 +1,1 @@
 GLOBAL_LIST_EMPTY(discord_passthrough)
-GLOBAL_LIST_EMPTY(vetted_passthrough)

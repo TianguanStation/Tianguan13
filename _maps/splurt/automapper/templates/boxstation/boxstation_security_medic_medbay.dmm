@@ -353,7 +353,6 @@
 /obj/item/restraints/handcuffs/cable/zipties,
 /obj/item/clothing/suit/jacket/straight_jacket,
 /obj/item/clothing/mask/muzzle,
-/obj/item/clothing/gloves/ball_mittens,
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 1
 	},

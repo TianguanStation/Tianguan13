@@ -271,7 +271,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/the_griffin, 3
 
 /obj/structure/sign/poster/contraband/lizard
 	name = "Lizard"
-	desc = "This lewd poster depicts a lizard preparing to mate."
+	desc = "This poster depicts a sleek lizard basking under heat lamps."
 	icon_state = "lizard"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/lizard, 32)

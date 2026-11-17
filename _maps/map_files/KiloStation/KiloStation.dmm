@@ -62199,7 +62199,6 @@
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/engineering)
 "tEt" = (
-/obj/structure/sign/poster/official/no_erp/directional/south,
 /obj/machinery/portable_atmospherics/canister/anesthetic_mix,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/station/medical/coldroom)
@@ -64909,7 +64908,6 @@
 "uwG" = (
 /obj/effect/spawner/random/vending/colavend,
 /obj/effect/turf_decal/delivery,
-/obj/structure/sign/poster/official/no_erp/directional/south,
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 1
 	},

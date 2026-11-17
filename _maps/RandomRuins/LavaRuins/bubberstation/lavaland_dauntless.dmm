@@ -839,11 +839,6 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/bubbers/dauntless/engineering/turbine)
 "eg" = (
-/obj/machinery/vending/dorms/prison{
-	density = 0;
-	pixel_x = -27;
-	all_products_free = 1
-	},
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/bubbers/dauntless/sec/prison/rec)
 "ej" = (
@@ -1910,9 +1905,6 @@
 "in" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/vending/dorms{
-	all_products_free = 1
-	},
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/bubbers/dauntless/service/dorms)
 "io" = (

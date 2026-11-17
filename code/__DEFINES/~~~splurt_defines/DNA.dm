@@ -15,26 +15,7 @@
 	#define BODY_SIZE_MIN 0.1
 #endif
 
-//genitals
-#undef TESTICLES_MAX_SIZE
-#define TESTICLES_MAX_SIZE 8
-
-#undef PENIS_MAX_LENGTH
-#define PENIS_MAX_LENGTH 128
-
-// DNA feature keys for butt/belly (organ slots & size defines are upstream)
-#define FEATURE_BUTT "butt"
-#define FEATURE_BELLY "belly"
-
 ///arachnid organ slots
 #define ORGAN_SLOT_EXTERNAL_MANDIBLES "mandibles"
 #define ORGAN_SLOT_EXTERNAL_SPINNERET "spinneret"
 #define ORGAN_SLOT_EXTERNAL_SPIDER_LEGS "spider_legs"
-#define ORGAN_SLOT_BLADDER "bladder"
-
-#define BREASTS_MIN_SIZE 0
-#define BREASTS_MAX_SIZE 19
-
-//SPLURT allows one size past Bubber's belly cap
-#undef BELLY_MAX_SIZE
-#define BELLY_MAX_SIZE 10

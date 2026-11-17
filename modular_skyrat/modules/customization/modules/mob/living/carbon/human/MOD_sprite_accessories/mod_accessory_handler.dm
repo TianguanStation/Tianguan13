@@ -40,9 +40,6 @@
 /datum/sprite_accessory/xenodorsal
 	use_custom_mod_icon = TRUE
 
-/datum/sprite_accessory/genital
-	use_custom_mod_icon = TRUE
-
 /obj/item/mod/control
 	/// Player chosen hardlight color, null means the theme default
 	var/hardlight_color_override

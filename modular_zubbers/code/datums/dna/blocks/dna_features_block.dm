@@ -92,24 +92,6 @@
 /datum/dna_block/feature/mutant/fluff
 	feature_key = FEATURE_FLUFF
 
-/datum/dna_block/feature/mutant/penis
-	feature_key = FEATURE_PENIS
-
-/datum/dna_block/feature/mutant/testicles
-	feature_key = FEATURE_TESTICLES
-
-/datum/dna_block/feature/mutant/vagina
-	feature_key = FEATURE_VAGINA
-
-/datum/dna_block/feature/mutant/womb
-	feature_key = FEATURE_WOMB
-
-/datum/dna_block/feature/mutant/anus
-	feature_key = FEATURE_ANUS
-
-/datum/dna_block/feature/mutant/breasts
-	feature_key = FEATURE_BREASTS
-
 /datum/dna_block/feature/mutant/skrell_hair
 	feature_key = FEATURE_SKRELL_HAIR
 

@@ -61,6 +61,14 @@
 @include meta.load-css('./interfaces/CivCargoHoldTerminal.scss');
 @include meta.load-css('./interfaces/EventLogger.scss');
 
+// TIANGUAN EDIT ADDITION START - TRAITOR_BACKGROUND
+@include meta.load-css('./themes/uar.scss');
+// TIANGUAN EDIT ADDITION END
+
+// TIANGUAN EDIT ADDITION START - TIANGUAN_SHARED
+@include meta.load-css('./tianguan/shared.scss');
+// TIANGUAN EDIT ADDITION END
+
 // Layouts
 @include meta.load-css('./layouts/Layout.scss');
 @include meta.load-css('./layouts/NtosHeader.scss');

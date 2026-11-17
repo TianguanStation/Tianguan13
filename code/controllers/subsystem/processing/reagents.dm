@@ -16,18 +16,6 @@ PROCESSING_SUBSYSTEM_DEF(reagents)
 	//Build GLOB lists - see holder.dm
 	build_chemical_reactions_lists()
 
-	// SKYRAT EDIT ADDITION START
-	if(CONFIG_GET(flag/disable_erp_preferences))
-		for(var/reaction_path in GLOB.chemical_reactions_list)
-			var/datum/chemical_reaction/reaction_datum = GLOB.chemical_reactions_list[reaction_path]
-			if(!reaction_datum.erp_reaction)
-				continue
-			GLOB.chemical_reactions_list -= reaction_path
-			for(var/reaction in reaction_datum.required_reagents)
-				var/list/reaction_list = GLOB.chemical_reactions_list_reactant_index[reaction]
-				if(reaction_list)
-					reaction_list -= reaction_datum
-	// SKYRAT EDIT ADDITION END
 	// ZH EDIT ADDITION START - i18n - 母版试剂表（GLOB.chemical_reagents_list）是 GLOBAL_LIST_INIT，
 	// 早于 i18n_cache（modular 文件在 .dme 靠后）→ /datum/reagent/New() 的反查在母版实例上空转（名字
 	// 留英文），而游戏中期创建的实例是中文 → 分配器按钮单词名英文/烧杯内容中文的割裂。SS Init 期补一遍

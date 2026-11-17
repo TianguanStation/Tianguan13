@@ -17,13 +17,6 @@
 	intern_alt_name = "Fledgling"
 	threat_modifier = 2 // Equal to dress code violation
 
-// Quirk: Concubus
-/datum/id_trim/quirk/concubus
-	trim_state = "trim_droplet"
-	assignment = "Concubus"
-	intern_alt_name = "Imp"
-	subdepartment_color = COLOR_BUBBLEGUM_RED
-
 // Quirk: Gargoyle
 /datum/id_trim/quirk/gargoyle
 	trim_state = "trim_rectangle"

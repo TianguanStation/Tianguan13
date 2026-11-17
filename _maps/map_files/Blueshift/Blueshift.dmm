@@ -28003,9 +28003,6 @@
 /turf/open/floor/plating,
 /area/station/commons/vacant_room/commissary)
 "fnx" = (
-/obj/item/bdsm_candle{
-	pixel_y = 6
-	},
 /obj/structure/table/reinforced/plasmarglass,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/common/night_club/back_stage)
@@ -28849,7 +28846,6 @@
 /turf/open/floor/mineral/plastitanium,
 /area/station/maintenance/cult_chapel_maint)
 "fwm" = (
-/obj/machinery/vending/dorms,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -47700,7 +47696,6 @@
 /area/station/commons/vacant_room/commissary)
 "jfj" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/vending/dorms,
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron/dark/side{
 	dir = 8
@@ -83477,7 +83472,6 @@
 "pWA" = (
 /obj/structure/table,
 /obj/item/wirecutters/makeshift,
-/obj/item/clothing/sextoy/nipple_clamps,
 /obj/item/stock_parts/power_store/cell{
 	pixel_x = -5
 	},
@@ -85442,10 +85436,6 @@
 /area/station/medical/surgery)
 "qpP" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/applicator/pill/crocin{
-	pixel_x = -3;
-	pixel_y = 12
-	},
 /obj/item/reagent_containers/applicator/pill/lsd{
 	pixel_x = 5;
 	pixel_y = 5
@@ -92618,7 +92608,6 @@
 	c_tag = "Prison gym";
 	network = list("ss13","prison")
 	},
-/obj/machinery/vending/dorms/prison,
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/security/prison/workout)
@@ -96070,7 +96059,6 @@
 	},
 /area/station/security/prison/safe)
 "spj" = (
-/obj/machinery/vending/dorms,
 /obj/machinery/barsign{
 	pixel_y = 32
 	},
@@ -98871,7 +98859,6 @@
 	pixel_x = -4;
 	pixel_y = -5
 	},
-/obj/item/clothing/glasses/nice_goggles,
 /obj/item/clothing/glasses/regular{
 	pixel_x = -3;
 	pixel_y = 3
@@ -102652,10 +102639,6 @@
 /area/station/maintenance/department/crew_quarters/bar)
 "tAw" = (
 /obj/structure/table,
-/obj/item/clothing/gloves/ball_mittens,
-/obj/item/clothing/gloves/ball_mittens,
-/obj/item/clothing/gloves/ball_mittens,
-/obj/item/clothing/gloves/ball_mittens,
 /obj/item/restraints/handcuffs{
 	pixel_y = 4
 	},
@@ -110003,9 +109986,6 @@
 "uWi" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/syringe/contraband/space_drugs,
-/obj/item/reagent_containers/applicator/pill/dopamine{
-	pixel_y = 6
-	},
 /obj/item/reagent_containers/syringe/contraband/space_drugs{
 	pixel_x = -3;
 	pixel_y = 5
@@ -111842,7 +111822,6 @@
 /turf/closed/wall/rust,
 /area/station/maintenance/department/security)
 "voy" = (
-/obj/machinery/vending/dorms,
 /turf/open/floor/carpet/purple,
 /area/station/common/night_club/back_stage)
 "voA" = (

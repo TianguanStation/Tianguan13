@@ -2,7 +2,6 @@
 #define PREVIEW_PREF_LOADOUT "Loadout"
 #define PREVIEW_PREF_UNDERWEAR "Underwear"
 #define PREVIEW_PREF_NAKED "Naked"
-#define PREVIEW_PREF_NAKED_AROUSED "Naked - Aroused"
 
 /// for tri color prefs: doesn't check type_to_check pref
 #define TRICOLOR_NO_CHECK 0
@@ -17,7 +16,7 @@
 
 /// Essential features for every character, don't add new prefs to this unless you can justify why the majority of characters would use it
 #define PREFERENCE_CATEGORY_CHARACTER_BASICS "character_basics"
-/// OOC per-character preferences e.g. character advert, ERP status
+/// OOC per-character preferences e.g. character advert
 #define PREFERENCE_CATEGORY_OOC_PREFS "ooc_preferences"
 /// Preferences that only apply to AI and cyborgs
 #define PREFERENCE_CATEGORY_SILICON_PREFS "silicon_preferences"

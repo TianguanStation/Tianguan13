@@ -436,10 +436,8 @@ GAME_VERB(/mob/dead/observer, do_not_resuscitate, "拒绝复苏", null)
 			var/atom/movable/screen/alert/A = throw_alert("[REF(source)]_revival", /atom/movable/screen/alert/revival)
 			if(A)
 				var/ui_style = client?.prefs?.read_preference(/datum/preference/choiced/ui_style)
-				var/erp_ui_style = client?.prefs?.read_preference(/datum/preference/choiced/ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 				if(ui_style)
 					A.icon = ui_style2icon(ui_style)
-					A.icon = erp_ui_style2icon(erp_ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 				A.desc = message
 				var/old_layer = source.layer
 				var/old_plane = source.plane

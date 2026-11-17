@@ -235,7 +235,6 @@
 			/obj/item/toy/crayon,
 			/obj/item/poker_chip,
 			// SKYRAT EDIT BEGIN
-			/obj/item/condom_pack,
 			/obj/item/gbp_punchcard,
 			// SKYRAT EDIT END
 		),

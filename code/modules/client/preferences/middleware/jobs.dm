@@ -24,6 +24,9 @@
 		return FALSE
 
 	preferences.character_preview_view?.update_body()
+	// TIANGUAN EDIT: Notify lobby card immediately when job priorities change
+	if(user)
+		SEND_SIGNAL(user, COMSIG_JOB_PREF_UPDATED)
 
 	return TRUE
 
@@ -90,6 +93,7 @@
 		jobs[job.title] = list(
 			"description" = lang_localize_job_description(job), // ZH EDIT - i18n: 拆基础句+opt-in 后缀分别反查（ORIGINAL: "description" = job.description,）
 			"department" = department_name,
+			"tianguan_star" = job.tianguan_stars_only, // TIANGUAN EDIT ADDITION
 			"alt_titles" = job.alt_titles, // SKYRAT EDIT
 		)
 
@@ -129,6 +133,11 @@
 
 /datum/preference_middleware/jobs/get_ui_static_data(mob/user)
 	var/list/data = list()
+	// TIANGUAN EDIT ADDITION START
+	if(SSplayer_ranks.is_tianguan_star(user.client))
+		data["is_tianguan_star"] = TRUE
+	data["tianguan_star_restrictions"] = GLOB.tianguan_star_restrictions
+	// TIANGUAN EDIT ADDITION END
 
 	var/list/required_job_playtime = get_required_job_playtime(user)
 	if (!isnull(required_job_playtime))

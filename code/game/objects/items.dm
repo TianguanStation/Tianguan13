@@ -577,18 +577,6 @@ GAME_VERB_SRC(/obj/item, move_to_top, oview(1), "移至顶部", null)
 	if(!(user.mobility_flags & MOBILITY_PICKUP))
 		return
 
-	// BUBBER EDIT ADDITION - allow components on the user to inject a pickup delay or fail chance (e.g. ball mittens fumble)
-	var/list/pickup_mods = list("delay" = 0, "fail_chance" = 0)
-	if(SEND_SIGNAL(user, COMSIG_LIVING_ITEM_ATTEMPT_PICKUP, src, pickup_mods) & COMPONENT_BLOCK_ITEM_PICKUP)
-		return
-	if(pickup_mods["delay"])
-		if(!do_after(user, pickup_mods["delay"], src, timed_action_flags = IGNORE_HELD_ITEM))
-			return
-	if(pickup_mods["fail_chance"] && prob(pickup_mods["fail_chance"]))
-		SEND_SIGNAL(user, COMSIG_LIVING_ITEM_PICKUP_FAILED, src)
-		return
-	// BUBBER EDIT ADDITION END
-
 	if(!skip_grav)
 		//Heavy gravity makes picking up things very slow.
 		var/grav = user.has_gravity()
@@ -1381,23 +1369,11 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "拾取", null)
 
 /obj/item/proc/canStrip(mob/stripper, mob/owner)
 	SHOULD_BE_PURE(TRUE)
-	//SPLURT ADDITION START
-	if(HAS_TRAIT_FROM(src, TRAIT_NODROP, "mkultra_slot_lock"))
-		return stripper && owner && stripper != owner && !(item_flags & ABSTRACT)
-	//SPLURT ADDITION END
 	return !HAS_TRAIT(src, TRAIT_NODROP) && !(item_flags & ABSTRACT)
 
 /obj/item/proc/doStrip(mob/stripper, mob/owner)
 	//SKYRAT EDIT CHANGE BEGIN - THIEVING GLOVES - ORIGINAL: return owner.dropItemToGround(src)
-	//SPLURT REMOVAL - ORIGINAL: if (!owner.dropItemToGround(src))
-	//SPLURT ADDITION START
-	if(HAS_TRAIT_FROM(src, TRAIT_NODROP, "mkultra_slot_lock"))
-		if(!stripper || !owner || stripper == owner)
-			return FALSE
-		if (!owner.dropItemToGround(src, force = TRUE))
-			return FALSE
-	else if (!owner.dropItemToGround(src))
-	//SPLURT ADDITION END
+	if (!owner.dropItemToGround(src))
 		return FALSE
 	if (HAS_TRAIT(stripper, TRAIT_STICKY_FINGERS))
 		stripper.put_in_hands(src)

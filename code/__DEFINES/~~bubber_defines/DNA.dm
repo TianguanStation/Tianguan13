@@ -95,28 +95,8 @@
 	"ethcolor" = "#FFCCCC",\
 	"skin_color" = "#FFEEDD",\
 	"flavor_text" = "",\
-	"breasts_size" = 1,\
-	"breasts_lactation" = FALSE,\
-	"penis_size" = 13,\
-	"penis_girth" = 9,\
-	"penis_taur_mode" = TRUE,\
-	"penis_sheath" = SHEATH_NONE,\
-	"balls_size" = 1,\
 	"custom_species" = "",\
-	"penis_uses_skintones" = TRUE,\
-	"penis_uses_skincolor" = TRUE,\
-	"testicles_uses_skintones" = TRUE,\
-	"testicles_uses_skincolor" = TRUE,\
-	"vagina_uses_skintones" = TRUE,\
-	"vagina_uses_skincolor" = TRUE,\
-	"breasts_uses_skintones" = TRUE,\
-	"breasts_uses_skincolor" = TRUE,\
 )
-
-#define AROUSAL_CANT 0
-#define AROUSAL_NONE 1
-#define AROUSAL_PARTIAL 2
-#define AROUSAL_FULL 3
 
 //Species IDs. If you wanna look at tg's species ID defines, go look in the *other* DNA.dm file
 #define SPECIES_AKULA "akula"
@@ -157,12 +137,6 @@
 #define FEATURE_SKIN_COLOR "skin_color"
 #define FEATURE_TAIL_GENERIC "tail"
 #define FEATURE_FLUFF "fluff"
-#define FEATURE_PENIS "penis"
-#define FEATURE_TESTICLES "testicles"
-#define FEATURE_VAGINA "vagina"
-#define FEATURE_WOMB "womb"
-#define FEATURE_ANUS "anus"
-#define FEATURE_BREASTS "breasts"
 #define FEATURE_SKRELL_HAIR "skrell_hair"
 #define FEATURE_XENODORSAL "xenodorsal"
 #define FEATURE_XENOHEAD "xenohead"

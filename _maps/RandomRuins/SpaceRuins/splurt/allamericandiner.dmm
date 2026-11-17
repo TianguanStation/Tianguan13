@@ -1069,7 +1069,6 @@
 "oQ" = (
 /obj/structure/urinal/directional/north,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/cum,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/showroomfloor,
@@ -1959,7 +1958,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/bin,
-/obj/item/clothing/sextoy/condom,
 /obj/effect/spawner/random/trash/food_packaging,
 /obj/effect/spawner/random/trash/food_packaging,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -3133,7 +3131,6 @@
 /area/ruin/space/has_grav/allamericandiner)
 "Rr" = (
 /obj/structure/cable,
-/obj/machinery/vending/dorms,
 /obj/effect/turf_decal/stripes/full,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/allamericandiner)
@@ -3245,7 +3242,6 @@
 /obj/item/borg/upgrade/rename,
 /obj/item/borg/upgrade/inducer,
 /obj/item/borg/upgrade/expand,
-/obj/item/borg/upgrade/dominatrixmodule,
 /obj/item/borg/upgrade/disablercooler,
 /obj/item/borg/upgrade/engineering_app,
 /obj/item/borg/upgrade/brped,
@@ -3261,9 +3257,6 @@
 /obj/effect/turf_decal/stripes/full,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/borg/upgrade/detective_kit,
-/obj/item/borg/upgrade/hypnoticmodule,
-/obj/item/borg/upgrade/bellyriding_harness,
-/obj/item/borg/upgrade/dominatrixmodule,
 /obj/item/stock_parts/power_store/cell/hyper,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/allamericandiner)

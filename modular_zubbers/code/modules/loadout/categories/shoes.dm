@@ -214,11 +214,6 @@
 	name = "Laceup Shoes (Recolorable)"
 	item_path = /obj/item/clothing/shoes/colorable_laceups
 
-/datum/loadout_item/shoes/formal/dominaheels
-	name = "Dominant Heels"
-	item_path = /obj/item/clothing/shoes/latex_heels/domina_heels
-	erp_item = TRUE
-
 /datum/loadout_item/shoes/formal/high_heels
 	name = "High Heels"
 	item_path = /obj/item/clothing/shoes/high_heels
@@ -231,18 +226,6 @@
 	name = "Fancy Heels (dragmeme)"
 	item_path = /obj/item/clothing/shoes/fancy_heels/drag
 	//ckeywhitelist = list("thedragmeme")
-
-/datum/loadout_item/shoes/formal/bubber/clown/pink/mute //Less silly = Unrestricted
-	name = "Pink Heels"
-	item_path = /obj/item/clothing/shoes/latex_heels/bubber/clussy/mute
-
-/datum/loadout_item/shoes/formal/latex_heels
-	name = "Latex Heels"
-	item_path = /obj/item/clothing/shoes/latex_heels
-
-/datum/loadout_item/shoes/formal/latex_heels/ballet_heels
-	name = "Ballet Heels"
-	item_path = /obj/item/clothing/shoes/latex_heels/ballet_heels
 
 //Casual
 
@@ -312,10 +295,6 @@
 	name = "Frosty Boots"
 	item_path = /obj/item/clothing/shoes/jackbros
 
-/datum/loadout_item/shoes/fun/latex_socks
-	name = "Latex Socks"
-	item_path = /obj/item/clothing/shoes/latex_socks
-
 /*
 *	SEASONAL
 */
@@ -357,11 +336,6 @@
 	name = "NT Command Cheerleading Sneakers"
 	item_path = /obj/item/clothing/shoes/sneakers/ba_cheerleader/command
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_CHIEF_ENGINEER, JOB_CHIEF_MEDICAL_OFFICER, JOB_QUARTERMASTER, JOB_NT_REP)
-
-/datum/loadout_item/shoes/fun/bubber/clown/pink/squeak //Unlike the rest, these make noise. Job locked.
-	name = "Pink Clown Heels"
-	item_path = /obj/item/clothing/shoes/clown_shoes/bubber/clussy
-	restricted_roles = list(JOB_CLOWN)
 
 /datum/loadout_item/shoes/fun/bubber/clown/jester/amazing
 	name = "Striped Jester Shoes"

@@ -17273,7 +17273,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/cum/femcum,
 /turf/open/floor/wood/tile,
 /area/station/maintenance/floor3/starboard/aft)
 "egz" = (
@@ -28231,9 +28230,6 @@
 /area/station/hallway/floor4/fore)
 "gYU" = (
 /obj/structure/table/wood,
-/obj/item/clothing/sextoy/eggvib/signalvib{
-	pixel_x = -9
-	},
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/paper/crumpled{
@@ -75958,7 +75954,6 @@
 /turf/open/floor/mineral/plastitanium/pod/light,
 /area/station/maintenance/floor4/starboard/aft)
 "sNE" = (
-/obj/machinery/vending/dorms,
 /turf/open/floor/iron,
 /area/station/commons/fitness)
 "sNJ" = (
@@ -96635,7 +96630,6 @@
 /area/station/maintenance/floor2/starboard/aft)
 "xOF" = (
 /obj/effect/mapping_helpers/broken_floor,
-/obj/machinery/vending/dorms/prison,
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
 "xOI" = (

@@ -1,6 +1,6 @@
 // ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
 /// The list of the available special player ranks
-#define SKYRAT_PLAYER_RANKS list("Donator", "Mentor")
+#define SKYRAT_PLAYER_RANKS list("Donator", "Mentor", "TianGuan Star")
 
 ADMIN_VERB(manage_player_ranks, R_ADMIN, "管理玩家等级", "Manage who has the special player ranks while the server is running.", ADMIN_CATEGORY_MAIN)
 	if(!check_rights(R_ADMIN))
@@ -37,7 +37,7 @@ ADMIN_VERB(manage_player_ranks, R_ADMIN, "管理玩家等级", "Manage who has t
 	if(!(group in SKYRAT_PLAYER_RANKS))
 		CRASH("[key_name(usr)] attempted to add someone to an invalid \"[group]\" group.")
 
-	var/group_title = LOWER_TEXT(group)
+	var/group_title = LOWER_TEXT(replacetext(group, " ", "_"))
 
 	var/list/choices = list("Add", "Remove")
 	switch(tgui_alert(usr, LANG("datum.ab3c2f647ff1b220", null), LANG("datum.74de5d85c84a23f0", list(group)), choices))

@@ -24,9 +24,6 @@
 	for(var/mob/player as anything in GLOB.player_list)
 		if(player.has_faction(ROLE_SYNDICATE) || player.has_faction(ROLE_SYNDICATE_INFILTRATOR) || player.has_faction(ROLE_LONE_OPERATIVE) || player.has_faction(ROLE_OPERATIVE) || player.has_faction(ROLE_TRAITOR))
 			continue
-		area_type = get_area(player)
-		if(is_type_in_list(area_type, GLOB.expected_erp_areas))
-			continue
 		if(!is_station_level(player.z))
 			continue
 		if(isdead(player))
@@ -64,9 +61,6 @@
 	var/list/candidates = list()
 	var/area/area_type
 	for(var/mob/player as anything in GLOB.player_list)
-		area_type = get_area(player)
-		if(is_type_in_list(area_type, GLOB.expected_erp_areas))
-			continue
 		if(!is_station_level(player.z))
 			continue
 		if(isdead(player))
@@ -108,7 +102,7 @@
 	notify_ghosts(LANG("datum.984ae5ea8bcd7a8d", list(victim.name)), source = victim, header = "Assassination in progress")
 
 /datum/round_event/syndicate_assassination_attempt/proc/get_blacklisted_areas()
-	return GLOB.expected_erp_areas.Copy()
+	return list()
 
 ///Handles the creation of the pod, in case it needs to be modified beforehand
 /datum/round_event/syndicate_assassination_attempt/proc/make_pod()

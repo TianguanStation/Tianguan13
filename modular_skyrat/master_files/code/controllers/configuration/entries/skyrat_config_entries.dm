@@ -67,5 +67,15 @@
 /datum/config_entry/flag/mentor_legacy_system
 	protection = CONFIG_ENTRY_LOCKED
 
+/// TIANGUAN EDIT ADDITION START
+/// Defines whether the server uses the legacy star system with config/tianguan/tianguan_star_players.txt or the SQL system.
+/datum/config_entry/flag/tianguan_star_legacy_system
+	protection = CONFIG_ENTRY_LOCKED
+
+/// Defines whether tianguan_stars_only jobs require the TianGuan Star rank.
+/datum/config_entry/flag/enable_tianguan_star_restrictions
+	default = FALSE
+/// TIANGUAN EDIT ADDITION END
+
 /// If you want to have a default storyteller
 /datum/config_entry/string/default_storyteller

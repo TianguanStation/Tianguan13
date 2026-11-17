@@ -627,7 +627,6 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	alternate_worn_layer = UNDER_SUIT_LAYER
-	kink_collar = TRUE
 	/// What's the name on the tag, if any?
 	var/tagname = null
 	/// What treat item spawns inside the collar?
@@ -1214,7 +1213,6 @@
 		"pat",
 		"administer plushies",
 		"distribute cookies",
-		"sex",
 		"weh")
 
 /obj/item/card/fuzzy_license/attack_self(mob/user)
@@ -1504,7 +1502,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/necklaces.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
 	icon_state = "flower_collar"
-	kink_collar = TRUE
 
 // Donation reward for Sigmar Alkahest
 /obj/item/clothing/under/costume/skyrat/kimono/sigmar
@@ -1549,17 +1546,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	lefthand_file = null
 	righthand_file = null
 	spans = list("glossy")
-
-/obj/item/clothing/ears/kinky_headphones/sharkenning
-	name = "suspiciously glossy headphones"
-	desc = "Black metalic headphones with a glossy finish. The soft rubber cushions are comftorable and form fitting"
-	icon_state = "kinkphones_black_off"
-	base_icon_state = "kinkphones"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/ears.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/ears.dmi'
-	inhand_icon_state = null
-	current_kinkphones_color = "black"
-	color_changed = TRUE
 
 //reward for SomeRandomOwl
 /obj/item/clothing/head/costume/strigihat

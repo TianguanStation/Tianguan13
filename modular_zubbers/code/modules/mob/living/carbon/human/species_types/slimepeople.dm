@@ -83,7 +83,7 @@
 
 /**
  * Alter Form is the ability of slimes to edit many of their character attributes at will
- * This covers most thing about their character, from body size or colour, to adding new wings, tails, ears, etc, to changing the presence of their genitalia
+ * This covers most thing about their character, from body size or colour, to adding new wings, tails, ears, etc.
  * There are some balance concerns with some of these (looking at you, body size), but nobody has abused it Yet:tm:, and it would be exceedingly obvious if they did
  */
 /datum/action/innate/alter_form
@@ -307,11 +307,7 @@
  */
 /datum/action/innate/alter_form/proc/alter_dna(mob/living/carbon/human/alterer)
 	//SPLURT EDIT CHANGE BEGIN - ALTER_FORM_GENDER
-	//var/list/key_list = list("Body Size", "Genitals", "Mutant Parts") - SPLURT EDIT - ORIGINAL
-	var/list/key_list = list("Body Size", "Gender", "Genitals", "Mutant Parts")
-	//SPLURT EDIT CHANGE END
-	if(CONFIG_GET(flag/disable_erp_preferences))
-		key_list.Remove("Genitals")
+	var/list/key_list = list("Body Size", "Gender", "Mutant Parts")
 	var/dna_alteration = tgui_input_list(
 		alterer,
 		LANG("datum.00f45ca31fc2e61c", null),
@@ -389,8 +385,6 @@
 			alterer.update_appearance(UPDATE_OVERLAYS)
 			alterer.update_clothing(ITEM_SLOT_ICLOTHING)
 		//SPLURT EDIT ADDITION END
-		if("Genitals")
-			alter_genitals(alterer)
 		if("Mutant Parts")
 			alter_parts(alterer)
 
@@ -404,8 +398,6 @@
 /datum/action/innate/alter_form/proc/alter_parts(mob/living/carbon/human/alterer)
 	var/list/mutant_part_list = list()
 	for(var/datum/dna_block/feature/mutant/block as anything in subtypesof(/datum/dna_block/feature/mutant))
-		if(CONFIG_GET(flag/disable_erp_preferences) && (block::feature_key in ORGAN_ERP_LIST))
-			continue
 		mutant_part_list[block::feature_key] = block
 	var/chosen_key = tgui_input_list(
 		alterer,
@@ -491,141 +483,6 @@
 	var/datum/body_marking_set/marking_set = GLOB.body_marking_sets[chosen_name]
 	alterer.dna.species.body_markings = assemble_body_markings_from_set(marking_set, alterer.dna.features, alterer.dna.species)
 	alterer.update_body(is_creating = TRUE)
-
-/**
- * Alter genitals lets you adjust the size or functionality of genitalia
- * If you don't own the genital you try to adjust, it'll ask you if you want to add it first
- */
-/datum/action/innate/alter_form/proc/alter_genitals(mob/living/carbon/human/alterer)
-	var/list/genital_list
-	if(alterer.get_organ_slot(ORGAN_SLOT_BREASTS))
-		genital_list += list("Breasts Lactation", "Breasts Size")
-	if(alterer.get_organ_slot(ORGAN_SLOT_PENIS))
-		genital_list += list("Penis Girth", "Penis Length", "Penis Sheath", "Penis Taur Mode")
-	if(alterer.get_organ_slot(ORGAN_SLOT_TESTICLES))
-		genital_list += list("Testicles Size")
-	if(alterer.get_organ_slot(ORGAN_SLOT_BUTT))
-		genital_list += list("Butt Size")
-	if(alterer.get_organ_slot(ORGAN_SLOT_BELLY))
-		genital_list += list("Belly Size")
-	if(!length(genital_list))
-		alterer.balloon_alert(alterer, LANG("datum.e52cb7ebc0ef392f", null))
-
-	var/dna_alteration = tgui_input_list(
-		alterer,
-		LANG("datum.be2e024fc3c4c753", null),
-		LANG("datum.0954ca9b64fe3b5b", null),
-		genital_list
-	)
-	if(!dna_alteration)
-		return
-	switch(dna_alteration)
-		if("Breasts Lactation")
-			var/obj/item/organ/genital/breasts/melons = alterer.get_organ_slot(ORGAN_SLOT_BREASTS)
-			alterer.dna.features["breasts_lactation"] = !alterer.dna.features["breasts_lactation"]
-			melons.lactates = alterer.dna.features["breasts_lactation"]
-			alterer.balloon_alert(alterer, "[alterer.dna.features["breasts_lactation"] ? "lactating" : "not lactating"]")
-
-		if("Breasts Size")
-			var/obj/item/organ/genital/breasts/melons = alterer.get_organ_slot(ORGAN_SLOT_BREASTS)
-			var/new_size = tgui_input_list(
-				alterer,
-				LANG("datum.2fbf94883ca18164", null),
-				LANG("datum.a351df4feae470f5", null),
-				GLOB.breast_size_to_number,
-			)
-			if(!new_size)
-				return
-			alterer.dna.features["breasts_size"] = melons.breasts_cup_to_size(new_size)
-			melons.set_size(alterer.dna.features["breasts_size"])
-		if("Penis Girth")
-			var/obj/item/organ/genital/penis/sausage = alterer.get_organ_slot(ORGAN_SLOT_PENIS)
-			var/max_girth = PENIS_MAX_GIRTH
-			if(alterer.dna.features["penis_size"] >= max_girth)
-				max_girth = alterer.dna.features["penis_size"]
-			var/new_girth = tgui_input_number(
-				alterer,
-				LANG("datum.761a4cc3afd591b9", list(max_girth)),
-				LANG("datum.78f80c295b6adf9f", null),
-				max_value = max_girth,
-				min_value = 1
-			)
-			if(new_girth)
-				alterer.dna.features["penis_girth"] = new_girth
-				sausage.girth = alterer.dna.features["penis_girth"]
-
-		if("Penis Length")
-			var/obj/item/organ/genital/penis/wang = alterer.get_organ_slot(ORGAN_SLOT_PENIS)
-			var/new_length = tgui_input_number(
-				alterer,
-				LANG("datum.577a274c6cb84df7", list(PENIS_MIN_LENGTH, PENIS_MAX_LENGTH)),
-				LANG("datum.a351df4feae470f5", null),
-				max_value = PENIS_MAX_LENGTH,
-				min_value = PENIS_MIN_LENGTH,
-			)
-			if(!new_length)
-				return
-			alterer.dna.features["penis_size"] = new_length
-			if(alterer.dna.features["penis_girth"] >= new_length)
-				alterer.dna.features["penis_girth"] = new_length - 1
-				wang.girth = alterer.dna.features["penis_girth"]
-			wang.set_size(alterer.dna.features["penis_size"])
-
-		if("Penis Sheath")
-			var/obj/item/organ/genital/penis/schlong = alterer.get_organ_slot(ORGAN_SLOT_PENIS)
-			var/new_sheath = tgui_input_list(
-				alterer,
-				LANG("datum.a6d8073ad873f8b7", null),
-				LANG("datum.a351df4feae470f5", null),
-				SHEATH_MODES,
-			)
-			if(new_sheath)
-				alterer.dna.features["penis_sheath"] = new_sheath
-				schlong.sheath = new_sheath
-
-		if("Penis Taur Mode")
-			alterer.dna.features["penis_taur_mode"] = !alterer.dna.features["penis_taur_mode"]
-			alterer.balloon_alert(alterer, "[alterer.dna.features["penis_taur_mode"] ? "using taur penis" : "not using taur penis"]")
-
-		if("Testicles Size")
-			var/obj/item/organ/genital/testicles/avocados = alterer.get_organ_slot(ORGAN_SLOT_TESTICLES)
-			var/new_size = tgui_input_list(
-				alterer,
-				LANG("datum.4c74bfeb273e0f04", null),
-				LANG("datum.78f80c295b6adf9f", null),
-				GLOB.preference_balls_sizes,
-			)
-			if(new_size)
-				alterer.dna.features["balls_size"] = avocados.balls_description_to_size(new_size)
-				avocados.set_size(alterer.dna.features["balls_size"])
-
-		if("Butt Size")
-			var/obj/item/organ/genital/butt/buttocks = alterer.get_organ_slot(ORGAN_SLOT_BUTT)
-			var/new_size = tgui_input_number(
-				alterer,
-				LANG("datum.39c386c4843b921d", null),
-				LANG("datum.78f80c295b6adf9f", null),
-				max_value = BUTT_MAX_SIZE,
-				min_value = BUTT_MIN_SIZE,
-			)
-			if(!new_size)
-				return
-			alterer.dna.features["butt_size"] = new_size
-			buttocks.set_size(alterer.dna.features["butt_size"])
-
-		if("Belly Size")
-			var/obj/item/organ/genital/belly/tummy = alterer.get_organ_slot(ORGAN_SLOT_BELLY)
-			var/new_size = tgui_input_number(
-				alterer,
-				LANG("datum.d68942352f956cbf", null),
-				LANG("datum.78f80c295b6adf9f", null),
-				max_value = BELLY_MAX_SIZE,
-				min_value = BELLY_MIN_SIZE,
-			)
-			if(!new_size)
-				return
-			alterer.dna.features["belly_size"] = new_size
-			tummy.set_size(alterer.dna.features["belly_size"])
 
 /**
  * The beginning for character alteration. Handles all the settings and targetting. Leads into [do_char_alteration].

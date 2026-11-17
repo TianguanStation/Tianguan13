@@ -252,6 +252,20 @@ function JobRow(props: JobRowProps) {
         </Stack.Item>
       </Stack>
     );
+    // TIANGUAN EDIT ADDITION START
+  } else if (
+    data.tianguan_star_restrictions &&
+    job.tianguan_star &&
+    !data.is_tianguan_star
+  ) {
+    rightSide = (
+      <Stack align="center" height="100%" pr={1}>
+        <Stack.Item grow textAlign="right">
+          <b>TianGuan Stars Only</b>
+        </Stack.Item>
+      </Stack>
+    );
+    // TIANGUAN EDIT ADDITION END
     // BUBBER EDIT ADDITION BEGIN - Species restricted jobs
   } else if (
     data.species_restricted_jobs &&
@@ -633,6 +647,15 @@ export function JobsPage() {
                   hoveringOver={hoveringOver}
                   setHoveringOver={setHoveringOver}
                 />
+                {/* TIANGUAN EDIT ADDITION START - UAR_DEPARTMENT */}
+                <Department
+                  department="Union of Allied Republics"
+                  dragging={dragging}
+                  setDragging={setDragging}
+                  hoveringOver={hoveringOver}
+                  setHoveringOver={setHoveringOver}
+                />
+                {/* TIANGUAN EDIT ADDITION END */}
               </Stack>
             </Stack.Item>
           </Stack>

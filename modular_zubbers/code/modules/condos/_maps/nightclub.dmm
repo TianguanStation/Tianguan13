@@ -15,9 +15,6 @@
 /area/misc/condo)
 "er" = (
 /obj/structure/table/wood/fancy/purple,
-/obj/item/bdsm_candle{
-	pixel_y = 6
-	},
 /turf/open/floor/light,
 /area/misc/condo)
 "eO" = (
@@ -121,7 +118,6 @@
 /area/misc/condo)
 "oo" = (
 /obj/structure/table/reinforced/plasmarglass,
-/obj/structure/stripper_pole,
 /turf/open/floor/light,
 /area/misc/condo)
 "pb" = (
@@ -313,7 +309,6 @@
 /turf/open/floor/light/colour_cycle,
 /area/misc/condo)
 "FK" = (
-/obj/machinery/vending/dorms,
 /turf/open/floor/light,
 /area/misc/condo)
 "HO" = (
@@ -412,7 +407,6 @@
 /obj/structure/chair/sofa/corp/right{
 	dir = 8
 	},
-/obj/item/clothing/sextoy/condom,
 /turf/open/floor/iron/dark,
 /area/misc/condo)
 "St" = (

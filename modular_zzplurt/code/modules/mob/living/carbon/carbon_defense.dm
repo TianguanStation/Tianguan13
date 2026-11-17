@@ -1,115 +1,7 @@
 // ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
-#define ASS_SLAP_EXTRA_RANGE -1
 #define BADTOUCH_RETALIATE_CHANCE 5
 #define BADTOUCH_RETALIATE_DAMAGE 5
 #define BADTOUCH_RETALIATE_KNOCKDOWN 20
-#define BADTOUCH_RETALIATE_SADISM_MULT 2
-#define ASS_JIGGLE_COOLDOWN 10 SECONDS
-#define ASS_JIGGLE_STAMLOSS 25
-#define ASS_JIGGLE_VERBS_1 pick("rippling","jiggling","sloshing","clapping","wobbling")
-#define ASS_JIGGLE_VERBS_2 pick("ripples","jiggles","sloshes","claps","wobbles")
-
-/mob/living/carbon/disarm(mob/living/carbon/target)
-	// Check if targeting the groin
-	if(!(zone_selected == BODY_ZONE_PRECISE_GROIN && target.dir == dir))
-		// Nothing to do here!
-		// Run original
-		. = ..()
-		return
-
-	// Check for personal space
-	if(HAS_TRAIT(target, TRAIT_PERSONALSPACE))
-		// Attempt to retaliate
-		// No check, because this is autonomous
-		target.do_touch_retaliate(src)
-
-		// Play reflect sound
-		playsound(target.loc, get_sfx_skyrat(SFX_BULLET_IMPACT_METAL), 50, TRUE, ASS_SLAP_EXTRA_RANGE)
-
-		// Display messages
-		visible_message(
-			span_danger(LANG("mob.f2605ea02a33208b", list(src, target, src.p_their()))),
-			span_danger(LANG("mob.87949e9f5f982098", list(target))),
-			LANG("mob.0fe126f3bc18e949", null),
-			ignored_mobs = list(target)
-		)
-		to_chat(target, span_danger(LANG("mob.f343a1f26002711c", list(src, src.p_their()))))
-
-		// End here
-		return
-
-	// Check for slap request
-	if(HAS_TRAIT(target, TRAIT_JIGGLY_ASS))
-		// Get target quirk
-		var/datum/quirk/jiggly_ass/quirk_jiggle = target.get_quirk(/datum/quirk/jiggly_ass)
-
-		// Check for cooldown
-		if(!COOLDOWN_FINISHED(quirk_jiggle, wiggle_cooldown))
-			// Display message
-			target.visible_message(span_warning(LANG("mob.f5294905b36229c0", list(target, ASS_JIGGLE_VERBS_1))), \
-			span_boldwarning(LANG("mob.eac5f4513028405a", list(src))))
-
-			// End here
-			return
-
-		// Cooldown is not active
-		// Start the cooldown
-		COOLDOWN_START(quirk_jiggle, wiggle_cooldown, ASS_JIGGLE_COOLDOWN)
-
-		// Add mood bonuses
-		add_mood_event(QMOOD_JIGGLY_ASS, /datum/mood_event/butt_slap)
-		target.add_mood_event(QMOOD_JIGGLY_ASS, /datum/mood_event/butt_slapped)
-
-		// Reduce target stamina (???)
-		target.adjust_stamina_loss(ASS_JIGGLE_STAMLOSS)
-
-		// Display message
-		visible_message(
-			span_purple(LANG("mob.181f805706a07d72", list(src, target, ASS_JIGGLE_VERBS_1))),
-			span_purple(LANG("mob.db5fe7a2968d6de3", list(target, ASS_JIGGLE_VERBS_1))),
-			LANG("mob.977bc0690fa19d32", null),
-			ignored_mobs = list(target)
-		)
-		to_chat(target, span_purple(LANG("mob.b0fa21c53c7ecd8a", list(src, ASS_JIGGLE_VERBS_1, ASS_JIGGLE_VERBS_2))))
-
-		// Apply effects
-		do_ass_slap_animation(target)
-		conditional_pref_sound(target.loc, 'sound/items/weapons/slap.ogg', 50, TRUE, ASS_SLAP_EXTRA_RANGE)
-
-	// Run original
-	. = ..()
-
-/mob/living/carbon/adjust_oxy_loss(amount, updating_health = TRUE, forced = FALSE, required_biotype = ALL)
-	. = ..()
-
-	// Check parent return
-	if(!.)
-		return
-
-	// Check for Choke Slut
-	if(HAS_TRAIT(src, TRAIT_CHOKE_SLUT))
-		// Check if amount is positive
-		// Negative values remove suffocation
-		if(amount < 0)
-			return
-
-		// Check if alive and ERP is enabled
-		if(stat >= DEAD || !client?.prefs?.read_preference(/datum/preference/toggle/erp))
-			return
-
-		// Check for no breathing
-		if(HAS_TRAIT(src, TRAIT_NOBREATH))
-			return
-
-		// Define quirk mob
-		var/mob/living/carbon/human/quirk_mob = src
-
-		// Check if quirk mob exists
-		if(!quirk_mob)
-			return
-
-		// Adjust arousal
-		quirk_mob.adjust_arousal(amount)
 
 /mob/living/carbon/proc/can_touch_retaliate()
 	// User must be conscious
@@ -129,37 +21,13 @@
 	return TRUE
 
 /mob/living/carbon/proc/do_touch_retaliate(mob/living/carbon/toucher)
-	// Check if toucher enjoys this
-	if(HAS_TRAIT(toucher, TRAIT_MASOCHISM))
-		// Cause toucher to express contentment
-		toucher.try_lewd_autoemote("moan")
-
-		// Add good mood event
-		toucher.add_mood_event(QMOOD_BADTOUCH_VICTIM, /datum/mood_event/badtouch_retaliate/victim_good)
-
-	// They don't enjoy this
-	else
-		// Cause toucher to scream
-		toucher.emote("scream")
-
-		// Add bad mood event
-		toucher.add_mood_event(QMOOD_BADTOUCH_VICTIM, /datum/mood_event/badtouch_retaliate/victim_bad)
+	// Cause toucher to scream
+	toucher.emote("scream")
+	toucher.add_mood_event(QMOOD_BADTOUCH_VICTIM, /datum/mood_event/badtouch_retaliate/victim_bad)
 
 	// Damage amount to apply
 	var/retaliate_damage = BADTOUCH_RETALIATE_DAMAGE
-
-	// Check if target is a sadist
-	if(HAS_TRAIT(src, TRAIT_SADISM))
-		// Multiply retaliation damage
-		retaliate_damage *= BADTOUCH_RETALIATE_SADISM_MULT
-
-		// Add good mood event
-		src.add_mood_event(QMOOD_BADTOUCH_ATTACKER, /datum/mood_event/badtouch_retaliate/attacker_good)
-
-	// Target is not a sadist
-	else
-		// Add bad mood event
-		src.add_mood_event(QMOOD_BADTOUCH_ATTACKER, /datum/mood_event/badtouch_retaliate/attacker_bad)
+	src.add_mood_event(QMOOD_BADTOUCH_ATTACKER, /datum/mood_event/badtouch_retaliate/attacker_bad)
 
 	// Determine toucher's hand
 	var/which_hand = BODY_ZONE_PRECISE_L_HAND
@@ -209,27 +77,11 @@
 	mood_change = -2
 	timeout = 2 MINUTES
 
-/datum/mood_event/badtouch_retaliate/attacker_good
-	description = span_purple("I taught someone a lesson.")
-	mood_change = 2
-	timeout = 2 MINUTES
-
 /datum/mood_event/badtouch_retaliate/victim_bad
 	description = span_danger("I shouldn't touch people without permission.")
 	mood_change = -2
 	timeout = 2 MINUTES
 
-/datum/mood_event/badtouch_retaliate/victim_good
-	description = span_purple("I deserved that for what I did.")
-	mood_change = 2
-	timeout = 2 MINUTES
-
-#undef ASS_SLAP_EXTRA_RANGE
 #undef BADTOUCH_RETALIATE_CHANCE
 #undef BADTOUCH_RETALIATE_DAMAGE
 #undef BADTOUCH_RETALIATE_KNOCKDOWN
-#undef BADTOUCH_RETALIATE_SADISM_MULT
-#undef ASS_JIGGLE_COOLDOWN
-#undef ASS_JIGGLE_STAMLOSS
-#undef ASS_JIGGLE_VERBS_1
-#undef ASS_JIGGLE_VERBS_2

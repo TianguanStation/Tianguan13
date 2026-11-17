@@ -10,7 +10,6 @@
 /turf/open/floor/catwalk_floor,
 /area/misc/condo)
 "ao" = (
-/obj/machinery/vending/dorms,
 /turf/open/floor/wood/tile,
 /area/misc/condo)
 "ap" = (
@@ -237,7 +236,6 @@
 /turf/open/floor/wood/tile,
 /area/misc/condo)
 "cd" = (
-/obj/structure/stripper_pole,
 /turf/open/floor/light,
 /area/misc/condo)
 "cg" = (

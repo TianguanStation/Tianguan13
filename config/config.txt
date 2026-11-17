@@ -16,10 +16,7 @@ $include map_vote.txt
 
 # SPLURT configs
 $include splurt/discord.txt
-$include splurt/fetish_content.txt
 $include splurt/game_options.txt
-$include splurt/age_gate.txt
-$include splurt/plug13.txt
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game
 # Example usage:
@@ -35,8 +32,8 @@ $include splurt/plug13.txt
 ## Server tagline: This will appear right below the server's title.
 # SERVERTAGLINE A generic TG-based server
 
-## Discord Link: This is the link to Skyrat's discord server
-# DISCORD_LINK https://discord.gg/hGpZ4Z3
+## Discord Link: This is the link to the server's Discord invite
+DISCORD_LINK https://discord.gg/jb8Sdvh5kP
 
 ## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
 # SERVERSQLNAME tgstation

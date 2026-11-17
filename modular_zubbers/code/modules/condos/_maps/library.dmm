@@ -411,7 +411,6 @@
 /obj/structure/sign/painting/library{
 	pixel_x = 32
 	},
-/obj/machinery/vending/dorms,
 /turf/open/floor/wood,
 /area/misc/condo)
 "AJ" = (

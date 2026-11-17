@@ -21,8 +21,8 @@ SUBSYSTEM_DEF(player_ranks)
 	var/datum/player_rank_controller/donator/donator_controller
 	/// The mentor player rank controller.
 	var/datum/player_rank_controller/mentor/mentor_controller
-	/// The vetted player rank controller.
-	var/datum/player_rank_controller/vetted/vetted_controller
+	/// The TianGuan star player rank controller.
+	var/datum/player_rank_controller/tianguan_star/tianguan_star_controller
 
 /datum/controller/subsystem/player_ranks/Initialize()
 	if(IsAdminAdvancedProcCall())
@@ -30,14 +30,14 @@ SUBSYSTEM_DEF(player_ranks)
 
 	load_donators()
 	load_mentors()
-	vetted_controller = new()
+	load_tianguan_stars()
 	return SS_INIT_SUCCESS
 
 
 /datum/controller/subsystem/player_ranks/Destroy()
 	QDEL_NULL(donator_controller)
 	QDEL_NULL(mentor_controller)
-	QDEL_NULL(vetted_controller)
+	QDEL_NULL(tianguan_star_controller)
 	. = ..()
 
 /**
@@ -75,6 +75,53 @@ SUBSYSTEM_DEF(player_ranks)
 		CRASH("Invalid user type provided to is_mentor(), expected 'client' and obtained '[user ? user.type : "null"]'.")
 
 	return user.is_mentor(admin_bypass)
+
+
+/**
+ * Returns whether or not the user is qualified as a TianGuan star.
+ *
+ * Arguments:
+ * * user - The client to verify the star status of.
+ * * admin_bypass - Whether or not admins can succeed this check, even if they
+ * do not actually possess the role. Defaults to `TRUE`.
+ */
+/datum/controller/subsystem/player_ranks/proc/is_tianguan_star(client/user, admin_bypass = TRUE)
+	if(!istype(user))
+		CRASH("Invalid user type provided to is_tianguan_star(), expected 'client' and obtained '[user ? user.type : "null"]'.")
+
+	if(GLOB.tianguan_star_list[user.ckey])
+		return TRUE
+
+	if(admin_bypass && is_admin(user))
+		return TRUE
+
+	return FALSE
+
+
+/// Handles loading TianGuan stars either via SQL or using the legacy system,
+/// based on configs.
+/datum/controller/subsystem/player_ranks/proc/load_tianguan_stars()
+	PROTECTED_PROC(TRUE)
+
+	if(IsAdminAdvancedProcCall())
+		return
+
+	tianguan_star_controller = new
+
+	if(CONFIG_GET(flag/tianguan_star_legacy_system))
+		tianguan_star_controller.load_legacy()
+		return
+
+	if(!SSdbcore.Connect())
+		var/message = "Failed to connect to database in load_tianguan_stars(). Reverting to legacy system."
+		log_config(message)
+		log_game(message)
+		message_admins(message)
+		CONFIG_SET(flag/tianguan_star_legacy_system, TRUE)
+		tianguan_star_controller.load_legacy()
+		return
+
+	load_player_rank_sql(tianguan_star_controller)
 
 /// Handles loading donators either via SQL or using the legacy system,
 /// based on configs.
@@ -187,7 +234,7 @@ SUBSYSTEM_DEF(player_ranks)
 	if(IsAdminAdvancedProcCall())
 		return null
 
-	rank_title = LOWER_TEXT(rank_title)
+	rank_title = LOWER_TEXT(replacetext(rank_title, " ", "_"))
 
 	// Can't make switch() statements with non-constant values.
 	if(rank_title == donator_controller.rank_title)
@@ -195,6 +242,9 @@ SUBSYSTEM_DEF(player_ranks)
 
 	if(rank_title == mentor_controller.rank_title)
 		return mentor_controller
+
+	if(rank_title == tianguan_star_controller.rank_title)
+		return tianguan_star_controller
 
 	CRASH("Invalid player_rank_controller \"[rank_title || "*null*"]\" used in get_controller_for_group()!")
 
@@ -235,7 +285,7 @@ SUBSYSTEM_DEF(player_ranks)
 		return FALSE
 
 
-	rank_title = LOWER_TEXT(rank_title)
+	rank_title = LOWER_TEXT(replacetext(rank_title, " ", "_"))
 
 	var/datum/player_rank_controller/controller = get_controller_for_group(rank_title)
 
@@ -325,7 +375,7 @@ SUBSYSTEM_DEF(player_ranks)
 
 		return FALSE
 
-	rank_title = LOWER_TEXT(rank_title)
+	rank_title = LOWER_TEXT(replacetext(rank_title, " ", "_"))
 
 	var/datum/player_rank_controller/controller = get_controller_for_group(rank_title)
 

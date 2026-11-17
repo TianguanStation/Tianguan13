@@ -1072,7 +1072,6 @@
 	pixel_y = -2;
 	pixel_x = -6
 	},
-/obj/item/lipstick/hypnosyndie,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "Ge" = (

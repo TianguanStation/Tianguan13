@@ -169,8 +169,7 @@
 	// lang_localize_arg 再用顿号连接。断言的是**这条通道**，不是 AC——拿裸碎片喂 AC 本来就不该命中。
 	TEST_ASSERT_NOTEQUAL(lang_localize_arg("drowning"), "drowning", "鱼的状态词应经 _state_words 翻译")
 	TEST_ASSERT_EQUAL(lang_localize_arg("chunky mitts"), "厚实的连指手套", "手套互动的动态称呼应被翻译")
-	var/mittens_message = lang_fallback_apply_html(span_purple("You awkwardly wedge the Zxqv between your chunky mitts..."))
-	TEST_ASSERT(!findtext(mittens_message, "chunky mitts"), "手套互动的真实消息不应夹带英文称呼：[mittens_message]")
+	// TIANGUAN EDIT: 移除了依赖 lewd_gloves.dm 的 ERP 手套交互模板断言（已清理 ERP）
 	TEST_ASSERT_NOTEQUAL(lang_english_list(list("starving", "drowning")), "starving and drowning", "状态词列表应逐项翻并用顿号连接")
 
 	// ②b **落在标签内部的占位符收的是标识符，不能翻**。幻觉心灵感应那条模板是

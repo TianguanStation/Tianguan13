@@ -1115,12 +1115,6 @@
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/bubbers/dauntless/service)
 "fr" = (
-/obj/machinery/vending/dorms/prison{
-	onstation = 0;
-	onstation_override = 1;
-	density = 0;
-	pixel_x = -27
-	},
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/bubbers/dauntless/sec/prison/rec)
 "ft" = (
@@ -11182,10 +11176,6 @@
 "VZ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/vending/dorms{
-	onstation_override = 1;
-	onstation = 0
-	},
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/bubbers/dauntless/service/dorms)
 "Wb" = (

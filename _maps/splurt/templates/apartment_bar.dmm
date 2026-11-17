@@ -371,7 +371,6 @@
 /turf/open/floor/carpet/black,
 /area/misc/condo)
 "WO" = (
-/obj/machinery/vending/dorms,
 /turf/open/indestructible/hoteltile,
 /area/misc/condo)
 "Xr" = (

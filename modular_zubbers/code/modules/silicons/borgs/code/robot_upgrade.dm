@@ -79,23 +79,6 @@
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7.5, /datum/material/glass =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT * 2.5)
 
 
-// Borg Dom Aura :)
-/obj/item/borg/upgrade/dominatrixmodule/action(mob/living/silicon/robot/borg, mob/living/user)
-	if(borg.hasToys)
-		to_chat(usr, span_warning(LANG("obj.b0ba2dcf69729ee8", null)))
-		return FALSE
-	. = ..()
-	if(.)
-		borg.hasToys = TRUE
-		borg.add_quirk(/datum/quirk/dominant_aura)
-
-/obj/item/borg/upgrade/dominatrixmodule/deactivate(mob/living/silicon/robot/borg, mob/living/user)
-	. = ..()
-	if(.)
-		if(borg.hasToys)
-			borg.hasToys = FALSE
-		borg.remove_quirk(/datum/quirk/dominant_aura)
-
 // Engineering RLD
 /obj/item/borg/upgrade/rld
 	name = "Engineering Cyborg Rapid Lighting Device Upgrade"
@@ -236,46 +219,6 @@
 	items_to_add = list(/obj/item/gun/energy/recharge/kinetic_accelerator/m79/cyborg)
 	items_to_remove = list(/obj/item/gun/energy/recharge/kinetic_accelerator)
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/uranium = SHEET_MATERIAL_AMOUNT * 3, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 2, /datum/material/plastic = SHEET_MATERIAL_AMOUNT, /datum/material/bluespace = SHEET_MATERIAL_AMOUNT)
-
-/// "Good Borg" Obedience Training
-/mob/living/silicon/robot
-	var/hasToys = FALSE
-
-/obj/item/borg/upgrade/obediencemodule
-	name = "Cyborg Obedience Module"
-	desc = "A module that greatly upgrades the ability of borgs to display affection."
-	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
-	icon_state = "module_lust"
-	custom_materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
-	)
-	custom_price = 0
-
-	items_to_add = list(/obj/item/kinky_shocker,
-						/obj/item/clothing/mask/leatherwhip,
-						/obj/item/spanking_pad,
-						/obj/item/tickle_feather,
-						/obj/item/clothing/erp_leash,
-						)
-
-// WellTrained Obedience Behaviour
-/obj/item/borg/upgrade/obediencemodule/action(mob/living/silicon/robot/borg, mob/living/user)
-	if(borg.hasToys)
-		to_chat(usr, span_warning(LANG("obj.b0ba2dcf69729ee8", null)))
-		return FALSE
-	. = ..()
-	if(.)
-		borg.hasToys = TRUE
-		borg.add_quirk(/datum/quirk/well_trained)
-
-/obj/item/borg/upgrade/obediencemodule/deactivate(mob/living/silicon/robot/borg, mob/living/user)
-	. = ..()
-	if(.)
-		if(borg.hasToys)
-			borg.hasToys = FALSE
-
-		borg.remove_quirk(/datum/quirk/well_trained)
 
 /obj/item/borg/upgrade/detailer
 	name = "janitor detailing toolset"

@@ -82,10 +82,6 @@
 	icon_state = "lizared_top"
 	use_static = TRUE
 
-/datum/sprite_accessory/clothing/bra/bra_kinky
-	name = "Bra - Lingerie"
-	icon_state = "bra_kinky"
-
 /datum/sprite_accessory/clothing/bra/bra_commie
 	name = "Bra - Commie"
 	icon_state = "bra_commie"
@@ -137,34 +133,4 @@
 	icon_state = "fishnet_body_alt"
 	use_static = FALSE
 
-//ERP Accessories
-/datum/sprite_accessory/clothing/bra/bra_latex
-	name = "Bra - Latex"
-	icon_state = "bra_latex"
-	use_static = TRUE
-	erp_accessory = TRUE
 
-/datum/sprite_accessory/clothing/bra/chastbra
-	name = "Bra - Chastity"
-	icon_state = "chastbra"
-	erp_accessory = TRUE
-
-/datum/sprite_accessory/clothing/bra/pasties
-	name = "Pasties"
-	icon_state = "pasties"
-	erp_accessory = TRUE
-
-/datum/sprite_accessory/clothing/bra/pasties_alt
-	name = "Pasties (Alt)"
-	icon_state = "pasties_alt"
-	erp_accessory = TRUE
-
-/datum/sprite_accessory/clothing/bra/shibari
-	name = "Shibari"
-	icon_state = "shibari"
-	erp_accessory = TRUE
-
-/datum/sprite_accessory/clothing/bra/shibari_sleeves
-	name = "Shibari Sleeves"
-	icon_state = "shibari_sleeves"
-	erp_accessory = TRUE

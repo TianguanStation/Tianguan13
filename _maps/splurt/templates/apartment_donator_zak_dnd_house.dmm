@@ -5171,11 +5171,6 @@
 	list_reagents = list(/datum/reagent/fuel/oil = 5);
 	name = "ink container"
 	},
-/obj/item/tickle_feather{
-	name = "feather";
-	pixel_x = 3;
-	pixel_y = 2
-	},
 /turf/open/floor/carpet/royalblack,
 /area/misc/condo)
 "PM" = (
@@ -5248,11 +5243,6 @@
 	pixel_y = 13;
 	list_reagents = list(/datum/reagent/fuel/oil = 5);
 	name = "ink container"
-	},
-/obj/item/tickle_feather{
-	name = "feather";
-	pixel_x = 6;
-	pixel_y = -1
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/condo)
@@ -5404,10 +5394,6 @@
 /obj/item/straight_razor{
 	pixel_x = 9;
 	pixel_y = 1
-	},
-/obj/item/bdsm_candle{
-	pixel_x = 0;
-	pixel_y = 0
 	},
 /obj/structure/decorative{
 	anchored = 1;
@@ -5758,23 +5744,6 @@
 	dir = 2
 	},
 /obj/effect/turf_decal/siding/wood,
-/obj/machinery/vending/dorms{
-	onstation = 0;
-	base_icon_state = "wooden";
-	icon = 'icons/obj/storage/crates.dmi';
-	icon_state = "wooden";
-	color = "#b887b7";
-	pixel_x = 0;
-	pixel_y = 0;
-	name = "LustWish crate";
-	desc = "A bluespace-utilizing wooden crate that contains LustWish merchandise.";
-	scan_id = 0;
-	all_products_free = 1
-	},
-/obj/item/condom_pack{
-	pixel_x = 6;
-	pixel_y = 1
-	},
 /turf/open/floor/wood/large,
 /area/misc/condo)
 "TX" = (

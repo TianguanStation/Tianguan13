@@ -71,16 +71,6 @@
 	icon_state = "panties_thin"
 	gender = FEMALE
 
-/datum/sprite_accessory/clothing/underwear/thong
-	name = "Thong"
-	icon_state = "thong"
-	gender = FEMALE
-
-/datum/sprite_accessory/clothing/underwear/thong_babydoll
-	name = "Thong (Alt)"
-	icon_state = "thong_babydoll"
-	gender = FEMALE
-
 /datum/sprite_accessory/clothing/underwear/panties_swimsuit
 	name = "Panties - Swimsuit"
 	icon_state = "panties_swimming"
@@ -109,11 +99,6 @@
 	name = "LIZARED Underwear"
 	icon_state = "lizared"
 	use_static = TRUE
-
-/datum/sprite_accessory/clothing/underwear/female_kinky
-	name = "Panties - Lingerie"
-	icon_state = "panties_kinky"
-	gender = FEMALE
 
 /datum/sprite_accessory/clothing/underwear/female_commie
 	name = "Panties - Commie"
@@ -190,19 +175,4 @@
 	name = "Panties - Fishnet (Greyscale)"
 	icon_state = "fishnet_lower_alt"
 
-//ERP Accessories
-/datum/sprite_accessory/clothing/underwear/latex
-	name = "Panties - Latex"
-	icon_state = "panties_latex"
-	use_static = TRUE
-	erp_accessory = TRUE
 
-/datum/sprite_accessory/clothing/underwear/chastbelt
-	name = "Chastity Belt"
-	icon_state = "chastbelt"
-	erp_accessory = TRUE
-
-/datum/sprite_accessory/clothing/underwear/chastcage
-	name = "Chastity Cage"
-	icon_state = "chastcage"
-	erp_accessory = TRUE

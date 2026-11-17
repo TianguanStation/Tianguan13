@@ -305,3 +305,6 @@
 
 ///from base of [/datum/component/multiple_lives/proc/respawn]: (mob/respawned_mob, gibbed, lives_left)
 #define COMSIG_ON_MULTIPLE_LIVES_RESPAWN "on_multiple_lives_respawn"
+
+/// TIANGUAN EDIT: emitted from job preferences middleware when a player changes job priorities: ()
+#define COMSIG_JOB_PREF_UPDATED "job_pref_updated"

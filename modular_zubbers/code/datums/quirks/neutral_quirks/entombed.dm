@@ -146,9 +146,6 @@
 	var/skin_override
 	var/mob_override
 	var/list/parts = modsuit.get_parts()
-	if (modsuit.skin == "lustwish")
-		skin_override = 'modular_zubbers/icons/obj/clothing/modsuit/mod_lustwish.dmi'
-		mob_override = 'modular_zubbers/icons/mob/clothing/modsuit/mod_lustwish.dmi'
 
 	if(isnull(skin_override) || isnull(mob_override))
 		return
@@ -214,8 +211,7 @@
 		"Medical",
 		"Mining",
 		"Prototype",
-		"Security",
-		"Lustwish"
+		"Security"
 	)
 
 /datum/preference/choiced/entombed_hardlight_theme

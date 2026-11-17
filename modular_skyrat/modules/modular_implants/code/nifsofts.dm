@@ -54,8 +54,6 @@
 	var/able_to_keep = FALSE
 	/// Are we keeping the NIFSoft installed between rounds? This is decided by the user
 	var/keep_installed = FALSE
-	///Is it a lewd item?
-	var/lewd_nifsoft = FALSE
 
 /datum/nifsoft/New(obj/item/organ/cyberimp/brain/nif/recipient_nif, no_rewards_points = FALSE, skip_calibration = FALSE)
 	. = ..()
@@ -179,8 +177,6 @@
 /obj/item/disk/nifsoft_uploader/Initialize(mapload)
 	. = ..()
 
-	if(CONFIG_GET(flag/disable_lewd_items) && initial(loaded_nifsoft.lewd_nifsoft))
-		return INITIALIZE_HINT_QDEL
 
 	name = "[initial(loaded_nifsoft.name)] datadisk"
 

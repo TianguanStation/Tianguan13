@@ -14448,7 +14448,6 @@
 /obj/effect/turf_decal/tile/neutral/opposingcorners{
 	dir = 1
 	},
-/obj/structure/sign/poster/official/no_erp/directional/north,
 /turf/open/floor/iron,
 /area/station/commons/dorms/laundry)
 "eav" = (
@@ -17032,7 +17031,6 @@
 /turf/open/floor/iron,
 /area/station/commons/fitness)
 "eOm" = (
-/obj/structure/sign/poster/official/no_erp/directional/west,
 /turf/closed/wall,
 /area/station/maintenance/starboard/fore)
 "eOx" = (
@@ -57613,7 +57611,6 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "qji" = (
-/obj/structure/sign/poster/official/no_erp/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},

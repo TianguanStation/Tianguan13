@@ -200,7 +200,6 @@
 /turf/open/floor/fakebasalt,
 /area/misc/condo)
 "fB" = (
-/obj/machinery/vending/dorms,
 /turf/closed/indestructible/hotelwall{
 	icon = 'icons/turf/walls/boss_wall.dmi';
 	icon_state = "boss_wall-0";

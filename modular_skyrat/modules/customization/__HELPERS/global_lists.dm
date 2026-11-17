@@ -37,9 +37,6 @@
 		var/datum/species/species_instance = new species_type
 		if(!isnull(species_instance.name))
 			GLOB.default_mutant_bodyparts[species_instance.name] = species_instance.get_default_mutant_bodyparts()
-			if(species_instance.can_have_genitals)
-				for(var/genital in GLOB.possible_genitals)
-					GLOB.default_mutant_bodyparts[species_instance.name] += list((genital) = list("None", FALSE))
 		qdel(species_instance)
 
 /proc/make_body_marking_references()
@@ -116,71 +113,3 @@
 				GLOB.augment_categories_to_slots[L.category] += L.slot
 			GLOB.augment_slot_to_items[L.slot] += L.path
 
-/// If the "Remove ERP Interaction" config is disabled, remove ERP things from various lists
-/proc/remove_erp_things()
-	if(!CONFIG_GET(flag/disable_erp_preferences))
-		return
-	// Chemical reactions aren't handled here because they're loaded in the reagents SS
-	// See Initialize() on SSReagents
-
-
-	// Underwear
-	for(var/sprite_name in SSaccessories.underwear_list)
-		var/datum/sprite_accessory/sprite_datum = SSaccessories.underwear_list[sprite_name]
-		if(!sprite_datum?.erp_accessory)
-			continue
-		SSaccessories.underwear_list -= sprite_name
-
-	for(var/sprite_name in SSaccessories.underwear_f)
-		var/datum/sprite_accessory/sprite_datum = SSaccessories.underwear_f[sprite_name]
-		if(!sprite_datum?.erp_accessory)
-			continue
-		SSaccessories.underwear_f -= sprite_name
-
-	for(var/sprite_name in SSaccessories.underwear_m)
-		var/datum/sprite_accessory/sprite_datum = SSaccessories.underwear_m[sprite_name]
-		if(!sprite_datum?.erp_accessory)
-			continue
-		SSaccessories.underwear_m -= sprite_name
-
-	// Undershirts
-	for(var/sprite_name in SSaccessories.undershirt_list)
-		var/datum/sprite_accessory/sprite_datum = SSaccessories.undershirt_list[sprite_name]
-		if(!sprite_datum?.erp_accessory)
-			continue
-		SSaccessories.undershirt_list -= sprite_name
-
-	for(var/sprite_name in SSaccessories.undershirt_f)
-		var/datum/sprite_accessory/sprite_datum = SSaccessories.undershirt_f[sprite_name]
-		if(!sprite_datum?.erp_accessory)
-			continue
-		SSaccessories.undershirt_f -= sprite_name
-
-	for(var/sprite_name in SSaccessories.undershirt_m)
-		var/datum/sprite_accessory/sprite_datum = SSaccessories.undershirt_m[sprite_name]
-		if(!sprite_datum?.erp_accessory)
-			continue
-		SSaccessories.undershirt_m -= sprite_name
-
-
-	// Bras
-	for(var/sprite_name in SSaccessories.bra_list)
-		var/datum/sprite_accessory/sprite_datum = SSaccessories.bra_list[sprite_name]
-		if(!sprite_datum?.erp_accessory)
-			continue
-
-		SSaccessories.bra_list -= sprite_name
-
-	for(var/sprite_name in SSaccessories.bra_f)
-		var/datum/sprite_accessory/sprite_datum = SSaccessories.bra_f[sprite_name]
-		if(!sprite_datum?.erp_accessory)
-			continue
-
-		SSaccessories.bra_f -= sprite_name
-
-	for(var/sprite_name in SSaccessories.bra_m)
-		var/datum/sprite_accessory/sprite_datum = SSaccessories.bra_m[sprite_name]
-		if(!sprite_datum?.erp_accessory)
-			continue
-
-		SSaccessories.bra_m -= sprite_name
