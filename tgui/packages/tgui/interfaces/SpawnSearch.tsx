@@ -24,6 +24,7 @@ import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import { logger } from '../logging';
+import { matchesSpawnEntry, spawnSearchMatcher } from './SpawnPanel/search';
 
 type SpawnSearchData = {
   initValue: string | null;
@@ -36,6 +37,7 @@ type SpawnSearchData = {
 type SpawnAtomData = {
   // Type -> Name
   types: Record<string, string>;
+  displayNames?: Record<string, string>;
   abstractTypes: Record<string, boolean>;
   fancyTypes: Record<string, string>;
 };
@@ -49,6 +51,7 @@ type AtomPathData = {
 type AtomTypeData = {
   typepath: string;
   name: string;
+  displayName: string;
 };
 
 const initialAtomPathData: AtomPathData = {
@@ -113,42 +116,22 @@ export function SpawnSearch() {
 
     if (filterQuery.length === 0) return [];
 
-    if (regexSearch) {
-      try {
-        const queryRegex = new RegExp(filterQuery);
-        return atomData.types.filter(
-          (type: AtomTypeData) =>
-            queryRegex.test(type.typepath) ||
-            (searchNames && queryRegex.test(type.name)),
-        );
-      } catch (error) {
-        return [];
-      }
+    try {
+      const match = spawnSearchMatcher(filterQuery, !!regexSearch);
+      return atomData.types.filter(
+        (type: AtomTypeData) =>
+          (includeAbstracts || !atomData.abstractTypes[type.typepath]) &&
+          matchesSpawnEntry(
+            match,
+            type.typepath,
+            type.name,
+            type.displayName,
+            !!searchNames,
+          ),
+      );
+    } catch {
+      return [];
     }
-
-    const finalizer = filterQuery.slice(filterQuery.length - 1);
-    if (finalizer === '*' || finalizer === '!')
-      filterQuery = filterQuery.slice(0, filterQuery.length - 1);
-    filterQuery = filterQuery.toLowerCase();
-
-    let searchLambda = (x: string) => x.toLowerCase().includes(filterQuery);
-    if (finalizer === '!') {
-      searchLambda = (x: string) =>
-        x.toLowerCase().includes(filterQuery) &&
-        x.toLowerCase().lastIndexOf(filterQuery) ===
-          x.length - filterQuery.length;
-    } else if (finalizer === '*') {
-      searchLambda = (x: string) =>
-        x.toLowerCase().includes(filterQuery) &&
-        !x.slice(x.toLowerCase().lastIndexOf(filterQuery)).includes('/');
-    }
-
-    return atomData.types.filter(
-      (type: AtomTypeData) =>
-        (searchLambda(type.typepath) ||
-          (searchNames && searchLambda(type.name))) &&
-        (includeAbstracts || !atomData.abstractTypes[type.typepath]),
-    );
   }, [query, atomData, regexSearch, includeAbstracts, searchNames]);
 
   useEffect(() => {
@@ -159,6 +142,7 @@ export function SpawnSearch() {
           types: Object.keys(data.types).map((x: string) => ({
             typepath: x,
             name: data.types[x],
+            displayName: data.displayNames?.[x] || data.types[x],
           })),
           abstractTypes: data.abstractTypes,
           fancyTypes: data.fancyTypes,
@@ -399,7 +383,7 @@ function ListItem(props: AtomSpanProps) {
           fontSize: '10px',
         }}
       >
-        {item.name}
+        {item.displayName || item.name}
       </span>
       {!!atomData.abstractTypes[item.typepath] && (
         <span

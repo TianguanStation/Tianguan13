@@ -63,7 +63,7 @@ GLOBAL_LIST_INIT(zh_hud_icon_variants, list(
 /// 传入 icon 对象（如 mutable_appearance.icon / 运行期 icon(path)）也安全：
 /// assoc 查不到时退化为逐条 `==` 比对兜底。
 /proc/lang_hud_icon(icon_file)
-	if(isnull(icon_file) || GLOB.i18n_server_locale == DEFAULT_UI_LOCALE)
+	if(isnull(icon_file) || !GLOB.i18n_server_locale || GLOB.i18n_server_locale == DEFAULT_UI_LOCALE)
 		return icon_file
 	var/localized = GLOB.zh_hud_icon_variants[icon_file]
 	if(!isnull(localized))

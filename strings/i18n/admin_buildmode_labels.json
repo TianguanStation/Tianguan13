@@ -1,0 +1,28 @@
+{
+	"_comment": "Buildmode hover labels only. The button name and mode key remain canonical for switching modes and logging.",
+	"zh-Hans": {
+		"edit": "编辑变量",
+		"tweakcomps": "调整组件",
+		"throw": "投掷",
+		"smite": "神罚",
+		"proccall": "调用过程",
+		"delete": "删除",
+		"outfit": "配装",
+		"mapgen": "生成地图",
+		"copy": "复制",
+		"mapexport": "导出地图",
+		"boom": "爆破",
+		"fill": "填充",
+		"basic": "基础模式",
+		"advanced": "高级模式",
+		"areaedit": "编辑区域",
+		"north": "北",
+		"south": "南",
+		"east": "东",
+		"west": "西",
+		"northeast": "东北",
+		"northwest": "西北",
+		"southeast": "东南",
+		"southwest": "西南"
+	}
+}

@@ -87,6 +87,11 @@
 			local_types[atom_type] = atom_type::name || ""
 		types_list = local_types
 	data["types"] = types_list
+	var/list/display_names = list()
+	var/list/name_keys = lang_type_name_keys()
+	for(var/atom/atom_type as anything in types_list)
+		display_names[atom_type] = lang_type_display_text(atom_type, name_keys) || lang_reverse_text(types_list[atom_type])
+	data["displayNames"] = display_names
 	data["abstractTypes"] = get_abstract_types()
 	data["fancyTypes"] = GLOB.fancy_type_replacements
 	return data

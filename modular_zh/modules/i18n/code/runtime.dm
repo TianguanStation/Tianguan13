@@ -1459,12 +1459,12 @@ GLOBAL_VAR_INIT(i18n_type_var_tables_loaded, FALSE)
 	lang_load_type_var_tables()
 	return GLOB.i18n_type_desc_keys
 
-/// 按类型取译文。无表项 / 该 key 在当前 locale 没有译文 → 返回 null，调用方回落既有反查链
+/// 接受 atom 实例或 atom 类型路径（生成菜单无需实例化即可取标签）。无表项 / 该 key 在当前 locale 没有译文 → 返回 null，调用方回落既有反查链
 /// （形态不在表里的：地图实例覆盖、运行期拼接、子类型自己声明了非字面量…）。
 /proc/lang_type_display_text(atom/target, list/table)
 	if(GLOB.i18n_server_locale == DEFAULT_UI_LOCALE || !length(table))
 		return null
-	var/key = table[target.type]
+	var/key = table[ispath(target, /atom) ? target : target.type]
 	if(!key)
 		return null
 	return lang_display_value(lang_template(key, GLOB.i18n_server_locale))
@@ -2149,3 +2149,8 @@ GLOBAL_LIST_INIT(i18n_payload_prose_keys, build_i18n_policy_set("payload_prose_k
 	for(var/regex/word_re in name_subs)
 		text = word_re.Replace(text, name_subs[word_re])
 	return text
+
+/// Admin mode keys double as button names. Translate only the hover/examine label.
+/atom/movable/screen/buildmode/lang_localize_name_for_display(display_name)
+	var/list/labels = lang_scoped_table("admin_buildmode_labels.json")
+	return labels[display_name] || ..()

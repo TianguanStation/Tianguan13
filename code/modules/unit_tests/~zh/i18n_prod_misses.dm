@@ -86,3 +86,49 @@
 	// 发薪日：bank_card_talk 的事件名实参。
 	var/payday = LANG("datum.4cd20f13fbb84ab3", list("Payday", 5, "cr"))
 	TEST_ASSERT(!findtext(payday, "Payday"), "发薪事件名应翻译：[payday]")
+
+	// 2026-11-17 SPLURT production: dynamic labels must translate at display time.
+	var/list/production_samples = list(
+		"Donator only",
+		"Tier 1 Donator only",
+		"20 melee hits",
+		"1.7 shots",
+		"Set intent to Help",
+		"Tarkon Budget",
+		"Interlink Cryogenics",
+	)
+	for(var/sample in production_samples)
+		var/translated = lang_fallback_apply(sample)
+		TEST_ASSERT(lang_contains_cjk(translated) && translated != sample, "Production display label must translate: [sample] -> [translated]")
+
+	// Spawn assets use type paths without instantiating tens of thousands of atoms.
+	var/atom/spawn_type = /obj/item/screwdriver
+	var/canonical_name = spawn_type::name
+	var/spawn_label = lang_type_display_text(spawn_type, lang_type_name_keys())
+	TEST_ASSERT(lang_contains_cjk(spawn_label), "Spawn menu must get the Chinese name directly from the type table")
+	TEST_ASSERT_EQUAL(spawn_type::name, canonical_name, "Localizing a spawn label must preserve its canonical name")
+	var/obj/item/screwdriver/spawn_instance = allocate(spawn_type)
+	TEST_ASSERT_EQUAL(lang_type_display_text(spawn_instance, lang_type_name_keys()), spawn_label, "Type and instance display lookups must agree")
+
+	// Report fields remain identifiers in memory; only their rendered output changes.
+	var/datum/station_trait/report_trait = allocate(/datum/station_trait/bountiful_bounties)
+	var/report_name = report_trait.name
+	var/report_message = report_trait.report_message
+	var/report = report_trait.get_report()
+	TEST_ASSERT(!findtext(report, "Bountiful bounties") && !findtext(report, "It seems collectors"), "Station trait report must translate both title and description: [report]")
+	TEST_ASSERT_EQUAL(report_trait.name, report_name, "Station trait name must remain canonical")
+	TEST_ASSERT_EQUAL(report_trait.report_message, report_message, "Station trait source report must remain canonical")
+
+	// HUD icons can be requested by global atoms before ConfigLoaded sets the locale.
+	GLOB.i18n_server_locale = null
+	var/early_hud_icon = lang_hud_icon('icons/effects/parallax.dmi')
+	GLOB.i18n_server_locale = LANGUAGE_LOCALE_ZH_HANS
+	TEST_ASSERT_EQUAL(early_hud_icon, 'icons/effects/parallax.dmi', "Early HUD lookups must retain their source icon before locale initialization")
+
+	TEST_ASSERT_NULL(lang_reverse_counted_label("advanced mode", locale), "Counted label lookup must not translate nonnumeric phrases")
+	TEST_ASSERT_NULL(lang_reverse_counted_label("1 unknown weapon", locale), "Unlisted units must stay unchanged")
+	TEST_ASSERT_NULL(lang_reverse_counted_label("1.7 shots", DEFAULT_UI_LOCALE), "English display must stay canonical")
+
+	var/atom/movable/screen/buildmode/modeswitch/fill_button = allocate(/atom/movable/screen/buildmode/modeswitch, null, /datum/buildmode_mode/fill)
+	TEST_ASSERT_EQUAL(fill_button.lang_localize_name_for_display(fill_button.name), "填充", "Buildmode should display Chinese hover labels")
+	TEST_ASSERT_EQUAL(fill_button.name, "fill", "Buildmode keys must remain canonical for mode switching")

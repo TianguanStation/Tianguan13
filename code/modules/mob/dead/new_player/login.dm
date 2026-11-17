@@ -61,7 +61,7 @@
 
 	if(SSticker.current_state < GAME_STATE_SETTING_UP)
 		var/tl = SSticker.GetTimeLeft()
-		to_chat(src, LANG("mob.96b99a079b65c40b", list(tl > 0 ? "in about [DisplayTimeText(tl)]" : "soon")))
+		to_chat(src, LANG("mob.96b99a079b65c40b", list(tl > 0 ? LANG("mob.7532d6dba8fbe267", list(DisplayTimeText(tl))) : lang_reverse_text("soon"))))
 
 	if(GLOB.unrecommended_builds[num2text(client.byond_build)])
 		INVOKE_ASYNC(src, PROC_REF(unrcommended_build_alert))

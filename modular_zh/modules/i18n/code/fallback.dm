@@ -64,6 +64,9 @@ GLOBAL_VAR_INIT(i18n_ascii_letter_regex, regex(@"[A-Za-z]"))
 			return
 	else
 		. = text
+	var/counted = lang_reverse_counted_label(text, locale)
+	if(counted)
+		return counted
 	// 整串 miss 之后、模板之前：**剥掉英文冠词再精确查一次**。
 	//
 	// BYOND 对非专有名词自动补 "The"/"a"（`"[atom]"` 的渲染），于是名字到达落地层时是
@@ -872,3 +875,20 @@ GLOBAL_LIST_INIT(i18n_inline_tags, list(
 #undef I18N_TOOLTIP_ATTR
 #undef I18N_TAG_NAME_CHARS
 #undef I18N_TAG_LEAD_WHITESPACE
+
+/// Strict numeric labels such as "1.7 shots" are too short for the general template matcher.
+/// Keep unit words scoped so ordinary phrases and identifiers do not become reverse keys.
+/proc/lang_reverse_counted_label(text, locale)
+	if(!istext(text) || !length(text) || length(text) > 80 || locale == DEFAULT_UI_LOCALE || locale != GLOB.i18n_server_locale)
+		return null
+	var/first = text2ascii(text)
+	if(first < 48 || first > 57)
+		return null
+	var/static/regex/counted_label = regex(@"^([0-9]+(?:\.[0-9]+)?) ([A-Za-z][A-Za-z ]*)$")
+	if(!counted_label.Find(text))
+		return null
+	var/number = counted_label.group[1]
+	var/unit = counted_label.group[2]
+	var/list/labels = lang_scoped_table("counted_labels.json")
+	var/template = labels[unit]
+	return istext(template) ? replacetext(template, "{0}", number) : null

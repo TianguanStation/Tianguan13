@@ -1,0 +1,13 @@
+{
+	"_comment": "Numeric display labels only. Unit identifiers stay out of global reverse lookup; a strict numeric prefix and a listed whole unit are required.",
+	"zh-Hans": {
+		"mode": "{0} 种模式",
+		"modes": "{0} 种模式",
+		"shot": "{0} 发",
+		"shots": "{0} 发",
+		"melee hit": "{0} 次近战攻击",
+		"melee hits": "{0} 次近战攻击",
+		"throwing hit": "{0} 次投掷攻击",
+		"throwing hits": "{0} 次投掷攻击"
+	}
+}

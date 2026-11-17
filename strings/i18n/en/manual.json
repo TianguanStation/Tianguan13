@@ -70,5 +70,7 @@
 	"_root.job_estimation_named": "* {0} as {1}",
 	"_root.job_estimation_mysterious": "* a mysterious {0}",
 	"datum.allergy_quirk_name": "Extreme {0} Allergies",
-	"datum.allergy_medical_record": "Patient's immune system responds violently to {0}"
+	"datum.allergy_medical_record": "Patient's immune system responds violently to {0}",
+	"manual.station_report_title": "Central Command Status Summary",
+	"manual.station_report_orders": "Special Orders for {0}:"
 }

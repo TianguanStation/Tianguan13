@@ -1,6 +1,6 @@
 // ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
 /datum/controller/subsystem/gamemode/proc/send_trait_report()
-	. = "<b><i>Central Command Status Summary</i></b><hr>"
+	. = "<b><i>[LANG("manual.station_report_title", null)]</i></b><hr>"
 	// We don't want to roll all three goals every shift, so randomly choose how many we'll do, weighted towards doing none.
 	var/list/total_goal_weights = list(
 		"0" = 65,
@@ -12,11 +12,11 @@
 	var/list/station_goals = SSstation.get_station_goals()
 
 	if(!length(station_goals))
-		. = "<hr><b>No assigned goals.</b><BR>"
+		. = LANG("datum.df77f64a541cbd0f", null)
 	else
 		. += generate_station_goal_report(station_goals)
 	if(!SSstation.station_traits.len)
-		. = "<hr><b>No identified shift divergencies.</b><BR>"
+		. = LANG("datum.63d284a5258bea27", null)
 	else
 		. += generate_station_trait_report()
 
@@ -33,7 +33,7 @@
  * Returns a formatted string all station goals that are available to the station.
  */
 /datum/controller/subsystem/gamemode/proc/generate_station_goal_report(list/station_goals)
-	. = "<hr><b>Special Orders for [station_name()]:</b><BR>"
+	. = "<hr><b>[LANG("manual.station_report_orders", list(station_name()))]</b><BR>"
 	var/list/goal_reports = list()
 	for(var/datum/station_goal/station_goal as anything in station_goals)
 		station_goal.on_report()
@@ -49,7 +49,7 @@
 /datum/controller/subsystem/gamemode/proc/generate_station_trait_report()
 	if(!SSstation.station_traits.len)
 		return
-	. = "<hr><b>Identified shift divergencies:</b><BR>"
+	. = LANG("datum.391813f32057e0fa", null)
 	for(var/datum/station_trait/station_trait as anything in SSstation.station_traits)
 		if(!station_trait.show_in_report)
 			continue
