@@ -47,13 +47,11 @@ export const TianGuanLiquidSiphon = (props) => {
   return (
     <Window title="轻量化液体虹吸器" width={390} height={540}>
       <Window.Content scrollable>
-        <Box
-          textAlign="center"
-          fontSize={1.5}
-          color="label"
-          style={{ letterSpacing: '0.25em', marginLeft: '0.25em' }}
-        >
-          ——联 合
+        <Box textAlign="center" fontSize={1.5} color="label">
+          <Box inline>——</Box>
+          <Box inline style={{ letterSpacing: '0.25em', marginLeft: '0.25em' }}>
+            联合
+          </Box>
           {/* 齿轮自转：外框限成正方并清掉父级字距，否则旋转轴心会偏离字形中心 */}
           <Box
             inline
@@ -64,7 +62,7 @@ export const TianGuanLiquidSiphon = (props) => {
               lineHeight: '18px',
               textAlign: 'center',
               verticalAlign: 'middle',
-              letterSpacing: 'normal',
+              margin: '0 0.2em',
             }}
           >
             <Icon
@@ -83,7 +81,10 @@ export const TianGuanLiquidSiphon = (props) => {
               }}
             />
           </Box>
-          工 业——
+          <Box inline style={{ letterSpacing: '0.25em', marginLeft: '0.25em' }}>
+            工业
+          </Box>
+          <Box inline>——</Box>
         </Box>
 
         <Section>

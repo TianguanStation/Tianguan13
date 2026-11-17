@@ -41,9 +41,9 @@
 	ui_interact(user)
 
 /datum/action/guide_browser/ui_status(mob/user, datum/ui_state/state)
-	if(!GLOB.tianguan_guide_ready)
+	if(!GLOB.tianguan_guide_ready || !user?.client)
 		return UI_CLOSE
-	return IsAvailable() ? UI_INTERACTIVE : UI_CLOSE
+	return UI_INTERACTIVE
 
 /datum/action/guide_browser/ui_interact(mob/user, datum/tgui/ui)
 	if(!GLOB.tianguan_guide_ready || !user?.client)
@@ -69,6 +69,7 @@
 		"guide_available" = GLOB.tianguan_guide_ready,
 		"selected_mode" = islist(page) ? page["mode"] : null,
 		"supports_iframe" = user?.client?.byond_version >= 516,
+		"hud_button_visible" = !tianguan_guide_button_suppressed(user?.client),
 	)
 
 /datum/action/guide_browser/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -81,10 +82,13 @@
 			if(!istext(page_id) || !tianguan_guide_get_page(page_id))
 				return
 			selected_page_id = page_id
-			// 返回 TRUE = 交给窗口右侧的 iframe 渲染；FALSE = 已在游戏内浏览器 / 系统浏览器打开
-			return tianguan_guide_open_page(ui.user, page_id, ui.user?.client?.byond_version >= 516)
+			// 仅选中条目更新详情，仅当 mode == "frame" 时返回 TRUE；
+			// 如需弹出游戏内浏览器/系统浏览器，由右侧打开按钮触发，避免点目录就弹窗闪盖窗口。
+			return TRUE
 		if("open_external")
 			return tianguan_guide_open_external(ui.user, selected_page_id)
 		if("open_page")
-			// 右侧详情栏的「打开」按钮：按条目自己的 open 走同一套分派
 			return tianguan_guide_open_page(ui.user, selected_page_id, ui.user?.client?.byond_version >= 516)
+		if("toggle_hud_button")
+			tianguan_guide_toggle_hud_button(ui.user)
+			return TRUE

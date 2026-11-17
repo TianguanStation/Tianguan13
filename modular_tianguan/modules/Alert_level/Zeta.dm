@@ -4,7 +4,7 @@
 	announcement_color = "pink"
 	number_level = SEC_LEVEL_ZETA
 	status_display_icon_state = "epsilonalert"
-	fire_alarm_light_color = COLOR_BLACK
+	fire_alarm_light_color = "#ff3366"
 	elevating_to_configuration_key = /datum/config_entry/string/alert_zeta
 	shuttle_call_time_mod = 1.5
 	sound = 'modular_tianguan/sound/security_levels/Zeta.ogg'

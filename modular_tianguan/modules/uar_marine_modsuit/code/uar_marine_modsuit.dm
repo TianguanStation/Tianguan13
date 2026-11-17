@@ -18,11 +18,8 @@
 #define UAR_MARINE_MODSUIT_ICON 'modular_tianguan/modules/uar_marine_modsuit/icons/mod_clothing.dmi'
 #define UAR_MARINE_MODSUIT_WORN_ICON 'modular_tianguan/modules/uar_marine_modsuit/icons/mod_clothing_worn.dmi'
 #define UAR_MARINE_MODSUIT_CARD_ICON 'modular_tianguan/modules/uar_marine_modsuit/icons/card.dmi'
-#define UAR_MARINE_MODSUIT_HUD_ICON 'modular_tianguan/modules/uar_marine_modsuit/icons/hud.dmi'
 /// 启动音效（用户提供的 启动.ogg，入模块后改成 ASCII 文件名）
 #define UAR_MARINE_MODSUIT_STARTUP_SOUND 'modular_tianguan/modules/uar_marine_modsuit/sound/uar_marine_start.ogg'
-/// secHUD 图标状态：挂在 trim 的 sechud_icon_state 上
-#define SECHUD_UAR "huduar"
 /// 部门色块 = 卡面红；副部门条 = 团结联盟蓝星色（配色取自 tgui/styles/themes/uar.scss）
 #define UAR_MARINE_COLOR_CARD_RED "#b00c28"
 #define UAR_MARINE_COLOR_UNION_BLUE "#1f3a8a"
@@ -189,8 +186,6 @@
 #undef UAR_MARINE_MODSUIT_ICON
 #undef UAR_MARINE_MODSUIT_WORN_ICON
 #undef UAR_MARINE_MODSUIT_CARD_ICON
-#undef UAR_MARINE_MODSUIT_HUD_ICON
 #undef UAR_MARINE_MODSUIT_STARTUP_SOUND
-#undef SECHUD_UAR
 #undef UAR_MARINE_COLOR_CARD_RED
 #undef UAR_MARINE_COLOR_UNION_BLUE

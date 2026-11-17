@@ -1,6 +1,6 @@
 // THIS IS A TIANGUAN UI FILE
 // 界面：TianGuanCountdown —— 管理员「全局倒计时」（由「秘密」面板的按钮打开）
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -197,6 +197,22 @@ export const TianGuanCountdown = (props) => {
   );
   const [inputEndColor, setInputEndColor] = useState(end_color);
 
+  useEffect(() => {
+    setMusicDuration(music_duration);
+  }, [music_duration]);
+
+  useEffect(() => {
+    setInputTitleColor(title_color);
+  }, [title_color]);
+
+  useEffect(() => {
+    setInputCountdownColor(countdown_color);
+  }, [countdown_color]);
+
+  useEffect(() => {
+    setInputEndColor(end_color);
+  }, [end_color]);
+
   const active = state !== 0;
 
   return (
@@ -314,6 +330,7 @@ export const TianGuanCountdown = (props) => {
                 onChange={setInputEndText}
               />
             </Stack.Item>
+            <Stack.Item>
               <Stack align="center">
                 <Stack.Item grow>
                   <NumberInput
@@ -348,6 +365,15 @@ export const TianGuanCountdown = (props) => {
                   />
                 </Stack.Item>
               </Stack>
+            </Stack.Item>
+            <Stack.Item>
+              <Button.Checkbox
+                checked={silent}
+                onClick={() => act('set_silent', { silent: !silent })}
+              >
+                纯准备模式（不向玩家显示屏幕倒计时）
+              </Button.Checkbox>
+            </Stack.Item>
             <Stack.Item>
               <Button
                 fluid
@@ -466,8 +492,11 @@ export const TianGuanCountdown = (props) => {
                 act('set_follow', { follow: !music_follow_screen })
               }
             >
-              跟随全局倒计时一起启动（勾上后点上面的「开始倒计时」即可，同长、到时自动播放）
+              跟随全局倒计时一起启动
             </Button.Checkbox>
+            <Box color="label" mt={0.25}>
+              勾选后点上方「开始倒计时」即可同长联动、到时自动播放
+            </Box>
           </Box>
           {music_follow_screen && music_selection.length === 0 && (
             <Box mt={0.5} color="bad" bold>
@@ -488,8 +517,8 @@ export const TianGuanCountdown = (props) => {
             </Stack.Item>
           </Stack>
           <Stack align="center" mt={0.5}>
-            <Stack.Item width="4rem">时长</Stack.Item>
-            <Stack.Item width="9rem">
+            <Stack.Item width="3.5rem">时长</Stack.Item>
+            <Stack.Item width="9.5rem">
               <Stack align="center">
                 <Stack.Item width="4.5rem">
                   <NumberInput
@@ -501,7 +530,8 @@ export const TianGuanCountdown = (props) => {
                     value={Math.floor(musicDuration / 60)}
                     onChange={(value) => {
                       const next =
-                        Math.max(Math.round(value), 0) * 60 + (musicDuration % 60);
+                        Math.max(Math.round(value), 0) * 60 +
+                        (musicDuration % 60);
                       setMusicDuration(next);
                       act('set_music_duration', { seconds: next });
                     }}
@@ -526,8 +556,9 @@ export const TianGuanCountdown = (props) => {
                 </Stack.Item>
               </Stack>
             </Stack.Item>
-            <Stack.Item>
+            <Stack.Item grow>
               <Button
+                fluid
                 color={music_state ? 'bad' : 'good'}
                 icon={music_state ? 'stop' : 'play'}
                 onClick={() =>
@@ -539,18 +570,18 @@ export const TianGuanCountdown = (props) => {
                 {music_state ? '停止内部倒计时' : '启动内部倒计时'}
               </Button>
             </Stack.Item>
-            <Stack.Item color="label">
-              {music_state
-                ? `进行中 · 距播放还有 ${fmt(music_remaining)}${
-                    state === 1
-                      ? `（全局倒计时结束${music_delta >= 0 ? '后' : '前'} ${fmt(Math.abs(music_delta))}）`
-                      : ''
-                  }`
-                : music_duration > 0
-                  ? `未启动（上次设定 ${fmt(music_duration)}）`
-                  : '未启动（时长 0:00 ⇒ 与全局倒计时同长）'}
-            </Stack.Item>
           </Stack>
+          <Box mt={0.5} color="label">
+            {music_state
+              ? `进行中 · 距播放还有 ${fmt(music_remaining)}${
+                  state === 1
+                    ? `（全局倒计时结束${music_delta >= 0 ? '后' : '前'} ${fmt(Math.abs(music_delta))}）`
+                    : ''
+                }`
+              : music_duration > 0
+                ? `未启动（上次设定 ${fmt(music_duration)}）`
+                : '未启动（时长 0:00 ⇒ 与全局倒计时同长）'}
+          </Box>
           <Box mt={0.5} color="label">
             默认按「距全局倒计时结束」算：音乐填 1:00 ⇒ 总倒计时还剩 1:00 时播放（全局倒计时 3:00 就是第 2 分钟播）；
             0:00 ⇒ 与全局倒计时同长（结束时播）。
@@ -559,15 +590,6 @@ export const TianGuanCountdown = (props) => {
 
         <Section title="曲目与传输（给上面的内部倒计时用）">
           <Stack vertical>
-            <Stack.Item>
-              <Button.Checkbox
-                checked={silent}
-                onClick={() => act('set_silent', { silent: !silent })}
-              >
-                纯准备模式（倒计时不给玩家显示，只在本面板里走）
-              </Button.Checkbox>
-            </Stack.Item>
-
             <Stack.Item>
               <Stack align="center">
                 <Stack.Item grow>
@@ -651,8 +673,8 @@ export const TianGuanCountdown = (props) => {
 
             <Stack.Item>
               <Stack align="center">
-                <Stack.Item width="7rem">传输节奏</Stack.Item>
-                <Stack.Item grow>
+                <Stack.Item width="6rem">传输节奏</Stack.Item>
+                <Stack.Item width="9rem">
                   <NumberInput
                     fluid
                     minValue={0}
@@ -663,8 +685,8 @@ export const TianGuanCountdown = (props) => {
                     onChange={(value) => act('set_music_rate', { rate: value })}
                   />
                 </Stack.Item>
-                <Stack.Item width="17rem" color="label">
-                  0 = 自动（当前 {music_interval.toFixed(1)} 秒/份；只有一首歌时 =「秒/人」）
+                <Stack.Item grow color="label">
+                  0 = 自动（当前 {music_interval.toFixed(1)} 秒/份；单曲即「秒/人」）
                 </Stack.Item>
               </Stack>
             </Stack.Item>

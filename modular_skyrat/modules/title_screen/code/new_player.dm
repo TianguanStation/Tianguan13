@@ -34,7 +34,7 @@
 		var/url
 		switch(href_list["tg_ext"])
 			if("wiki")
-				url = "https://tianguanstation.miraheze.org/wiki/%E4%B8%BB%E9%A1%B5"
+				url = "https://tianguanstation.miraheze.org/wiki/%E9%A6%96%E9%A1%B5"
 			if("afdian")
 				url = "https://afdian.com/a/lanhongqiu"
 		if(url)

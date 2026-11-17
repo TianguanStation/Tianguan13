@@ -8,7 +8,7 @@
 	department_name = DEPARTMENT_UAR
 	department_bitflags = DEPARTMENT_BITFLAG_UAR
 	display_order = 11
-	ui_color = UAR_DEPARTMENT_COLOR
+	ui_color = "#d64550" // High contrast on PreferencesMenu black text & dark CrewManifest background
 	nation_prefixes = list("Allian", "Republi", "Union", "Inspectora", "Consul")
 
 /datum/job/uar_inspector

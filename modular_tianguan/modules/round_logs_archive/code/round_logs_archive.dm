@@ -132,7 +132,7 @@ GLOBAL_VAR_INIT(log_archive_dir_ready, FALSE)
 	return TRUE
 
 /// One-click verb: download the whole current round's log folder as one archive.
-ADMIN_VERB(download_current_round_logs, R_ADMIN, "下载当前回合日志", "Download all logfiles for the current round as a single compressed archive.", ADMIN_CATEGORY_MAIN)
+ADMIN_VERB(download_current_round_logs, R_ADMIN, "下载当前回合日志", "Download all logfiles for the current round as a single compressed archive.", ADMIN_CATEGORY_SERVER)
 	user.download_folder_as_archive("[GLOB.log_directory]/")
 
 #undef LOG_ARCHIVE_DIR

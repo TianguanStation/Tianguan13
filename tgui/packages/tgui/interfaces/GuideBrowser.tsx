@@ -35,7 +35,24 @@ type GuideBrowserData = {
   guide_available: boolean;
   selected_mode: string | null;
   supports_iframe: boolean;
+  hud_button_visible: boolean;
 };
+
+const MODE_LABELS: Record<string, string> = {
+  panel: '游戏内侧边面板',
+  window: '游戏内独立弹窗',
+  frame: '窗口右侧内嵌',
+  browser: '系统默认浏览器',
+};
+
+function decodeDisplayUrl(url: string | null): string {
+  if (!url) return '';
+  try {
+    return decodeURIComponent(url);
+  } catch {
+    return url;
+  }
+}
 
 type GuideTreeProps = {
   nodes: GuideNode[];
@@ -78,12 +95,8 @@ const GuideTree = ({ nodes, selectedId, onSelect }: GuideTreeProps) => (
   </>
 );
 
-/** 指南浏览器：左侧目录来自 config/tianguan/guide_browser.json，右侧是选中条目的详情与打开按钮。
- *
- * 为什么右侧不是"内嵌网页"：目标站点（天关 wiki = Miraheze）对页面发了 X-Frame-Options，
- * BYOND 516 的内置浏览器（WebView2）会照章拒绝渲染 iframe。所以打开方式走 open 字段：
- * 默认在游戏内浏览器（browse()）顶层打开——那里不受该限制。只有当站点允许被内嵌时
- * （条目写 open: "frame"）右侧才直接内嵌。 */
+/** 指南浏览器：左侧目录来自 config/tianguan/guide_browser.json，右侧展示条目详情、
+ * 可读地址与打开按钮（或当条目允许 frame 且支持内嵌时直接内嵌）。 */
 export const GuideBrowser = () => {
   const { act, data } = useBackend<GuideBrowserData>();
   const {
@@ -94,20 +107,36 @@ export const GuideBrowser = () => {
     guide_available,
     selected_mode,
     supports_iframe,
+    hud_button_visible,
   } = data;
 
   const frame_mode = selected_mode === 'frame';
   const to_browser = selected_mode === 'browser';
-  // 只有 frame 模式 + 客户端支持内嵌 + 拿到 url 时，右侧才是网页本体
   const embed =
     !!guide_available && frame_mode && supports_iframe && !!page_url;
+  const readableUrl = decodeDisplayUrl(page_url);
+  const modeLabel = (selected_mode && MODE_LABELS[selected_mode]) || '游戏内打开';
 
   return (
-    <Window width={1120} height={760} title="指南浏览器">
+    <Window width={960} height={680} title="指南浏览器">
       <Window.Content>
         <Stack fill>
-          <Stack.Item width="360px">
-            <Section fill scrollable title="指南目录">
+          <Stack.Item width="320px">
+            <Section
+              fill
+              scrollable
+              title="指南目录"
+              buttons={
+                <Button
+                  icon={hud_button_visible ? 'eye' : 'eye-slash'}
+                  selected={hud_button_visible}
+                  tooltip="开关左上角 HUD 快捷图标（同步写入游戏偏好设置）"
+                  onClick={() => act('toggle_hud_button')}
+                >
+                  {hud_button_visible ? 'HUD图标: 开' : 'HUD图标: 关'}
+                </Button>
+              }
+            >
               <GuideTree
                 nodes={guide_tree}
                 selectedId={selected_id}
@@ -136,27 +165,60 @@ export const GuideBrowser = () => {
                 </NoticeBox>
               )}
               {!!guide_available && !embed && (
-                <Stack vertical>
+                <Stack vertical fill>
                   <Stack.Item>
-                    <Button
-                      fluid
-                      icon={to_browser ? 'external-link-alt' : 'book-open'}
-                      onClick={() => act('open_page')}
-                    >
-                      {to_browser ? '在系统浏览器打开' : '在游戏内打开'}
-                    </Button>
+                    <NoticeBox info>
+                      天关 Wiki 默认在独立阅读窗口打开以绕过站点 X-Frame-Options
+                      限制；先在左侧挑选条目，再点击下方按钮即可浏览。
+                    </NoticeBox>
                   </Stack.Item>
-                  {!!page_url && (
-                    <Stack.Item mt={1}>
-                      <Box
-                        color="label"
-                        fontSize="0.85em"
-                        style={{ wordBreak: 'break-all' }}
-                      >
-                        {page_url}
+                  <Stack.Item>
+                    <Section title="当前选中条目">
+                      <Box fontSize="1.15em" bold mb={0.75}>
+                        {selected_title || '未选择'}
                       </Box>
-                    </Stack.Item>
-                  )}
+                      <Box color="label" mb={0.5}>
+                        打开方式：{modeLabel}
+                      </Box>
+                      {!!readableUrl && (
+                        <Box
+                          color="label"
+                          fontSize="0.9em"
+                          p={0.75}
+                          backgroundColor="rgba(0, 0, 0, 0.25)"
+                          style={{
+                            borderRadius: '4px',
+                            wordBreak: 'break-all',
+                          }}
+                        >
+                          {readableUrl}
+                        </Box>
+                      )}
+                      <Stack mt={1.25}>
+                        <Stack.Item grow>
+                          <Button
+                            fluid
+                            color="good"
+                            icon={to_browser ? 'external-link-alt' : 'book-open'}
+                            disabled={!selected_title}
+                            onClick={() => act('open_page')}
+                          >
+                            {to_browser ? '在系统浏览器打开' : '在游戏内打开'}
+                          </Button>
+                        </Stack.Item>
+                        <Stack.Item grow>
+                          <Button
+                            fluid
+                            icon="external-link-alt"
+                            disabled={!selected_title}
+                            onClick={() => act('open_external')}
+                          >
+                            在系统浏览器打开
+                          </Button>
+                        </Stack.Item>
+                      </Stack>
+                    </Section>
+                  </Stack.Item>
                 </Stack>
               )}
               {embed && (

@@ -129,7 +129,6 @@ GLOBAL_LIST_EMPTY(tianguan_sound_board_transfer_uis)
 	if(play_length_ds)
 		play_end_timer = addtimer(CALLBACK(src, PROC_REF(clear_playing)), play_length_ds + 1 SECONDS, TIMER_STOPPABLE)
 	log_admin("[key_name(user)] 播放了全局音效面板里的 [track["name"]]（送达 [report["heard"]] 人 / 因音量偏好为 0 跳过 [report["skipped"]] 人）。")
-	log_world("TIANGUAN_SOUND_BOARD: 播放 [track["name"]] 送达=[report["heard"]] 跳过=[report["skipped"]]")
 	start_ticking()
 	return TRUE
 
@@ -170,9 +169,7 @@ GLOBAL_LIST_EMPTY(tianguan_sound_board_transfer_uis)
 
 /proc/tianguan_sound_board_open(client/user)
 	if(!user)
-		log_world("TIANGUAN_SOUND_BOARD: 打开面板失败 —— 没有 client")
 		return
-	log_world("TIANGUAN_SOUND_BOARD: 打开面板 ckey=[user.ckey] 有mob=[user.mob ? 1 : 0]")
 	if(!user.mob)
 		to_chat(user, span_warning("面板打不开：这个客户端还没有 mob。"))
 		return

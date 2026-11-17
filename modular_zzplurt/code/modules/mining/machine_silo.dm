@@ -204,7 +204,7 @@
 // =========================
 // OPTIONAL: DEBUG VERB
 // =========================
-
+#ifdef TESTING
 GAME_VERB(/obj/machinery/ore_silo/away/preloaded, set_material, "设置材料", "Debug")
 	VERB_ARG(mat, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
 	VERB_ARG(amount, VERB_ARG_TYPE_NUM, VERB_ARG_SOURCE_INPUT)
@@ -240,6 +240,7 @@ GAME_VERB(/obj/machinery/ore_silo/away/preloaded, set_material, "设置材料", 
 		call(MC, "on_materials_changed")()
 
 	to_chat(usr, LANG("obj.0d04d8c7ec55b292", list(mat, amount)))
+#endif
 
 /obj/machinery/ore_silo/away/preloaded/rich
 	// Very rich amounts

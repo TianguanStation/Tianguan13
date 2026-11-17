@@ -83,7 +83,7 @@ export const TianGuanCountdownStages = () => {
             <Box color="label">（还没有阶段：一直显示静态标题）</Box>
           )}
           {stages.map((stage, index) => (
-            <Stack key={index} align="center" mb={0.5}>
+            <Stack key={`${index}-${stage.at}`} align="center" mb={0.5}>
               <Stack.Item width="2.2rem" color="label">
                 #{index + 1}
               </Stack.Item>
@@ -135,12 +135,20 @@ export const TianGuanCountdownStages = () => {
               <Stack.Item>
                 <Stack align="center">
                   <Stack.Item>
-                    <ColorBox color={stage.color || undefined} mr={0.5} />
+                    <ColorBox
+                      color={stage.color || '#666666'}
+                      mr={0.5}
+                      style={{ opacity: stage.color ? 1 : 0.45 }}
+                    />
                   </Stack.Item>
                   <Stack.Item>
                     <Button
                       icon="eye-dropper"
-                      tooltip="给这条阶段单独取色（留空则用全局标题色）"
+                      tooltip={
+                        stage.color
+                          ? `当前独立颜色 ${stage.color}（点击重选）`
+                          : '给这条阶段单独取色（当前继承全局标题色）'
+                      }
                       onClick={() =>
                         act('pick_stage_color', { index: index + 1 })
                       }

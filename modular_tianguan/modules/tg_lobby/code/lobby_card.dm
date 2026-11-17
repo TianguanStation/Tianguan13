@@ -34,15 +34,19 @@
 		job_title = "无"
 
 	var/list/rows = list(
-		list("种族", selected_species?.name || "未知"),
+		list("种族", html_encode(selected_species?.name || "未知")),
 		list("年龄", "[read_preference(/datum/preference/numeric/age)]"),
 		list("性别", gender_text),
-		list("职位", job_title),
+		list("职位", html_encode(job_title)),
 	)
 	var/result = ""
 	for(var/list/row in rows)
 		result += {"<div class="tg_prow"><span class="k">[row[1]]</span><span class="v">[row[2]]</span></div>"}
 	return result
+
+/// 将 & 替换为安全占位符，避免 BYOND output() 按 & 拆分参数；由前端 JS 还原。
+/proc/tg_escape_output_amp(text)
+	return replacetext(text, "&", "__TGAMP__")
 
 /// 侧边栏角色卡（头像 + 名字 + ID + 槽位 + 偏好）的初始 HTML。
 /mob/dead/new_player/proc/tg_lobby_card_html()
@@ -55,13 +59,13 @@
 	var/datum/preferences/prefs = client.prefs
 	var/icon/avatar = prefs.tg_lobby_avatar_icon()
 	var/avatar_tag = {"<img id="tg_avatar" class="tg_avatar" src="data:image/png;base64,[icon2base64(avatar)]" alt="">"}
-	var/name_text = uppertext(prefs.read_preference(/datum/preference/name/real_name))
+	var/name_text = html_encode(uppertext(prefs.read_preference(/datum/preference/name/real_name)))
 
 	return {"
 		<div class="tg_card">
 			[avatar_tag]
 			<div class="tg_pname" id="tg_pname">[name_text]</div>
-			<div class="tg_pid" id="tg_pid">ID: [client.ckey] &nbsp;·&nbsp; 槽位 [prefs.default_slot]</div>
+			<div class="tg_pid" id="tg_pid">ID: [html_encode(client.ckey)] &nbsp;·&nbsp; 槽位 [prefs.default_slot]</div>
 		</div>
 		<div class="tg_prefs" id="tg_prefs">[prefs.tg_lobby_prefs_html()]</div>
 	"}
@@ -105,15 +109,13 @@
 
 	var/name_text = uppertext(prefs.read_preference(/datum/preference/name/real_name))
 	var/prefs_html = prefs.tg_lobby_prefs_html()
-	if(findtext(prefs_html, "&"))
-		log_world("TG_LOBBY: warning - prefs html contains '&', output() may split it")
 	var/icon/avatar = prefs.tg_lobby_avatar_icon()
 
 	src << output(icon2base64(avatar), "title_browser:tg_set_avatar")
-	src << output(prefs_html, "title_browser:tg_set_prefs")
-	src << output(name_text, "title_browser:tg_set_name")
-	src << output("ID: [key] · 槽位 [prefs.default_slot]", "title_browser:tg_set_pid")
-	src << output(name_text, "title_browser:update_current_character")
+	src << output(tg_escape_output_amp(prefs_html), "title_browser:tg_set_prefs")
+	src << output(tg_escape_output_amp(name_text), "title_browser:tg_set_name")
+	src << output(tg_escape_output_amp("ID: [key] · 槽位 [prefs.default_slot]"), "title_browser:tg_set_pid")
+	src << output(tg_escape_output_amp(name_text), "title_browser:update_current_character")
 	player.tg_last_watch_fingerprint = prefs.tg_lobby_watch_fingerprint()
 
 /datum/preference_middleware/tianguan_lobby
@@ -127,10 +129,12 @@
 
 /datum/preference_middleware/tianguan_lobby/post_set_preference(mob/user, preference, value)
 	. = ..()
-	if(!istype(user, /mob/dead/new_player))
+	if(!istype(user, /mob/dead/new_player) || !user.client)
 		return
-	if(user.client)
-		INVOKE_ASYNC(user.client, TYPE_PROC_REF(/client, tg_push_lobby_card), "pref:[preference]")
+	var/datum/preference/pref_entry = GLOB.preference_entries_by_key?[preference]
+	if(pref_entry && pref_entry.savefile_identifier != PREFERENCE_CHARACTER)
+		return
+	INVOKE_ASYNC(user.client, TYPE_PROC_REF(/client, tg_push_lobby_card), "pref:[preference]")
 
 #undef TG_LOBBY_AVATAR_DIRS
 #undef TG_LOBBY_WATCH_INTERVAL

@@ -282,17 +282,6 @@ const FunTab = (props) => {
     <Stack fill vertical>
       <Stack.Item>
         <Stack fill>
-          {/* TIANGUAN EDIT ADDITION START - ADMIN_COUNTDOWN */}
-          <Stack.Item>
-            <Button
-              icon="hourglass-half"
-              lineHeight={lineHeightNormal}
-              width={buttonWidthNormal}
-              content="全局倒计时"
-              onClick={() => act('tianguan_countdown_open')}
-            />
-          </Stack.Item>
-          {/* TIANGUAN EDIT ADDITION END */}
           <Stack.Item>
             <Button
               icon="robot"
@@ -477,6 +466,21 @@ const FunTab = (props) => {
           </Stack.Item>
         </Stack>
       </Stack.Item>
+      {/* TIANGUAN EDIT ADDITION START - ADMIN_COUNTDOWN */}
+      <Stack.Item>
+        <Stack fill>
+          <Stack.Item>
+            <Button
+              icon="hourglass-half"
+              lineHeight={lineHeightNormal}
+              width={buttonWidthNormal}
+              content="全局倒计时"
+              onClick={() => act('tianguan_countdown_open')}
+            />
+          </Stack.Item>
+        </Stack>
+      </Stack.Item>
+      {/* TIANGUAN EDIT ADDITION END */}
     </Stack>
   );
 };
@@ -678,8 +682,8 @@ export const Secrets = (props) => {
   const TabComponent = TAB2NAME[tabIndex - 1].component();
 
   return (
-    <Window title="Secrets Panel" width={500} height={520} theme="admin">
-      <Window.Content>
+    <Window title="Secrets Panel" width={500} height={540} theme="admin">
+      <Window.Content scrollable>
         <Flex direction="column" height="100%">
           <Flex.Item mb={1}>
             <Section

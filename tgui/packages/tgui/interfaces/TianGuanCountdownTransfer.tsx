@@ -56,7 +56,11 @@ export const TianGuanCountdownTransfer = () => {
             {' · '}队列剩余 {queue_left} 份
           </Box>
           <Box mt={0.5} color="label">
-            一份 = 一个玩家的一首歌（只有一首歌时就是「秒/人」）。进度是**服务端已推送**的量。
+            一份 = 一个玩家的一首歌（只有一首歌时就是「秒/人」）。进度是
+            <Box inline bold>
+              服务端已推送
+            </Box>
+            的量。
           </Box>
         </Section>
 

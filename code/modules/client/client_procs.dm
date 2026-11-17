@@ -1259,7 +1259,7 @@ GAME_VERB_DESC(/client, stop_client_sounds, "停止音效", "Stop Current Sounds
 	tgui_panel?.stop_music()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Stop Self Sounds"))
 
-GAME_VERB(/client, toggle_fullscreen, "Toggle Fullscreen", "OOC")
+GAME_VERB(/client, toggle_fullscreen, "切换全屏", "OOC")
 
 	var/is_on = prefs.read_preference(/datum/preference/toggle/fullscreen_mode)
 	prefs.write_preference(GLOB.preference_entries[/datum/preference/toggle/fullscreen_mode], !is_on)

@@ -37,7 +37,8 @@ GLOBAL_LIST_EMPTY(startup_messages)
 	box-sizing: border-box;
 	padding: 1.1vmin;
 	text-align: left;
-	overflow: hidden;
+	overflow-y: auto;
+	overflow-x: hidden;
 	border-radius: 0;
 	border-left: none; border-top: none; border-bottom: none;
 	background-color: rgba(36, 36, 36, 0.76);
@@ -76,7 +77,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 	margin-bottom: 0.5vmin;
 	padding: 0 0.8vmin;
 	text-decoration: none;
-	font-family: "Fixedsys";
+	font-family: "Fixedsys", sans-serif;
 	font-size: 2.2vmin;
 	color: #dcdcdc;
 	text-align: left;
@@ -122,7 +123,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 	transition: left 0.14s ease-out;
 }
 
-body.tg_collapsed .tg_dock      { left: 2.5vmin; }
+body.tg_collapsed .tg_dock      { left: 0; }
 body.tg_collapsed .tg_extlinks  { left: -20vmin; }
 body.tg_collapsed .tg_side      { left: -51vmin; }
 .tg_handle:after { content: "◀"; }
@@ -143,7 +144,7 @@ body.tg_collapsed .tg_handle:after { content: "▶"; }
 	border-radius: 0 4px 4px 0;
 	box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 2px 0 10px rgba(0,0,0,0.45);
 	color: #cccccc;
-	font-family: "Fixedsys";
+	font-family: "Fixedsys", sans-serif;
 	font-size: 2.2vmin;
 	line-height: 13vmin;
 	text-align: center;
@@ -164,10 +165,11 @@ body.tg_collapsed .tg_handle:after { content: "▶"; }
 	border-radius: 4px;
 }
 .tg_art img {
-	position: absolute;
-	left: 50%; top: 50%;
-	height: 100%; width: auto;
-	transform: translate(-50%, -50%);
+	position: static;
+	display: block;
+	width: 100%; height: 100%;
+	object-fit: cover;
+	image-rendering: pixelated;
 	-ms-interpolation-mode: nearest-neighbor;
 }
 
@@ -179,7 +181,7 @@ body.tg_collapsed .tg_handle:after { content: "▶"; }
 	-ms-interpolation-mode: nearest-neighbor;
 }
 .tg_pname {
-	font-family: "Fixedsys";
+	font-family: "Fixedsys", sans-serif;
 	font-size: 3.3vmin;
 	line-height: 3.8vmin;
 	color: #eeeeee;
@@ -187,7 +189,7 @@ body.tg_collapsed .tg_handle:after { content: "▶"; }
 	text-shadow: 0 0 6px rgba(255,255,255,0.30), 2px 2px 2px black;
 }
 .tg_pid {
-	font-family: "Fixedsys";
+	font-family: "Fixedsys", sans-serif;
 	font-size: 2.1vmin;
 	line-height: 2.6vmin;
 	color: #9a9a9a;
@@ -202,7 +204,7 @@ body.tg_collapsed .tg_handle:after { content: "▶"; }
 	box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
 	padding: 0.7vmin 0.6vmin;
 	margin-bottom: 1.1vmin;
-	font-family: "Fixedsys";
+	font-family: "Fixedsys", sans-serif;
 	font-size: 2.1vmin;
 	line-height: 2.9vmin;
 }
@@ -214,7 +216,7 @@ body.tg_collapsed .tg_handle:after { content: "▶"; }
 .tg_side .menu_button {
 	display: block;
 	box-sizing: border-box;
-	font-family: "Fixedsys";
+	font-family: "Fixedsys", sans-serif;
 	font-weight: lighter;
 	text-decoration: none;
 	font-size: 2.85vmin;
@@ -243,6 +245,9 @@ body.tg_collapsed .tg_handle:after { content: "▶"; }
 .tg_side .menu_button:active { transform: translate(1px, 1px); }
 .tg_side .menu_button:hover::before,
 .tg_side .menu_button:active::before { width: 2.6vmin; }
+.tg_side .menu_button.menu_newpoll { padding-left: 0.4vmin; }
+.tg_side .menu_button.menu_newpoll::before,
+.tg_side .menu_button.menu_newpoll::after { width: 2.6vmin; }
 .tg_side hr {
 	height: 1px;
 	margin: 0.7vmin 0;
@@ -264,15 +269,18 @@ body.tg_collapsed .tg_handle:after { content: "▶"; }
 	box-sizing: border-box;
 }
 .tg_nhd {
-	font-family: "Fixedsys";
+	font-family: "Fixedsys", sans-serif;
 	font-size: 1.9vmin;
 	line-height: 2.3vmin;
 	color: #a8a8a8;
 }
 .container_notice .menu_notice {
+	margin: 0.25vmin 0 0;
 	font-size: 2.2vmin;
 	line-height: 2.7vmin;
 	text-align: right;
+	color: #ff8a80;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.85);
 }
 </style>
 "}
@@ -408,9 +416,12 @@ body.tg_collapsed .tg_handle:after { content: "▶"; }
 				set_antag_look(antag_int);
 			}
 
+			function tg_restore_amp(s) {
+				return s ? String(s).split("__TGAMP__").join("&") : "";
+			}
 			function update_current_character(name) {
 				var slot = document.getElementById("character_slot");
-				if(slot && name) slot.textContent = name.toUpperCase();
+				if(slot && name) slot.textContent = tg_restore_amp(name).toUpperCase();
 			}
 
 			function append_terminal_text() {}
@@ -423,15 +434,15 @@ body.tg_collapsed .tg_handle:after { content: "▶"; }
 			}
 			function tg_set_prefs(html) {
 				var e = document.getElementById("tg_prefs");
-				if(e) e.innerHTML = html;
+				if(e) e.innerHTML = tg_restore_amp(html);
 			}
 			function tg_set_name(name) {
 				var e = document.getElementById("tg_pname");
-				if(e) e.innerHTML = name;
+				if(e) e.textContent = tg_restore_amp(name);
 			}
 			function tg_set_pid(text) {
 				var e = document.getElementById("tg_pid");
-				if(e) e.innerHTML = text;
+				if(e) e.textContent = tg_restore_amp(text);
 			}
 
 			function tg_set_collapsed(on) {
@@ -480,7 +491,7 @@ body.tg_collapsed .tg_handle:after { content: "▶"; }
 
 		dat += {"
 			<hr>
-			<a class="menu_button" href='byond://?src=[text_ref(src)];character_setup=1'>SETUP CHARACTER (<span id="character_slot">[uppertext(client.prefs.read_preference(/datum/preference/name/real_name))]</span>)</a>
+			<a class="menu_button" href='byond://?src=[text_ref(src)];character_setup=1'>SETUP CHARACTER (<span id="character_slot">[html_encode(uppertext(client.prefs.read_preference(/datum/preference/name/real_name)))]</span>)</a>
 			<a class="menu_button" href='byond://?src=[text_ref(src)];game_options=1'>GAME OPTIONS</a>
 			<a id="be_antag" class="menu_button" href='byond://?src=[text_ref(src)];toggle_antag=1'>[client.prefs.read_preference(/datum/preference/toggle/be_antag) ? "<span class='checked'>☑</span> BE ANTAGONIST" : "<span class='unchecked'>☒</span> BE ANTAGONIST"]</a>
 			<!-- SPLURT STATION EDIT: Server swap button removed - not needed for single server setup -->

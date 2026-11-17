@@ -12,9 +12,9 @@ GLOBAL_LIST_EMPTY(tianguan_countdown_stage_uis)
 #define TIANGUAN_CD_PAUSED 2
 #define TIANGUAN_CD_ENDTEXT 3
 
-/// 屏幕元素：与回合结束的 reboot_timer 同款（同位置、同尺寸、同字体描边）
+/// 屏幕元素：置于 reboot_timer (TOP:-42) 下方，避免回合结束时重叠
 /atom/movable/screen/tianguan_countdown
-	screen_loc = "CENTER:-140,TOP:-42"
+	screen_loc = "CENTER:-140,TOP:-82"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	maptext_width = 340
 	maptext_height = 64
@@ -261,17 +261,18 @@ GLOBAL_LIST_EMPTY(tianguan_countdown_stage_uis)
 /datum/tianguan_countdown/proc/build_maptext()
 	if(silent || state == TIANGUAN_CD_IDLE)
 		return ""
+	var/font_open = "<span style='font-family: \"Fusion Pixel 12px Mono zh_hans\"; font-size: 9pt; line-height: 1.25; -dm-text-outline: 1px black'>"
 	if(state == TIANGUAN_CD_ENDTEXT)
-		return MAPTEXT_PIXELLARI("<center><span style='color: [end_color]'>[end_text]</span></center>")
+		return "[font_open]<center><span style='color: [end_color]'>[html_encode(end_text)]</span></center></span>"
 	var/list/lines = list()
 	var/shown_title = current_title()
 	if(shown_title)
-		lines += "<span style='color: [current_title_color()]'>[shown_title]</span>"
+		lines += "<span style='color: [current_title_color()]'>[html_encode(shown_title)]</span>"
 	if(state == TIANGUAN_CD_PAUSED)
 		lines += "<span style='color: [countdown_color]'>已暂停 [DisplayTimeText(remaining, 1)]</span>"
 	else
 		lines += "<span style='color: [countdown_color]'>[DisplayTimeText(remaining, 1)]</span>"
-	return MAPTEXT_PIXELLARI("<center>[lines.Join("\n")]</center>")
+	return "[font_open]<center>[lines.Join("\n")]</center></span>"
 
 // ───────────────────────── 管理员界面（TGUI：TianGuanCountdown） ─────────────────────────
 
@@ -292,9 +293,6 @@ GLOBAL_LIST_EMPTY(tianguan_countdown_stage_uis)
 /datum/tianguan_countdown_ui/clear_client_reference()
 	if(holder && holder.tianguan_countdown_ui == src)
 		holder.tianguan_countdown_ui = null
-
-/datum/tianguan_countdown_ui/on_ui_open(mob/user)
-	log_world("TIANGUAN_CD_UI: 面板打开 —— 曲库 [length(tianguan_jukebox_catalog_options())] 首，已选 [length(tianguan_countdown_controller().music_selection)] 首")
 
 /datum/tianguan_countdown_ui/proc/pick_color(client/picker, color_kind)
 	var/static/list/color_labels = list("title" = "标题", "countdown" = "倒计时", "end" = "结束文本")
@@ -423,9 +421,7 @@ GLOBAL_LIST_EMPTY(tianguan_countdown_stage_uis)
 			countdown.music_from_end = !!params["from_end"]
 			log_admin("[key_name(holder)] 把音乐时长的口径设为[countdown.music_from_end ? "按「距全局倒计时结束」" : "按「从开始算」"]。")
 		if("preview_music")
-			var/list/track = tianguan_jukebox_preview(holder?.mob, params["song"], countdown.music_volume)
-			if(track)
-				log_world("TIANGUAN_COUNTDOWN_MUSIC: 试听 [track["name"]] file=[track["path"]] 存在=[fexists(track["path"]) ? 1 : 0] 音量=[countdown.music_volume] 目标=[holder.mob]")
+			tianguan_jukebox_preview(holder?.mob, params["song"], countdown.music_volume)
 		if("upload_music")
 			if(!check_rights(R_SERVER, FALSE))
 				return

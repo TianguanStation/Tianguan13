@@ -33,6 +33,11 @@ const TransferPlayerTile = (props: { player: TianGuanTransferPlayerRow }) => {
       <Box
         bold
         color={!player.online ? 'bad' : player.ready ? 'good' : undefined}
+        style={{
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }}
       >
         {player.name}
         {player.online ? '' : '（离线）'}

@@ -5,7 +5,6 @@
 #define UAR_OBJ_ICON     'modular_tianguan/modules/uar_officer/icons/uar_clothing_obj.dmi'
 #define UAR_WORN_ICON    'modular_tianguan/modules/uar_officer/icons/uar_worn.dmi'
 #define UAR_CARD_ICON    'modular_tianguan/modules/uar_officer/icons/uar_card.dmi'
-#define UAR_HUD_ICON     'modular_tianguan/modules/uar_officer/icons/uar_hud.dmi'
 #define UAR_FLAG_ICON    'modular_tianguan/modules/uar_officer/icons/uar_flags.dmi'
 
 #define UAR_TIER3_ARMOR /datum/armor/uar_tier3
@@ -28,6 +27,7 @@
 	icon_state = "uar_uniform"
 	worn_icon = UAR_WORN_ICON
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	can_adjust = FALSE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 // ———————————————————————————————— 公务员帽
@@ -130,7 +130,6 @@
 		template_access = trims.template_access?.Copy()
 		minimal_access += ACCESS_WEAPONS
 		refresh_trim_access()
-		log_world("UAR_OFFICER: 行政ID 已套用 NTC 权限（access [length(access)] 条 / wildcard [length(wildcard_access)] 条 / 模板 [length(template_access)] 项）")
 		return
 	log_world("UAR_OFFICER: ⚠ 没找到 NTC 的 id_trim 单例，行政ID 未套用 NTC 权限")
 
@@ -193,25 +192,6 @@
 		/obj/item/choice_beacon/uar = 1,
 	)
 
-/datum/outfit/job/uar_inspector/post_equip(mob/living/carbon/human/H, visualsOnly)
-	. = ..()
-	if(visualsOnly)
-		return
-	var/list/slots = list(
-		"制服" = H.w_uniform, "帽" = H.head, "手套" = H.gloves, "靴" = H.shoes,
-		"耳机" = H.ears, "背包" = H.back,
-	)
-	var/list/desc = list()
-	for(var/k in slots)
-		var/obj/item/I = slots[k]
-		desc += "[k]=[isnull(I) ? "NULL" : "[I.type]"]"
-	log_world("UAR_OFFICER: spawn 实装 → [desc.Join(" | ")]")
-	if(!isnull(H.back))
-		var/list/inbag = list()
-		for(var/obj/item/I in H.back.contents)
-			inbag += "[I.type]"
-		log_world("UAR_OFFICER: 背包实装 [length(inbag)] 件 → [inbag.Join(" / ")]")
-
 // ———————————————————————————————— 指挥售货机（追加到 zzplurt_products & 分类，保留既有商品）
 /obj/machinery/vending/wardrobe/cent_wardrobe/Initialize(mapload)
 	var/static/list/uar_wardrobe_products = list(
@@ -229,15 +209,6 @@
 		"products" = uar_wardrobe_products.Copy(),
 	))
 	return ..()
-
-// ———————————————————————————————— 启动自检
-/world/New()
-	. = ..()
-	if(!isnull(SSjob.get_job_type(/datum/job/uar_inspector)))
-		var/datum/outfit/job/uar_inspector/o = new
-		log_world("UAR_OFFICER: 自检 制服=[o.uniform] 帽=[o.head] 手套=[o.gloves] 靴=[o.shoes] 耳机=[o.ears] 卡=[o.id]")
-	else
-		log_world("UAR_OFFICER: ⚠ 找不到 /datum/job/uar_inspector（uar_department 模块没加载？）")
 
 // ———————————————————————————————— 武器召唤信标（适配 SPLURT-zh 武器箱路径）
 /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/uar_double_pistol

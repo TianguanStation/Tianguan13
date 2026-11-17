@@ -206,10 +206,11 @@ export const AntagInfoTraitor = (props) => {
         style={
           isUnionTheme
             ? {
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("${resolveAsset('tianguan_traitor_background.png')}")`,
+                backgroundColor: '#4e0c10',
+                backgroundImage: `linear-gradient(rgba(68, 10, 14, 0.78), rgba(44, 6, 9, 0.84)), url("${resolveAsset('tianguan_traitor_background.png')}")`,
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
+                backgroundSize: 'contain',
               }
             : undefined
         }

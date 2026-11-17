@@ -130,8 +130,8 @@ export const TianGuanSoundBoard = () => {
                         ? `已就绪 ${track.ready}/${track.total}`
                         : `传输中 ${track.ready}/${track.total}`}
                   </Stack.Item>
-                  <Stack.Item>
-                    {!track.enabled && (
+                  {!track.enabled && (
+                    <Stack.Item>
                       <Button
                         icon="upload"
                         tooltip="让这首开始给在线玩家传输"
@@ -139,8 +139,8 @@ export const TianGuanSoundBoard = () => {
                       >
                         传输
                       </Button>
-                    )}
-                  </Stack.Item>
+                    </Stack.Item>
+                  )}
                   <Stack.Item>
                     <Button
                       icon="play"

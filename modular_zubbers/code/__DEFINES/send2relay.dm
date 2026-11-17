@@ -14,6 +14,8 @@
 #define EU_RELAY "Connect to Germany (Frankfurt)"
 #define NO_RELAY "No Relay (Direct Connect)"
 
+// TIANGUAN EDIT: remove hardcoded splurt.space relay switcher verb (polluted player Commands tab).
+/*
 /client/verb/go2relay()
 	var/static/list/relays = list(
 		US_EAST_RELAY,
@@ -43,6 +45,7 @@
 		winset(usr, null, "command=.quit")
 	else
 		usr << "You didn't select a relay."
+*/
 
 #undef US_EAST_RELAY_ADDR
 #undef US_WEST_RELAY_ADDR

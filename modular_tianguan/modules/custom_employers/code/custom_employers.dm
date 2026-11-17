@@ -74,48 +74,6 @@ GLOBAL_LIST_INIT(tianguan_employer_faction_weights, list(
 			return GLOB.tianguan_uar_employers
 	return GLOB.syndicate_employers
 
-/// 发牌抽样自检：池构造与 /datum/antagonist/traitor/proc/pick_employer() 逐句对应，
-/// 报「实际抽到的雇主属于哪个阵营」。一眼确认三件事：三个阵营都在出货 / 没有空池 /
-/// 没有跨阵营串味（抽到辛迪加那支却抓到纳米雇主 = 减集写错了）。
-/// 结局按「逃脱局」算 —— 人数不够 30 的测试服只会遇到这种。
-/proc/tianguan_sample_employer_dealing(sample_count = 2000)
-	var/syn_hits = 0
-	var/nt_hits = 0
-	var/uar_hits = 0
-	var/empty_pools = 0
-	var/cross_faction = 0
-	for(var/i in 1 to sample_count)
-		var/faction = tianguan_roll_employer_faction()
-		var/list/own_pool = tianguan_faction_employers(faction)
-		// ↓ 与 pick_employer() 里的池构造逐句对应，别改成等价写法 —— 那样测的就不是真代码了
-		var/list/pool = list()
-		pool.Add(GLOB.syndicate_employers, GLOB.nanotrasen_employers, GLOB.tianguan_uar_employers)
-		pool -= GLOB.hijack_employers
-		switch(faction)
-			if(TIANGUAN_EMPLOYER_FACTION_SYNDICATE)
-				pool -= GLOB.nanotrasen_employers
-				pool -= GLOB.tianguan_uar_employers
-			if(TIANGUAN_EMPLOYER_FACTION_NANOTRASEN)
-				pool -= GLOB.syndicate_employers
-				pool -= GLOB.tianguan_uar_employers
-			if(TIANGUAN_EMPLOYER_FACTION_UAR)
-				pool -= GLOB.syndicate_employers
-				pool -= GLOB.nanotrasen_employers
-		if(!length(pool))
-			empty_pools++
-			continue
-		var/picked = pick(pool)
-		if(!(picked in own_pool))
-			cross_faction++
-		switch(faction)
-			if(TIANGUAN_EMPLOYER_FACTION_NANOTRASEN)
-				nt_hits++
-			if(TIANGUAN_EMPLOYER_FACTION_UAR)
-				uar_hits++
-			else
-				syn_hits++
-	log_world("CUSTOM_EMPLOYERS: 发牌抽样 [sample_count] 次（逃脱局）→ 辛迪加 [syn_hits] / 纳米传讯 [nt_hits] / 团结联盟 [uar_hits] · 空池 [empty_pools] · 跨阵营 [cross_faction]")
-
 GLOBAL_VAR_INIT(tianguan_custom_employers_injected, FALSE)
 
 SUBSYSTEM_DEF(tianguan_employers)
@@ -173,43 +131,7 @@ SUBSYSTEM_DEF(tianguan_employers)
 			injected++
 			injected_names += entry["name"]
 
-	// 即使一条都没启用也要出声：否则全禁用的配置看起来就像模块没跑。
-	var/injected_list = injected ? jointext(injected_names, "、") : "无"
-	log_world("CUSTOM_EMPLOYERS: [TIANGUAN_CUSTOM_EMPLOYERS_FILE] 读到 [length(entries)] 条，启用 [injected] 条，已禁用 [disabled] 条 → [injected_list]")
-	if(injected)
-		verify_tianguan_custom_employers(injected_names)
 	return injected
-
-/// 部署自检：按上游 pick_employer() 的候选池算法复核每个自定义雇主真的能被抽到，并按
-/// pick 之后的同一条 strings() 路径取一次文本。结果写进启动日志（条目多时日志会略长，只在启动时一次）。
-/proc/verify_tianguan_custom_employers(list/employer_names)
-	if(!length(employer_names))
-		return
-
-	// 复刻 pick_employer()：先合并三张阵营表，再按本局 ending_objective 减掉另一边的结局表。
-	// （阵营筛是正交的：每个雇主只在一张阵营表里，能过结局这一关就一定抽得到。）
-	var/list/normal_ending_pool = list()
-	normal_ending_pool.Add(GLOB.syndicate_employers, GLOB.nanotrasen_employers, GLOB.tianguan_uar_employers)
-	normal_ending_pool -= GLOB.hijack_employers
-	var/list/hijack_ending_pool = list()
-	hijack_ending_pool.Add(GLOB.syndicate_employers, GLOB.nanotrasen_employers, GLOB.tianguan_uar_employers)
-	hijack_ending_pool -= GLOB.normal_employers
-
-	log_world("CUSTOM_EMPLOYERS: 自检（辛迪加池 [length(GLOB.syndicate_employers)] 条 / 纳米传讯池 [length(GLOB.nanotrasen_employers)] 条 / 团结联盟池 [length(GLOB.tianguan_uar_employers)] 条）")
-	log_world("CUSTOM_EMPLOYERS: 阵营权重 辛迪加 [GLOB.tianguan_employer_faction_weights[TIANGUAN_EMPLOYER_FACTION_SYNDICATE]] / 纳米传讯 [GLOB.tianguan_employer_faction_weights[TIANGUAN_EMPLOYER_FACTION_NANOTRASEN]] / 团结联盟 [GLOB.tianguan_employer_faction_weights[TIANGUAN_EMPLOYER_FACTION_UAR]]（相对比例）")
-	tianguan_sample_employer_dealing()
-	// 主题抽查：上游雇主的 ui_theme 必须是 canonical 英文。NOVA 的 i18n（load_strings_file 里的
-	// lang_reverse_tree）会递归反查翻译整张 flavor 表，万一翻到 ui_theme，tgui 拿到「theme-中文」这种
-	// 类名匹配不到任何 CSS，窗口就掉回默认蓝（看着像纳米的）。
-	for(var/sample_name in list("Cybersun Industries", "Donk Corporation", "Waffle Corporation"))
-		var/list/sample_flavor = strings(TRAITOR_FLAVOR_FILE, sample_name)
-		var/sample_theme = sample_flavor["ui_theme"]
-		log_world("CUSTOM_EMPLOYERS: 主题抽查 [sample_name] → ui_theme=[sample_theme]")
-	for(var/employer_name in employer_names)
-		// 与 pick_employer() 末尾完全相同的查表调用（查不到会 CRASH，所以这里跑通即代表不会 CRASH）
-		var/list/flavor = strings(TRAITOR_FLAVOR_FILE, employer_name)
-		var/introduction = flavor["introduction"]
-		log_world("CUSTOM_EMPLOYERS: [employer_name] 普通结局可抽=[(employer_name in normal_ending_pool)] 劫机结局可抽=[(employer_name in hijack_ending_pool)] 开场白=[introduction]")
 
 /// 注入单个雇主条目：阵营池 + 结局池 + flavor 文本。返回是否注入成功。
 /// enabled 的判定留在调用方（inject_tianguan_custom_employers）做，因为它要顺带统计禁用条数。

@@ -110,9 +110,6 @@
 	if(!report)
 		return
 	var/list/track = report["track"]
-	var/lowest_volume = report["lowest_volume"]
-	log_world("TIANGUAN_COUNTDOWN_MUSIC: 播放 [track["name"]] file=[track["path"]] 存在=[fexists(track["path"]) ? 1 : 0] 基准音量=[report["base_volume"]]")
-	log_world("TIANGUAN_COUNTDOWN_MUSIC: 送达 [report["heard"]] 人 / 因音量偏好为 0 跳过 [report["skipped"]] 人 / 最小实际音量=[lowest_volume >= 999 ? "n/a" : lowest_volume]")
 	log_admin("天关倒计时：播放预传输曲目 [track["name"]]（第 [music_play_index] 首）。")
 
 	if(music_play_index < length(music_selection))

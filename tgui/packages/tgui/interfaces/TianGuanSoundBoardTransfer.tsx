@@ -36,8 +36,11 @@ export const TianGuanSoundBoardTransfer = () => {
             {status.queue_left} 份
           </Box>
           <Box mt={0.5} color="label">
-            一份 = 一个在线玩家的一份音频。进度是**服务端已推送**的量；
-            新加入的玩家会每秒自动补传。
+            一份 = 一个在线玩家的一份音频。进度是
+            <Box inline bold>
+              服务端已推送
+            </Box>
+            的量；新加入的玩家会每秒自动补传。
           </Box>
         </Section>
 

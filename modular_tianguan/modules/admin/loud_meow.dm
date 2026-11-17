@@ -1,4 +1,4 @@
-ADMIN_VERB(cmd_loud_admin_meow, R_NONE, "loudmeow", "Send a meow to other admins (loudly).", ADMIN_CATEGORY_MAIN)
+ADMIN_VERB(cmd_loud_admin_meow, R_NONE, "大声猫叫", "Send a meow to other admins (loudly).", ADMIN_CATEGORY_FUN)
 	VERB_ARG(msg, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
 	msg = emoji_parse(copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN))
 	if(!msg)
@@ -8,8 +8,8 @@ ADMIN_VERB(cmd_loud_admin_meow, R_NONE, "loudmeow", "Send a meow to other admins
 	user.mob.log_talk(msg, LOG_ASAY)
 
 	msg = keywords_lookup(msg)
-	var/custom_asay_color = (CONFIG_GET(flag/allow_admin_asaycolor) && user.mob.client?.prefs?.read_preference(/datum/preference/color/asay_color)) ? "<font color=[user.mob.client?.prefs?.read_preference(/datum/preference/color/asay_color)]>" : "<font color='#FF4500'>"
-	msg = span_command_headset("<span class='adminsay'><span class='prefix'>ADMIN:</span> <EM>[key_name(user, 1)]</EM> [ADMIN_FLW(user.mob)]: [custom_asay_color]<span class='message linkify'>[msg]</span></span></span>[custom_asay_color ? "</font>":null]")
+	var/custom_asay_color = (CONFIG_GET(flag/allow_admin_asaycolor) && user.mob.client?.prefs?.read_preference(/datum/preference/color/asay_color)) ? "<font color='[user.mob.client?.prefs?.read_preference(/datum/preference/color/asay_color)]'>" : "<font color='#FF4500'>"
+	msg = span_command_headset("<span class='adminsay'><span class='prefix'>ADMIN:</span> <EM>[key_name(user, 1)]</EM> [ADMIN_FLW(user.mob)]: [custom_asay_color]<span class='message linkify'>[msg]</span></font></span>")
 
 	to_chat(GLOB.admins,
 		type = MESSAGE_TYPE_ADMINCHAT,
