@@ -11,6 +11,11 @@
 	/// Is this pipe layer indenpendent
 	var/all_layers
 
+/datum/pipe_info/proc/display_name(bent = FALSE)
+	var/label = bent ? "Bent [name]" : name
+	var/list/labels = lang_scoped_table("pipe_recipe_labels.json")
+	return labels[label] || lang_localize_display_name(label)
+
 /datum/pipe_info/pipe/New(label, obj/machinery/atmospherics/path, use_five_layers)
 	name = label
 	id = path

@@ -2046,7 +2046,9 @@ pub fn run(dme: &Path, out: &Path, dry_run: bool) -> Result<Catalog> {
                 continue;
             }
             let var_scope = format!("{}#{}", ty.path, var_name);
-            let mut is_sink = SINK_VARS.contains(&var_name.as_str());
+            let mut is_sink = SINK_VARS.contains(&var_name.as_str())
+                || (ty.path.starts_with("/datum/experiment/")
+                    && matches!(var_name.as_str(), "performance_hint" | "required_traits_desc"));
             // ADMIN_VERB 宏展开成 `/datum/admin_verb/xxx { name = ##verb_name; … }`，所以管理员
             // 命令的显示名同时是**类型变量**，会绕开 `set name` 那条路上的 is_safe_verb_name 闸
             // 被 SINK_VARS 抽走。译名固化进源码后再跑 extract，这里就会把中文当英文原文收进 en 目录
@@ -2061,15 +2063,29 @@ pub fn run(dme: &Path, out: &Path, dry_run: bool) -> Result<Catalog> {
                 let entry = (ty.path.clone(), var_name.clone());
                 match type_var.value.expression.as_ref() {
                     None => {}
-                    Some(expr) => match build_template(expr) {
-                        Some(t) if !t.contains('{') && t.chars().any(|c| c.is_alphabetic()) => {
-                            let key = make_key(&namespace_for(&var_scope), &t);
-                            type_var_keys.declared.insert(entry, key);
+                    Some(expr) => {
+                        let mut template = build_template(expr);
+                        // Display the complete compile-time description, including inherited
+                        // text in expressions such as `parent_type::desc + "…"`.
+                        if var_name == "desc"
+                            && matches!(expr, Expression::BinaryOp { op: dm::ast::BinaryOp::Add, .. })
+                            && template.as_ref().is_some_and(|t| t.contains("{0}"))
+                        {
+                            if let Some(dm::constants::Constant::String(text)) = &type_var.value.constant {
+                                emit(&mut catalog, &var_scope, text);
+                                template = Some(text.to_string());
+                            }
                         }
-                        _ => {
-                            type_var_keys.opaque.insert(entry);
+                        match template {
+                            Some(t) if !t.contains('{') && t.chars().any(|c| c.is_alphabetic()) => {
+                                let key = make_key(&namespace_for(&var_scope), &t);
+                                type_var_keys.declared.insert(entry, key);
+                            }
+                            _ => {
+                                type_var_keys.opaque.insert(entry);
+                            }
                         }
-                    },
+                    }
                 }
             }
             // config_entry 的 default：玩家可见公告/模板（安全等级公告、提示等，从配置加载、非 sink 调用）。
@@ -2443,7 +2459,13 @@ pub fn run(dme: &Path, out: &Path, dry_run: bool) -> Result<Catalog> {
         );
         // 类型显示名表（继承已展开）。与 scopes.json 同级：**不能**放进 locale 目录，
         // build_i18n_cache 会把 locale 目录下每个 .json 全量并进反查表。
-        let table = expand_type_var_table(&tree, &type_var_keys);
+        let mut table = expand_type_var_table(&tree, &type_var_keys);
+        // A rejected child declaration still shadows its parent. Drop dangling
+        // entries after expanding inheritance so it cannot acquire the parent's label.
+        let english_keys: HashSet<_> = catalog.keys().collect();
+        for entries in table.values_mut() {
+            entries.retain(|_, key| english_keys.contains(key.as_str()));
+        }
         let type_vars_path = out.parent().unwrap_or(out).join("type_vars.json");
         write_type_var_table(&type_vars_path, &table)?;
         let counts: Vec<String> = TYPE_VAR_TABLE_VARS
@@ -2755,6 +2777,14 @@ pub(crate) fn contains_cjk(s: &str) -> bool {
         .any(|c| matches!(c as u32, 0x3400..=0x9FFF | 0xF900..=0xFAFF))
 }
 
+fn is_mixed_item_description(type_path: &str, text: &str) -> bool {
+    type_path.starts_with("/obj/")
+        && type_path.ends_with("#desc")
+        && text.split_once(". ").is_some_and(|(first, _)| {
+            first.is_ascii() && is_sentence_like(first)
+        })
+}
+
 /// 宏展开漏出来的 **HTML 标签碎片**。
 ///
 /// `span_tooltip` 是 `+` 拼接的 define：
@@ -2884,7 +2914,15 @@ fn format_origin_summary() -> String {
 
 #[cfg(test)]
 mod cjk_gate {
-    use super::contains_cjk;
+    use super::{contains_cjk, is_mixed_item_description};
+
+    #[test]
+    fn mixed_item_inscriptions() {
+        let text = "A company cheer uniform. フレーフレー！ 今です！";
+        assert!(is_mixed_item_description("/obj/item/uniform#desc", text));
+        assert!(!is_mixed_item_description("/obj/item/uniform#name", text));
+        assert!(!is_mixed_item_description("/obj/item/uniform#desc", "TTS 全局开关"));
+    }
 
     #[test]
     fn rejects_han_and_keeps_english() {
@@ -3030,7 +3068,9 @@ fn emit_origin(catalog: &mut Catalog, type_path: &str, template: &str, origin: &
     }
     // 中文已经在源码里的串不是英文原文。verb 注入 / Nova 模块把译文写进 name 后再抽，
     // 会污染 en 目录（coverage 把它们算成「缺失」）。中文显示名不需要进英文主目录。
-    if contains_cjk(template) {
+    // Some item descriptions quote a foreign inscription after a complete English
+    // sentence. Keep the whole description, including its original lettering.
+    if contains_cjk(template) && !is_mixed_item_description(type_path, template) {
         STATS.with(|s| s.borrow_mut().rejected_cjk += 1);
         return;
     }
