@@ -142,31 +142,22 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		A.unregister()
 
 /datum/asset/changelog_item
+	parent_type = /datum/asset/simple
 	abstract_type = /datum/asset/changelog_item
-	var/item_filename
 
 /datum/asset/changelog_item/New(date)
-	item_filename = SANITIZE_FILENAME("[date].yml")
-	SSassets.transport.register_asset(item_filename, file("html/changelogs/archive/" + item_filename))
-	SSassets.transport.register_asset("bubber_[item_filename]", file("html/changelogs/bubber_archive/" + item_filename)) // BUBBER EDIT ADDITION: Changelog 2
+	var/filename = SANITIZE_FILENAME("[date].yml")
+	add_archives(filename)
+	register()
 
-/datum/asset/changelog_item/send(client)
-	if (!item_filename)
-		return
-	// BUBBER EDIT CHANGE: Changelog 2: Original: . = SSassets.transport.send_assets(client, item_filename)
-	. = SSassets.transport.send_assets(client, list(item_filename, "bubber_[item_filename]"))
+/// Each fork can contribute a month independently. Register only files present for this date.
+/datum/asset/changelog_item/proc/add_archives(filename)
+	add_month_file(filename, "html/changelogs/archive/[filename]")
+	add_month_file("bubber_[filename]", "html/changelogs/bubber_archive/[filename]")
 
-/datum/asset/changelog_item/get_url_mappings()
-	if (!item_filename)
-		return
-	. = list("[item_filename]" = SSassets.transport.get_asset_url(item_filename))
-	. += list("bubber_[item_filename]" = SSassets.transport.get_asset_url("bubber_[item_filename]")) // BUBBER EDIT ADDITION: Changelog 2
-
-/datum/asset/changelog_item/unregister()
-	if (!item_filename)
-		return
-	SSassets.transport.unregister_asset(item_filename)
-	SSassets.transport.unregister_asset("bubber_[item_filename]") // BUBBER EDIT ADDITION: Changelog 2
+/datum/asset/changelog_item/proc/add_month_file(asset_name, path)
+	if(fexists(path))
+		assets[asset_name] = file(path)
 
 //Generates assets based on iconstates of a single icon
 /datum/asset/simple/icon_states

@@ -507,8 +507,8 @@
 		LANG("datum.d4a51538af95270f", null),
 		LANG("datum.bc6493afcfc160e3", null),
 		viable_targets,
-		alterer,
-		5 SECONDS,
+		alterer
+		//5 SECONDS, [Splurt Edit - Give People Time to Pick]
 	)
 	if (isnull(target) || !is_valid_char_alteration_target(target))
 		alterer.balloon_alert(alterer, LANG("datum.63a7193b86a7f022", null))
@@ -519,7 +519,7 @@
 		LANG("datum.2fb5dee4d19891a1", null),
 		LANG("datum.3ad59b35347d0bca", null),
 		list("Yours", "Theirs", "Cancel"),
-		5 SECONDS,
+		//5 SECONDS, [Splurt Edit - Give People Time to Pick]
 		FALSE
 	)
 	var/client/target_client
@@ -547,8 +547,8 @@
 		target_mob,
 		target_char_tgui_title,
 		LANG("datum.c2e2f52bbe0870ed", null),
-		prefdata_names,
-		timeout = 5 SECONDS
+		prefdata_names
+		//timeout = 5 SECONDS [Splurt Edit - Give People Time to Pick]
 	)
 	if (isnull(target_char_name))
 		alterer.balloon_alert(alterer, LANG("datum.72281623be840217", null))

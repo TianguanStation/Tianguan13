@@ -43,11 +43,11 @@ const BASE_URL = process.env.I18N_OPENAI_BASE_URL ?? 'https://api.openai.com/v1'
 const CHUNK = Number(process.env.I18N_CHUNK ?? 40);
 const CONCURRENCY = Number(process.env.I18N_CONCURRENCY ?? 4);
 
-const ARCHIVE_DIR = path.join(ROOT, 'html/changelogs/archive');
+const ARCHIVE_DIRS = ['archive', 'bubber_archive', 'splurt_archive'].map((dir) => path.join(ROOT, 'html/changelogs', dir));
 const OUT_DIR = path.join(ROOT, 'html/changelogs/localization/upstream', LOCALE);
 const GLOSSARY_PATH = path.join(ROOT, `tools/i18n/mt/glossary.${LOCALE}.json`);
 
-const SYSTEM = `你在为太空站模拟游戏 Space Station 13（NovaSector 服务器）翻译更新日志，读者是简体中文玩家。
+const SYSTEM = `你在为太空站模拟游戏 Space Station 13（SPLURT 服务器）翻译更新日志，读者是简体中文玩家。
 输入是一个 JSON 对象，每个值是一条更新日志条目（英文）。
 规则：
 1. 输出一个 JSON 对象，键与输入完全相同，值是对应条目的简体中文译文；不增不减任何键。
@@ -160,8 +160,8 @@ async function translateAll(texts: string[]): Promise<Map<string, string>> {
 }
 
 /** 按归档里出现的顺序取全部条目原文（去重）。 */
-function monthEntries(month: string): string[] {
-  const data = Bun.YAML.parse(fs.readFileSync(path.join(ARCHIVE_DIR, `${month}.yml`), 'utf8')) as Record<
+function archiveEntries(file: string): string[] {
+  const data = Bun.YAML.parse(fs.readFileSync(file, 'utf8')) as Record<
     string,
     Record<string, Record<string, unknown>[]>
   > | null;
@@ -183,8 +183,7 @@ async function main() {
   const months = (
     requested.length
       ? requested
-      : fs
-          .readdirSync(ARCHIVE_DIR)
+      : Array.from(new Set(ARCHIVE_DIRS.flatMap((dir) => fs.readdirSync(dir))))
           .filter((f) => /^\d{4}-\d{2}\.yml$/.test(f))
           .map((f) => f.slice(0, -4))
           .filter((m) => m >= START_MONTH)
@@ -192,11 +191,12 @@ async function main() {
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
   for (const month of months) {
-    if (!/^\d{4}-\d{2}$/.test(month) || !fs.existsSync(path.join(ARCHIVE_DIR, `${month}.yml`))) {
+    const files = ARCHIVE_DIRS.map((dir) => path.join(dir, `${month}.yml`)).filter((file) => fs.existsSync(file));
+    if (!/^\d{4}-\d{2}$/.test(month) || !files.length) {
       console.error(`没有上游归档：${month}`);
       process.exit(1);
     }
-    const entries = monthEntries(month);
+    const entries = [...new Set(files.flatMap(archiveEntries))];
     const outPath = path.join(OUT_DIR, `${month}.json`);
     const existing: Record<string, string> = fs.existsSync(outPath)
       ? JSON.parse(fs.readFileSync(outPath, 'utf8'))

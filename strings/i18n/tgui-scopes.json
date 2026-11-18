@@ -5901,6 +5901,9 @@
   "Character-Layout Associations": [
     "tgui:SavefileManagement"
   ],
+  "Characters": [
+    "tgui:BodyMorpher"
+  ],
   "Charcoal Fingerless Gloves": [
     "dm:labels"
   ],
@@ -11831,6 +11834,10 @@
   ],
   "Failed reagent": [
     "tgui:ReagentLookup"
+  ],
+  "Failed to load changelog data.": [
+    "tgui:BubberChangelog",
+    "tgui:Changelog"
   ],
   "Failsafe: {0}": [
     "tgui:AntagInfoTraitor"
@@ -32510,6 +32517,9 @@
   ],
   "Switch head": [
     "dm:labels"
+  ],
+  "Switch yourself or someone nearby to an entirely different character.": [
+    "tgui:BodyMorpher"
   ],
   "Switchblade Comb": [
     "dm:labels"

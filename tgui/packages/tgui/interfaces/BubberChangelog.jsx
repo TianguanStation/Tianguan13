@@ -16,6 +16,12 @@ import { classes } from 'tgui-core/react';
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+import {
+  ChangelogTabs,
+  fetchChangelogAsset,
+  fetchTranslations,
+  translateChangelog,
+} from './Changelog';
 
 const icons = {
   add: { icon: 'check-circle', color: 'green' },
@@ -323,82 +329,51 @@ const SplurtChangelogEntry = (props) => {
 };
 // SPLURT EDIT ADDITION END
 
-export const BubberChangelog = (props) => {
-  const { data } = useBackend();
-  const { dates } = data;
+const ServerChangelog = () => {
+  const { act, data } = useBackend();
+  const { dates, translated_dates } = data;
   const [contents, setContents] = useState('');
   const [bubberContents, setBubberContents] = useState('');
   const [splurtContents, setSplurtContents] = useState(''); // SPLURT EDIT ADDITION: Changelog 3
   const [selectedDate, setSelectedDate] = useState(dates[0]);
   const [selectedDateIndex, setSelectedDateIndex] = useState(0);
 
+  const hasTranslation = translated_dates?.includes(selectedDate);
   useEffect(() => {
+    if (!selectedDate) return;
+    let active = true;
     setContents('Loading changelog data...');
-    setBubberContents('Loading changelog data...');
-    setSplurtContents('Loading changelog data...'); // SPLURT EDIT ADDITION: Changelog 3
-    getData(selectedDate);
-  }, [selectedDate]);
-
-  function getData(date, attemptNumber = 1) {
-    const { act } = useBackend();
-    const maxAttempts = 6;
-
-    if (attemptNumber > maxAttempts) {
-      setContents(`Failed to load data after ${maxAttempts} attempts.`);
-      return;
+    setBubberContents({});
+    setSplurtContents({});
+    act('get_month', { date: selectedDate });
+    const translations = hasTranslation
+      ? fetchTranslations(selectedDate)
+      : undefined;
+    async function loadMonth(prefix) {
+      const response = await fetchChangelogAsset(
+        `${prefix}${selectedDate}.yml`,
+      );
+      if (!response) return;
+      const month = yaml.load(await response.text(), {
+        schema: yaml.CORE_SCHEMA,
+      });
+      const table = await translations;
+      return table ? translateChangelog(month, table) : month;
     }
-
-    act('get_month', { date });
-
-    Promise.all([
-      fetch(resolveAsset(`${date}.yml`)),
-      fetch(resolveAsset(`bubber_${date}.yml`)),
-      fetch(resolveAsset(`splurt_${date}.yml`)), // SPLURT EDIT ADDITION: Changelog 3
-    ]).then(async (links) => {
-      const result = await links[0].text();
-      const bubberResult = await links[1].text();
-      const splurtResult = await links[2].text(); // SPLURT EDIT ADDITION: Changelog 3
-
-      // SPLURT EDIT ADDITION: Changelog 3
-      if (
-        links[0].status !== 200 &&
-        links[1].status !== 200 &&
-        links[2].status !== 200
-      ) {
-        // SPLURT EDIT ADDITION END
-        const timeout = 50 + attemptNumber * 50;
-
-        setContents(`Loading changelog data${'.'.repeat(attemptNumber + 3)}`);
-        setBubberContents(
-          `Loading changelog data${'.'.repeat(attemptNumber + 3)}`,
+    Promise.all(['', 'bubber_', 'splurt_'].map(loadMonth)).then(
+      ([tg, bubber, splurt]) => {
+        if (!active) return;
+        setContents(
+          tg || (bubber || splurt ? {} : 'Failed to load changelog data.'),
         );
-        // SPLURT EDIT ADDITION: Changelog 3
-        setSplurtContents(
-          `Loading changelog data${'.'.repeat(attemptNumber + 3)}`,
-        );
-        // SPLURT EDIT ADDITION END
-        setTimeout(() => {
-          getData(date, attemptNumber + 1);
-        }, timeout);
-      } else {
-        if (links[0].status === 200) {
-          setContents(yaml.load(result, { schema: yaml.CORE_SCHEMA }));
-        }
-        if (links[1].status === 200) {
-          setBubberContents(
-            yaml.load(bubberResult, { schema: yaml.CORE_SCHEMA }),
-          );
-        }
-        // SPLURT EDIT ADDITION: Changelog 3
-        if (links[2].status === 200) {
-          setSplurtContents(
-            yaml.load(splurtResult, { schema: yaml.CORE_SCHEMA }),
-          );
-        }
-        // SPLURT EDIT ADDITION END
-      }
-    });
-  }
+        setBubberContents(bubber || {});
+        setSplurtContents(splurt || {});
+      },
+    );
+    return () => {
+      active = false;
+    };
+  }, [act, selectedDate, hasTranslation]);
 
   const header = (
     <Section>
@@ -557,18 +532,26 @@ export const BubberChangelog = (props) => {
   );
 
   return (
-    <Window title="Changelog" width={730} height={700}>
-      <Window.Content scrollable>
-        {header}
-        {/* SPLURT EDIT ADDITION: Changelog 3 */}
-        <ChangelogList
-          contents={contents}
-          bubberContents={bubberContents}
-          splurtContents={splurtContents}
-        />
-        {/* SPLURT EDIT ADDITION END */}
-        {footer}
-      </Window.Content>
-    </Window>
+    <>
+      {header}
+      {/* SPLURT EDIT ADDITION: Changelog 3 */}
+      <ChangelogList
+        contents={contents}
+        bubberContents={bubberContents}
+        splurtContents={splurtContents}
+      />
+      {/* SPLURT EDIT ADDITION END */}
+      {footer}
+    </>
   );
 };
+
+export const BubberChangelog = () => (
+  <Window title="Changelog" width={730} height={700}>
+    <Window.Content scrollable>
+      <ChangelogTabs>
+        <ServerChangelog />
+      </ChangelogTabs>
+    </Window.Content>
+  </Window>
+);
