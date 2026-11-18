@@ -15,10 +15,21 @@
 	TEST_ASSERT_NOTNULL(static_data["dates"], "Upstream changelog dates went missing from the static data")
 	TEST_ASSERT_EQUAL(length(static_data["localization_dates"]), length(dates), "Static data should carry the localization months")
 
+	// Months may exist in just one of the three server archives.
+	var/server_month = static_data["dates"][1]
+	var/datum/asset/changelog_item/server_item = allocate(/datum/asset/changelog_item, server_month)
+	var/list/server_mappings = server_item.get_url_mappings()
+	var/list/prefixes = list("archive" = "", "bubber_archive" = "bubber_", "splurt_archive" = "splurt_")
+	for(var/archive in prefixes)
+		var/asset_name = "[prefixes[archive]][server_month].yml"
+		TEST_ASSERT_EQUAL((asset_name in server_mappings), fexists("html/changelogs/[archive]/[server_month].yml"), "Wrong archive mapping for [asset_name]")
+
 	// The first listed month is served, and serving it again reuses the same registered asset.
-	var/datum/asset/changelog_item/localization/item = changelog.get_localization_changelog_item(dates[1])
+	var/datum/asset/simple/changelog_month/item = changelog.get_localization_changelog_item(dates[1])
 	TEST_ASSERT_NOTNULL(item, "A listed month ([dates[1]]) was refused")
-	TEST_ASSERT_EQUAL(item.item_filename, "localization-[dates[1]].yml", "Localization assets must be namespaced away from upstream's month assets")
+	var/list/mappings = item.get_url_mappings()
+	TEST_ASSERT_EQUAL(length(mappings), 1, "Serve only the registered month file")
+	TEST_ASSERT(mappings["localization-[dates[1]].yml"], "Localization assets must be namespaced away from upstream's month assets")
 	TEST_ASSERT_EQUAL(changelog.get_localization_changelog_item(dates[1]), item, "The same month should reuse its registered asset")
 
 	// A requested date comes from the client and ends up in a file path; anything we did not list must be refused.
@@ -46,9 +57,11 @@
 	var/list/sorted = sort_list(dates.Copy())
 	TEST_ASSERT_EQUAL(dates[1], sorted[length(sorted)], "Translated months should be listed newest first")
 
-	var/datum/asset/changelog_item/translation/item = changelog.get_changelog_translation_item(dates[1])
+	var/datum/asset/simple/changelog_month/item = changelog.get_changelog_translation_item(dates[1])
 	TEST_ASSERT_NOTNULL(item, "A translated month ([dates[1]]) was refused")
-	TEST_ASSERT_EQUAL(item.item_filename, "changelog-translation-[dates[1]].json", "Translation assets must be namespaced away from upstream's month assets")
+	var/list/mappings = item.get_url_mappings()
+	TEST_ASSERT_EQUAL(length(mappings), 1, "Serve only the registered month file")
+	TEST_ASSERT(mappings["changelog-translation-[dates[1]].json"], "Translation assets must be namespaced away from upstream's month assets")
 	TEST_ASSERT_EQUAL(changelog.get_changelog_translation_item(dates[1]), item, "The same month should reuse its registered asset")
 
 	// Client-supplied and ends up in a file path: only months we translated, never an upstream-only month or a path.

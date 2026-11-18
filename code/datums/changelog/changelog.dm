@@ -15,10 +15,13 @@
 	if(.)
 		return
 	if(action == "get_month")
-		var/datum/asset/changelog_item/changelog_item = changelog_items[params["date"]]
+		var/date = params["date"]
+		if(!istext(date) || !(date in changelog_dates()))
+			return
+		var/datum/asset/changelog_item/changelog_item = changelog_items[date]
 		if (!changelog_item)
-			changelog_item = new /datum/asset/changelog_item(params["date"])
-			changelog_items[params["date"]] = changelog_item
+			changelog_item = new /datum/asset/changelog_item(date)
+			changelog_items[date] = changelog_item
 		return ui.send_asset(changelog_item)
 
 // BUBBER EDIT CHANGE BEGIN: Changelog 2
@@ -29,18 +32,12 @@
 // BUBBER EDIT CHANGE END: Changelog 2
 
 /datum/changelog/ui_static_data()
-	var/list/data = list( "dates" = list() )
-	var/regex/ymlRegex = regex(@"\.yml", "g")
-	// BUBBER EDIT ADDITION BEGIN: Changelog 2
-	var/list/tg_files = flist("html/changelogs/archive/")
-	var/list/bubber_files = flist("html/changelogs/bubber_archive/")
-	// BUBBER EDIT ADDITION END: Changelog 2
-	// SPLURT EDIT ADDITION BEGIN: Changelog 3
-	var/list/splurt_files = flist("html/changelogs/splurt_archive/")
-	// SPLURT EDIT ADDITION END: Changelog 3
+	return list("dates" = changelog_dates())
 
-	for(var/archive_file in sort_list(tg_files |= bubber_files | splurt_files)) // SPLURT EDIT CHANGE: Changelog 3: Original: for(var/archive_file in sort_list(flist("html/changelogs/archive/")))
-		var/archive_date = ymlRegex.Replace(archive_file, "")
-		data["dates"] = list(archive_date) + data["dates"]
-
-	return data
+/datum/changelog/proc/changelog_dates()
+	var/list/dates = list()
+	var/list/files = flist("html/changelogs/archive/") | flist("html/changelogs/bubber_archive/") | flist("html/changelogs/splurt_archive/")
+	for(var/filename in sort_list(files))
+		if(copytext(filename, -4) == ".yml")
+			dates.Insert(1, copytext(filename, 1, -4))
+	return dates

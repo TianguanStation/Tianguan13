@@ -54,13 +54,13 @@
 			// Upstream has already sent the month itself; add its translation when we have one.
 			if(!ui || ui.status != UI_INTERACTIVE)
 				return
-			var/datum/asset/changelog_item/translation/translation_item = get_changelog_translation_item(params["date"])
+			var/datum/asset/simple/changelog_month/translation_item = get_changelog_translation_item(params["date"])
 			if(translation_item)
 				ui.send_asset(translation_item)
 		if("get_localization_month")
 			if(.)
 				return
-			var/datum/asset/changelog_item/localization/changelog_item = get_localization_changelog_item(params["date"])
+			var/datum/asset/simple/changelog_month/changelog_item = get_localization_changelog_item(params["date"])
 			if(changelog_item)
 				return ui.send_asset(changelog_item)
 
@@ -69,9 +69,9 @@
 	// The date comes from the client and ends up in a file path, so only accept a month we list ourselves.
 	if(!istext(date) || !(date in localization_changelog_dates()))
 		return null
-	var/datum/asset/changelog_item/localization/changelog_item = localization_changelog_items[date]
+	var/datum/asset/simple/changelog_month/changelog_item = localization_changelog_items[date]
 	if(!changelog_item)
-		changelog_item = new /datum/asset/changelog_item/localization(date)
+		changelog_item = new /datum/asset/simple/changelog_month("localization-[date].yml", file(LOCALIZATION_CHANGELOG_ARCHIVE + "[date].yml"))
 		localization_changelog_items[date] = changelog_item
 	return changelog_item
 
@@ -80,28 +80,21 @@
 	// The date comes from the client and ends up in a file path, so only accept a month we list ourselves.
 	if(!istext(date) || !(date in translated_changelog_dates()))
 		return null
-	var/datum/asset/changelog_item/translation/translation_item = changelog_translation_items[date]
+	var/datum/asset/simple/changelog_month/translation_item = changelog_translation_items[date]
 	if(!translation_item)
-		translation_item = new /datum/asset/changelog_item/translation(date, changelog_translation_dir())
+		translation_item = new /datum/asset/simple/changelog_month("changelog-translation-[date].json", file(changelog_translation_dir() + "[date].json"))
 		changelog_translation_items[date] = translation_item
 	return translation_item
 
-/// Same as the upstream changelog month asset, but read from the localization archive and namespaced
-/// so it cannot collide with upstream's asset for the same month.
-/datum/asset/changelog_item/localization
+/// A dynamically registered, single-file month. The SPLURT upstream asset sends three archives.
+/datum/asset/simple/changelog_month
+	abstract_type = /datum/asset/simple/changelog_month
 
-/datum/asset/changelog_item/localization/New(date)
-	// Deliberately not calling parent: it would register upstream's archive file for this month instead.
-	item_filename = SANITIZE_FILENAME("localization-[date].yml")
-	SSassets.transport.register_asset(item_filename, file(LOCALIZATION_CHANGELOG_ARCHIVE + SANITIZE_FILENAME("[date].yml")))
-
-/// A month's "original text -> translation" table for upstream's changelog
-/datum/asset/changelog_item/translation
-
-/datum/asset/changelog_item/translation/New(date, translation_dir)
-	// Deliberately not calling parent: it would register upstream's archive file for this month instead.
-	item_filename = SANITIZE_FILENAME("changelog-translation-[date].json")
-	SSassets.transport.register_asset(item_filename, file(translation_dir + SANITIZE_FILENAME("[date].json")))
+/datum/asset/simple/changelog_month/New(filename, resource)
+	// Each month is cached by its date, outside the type-based asset singleton registry.
+	assets = list()
+	assets[filename] = resource
+	register()
 
 #undef LOCALIZATION_CHANGELOG_ARCHIVE
 #undef UPSTREAM_CHANGELOG_TRANSLATIONS

@@ -1,3 +1,4 @@
+// ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
 /// Normal roach body, plus a clown nose. Armed subtypes install their own cannon.
 /mob/living/basic/cockroach/clownroach
 	name = "clownroach"
@@ -100,7 +101,7 @@
 	victim.Paralyze(2 SECONDS)
 	if(can_splat_on)
 		victim.adjust_eye_blur(2 SECONDS)
-	victim.visible_message(span_warning("[victim] is creamed by [src]!"), span_userdanger("You've been creamed by [src]!"))
+	victim.visible_message(span_warning(LANG("obj.cd7d68abf4f13986", list(victim, src))), span_userdanger(LANG("obj.8e2fb86699a2937d", list(src))))
 	playsound(victim, SFX_DESECRATION, 50, TRUE)
 
 /// Shared by the clownroaches and the two clown-nosed luberoach variants only.

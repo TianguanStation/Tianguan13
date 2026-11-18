@@ -41,5 +41,20 @@
 	"Added the ability to alt right-click the gas analyzer to get it to point to the nearest air alarm in the current area.": "添加了按住 Alt 右键点击气体分析仪，使其指向当前区域最近空气警报器的功能。",
 	"Added on mouseover hotkey hints to the multitool and the gas analyzer": "为多功能工具和气体分析仪添加了鼠标悬停时的快捷键提示",
 	"Pressure tanks now keep the correct amount of gas when deconstructed or merged into groups": "压力罐在拆解或合并成组时现在会保留正确的气体量",
-	"away maps should no longer have their decals colored by holiday effects.": "away 地图的贴花不再会被节日效果染色"
+	"away maps should no longer have their decals colored by holiday effects.": "away 地图的贴花不再会被节日效果染色",
+	"\"No Guns\" Restriction removed from heads of staff": "各部门主管已解除“禁止携枪”限制。",
+	"relocated Infinite dorms portal for tram and fixes the portal for interlink": "调整了电车站的无限宿舍传送门位置，并修复了中转站的传送门。",
+	"Growth chem recipe now accepts crocin": "生长药剂的配方现在接受藏花素。",
+	"Fix a bunch of portal panties runtimes": "修复传送内裤引起的多处运行时错误。",
+	"Anal climax message no longer shows the receiver cumming in their partner": "修正一条高潮消息中颠倒的互动双方。",
+	"Cardinal Station fixes.": "修复了红衣主教站的地图问题。",
+	"Character Morphing added to the Bodymorph Menu": "塑形菜单现可让自己或附近的人切换角色。",
+	"Fixed loadout hoodies from deleting headwear.": "修复穿戴配装连帽衫时头饰消失的问题。",
+	"28 new cockroach mobs": "新增 28 种蟑螂。",
+	"Plague Rift event": "新增「虫灾裂隙」事件。",
+	"Customizable Ventilation Clog event for eventmins. (Full parameter customization)": "事件管理员现在可以自定义通风管堵塞事件的所有参数。",
+	"Fix stowaway station trait runtime": "修复偷渡客空间站特性引发的运行时错误。",
+	"Fixes portal panties unable to let you cum with clothes on.": "修复穿着衣物时传送内裤无法正常触发高潮的问题。",
+	"Fix synths able to use insane quirk despite not being able to hallucinate": "无法产生幻觉的合成人现已无法选择精神错乱怪癖。",
+	"Ghost able to interact with infinidorm control panel": "修复幽灵可以操作无限宿舍控制面板的问题。"
 }

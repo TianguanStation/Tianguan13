@@ -1,3 +1,4 @@
+// ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
 // Admin-configured vent clogs. All additions are scoped to the custom subtype.
 #define CUSTOM_CLOG_PLUNGE_TIME (6 SECONDS)
 #define CUSTOM_CLOG_SLOWEST_TICKS 25
@@ -85,7 +86,7 @@
 /datum/round_event/vent_clog/custom/announce(fake)
 	if(QDELETED(vent))
 		return
-	priority_announce("Unknown biological obstruction detected in the ventilation network. Blockage is believed to be in the [get_area_name(vent)].", "Ventilation Alert")
+	priority_announce(LANG("datum.5eb2c73ffed1ae1c", list(get_area_name(vent))), LANG("datum.8d0d075c60beb0b4", null))
 
 /datum/round_event/vent_clog/custom/tick()
 	if(QDELETED(vent) || !get_turf(vent))
@@ -149,9 +150,9 @@
 		var/label = "[get_area_name(candidate)] - [candidate.id_tag || candidate.name] ([vent_turf.x], [vent_turf.y], [vent_turf.z]) #[length(vent_choices) + 1]"
 		vent_choices[label] = WEAKREF(candidate)
 	if(!length(vent_choices))
-		to_chat(admin, span_warning("Custom vent clog cancelled: no eligible station vents are available."))
+		to_chat(admin, span_warning(LANG("datum.8fc4a7b0a145c0b2", null)))
 		return ADMIN_CANCEL_EVENT
-	var/chosen_vent = tgui_input_list(admin, "Choose a vent. Search by area name, vent ID, or coordinates. Ineligiible vents are excluded.", event_control.name, sort_list(vent_choices))
+	var/chosen_vent = tgui_input_list(admin, LANG("datum.0d73a4eed986e080", null), event_control.name, sort_list(vent_choices))
 	if(isnull(chosen_vent))
 		return ADMIN_CANCEL_EVENT
 	configuration.vent_reference = vent_choices[chosen_vent]
@@ -160,19 +161,19 @@
 	var/minimum_ticks = CEILING(CUSTOM_CLOG_PLUNGE_TIME, SSevents.wait) / SSevents.wait
 	var/minimum_seconds = minimum_ticks * tick_seconds
 	var/maximum_seconds = CUSTOM_CLOG_SLOWEST_TICKS * tick_seconds
-	var/timing_help = "Plunging takes 6 seconds. Normal minor clogs spawn every [10 * tick_seconds]-[15 * tick_seconds] seconds; the slowest default is [maximum_seconds] seconds. Inputs round UP to the next event tick ([tick_seconds] seconds)."
-	var/minimum_interval = prompt_number(admin, "Minimum seconds between spawn attempts ([minimum_seconds]-[maximum_seconds]). [timing_help]", 10 * tick_seconds, maximum_seconds, minimum_seconds)
+	var/timing_help = LANG("datum.6e5cdffa3a365111", list(10 * tick_seconds, 15 * tick_seconds, maximum_seconds, tick_seconds))
+	var/minimum_interval = prompt_number(admin, LANG("datum.4c19e328e8ea61f0", list(minimum_seconds, maximum_seconds, timing_help)), 10 * tick_seconds, maximum_seconds, minimum_seconds)
 	if(isnull(minimum_interval))
 		return ADMIN_CANCEL_EVENT
 	configuration.minimum_interval = CEILING(minimum_interval SECONDS, SSevents.wait) / SSevents.wait
-	var/maximum_interval = prompt_number(admin, "Maximum seconds between spawn attempts ([configuration.minimum_interval * tick_seconds]-[maximum_seconds]). Use the same value as the minimum for a fixed interval. [timing_help]", max(15 * tick_seconds, configuration.minimum_interval * tick_seconds), maximum_seconds, configuration.minimum_interval * tick_seconds)
+	var/maximum_interval = prompt_number(admin, LANG("datum.9e2ad7f12922d65b", list(configuration.minimum_interval * tick_seconds, maximum_seconds, timing_help)), max(15 * tick_seconds, configuration.minimum_interval * tick_seconds), maximum_seconds, configuration.minimum_interval * tick_seconds)
 	if(isnull(maximum_interval))
 		return ADMIN_CANCEL_EVENT
 	configuration.maximum_interval = CEILING(maximum_interval SECONDS, SSevents.wait) / SSevents.wait
-	configuration.maximum_living = prompt_number(admin, "Maximum living mobs produced by this clog at once (1-[CUSTOM_CLOG_MAX_LIVING]).", 10, CUSTOM_CLOG_MAX_LIVING, 1)
+	configuration.maximum_living = prompt_number(admin, LANG("datum.ce1e999636e7eaf5", list(CUSTOM_CLOG_MAX_LIVING)), 10, CUSTOM_CLOG_MAX_LIVING, 1)
 	if(isnull(configuration.maximum_living))
 		return ADMIN_CANCEL_EVENT
-	var/duration_minutes = prompt_number(admin, "Maximum event duration in minutes (1-[CUSTOM_CLOG_MAX_MINUTES]).", 10, CUSTOM_CLOG_MAX_MINUTES, 1)
+	var/duration_minutes = prompt_number(admin, LANG("datum.ddf40649f6afcb91", list(CUSTOM_CLOG_MAX_MINUTES)), 10, CUSTOM_CLOG_MAX_MINUTES, 1)
 	if(isnull(duration_minutes))
 		return ADMIN_CANCEL_EVENT
 	configuration.duration = duration_minutes MINUTES
@@ -182,7 +183,7 @@
 		if(isnull(mob_type))
 			return ADMIN_CANCEL_EVENT
 		configuration.mob_types |= mob_type
-		var/add_another = tgui_alert(admin, "Selected [length(configuration.mob_types)] unique mob type(s). Add another?", event_control.name, list("Yes", "No", "Cancel"))
+		var/add_another = tgui_alert(admin, LANG("datum.cbb572204dc6d83c", list(length(configuration.mob_types))), event_control.name, list("Yes", "No", "Cancel"))
 		if(add_another == "No")
 			break
 		if(add_another != "Yes")
@@ -190,24 +191,24 @@
 
 	var/obj/machinery/atmospherics/components/unary/vent_pump/selected_vent = configuration.vent_reference.resolve()
 	if(!is_available_custom_clog_vent(selected_vent))
-		to_chat(admin, span_warning("Custom vent clog cancelled: the selected vent is no longer available."))
+		to_chat(admin, span_warning(LANG("datum.89036183a0b63d8d", null)))
 		return ADMIN_CANCEL_EVENT
 	var/turf/selected_turf = get_turf(selected_vent)
 	var/list/summary = list(
-		"Vent: [get_area_name(selected_vent)] - [selected_vent.id_tag || selected_vent.name] ([selected_turf.x], [selected_turf.y], [selected_turf.z])",
-		"Spawn interval: [configuration.minimum_interval * tick_seconds]-[configuration.maximum_interval * tick_seconds] seconds",
-		"Maximum living mobs: [configuration.maximum_living]",
-		"Maximum duration: [duration_minutes] minutes",
-		"One mob spawns immediately. Later spawns choose randomly from:",
+		LANG("datum.custom_clog_location", list(get_area_name(selected_vent), selected_vent.id_tag || selected_vent.name, selected_turf.x, selected_turf.y, selected_turf.z)),
+		LANG("datum.custom_clog_interval", list(configuration.minimum_interval * tick_seconds, configuration.maximum_interval * tick_seconds)),
+		LANG("datum.custom_clog_cap", list(configuration.maximum_living)),
+		LANG("datum.custom_clog_duration", list(duration_minutes)),
+		LANG("datum.9bd7d6ef9deffb5b", null),
 	)
 	for(var/mob/mob_type as anything in configuration.mob_types)
-		summary += "[initial(mob_type.name)] ([mob_type])"
-	var/confirmation = tgui_alert(admin, summary.Join("\n"), "Confirm [event_control.name]", list("Start", "Cancel"))
+		summary += "[lang_localize_display_name(initial(mob_type.name), "[mob_type]")] ([mob_type])"
+	var/confirmation = tgui_alert(admin, summary.Join("\n"), LANG("datum.24ea3fcaa3e8a6a4", list(event_control.name)), list("Start", "Cancel"))
 	if(confirmation != "Start")
 		return ADMIN_CANCEL_EVENT
 	// All input procs sleep. Recheck permission and the vent after the last one.
 	if(!admin.client || !check_rights(R_FUN, FALSE) || !is_available_custom_clog_vent(selected_vent))
-		to_chat(admin, span_warning("Custom vent clog cancelled: permission or vent availability changed."))
+		to_chat(admin, span_warning(LANG("datum.464d006da5b0966f", null)))
 		return ADMIN_CANCEL_EVENT
 	configurations[admin.ckey] = configuration
 
@@ -239,22 +240,22 @@
 /datum/event_admin_setup/vent_clog_custom/proc/prompt_mob(mob/admin)
 	var/list/mob_choices = list()
 	for(var/mob/mob_type as anything in get_standard_mob_types())
-		mob_choices["[initial(mob_type.name)] ([mob_type])"] = mob_type
+		mob_choices["[lang_localize_display_name(initial(mob_type.name), "[mob_type]")] ([mob_type])"] = mob_type
 	mob_choices = sort_list(mob_choices)
 	// Deliberately append the custom choice last, below the standard clog mobs.
-	mob_choices[CUSTOM_CLOG_ANY_MOB] = CUSTOM_CLOG_ANY_MOB
-	var/chosen = tgui_input_list(admin, "Choose a standard vent clog mob or search all mob types.", event_control.name, mob_choices)
+	mob_choices[LANG("datum.65653b03f099af7f", null)] = CUSTOM_CLOG_ANY_MOB
+	var/chosen = tgui_input_list(admin, LANG("datum.1d7e0ee2ee2d5f24", null), event_control.name, mob_choices)
 	if(isnull(chosen))
 		return null
 	var/mob_type = mob_choices[chosen]
 	if(mob_type == CUSTOM_CLOG_ANY_MOB)
 		var/list/all_mobs = get_all_mob_choices()
-		var/chosen_custom = tgui_input_list(admin, "Search by mob name or type path.", event_control.name, all_mobs)
+		var/chosen_custom = tgui_input_list(admin, LANG("datum.86f2ffe8f2b44218", null), event_control.name, all_mobs)
 		if(isnull(chosen_custom))
 			return null
 		mob_type = all_mobs[chosen_custom]
 	if(!ispath(mob_type, /mob) || (mob_type in get_abstract_types()))
-		to_chat(admin, span_warning("Custom vent clog cancelled: that is not a concrete mob type."))
+		to_chat(admin, span_warning(LANG("datum.6629c2b6ba25fb19", null)))
 		return null
 	return mob_type
 
@@ -263,7 +264,7 @@
 	if(isnull(all_mobs))
 		all_mobs = list()
 		for(var/mob/mob_type as anything in valid_subtypesof(/mob))
-			all_mobs["[initial(mob_type.name)] ([mob_type])"] = mob_type
+			all_mobs["[lang_localize_display_name(initial(mob_type.name), "[mob_type]")] ([mob_type])"] = mob_type
 		all_mobs = sort_list(all_mobs)
 	return all_mobs
 

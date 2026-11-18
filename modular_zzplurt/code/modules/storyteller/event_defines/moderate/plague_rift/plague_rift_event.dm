@@ -1,3 +1,4 @@
+// ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
 //Straight ctrl+c -> ctrl+v of the clown rift and code, but with vermin
 /datum/round_event_control/plague_rift
 	name = "Plague rift"
@@ -33,7 +34,7 @@
 	announce_to_ghosts(rift)
 
 /datum/round_event/plague_rift/announce(fake)
-	priority_announce("Enroachening energy impact detected at [impact_area.name].")
+	priority_announce(LANG("datum.3f572b043623c4da", list(impact_area.name)))
 
 /datum/round_event/plague_rift/proc/find_area()
 	var/static/list/allowed_areas
@@ -71,5 +72,3 @@
 
 /datum/event_admin_setup/set_location/plague_rift/apply_to_event(datum/round_event/plague_rift/event)
 	event.impact_turf = chosen_turf
-
-

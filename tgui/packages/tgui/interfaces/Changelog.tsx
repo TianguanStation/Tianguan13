@@ -1,6 +1,6 @@
 import dateformat from 'dateformat';
 import yaml from 'js-yaml';
-import { Component, Fragment, useState } from 'react'; // ZH EDIT CHANGE - I18N - ORIGINAL: import { Component, Fragment } from 'react';
+import { Component, Fragment, type PropsWithChildren, useState } from 'react'; // ZH EDIT CHANGE - I18N - ORIGINAL: import { Component, Fragment } from 'react';
 import {
   Box,
   Button,
@@ -15,7 +15,6 @@ import { classes } from 'tgui-core/react';
 
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
-import { sendAct as act } from '../events/act';
 import { Window } from '../layouts';
 
 const icons = {
@@ -76,24 +75,27 @@ const sourceDates = (data: ChangelogData, source?: ChangelogSource) =>
 // anything; an entry without a translation, or a table that fails to load, stays in English.
 type ChangelogTranslations = Record<string, string>;
 
-const fetchTranslations = async (
-  date: string,
-  attemptNumber = 1,
-): Promise<ChangelogTranslations | undefined> => {
-  const response = await fetch(
-    resolveAsset(`changelog-translation-${date}.json`),
-  ).catch(() => undefined);
-  if (response?.ok) {
-    return response.json();
+// The mapping can arrive after the action response, so resolve the name on each retry.
+export async function fetchChangelogAsset(name: string) {
+  for (let attempt = 1; attempt <= 6; attempt++) {
+    const response = await fetch(resolveAsset(name)).catch(() => undefined);
+    if (response?.ok) return response;
+    if (attempt < 6) {
+      await new Promise((resolve) => setTimeout(resolve, 50 + attempt * 50));
+    }
   }
-  if (attemptNumber >= 6) {
-    return undefined;
-  }
-  await new Promise((resolve) => setTimeout(resolve, 50 + attemptNumber * 50));
-  return fetchTranslations(date, attemptNumber + 1);
-};
+}
 
-const translateChangelog = (
+export async function fetchTranslations(
+  date: string,
+): Promise<ChangelogTranslations | undefined> {
+  const response = await fetchChangelogAsset(
+    `changelog-translation-${date}.json`,
+  );
+  return response?.json().catch(() => undefined);
+}
+
+export const translateChangelog = (
   changelog: ChangelogYaml,
   translations: ChangelogTranslations,
 ): ChangelogYaml => {
@@ -144,50 +146,33 @@ export class ChangelogContent extends Component<any, ChangelogState> {
     this.setState({ selectedIndex });
   }
 
-  getData = (date, attemptNumber = 1) => {
-    const maxAttempts = 6;
+  private request = 0;
 
-    if (attemptNumber > maxAttempts) {
-      return this.setData(`Failed to load data after ${maxAttempts} attempts`);
-    }
+  componentWillUnmount() {
+    this.request++;
+  }
 
-    // ZH EDIT CHANGE START - I18N - ORIGINAL: act('get_month', { date }); fetch(resolveAsset(`${date}.yml`))
+  getData = async (date: string) => {
+    const request = ++this.request;
     const localization = isLocalization(this.props.source);
+    const { act, data } = useBackend<ChangelogData>();
     act(localization ? 'get_localization_month' : 'get_month', { date });
-
-    fetch(
-      resolveAsset(localization ? `localization-${date}.yml` : `${date}.yml`),
-    ).then(async (changelogData) => {
-      // ZH EDIT CHANGE END
-      if (!changelogData.ok) {
-        if (attemptNumber >= maxAttempts) {
-          this.setData(`Failed to load after ${maxAttempts} attempts`);
-          return;
-        }
-
-        const timeout = 50 + attemptNumber * 50;
-        this.setData(`Loading changelog data${'.'.repeat(attemptNumber + 3)}`);
-        setTimeout(() => {
-          this.getData(date, attemptNumber + 1);
-        }, timeout);
-        return;
-      }
-
-      const result = await changelogData.text();
-      // ZH EDIT CHANGE START - I18N - ORIGINAL: this.setData(yaml.load(result, { schema: yaml.CORE_SCHEMA }) as ChangelogYaml);
-      let changelog = yaml.load(result, {
-        schema: yaml.CORE_SCHEMA,
-      }) as ChangelogYaml;
-      const { data } = useBackend<ChangelogData>();
-      if (!localization && data.translated_dates?.includes(date)) {
-        const translations = await fetchTranslations(date);
-        if (translations) {
-          changelog = translateChangelog(changelog, translations);
-        }
-      }
-      this.setData(changelog);
-      // ZH EDIT CHANGE END
-    });
+    const response = await fetchChangelogAsset(
+      localization ? `localization-${date}.yml` : `${date}.yml`,
+    );
+    if (request !== this.request) return;
+    if (!response) {
+      this.setData('Failed to load changelog data.');
+      return;
+    }
+    let changelog = yaml.load(await response.text(), {
+      schema: yaml.CORE_SCHEMA,
+    }) as ChangelogYaml;
+    if (!localization && data.translated_dates?.includes(date)) {
+      const translations = await fetchTranslations(date);
+      if (translations) changelog = translateChangelog(changelog, translations);
+    }
+    if (request === this.request) this.setData(changelog);
   };
 
   componentDidMount() {
@@ -467,31 +452,39 @@ export class ChangelogContent extends Component<any, ChangelogState> {
   }
 }
 
-export const Changelog = () => {
-  const [source, setSource] = useState<ChangelogSource>('upstream'); // ZH EDIT ADDITION - I18N
+export function ChangelogTabs({ children }: PropsWithChildren) {
+  const [source, setSource] = useState<ChangelogSource>('upstream');
   return (
-    <Window title="Changelog" width={675} height={650}>
-      <Window.Content scrollable>
-        {/* ZH EDIT ADDITION START - I18N */}
-        <Tabs>
-          <Tabs.Tab
-            selected={source === 'upstream'}
-            onClick={() => setSource('upstream')}
-          >
-            Changelog
-          </Tabs.Tab>
-          <Tabs.Tab
-            selected={source === 'localization'}
-            onClick={() => setSource('localization')}
-          >
-            Localization changes
-          </Tabs.Tab>
-        </Tabs>
-        {/* ZH EDIT ADDITION END */}
-        {/* key: remount on switch so the date list and loaded month reset */}
-        <ChangelogContent key={source} source={source} />
-        {/* ZH EDIT CHANGE - I18N - ORIGINAL: <ChangelogContent /> */}
-      </Window.Content>
-    </Window>
+    <>
+      <Tabs>
+        <Tabs.Tab
+          selected={source === 'upstream'}
+          onClick={() => setSource('upstream')}
+        >
+          Changelog
+        </Tabs.Tab>
+        <Tabs.Tab
+          selected={source === 'localization'}
+          onClick={() => setSource('localization')}
+        >
+          Localization changes
+        </Tabs.Tab>
+      </Tabs>
+      {source === 'localization' ? (
+        <ChangelogContent key="localization" source="localization" />
+      ) : (
+        children
+      )}
+    </>
   );
-};
+}
+
+export const Changelog = () => (
+  <Window title="Changelog" width={675} height={650}>
+    <Window.Content scrollable>
+      <ChangelogTabs>
+        <ChangelogContent source="upstream" />
+      </ChangelogTabs>
+    </Window.Content>
+  </Window>
+);

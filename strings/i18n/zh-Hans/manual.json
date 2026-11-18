@@ -73,5 +73,9 @@
 	"datum.allergy_medical_record": "患者的免疫系统对{0}反应剧烈",
 	"manual.station_report_title": "中央指挥部状态摘要",
 	"manual.station_report_orders": "{0}的特别指令：",
-	"experiment.publish_paper": "你必须使用 NT Frontier 应用发表一篇关于{0}的论文。"
+	"experiment.publish_paper": "你必须使用 NT Frontier 应用发表一篇关于{0}的论文。",
+	"datum.custom_clog_cap": "存活数量上限：{0}",
+	"datum.custom_clog_duration": "最长持续时间：{0} 分钟",
+	"datum.custom_clog_interval": "生成间隔：{0}–{1} 秒",
+	"datum.custom_clog_location": "通风口：{0} - {1}（{2}, {3}, {4}）"
 }
