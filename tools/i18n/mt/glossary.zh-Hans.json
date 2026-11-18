@@ -1777,10 +1777,6 @@
   "N-URSEI": "N-URSEI",
   "N.E.R.D.": "N.E.R.D.",
   "N2O": "N2O",
-  "NANOTRASEN": {
-    "zh": "纳米传讯",
-    "note": "大小写/连字符变体已并入本条（原有 3 条：NANOTRASEN, Nano-Trasen, Nanotrasen）"
-  },
   "NAV Monarch": "NAV Monarch",
   "NES": "NES",
   "NFC": "NFC",
@@ -1847,6 +1843,10 @@
   "NanoOS": "NanoOS",
   "NanoSoft-TM": "NanoSoft-TM",
   "NanoTraSoft": "NanoTraSoft",
+  "Nanotrasen": {
+    "zh": "纳米传讯",
+    "sourceAliases": ["Nano-Trasen", "Nano Trasen"]
+  },
   "Nanotrasen Corporation": "纳米传讯公司",
   "Nanotrasen Incorporated": "纳米传讯公司",
   "Nanotrasen Naval Wargames Commission": "纳米传讯海军战争游戏委员会",
@@ -1854,6 +1854,7 @@
   "Nanotrasen Premium": "纳米传讯高级版",
   "Nanotrasen+": "纳米传讯+",
   "Nanotrasen-Standardized Queen Bee": "纳米传讯标准化蜂后",
+  "Nanotrasen.net": "Nanotrasen.net",
   "Nar'Sian": "Nar'Sian",
   "Nar'Sie": "纳尔茜",
   "Nar'Sien": "Nar'Sien",

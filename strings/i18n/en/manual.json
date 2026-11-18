@@ -72,5 +72,6 @@
 	"datum.allergy_quirk_name": "Extreme {0} Allergies",
 	"datum.allergy_medical_record": "Patient's immune system responds violently to {0}",
 	"manual.station_report_title": "Central Command Status Summary",
-	"manual.station_report_orders": "Special Orders for {0}:"
+	"manual.station_report_orders": "Special Orders for {0}:",
+	"experiment.publish_paper": "You must publish a paper on {0} using the NT Frontier app"
 }

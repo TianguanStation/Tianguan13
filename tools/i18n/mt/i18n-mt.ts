@@ -194,6 +194,8 @@ type TermReport = Record<string, Record<string, TermReportEntry>>;
  */
 type GlossarySenseSpec = {
   zh: string;
+  /** Alternative source spellings of the same term. */
+  sourceAliases?: string[];
   alts?: string[];
   note?: string;
   /**
@@ -307,7 +309,7 @@ const CASE_SENSITIVE_TERMS = new Set([
   'straight',
 ]);
 
-function sourceTermPattern(term: string): RegExp {
+function sourceTermPattern(term: string, aliases: string[]): RegExp {
   const prefix = /^[A-Za-z0-9]/.test(term) ? '(^|[^A-Za-z0-9])' : '';
   const suffix = /[A-Za-z0-9]$/.test(term) ? '(?=$|[^A-Za-z0-9])' : '';
   // **大小写不敏感**——DM 里同一个专名有两套写法：datum 显示名是首字母大写的
@@ -322,7 +324,8 @@ function sourceTermPattern(term: string): RegExp {
     /[a-z]/.test(term) && !CASE_SENSITIVE_TERMS.has(term.toLowerCase())
       ? 'iu'
       : 'u';
-  return new RegExp(`${prefix}${escapeRegExp(term)}${suffix}`, flags);
+  const spellings = [term, ...aliases].map(escapeRegExp).join('|');
+  return new RegExp(`${prefix}(?:${spellings})${suffix}`, flags);
 }
 
 /**
@@ -386,7 +389,10 @@ function glossaryTerms(): GlossaryTerm[] {
     .map(([term, v]) => ({
       term,
       senses: glossarySenses(v),
-      sourcePattern: sourceTermPattern(term),
+      sourcePattern: sourceTermPattern(
+        term,
+        typeof v === 'string' ? [] : [v].flat().flatMap((sense) => sense.sourceAliases ?? []),
+      ),
     }));
 }
 
@@ -1909,7 +1915,9 @@ function reusableTranslatedBatch(
     idToKeys,
     batch,
   );
-  if (!catalog) {
+  if (!catalog || Object.entries(catalog).some(([key, value]) =>
+    !canReuseTranslation(batch[key], value, key),
+  )) {
     return null;
   }
 
@@ -1926,6 +1934,12 @@ function reusableTranslatedBatch(
  * 0 = 关闭（回到纯建议模式）。
  */
 const TERM_ENFORCE_ROUNDS = Math.max(0, envInt('I18N_TERM_ROUNDS', 2));
+
+// The translation memory and completed batch files can predate the current glossary.
+function canReuseTranslation(source: string, translated: string, key: string): boolean {
+  return TERM_ENFORCE_ROUNDS === 0 ||
+    !termMismatches(source, translated, key).some((mismatch) => !mismatch.keepEnglish);
+}
 
 /** 本批里译文违反术语表的 key。 */
 function batchTermViolations(batch: Catalog, catalog: Catalog): string[] {
@@ -2183,7 +2197,7 @@ async function cmdTranslate(
       const remaining: string[] = [];
       for (const key of keys) {
         const reused = translationMemory.get(pending[key]);
-        if (reused !== undefined) {
+        if (reused !== undefined && canReuseTranslation(pending[key], reused, key)) {
           merged[key] = reused;
           prefilled++;
         } else {

@@ -9,6 +9,7 @@ import {
   resetCatalogOverlay,
   translateCurrent,
 } from './catalog';
+import { displayTextOf } from './localize';
 import { createSearch, searchableText } from './search';
 import zhHans from './zh-Hans.json';
 
@@ -28,6 +29,16 @@ afterEach(() => {
 });
 
 describe('searchableText', () => {
+  test.each([
+    ['Nanotrasen Pay System', '纳米传讯支付系统'],
+    ['Nanotrasen Science Hub', '纳米传讯科学中心'],
+    ['Nanotrasen Micro Arcade: Minesweeper', '纳米传讯微型街机：扫雷'],
+    ['Folded Nanotrasen Flag', '折叠的纳米传讯旗帜'],
+  ])('localizes and finds %s without a server overlay', (source, expected) => {
+    expect(displayTextOf(source)).toBe(expected);
+    expect(createSearch('纳米传讯', (name: string) => name)(source)).toBe(true);
+  });
+
   test('英文原值照常能搜', () => {
     expect(searchableText(RUNTIME).includes('bottled')).toBe(true);
   });

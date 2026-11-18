@@ -48,9 +48,12 @@
 	time_started = world.time
 	poll_key = "[question]_[role ? role : "0"]"
 	if(custom_response_messages.len)
-		response_messages = custom_response_messages
+		response_messages = custom_response_messages.Copy()
+	// Resolve the complete catalog template before substituting the role.
+	var/display_role = lang_reverse_text(role)
 	for(var/individual_message in response_messages)
-		response_messages[individual_message] = replacetext(response_messages[individual_message], "%ROLE%", role)
+		var/template = lang_reverse_text(response_messages[individual_message])
+		response_messages[individual_message] = replacetext(template, "%ROLE%", display_role)
 	return ..()
 
 /datum/candidate_poll/Destroy()

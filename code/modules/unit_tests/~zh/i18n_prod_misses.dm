@@ -20,6 +20,29 @@
 	GLOB.i18n_server_locale = LANGUAGE_LOCALE_ZH_HANS
 	var/locale = LANGUAGE_LOCALE_ZH_HANS
 
+	// Production round 1332: check the real type table used by examine and spawn search.
+	var/obj/item/magazine = allocate(/obj/item/ammo_box/magazine/security/rocket)
+	var/localized_magazine = magazine.lang_localize_desc_for_display(magazine.desc)
+	TEST_ASSERT(findtext(localized_magazine, "纳米传讯") && !findtext(localized_magazine, "magazine"), "The full inherited description should be localized: [localized_magazine]")
+	TEST_ASSERT(findtext(localized_magazine, "弹射"), "The child magazine must keep its own description")
+	TEST_ASSERT(findtext(magazine.desc, "Nanotrasen"), "Displaying a description must preserve the original")
+	var/cheer_desc = lang_type_display_text(/obj/item/clothing/under/costume/ba_cheerleader, lang_type_desc_keys())
+	TEST_ASSERT(findtext(cheer_desc, "纳米传讯") && findtext(cheer_desc, "フレーフレー"), "The uniform should keep its printed Japanese slogan")
+	TEST_ASSERT_EQUAL(lang_reverse_phrase_tgui("Destructive Plant Biomatter Scan"), "破坏性植物生物质扫描", "Experiment tag must resolve through the TGUI payload path")
+	var/datum/experiment/ordnance/gaseous/plasma/experiment = new
+	var/list/progress = experiment.check_progress()
+	TEST_ASSERT_EQUAL(progress[1][2], "你必须使用 NT Frontier 应用发表一篇关于等离子体气体弹壳的论文。", "Experiment progress must include the translated experiment name")
+	qdel(experiment)
+	var/list/disposal_pipes = GLOB.disposal_pipe_recipes["Disposal Pipes"]
+	var/datum/pipe_info/disposal/pipe = disposal_pipes[1]
+	TEST_ASSERT_EQUAL(pipe.display_name(bent = TRUE), "弯管", "Pipe dispenser must localize the bent variant")
+	TEST_ASSERT_EQUAL(pipe.name, "Pipe", "Recipe identity must survive display lookup")
+
+	var/datum/candidate_poll/poll = new("Borer", "Poll question", 30 SECONDS)
+	TEST_ASSERT_EQUAL(poll.response_messages[POLL_RESPONSE_SIGNUP], "你已报名担任皮质钻虫！稍后将随机选出一名候选人。", "Localize the response before substituting the role")
+	TEST_ASSERT_EQUAL(poll.role, "Borer", "Ghost role preference keys must remain canonical")
+	qdel(poll)
+
 	// ① 运行期名字带 \improper 标记字节，只能落到归一表；两条同英文来源的译文只差空白。
 	var/mod_name = "\improper MOD control unit"
 	var/localized_mod = lang_reverse_text(mod_name)

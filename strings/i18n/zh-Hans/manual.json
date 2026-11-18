@@ -72,5 +72,6 @@
 	"datum.allergy_quirk_name": "极端{0}过敏",
 	"datum.allergy_medical_record": "患者的免疫系统对{0}反应剧烈",
 	"manual.station_report_title": "中央指挥部状态摘要",
-	"manual.station_report_orders": "{0}的特别指令："
+	"manual.station_report_orders": "{0}的特别指令：",
+	"experiment.publish_paper": "你必须使用 NT Frontier 应用发表一篇关于{0}的论文。"
 }

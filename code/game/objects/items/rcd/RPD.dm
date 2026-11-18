@@ -187,7 +187,7 @@
 			var/datum/pipe_info/info = subcategory_recipes[i]
 
 			available_recipe += list(list(
-				"pipe_name" = lang_localize_display_name(info.name), // ZH EDIT - actions use pipe_index
+				"pipe_name" = info.display_name(), // ZH EDIT - actions use pipe_index
 				"pipe_index" = i,
 				"previews" = info.get_preview(p_dir, info == recipe)
 			))
