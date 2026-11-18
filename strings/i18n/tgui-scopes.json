@@ -22279,6 +22279,9 @@
   "Notify for new arrivals": [
     "tgui:legacy_toggles"
   ],
+  "NovaSector localization history": [
+    "tgui:Changelog"
+  ],
   "NtNet": [
     "tgui:NtosNetMonitor"
   ],

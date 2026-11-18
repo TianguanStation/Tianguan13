@@ -294,6 +294,11 @@ export class ChangelogContent extends Component<any, ChangelogState> {
     const localizationHeader = (
       <Section>
         <h1>Localization changes</h1>
+        <p>
+          <a href="https://github.com/sernseek/NovaSector/tree/master/html/changelogs/localization/archive">
+            NovaSector localization history
+          </a>
+        </p>
         {dateDropdown}
       </Section>
     );
