@@ -33,6 +33,13 @@ it('loads the verb window, its localized server entries and its separate localiz
     fireEvent.click(screen.getByText('Localization changes'));
     expect(await screen.findByText('汉化修复记录')).toBeDefined();
     expect(screen.queryByText('已翻译的更新')).toBeNull();
+    expect(
+      screen
+        .getByRole('link', { name: 'NovaSector localization history' })
+        .getAttribute('href'),
+    ).toBe(
+      'https://github.com/sernseek/NovaSector/tree/master/html/changelogs/localization/archive',
+    );
   } finally {
     request.mockRestore();
     store.set(gameDataAtom, previousData);
