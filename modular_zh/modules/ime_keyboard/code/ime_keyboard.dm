@@ -30,9 +30,48 @@
 	/// 页面里注入的那份宏命令（JSON），用来判断键位变了要不要重载页面。
 	var/ime_capture_commands
 
+	/// Native macros are erased and recreated when DreamSeeker changes macro sets.
+	var/ime_release_macros_installed = FALSE
+
+/client/proc/ime_capture_release_macros(enable)
+	if(ime_release_macros_installed == enable)
+		return
+	var/static/list/keys
+	if(!keys)
+		keys = list("North", "South", "East", "West", "Northwest", "Northeast", "Southwest", "Southeast",
+			"Insert", "Delete", "Space", "Escape", "Tab", "Return", "Back", "Shift", "Ctrl", "Alt",
+			"Add", "Subtract", "Multiply", "Divide", "Decimal")
+		var/characters = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`-=[]\;',./"
+		for(var/i in 1 to length(characters))
+			keys += copytext(characters, i, i + 1)
+		for(var/number in 0 to 9)
+			keys += "Numpad[number]"
+		for(var/number in 1 to 24)
+			keys += "F[number]"
+	for(var/key in keys)
+		var/id = "ime_release_[md5(key)]"
+		if(enable)
+			winset(src, id, list("parent" = "default", "name" = "[key]+UP",
+				"command" = "KeyUp [json_encode(key)] \[\[map.mouse-pos\]\] \[\[map.size\]\]"))
+		else
+			winset(src, id, "parent=")
+	ime_release_macros_installed = enable
+
+/client/erase_all_macros()
+	. = ..()
+	ime_release_macros_installed = FALSE
+
 /client/proc/ime_capture_install(take_focus = TRUE)
+	ime_capture_release_macros(TRUE)
+	var/list/macro_commands = ime_capture_macro_commands()
+	var/commands = json_encode(macro_commands)
+	if(ime_capture_active)
+		if(commands == ime_capture_commands)
+			return
+		reset_held_keys()
+		take_focus = FALSE
 	winset(src, IME_CAPTURE_ID, "parent=mapwindow;type=browser;pos=0,0;size=1x1;anchor1=0,0;is-visible=true")
-	ime_capture_commands = json_encode(ime_capture_macro_commands())
+	ime_capture_commands = commands
 	var/page = file2text('modular_zh/modules/ime_keyboard/html/ime_capture.html')
 	page = replacetext(page, "/*IME_MACRO_COMMANDS*/{}", ime_capture_commands)
 	src << browse(page, "window=[IME_CAPTURE_ID]")
@@ -43,7 +82,9 @@
 /client/proc/ime_capture_remove()
 	if(!ime_capture_active)
 		return
+	reset_held_keys()
 	ime_capture_active = FALSE
+	ime_capture_release_macros(FALSE)
 	ime_capture_commands = null
 	// 运行期创建的控件把 parent 清空即销毁；焦点还给地图，回到原生宏。
 	winset(src, IME_CAPTURE_ID, "parent=")
@@ -53,7 +94,7 @@
 /// 页面里注入的宏命令要跟着换，否则管理员的 asay 键在捕获器里没有命令可执行。
 /client/update_special_keybinds(datum/preferences/direct_prefs)
 	. = ..()
-	if(ime_capture_active && json_encode(ime_capture_macro_commands()) != ime_capture_commands)
+	if(ime_capture_active)
 		ime_capture_install(take_focus = FALSE)
 
 /// 捕获器拿着焦点时 BYOND 的宏一个都不触发，所以除了 `Any`（由页面转发成 KeyDown/KeyUp）之外，

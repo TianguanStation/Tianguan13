@@ -252,7 +252,13 @@ export function TguiSay() {
   function handleKeyDown(
     event: React.KeyboardEvent<HTMLTextAreaElement>,
   ): void {
-    if (event.getModifierState('AltGraph')) return;
+    if (
+      event.nativeEvent.isComposing ||
+      event.nativeEvent.keyCode === 229 ||
+      event.getModifierState('AltGraph')
+    ) {
+      return;
+    }
 
     switch (event.key) {
       case KEY.Up:
@@ -480,6 +486,7 @@ export function TguiSay() {
             value.length > LineLength.Large && 'textarea-large',
           ])}
           maxLength={maxLength}
+          onFocus={() => Byond.command('Reset-Held-Keys')}
           onInput={handleInput}
           onKeyDown={handleKeyDown}
           ref={innerRef}

@@ -315,6 +315,7 @@ window "inputwindow"
 		is-pane = true
 	elem "input"
 		type = INPUT
+		on-focus = "Reset-Held-Keys"
 		pos = 0,0
 		size = 480x25
 		anchor1 = 0,0
