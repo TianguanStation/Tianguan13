@@ -5,7 +5,13 @@ import {
   isTypepathArg,
 } from 'common/verb-constants';
 import { useAtomValue } from 'jotai';
-import { type KeyboardEvent, useEffect, useRef, useState } from 'react';
+import {
+  type KeyboardEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import {
   adminTargetsAtom,
@@ -371,6 +377,21 @@ export function CommandBar() {
 
   const heldKeysRef = useRef<Set<string>>(new Set());
 
+  const releaseHeldArrows = useCallback(() => {
+    for (const key of heldKeysRef.current) {
+      Byond.command(`KeyUp "${key}" 0 0 0 0`);
+    }
+    heldKeysRef.current.clear();
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('blur', releaseHeldArrows);
+    return () => {
+      window.removeEventListener('blur', releaseHeldArrows);
+      releaseHeldArrows();
+    };
+  }, [releaseHeldArrows]);
+
   const forwardKeyDown = (key: string) => {
     if (heldKeysRef.current.has(key)) return;
     heldKeysRef.current.add(key);
@@ -394,6 +415,7 @@ export function CommandBar() {
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.nativeEvent.isComposing || e.nativeEvent.keyCode === 229) return;
     switch (e.key) {
       case 'ArrowDown':
         if (e.ctrlKey) {
@@ -653,6 +675,8 @@ export function CommandBar() {
           }}
           onKeyDown={handleKeyDown}
           onKeyUp={handleKeyUp}
+          onFocus={() => Byond.command('Reset-Held-Keys')}
+          onBlur={releaseHeldArrows}
         />
       </div>
       <button

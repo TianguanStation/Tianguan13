@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(escape_menus)
 	generate_escape_menu_suicide_icon()
 	escape_menu = new(src)
 
-GAME_VERB_HIDDEN(/client, reset_held_keys_verb, "重置按住按键")
+GAME_VERB_NATIVE_INSTANT(/client, reset_held_keys_verb, "Reset Held Keys", null)
 	reset_held_keys()
 
 /datum/escape_menu

@@ -72,8 +72,10 @@ GAME_VERB_NATIVE_INSTANT(/client, keyDown, "keyDown", null, _key as text, mousep
 
 	var/keycount = 0
 	for(var/kb_name in prefs.key_bindings_by_key[full_key])
-		keycount++
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
+		if(ime_capture_active && movement && full_key == _key && istype(kb, /datum/keybinding/client/communication))
+			continue
+		keycount++
 		if(kb.can_use(src) && kb.down(src, click_data[1], click_data[2], click_data[3]) && keycount >= MAX_COMMANDS_PER_KEY)
 			break
 
