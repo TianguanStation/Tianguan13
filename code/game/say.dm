@@ -119,7 +119,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 /atom/movable/proc/do_tts_message(message, language, message_mods, list/tts_filter, list/hearers, list/eavesdroppers) // ZH EDIT CHANGE - TTS_EXPRESSION - Added eavesdroppers.
 	set waitfor = FALSE
 
-	if(!SStts.tts_enabled || !voice || HAS_TRAIT(src, TRAIT_SIGN_LANG) || HAS_TRAIT(src, TRAIT_UNKNOWN_VOICE) || message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])
+	if(!SStts.tts_enabled || !base_tts_voice() || HAS_TRAIT(src, TRAIT_SIGN_LANG) || HAS_TRAIT(src, TRAIT_UNKNOWN_VOICE) || message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])
 		return
 
 	var/list/filter = list()
@@ -134,7 +134,11 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(message), language, get_tts_voice(filter, special_filter), filter.Join(","), hearers, message_range = 7, pitch = pitch, special_filters = special_filter.Join("|"), blip_base = blip_base, blip_number = blip_number, identifier = message_mods[MODE_TTS_IDENTIFIER], style = expression[1], sound = expression[2], instruction = tts_compose_instruction(tts_instruction, message_mods), rate = tts_rate, eavesdroppers = eavesdroppers) // ZH EDIT CHANGE - TTS_EXPRESSION - ORIGINAL: ..., identifier = message_mods[MODE_TTS_IDENTIFIER])
 
 /atom/movable/proc/get_tts_voice(list/filter, list/special_filter)
-	. = voice
+	return base_tts_voice()
+
+/// Voice before speaker-specific effects such as masks and silicon filters.
+/atom/movable/proc/base_tts_voice()
+	return voice
 
 /atom/movable/proc/send_speech(message, range = 7, obj/source = src, bubble_type, list/spans, datum/language/message_language, list/message_mods = list(), forced = FALSE, tts_message, list/tts_filter)
 	var/list/listeners = get_hearers_in_view(range, source)
@@ -152,7 +156,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		filter += tts_filter.Join(",")
 
 	var/shell_scrubbed_input = tts_speech_filter(html_decode(tts_message_to_use))
-	var/identifier = "[sha1(voice + filter.Join(",") + num2text(pitch) + shell_scrubbed_input + blip_base + num2text(blip_number))].[world.time]"
+	var/identifier = "[sha1(base_tts_voice() + filter.Join(",") + num2text(pitch) + shell_scrubbed_input + blip_base + num2text(blip_number))].[world.time]"
 	message_mods[MODE_TTS_IDENTIFIER] = identifier
 	for(var/atom/movable/hearing_movable as anything in listeners)
 		if(!hearing_movable)//theoretically this should use as anything because it shouldnt be able to get nulls but there are reports that it does.

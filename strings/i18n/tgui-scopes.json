@@ -32910,6 +32910,9 @@
   "Station Time : {0}": [
     "tgui:TimeClock"
   ],
+  "Station announcer and device voices": [
+    "tgui:index"
+  ],
   "Statistics": [
     "tgui:Virus"
   ],

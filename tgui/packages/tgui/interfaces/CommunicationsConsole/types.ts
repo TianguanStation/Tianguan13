@@ -57,6 +57,7 @@ export type CommsConsoleData = {
   canRequestSafeCode: BooleanLike;
   canSendToSectors: BooleanLike;
   canSetAlertLevel: string;
+  canSetStationVoices: BooleanLike;
   canToggleEmergencyAccess: BooleanLike;
   canToggleEngineeringOverride: BooleanLike; // BUBBER EDIT - Engineering override
   emagged: BooleanLike;

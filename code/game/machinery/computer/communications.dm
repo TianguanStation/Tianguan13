@@ -175,6 +175,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	. = TRUE
 
 	switch (action)
+		if ("stationVoices")
+			if(can_configure_station_voices(user))
+				INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, configure_station_voices), user, src)
 		if ("answerMessage")
 			if (!authenticated(user))
 				return
@@ -566,6 +569,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 	var/has_connection = has_communication()
 	data["hasConnection"] = has_connection
+	data["canSetStationVoices"] = can_configure_station_voices(user)
 
 	if(!SSjob.assigned_captain && !SSjob.safe_code_requested && SSid_access.spare_id_safe_code && has_connection)
 		data["canRequestSafeCode"] = TRUE

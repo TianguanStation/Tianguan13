@@ -30,3 +30,10 @@
 #define MODE_TTS_RADIO_HUSH "tts_radio_hush"
 /// Hear() flag: the listener only overheard a whisper from just outside its range, and sees the text starred.
 #define HEAR_EAVESDROPPED (1<<2)
+
+/// Round-local station TTS settings shared by emitters and the CentCom console.
+#define STATION_VOICE_ANNOUNCEMENTS "announcements"
+#define STATION_VOICE_COMPUTERS "computers"
+#define STATION_VOICE_VENDORS "vendors"
+#define STATION_VOICE_TRANSIT "transit"
+#define STATION_VOICE_DEVICE "device"
