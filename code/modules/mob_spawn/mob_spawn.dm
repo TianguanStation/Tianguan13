@@ -122,16 +122,20 @@
 	//not using an old name doesn't update records- but ghost roles don't have records so who cares
 	spawned_mob.fully_replace_character_name(null, chosen_name)
 
-/obj/effect/mob_spawn/proc/equip(mob/living/spawned_mob)
+/obj/effect/mob_spawn/proc/equip(mob/living/spawned_mob, use_loadout = FALSE)
 	if(outfit)
 		var/mob/living/carbon/human/spawned_human = spawned_mob
+		var/datum/outfit/spawn_outfit = outfit
 		if(outfit_override)
-			outfit = new outfit //create it now to apply vars
+			spawn_outfit = new outfit
 			for(var/outfit_var in outfit_override)
 				if(!ispath(outfit_override[outfit_var]) && !isnull(outfit_override[outfit_var]))
 					CRASH("outfit_override var on [mob_name] spawner has incorrect values! it must be an assoc list with outfit \"var\" = path | null")
-				outfit.vars[outfit_var] = outfit_override[outfit_var]
-		spawned_human.equipOutfit(outfit)
+				spawn_outfit.vars[outfit_var] = outfit_override[outfit_var]
+		if(use_loadout)
+			spawned_human.equip_outfit_and_loadout(spawn_outfit, spawned_human.client?.prefs)
+		else
+			spawned_human.equipOutfit(spawn_outfit)
 
 ///these mob spawn subtypes do not trigger until attacked by a ghost.
 /obj/effect/mob_spawn/ghost_role
