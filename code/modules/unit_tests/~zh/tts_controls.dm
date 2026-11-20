@@ -26,15 +26,24 @@
 		TEST_ASSERT_NOTNULL(cue, "Every TTS announcement cue should resolve to a sound.")
 		distinct_cues |= "[cue]"
 	TEST_ASSERT_EQUAL(length(distinct_cues), length(announcement_cues), "Each TTS announcement cue should be a distinct sound.")
-	// Only the announcer's prerecorded English lines may be swapped out. An admin who hand-picks a
-	// file in the command report panel, or a security level's own alarm tone, must be left alone -
-	// otherwise every announcement collapses onto the same cue no matter what was chosen.
-	TEST_ASSERT(tts_sound_is_announcer_speech(null), "A missing sound falls back to an announcer line and should be replaceable.")
-	TEST_ASSERT(tts_sound_is_announcer_speech(SSstation.announcer.get_rand_alert_sound()), "Announcer alert lines should be recognized as speech.")
-	TEST_ASSERT(tts_sound_is_announcer_speech(SSstation.announcer.get_rand_report_sound()), "Announcer command report lines should be recognized as speech.")
-	TEST_ASSERT(tts_sound_is_announcer_speech(ANNOUNCER_METEORS), "An ANNOUNCER_* key should be recognized as speech.")
-	TEST_ASSERT(!tts_sound_is_announcer_speech('sound/machines/chime.ogg'), "A hand-picked sound file must survive TTS announcements.")
-	TEST_ASSERT(!tts_sound_is_announcer_speech('sound/announcer/notice/notice2.ogg'), "Security level alarm tones are not spoken lines and must survive TTS announcements.")
+	// The same announcement can resolve to a recording, a fallback line or a plain siren depending on the listener.
+	var/datum/centcom_announcer/pack = SSstation.announcers[/datum/centcom_announcer/default/lait]
+	var/datum/centcom_announcer/medbot = SSstation.announcers[/datum/centcom_announcer/medbot]
+	var/cue = tts_priority_announcement_cue()
+	for(var/key in list(null, ANNOUNCER_COMMAND_REPORT, ANNOUNCER_RANDOM_ALERT, ANNOUNCER_RANDOM_WELCOME, ANNOUNCER_METEORS))
+		TEST_ASSERT_EQUAL(pack.announcement_sound(key, cue), cue, "Spoken announcer key [key] must yield the nonverbal TTS cue.")
+	TEST_ASSERT_EQUAL(medbot.announcement_sound(ANNOUNCER_CAPTAIN, cue), cue, "A missing event in the chosen pack must replace its fallback voice.")
+	var/report = pack.get_rand_report_sound()
+	TEST_ASSERT_EQUAL(pack.announcement_sound(ANNOUNCER_COMMAND_REPORT), report, "With TTS off the original report must play.")
+	TEST_ASSERT_EQUAL(medbot.announcement_sound(report, cue), cue, "A raw recording from a different pack must not speak over TTS.")
+	TEST_ASSERT_EQUAL(pack.announcement_sound(list(report), cue), cue, "An event may supply a list of recordings directly.")
+	TEST_ASSERT_EQUAL(pack.announcement_sound(sound(report), cue), cue, "A wrapped announcer recording must not speak over TTS.")
+	var/custom_line = 'sound/effects/families_police.ogg'
+	TEST_ASSERT_EQUAL(pack.announcement_sound(custom_line, cue), cue, "Direct event voice recordings must not speak over TTS.")
+	TEST_ASSERT_EQUAL(pack.announcement_sound(custom_line), custom_line, "With TTS off direct event recordings must play.")
+	for(var/effect in list('sound/machines/chime.ogg', 'sound/announcer/notice/notice2.ogg', 'modular_zubbers/sound/alerts/green.ogg'))
+		TEST_ASSERT_EQUAL(pack.announcement_sound(effect, cue), effect, "Unvoiced effect [effect] should survive TTS.")
+	TEST_ASSERT_EQUAL(pack.announcement_sound(ANNOUNCER_KLAXON, cue), pack.event_sounds[ANNOUNCER_KLAXON], "The event klaxon should retain its siren.")
 	// play_tts() gates speech-vs-blips on language_holder.has_language(), whose lists are keyed by
 	// TYPE PATH. Handing it a /datum/language instance matches nothing, so every announcement
 	// listener silently fell back to blips. Guard both directions.
