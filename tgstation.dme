@@ -11322,6 +11322,7 @@
 #include "modular_tianguan\modules\tg_lobby\code\lobby_card.dm"
 #include "modular_tianguan\modules\crew_species\golemweak.dm"
 #include "modular_tianguan\modules\crew_species\rogue.dm"
+#include "modular_tianguan\modules\crew_species\trampling.dm"
 #include "modular_tianguan\modules\lunchbox\items.dm"
 #include "modular_tianguan\modules\lunchbox\lunchbox.dm"
 // END_INCLUDE

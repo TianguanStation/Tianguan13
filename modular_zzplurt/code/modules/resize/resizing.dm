@@ -66,6 +66,8 @@
 			return TRUE
 
 		if(COMPARE_SIZES(user, target) >= 2)
+			if(user.tianguan_cannot_trample(target))
+				return FALSE
 			log_combat(user, target, "stepped on", addition="[resolve_intent_name(user)] trample")
 			if((user.mobility_flags & MOBILITY_MOVE) && !user.buckled)
 				switch(resolve_intent_name(user))

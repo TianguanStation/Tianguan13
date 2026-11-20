@@ -48,6 +48,10 @@
 		return
 
 	var/mob/living/parent_as_living = parent
+	if(isliving(crossing_movable))
+		var/mob/living/walker = crossing_movable
+		if(walker.tianguan_cannot_trample(parent_as_living))
+			return
 	if((squash_flags & SQUASHED_DONT_SQUASH_IN_CONTENTS) && !isturf(parent_as_living.loc))
 		return
 
