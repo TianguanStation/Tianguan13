@@ -2,6 +2,10 @@ import { Box, Button, Section } from 'tgui-core/components';
 
 import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
+import {
+  StationVoiceButton,
+  StationVoiceControls,
+} from '../StationVoiceConsole';
 import { PageBuyingShuttle } from './BuyingShuttle';
 import { PageChangingStatus } from './ChangingStatus';
 import { PageMain } from './Main';
@@ -22,6 +26,18 @@ export function CommunicationsConsole(props) {
     safeCodeDeliveryArea,
     safeCodeDeliveryWait,
   } = data;
+
+  if (data.voiceEditor && data.canSetStationVoices) {
+    return (
+      <Window width={400} height={650}>
+        <Window.Content scrollable>
+          <StationVoiceControls
+            onBack={() => act('stationVoices', { operation: 'back' })}
+          />
+        </Window.Content>
+      </Window>
+    );
+  }
 
   let currentPage;
   switch (page) {
@@ -58,14 +74,9 @@ export function CommunicationsConsole(props) {
                 ? `Log Out${authorizeName ? ` (${authorizeName})` : ''}`
                 : 'Log In'}
             </Button>
-          </Section>
-        )}
-
-        {!!data.canSetStationVoices && (
-          <Section>
-            <Button icon="volume-high" onClick={() => act('stationVoices')}>
-              Station announcer and device voices
-            </Button>
+            {!authenticated && !!data.canSetStationVoices && (
+              <StationVoiceButton />
+            )}
           </Section>
         )}
 
