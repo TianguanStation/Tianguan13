@@ -360,6 +360,16 @@
 	if(is_within_radio_jammer_range(src) && !(special_channels & RADIO_SPECIAL_SYNDIE))
 		return
 
+	// Machines that transmit directly have no local say() to create the radio audio.
+	if(isobj(talking_movable) && !LAZYACCESS(message_mods, MODE_TTS_IDENTIFIER) && SStts.is_runtime_enabled())
+		var/obj/emitter = talking_movable
+		var/station_voice = emitter.station_voice_override()
+		if(station_voice)
+			var/static/transmission_sequence = 0
+			var/identifier = "station-radio-[world.time]-[++transmission_sequence]"
+			LAZYSET(message_mods, MODE_TTS_IDENTIFIER, identifier)
+			emitter.do_tts_message(radio_message, language, message_mods, null, list())
+
 	// Determine the identity information which will be attached to the signal.
 	var/atom/movable/virtualspeaker/speaker = new(null, talking_movable, src)
 

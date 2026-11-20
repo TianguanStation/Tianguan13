@@ -102,11 +102,7 @@
 	if(!tts_has_speech_content(speech_message))
 		return FALSE
 
-	var/speaker = speaker_override
-	if(!(speaker in SStts.available_speakers))
-		speaker = SStts.computer_voice
-	if(!(speaker in SStts.available_speakers))
-		speaker = SStts.random_tts_voice()
+	var/speaker = SStts.announcement_voice(speaker_override)
 	if(!speaker)
 		return FALSE
 

@@ -61,6 +61,14 @@ export function CommunicationsConsole(props) {
           </Section>
         )}
 
+        {!!data.canSetStationVoices && (
+          <Section>
+            <Button icon="volume-high" onClick={() => act('stationVoices')}>
+              Station announcer and device voices
+            </Button>
+          </Section>
+        )}
+
         {canRequestSafeCode ? (
           <Section title="Emergency Safe Code">
             <Button
