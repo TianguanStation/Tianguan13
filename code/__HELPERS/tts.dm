@@ -41,30 +41,46 @@
 /proc/tts_announcement_language()
 	return /datum/language/common
 
-/// Whether this announcement sound comes out of the announcer's spoken-line library.
-/// Those are prerecorded English voice lines, so they cannot play underneath synthesized speech -
-/// but everything else (an admin's hand-picked file, the security level's alarm tones) is a plain
-/// sound effect that was chosen deliberately, and replacing it throws away that choice.
-/// A null sound counts, because the caller will fall back to a random announcer line.
-/proc/tts_sound_is_announcer_speech(announcement_sound)
-	if(isnull(announcement_sound))
-		return TRUE
-	var/datum/centcom_announcer/announcer = SSstation?.announcer
-	if(isnull(announcer))
-		return FALSE
-	if((announcement_sound in announcer.alert_sounds) || (announcement_sound in announcer.command_report_sounds) || (announcement_sound in announcer.welcome_sounds))
-		return TRUE
-	// The caller may hand over either the ANNOUNCER_* key or the file it resolves to.
-	if(!isnull(announcer.event_sounds[announcement_sound]))
-		return TRUE
-	for(var/event_key in announcer.event_sounds)
-		var/event_sound = announcer.event_sounds[event_key]
-		if(islist(event_sound))
-			if(announcement_sound in event_sound)
-				return TRUE
-		else if(event_sound == announcement_sound)
-			return TRUE
-	return FALSE
+/// Classify the resolved recording. Both announcer packs and event code supply files directly.
+/proc/tts_sound_is_announcer_speech(clip)
+	var/static/list/spoken_paths
+	if(!spoken_paths)
+		var/list/spoken_clips = list(
+			'sound/effects/families_police.ogg',
+			'modular_zubbers/sound/alerts/rbmk1.ogg',
+			'modular_zubbers/sound/fleshmind/ai/data_compromised.ogg',
+			'modular_zubbers/sound/fleshmind/ai/level_down_1.ogg',
+			'modular_zubbers/sound/fleshmind/ai/level_down_2.ogg',
+			'modular_zubbers/sound/fleshmind/ai/level_down_3.ogg',
+			'modular_zubbers/sound/fleshmind/ai/level_up_1.ogg',
+			'modular_zubbers/sound/fleshmind/ai/tyrant.ogg',
+		)
+		for(var/announcer_type in SSstation.announcers)
+			var/datum/centcom_announcer/pack = SSstation.announcers[announcer_type]
+			if(QDELETED(pack))
+				continue
+			spoken_clips |= pack.alert_sounds
+			spoken_clips |= pack.welcome_sounds
+			spoken_clips |= pack.command_report_sounds
+			for(var/event_key in pack.event_sounds)
+				spoken_clips |= pack.event_sounds[event_key]
+		// These stock pack entries contain only a chime, music, sirens or Morse.
+		spoken_clips -= list(
+			'modular_zubbers/sound/alerts/green.ogg',
+			'modular_skyrat/modules/alerts/sound/misc/admin_horror_music.ogg',
+			'modular_skyrat/modules/alerts/sound/alerts/alert2.ogg',
+			'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg',
+			'modular_skyrat/modules/assault_operatives/sound/icarus_alarm.ogg',
+			'modular_skyrat/modules/black_mesa/sound/siren1_long.ogg',
+			'modular_skyrat/modules/encounters/sounds/morse.ogg',
+		)
+		spoken_paths = list()
+		for(var/recording in spoken_clips)
+			spoken_paths["[recording]"] = TRUE
+	if(istype(clip, /sound))
+		var/sound/wrapped = clip
+		clip = wrapped.file
+	return spoken_paths["[clip]"]
 
 /// Nonverbal cue played in place of the announcer's prerecorded English speech when TTS carries
 /// the announcement. Every entry must be a plain machine sound, never a spoken line, or it would
@@ -83,10 +99,10 @@
 		return 'sound/machines/engine_alert/engine_alert1.ogg'
 	return 'sound/machines/beep/twobeep_high.ogg'
 
-/// Queues a non-positional TTS announcement and returns whether it was accepted.
+/// Returns the listeners queued for TTS so only their prerecorded speech is replaced.
 /proc/tts_queue_global_announcement(message, title, list/players = GLOB.player_list, speaker_override)
 	if(isnull(SStts) || !SStts.is_runtime_enabled() || !istext(message))
-		return FALSE
+		return null
 
 	var/list/listeners = list()
 	for(var/mob/player as anything in players)
@@ -94,22 +110,24 @@
 			continue
 		if(!player.client.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			continue
+		if(player.client.prefs.read_preference(/datum/preference/choiced/sound_tts) == TTS_SOUND_OFF || !player.client.prefs.read_preference(/datum/preference/numeric/volume/sound_tts_volume))
+			continue
 		listeners += player
 	if(!length(listeners))
-		return FALSE
+		return null
 
 	var/speech_message = tts_prepare_announcement_message(message, title)
 	if(!tts_has_speech_content(speech_message))
-		return FALSE
+		return null
 
 	var/speaker = SStts.announcement_voice(speaker_override)
 	if(!speaker)
-		return FALSE
+		return null
 
 	var/cache_key = "[speaker]-[speech_message]"
 	var/identifier = "[sha1(cache_key)].[world.time]"
 	INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), SSstation, speech_message, tts_announcement_language(), speaker, "", listeners, station_wide = TRUE, identifier = identifier, instruction = TTS_ANNOUNCER_INSTRUCTION)
-	return TRUE
+	return listeners
 // ZH EDIT ADDITION END
 
 /proc/tts_gibberish_speech_filter(text)

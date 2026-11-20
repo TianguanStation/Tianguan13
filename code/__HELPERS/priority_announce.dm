@@ -54,7 +54,7 @@
 	// ZH EDIT ADDITION END
 
 	// ZH EDIT ADDITION START - ADMIN - Replace prerecorded English announcement speech with localized TTS.
-	var/tts_queued = tts_queue_global_announcement(text, title, players, tts_speaker)
+	var/list/tts_listeners = tts_queue_global_announcement(text, title, players, tts_speaker)
 	// ZH EDIT ADDITION END
 
 	if(encode_title && title && length(title) > 0)
@@ -110,10 +110,8 @@
 	else
 		finalized_announcement = CHAT_ALERT_DEFAULT_SPAN(jointext(announcement_strings, ""))
 
-	if(tts_queued && tts_sound_is_announcer_speech(sound))
-		var/is_event = !isnull(sound) && !isnull(SSstation.announcer.event_sounds[sound])
-		sound = tts_priority_announcement_cue(urgent = is_event, hostile = (type == ANNOUNCEMENT_TYPE_SYNDICATE))
-	dispatch_announcement_to_players(finalized_announcement, players, sound)
+	var/tts_cue = tts_priority_announcement_cue(urgent = (sound in GLOB.announcer_keys), hostile = (type == ANNOUNCEMENT_TYPE_SYNDICATE))
+	dispatch_announcement_to_players(finalized_announcement, players, sound, tts_listeners = tts_listeners, tts_cue = tts_cue)
 
 	if(isnull(sender_override) && players == GLOB.player_list)
 		if(length(title) > 0)
@@ -189,7 +187,11 @@
 	// ZH EDIT ADDITION END
 
 	// ZH EDIT ADDITION START - ADMIN - Preserve deliberately silent/callback announcements.
-	var/tts_queued = (should_play_sound == TRUE) && tts_queue_global_announcement(message, title, isnull(players) ? GLOB.player_list : players, tts_speaker)
+	if(isnull(players))
+		players = GLOB.player_list
+	var/list/tts_listeners
+	if(should_play_sound == TRUE)
+		tts_listeners = tts_queue_global_announcement(message, title, players, tts_speaker)
 	// ZH EDIT ADDITION END
 
 	if (html_encode)
@@ -207,8 +209,8 @@
 	else
 		finalized_announcement = CHAT_ALERT_DEFAULT_SPAN(jointext(minor_announcement_strings, ""))
 
-	var/custom_sound = sound_override || (tts_queued ? tts_minor_announcement_cue(alert) : null) || (alert ? /* ZH EDIT CHANGE - ADMIN - TTS replaces prerecorded speech */ 'modular_skyrat/modules/alerts/sound/alerts/alert1.ogg' : 'sound/announcer/notice/notice2.ogg') // SKYRAT EDIT CHANGE - CUSTOM ANNOUNCEMENTS - Original: 'sound/announcer/notice/notice1.ogg'
-	dispatch_announcement_to_players(finalized_announcement, players, custom_sound, should_play_sound)
+	var/custom_sound = sound_override || (alert ? 'modular_skyrat/modules/alerts/sound/alerts/alert1.ogg' : 'sound/announcer/notice/notice2.ogg')
+	dispatch_announcement_to_players(finalized_announcement, players, custom_sound, should_play_sound, tts_listeners, tts_minor_announcement_cue(alert))
 
 /// Sends an announcement about the level changing to players. Uses the passed in datum and the subsystem's previous security level to generate the message.
 /proc/level_announce(datum/security_level/selected_level, previous_level_number)
@@ -227,11 +229,7 @@
 		title = LANG("datum.9aa16b5dfe73dfdd", list(current_level_name)) // ZH EDIT CHANGE - I18N - ORIGINAL: title = "Attention! Security level lowered to [current_level_name]:"
 		message = selected_level.lowering_to_announcement
 
-	// ZH EDIT ADDITION START - ADMIN - Security-level messages use localized TTS. The level's own
-	// sound is a plain alarm tone ("Friendly beep" / "Angry alarm" / air raid), not a spoken line,
-	// so it plays under the speech and is deliberately left alone.
-	tts_queue_global_announcement(message, title, GLOB.player_list)
-	// ZH EDIT ADDITION END
+	var/list/tts_listeners = tts_queue_global_announcement(message, title, GLOB.player_list)
 
 	var/list/level_announcement_strings = list()
 	level_announcement_strings += ANNOUNCEMENT_HEADER(MINOR_ANNOUNCEMENT_TITLE(title))
@@ -239,7 +237,7 @@
 
 	var/finalized_announcement = CHAT_ALERT_COLORED_SPAN(current_level_color, jointext(level_announcement_strings, ""))
 
-	dispatch_announcement_to_players(finalized_announcement, GLOB.player_list, current_level_sound)
+	dispatch_announcement_to_players(finalized_announcement, GLOB.player_list, current_level_sound, tts_listeners = tts_listeners, tts_cue = tts_minor_announcement_cue(alert = TRUE))
 
 /// Proc that just generates a custom header based on variables fed into `priority_announce()`
 /// Will return a string.
@@ -257,7 +255,7 @@
 
 /// Proc that just dispatches the announcement to our applicable audience. Only the announcement is a mandatory arg.
 /// `should_play_sound` can also be a callback, if you want to only play the sound to specific players.
-/proc/dispatch_announcement_to_players(announcement, list/players = GLOB.player_list, sound_override = null, should_play_sound = TRUE)
+/proc/dispatch_announcement_to_players(announcement, list/players = GLOB.player_list, sound_override = null, should_play_sound = TRUE, list/tts_listeners, tts_cue)
 	// SKYRAT EDIT CHANGE BEGIN - CUSTOM ANNOUNCEMENTS
 	/* Original:
 
@@ -301,27 +299,8 @@
 		else
 			preferred_announcer = SSstation.announcer
 
-		var/computed_sound = sound_override
-		if(!computed_sound)
-			computed_sound = preferred_announcer.get_rand_alert_sound()
-		else if(preferred_announcer.event_sounds[computed_sound])
-			var/list/announcer_key = preferred_announcer.event_sounds[computed_sound]
-			computed_sound = pick(announcer_key)
-		else if(computed_sound == ANNOUNCER_COMMAND_REPORT)
-			computed_sound = preferred_announcer.get_rand_report_sound()
-		else if(computed_sound == ANNOUNCER_RANDOM_WELCOME)
-			computed_sound = preferred_announcer.get_rand_welcome_sound()
-
-		// couldnt find ANYTHING fallback please FALLBACK!!!
-		else if(GLOB.announcer_keys.Find(computed_sound) || computed_sound == ANNOUNCER_RANDOM_ALERT)
-			computed_sound = preferred_announcer.get_rand_alert_sound()
-
-		if(!isnull(computed_sound))
-			computed_sound = sound(computed_sound)
-
-		var/sound_to_play = !isnull(computed_sound) ? computed_sound : 'sound/announcer/notice/notice2.ogg'
-
 		if(should_play_sound && (!should_play_sound_callback || should_play_sound_callback.Invoke(target)) && target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
+			var/sound_to_play = preferred_announcer.announcement_sound(sound_override, (target in tts_listeners) ? tts_cue : null)
 			var/area/A = get_area(target)
 			if(is_type_in_typecache(A, quiet_areas)) //These areas don't hear it as loudly
 				target.playsound_local(get_turf(target), sound_to_play, 30, FALSE)

@@ -304,7 +304,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/welcome_message = LANG("datum.33aeac181bbd8bfb", list(station_name()))
 	to_chat(world, span_notice(span_bold(welcome_message)))
-	var/welcome_tts_queued = tts_queue_global_announcement(welcome_message)
+	var/list/welcome_tts_listeners = tts_queue_global_announcement(welcome_message)
 
 	// SPLURT EDIT CHANGE - announcer preferences
 	var/no_preferred_override = FALSE
@@ -322,7 +322,9 @@ SUBSYSTEM_DEF(ticker)
 		else
 			preferred_announcer = SSstation.announcer
 
-		SEND_SOUND(target, sound(welcome_tts_queued ? tts_priority_announcement_cue() : preferred_announcer.get_rand_welcome_sound()))
+		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements) && !HAS_TRAIT(target, TRAIT_DEAF))
+			var/tts_cue = (target in welcome_tts_listeners) ? tts_priority_announcement_cue() : null
+			SEND_SOUND(target, sound(preferred_announcer.announcement_sound(ANNOUNCER_RANDOM_WELCOME, tts_cue)))
 	// SPLURT EDIT CHANGE END
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)

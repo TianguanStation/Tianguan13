@@ -21,3 +21,22 @@
 
 /datum/centcom_announcer/proc/get_rand_report_sound()
 	return pick(command_report_sounds)
+
+/// Resolve the listener's announcer pack first, including fallbacks for missing events.
+/datum/centcom_announcer/proc/announcement_sound(requested_sound, tts_cue)
+	var/clip = requested_sound
+	var/event_clip = istext(requested_sound) ? event_sounds[requested_sound] : null
+	if(event_clip)
+		clip = event_clip
+	else if(requested_sound == ANNOUNCER_COMMAND_REPORT)
+		clip = get_rand_report_sound()
+	else if(requested_sound == ANNOUNCER_RANDOM_WELCOME)
+		clip = get_rand_welcome_sound()
+	else if(!requested_sound || requested_sound == ANNOUNCER_RANDOM_ALERT || (requested_sound in GLOB.announcer_keys))
+		clip = get_rand_alert_sound()
+
+	if(islist(clip))
+		clip = length(clip) ? pick(clip) : null
+	if(tts_cue && tts_sound_is_announcer_speech(clip))
+		return tts_cue
+	return clip || 'sound/announcer/notice/notice2.ogg'
