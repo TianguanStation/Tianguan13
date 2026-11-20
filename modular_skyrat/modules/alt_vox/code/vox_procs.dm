@@ -11,7 +11,7 @@
 	/// The VOX word(s) that were previously inputed.
 	var/vox_word_string
 	/// Can the AI purchase the nuke as a malf
-	var/can_purchase_nuke = FALSE
+	var/can_purchase_nuke = TRUE
 
 GAME_VERB_DESC(/mob/living/silicon/ai, announcement_help, "公告帮助", "Display a list of vocal words to announce to the crew.", "AI Commands")
 	if(incapacitated)

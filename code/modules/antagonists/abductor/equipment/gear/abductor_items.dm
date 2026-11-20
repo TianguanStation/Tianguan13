@@ -246,7 +246,7 @@
 	fail_message = span_abductor("Firing error, please contact Command.")
 
 /obj/item/firing_pin/abductor/pin_auth(mob/living/user)
-	return HAS_MIND_TRAIT(user, TRAIT_ABDUCTOR_KNOWLEDGE)
+	return HAS_MIND_TRAIT(user, TRAIT_ABDUCTOR_KNOWLEDGE) || isrogue(user)
 
 /obj/item/gun/energy/alien
 	name = "alien pistol"

@@ -9347,6 +9347,9 @@
   "Dessert": [
     "dm:labels"
   ],
+  "Dessert Choice": [
+    "tgui:lunchbox"
+  ],
   "Destabilizes the reaction. A sufficiently destabilized reaction will halt production and become endothermic, cooling the Fusion Mix instead of heating it. Reactions with more iron are harder to destabilize.": [
     "tgui:Controls"
   ],
@@ -10118,6 +10121,9 @@
   ],
   "Drillruru": [
     "dm:labels"
+  ],
+  "Drink Choice": [
+    "tgui:lunchbox"
   ],
   "Drinks": [
     "dm:labels"
@@ -12298,6 +12304,9 @@
   ],
   "First Head's name": [
     "tgui:hydra"
+  ],
+  "First Snack Choice": [
+    "tgui:lunchbox"
   ],
   "First joined server": [
     "tgui:PlayerPanel"
@@ -18365,6 +18374,9 @@
   "Luna娃娃": [
     "dm:labels"
   ],
+  "Lunchbox Design": [
+    "tgui:lunchbox"
+  ],
   "Lungs": [
     "dm:labels"
   ],
@@ -19033,6 +19045,9 @@
   ],
   "Mead": [
     "dm:labels"
+  ],
+  "Meal Choice": [
+    "tgui:lunchbox"
   ],
   "Meals": [
     "tgui:index"
@@ -28963,6 +28978,9 @@
   "Second Head's name": [
     "tgui:hydra"
   ],
+  "Second Snack Choice": [
+    "tgui:lunchbox"
+  ],
   "Secondary": [
     "tgui:Recipes"
   ],
@@ -34616,7 +34634,8 @@
     "dm:labels"
   ],
   "TianGuan Stars Only": [
-    "tgui:JobsPage"
+    "tgui:JobsPage",
+    "tgui:SpeciesPage"
   ],
   "Tibbets": [
     "dm:labels"
@@ -37366,6 +37385,9 @@
   "What classifies as the gender for your character. This is displayed in the Directory.": [
     "tgui:species_features"
   ],
+  "What design of the lunchbox would you like?": [
+    "tgui:lunchbox"
+  ],
   "What does it do?": [
     "tgui:InfuserBook"
   ],
@@ -37374,6 +37396,9 @@
   ],
   "What does your character taste like when licked?": [
     "tgui:species_features"
+  ],
+  "What drink would you like inside your lunchbox?": [
+    "tgui:lunchbox"
   ],
   "What is a plane master?": [
     "tgui:PlaneMenus"
@@ -37387,8 +37412,14 @@
   "What length of emote your prefer during an RP scene, if you have one. Shows on your Character Advert.": [
     "tgui:species_features"
   ],
+  "What meal would you like inside the lunchbox?": [
+    "tgui:lunchbox"
+  ],
   "What reagent remedies this symptom.": [
     "tgui:Symptom"
+  ],
+  "What snack would you like inside the lunchbox": [
+    "tgui:lunchbox"
   ],
   "What was written in fax log?": [
     "tgui:AdminFax"

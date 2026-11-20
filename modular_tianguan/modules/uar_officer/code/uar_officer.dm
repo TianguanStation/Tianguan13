@@ -107,7 +107,7 @@
 	trim_state = "trim_uar_inspector"
 	department_color = UAR_DEPARTMENT_COLOR
 	subdepartment_color = "#1f3a8a"
-	sechud_icon_state = SECHUD_NT_CONSULTANT
+	sechud_icon_state = "huduar_inspector"
 	job = /datum/job/uar_inspector
 
 /datum/id_trim/job/uar_inspector/New()
@@ -163,6 +163,9 @@
 	sign_path = /obj/structure/sign/flag/wsr
 
 // ———————————————————————————————— 货舱订购
+/datum/supply_pack/companies/general
+	group = "★ General"
+
 /datum/supply_pack/companies/general/uar_flag
 	name = "团结联盟共和国国旗"
 	contains = list(/obj/item/sign/flag/uar)

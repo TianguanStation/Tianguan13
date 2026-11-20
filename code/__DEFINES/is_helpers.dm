@@ -132,7 +132,8 @@ GLOBAL_LIST_INIT(turfs_pass_meteor, typecacheof(list(
  * It's more reusable and modulable code overall. If you think you're better off using traits etc. in place of an is_species check,
  * then do just that.
  */
-#define isabductor(A) (is_species(A, /datum/species/abductor))
+#define isrogue(A) (is_species(A, /datum/species/abductor/abductorweak))
+#define isabductor(A) (is_species(A, /datum/species/abductor) && !isrogue(A))
 #define isspirit(A) (is_species(A, /datum/species/spirit))
 #define isgolem(A) (is_species(A, /datum/species/golem))
 #define islizard(A) (is_species(A, /datum/species/lizard))

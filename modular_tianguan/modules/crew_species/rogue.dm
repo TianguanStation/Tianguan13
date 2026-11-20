@@ -1,0 +1,71 @@
+/datum/species/abductor/abductorweak
+	name = "Rogue"
+	id = SPECIES_ABDUCTORWEAK
+	examine_limb_id = SPECIES_ABDUCTOR
+	sexes = TRUE
+	inherent_traits = list(
+		TRAIT_ABDUCTOR_HUD,
+		TRAIT_CHUNKYFINGERS_IGNORE_BATON,
+		TRAIT_NOBREATH,
+		TRAIT_NOHUNGER,
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP,
+		TRAIT_LITERATE,
+	)
+
+	mutanteyes = /obj/item/organ/eyes
+	mutantheart = /obj/item/organ/heart
+
+/datum/species/abductor/abductorweak/get_physical_attributes()
+	return "Rogues do not need to breathe, eat, have a stomach, or lungs but their naturally chunky tridactyl hands make it hard to operate generic equipment."
+
+/datum/species/abductor/abductorweak/get_species_description()
+	return list(
+		"Rogues are naturally three fingered, pale skinned inquisitive aliens who can't communicate well to the average crew-member \
+		without either a Text-To-Speech device or a replacement voicebox. They originate from the Abductors, but know little more than the average crewman.",
+	)
+
+/datum/species/abductor/abductorweak/get_species_lore()
+	return list(
+		"The Rogues are a, as the name implies, rogue offshoot of the Abductors. \
+		While they themselves do not abduct or experiment on other species, generally, the stigma \
+			associated with their progenitors is something all Rogues have to deal with if they do not undergo \
+			any form of cosmetic changes. And many do opt in for cosmetic changes, being almost unrecognizable as Rogues \
+			but still holding that innate need for discovery or change. All of the Original Rogues had their memories of the \
+			Abductors seemingly removed before fleeing, and the future generations were told no stories of their origins.",
+	)
+
+/datum/species/abductor/abductorweak/create_pref_traits_perks()
+	var/list/perks = list()
+	perks += list(list(
+		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+		SPECIES_PERK_ICON = FA_ICON_WIND,
+		SPECIES_PERK_NAME = LANG("datum.24c4285627132486", null),
+		SPECIES_PERK_DESC = LANG("datum.984719c4a49d0f90", null),
+	))
+	return perks
+
+/datum/species/abductor/abductorweak/create_pref_unique_perks()
+	var/list/perks = list()
+	perks += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK, // It may be a stretch to call nohunger a neutral perk but the Abductor's tongue describes it as much, so.
+		SPECIES_PERK_ICON = FA_ICON_UTENSILS,
+		SPECIES_PERK_NAME = LANG("datum.d3fc8b6ee69c11df", null),
+		SPECIES_PERK_DESC = LANG("datum.7d4de5b7eabb3b59", null),
+	))
+	perks += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
+		SPECIES_PERK_ICON = FA_ICON_VOLUME_XMARK,
+		SPECIES_PERK_NAME = LANG("datum.f5c46b2b320529fa", null),
+		SPECIES_PERK_DESC = LANG("datum.a4795aec10ae1ab1", null),
+	))
+	perks += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
+		SPECIES_PERK_ICON = FA_ICON_HANDSHAKE_SLASH,
+		SPECIES_PERK_NAME = LANG("datum.ff4e849e403e71fc", null),
+		SPECIES_PERK_DESC = LANG("datum.c882e42fac863093", null),
+	))
+	return perks
+
+/mob/living/carbon/human/species/abductorweak
+	race = /datum/species/abductor/abductorweak

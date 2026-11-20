@@ -6,7 +6,15 @@
 	randomize_by_default = FALSE
 
 /datum/preference/choiced/species/deserialize(input, datum/preferences/preferences)
-	return GLOB.species_list[sanitize_inlist(input, get_choices_serialized(), SPECIES_HUMAN)]
+	var/datum/species/selected = GLOB.species_list[sanitize_inlist(input, get_choices_serialized(), SPECIES_HUMAN)]
+	if(selected::tianguan_stars_only && !can_choose_star_species(preferences))
+		return /datum/species/human
+	return selected
+
+/datum/preference/choiced/species/proc/can_choose_star_species(datum/preferences/preferences)
+	if(!GLOB.tianguan_star_restrictions || !preferences)
+		return TRUE
+	return istype(preferences.parent, /client) && SSplayer_ranks.is_tianguan_star(preferences.parent)
 
 /datum/preference/choiced/species/serialize(input)
 	var/datum/species/species = input
@@ -16,7 +24,13 @@
 	return /datum/species/human
 
 /datum/preference/choiced/species/create_random_value(datum/preferences/preferences)
-	return pick(get_choices())
+	var/list/choices = get_choices()
+	if(!can_choose_star_species(preferences))
+		choices = choices.Copy()
+		for(var/datum/species/possible as anything in get_choices())
+			if(possible::tianguan_stars_only)
+				choices -= possible
+	return pick(choices)
 
 /datum/preference/choiced/species/init_possible_values()
 	var/list/values = list()
@@ -54,6 +68,7 @@
 		data[species_id]["enabled_features"] = species.get_features()
 		data[species_id]["perks"] = lang_reverse_perks(species.get_species_perks(), species) // ZH EDIT - i18n: 反查特征 name/description + 物种名整词替换。ORIGINAL: data[species_id]["perks"] = species.get_species_perks()
 		data[species_id]["diet"] =  species.get_species_diet()
+		data[species_id]["tianguan_stars_only"] = species.tianguan_stars_only
 		data[species_id]["sort_bottom"] = species.sort_bottom //BUBBER EDIT ADDITION: Do we sort the species to the bottom?
 
 	return data

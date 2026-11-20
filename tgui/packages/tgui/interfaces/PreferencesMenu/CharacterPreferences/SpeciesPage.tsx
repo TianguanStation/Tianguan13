@@ -306,17 +306,23 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
           <Stack.Item>
             <Box height="calc(100vh - 170px)" overflowY="auto" pr={3}>
               {species.map(([speciesKey, species]) => {
+                const starRequired = !!(
+                  data.tianguan_star_restrictions &&
+                  species.tianguan_stars_only &&
+                  !data.is_tianguan_star
+                );
                 // BUBBER EDIT START - Species selction
                 const speciesPage = (
                   <Button
                     key={speciesKey}
+                    disabled={starRequired}
                     onClick={() => {
                       setSpecies(speciesKey);
                     }}
                     selected={
                       data.character_preferences.misc.species === speciesKey
                     }
-                    tooltip={species.name}
+                    tooltip={starRequired ? 'TianGuan Stars Only' : species.name}
                     style={{
                       display: 'block',
                       height: '64px',

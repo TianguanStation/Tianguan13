@@ -12,6 +12,15 @@
 
 /// Returns true if the passed mob can currently gain this buff
 /datum/golem_food_buff/proc/can_consume(mob/living/consumer)
+	var/static/list/restricted_crew_materials = list(
+		/datum/golem_food_buff/bluespace,
+		/datum/golem_food_buff/gibtonite,
+		/datum/golem_food_buff/bananium,
+		/datum/golem_food_buff/titanium,
+		/datum/golem_food_buff/plasma,
+	)
+	if((type in restricted_crew_materials) && is_species(consumer, /datum/species/golem/weak))
+		return FALSE
 	if (!exclusive)
 		return TRUE
 	var/datum/status_effect/golem/existing = consumer.has_status_effect(/datum/status_effect/golem)

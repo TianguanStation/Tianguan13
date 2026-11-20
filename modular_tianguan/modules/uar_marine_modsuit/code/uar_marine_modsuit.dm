@@ -171,7 +171,7 @@
 	trim_state = "trim_uar"
 	department_color = UAR_MARINE_COLOR_CARD_RED
 	subdepartment_color = UAR_MARINE_COLOR_UNION_BLUE
-	sechud_icon_state = SECHUD_CENTCOM
+	sechud_icon_state = "huduar"
 
 // 全权限：与 /datum/id_trim/admin（debug 卡，注释原文 "Has every single access in the game"）同一写法。
 // REGION_ALL_GLOBAL = 站点全部 + 中央 + 辛迪加 + 远离站 + 邪教，即全游戏每一个区域门禁（实测 98 个 access）。

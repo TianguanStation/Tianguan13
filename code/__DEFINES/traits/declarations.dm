@@ -84,6 +84,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 ///Recolored by item/greentext
 #define TRAIT_GREENTEXT_CURSED "greentext_curse"
 #define TRAIT_INCAPACITATED "incapacitated"
+#define TRAIT_LUNCHBOX_OWNER "lunchbox_owner"
 /// Whitelist for mobs that can read or write
 #define TRAIT_LITERATE "literate"
 /// Blacklist for mobs that can't read or write

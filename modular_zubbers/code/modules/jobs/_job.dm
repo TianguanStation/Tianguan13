@@ -48,8 +48,17 @@
 
 /datum/job/proc/has_banned_species(datum/preferences/pref)
 	var/species_type = pref.read_preference(/datum/preference/choiced/species)
-	var/datum/species/species = new species_type
-	var/my_id = species.id
+	var/datum/species/species = species_type
+	var/my_id = species::id
+	if(my_id in list(SPECIES_ABDUCTORWEAK, SPECIES_GOLEMWEAK, SPECIES_DULLAHAN))
+		var/static/list/restricted_jobs = typecacheof(list(
+			/datum/job/security_officer, /datum/job/warden, /datum/job/blueshield,
+			/datum/job/corrections_officer, /datum/job/captain, /datum/job/nanotrasen_consultant,
+			/datum/job/head_of_security, /datum/job/chief_medical_officer, /datum/job/chief_engineer,
+			/datum/job/research_director, /datum/job/head_of_personnel, /datum/job/quartermaster,
+		))
+		if(is_type_in_typecache(src, restricted_jobs) || (my_id == SPECIES_DULLAHAN && istype(src, /datum/job/detective)))
+			return TRUE
 	if(species_whitelist && !species_whitelist[my_id])
 		return TRUE
 	else if(!(my_id in get_selectable_species()))
