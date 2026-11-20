@@ -2,10 +2,7 @@ import { Box, Button, Section } from 'tgui-core/components';
 
 import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
-import {
-  StationVoiceButton,
-  StationVoiceControls,
-} from '../StationVoiceConsole';
+import { StationVoiceControls } from '../StationVoiceConsole';
 import { PageBuyingShuttle } from './BuyingShuttle';
 import { PageChangingStatus } from './ChangingStatus';
 import { PageMain } from './Main';
@@ -27,7 +24,7 @@ export function CommunicationsConsole(props) {
     safeCodeDeliveryWait,
   } = data;
 
-  if (data.voiceEditor && data.canSetStationVoices) {
+  if (authenticated && data.canSetStationVoices && data.voiceEditor) {
     return (
       <Window width={400} height={650}>
         <Window.Content scrollable>
@@ -74,9 +71,6 @@ export function CommunicationsConsole(props) {
                 ? `Log Out${authorizeName ? ` (${authorizeName})` : ''}`
                 : 'Log In'}
             </Button>
-            {!authenticated && !!data.canSetStationVoices && (
-              <StationVoiceButton />
-            )}
           </Section>
         )}
 

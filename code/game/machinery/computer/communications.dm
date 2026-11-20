@@ -177,8 +177,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	switch (action)
 		if ("stationVoices")
 			var/datum/tgui/station_voices/editor = ui
-			if(istype(editor) && can_configure_station_voices(user))
-				return editor.voice_action(params)
+			return istype(editor) && can_configure_station_voices(user) && editor.voice_action(params)
 		if ("answerMessage")
 			if (!authenticated(user))
 				return
@@ -561,7 +560,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 /obj/machinery/computer/communications/ui_data(mob/user)
 	var/list/data = list(
-		"authenticated" = FALSE,
+		"authenticated" = authenticated(user),
 		"voiceEditor" = null,
 		"emagged" = FALSE,
 		"syndicate" = syndicate,
@@ -590,8 +589,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			data["safeCodeDeliveryWait"] = 0
 			data["safeCodeDeliveryArea"] = null
 
-	if (authenticated || HAS_SILICON_ACCESS(user))
-		data["authenticated"] = TRUE
+	if (data["authenticated"])
 		data["canLogOut"] = !HAS_SILICON_ACCESS(user)
 		data["page"] = ui_state
 

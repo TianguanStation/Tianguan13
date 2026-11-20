@@ -52,8 +52,10 @@
 		return computer_voice
 	return random_tts_voice()
 
-/// A physical CentCom console requires the operator's own ID, even if someone left it logged in.
+/// Both the active console login and the operator's current ID must have CentCom command access.
 /obj/machinery/computer/communications/proc/can_configure_station_voices(mob/user)
+	if(!authenticated || !(ACCESS_CENT_CAPTAIN in authorize_access))
+		return FALSE
 	if(!ishuman(user) || !is_centcom_level(z) || syndicate || (obj_flags & EMAGGED) || !is_operational || !Adjacent(user))
 		return FALSE
 	var/mob/living/carbon/human/operator = user
@@ -165,7 +167,7 @@
 				if(!SStts.is_runtime_enabled() || !COOLDOWN_FINISHED(src, preview_cooldown))
 					return FALSE
 				COOLDOWN_START(src, preview_cooldown, 1 SECONDS)
-				INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), user.client, LANG("datum.7acfc83a63e39383", null), speaker = speaker, local = TRUE, identifier = "cc-preview-[REF(user)]-[world.time]")
+				INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), user.client, LANG("datum.7acfc83a63e39383", null), speaker = speaker, local = TRUE, identifier = "cc-preview-[nova_ui_id]-[world.time]")
 				return TRUE
 			if(op == "reset")
 				speaker = null
