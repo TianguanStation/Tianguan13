@@ -16,7 +16,8 @@
 
 	var/mob/living/carbon/human/spawned_human = ..(mob_possessor, newname, apply_prefs)
 
-	if(random_appearance && !apply_prefs)
+	if(!ishuman(spawned_human) || (random_appearance && !apply_prefs))
+		equip(spawned_human)
 		var/datum/language_holder/holder = spawned_human.get_language_holder()
 		holder.get_selected_language() //we need this here so a language starts off selected
 
@@ -35,7 +36,7 @@
 
 	if(loadout_enabled)
 		ASYNC // Expensive and not needing to return
-			spawned_human.equip_outfit_and_loadout(outfit, spawned_human.client.prefs)
+			equip(spawned_human, use_loadout = TRUE)
 	else
 		equip(spawned_human)
 
@@ -50,12 +51,12 @@
 
 /// This edit would cause somewhat ugly diffs, so I'm just replacing it.
 /// Original proc in code/modules/mob_spawn/mob_spawn.dm ~line 39.
-/obj/effect/mob_spawn/create(mob/mob_possessor, newname, use_loadout = FALSE)
+/obj/effect/mob_spawn/create(mob/mob_possessor, newname, apply_prefs = FALSE)
 	var/mob/living/spawned_mob = new mob_type(get_turf(src)) //living mobs only
 	name_mob(spawned_mob, newname)
 	special(spawned_mob, mob_possessor)
-	// Only run equip logic if this is NOT a ghost_role spawner, as we already solve equip with loadout there.
-	if (!use_loadout)
+	// Ghost roles equip once after choosing between their standard outfit and the player's loadout.
+	if(!istype(src, /obj/effect/mob_spawn/ghost_role))
 		equip(spawned_mob)
 	spawned_mob_ref = WEAKREF(spawned_mob)
 	return spawned_mob
