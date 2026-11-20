@@ -2004,9 +2004,6 @@
 /area/ruin/powered/seedvault)
 "Fv" = (
 /obj/structure/table/reinforced,
-/obj/machinery/plantgenes{
-	pixel_y = 8
-	},
 /obj/effect/turf_decal/tile/neutral/half{
 	alpha = 255;
 	color = "#5d341f";

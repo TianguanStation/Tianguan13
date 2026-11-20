@@ -8094,10 +8094,6 @@
 /area/station/maintenance/department/bridge)
 "bNd" = (
 /obj/structure/table,
-/obj/machinery/plantgenes{
-	pixel_y = 8;
-	pixel_x = 1
-	},
 /obj/machinery/newscaster/directional/north,
 /obj/effect/turf_decal/tile/green/opposingcorners,
 /obj/effect/turf_decal/tile/blue/opposingcorners{

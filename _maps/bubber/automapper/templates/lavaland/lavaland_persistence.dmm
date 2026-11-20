@@ -5339,9 +5339,6 @@
 "kZ" = (
 /obj/structure/marker_beacon/teal,
 /obj/structure/table/reinforced/plastitaniumglass,
-/obj/machinery/plantgenes{
-	pixel_y = 6
-	},
 /turf/open/floor/iron/dark/herringbone,
 /area/ruin/space/has_grav/bubbers/persistance/service/hydro)
 "lb" = (

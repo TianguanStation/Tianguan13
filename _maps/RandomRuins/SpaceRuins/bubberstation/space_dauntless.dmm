@@ -176,7 +176,6 @@
 "bn" = (
 /obj/machinery/light/cold/directional/north,
 /obj/structure/table/reinforced/plastitaniumglass,
-/obj/machinery/plantgenes,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/bubbers/dauntless_space/service/hydro)
 "bo" = (

@@ -65,7 +65,6 @@
 	prereq_ids = list(TECHWEB_NODE_PARTS_ADV, TECHWEB_NODE_SELECTION)
 	design_ids = list(
 		"diskplantgene",
-		"plantgene",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_5_POINTS)
 

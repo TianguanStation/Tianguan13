@@ -2826,9 +2826,6 @@
 	name = "all-american diner budget display";
 	pixel_y = -30
 	},
-/obj/machinery/plantgenes{
-	pixel_y = 8
-	},
 /obj/structure/table/glass,
 /turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/allamericandiner)

@@ -11740,9 +11740,6 @@
 "PA" = (
 /obj/structure/table/glass,
 /obj/machinery/firealarm/directional/south,
-/obj/machinery/plantgenes{
-	pixel_y = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
