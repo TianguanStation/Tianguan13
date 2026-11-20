@@ -176,8 +176,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 	switch (action)
 		if ("stationVoices")
-			if(can_configure_station_voices(user))
-				INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, configure_station_voices), user, src)
+			var/datum/tgui/station_voices/editor = ui
+			if(istype(editor) && can_configure_station_voices(user))
+				return editor.voice_action(params)
 		if ("answerMessage")
 			if (!authenticated(user))
 				return
@@ -561,6 +562,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 /obj/machinery/computer/communications/ui_data(mob/user)
 	var/list/data = list(
 		"authenticated" = FALSE,
+		"voiceEditor" = null,
 		"emagged" = FALSE,
 		"syndicate" = syndicate,
 	)
@@ -569,7 +571,12 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 	var/has_connection = has_communication()
 	data["hasConnection"] = has_connection
-	data["canSetStationVoices"] = can_configure_station_voices(user)
+	data["canSetStationVoices"] = has_connection && can_configure_station_voices(user)
+	if(data["canSetStationVoices"])
+		var/datum/tgui/station_voices/editor = SStgui.get_open_ui(user, src)
+		if(editor?.group)
+			data["voiceEditor"] = editor.voice_data()
+			return data
 
 	if(!SSjob.assigned_captain && !SSjob.safe_code_requested && SSid_access.spare_id_safe_code && has_connection)
 		data["canRequestSafeCode"] = TRUE
@@ -700,17 +707,22 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "CommunicationsConsole")
+		ui = new /datum/tgui/station_voices(user, src, "CommunicationsConsole")
 		ui.open()
 
 /obj/machinery/computer/communications/ui_static_data(mob/user)
-	return list(
+	. = list(
+		"voiceCatalog" = null,
 		"callShuttleReasonMinLength" = CALL_SHUTTLE_REASON_LENGTH,
 		"maxStatusLineLength" = MAX_STATUS_LINE_LENGTH,
 		"maxMessageLength" = MAX_MESSAGE_LEN,
 		"displayed_currency_full_name" = " [MONEY_NAME]",
 		"displayed_currency_name" = " [MONEY_SYMBOL]",
 	)
+
+	var/datum/tgui/station_voices/editor = SStgui.get_open_ui(user, src)
+	if(editor?.group && has_communication() && can_configure_station_voices(user))
+		.["voiceCatalog"] = SStts.station_voice_catalog(editor)
 
 /obj/machinery/computer/communications/Topic(href, href_list)
 	if (href_list["reject_cross_comms_message"])

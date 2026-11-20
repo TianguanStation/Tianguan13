@@ -13,6 +13,7 @@ import {
 import { capitalize } from 'tgui-core/string';
 
 import { useBackend } from '../../backend';
+import { StationVoiceButton } from '../StationVoiceConsole';
 import { AlertButton } from './AlertButton';
 import { MessageModal } from './MessageModal';
 import { type CommsConsoleData, ShuttleState } from './types';
@@ -176,6 +177,8 @@ export function PageMain(props) {
               Make Priority Announcement
             </Button>
           )}
+
+          {!!data.canSetStationVoices && <StationVoiceButton />}
 
           {!!canToggleEmergencyAccess && (
             <Button.Confirm

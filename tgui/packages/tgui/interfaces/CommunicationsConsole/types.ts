@@ -1,5 +1,7 @@
 import type { BooleanLike } from 'tgui-core/react';
 
+import type { StationVoiceData } from '../StationVoiceConsole';
+
 export enum ShuttleState {
   BUYING_SHUTTLE = 'buying_shuttle',
   CHANGING_STATUS = 'changing_status',
@@ -41,7 +43,7 @@ type Message = {
   possibleAnswers: string[];
 };
 
-export type CommsConsoleData = {
+export type CommsConsoleData = StationVoiceData & {
   alertLevel: string;
   alertLevelTick: number;
   aprilFools: BooleanLike;

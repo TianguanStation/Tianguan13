@@ -67,79 +67,141 @@
 		return !QDELETED(console) && console.can_configure_station_voices(user)
 	return check_rights_for(user.client, R_ADMIN)
 
-/datum/controller/subsystem/tts/proc/select_station_machine(mob/user)
-	var/list/by_area = list()
-	var/list/used_labels = list()
-	for(var/obj/machinery/machine as anything in SSmachines.get_all_machines())
-		if(!isturf(machine.loc) || !is_station_level(machine.z))
-			continue
-		var/area/location = get_area(machine)
-		var/area_name = location.lang_localize_name_for_display(location.name)
-		var/list/choices = by_area[area_name]
-		if(!choices)
-			choices = list()
-			by_area[area_name] = choices
-		var/label = "[machine.lang_localize_name_for_display(machine.name)] ([machine.x], [machine.y], [machine.z])"
-		choices[avoid_assoc_duplicate_keys(label, used_labels)] = machine
-	var/area_choice = tgui_input_list(user, LANG("datum.8898e19df3ccd483", null), LANG("datum.65873b1815495c39", null), sort_list(by_area.Copy()))
-	if(isnull(area_choice))
-		return null
-	var/list/machines = by_area[area_choice]
-	var/device_choice = tgui_input_list(user, LANG("datum.549ff9e799de931c", null), area_choice, sort_list(machines.Copy()))
-	return machines[device_choice]
+/// One operator's navigation in a console window, also used by the admin verb.
+/datum/tgui/station_voices
+	var/group
+	var/area/selected_area
+	var/datum/weakref/device_ref
+	COOLDOWN_DECLARE(preview_cooldown)
 
-/datum/controller/subsystem/tts/proc/configure_station_voices(mob/user, obj/machinery/computer/communications/console)
-	if(!can_edit_station_voices(user, console))
-		return
-	var/list/groups = list(
-		(LANG("datum.80bf10b06fcd38a9", null)) = STATION_VOICE_ANNOUNCEMENTS,
-		(LANG("datum.d1360a4be03b9b0d", null)) = STATION_VOICE_COMPUTERS,
-		(LANG("datum.055ffc7d27b22c19", null)) = STATION_VOICE_VENDORS,
-		(LANG("datum.28abe23f2f9cf5f6", null)) = STATION_VOICE_TRANSIT,
-		(LANG("datum.82ac13a93f597f4e", null)) = STATION_VOICE_DEVICE,
+/datum/tgui/station_voices/proc/selected_device()
+	var/obj/machinery/device = device_ref?.resolve()
+	if(!QDELETED(device) && isturf(device.loc) && is_station_level(device.z) && get_area(device) == selected_area)
+		return device
+
+/datum/tgui/station_voices/proc/voice_data()
+	var/obj/machinery/device = selected_device()
+	return list(
+		"group" = group,
+		"area" = selected_area ? REF(selected_area) : null,
+		"device" = device ? REF(device) : null,
+		"current" = group == STATION_VOICE_DEVICE ? device?.station_device_voice : SStts.station_voice_overrides[group],
+		"canPreview" = SStts.is_runtime_enabled() && COOLDOWN_FINISHED(src, preview_cooldown),
 	)
-	var/label = tgui_input_list(user, LANG("datum.7a2958e6ac7c4400", null), LANG("datum.65873b1815495c39", null), groups)
-	if(isnull(label) || !can_edit_station_voices(user, console))
-		return
-	var/group = groups[label]
-	var/obj/machinery/device
-	var/current = station_voice_overrides[group]
-	if(group == STATION_VOICE_DEVICE)
-		device = select_station_machine(user)
-		if(QDELETED(device))
-			return
-		label = "[device.lang_localize_name_for_display(device.name)] ([device.x], [device.y], [device.z])"
-		current = device.station_device_voice
-	var/reset = LANG("datum.c36860e1972dcd9f", null)
-	var/list/voices = list()
-	voices[reset] = null
+
+/// Build the directory only on a full update of the device page, and send machines for one area.
+/datum/controller/subsystem/tts/proc/station_voice_catalog(datum/tgui/station_voices/editor)
 	var/list/labels = voice_display_names(available_speakers)
+	var/list/voices = list()
 	for(var/id in available_speakers)
 		if(is_public_station_voice(id))
-			var/display = labels?[id]
-			voices[(display && display != id) ? "[display] ([id])" : id] = id
-	var/current_label = current || reset
-	var/selected = tgui_input_list(user, LANG("datum.f3e25170b31ca9f4", list(current_label)), label, voices)
-	if(isnull(selected) || !(selected in voices))
+			voices += list(list("id" = id, "name" = labels?[id] || id))
+	var/list/catalog = list("voices" = voices)
+	if(editor?.group != STATION_VOICE_DEVICE)
+		return catalog
+	var/list/areas = list()
+	var/list/machines = list()
+	for(var/obj/machinery/machine as anything in SSmachines.get_all_machines())
+		if(QDELETED(machine) || !isturf(machine.loc) || !is_station_level(machine.z))
+			continue
+		var/area/location = get_area(machine)
+		var/area_id = REF(location)
+		if(!areas[area_id])
+			areas[area_id] = "[location.lang_localize_name_for_display(location.name)] (Z[machine.z])"
+		if(location == editor.selected_area)
+			machines[REF(machine)] = "[machine.lang_localize_name_for_display(machine.name)] ([machine.x], [machine.y])"
+	catalog["areas"] = areas
+	catalog["machines"] = machines
+	catalog["area"] = editor.selected_area ? REF(editor.selected_area) : null
+	return catalog
+
+/datum/tgui/station_voices/proc/voice_action(list/params)
+	var/op = params["operation"]
+	if(op == "open" || (group && op == "group"))
+		var/new_group = op == "open" ? STATION_VOICE_ANNOUNCEMENTS : params["group"]
+		if(!(new_group in list(STATION_VOICE_ANNOUNCEMENTS, STATION_VOICE_COMPUTERS, STATION_VOICE_VENDORS, STATION_VOICE_TRANSIT, STATION_VOICE_DEVICE)))
+			return FALSE
+		var/refresh_catalog = !group || new_group == STATION_VOICE_DEVICE
+		group = new_group
+		selected_area = null
+		device_ref = null
+		if(refresh_catalog)
+			send_full_update()
+		return TRUE
+	if(!group)
+		return FALSE
+	switch(op)
+		if("back")
+			group = null
+			selected_area = null
+			device_ref = null
+			return TRUE
+		if("area")
+			if(group != STATION_VOICE_DEVICE || !istext(params["area"]))
+				return FALSE
+			var/area/location = locate(params["area"])
+			if(!istype(location))
+				return FALSE
+			selected_area = location
+			device_ref = null
+			send_full_update()
+			return TRUE
+		if("device")
+			if(group != STATION_VOICE_DEVICE || !selected_area || !istext(params["device"]))
+				return FALSE
+			var/obj/machinery/machine = locate(params["device"])
+			if(!istype(machine) || QDELETED(machine) || !isturf(machine.loc) || !is_station_level(machine.z) || get_area(machine) != selected_area)
+				return FALSE
+			device_ref = WEAKREF(machine)
+			return TRUE
+		if("preview", "apply", "reset")
+			var/obj/machinery/device = selected_device()
+			if(params["group"] != group || (group == STATION_VOICE_DEVICE && (!device || params["device"] != REF(device))))
+				return FALSE
+			var/speaker = params["speaker"]
+			if(op != "reset" && !SStts.is_public_station_voice(speaker))
+				return FALSE
+			if(op == "preview")
+				if(!SStts.is_runtime_enabled() || !COOLDOWN_FINISHED(src, preview_cooldown))
+					return FALSE
+				COOLDOWN_START(src, preview_cooldown, 1 SECONDS)
+				INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), user.client, LANG("datum.7acfc83a63e39383", null), speaker = speaker, local = TRUE, identifier = "cc-preview-[REF(user)]-[world.time]")
+				return TRUE
+			if(op == "reset")
+				speaker = null
+			if(device)
+				device.station_device_voice = speaker
+			else if(speaker)
+				SStts.station_voice_overrides[group] = speaker
+			else
+				SStts.station_voice_overrides -= group
+			log_admin("[key_name(user)] set station TTS [device ? "[device] ([AREACOORD(device)])" : group] to [speaker || "default"].")
+			return TRUE
+	return FALSE
+
+/datum/controller/subsystem/tts/ui_state(mob/user)
+	return ADMIN_STATE(R_ADMIN)
+
+/datum/controller/subsystem/tts/ui_interact(mob/user, datum/tgui/ui)
+	if(!can_edit_station_voices(user, null) || SStgui.try_update_ui(user, src, ui))
 		return
-	var/speaker = voices[selected]
-	if(speaker && is_runtime_enabled() && can_edit_station_voices(user, console))
-		queue_tts_message(user.client, LANG("datum.7acfc83a63e39383", null), speaker = speaker, local = TRUE, identifier = "cc-preview-[REF(user)]-[world.time]")
-	var/apply_label = LANG("datum.0f0219b609992c7c", null)
-	if(tgui_alert(user, LANG("datum.e72da9dd888fe2c7", list(selected)), label, list(apply_label, LANG("datum.16251151deca6899", null))) != apply_label)
-		return
-	if(!can_edit_station_voices(user, console) || (speaker && !is_public_station_voice(speaker)))
-		return
-	if(group == STATION_VOICE_DEVICE)
-		if(QDELETED(device) || !isturf(device.loc) || !is_station_level(device.z))
-			return
-		device.station_device_voice = speaker
-	else if(speaker)
-		station_voice_overrides[group] = speaker
-	else
-		station_voice_overrides -= group
-	log_admin("[key_name(user)] set station TTS [label] to [speaker || "default"].")
-	to_chat(user, span_notice(LANG("datum.90d7fe87e1e22a97", list(label, selected))))
+	var/datum/tgui/station_voices/editor = new(user, src, "StationVoiceConsole", LANG("datum.65873b1815495c39", null))
+	editor.group = STATION_VOICE_ANNOUNCEMENTS
+	editor.open()
+
+/datum/controller/subsystem/tts/ui_static_data(mob/user)
+	if(can_edit_station_voices(user, null))
+		return list("voiceCatalog" = station_voice_catalog(SStgui.get_open_ui(user, src)))
+
+/datum/controller/subsystem/tts/ui_data(mob/user)
+	var/datum/tgui/station_voices/editor = SStgui.get_open_ui(user, src)
+	if(editor && can_edit_station_voices(user, null))
+		return list("voiceEditor" = editor.voice_data())
+
+/datum/controller/subsystem/tts/ui_act(action, list/params, datum/tgui/station_voices/ui, datum/ui_state/state)
+	if(..() || action != "stationVoices" || !can_edit_station_voices(ui.user, null) || params["operation"] == "back")
+		return FALSE
+	return ui.voice_action(params)
 
 ADMIN_VERB(configure_station_voices, R_ADMIN, "设置广播与设备音色", "Set this round's station announcement and device voices.", ADMIN_CATEGORY_MAIN)
-	SStts.configure_station_voices(user.mob)
+	SStts.ui_interact(user.mob)

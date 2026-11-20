@@ -2056,6 +2056,9 @@
   "Apply and edit effects over the whole plane": [
     "tgui:PlaneEditor"
   ],
+  "Apply voice": [
+    "tgui:StationVoiceConsole"
+  ],
   "Applying effects": [
     "tgui:PlaneMenus"
   ],
@@ -2166,7 +2169,8 @@
   ],
   "Area": [
     "tgui:ApcControl",
-    "tgui:PowerMonitor"
+    "tgui:PowerMonitor",
+    "tgui:StationVoiceConsole"
   ],
   "Area Atmosphere Alarm": [
     "tgui:Home"
@@ -2921,6 +2925,7 @@
     "tgui:ExoscannerConsole",
     "tgui:Messages",
     "tgui:NtosSupermatter",
+    "tgui:StationVoiceConsole",
     "tgui:index"
   ],
   "Back to Main Menu": [
@@ -5193,6 +5198,9 @@
   ],
   "Buzzwords": [
     "dm:labels"
+  ],
+  "By equipment type": [
+    "tgui:StationVoiceConsole"
   ],
   "By name": [
     "tgui:CreateObject",
@@ -8631,6 +8639,9 @@
   ],
   "Current speed: {0}": [
     "tgui:PlayerPanel"
+  ],
+  "Current voice": [
+    "tgui:StationVoiceConsole"
   ],
   "Current:": [
     "tgui:PlayerPanel"
@@ -16555,6 +16566,9 @@
   "Individual Logs - {0} ({1}) [{2}]": [
     "tgui:IndividualLogViewer"
   ],
+  "Individual machine": [
+    "tgui:StationVoiceConsole"
+  ],
   "Inducer": [
     "dm:labels"
   ],
@@ -18681,6 +18695,7 @@
     "tgui:AdminTicketStats"
   ],
   "Loading...": [
+    "tgui:StationVoiceConsole",
     "tgui:base",
     "tgui:index"
   ],
@@ -19286,7 +19301,8 @@
     "dm:labels"
   ],
   "Machine": [
-    "tgui:OreSilo"
+    "tgui:OreSilo",
+    "tgui:StationVoiceConsole"
   ],
   "Machine Boards": [
     "dm:labels"
@@ -22467,6 +22483,9 @@
     "tgui:RecordTabs",
     "tgui:constants"
   ],
+  "No matching voices.": [
+    "tgui:StationVoiceConsole"
+  ],
   "No material recipes found!": [
     "tgui:ProcessingConsole"
   ],
@@ -22572,6 +22591,9 @@
   ],
   "No properly configured scanner arrays detected.": [
     "tgui:ExoscannerConsole"
+  ],
+  "No public voices available.": [
+    "tgui:StationVoiceConsole"
   ],
   "No question is currently being asked.": [
     "tgui:EightBallVote"
@@ -26348,6 +26370,9 @@
   "Private Security Force": [
     "dm:labels"
   ],
+  "Private preview": [
+    "tgui:StationVoiceConsole"
+  ],
   "Privately Announce Laws": [
     "tgui:Lawpanel"
   ],
@@ -28635,6 +28660,9 @@
   ],
   "Restore and join this reserved room": [
     "tgui:HilbertsHotelCheckout"
+  ],
+  "Restore default": [
+    "tgui:StationVoiceConsole"
   ],
   "Restore?": [
     "tgui:HilbertsHotelCheckout"
@@ -32279,6 +32307,7 @@
   ],
   "Source": [
     "tgui:ServerMonitor",
+    "tgui:StationVoiceConsole",
     "tgui:TankCompressor"
   ],
   "Source Type": [
@@ -32911,7 +32940,7 @@
     "tgui:TimeClock"
   ],
   "Station announcer and device voices": [
-    "tgui:index"
+    "tgui:StationVoiceConsole"
   ],
   "Statistics": [
     "tgui:Virus"
@@ -38119,6 +38148,9 @@
   ],
   "Voice changer settings": [
     "tgui:AiVoiceChanger"
+  ],
+  "Voice library": [
+    "tgui:StationVoiceConsole"
   ],
   "Voiced Emotes": [
     "tgui:tts_voice"
