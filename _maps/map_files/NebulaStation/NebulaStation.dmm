@@ -317,7 +317,7 @@
 /turf/open/floor/iron/white,
 /area/station/science/lower)
 "acm" = (
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/west,
+/obj/structure/sign/poster/contraband/free_drone/directional/west,
 /turf/open/floor/iron/stairs{
 	color = "#5d341f";
 	dir = 1
@@ -119486,7 +119486,7 @@
 /obj/effect/spawner/random/entertainment/arcade{
 	dir = 4
 	},
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/west,
+/obj/structure/sign/poster/contraband/free_drone/directional/west,
 /obj/machinery/digital_clock/directional/north,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/eighties,

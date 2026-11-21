@@ -54854,7 +54854,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/east,
+/obj/structure/sign/poster/contraband/space_cube/directional/east,
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 8
 	},
@@ -66246,7 +66246,7 @@
 	},
 /obj/item/storage/belt/janitor,
 /obj/item/storage/bag/trash,
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/north,
+/obj/structure/sign/poster/contraband/free_drone/directional/north,
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
 /turf/open/floor/iron/dark,
@@ -71518,7 +71518,7 @@
 	},
 /obj/effect/turf_decal/tile/purple/half/contrasted,
 /obj/effect/turf_decal/tile/purple,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
+/obj/structure/sign/poster/contraband/space_cube/directional/north,
 /obj/machinery/duct,
 /turf/open/floor/iron/showroomfloor,
 /area/station/science)

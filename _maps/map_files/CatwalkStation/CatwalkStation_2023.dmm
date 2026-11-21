@@ -39493,7 +39493,7 @@
 /area/station/construction/mining/aux_base)
 "kyp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/south,
+/obj/structure/sign/poster/contraband/free_drone/directional/south,
 /obj/machinery/duct,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8

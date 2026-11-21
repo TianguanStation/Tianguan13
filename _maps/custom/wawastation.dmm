@@ -12768,7 +12768,7 @@
 /obj/machinery/netpod,
 /obj/structure/window/reinforced/spawner/directional/west,
 /obj/structure/cable,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
+/obj/structure/sign/poster/contraband/space_cube/directional/north,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/cargo/bitrunning/den)
 "exk" = (
@@ -17299,7 +17299,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/broken_floor,
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/west,
+/obj/structure/sign/poster/contraband/free_drone/directional/west,
 /turf/open/floor/iron,
 /area/station/maintenance/department/medical/central)
 "gaI" = (
@@ -27964,7 +27964,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
+/obj/structure/sign/poster/contraband/space_cube/directional/north,
 /turf/open/floor/plating,
 /area/station/maintenance/central/greater)
 "jIY" = (
@@ -56618,7 +56618,7 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
+/obj/structure/sign/poster/contraband/space_cube/directional/north,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)

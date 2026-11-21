@@ -2810,7 +2810,7 @@
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck2)
 "OA" = (
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/north,
+/obj/structure/sign/poster/contraband/free_drone/directional/north,
 /turf/open/floor/iron,
 /area/awaymission/mothership_astrum/deck2)
 "OB" = (
@@ -3583,7 +3583,7 @@
 /obj/structure/chair/comfy/brown{
 	dir = 8
 	},
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/north,
+/obj/structure/sign/poster/contraband/free_drone/directional/north,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck2)
 "XU" = (

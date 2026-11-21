@@ -83943,7 +83943,7 @@
 "uFH" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/spawner/random/maintenance,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
+/obj/structure/sign/poster/contraband/space_cube/directional/north,
 /obj/item/circuitboard/machine/holopad,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)

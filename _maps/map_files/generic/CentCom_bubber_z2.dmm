@@ -1882,7 +1882,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/south,
+/obj/structure/sign/poster/contraband/space_cube/directional/south,
 /obj/machinery/vending/wardrobe/jani_wardrobe/ghost_cafe{
 	shut_up = 1
 	},

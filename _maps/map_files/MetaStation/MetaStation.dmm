@@ -13351,7 +13351,7 @@
 	icon_state = "oldcomp";
 	name = "Gamer Computer"
 	},
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/west,
+/obj/structure/sign/poster/contraband/space_cube/directional/west,
 /obj/item/toy/katana{
 	desc = "As seen in your favourite Japanese cartoon.";
 	name = "anime katana"
@@ -67288,7 +67288,7 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "wQz" = (
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/east,
+/obj/structure/sign/poster/contraband/free_drone/directional/east,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/effect/landmark/generic_maintenance_landmark,
 /turf/open/floor/plating,

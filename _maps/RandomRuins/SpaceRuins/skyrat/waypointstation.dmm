@@ -464,7 +464,7 @@
 "zy" = (
 /mob/living/basic/alien/drone,
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/east,
+/obj/structure/sign/poster/contraband/space_cube/directional/east,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/waypoint)
 "zE" = (
@@ -613,7 +613,7 @@
 /turf/open/floor/iron/solarpanel/airless,
 /area/space/nearstation)
 "Gz" = (
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/east,
+/obj/structure/sign/poster/contraband/free_drone/directional/east,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/waypoint)
 "GW" = (

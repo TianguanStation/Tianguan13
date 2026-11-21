@@ -835,7 +835,7 @@
 	dir = 1
 	},
 /obj/structure/chair,
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/east,
+/obj/structure/sign/poster/contraband/free_drone/directional/east,
 /turf/open/floor/iron{
 	dir = 1
 	},

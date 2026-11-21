@@ -1219,7 +1219,7 @@
 "nH" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark,
 /obj/structure/closet/syndicate/personal,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
+/obj/structure/sign/poster/contraband/space_cube/directional/north,
 /obj/effect/turf_decal/tile/red/full,
 /turf/open/floor/iron/dark/textured_half{
 	dir = 8
@@ -4201,7 +4201,7 @@
 /area/centcom/syndicate_mothership/expansion_bombthreat)
 "RQ" = (
 /obj/structure/closet/cardboard,
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/east,
+/obj/structure/sign/poster/contraband/free_drone/directional/east,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/centcom/syndicate_mothership/control)
 "RT" = (
@@ -4835,7 +4835,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/centcom/syndicate_mothership/expansion_bioterrorism)
 "XX" = (
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
+/obj/structure/sign/poster/contraband/space_cube/directional/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer5,
 /turf/open/floor/iron/smooth_half{

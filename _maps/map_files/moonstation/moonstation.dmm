@@ -21597,7 +21597,7 @@
 /obj/structure/chair/sofa/corp/corner{
 	dir = 8
 	},
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/east,
+/obj/structure/sign/poster/contraband/free_drone/directional/east,
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/mineral/plasma,
 /area/station/common/night_club)
@@ -74088,7 +74088,7 @@
 /area/station/security/checkpoint/science)
 "sSX" = (
 /obj/structure/cable,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/east,
+/obj/structure/sign/poster/contraband/space_cube/directional/east,
 /turf/open/floor/bamboo,
 /area/station/maintenance/abandon_wrestle)
 "sTf" = (
@@ -93073,7 +93073,7 @@
 	desc = "As seen in your favourite Japanese cartoon.";
 	name = "anime katana"
 	},
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/west,
+/obj/structure/sign/poster/contraband/space_cube/directional/west,
 /turf/open/floor/plating{
 	initial_gas_mix = "miasma=15;o2=22;n2=82;TEMP=293.15"
 	},

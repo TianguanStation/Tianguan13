@@ -558,7 +558,7 @@
 	},
 /area/ruin/space/has_grav/film_studio/starboard)
 "kj" = (
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/south,
+/obj/structure/sign/poster/contraband/free_drone/directional/south,
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/film_studio/dorms)

@@ -17190,7 +17190,7 @@
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/engine/atmos/lesser)
 "eYe" = (
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/east,
+/obj/structure/sign/poster/contraband/free_drone/directional/east,
 /obj/structure/chair/comfy{
 	dir = 1
 	},
@@ -26917,7 +26917,7 @@
 /obj/item/reagent_containers/cup/soda_cans/monkey_energy,
 /obj/item/reagent_containers/cup/soda_cans/monkey_energy,
 /obj/item/reagent_containers/cup/soda_cans/monkey_energy,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/west,
+/obj/structure/sign/poster/contraband/space_cube/directional/west,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/starboard/fore)
 "hPT" = (
@@ -78670,7 +78670,7 @@
 	icon_state = "detective"
 	},
 /obj/item/clothing/under/rank/civilian/lawyer/beige,
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/west,
+/obj/structure/sign/poster/contraband/free_drone/directional/west,
 /obj/effect/turf_decal/siding/wood/end{
 	dir = 1
 	},

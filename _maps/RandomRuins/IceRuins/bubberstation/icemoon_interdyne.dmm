@@ -2898,7 +2898,7 @@
 /obj/item/reagent_containers/cup/glass/waterbottle{
 	pixel_x = 11
 	},
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/east,
+/obj/structure/sign/poster/contraband/free_drone/directional/east,
 /obj/item/radio/intercom/directional/east{
 	name = "two-way prisoner intercom";
 	broadcasting = 1;

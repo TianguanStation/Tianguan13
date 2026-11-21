@@ -37838,7 +37838,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos/upper)
 "olw" = (
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/west,
+/obj/structure/sign/poster/contraband/space_cube/directional/west,
 /obj/machinery/atmospherics/pipe/multiz/scrubbers/visible/layer2{
 	dir = 1
 	},
@@ -40773,7 +40773,7 @@
 /turf/open/floor/wood,
 /area/station/service/library/abandoned)
 "ppN" = (
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/west,
+/obj/structure/sign/poster/contraband/space_cube/directional/west,
 /obj/machinery/atmospherics/pipe/multiz/scrubbers/visible/layer2{
 	dir = 1
 	},
@@ -46643,7 +46643,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
 "rvT" = (
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
+/obj/structure/sign/poster/contraband/space_cube/directional/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/trimline/purple/filled/line{

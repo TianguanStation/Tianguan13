@@ -487,7 +487,7 @@
 "fI" = (
 /obj/machinery/light/small/directional/south,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/south,
+/obj/structure/sign/poster/contraband/space_cube/directional/south,
 /obj/machinery/duct,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1

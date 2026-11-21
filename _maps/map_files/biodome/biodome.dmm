@@ -70311,9 +70311,9 @@
 "ybk" = (
 /obj/effect/spawner/random/entertainment/arcade,
 /obj/machinery/light/red/dim/directional/north,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
+/obj/structure/sign/poster/contraband/space_cube/directional/north,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/east,
+/obj/structure/sign/poster/contraband/free_drone/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/cargo/bitrunning/den)
 "ybC" = (

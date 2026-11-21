@@ -156,9 +156,6 @@
 		"taser",
 		"toilet",
 		"toolbox",
-		"bdragon", //splurt add
-		"booty", //splurt add
-		"boobs", //splurt add
 	)
 	/// List of selectable orientable options
 	var/static/list/oriented = list(

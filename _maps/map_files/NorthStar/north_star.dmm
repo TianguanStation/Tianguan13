@@ -75337,7 +75337,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/floor2/aft)
 "sGv" = (
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/west,
+/obj/structure/sign/poster/contraband/space_cube/directional/west,
 /turf/open/floor/mineral/plastitanium/pod/light,
 /area/station/maintenance/floor4/port)
 "sGB" = (

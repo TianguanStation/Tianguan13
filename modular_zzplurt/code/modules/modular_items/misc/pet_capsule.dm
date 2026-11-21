@@ -25,24 +25,16 @@
 
 /obj/item/pet_capsule/proc/InitializeSelection()
 	pet_icons = list(
-		// "Femclaw" = image(icon = 'modular_zzplurt/icons/mob/femclaw/newclaws.dmi', icon_state = "femclaw"),
-		// "Deathclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "newclaw"),
 		"Carp" = image(icon = 'icons/mob/simple/carp.dmi', icon_state = "carp"),
 		"Spider" = image(icon = 'icons/mob/simple/arachnoid.dmi', icon_state = "guard"),
 		"Ice Wolf" = image(icon = 'icons/mob/simple/icemoon/icemoon_monsters.dmi', icon_state = "whitewolf"),
-		// "Rouny" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "rouny")
 	)
 
 /obj/item/pet_capsule/alpha_capsule/InitializeSelection()
 	pet_icons = list(
-		// "Femclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "femclaw"),
-		// "Deathclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "newclaw"),
 		"Carp" = image(icon = 'icons/mob/simple/carp.dmi', icon_state = "carp"),
 		"Spider" = image(icon = 'icons/mob/simple/arachnoid.dmi', icon_state = "guard"),
 		"Ice Wolf" = image(icon = 'icons/mob/simple/icemoon/icemoon_monsters.dmi', icon_state = "whitewolf"),
-		// "Rouny" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "rouny"),
-		// "Mommyclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "mommyclaw"),
-		// "Alphaclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "alphaclaw")
 	)
 
 /obj/item/pet_capsule/Initialize(mapload)

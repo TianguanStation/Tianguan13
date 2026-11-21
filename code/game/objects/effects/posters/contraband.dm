@@ -16,7 +16,6 @@
 	/// List of posters which make you feel a certain type of way
 	var/static/list/pinup_posters = list(
 		/obj/structure/sign/poster/contraband/lizard,
-		/obj/structure/sign/poster/contraband/lusty_xenomorph,
 		/obj/structure/sign/poster/contraband/double_rainbow,
 	)
 
@@ -57,13 +56,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/atmosia_indepe
 	icon_state = "fun_police"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/fun_police, 32)
-
-/obj/structure/sign/poster/contraband/lusty_xenomorph
-	name = "Lusty Xenomorph"
-	desc = "A heretical poster depicting the titular star of an equally heretical book."
-	icon_state = "lusty_xenomorph"
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/lusty_xenomorph, 32)
 
 /obj/structure/sign/poster/contraband/syndicate_recruitment
 	name = "Syndicate Recruitment"
@@ -282,13 +274,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/lizard, 32)
 	icon_state = "free_drone"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/free_drone, 32)
-
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6
-	name = "Busty Backdoor Xeno Babes 6"
-	desc = "Get a load, or give, of these all natural Xenos!"
-	icon_state = "busty_backdoor_xeno_babes_6"
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6, 32)
 
 /obj/structure/sign/poster/contraband/robust_softdrinks
 	name = "Robust Softdrinks"

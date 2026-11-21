@@ -18211,7 +18211,7 @@
 /turf/open/floor/plating,
 /area/station/command/gateway)
 "dvj" = (
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/east,
+/obj/structure/sign/poster/contraband/free_drone/directional/east,
 /obj/item/reagent_containers/cup/beaker/jar{
 	name = "Sticky jar"
 	},
@@ -44593,7 +44593,7 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/north,
+/obj/structure/sign/poster/contraband/free_drone/directional/north,
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "dirt-flat-1"
 	},
@@ -86883,7 +86883,7 @@
 /turf/open/floor/iron,
 /area/station/science/xenobiology/hallway)
 "qCg" = (
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/west,
+/obj/structure/sign/poster/contraband/free_drone/directional/west,
 /obj/structure/chair/stool/bar/directional/north,
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/carpet/purple,
@@ -98844,7 +98844,7 @@
 /turf/open/floor/carpet,
 /area/station/service/chapel/office)
 "sQa" = (
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/east,
+/obj/structure/sign/poster/contraband/space_cube/directional/east,
 /obj/structure/table,
 /obj/structure/etherealball,
 /obj/machinery/duct,
@@ -101848,7 +101848,7 @@
 	dir = 10
 	},
 /obj/machinery/netpod,
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/east,
+/obj/structure/sign/poster/contraband/space_cube/directional/east,
 /obj/machinery/light/small/blacklight/directional/east,
 /obj/effect/spawner/random/trash/garbage,
 /obj/effect/spawner/random/trash/garbage,
@@ -123908,7 +123908,7 @@
 	icon_state = "oldcomp";
 	name = "Gamer Computer"
 	},
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/west,
+/obj/structure/sign/poster/contraband/space_cube/directional/west,
 /obj/item/toy/katana{
 	desc = "As seen in your favourite Japanese cartoon.";
 	name = "anime katana"

@@ -3713,7 +3713,7 @@
 /obj/structure/chair/office/light{
 	dir = 4
 	},
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/west,
+/obj/structure/sign/poster/contraband/free_drone/directional/west,
 /turf/open/floor/plating,
 /area/awaymission/caves/maintsroom)
 "lO" = (
@@ -6341,7 +6341,7 @@
 	icon_state = "oldcomp";
 	name = "Gamer Computer"
 	},
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/west,
+/obj/structure/sign/poster/contraband/space_cube/directional/west,
 /obj/item/toy/katana{
 	desc = "As seen in your favourite Japanese cartoon.";
 	name = "anime katana"
@@ -11537,7 +11537,7 @@
 /turf/closed/indestructible/reinforced,
 /area/awaymission/caves/maintsroom)
 "LF" = (
-/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/east,
+/obj/structure/sign/poster/contraband/space_cube/directional/east,
 /turf/open/floor/sepia,
 /area/awaymission/caves/maintsroom)
 "LG" = (
@@ -15167,7 +15167,7 @@
 /turf/open/floor/engine/cult,
 /area/awaymission/caves/maintsroom)
 "Xu" = (
-/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6/directional/east,
+/obj/structure/sign/poster/contraband/free_drone/directional/east,
 /turf/open/floor/plating,
 /area/awaymission/caves/maintsroom)
 "Xv" = (
