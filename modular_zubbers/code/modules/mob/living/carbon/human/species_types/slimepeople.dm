@@ -337,7 +337,7 @@
 				alterer,
 				LANG("datum.768912b9ba1b6585", list(BODY_SIZE_MIN * 100, BODY_SIZE_MAX * 100)),
 				LANG("datum.0eaf6f27787a7a13", null),
-				default = min(alterer.current_size * 100, BODY_SIZE_MAX * 100),
+				default = clamp(alterer.current_size, BODY_SIZE_MIN, BODY_SIZE_MAX) * 100,
 				max_value = BODY_SIZE_MAX * 100,
 				min_value = BODY_SIZE_MIN * 100,
 			)

@@ -5,6 +5,9 @@
 #include "code\genesis_call.dme"
 // Again, DO NOT MOVE IT OR ALLOW ANY OTHER #include TO PRECEDE THE ONE ABOVE.
 
+// TianGuan character customization uses SPLURT's compile-time size override.
+#define BODY_SIZE_MIN_OVERRIDE 0.7
+
 // BEGIN_INTERNALS
 // END_INTERNALS
 
@@ -11320,6 +11323,7 @@
 #include "modular_tianguan\modules\sponsor_loadout_items\code\sponsor_loadout_items.dm"
 #include "modular_tianguan\modules\sponsor_loadout_items\code\sponsor_plushies.dm"
 #include "modular_tianguan\modules\tg_lobby\code\lobby_card.dm"
+#include "modular_tianguan\modules\crew_species\body_size.dm"
 #include "modular_tianguan\modules\crew_species\golemweak.dm"
 #include "modular_tianguan\modules\crew_species\rogue.dm"
 #include "modular_tianguan\modules\crew_species\trampling.dm"

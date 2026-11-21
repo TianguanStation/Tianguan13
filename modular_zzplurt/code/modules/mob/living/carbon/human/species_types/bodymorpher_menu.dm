@@ -153,7 +153,7 @@
 		"facial_hair_color" = alterer.facial_hair_color,
 	)
 	var/list/dna = list(
-		"body_size" = get_size(alterer),
+		"body_size" = tianguan_chosen_body_size(get_size(alterer)),
 		"gender" = alterer.gender,
 		"physique" = alterer.physique,
 	)
@@ -194,7 +194,7 @@
 		"name" = preset_data["name"] || preset_key,
 		"is_base" = is_base,
 		"gender" = dna?["gender"] || "Unset",
-		"body_size" = round((dna?["body_size"] || 1) * 100),
+		"body_size" = round((tianguan_chosen_body_size(dna?["body_size"]) || RESIZE_DEFAULT_SIZE) * 100),
 		"mutant_part_count" = length(mutant_bodyparts),
 	)
 
@@ -279,7 +279,7 @@
 
 	var/list/dna = preset["dna"]
 	if(islist(dna))
-		var/new_body_size = sanitize_float(dna["body_size"], BODY_SIZE_MIN, BODY_SIZE_MAX, 0.01, get_size(alterer))
+		var/new_body_size = sanitize_float(tianguan_chosen_body_size(dna["body_size"]), BODY_SIZE_MIN, BODY_SIZE_MAX, 0.01, get_size(alterer))
 		alterer.update_size(new_body_size)
 		if(dna["gender"] in list(MALE, FEMALE, PLURAL, NEUTER))
 			alterer.gender = dna["gender"]
