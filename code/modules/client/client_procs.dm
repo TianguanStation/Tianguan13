@@ -1208,12 +1208,10 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 /client/proc/set_right_click_menu_mode(shift_only)
 	if(shift_only)
 		winset(src, SKIN_MAPWINDOW_MAP, "right-click=true")
-		winset(src, SKIN_DEFAULT_SHIFTUP, "is-disabled=false")
 		winset(src, SKIN_DEFAULT_SHIFT, "is-disabled=false")
 	else
 		winset(src, SKIN_MAPWINDOW_MAP, "right-click=false")
 		winset(src, SKIN_DEFAULT_SHIFT, "is-disabled=true")
-		winset(src, SKIN_DEFAULT_SHIFTUP, "is-disabled=true")
 
 /client/proc/update_ambience_pref(value)
 	if(value)

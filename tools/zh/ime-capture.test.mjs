@@ -5,6 +5,8 @@ import { runInNewContext } from 'node:vm';
 
 const html = readFileSync(new URL('../../modular_zh/modules/ime_keyboard/html/ime_capture.html', import.meta.url), 'utf8');
 const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
+const showRightClickMenu = '.winset "default.Shift.is-disabled=false ? map.right-click=false"';
+const restoreGameRightClick = '.winset "default.Shift.is-disabled=false ? map.right-click=true"';
 
 function capture(context, macros = {}, onCommand, byond) {
   context.mock.timers.enable({ apis: ['setTimeout', 'Date'], now: 10000 });
@@ -50,7 +52,7 @@ test('a focus-changing macro follows its press and resets game input on leaving'
   });
   page.key('KeyW');
   page.key('Tab');
-  assert.deepEqual(page.commands, ['KeyDown "W"', 'KeyDown "Tab"', 'FocusChat', 'Reset-Held-Keys']);
+  assert.deepEqual(page.commands, ['KeyDown "W"', 'KeyDown "Tab"', 'FocusChat', restoreGameRightClick, 'Reset-Held-Keys']);
 });
 
 test('unbound keys are forwarded to raw key handlers and never expire on a map click', (context) => {
@@ -98,7 +100,7 @@ test('chat and application blur each cancel game input once, including silent na
     page.blur(destination);
     page.tick(1);
     page.tick(2000);
-    assert.deepEqual(page.commands.splice(0), ['KeyDown "I"', 'KeyDown "L"', 'KeyDown "Space"', 'Reset-Held-Keys']);
+    assert.deepEqual(page.commands.splice(0), ['KeyDown "I"', 'KeyDown "L"', 'KeyDown "Space"', restoreGameRightClick, 'Reset-Held-Keys']);
     page.focus();
     page.key('Space', 'keydown', true);
     assert.deepEqual(page.commands, []);
@@ -129,6 +131,30 @@ test('releasing a modifier preserves the other physical keys in its chord', (con
   assert.deepEqual(page.commands, ['KeyDown "Ctrl"', 'KeyDown "I"', 'KeyUp "Ctrl"']);
   page.key('KeyI', 'keyup');
   assert.equal(page.commands.at(-1), 'KeyUp "I"');
+});
+
+test('Shift switches the native right-click mode locally and still reaches game keybindings', (context) => {
+  const page = capture(context);
+  page.key('ShiftLeft');
+  page.key('ShiftLeft', 'keyup', false, { shiftKey: true }); // Right Shift remains held.
+  page.blur(); // Clicking the map while using the context menu can transfer focus.
+  page.tick(1);
+  assert.deepEqual(page.commands, [showRightClickMenu, 'KeyDown "Shift"']);
+  page.focus();
+  page.key('ShiftRight', 'keyup', false, { shiftKey: false });
+  assert.deepEqual(page.commands, [showRightClickMenu, 'KeyDown "Shift"', restoreGameRightClick, 'KeyUp "Shift"']);
+});
+
+test('a Shift release first seen in the capture page restores normal right-click', (context) => {
+  const page = capture(context);
+  page.key('ShiftLeft', 'keyup'); // The press was handled by the native macro.
+  assert.deepEqual(page.commands, [restoreGameRightClick, 'KeyUp "Shift"']);
+});
+
+test('the native Shift release restores right-click and forwards KeyUp in one macro', () => {
+  const skin = readFileSync(new URL('../../interface/skin.dmf', import.meta.url), 'utf8');
+  const shiftUp = skin.match(/^\s*elem "ShiftUp"\n\s*name = "SHIFT\+UP"\n\s*command = (".*")$/m);
+  assert.deepEqual(JSON.parse(shiftUp[1]).split('\n'), [restoreGameRightClick, 'KeyUp Shift [[map.mouse-pos]] [[map.size]]']);
 });
 
 test('a quick tap dispatches both edges without waiting for a timer', (context) => {

@@ -1,12 +1,10 @@
 macro "default"
-	elem ".winset :map.right-click=false"
-		name = "SHIFT+Shift"
 	elem "Shift"
 		name = "SHIFT"
-		command = ".winset :map.right-click=false"
+		command = ".winset :map.right-click=false\nKeyDown Shift [[map.mouse-pos]] [[map.size]]"
 	elem "ShiftUp"
 		name = "SHIFT+UP"
-		command = ".winset :map.right-click=true"
+		command = ".winset \"default.Shift.is-disabled=false ? map.right-click=true\"\nKeyUp Shift [[map.mouse-pos]] [[map.size]]"
 
 
 window "mainwindow"
