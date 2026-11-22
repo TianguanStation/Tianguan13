@@ -137,6 +137,18 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 		no_tgui_adminhelp(input(src, LANG("client.fe16a79ee7310807", null), LANG("client.5506e9074b9d436c", null)) as null|message)
 		return
 
+	if(!interviewee)
+		if(href_list["viewpoll"])
+			var/datum/poll_question/poll = locate(href_list["viewpoll"]) in GLOB.polls
+			if(poll)
+				poll_player(poll)
+			return
+		if(href_list["votepollref"])
+			var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
+			if(poll)
+				vote_on_poll_handler(poll, href_list)
+			return
+
 	if(href_list["commandbar_typing"])
 		handle_commandbar_typing(href_list)
 

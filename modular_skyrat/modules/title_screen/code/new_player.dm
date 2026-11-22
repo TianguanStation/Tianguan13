@@ -223,12 +223,12 @@
  * Shows the player a list of current polls, if any.
  */
 /mob/dead/new_player/proc/playerpolls()
-	if(!usr || !client)
+	if(!client)
 		return
 
-	var/output
+	var/output = ""
 	if (!SSdbcore.Connect())
-		return
+		return {"<a class="menu_button" href='byond://?src=[text_ref(src)];polls_menu=1'>POLLS</a>"}
 	var/isadmin = FALSE
 	if(client?.holder)
 		isadmin = TRUE
@@ -251,7 +251,7 @@
 
 	if(!query_get_new_polls.Execute())
 		qdel(query_get_new_polls)
-		return
+		return {"<a class="menu_button" href='byond://?src=[text_ref(src)];polls_menu=1'>POLLS</a>"}
 	if(query_get_new_polls.NextRow())
 		output +={"<a class="menu_button menu_newpoll" href='byond://?src=[text_ref(src)];polls_menu=1'>POLLS (NEW)</a>"}
 	else

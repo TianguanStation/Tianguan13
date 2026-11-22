@@ -254,6 +254,8 @@ GAME_VERB_NATIVE_INSTANT(/client, reset_held_keys_verb, "Reset Held Keys", null)
 			client?.changelog()
 		if("admin_notice")
 			client?.admin_notice()
+		if("polls")
+			client?.handle_player_polling()
 		if("toggle_ignore")
 			var/ckey = payload["ckey"]
 			if(!ckey || ckey == client?.ckey)
