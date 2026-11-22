@@ -552,8 +552,8 @@ body.tg_collapsed .tg_handle:after { content: "▶"; }
 	html = replacetext(html, "SWAP SERVERS", "切换服务器")
 	html = replacetext(html, ">OBSERVE<", ">旁观<")
 	html = replacetext(html, " READY<", " 准备就绪<")
-	html = replacetext(html, ">POLLS (NEW)<", ">投票 (新)<")
-	html = replacetext(html, ">POLLS<", ">投票<")
+	html = replacetext(html, ">POLLS (NEW)<", ">治理中心认证 (新)<")
+	html = replacetext(html, ">POLLS<", ">治理中心认证<")
 	return html
 
 #undef TG_LOBBY_CSS
