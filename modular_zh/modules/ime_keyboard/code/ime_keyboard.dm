@@ -38,8 +38,9 @@
 		return
 	var/static/list/keys
 	if(!keys)
+		// The skin's ShiftUp macro sends KeyUp and restores the map's right-click mode.
 		keys = list("North", "South", "East", "West", "Northwest", "Northeast", "Southwest", "Southeast",
-			"Insert", "Delete", "Space", "Escape", "Tab", "Return", "Back", "Shift", "Ctrl", "Alt",
+			"Insert", "Delete", "Space", "Escape", "Tab", "Return", "Back", "Ctrl", "Alt",
 			"Add", "Subtract", "Multiply", "Divide", "Decimal")
 		var/characters = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`-=[]\;',./"
 		for(var/i in 1 to length(characters))
@@ -86,6 +87,8 @@
 	ime_capture_active = FALSE
 	ime_capture_release_macros(FALSE)
 	ime_capture_commands = null
+	if(mob?.shift_to_open_context_menu)
+		winset(src, SKIN_MAPWINDOW_MAP, "right-click=true")
 	// 运行期创建的控件把 parent 清空即销毁；焦点还给地图，回到原生宏。
 	winset(src, IME_CAPTURE_ID, "parent=")
 	winset(src, "map", "focus=true")

@@ -16,6 +16,9 @@
 	for(var/k in 1 to length(macro_set))
 		var/list/split_name = splittext(macro_set[k], ".")
 		var/macro_name = "[split_name[1]].[split_name[2]]" // [3] is "command"
+		// The skin owns these macros and the right-click mode uses their named IDs.
+		if(macro_name == SKIN_DEFAULT_SHIFT || macro_name == SKIN_DEFAULT_SHIFTUP)
+			continue
 		erase_output = "[erase_output];[macro_name].parent=null"
 	winset(src, null, erase_output)
 

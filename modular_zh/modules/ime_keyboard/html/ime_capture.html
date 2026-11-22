@@ -74,6 +74,10 @@ html, body { margin: 0; padding: 0; background: transparent; overflow: hidden; }
 		}
 		call('winset', { command: command });
 	}
+	function setShiftRightClick(held) {
+		// The game disables the native Shift macro for observers, who always get the menu.
+		send('.winset "default.Shift.is-disabled=false ? map.right-click=' + (held ? 'false' : 'true') + '"');
+	}
 
 	// 焦点回收全在客户端本地做（winget/winset 不经服务器）：点地图、聊天框关闭后被设回地图、
 	// 弹窗关闭…… 这些都会让原生地图控件拿到焦点，输入法随之接管。只认「焦点在地图上」这一种情形：
@@ -93,8 +97,10 @@ html, body { margin: 0; padding: 0; background: transparent; overflow: hidden; }
 	var focusTimer;
 	var gameFocus = true;
 	function leaveGameFocus() {
-		if (gameFocus) send('Reset-Held-Keys');
+		if (!gameFocus) return;
 		gameFocus = false;
+		setShiftRightClick(false);
+		send('Reset-Held-Keys');
 	}
 	// 只在捕获页失焦期间查询焦点。计时器不参与判断任何键的状态。
 	function scheduleFocusCheck(delay) {
@@ -127,8 +133,12 @@ html, body { margin: 0; padding: 0; background: transparent; overflow: hidden; }
 		var key = toByondKey(eventCode(e));
 		if (!key) return;
 		e.preventDefault();
-		if (e.type === 'keydown' && e.repeat) return;
 		var down = e.type === 'keydown';
+		if (down && e.repeat) return;
+		if (key === 'Shift') {
+			if (!down && e.shiftKey) return; // The other Shift key is still held.
+			setShiftRightClick(down);
+		}
 		send((down ? 'KeyDown' : 'KeyUp') + ' ' + JSON.stringify(key) + ' [[map.mouse-pos]] [[map.size]]');
 		if (down && MACRO_COMMANDS[key]) send(MACRO_COMMANDS[key]);
 	}
