@@ -109,8 +109,9 @@
 	var/vote_out = lang_fallback_apply_html(vote_line)
 	TEST_ASSERT(!findtext(vote_out, "to place your votes"), \
 		"整行作用域上含 <a> 的模板仍未命中：[vote_out]")
-	TEST_ASSERT(findtext(vote_out, "byond://winset?command=vote"), \
-		"译文把投票链接弄丢了——玩家将无法点击投票：[vote_out]")
+	var/procpath/vote_verb = /mob/verb/vote
+	TEST_ASSERT(findtext(vote_out, "href='byond://winset?command=[vote_verb.name]'"), \
+		"投票公告的链接必须调用已注册的命令 [vote_verb.name]：[vote_out]")
 
 	// ⑤ `span_tooltip()` 把提示文字放进 **HTML 属性**（`data-content="…"`），而切块器只翻标签
 	// **之间**的文本 —— 属性一律跳过（`class`/`href` 里是样式名和链接，碰了当场把配色和跳转
