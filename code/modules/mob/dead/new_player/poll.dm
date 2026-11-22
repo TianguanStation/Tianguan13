@@ -12,12 +12,14 @@ GLOBAL_PROTECT(poll_options)
  * Shows a list of currently running polls a player can vote/has voted on
  *
  */
-/mob/dead/new_player/proc/handle_player_polling()
+/client/proc/handle_player_polling()
+	if(is_guest_key(key))
+		return
 	var/list/output = list("<div align='center'><B>Player polls</B><hr><table>")
 	var/rs = REF(src)
 	for(var/p in GLOB.polls)
 		var/datum/poll_question/poll = p
-		if((poll.admin_only && !client.holder) || poll.future_poll)
+		if((poll.admin_only && !holder) || poll.future_poll)
 			continue
 		output += "<tr bgcolor='#e2e2e2'><td><a href='byond://?src=[rs];viewpoll=[REF(poll)]'><b>[poll.question]</b></a></td></tr>"
 	output += "</table>"
@@ -27,7 +29,7 @@ GLOBAL_PROTECT(poll_options)
  * Redirects a player to the correct poll window based on poll type.
  *
  */
-/mob/dead/new_player/proc/poll_player(datum/poll_question/poll)
+/client/proc/poll_player(datum/poll_question/poll)
 	if(!poll)
 		return
 	if(!SSdbcore.Connect())
@@ -51,7 +53,7 @@ GLOBAL_PROTECT(poll_options)
  * If already voted on, the option a player voted for is pre-selected.
  *
  */
-/mob/dead/new_player/proc/poll_player_option(datum/poll_question/poll)
+/client/proc/poll_player_option(datum/poll_question/poll)
 	var/datum/db_query/query_option_get_voted = SSdbcore.NewQuery({"
 		SELECT optionid FROM [format_table_name("poll_vote")]
 		WHERE pollid = :pollid AND ckey = :ckey AND deleted = 0
@@ -95,7 +97,7 @@ GLOBAL_PROTECT(poll_options)
  * If already responded to, the saved response of a player is shown.
  *
  */
-/mob/dead/new_player/proc/poll_player_text(datum/poll_question/poll)
+/client/proc/poll_player_text(datum/poll_question/poll)
 	var/datum/db_query/query_text_get_replytext = SSdbcore.NewQuery({"
 		SELECT replytext FROM [format_table_name("poll_textreply")]
 		WHERE pollid = :pollid AND ckey = :ckey AND deleted = 0
@@ -132,7 +134,7 @@ GLOBAL_PROTECT(poll_options)
  * If already voted on, the options a player voted for are pre-selected.
  *
  */
-/mob/dead/new_player/proc/poll_player_rating(datum/poll_question/poll)
+/client/proc/poll_player_rating(datum/poll_question/poll)
 	var/datum/db_query/query_rating_get_votes = SSdbcore.NewQuery({"
 		SELECT optionid, rating FROM [format_table_name("poll_vote")]
 		WHERE pollid = :pollid AND ckey = :ckey AND deleted = 0
@@ -187,7 +189,7 @@ GLOBAL_PROTECT(poll_options)
  * If already voted on, the options a player voted for are pre-selected.
  *
  */
-/mob/dead/new_player/proc/poll_player_multi(datum/poll_question/poll)
+/client/proc/poll_player_multi(datum/poll_question/poll)
 	var/datum/db_query/query_multi_get_votes = SSdbcore.NewQuery({"
 		SELECT optionid FROM [format_table_name("poll_vote")]
 		WHERE pollid = :pollid AND ckey = :ckey AND deleted = 0
@@ -231,7 +233,7 @@ GLOBAL_PROTECT(poll_options)
  * If already voted on, the options are sorted how a player voted for them, otherwise they are randomly shuffled.
  *
  */
-/mob/dead/new_player/proc/poll_player_irv(datum/poll_question/poll)
+/client/proc/poll_player_irv(datum/poll_question/poll)
 	var/datum/asset/irv_assets = get_asset_datum(/datum/asset/group/irv)
 	irv_assets.send(src)
 	var/datum/db_query/query_irv_get_votes = SSdbcore.NewQuery({"
@@ -319,7 +321,9 @@ GLOBAL_PROTECT(poll_options)
  * Increments the vote count when successful.
  *
  */
-/mob/dead/new_player/proc/vote_on_poll_handler(datum/poll_question/poll, href_list)
+/client/proc/vote_on_poll_handler(datum/poll_question/poll, href_list)
+	if(is_guest_key(key))
+		return
 	if(!SSdbcore.Connect())
 		to_chat(src, span_danger(LANG("mob.cfa9a5781ea2050f", null)))
 		return
@@ -332,8 +336,8 @@ GLOBAL_PROTECT(poll_options)
 		to_chat(src, span_danger(LANG("mob.36aa77560d92b4d4", null)))
 		return
 	var/admin_rank
-	if(client.holder)
-		admin_rank = client.holder.rank_names()
+	if(holder)
+		admin_rank = holder.rank_names()
 	else
 		if(poll.admin_only)
 			return
@@ -357,11 +361,11 @@ GLOBAL_PROTECT(poll_options)
 	if(query_validate_poll_vote.NextRow())
 		vote_id = text2num(query_validate_poll_vote.item[1])
 		if(vote_id && !poll.allow_revoting)
-			to_chat(usr, span_danger(LANG("mob.a616942dd69cda98", null)))
+			to_chat(src, span_danger(LANG("mob.a616942dd69cda98", null)))
 			qdel(query_validate_poll_vote)
 			return
 	else
-		to_chat(usr, span_danger(LANG("mob.759d37b14163a747", null)))
+		to_chat(src, span_danger(LANG("mob.759d37b14163a747", null)))
 		qdel(query_validate_poll_vote)
 		return
 	qdel(query_validate_poll_vote)
@@ -380,13 +384,13 @@ GLOBAL_PROTECT(poll_options)
 	if(vote_success)
 		if(!vote_id)
 			poll.poll_votes++
-		to_chat(usr, span_notice(LANG("mob.5c106da378731e57", null)))
+		to_chat(src, span_notice(LANG("mob.5c106da378731e57", null)))
 
 /**
  * Processes vote form data and saves results to the database for an option type poll.
  *
  */
-/mob/dead/new_player/proc/vote_on_poll_option(datum/poll_question/poll, href_list, admin_rank, sql_poll_id, vote_id)
+/client/proc/vote_on_poll_option(datum/poll_question/poll, href_list, admin_rank, sql_poll_id, vote_id)
 	if(!SSdbcore.Connect())
 		to_chat(src, span_danger(LANG("mob.cfa9a5781ea2050f", null)))
 		return
@@ -405,7 +409,7 @@ GLOBAL_PROTECT(poll_options)
 		"poll_id" = sql_poll_id,
 		"option_id" = option.option_id,
 		"ckey" = ckey,
-		"ip" = client.address,
+		"ip" = address,
 		"admin_rank" = admin_rank,
 	))
 	if(!query_vote_option.warn_execute())
@@ -418,7 +422,7 @@ GLOBAL_PROTECT(poll_options)
  * Processes response form data and saves results to the database for a text response type poll.
  *
  */
-/mob/dead/new_player/proc/vote_on_poll_text(href_list, admin_rank, sql_poll_id, vote_id)
+/client/proc/vote_on_poll_text(href_list, admin_rank, sql_poll_id, vote_id)
 	if(!SSdbcore.Connect())
 		to_chat(src, span_danger(LANG("mob.cfa9a5781ea2050f", null)))
 		return
@@ -436,7 +440,7 @@ GLOBAL_PROTECT(poll_options)
 		"vote_id" = vote_id,
 		"poll_id" = sql_poll_id,
 		"ckey" = ckey,
-		"ip" = client.address,
+		"ip" = address,
 		"reply_text" = reply_text,
 		"admin_rank" = admin_rank,
 	))
@@ -450,7 +454,7 @@ GLOBAL_PROTECT(poll_options)
  * Processes vote form data and saves results to the database for a rating type poll.
  *
  */
-/mob/dead/new_player/proc/vote_on_poll_rating(datum/poll_question/poll, list/href_list, admin_rank, sql_poll_id)
+/client/proc/vote_on_poll_rating(datum/poll_question/poll, list/href_list, admin_rank, sql_poll_id)
 	if(!SSdbcore.Connect())
 		to_chat(src, span_danger(LANG("mob.cfa9a5781ea2050f", null)))
 		return
@@ -482,7 +486,7 @@ GLOBAL_PROTECT(poll_options)
 			"pollid" = sql_poll_id,
 			"optionid" = option.option_id,
 			"ckey" = ckey,
-			"ip" = client.address,
+			"ip" = address,
 			"adminrank" = admin_rank,
 			"rating" = href_list[h]
 		))
@@ -493,7 +497,7 @@ GLOBAL_PROTECT(poll_options)
  * Processes vote form data and saves results to the database for a multiple choice type poll.
  *
  */
-/mob/dead/new_player/proc/vote_on_poll_multi(datum/poll_question/poll, list/href_list, admin_rank, sql_poll_id)
+/client/proc/vote_on_poll_multi(datum/poll_question/poll, list/href_list, admin_rank, sql_poll_id)
 	if(!SSdbcore.Connect())
 		to_chat(src, span_danger(LANG("mob.cfa9a5781ea2050f", null)))
 		return
@@ -521,7 +525,7 @@ GLOBAL_PROTECT(poll_options)
 			"pollid" = sql_poll_id,
 			"optionid" = option.option_id,
 			"ckey" = ckey,
-			"ip" = client.address,
+			"ip" = address,
 			"adminrank" = admin_rank
 		))
 	/*with revoting and poll editing possible there can be an edge case where a poll is changed to allow less multiple choice options than a user has already voted on
@@ -540,7 +544,7 @@ GLOBAL_PROTECT(poll_options)
  * Processes vote form data and saves results to the database for an IRV type poll.
  *
  */
-/mob/dead/new_player/proc/vote_on_poll_irv(datum/poll_question/poll, list/href_list, admin_rank, sql_poll_id)
+/client/proc/vote_on_poll_irv(datum/poll_question/poll, list/href_list, admin_rank, sql_poll_id)
 	if(!SSdbcore.Connect())
 		to_chat(src, span_danger(LANG("mob.cfa9a5781ea2050f", null)))
 		return
@@ -565,7 +569,7 @@ GLOBAL_PROTECT(poll_options)
 			"pollid" = sql_poll_id,
 			"optionid" = option.option_id,
 			"ckey" = ckey,
-			"ip" = client.address,
+			"ip" = address,
 			"adminrank" = admin_rank
 		))
 	//IRV results are calculated based on id order, we delete all of a user's votes to avoid potential errors caused by revoting and option editing
@@ -578,3 +582,12 @@ GLOBAL_PROTECT(poll_options)
 	qdel(query_delete_irv_votes)
 	SSdbcore.MassInsert(format_table_name("poll_vote"), sql_votes, special_columns = special_columns)
 	return TRUE
+
+/mob/dead/new_player/proc/handle_player_polling()
+	client?.handle_player_polling()
+
+/mob/dead/new_player/proc/poll_player(datum/poll_question/poll)
+	client?.poll_player(poll)
+
+/mob/dead/new_player/proc/vote_on_poll_handler(datum/poll_question/poll, href_list)
+	client?.vote_on_poll_handler(poll, href_list)

@@ -91,6 +91,14 @@ export function HomePage({
             {t('Admin Help')}
           </MenuButton>
           <MenuButton
+            onClick={() => {
+              onAction('polls');
+              onClose();
+            }}
+          >
+            {t('Polls')}
+          </MenuButton>
+          <MenuButton
             onClick={() => onNavigate('leave_body')}
             disabled={!serverState.canLeaveBody}
           >

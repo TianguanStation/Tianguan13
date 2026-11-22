@@ -201,6 +201,8 @@ GLOBAL_LIST_EMPTY(startup_messages)
 	// 单词项：带 HTML 边界，避免 AC/整串误伤（OBSERVE→OBSERVER、READY→ALREADY）。
 	html = replacetext(html, ">OBSERVE<", ">旁观<")
 	html = replacetext(html, " READY<", " 准备就绪<")
+	html = replacetext(html, ">POLLS (NEW)<", ">投票 (新)<")
+	html = replacetext(html, ">POLLS<", ">投票<")
 	return html
 
 #undef MAX_STARTUP_MESSAGES
