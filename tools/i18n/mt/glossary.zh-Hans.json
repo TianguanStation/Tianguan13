@@ -102,7 +102,7 @@
   "AntiMech-Miners TD": "AntiMech-Miners TD",
   "Antihol": "安替霍尔",
   "Antimov AI Core Module": "反阿西莫夫AI核心模块",
-  "Antinoblium": "安提诺布利姆",
+  "Antinoblium": "反铌",
   "Antyphun Corp": "安提丰公司",
   "Apadyne": "阿帕丁",
   "Apadyne Technologies": "阿帕丁科技",
@@ -272,9 +272,9 @@
   "Blessed Poppy": "祝福罂粟",
   "Blizzard Brew": "暴雪酿",
   "Blob": {
-    "zh": "团块",
+    "zh": "孢团",
     "alts": [
-      "血泡"
+      "孢块"
     ],
     "note": "反派：增殖型团块生物；不是「泡泡」"
   },
@@ -465,7 +465,7 @@
   },
   "Chameleon Kit": "变色龙套件",
   "Chameleon Projector": "变色龙投影仪",
-  "Changeling": "变形怪",
+  "Changeling": "化形",
   "ChapDrobe": "神职衣橱",
   "Chaplain": "牧师",
   "Chappy": "Chappy",
@@ -1234,10 +1234,9 @@
   "Hyperfractal Gigashuttle": "超分形巨型穿梭机",
   "Hypernob": "超贵金",
   "Hypernoblium": {
-    "zh": "超诺布利姆",
+    "zh": "超铌",
     "alts": [
-      "超安提诺布利姆",
-      "超贵气体"
+      "超铌"
     ],
     "note": "大小写/连字符变体已并入本条（原有 4 条：Hyper-Noblium, Hyper-noblium, Hypernoblium, hyper-noblium）"
   },
@@ -1291,7 +1290,10 @@
     "note": "原为「保持英文」条目，但目录里早已有稳定中文译法——保留英文只会制造假违规"
   },
   "InterDrobe": "因特达因衣橱",
-  "Interdyne": "因特达因",
+  "Interdyne": {
+    "note": "英特达因是属于辛迪加分支的制药公司",
+    "zh": "英特达因"
+  },
   "Interdyne Brainwashing Protocol Surgery Disk": "因特达因洗脑协议手术磁盘",
   "Interdyne Chem Pen": "因特达因化学笔",
   "Interdyne Pharmaceuticals": "因特达因制药",
@@ -1856,7 +1858,12 @@
   "Nanotrasen-Standardized Queen Bee": "纳米传讯标准化蜂后",
   "Nanotrasen.net": "Nanotrasen.net",
   "Nar'Sian": "Nar'Sian",
-  "Nar'Sie": "纳尔茜",
+  "Nar'Sie": {
+    "alts": [
+      "纳西"
+    ],
+    "zh": "纳西"
+  },
   "Nar'Sien": "Nar'Sien",
   "Nar'Sour": "纳尔酸",
   "Nar-Sie": "Nar-Sie",
@@ -2413,7 +2420,8 @@
   "Shaft Miner": "矿工",
   "Shakiri Rogers": "沙基里·罗杰斯",
   "Shakiri Spritz": "沙基里气泡酒",
-  "Shambler's Vendor": "蹒跚者果汁售货机",
+  "Shambler's Juice": "空虚果汁",
+  "Shambler's Vendor": "空虚果汁售货机",
   "Sharkmund F.": "Sharkmund F.",
   "Shattered Panoply": "破碎的铠甲",
   "Shattered Risen": "Shattered Risen",
@@ -2793,10 +2801,18 @@
   "Tenrai Coat": "天籁外套",
   "Tenrai Kitsunes Supremacy": "Tenrai Kitsunes Supremacy",
   "Tenshin Nakamura": "中村天心",
-  "Terra Gov Marine Corp": "地球政府陆战队",
-  "TerraGov": "泰拉政府",
+  "Terra Gov Marine Corp": {
+    "zh": "近卫陆战队",
+    "sourceAliases": [
+      "TerraGov Marine Corps",
+      "Terran Government Marine Corps",
+      "Terragov Marine Corp",
+      "TerraGov marines"
+    ]
+  },
+  "TerraGov": "太约",
   "Terran Federation": "泰拉联邦",
-  "Terran War": "地球战争",
+  "Terran War": "废土战争",
   "Teshari": "特沙里",
   "Teshari League For Self-Determination": "特沙里自决联盟",
   "Teshari League for Self-Determination": "特沙里自决联盟",
@@ -2885,9 +2901,9 @@
   "Tizira": "提兹拉",
   "Tizira Imports": "提兹拉进口公司",
   "Tiziran": {
-    "zh": "提兹兰",
+    "zh": "泰泽拉",
     "alts": [
-      "提兹拉"
+      "泰泽拉"
     ],
     "note": "同义写法计入 alts，避免把对的译文判成违规"
   },
@@ -2944,7 +2960,14 @@
   "Uncool. Co.": "Uncool. Co.",
   "Unfathomable Curio": "深不可测的奇物",
   "Unit-577": "Unit-577",
-  "United Earth Commission": "联合地球委员会",
+  "United Alliance Republic": {
+    "alts": [
+      "团结联盟"
+    ],
+    "note": "团结联盟是一个非经典法西斯极权排外帝国",
+    "zh": "团结联盟共和国"
+  },
+  "United Earth Commission": "最高行政委员会",
   "United Federation": "联合联邦",
   "United Surplus": "联合剩余物资",
   "United Surplus Crate": "联合剩余物资板条箱",
@@ -3189,7 +3212,7 @@
   "frag12": "frag12",
   "freon": "氟利昂",
   "frontier colonization": "前沿殖民",
-  "gondola": "冈多拉",
+  "gondola": "贡多拉",
   "griff": {
     "zh": "捣乱",
     "alts": [
@@ -3243,7 +3266,7 @@
   "mindbreaker toxin": "碎心者毒素",
   "minebot": "采矿机器人",
   "mothroach": {
-    "zh": "蛾蟑",
+    "zh": "蛾螂",
     "note": "原条目与目录主流写法不符（符合率<25%），按目录实际用法修正"
   },
   "multitool": {
@@ -3281,7 +3304,10 @@
   "psychorot.exe": "psychorot.exe",
   "puppybrain.dll": "puppybrain.dll",
   "rC-20": "rC-20",
-  "robust": "硬核",
+  "robust": {
+    "note": "强健是对游戏知识的丰富与操作的熟练，它不通过游戏道具的强力来实现。而是根据数个微小道具和丰富操作产生的惊艳演出来判定。强健玩家通常非常热爱游玩助手或矿工，并且不断的给自己设置限制来制造难度突破以获取强健的快感。在天关服务器中，强健也包含对角色扮演的完全掌握。",
+    "zh": "强健"
+  },
   "rot360.exe": "rot360.exe",
   "rubbernecker": "围观者",
   "scriptures": "经文",
