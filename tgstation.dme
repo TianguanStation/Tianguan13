@@ -11326,4 +11326,7 @@
 #include "modular_tianguan\modules\crew_species\trampling.dm"
 #include "modular_tianguan\modules\lunchbox\items.dm"
 #include "modular_tianguan\modules\lunchbox\lunchbox.dm"
+// TIANGUAN EDIT ADDITION START - KEYBIND_PREFS_REPAIR
+#include "modular_tianguan\modules\keybind_prefs_repair\code\keybind_prefs_repair.dm"
+// TIANGUAN EDIT ADDITION END - KEYBIND_PREFS_REPAIR
 // END_INCLUDE

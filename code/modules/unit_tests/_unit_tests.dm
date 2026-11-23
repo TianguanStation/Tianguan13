@@ -410,6 +410,7 @@
 // ZH EDIT END
 // TIANGUAN EDIT START
 #include "~tianguan\sponsor_loadout.dm"
+#include "~tianguan\keybind_prefs_repair.dm"
 // TIANGUAN EDIT END
 // END_INCLUDE
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter

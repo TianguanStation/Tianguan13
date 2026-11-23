@@ -174,6 +174,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 /datum/preferences/proc/check_keybindings()
 	if(!parent)
 		return
+	// TIANGUAN EDIT ADDITION START - KEYBIND_PREFS_REPAIR
+	// Repair legacy save data where a keybind value is not a list (null left behind by
+	// resetting a keybind that has no default keys, see tgstation PR #97937). The repair is
+	// persisted by the save_preferences() call at the end of this proc.
+	sanitize_key_binding_values(key_bindings)
+	// TIANGUAN EDIT ADDITION END - KEYBIND_PREFS_REPAIR
 	var/list/binds_by_key = get_key_bindings_by_key(key_bindings)
 	var/list/notadded = list()
 	for (var/name in GLOB.keybindings_by_name)

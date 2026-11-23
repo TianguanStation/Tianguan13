@@ -12,7 +12,15 @@
 	if (preferences.current_window == PREFERENCE_TAB_CHARACTER_PREFERENCES)
 		return list()
 
-	var/list/keybindings = preferences.key_bindings
+	// TIANGUAN EDIT ADDITION START - KEYBIND_PREFS_REPAIR
+	// Every value in key_bindings must be a list. Resetting a keybind that has no default
+	// keys used to write null instead (tgstation PR #97937), and the TGUI keybindings page
+	// treats each value as an array, so a single null bluescreens the whole page.
+	// Build a sanitized copy here so no source of bad data can reach the client.
+	var/list/keybindings = list()
+	for (var/keybind_name in preferences.key_bindings)
+		keybindings[keybind_name] = SANITIZE_LIST(preferences.key_bindings[keybind_name])
+	// TIANGUAN EDIT ADDITION END - KEYBIND_PREFS_REPAIR
 
 	return list(
 		"keybindings" = keybindings,
