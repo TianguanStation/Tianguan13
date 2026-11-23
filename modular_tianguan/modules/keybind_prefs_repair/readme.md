@@ -1,4 +1,4 @@
-https://github.com/TianguanStation/Tianguan13/pull/<!--PR Number-->
+https://github.com/TianguanStation/Tianguan13/pull/25
 
 ## 修复历史键位存档导致「设置 → 按键绑定」整页崩溃
 
