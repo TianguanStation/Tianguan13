@@ -127,10 +127,17 @@
 	entry.donator_only = TRUE
 	entry.donator_tier = DONATOR_TIER_1
 
+/datum/loadout_item
+	/// 该条目的 ckeywhitelist 是「真实私人限定」，赞助者解锁不得清空它。
+	/// 目前只有蓝红球召唤信标使用（见 modular_tianguan/modules/lanhongqiu_pet）。
+	var/private_ckey_lock = FALSE
+
 /// 在 modular_zzplurt/code/modules/loadout/loadout_items.dm 之后接管 /datum/loadout_item/New()：
 /// 清单条目、现存 ckeywhitelist 私人条目，以及各类 donator 条目统一开放给所有天关赞助者。
 /datum/loadout_item/New(category)
 	. = ..()
+	if(private_ckey_lock)
+		return
 	if(tianguan_sponsor_item_paths()[item_path] || LAZYLEN(ckeywhitelist) || donator_only || donator_tier)
 		tianguan_unlock_sponsor_item(src)
 

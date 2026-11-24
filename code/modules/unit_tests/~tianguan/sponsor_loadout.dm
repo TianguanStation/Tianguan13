@@ -37,7 +37,22 @@
 
 	for(var/path in GLOB.all_loadout_datums)
 		var/datum/loadout_item/entry = GLOB.all_loadout_datums[path]
+		if(entry.private_ckey_lock)
+			continue // 真实私人限定（如蓝红球召唤信标），不属于赞助者解锁范围
 		if(LAZYLEN(entry.ckeywhitelist))
 			TEST_FAIL("配装条目 [entry.type]（[path]）仍残留个人 ckeywhitelist：[jointext(entry.ckeywhitelist, ", ")]")
 		if(entry.donator_tier > DONATOR_TIER_1)
 			TEST_FAIL("配装条目 [entry.type]（[path]）的 donator_tier 为 [entry.donator_tier]，应已归一化为 <= DONATOR_TIER_1")
+
+	// 蓝红球召唤信标：白名单是真实私人限定，必须保留指定 ckey，且不受赞助者解锁影响
+	var/datum/loadout_item/lanhongqiu_beacon = GLOB.all_loadout_datums[/obj/item/summon_beacon/donatepet/lanhongqiu]
+	if(isnull(lanhongqiu_beacon))
+		TEST_FAIL("缺少蓝红球召唤信标的配装条目（modular_tianguan/modules/lanhongqiu_pet）")
+	else
+		if(!lanhongqiu_beacon.private_ckey_lock)
+			TEST_FAIL("蓝红球召唤信标应标记 private_ckey_lock，否则赞助者解锁会清空它的 ckeywhitelist")
+		if(lanhongqiu_beacon.donator_only)
+			TEST_FAIL("蓝红球召唤信标不应被赞助者解锁改成 donator_only")
+		for(var/owner in list("lanhongqiu", "lv19874900"))
+			if(!(owner in lanhongqiu_beacon.ckeywhitelist))
+				TEST_FAIL("蓝红球召唤信标的 ckeywhitelist 缺少 [owner]：实为 [jointext(lanhongqiu_beacon.ckeywhitelist, ", ")]")

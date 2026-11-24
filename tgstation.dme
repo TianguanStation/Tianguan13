@@ -11326,4 +11326,5 @@
 #include "modular_tianguan\modules\crew_species\trampling.dm"
 #include "modular_tianguan\modules\lunchbox\items.dm"
 #include "modular_tianguan\modules\lunchbox\lunchbox.dm"
+#include "modular_tianguan\modules\lanhongqiu_pet\code\lanhongqiu_pet.dm"
 // END_INCLUDE
