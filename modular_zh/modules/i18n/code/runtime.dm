@@ -112,6 +112,7 @@ GLOBAL_LIST_INIT(i18n_player_chat_types, list(
 	MESSAGE_TYPE_LOCALCHAT = TRUE,
 	MESSAGE_TYPE_RADIO = TRUE,
 	MESSAGE_TYPE_OOC = TRUE,
+	MESSAGE_TYPE_LOOC = TRUE,
 	MESSAGE_TYPE_DEADCHAT = TRUE,
 	MESSAGE_TYPE_ADMINPM = TRUE,
 	MESSAGE_TYPE_ADMINCHAT = TRUE,
@@ -686,6 +687,11 @@ GLOBAL_LIST_EMPTY(i18n_arg_cache)
 	var/static/regex/ascii_letter = regex(@"[A-Za-z]")
 	if(!ascii_letter.Find(arg))
 		return arg
+	// 纯数值+计量单位串（如 `100 kJ`、`2.081 kJ`、`104%, 584.994 cl`）是动态数值实参，无需翻译，
+	// 也不该塞满固定容量的 arg 缓存或触发漏翻日志。
+	var/static/regex/numeric_unit_re = regex(@"^\s*[+-]?[0-9]+(?:\.[0-9]+)?\s*(?:%|kJ|MJ|GJ|J|W|kW|MW|kPa|Pa|K|C|cl|u|mL|L|cm3|mol|s|ms|cr)(?:\s*,\s*[+-]?[0-9]+(?:\.[0-9]+)?\s*(?:%|cl|u|kJ|MJ|J|K))?\s*$")
+	if(numeric_unit_re.Find(arg))
+		return arg
 	var/locale = GLOB.i18n_server_locale
 	var/list/reverse = GLOB.i18n_reverse[locale]
 	if(!islist(reverse) || findtext(arg, "<"))
@@ -712,7 +718,7 @@ GLOBAL_LIST_EMPTY(i18n_arg_cache)
 	// 剥掉首尾标签、对内层递归本地化，命中后把标签原样套回去（加粗等排版不丢）。
 	// 内层已无标签，递归必然终止。
 	if(findtext(arg, "<"))
-		var/static/regex/wrapped_arg = regex(@"^((?:<[^>]+>)+)(.*?)((?:</[^>]+>)+)$")
+		var/static/regex/wrapped_arg = regex(@"^((?:<[^>]+>)+)([^<>]+)((?:</[^>]+>)+)$")
 		if(wrapped_arg.Find(arg))
 			var/inner = wrapped_arg.group[2]
 			var/inner_translated = lang_localize_arg(inner, origin)
@@ -728,6 +734,18 @@ GLOBAL_LIST_EMPTY(i18n_arg_cache)
 	translated = lang_reverse_text(arg)
 	if(translated != arg)
 		return translated
+	translated = lang_reverse_counted_label(arg, GLOB.i18n_server_locale)
+	if(translated)
+		return translated
+	var/lowered_arg = LOWER_TEXT(arg)
+	if(lowered_arg != arg && capitalize(lowered_arg) == arg && !GLOB.i18n_identity_names?[arg])
+		translated = state_words[lowered_arg]
+		if(translated)
+			return translated
+		if(findtext(arg, " ") || findtext(arg, "-"))
+			translated = lang_reverse_text(lowered_arg)
+			if(translated != lowered_arg)
+				return translated
 	var/stripped = lang_strip_article(arg)
 	if(stripped)
 		translated = lang_reverse_text(stripped)
@@ -1015,6 +1033,65 @@ GLOBAL_LIST_EMPTY(i18n_scoped_tables)
 		return alarm_type
 	var/list/table = lang_scoped_table("alarm_types.json")
 	return table[alarm_type] || alarm_type
+
+/// 职位/备用职称与实习前缀的显示本地化。
+/// 从 `scoped:job_titles` 域取译名（保留 `"Security Medic"` 等在 `identifier_reverse_exclusions` 里的
+/// 标识符豁免），并支持 `"Intern <Job>"`、`"Off-Duty <Job>"` 与带部门括号后缀 `"<Job> (<Dept>)"`
+/// （含嵌套括号）组合。未命中再回退 `lang_reverse_text_in`。仅用于纯显示，不影响标识符。
+/proc/lang_localize_job_title(title, locale)
+	if(!istext(title) || !length(title))
+		return title
+	if(isnull(locale))
+		locale = GLOB.i18n_server_locale || DEFAULT_UI_LOCALE
+	if(locale == DEFAULT_UI_LOCALE)
+		return title
+	var/trimmed = trim(title)
+	if(!length(trimmed))
+		return title
+	var/list/table = (locale == (GLOB.i18n_server_locale || DEFAULT_UI_LOCALE)) ? lang_scoped_table("job_titles.json") : null
+	var/hit = table?[trimmed]
+	if(istext(hit))
+		return hit
+	if(findtextEx(trimmed, "Intern ") == 1)
+		var/rest = copytext(trimmed, 8)
+		var/localized_rest = lang_localize_job_title(rest, locale)
+		var/intern_prefix = table?["Intern"]
+		if(localized_rest != rest)
+			return istext(intern_prefix) ? "[intern_prefix][localized_rest]" : "实习[localized_rest]"
+		return istext(intern_prefix) ? "[intern_prefix] [rest]" : "实习 [rest]"
+	if(findtextEx(trimmed, "Off-Duty ") == 1)
+		var/rest_off = copytext(trimmed, 10)
+		var/localized_off_rest = lang_localize_job_title(rest_off, locale)
+		var/off_prefix = table?["Off-Duty"]
+		if(localized_off_rest != rest_off)
+			return istext(off_prefix) ? "[off_prefix][localized_off_rest]" : "休假中[localized_off_rest]"
+		return istext(off_prefix) ? "[off_prefix] [rest_off]" : "休假中 [rest_off]"
+	if(copytext(trimmed, -1) == ")")
+		var/open_pos = lang_matching_paren_open(trimmed)
+		if(open_pos > 1 && text2ascii(trimmed, open_pos - 1) == 32)
+			var/head = copytext(trimmed, 1, open_pos - 1)
+			var/inner = copytext(trimmed, open_pos + 1, length(trimmed))
+			var/loc_head = lang_localize_job_title(head, locale)
+			var/loc_inner = lang_localize_job_title(inner, locale)
+			if(loc_head != head || loc_inner != inner)
+				return "[loc_head] ([loc_inner])"
+	return lang_reverse_text_in(title, locale)
+
+/// 找到与末尾 `)` 匹配的 `(` 字节下标（从右向左计数嵌套括号）；不匹配返回 0。
+/proc/lang_matching_paren_open(text)
+	var/len = length(text)
+	if(!len || text2ascii(text, len) != 41)
+		return 0
+	var/depth = 0
+	for(var/i = len, i >= 1, i--)
+		var/ch = text2ascii(text, i)
+		if(ch == 41) // ')'
+			depth++
+		else if(ch == 40) // '('
+			depth--
+			if(depth == 0)
+				return i
+	return 0
 
 /// 反查后的文本要当**关联列表的 key**（= 显示标签）时的防撞车包装。
 ///
@@ -1368,6 +1445,8 @@ GLOBAL_LIST_EMPTY(i18n_reverse_norm)
 /proc/lang_localize_display_name(text, origin)
 	if(!istext(text) || GLOB.i18n_server_locale == DEFAULT_UI_LOCALE)
 		return text
+	if(GLOB.i18n_identity_names?[text])
+		return text
 	// 显示边界**不过字面 AC**：名字要么整串命中、要么是「区域名 + 类型名」那种可拆的合成名
 	// （lang_localize_area_prefixed_name 分段精确翻）。AC 是无词边界的子串替换，在这么短的串上
 	// 只会带来误伤（「You can」咬进「You can't」那一类的名字版）。
@@ -1516,6 +1595,23 @@ GLOBAL_VAR_INIT(i18n_type_var_tables_loaded, FALSE)
 	var/list/table = lang_scoped_table("blood_decal_names.json")
 	if(!length(table))
 		return null
+	// 无 base_name 且无 base_suffix（如 footprints、footprints/dirty、gibs/torso）：直接按 initial(name) 查类型表/反查，
+	// 再按 dried + dry_prefix 拼上前缀，不依赖可能为空的 get_blood_string()。
+	if(!decal.base_name && !decal.base_suffix)
+		var/base_initial = initial(decal.name)
+		var/rebuilt_simple = (decal.dried && decal.dry_prefix) ? "[decal.dry_prefix] [base_initial]" : base_initial
+		if(rebuilt_simple != display_name)
+			return null
+		var/localized_simple = lang_type_display_text(decal, lang_type_name_keys()) || lang_reverse_text(base_initial)
+		if(!localized_simple || localized_simple == base_initial)
+			return null
+		if(decal.dried && decal.dry_prefix)
+			var/list/simple_prefixes = table["dry_prefix"]
+			var/simple_prefix = simple_prefixes?[decal.dry_prefix]
+			if(!simple_prefix)
+				return null
+			return "[simple_prefix][localized_simple]"
+		return localized_simple
 	var/blood_string = decal.get_blood_string()
 	if(!istext(blood_string) || !length(blood_string))
 		return null
@@ -1702,8 +1798,23 @@ GLOBAL_VAR_INIT(i18n_area_index_dirty, TRUE)
 		if(typed_desc)
 			return typed_desc
 	. = lang_reverse_suffixed(display_desc)
+	if(. == display_desc)
+		. = lang_localize_chain(display_desc, GLOB.i18n_server_locale || DEFAULT_UI_LOCALE, allow_template = TRUE, exact_already_checked = TRUE)
 	if(GLOB.i18n_log_misses && . == display_desc)
 		lang_log_miss_value(display_desc, "desc", "[type]")
+
+/// 气罐初始化会把 desc 拼成 "[气体名]. [气体说明]"，既不是类型初值也不是目录键；在显示边界拆回两部分查表。
+/obj/machinery/portable_atmospherics/canister/lang_localize_desc_for_display(display_desc)
+	if(GLOB.i18n_server_locale == DEFAULT_UI_LOCALE || !ispath(gas_type, /datum/gas))
+		return ..()
+	var/gas_name = GLOB.meta_gas_info[META_GAS_NAME][gas_type]
+	var/gas_desc = GLOB.meta_gas_info[META_GAS_DESC][gas_type]
+	if(istext(gas_name) && istext(gas_desc) && display_desc == "[gas_name]. [gas_desc]")
+		var/loc_name = lang_reverse_text(gas_name)
+		var/loc_desc = lang_reverse_text(gas_desc)
+		if(loc_name != gas_name || loc_desc != gas_desc)
+			return "[loc_name]。[loc_desc]"
+	return ..()
 
 /// mob 的 `name` 是**身份**（角色名、宠物挂牌名、赛博编号、ERT 头衔…），一律不翻——哪怕它恰好
 /// 撞上目录短语。判据只用「是否仍等于类型声明的初值」：任何运行期赋值（`fully_replace_character_name`
@@ -2154,3 +2265,24 @@ GLOBAL_LIST_INIT(i18n_payload_prose_keys, build_i18n_policy_set("payload_prose_k
 /atom/movable/screen/buildmode/lang_localize_name_for_display(display_name)
 	var/list/labels = lang_scoped_table("admin_buildmode_labels.json")
 	return labels[display_name] || ..()
+
+/// Character preview screen object shows a player's character name: never translate or log miss.
+/atom/movable/screen/map_view/char_preview/lang_localize_name_for_display(display_name)
+	return display_name
+
+/// Virtual speakers wrap either a player mob (identity name must stay untouched without logging miss)
+/// or a scripted/mechanical atom (relay display localization to source after stripping any engine article).
+/atom/movable/virtualspeaker/lang_localize_name_for_display(display_name)
+	if(GLOB.i18n_server_locale == DEFAULT_UI_LOCALE || !istext(display_name))
+		return display_name
+	if(isatom(source))
+		if(ismob(source))
+			if(display_name == source.name)
+				return source.lang_localize_name_for_display(display_name)
+			var/stripped_mob = lang_strip_article(display_name)
+			if(stripped_mob && stripped_mob == source.name)
+				return source.lang_localize_name_for_display(source.name)
+			return display_name == "Unknown" ? lang_reverse_text(display_name) : display_name
+		var/stripped_obj = lang_strip_article(display_name)
+		return source.lang_localize_name_for_display(stripped_obj || display_name)
+	return display_name == "Unknown" ? lang_reverse_text(display_name) : display_name

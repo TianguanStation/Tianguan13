@@ -198,6 +198,12 @@ GLOBAL_VAR_INIT(i18n_miss_tag_regex, regex(@"<[^>]*>|&[#A-Za-z0-9]+;", "g"))
 	// （"CRYSTAL DELAMINATION IMMINENT"）含空格，仍然收。
 	if(!has_lower && !findtext(text, " "))
 		return FALSE
+	// 非文案协议/快捷键短 token：货币单位 "cr"、"null"、无线电频道前缀 ":h"、组合键 "ShiftF"
+	if(text == "cr" || text == "null")
+		return FALSE
+	var/static/regex/protocol_token = regex(@"^(?::[a-z]{1,3}|(?:Shift|Ctrl|Alt)[A-Z0-9])$")
+	if(protocol_token.Find(text))
+		return FALSE
 	return TRUE
 
 /// 输出边界的漏翻采集：对（已过全部翻译层的）文本提取残留英文 run 并记录。

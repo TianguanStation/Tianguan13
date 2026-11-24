@@ -92,6 +92,9 @@ const SINGLE_WORD_TYPE_VAR_RULES: &[(&str, &str)] = &[
 /// 如 skin_tone_names（key=肤色 id，value=显示）、height_scaling_strings（CHOICED_PREFERENCE_DISPLAY_NAMES）。
 const ASSOC_VALUE_VARS: &[&str] = &["skin_tone_names", "height_scaling_strings"];
 
+/// 类型路径前缀 + list var 名 → 抽该 list 字面量的扁平字符串元素（如 /datum/job 的 alt_titles）。
+const TYPE_LIST_VAR_RULES: &[(&str, &str)] = &[("/datum/job", "alt_titles")];
+
 /// 文件后缀 → 抽该文件内 list 字面量的 assoc **键**（如 food.dm 的食物类别全局表，键即类别显示名）。
 const FILE_ASSOC_KEY_SUFFIXES: &[&str] =
     &["__nova_defines/_globalvars/food.dm", "_globalvars/food.dm"];
@@ -330,6 +333,17 @@ pub fn run(dme: &Path, out: &Path) -> Result<()> {
             if let Some(tv) = ty.vars.get(*var_name) {
                 if let Some(expr) = &tv.value.expression {
                     collect_assoc_values(expr, &mut labels);
+                }
+            }
+        }
+
+        // 2b) 类型路径前缀 → 抽扁平 list var 元素（例如 /datum/job 的 alt_titles）。
+        for (prefix, var_name) in TYPE_LIST_VAR_RULES {
+            if ty.path == *prefix || ty.path.starts_with(&format!("{prefix}/")) {
+                if let Some(tv) = ty.vars.get(*var_name) {
+                    if let Some(expr) = &tv.value.expression {
+                        collect_flat_strings(expr, &mut labels);
+                    }
                 }
             }
         }

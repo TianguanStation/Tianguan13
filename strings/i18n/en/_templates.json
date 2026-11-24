@@ -12,5 +12,14 @@
   "{0} Higher Dimensional Affairs": "{0} Higher Dimensional Affairs",
   "Material from a pair of {0}.": "Material from a pair of {0}.",
   "Material from {0}.": "Material from {0}.",
-  "Fibers from {0}.": "Fibers from {0}."
+  "Fibers from {0}.": "Fibers from {0}.",
+  "This one has a rating of {0}.": "This one has a rating of {0}.",
+  "This one has a rating of {0}, and you should not swallow it.": "This one has a rating of {0}, and you should not swallow it.",
+  "the patient must be dosed with >= {0}u {1}": "the patient must be dosed with >= {0}u {1}",
+  "The paper- '{0}'": "The paper- '{0}'",
+  "The paper- {0} employment contract": "The paper- {0} employment contract",
+  "paper- {0} employment contract": "paper- {0} employment contract",
+  "{0} - purchased by {1}": "{0} - purchased by {1}",
+  "This is a photo of an area of {0} meters by {1} meters.": "This is a photo of an area of {0} meters by {1} meters.",
+  "Over {0} shifts without a \"terrible\" \"accident\"!": "Over {0} shifts without a \"terrible\" \"accident\"!"
 }

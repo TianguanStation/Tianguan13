@@ -155,3 +155,80 @@
 	var/atom/movable/screen/buildmode/modeswitch/fill_button = allocate(/atom/movable/screen/buildmode/modeswitch, null, /datum/buildmode_mode/fill)
 	TEST_ASSERT_EQUAL(fill_button.lang_localize_name_for_display(fill_button.name), "填充", "Buildmode should display Chinese hover labels")
 	TEST_ASSERT_EQUAL(fill_button.name, "fill", "Buildmode keys must remain canonical for mode switching")
+
+	// Scoped job titles, Intern/Off-Duty prefixes, and nested parentheses.
+	TEST_ASSERT_EQUAL(lang_localize_job_title("Security Medic", locale), "安保医疗兵", "Scoped job title lookup must bypass identifier exclusion")
+	TEST_ASSERT_EQUAL(lang_localize_job_title("Police Officer (Engineering)", locale), "警官 (工程部)", "Job title helper must translate nested department suffix")
+	TEST_ASSERT(findtext(lang_localize_job_title("Intern Medical Doctor", locale), "医疗医生") > 0, "Intern prefix must compose with localized job title")
+	TEST_ASSERT_EQUAL(lang_localize_job_title("Off-Duty Paramedic", locale), "休假中护理员", "Off-Duty prefix must compose with localized job title")
+	TEST_ASSERT_EQUAL(lang_reverse_composed_name("Zxqv (Intern Medical Doctor)", locale), "Zxqv ([lang_localize_job_title("Intern Medical Doctor", locale)])", "Composed name must translate Intern job title inside parens")
+	TEST_ASSERT_EQUAL(lang_reverse_composed_name("Karl (Police Officer (Engineering))", locale), "卡尔 (警官 (工程部))", "Composed name must handle nested department parens")
+	TEST_ASSERT_EQUAL(lang_reverse_composed_name("Zxqv (Police Officer (Engineering))", locale), "Zxqv (警官 (工程部))", "Composed name must preserve untranslated player name with nested department parens")
+	TEST_ASSERT_EQUAL(lang_reverse_composed_name("vat-grown human", locale), "培养槽培育的人类", "vat-grown prefix must translate")
+	TEST_ASSERT_EQUAL(lang_reverse_composed_name("decayed jumpsuit", locale), "腐坏的连身衣", "decayed prefix must translate")
+	TEST_ASSERT_EQUAL(lang_reverse_composed_name("tattered jumpsuit", locale), "破烂的连身衣", "tattered prefix must translate")
+	TEST_ASSERT_EQUAL(lang_reverse_composed_name("paper- 'SSV Dauntless Corporate Report'", locale), "纸张 -《SSV Dauntless Corporate Report》", "Bare paper- title must translate without The prefix")
+	TEST_ASSERT_EQUAL(lang_reverse_composed_name("The paper- Zxqv employment contract", locale), "纸张 - Zxqv 的雇佣合同", "Employment contract template must match composed paper name")
+
+	// Template anti-hijacking, <br> splitting, and multi-sentence exact match.
+	var/br_record = "Patient's immune system responds violently to soy.<br>Patient demonstrates a low tolerance for alcohol. (Wimp)"
+	var/br_loc = lang_localize_chain(br_record, locale, allow_template = TRUE)
+	TEST_ASSERT(findtext(br_loc, "<br>"), "Line splitting on <br> must preserve the separator")
+	TEST_ASSERT(findtext(br_loc, "患者对酒精耐受度极低。（酒量差）"), "<br> second segment must translate cleanly")
+	TEST_ASSERT(!findtext(br_loc, "Patient demonstrates"), "No English tail should survive <br> translation")
+	TEST_ASSERT_EQUAL(lang_localize_chain("The round is over! You are now visible to the living.", locale, allow_template = TRUE), "回合结束！你现在对生者可见。", "Exact sentence lookup must outrank generic templates")
+	TEST_ASSERT_EQUAL(lang_localize_chain("goody case - purchased by Zxqv", locale, allow_template = TRUE), "零食礼盒 - 购买者：Zxqv", "Purchase template must compose catalog item and buyer")
+	var/area/diner_area = get_area(run_loc_floor_bottom_left)
+	var/saved_area_name = diner_area?.name
+	if(diner_area)
+		diner_area.name = "\improper The All-American Diner"
+		lang_area_name_index_invalidate()
+		TEST_ASSERT_EQUAL(lang_localize_chain("The All-American Diner airlock", locale, allow_template = TRUE), "全美餐厅 气闸", "Area-prefixed lookup must preserve leading The before stripping")
+		diner_area.name = saved_area_name
+		lang_area_name_index_invalidate()
+
+	// Identity protection on display boundary, char_preview, virtualspeaker, and Title-Case arg fallback.
+	var/had_next_page_id = GLOB.i18n_identity_names["Next Page"]
+	GLOB.i18n_identity_names["Next Page"] = TRUE
+	TEST_ASSERT_EQUAL(lang_localize_display_name("Next Page"), "Next Page", "Registered identity names must never be translated by display fallback")
+	TEST_ASSERT_EQUAL(lang_localize_arg("Next Page"), "Next Page", "Registered identity names must never be translated as LANG args")
+	if(!had_next_page_id)
+		GLOB.i18n_identity_names -= "Next Page"
+	var/atom/movable/screen/map_view/char_preview/preview = allocate(/atom/movable/screen/map_view/char_preview)
+	preview.name = "Next Page"
+	TEST_ASSERT_EQUAL(preview.lang_localize_name_for_display(preview.name), "Next Page", "char_preview must preserve identity names verbatim")
+	var/mob/living/carbon/human/speaker_mob = allocate(/mob/living/carbon/human)
+	var/had_speaker_id = GLOB.i18n_identity_names["Corsac"]
+	speaker_mob.fully_replace_character_name(null, "Corsac")
+	var/atom/movable/virtualspeaker/mob_vs = allocate(/atom/movable/virtualspeaker, null, speaker_mob)
+	TEST_ASSERT_EQUAL(mob_vs.lang_localize_name_for_display("Corsac"), "Corsac", "Virtualspeaker wrapping a mob must leave character name intact")
+	if(!had_speaker_id)
+		GLOB.i18n_identity_names -= "Corsac"
+	var/obj/item/stock_parts/power_store/cell/high/test_cell = allocate(/obj/item/stock_parts/power_store/cell/high)
+	var/atom/movable/virtualspeaker/obj_vs = allocate(/atom/movable/virtualspeaker, null, test_cell)
+	TEST_ASSERT(obj_vs.lang_localize_name_for_display("the [initial(test_cell.name)]") != "the [initial(test_cell.name)]", "Virtualspeaker wrapping a non-mob atom must localize display name")
+
+	// Blood decals, dynamic descriptions, arg edge cases, materials, and miss filtering.
+	var/obj/effect/decal/cleanable/blood/footprints/fp = allocate(/obj/effect/decal/cleanable/blood/footprints)
+	TEST_ASSERT(fp.lang_localize_name_for_display(fp.name) != fp.name, "Footprints blood decal must localize without blood_string")
+	var/obj/effect/decal/cleanable/blood/gibs/torso/torso_gibs = allocate(/obj/effect/decal/cleanable/blood/gibs/torso)
+	TEST_ASSERT(torso_gibs.lang_localize_name_for_display(torso_gibs.name) != torso_gibs.name, "Torso gibs blood decal must localize")
+	var/cell_desc_loc = test_cell.lang_localize_desc_for_display(test_cell.desc)
+	TEST_ASSERT(findtext(cell_desc_loc, "额定值为") && !findtext(cell_desc_loc, "This one has a rating of"), "Power cell dynamic rating description must localize")
+	var/obj/machinery/portable_atmospherics/canister/nitrogen/n2_can = allocate(/obj/machinery/portable_atmospherics/canister/nitrogen)
+	var/can_desc_loc = n2_can.lang_localize_desc_for_display(n2_can.desc)
+	TEST_ASSERT(findtext(can_desc_loc, "氮气"), "Gas canister description must localize dynamic gas name and description")
+	var/obj/item/food/meat/slab/test_meat = allocate(/obj/item/food/meat/slab)
+	var/meat_desc_loc = test_meat.lang_localize_desc_for_display("[initial(test_meat.desc)] It's been grilled.")
+	TEST_ASSERT_EQUAL(meat_desc_loc, "一大块肉。 它被烤过。", "Appended grilled sentence on food description must localize")
+
+	TEST_ASSERT_EQUAL(lang_localize_arg("20 melee hits"), "20 次近战攻击", "lang_localize_arg must resolve counted labels")
+	TEST_ASSERT_EQUAL(lang_localize_arg("Micro-servo"), "微伺服", "Hyphenated Title-Case item names must resolve via lowercase fallback")
+	TEST_ASSERT_EQUAL(lang_localize_arg("100 kJ"), "100 kJ", "Numeric energy values must bypass translation cleanly")
+	TEST_ASSERT_EQUAL(lang_localize_arg("<img class='icon' src='pda.png'><b>1</b> <em><em>UnknownTag</em></em>"), "<img class='icon' src='pda.png'><b>1</b> <em><em>UnknownTag</em></em>", "Unbalanced wrapped_arg HTML must not be mis-stripped")
+	TEST_ASSERT_EQUAL(lang_material("silver"), "白银", "Scoped material lookup must translate excluded material names")
+	TEST_ASSERT(!lang_miss_value_candidate("cr"), "Currency suffix 'cr' must be ignored by miss logger")
+	TEST_ASSERT(!lang_miss_value_candidate("null"), "Literal 'null' must be ignored by miss logger")
+	TEST_ASSERT(!lang_miss_value_candidate(":h"), "Radio channel token must be ignored by miss logger")
+	TEST_ASSERT(!lang_miss_value_candidate("ShiftF"), "Keybind chord token must be ignored by miss logger")
+	TEST_ASSERT(lang_miss_value_candidate("Untranslated button"), "Genuine multi-word UI string must still pass miss filter")

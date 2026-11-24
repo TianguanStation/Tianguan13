@@ -422,7 +422,7 @@
 	// SPLURT EDIT BEGIN - THIRST
 	var/thirst_mood = get_thirst_mood(mob_parent)
 	if(thirst_mood)
-		msg += span_notice("My current thirst: [thirst_mood]<br>")
+		msg += span_notice(LANG("_root.mood_thirst", list(thirst_mood)))
 	// SPLURT EDIT END - THIRST
 
 	// BUBBER EDIT CHANGE BEGIN - ALCOHOL PROCESSING
@@ -447,7 +447,7 @@
 
 	var/drunkness = get_drunk_mood(mob_parent)
 	if(drunkness)
-		msg += span_notice("My current drunkenness: [drunkness]")
+		msg += span_notice(LANG("_root.mood_drunk", list(drunkness)))
 		if(get_alcohol_processing(mob_parent))
 			msg += "[span_info(" I'm still processing what I drank...")]<br>"
 		else
@@ -521,10 +521,10 @@
 		msg += "&bull; [span_grey("I don't have much of a reaction to anything right now.")]<br>"
 
 	if(LAZYLEN(mob_parent.personalities))
-		msg += span_notice("You know yourself to be [mob_parent.get_parsonality_string()].<br>")
+		msg += span_notice(LANG("_root.mood_personalities", list(mob_parent.get_parsonality_string())))
 
 	if(LAZYLEN(mob_parent.quirks))
-		msg += span_notice("You have these quirks: [mob_parent.get_quirk_string(FALSE, CAT_QUIRK_ALL)].")
+		msg += span_notice(LANG("_root.mood_quirks", list(mob_parent.get_quirk_string(FALSE, CAT_QUIRK_ALL))))
 
 	to_chat(user, boxed_message(msg))
 

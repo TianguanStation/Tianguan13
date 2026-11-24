@@ -124,10 +124,19 @@ GLOBAL_VAR_INIT(i18n_tpl_etx, "⟧")
 	var/static/regex/html_tag_raw = regex(@"<[^>]*>", "g")
 	return html_tag_raw.Replace(text, "")
 
-/// 把一条逆模板登记进 records/anchors（相邻占位符、锚长门槛、半翻译自匹配三道校验在此）。
+/// 判定一段字面量是否适合做逆模板锚（须满足最小锚长、含空格、且未以原样出现在译文里）。
+/proc/lang_tpl_valid_anchor(seg, zh_runtime)
+	if(length(seg) < I18N_TPL_MIN_ANCHOR || !findtext(seg, " "))
+		return FALSE
+	if(findtext(zh_runtime, seg)) // 半翻译（zh 仍含英文锚段，bad-MT 类）：替换无意义且会自匹配
+		return FALSE
+	return TRUE
+
+/// 把一条逆模板登记进 records/anchors（相邻占位符、锚长门槛、半翻译自匹配、泛化短骨架五道校验在此）。
 /proc/lang_tpl_register(list/records, list/anchors, list/segs, list/order, zh_runtime, list/article_slots)
 	var/nsegs = length(segs)
 	var/lit_len = 0
+	var/has_bare_space_sep = FALSE
 	var/anchor = ""
 	var/second = "" // 次长的合格字面段，见下面「第二锚」
 	for(var/i in 1 to nsegs)
@@ -136,17 +145,28 @@ GLOBAL_VAR_INIT(i18n_tpl_etx, "⟧")
 		lit_len += seg_len
 		if(!seg_len && i != 1 && i != nsegs) // 相邻占位符：捕获边界不可定
 			return
-		if(!findtext(seg, " "))
+		if(i > 1 && i < nsegs && seg == " " && !article_slots?[i])
+			has_bare_space_sep = TRUE
+		if(!lang_tpl_valid_anchor(seg, zh_runtime))
 			continue
 		if(seg_len > length(anchor))
 			second = anchor
 			anchor = seg
 		else if(seg_len > length(second) && seg != anchor)
 			second = seg
-	if(length(anchor) < I18N_TPL_MIN_ANCHOR)
+	if(!length(anchor))
 		return
-	if(findtext(zh_runtime, anchor)) // 半翻译（zh 仍含英文锚段，bad-MT 类）：替换无意义且会自匹配
+	var/trimmed_anchor = trim(anchor)
+	var/list/anchor_words = length(trimmed_anchor) ? splittext(trimmed_anchor, " ") : list()
+	// 1. `You start {0} {1}.` / `It's suffering {0} {1}.` / `{0} violently {1} {2}` 这类含裸空格占位符分隔
+	//    （且并非冠词宏剥离所致）而总字面量很短的泛化骨架：若唯一合格锚 <= 2 个词且总字面量 < 22 字节，拒绝入库。
+	if(has_bare_space_sep && lit_len < 22 && length(anchor_words) <= 2)
 		return
+	// 2. 只有单一无标点单词作锚且再无其他字面段限制的泛化模板（`{0} purchased` / `{0} REQUIRES {1}` / `Permanent {0}`）：拒绝入库。
+	if(length(anchor_words) <= 1 && lit_len == length(anchor))
+		var/static/regex/has_punct = regex(@"[.!?:;]")
+		if(!has_punct.Find(trimmed_anchor))
+			return
 	records += list(list(segs, order, zh_runtime, lit_len, article_slots))
 	var/id = length(records)
 	lang_tpl_add_anchor(anchors, anchor, id)
@@ -155,7 +175,7 @@ GLOBAL_VAR_INIT(i18n_tpl_etx, "⟧")
 	// ` light is on.` 吃掉了句号，而本模板唯一的锚 `. The language is set to ` 正从那个句号开始 ——
 	// 整条模板目录里有、译文也在，就是匹配不上。再登记次长的合格字面段，两个锚同时被压住的概率小得多；
 	// 候选最终仍由 lang_tpl_match 逐段验证，多一个锚只多一点候选开销、不改变正确性。
-	if(length(second) >= I18N_TPL_MIN_ANCHOR && !findtext(zh_runtime, second))
+	if(length(second))
 		lang_tpl_add_anchor(anchors, second, id)
 
 /proc/lang_tpl_add_anchor(list/anchors, anchor, id)
@@ -349,7 +369,7 @@ GLOBAL_VAR_INIT(i18n_tpl_etx, "⟧")
 		// 前导占位符：捕获从最近的行首/句界开始，再把打头的完整 HTML 标签与空白留在替换区外。
 		var/cap_start = 1
 		var/best = 0
-		for(var/boundary in list("\n", ". ", "! ", "? "))
+		for(var/boundary in list("\n", ". ", "! ", "? ", "<br>", "<br/>", "</br>"))
 			var/b = findlasttext(text, boundary, p)
 			if(b && b + length(boundary) > best)
 				best = b + length(boundary)
@@ -375,7 +395,7 @@ GLOBAL_VAR_INIT(i18n_tpl_etx, "⟧")
 			capture = q ? copytext(text, cursor, q) : null
 		if(!q)
 			return null
-		if(length(capture) > I18N_TPL_MAX_CAPTURE || findtext(capture, "\n") || lang_tpl_capture_splits_tag(capture))
+		if(length(capture) > I18N_TPL_MAX_CAPTURE || findtext(capture, "\n") || findtext(capture, "<br") || findtext(capture, "</br") || lang_tpl_capture_splits_tag(capture))
 			return null
 		captures += capture
 		cursor = q + length(seg)
@@ -383,7 +403,7 @@ GLOBAL_VAR_INIT(i18n_tpl_etx, "⟧")
 	if(trailing_ph)
 		// 尾随占位符：捕获到最近的行尾/句界，再把结尾的闭合标签与空白留在替换区外。
 		var/cap_end = length(text) + 1
-		for(var/boundary in list("\n", ". ", "! ", "? "))
+		for(var/boundary in list("\n", ". ", "! ", "? ", "<br>", "<br/>", "</br>"))
 			var/b = findtext(text, boundary, cursor)
 			if(b && b < cap_end)
 				cap_end = b

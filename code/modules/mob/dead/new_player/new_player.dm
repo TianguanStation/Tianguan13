@@ -119,7 +119,7 @@
 	return TRUE
 
 /proc/get_job_unavailable_error_message(retval, jobtitle)
-	jobtitle = lang_reverse_text(jobtitle) // ZH EDIT - i18n: 职业名整词反查，使下面 LANG 模板里的 [jobtitle] 插值在中文句中也中文（locale==en 时 no-op）
+	jobtitle = lang_localize_job_title(jobtitle) // ZH EDIT - i18n: 职业名整词反查，使下面 LANG 模板里的 [jobtitle] 插值在中文句中也中文（locale==en 时 no-op）
 	switch(retval)
 		if(JOB_AVAILABLE)
 			return LANG("_root.66f779c8bdae903a", list(jobtitle)) // ZH EDIT - i18n - ORIGINAL: return "[jobtitle] is available."

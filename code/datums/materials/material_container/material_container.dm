@@ -761,7 +761,7 @@
 		var/amount = materials[material]
 
 		data += list(list(
-			"name" = lang_localize_display_name(material.name), // ZH EDIT - I18N: 显示名（单词材料名 P1 的多词门槛够不着）；标识符走下面那条英文 id。ORIGINAL: "name" = material.name,
+			"name" = lang_material(material.name) != material.name ? lang_material(material.name) : lang_localize_display_name(material.name), // ZH EDIT - I18N: 材料名走 scoped:materials（避开 global_reverse 标识符豁免），标识符走下面英文 id。ORIGINAL: "name" = material.name,
 			// ZH EDIT ADDITION - I18N: 前端 MATERIAL_ICONS/MATERIAL_RARITY 按**英文材料名**查表，所以另发一个
 			// 英文 id（"id" 在 i18n_payload_skip_keys 里、P1 永不翻），name 只做显示。material.name 会被
 			// SSmaterials 在建单例时就地译成中文，所以这里取 initial() 的英文原名。

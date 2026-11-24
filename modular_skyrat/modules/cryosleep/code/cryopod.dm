@@ -128,9 +128,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 /obj/machinery/computer/cryopod/proc/announce(message_type, mob/living/user, rank)
 	switch(message_type)
 		if("CRYO_JOIN")
-			radio.talk_into(src, LANG("obj.6ad62257e8396291", list(user, rank ? ", [rank]" : "")), announcement_channel) //Leave as user here, if not it passes the variable incorrectly and causes a runtime
+			radio.talk_into(src, LANG("obj.6ad62257e8396291", list(user, rank ? ", [lang_localize_job_title(rank)]" : "")), announcement_channel) //Leave as user here, if not it passes the variable incorrectly and causes a runtime
 		if("CRYO_LEAVE")
-			radio.talk_into(src, LANG("obj.5a67c82677548289", list(user.real_name, rank ? ", [rank]" : "")), announcement_channel)
+			radio.talk_into(src, LANG("obj.5a67c82677548289", list(user.real_name, rank ? ", [lang_localize_job_title(rank)]" : "")), announcement_channel)
 			var/is_command = user?.mind?.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND
 			var/last_of_command = length(SSjob.get_all_heads())
 			if(is_command && last_of_command <= 1)

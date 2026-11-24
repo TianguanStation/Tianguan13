@@ -6,7 +6,7 @@
 		UNTYPED_LIST_ADD(items, list(
 			"icon_state" = index.icon_state,
 			"icon" = index.icon,
-			"name" = lang_localize_display_name(index.name), // ZH EDIT - I18N: Alt-click loot list bypasses examine/AC; localize the display name (act uses ref, safe). ORIGINAL: "name" = index.name,
+			"name" = isatom(index.item) ? index.item.lang_localize_name_for_display(index.name) : lang_localize_display_name(index.name), // ZH EDIT - I18N: Alt-click loot list bypasses examine/AC; localize the display name (act uses ref, safe). ORIGINAL: "name" = index.name,
 			"path" = index.path,
 			"ref" = REF(index),
 		))
