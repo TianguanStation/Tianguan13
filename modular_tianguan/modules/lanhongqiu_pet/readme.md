@@ -1,4 +1,4 @@
-https://github.com/TianguanStation/Tianguan13/pull/<!--PR Number-->
+https://github.com/TianguanStation/Tianguan13/pull/29
 
 ## 蓝红球：宠物、召唤信标与配装条目
 
