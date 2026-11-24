@@ -13,4 +13,4 @@
 	if(isnull(fake))
 		return
 	var/name_string = registered_name ? LANG("obj.ad9060a5947cb211", list(registered_name)) : initial(name)
-	name = "[name_string] ([lang_reverse_text(fake.assignment)])"
+	name = "[name_string] ([lang_localize_job_title(fake.assignment)])"

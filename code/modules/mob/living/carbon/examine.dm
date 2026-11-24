@@ -560,7 +560,7 @@
 	if(perpname && (HAS_TRAIT(user, TRAIT_SECURITY_HUD) || HAS_TRAIT(user, TRAIT_MEDICAL_HUD)) && (!IS_UNCONSCIOUS_OR_CRIT(user) || isobserver(user)) && user != src)
 		var/datum/record/crew/target_record = find_record(perpname)
 		if(target_record)
-			. += LANG("mob.63d84f9d2d09e43f", list(target_record.rank))
+			. += LANG("mob.63d84f9d2d09e43f", list(lang_localize_job_title(target_record.rank)))
 			. += LANG("mob.4b800153558486e0", list(REF(src), world.time, REF(src), world.time))
 		if(HAS_TRAIT(user, TRAIT_MEDICAL_HUD) && HAS_TRAIT(user, TRAIT_SECURITY_HUD))
 			title = separator_hr("Medical & Security Analysis")

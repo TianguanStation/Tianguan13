@@ -278,15 +278,15 @@
 
 	var/list/requirements
 	if(!selected_recipe)
-		requirements = list("Select a recipe to see the requirements")
+		requirements = list(LANG("_root.crystallizer_select_recipe", null))
 	else
-		requirements = list("To create [selected_recipe.name] you will need:")
+		requirements = list(LANG("_root.crystallizer_need_header", list(lang_localize_display_name(selected_recipe.name))))
 		for(var/gas_type in selected_recipe.requirements)
 			var/datum/gas/gas_required = gas_type
 			var/amount_consumed = selected_recipe.requirements[gas_type]
-			requirements += "-[amount_consumed] moles of [initial(gas_required.name)]"
-		requirements += "In a temperature range between [selected_recipe.min_temp] K and [selected_recipe.max_temp] K"
-		requirements += "The crystallization reaction will be [selected_recipe.energy_release ? (selected_recipe.energy_release > 0 ? "exothermic" : "endothermic") : "thermally neutral"]"
+			requirements += LANG("_root.crystallizer_need_gas", list(amount_consumed, lang_reverse_text(initial(gas_required.name))))
+		requirements += LANG("_root.crystallizer_temp_range", list(selected_recipe.min_temp, selected_recipe.max_temp))
+		requirements += LANG("_root.crystallizer_reaction_type", list(selected_recipe.energy_release ? (selected_recipe.energy_release > 0 ? "exothermic" : "endothermic") : "thermally neutral"))
 	data["requirements"] = requirements.Join("\n")
 
 	var/temperature

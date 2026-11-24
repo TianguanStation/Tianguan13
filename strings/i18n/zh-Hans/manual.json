@@ -77,5 +77,19 @@
 	"datum.custom_clog_cap": "存活数量上限：{0}",
 	"datum.custom_clog_duration": "最长持续时间：{0} 分钟",
 	"datum.custom_clog_interval": "生成间隔：{0}–{1} 秒",
-	"datum.custom_clog_location": "通风口：{0} - {1}（{2}, {3}, {4}）"
+	"datum.custom_clog_location": "通风口：{0} - {1}（{2}, {3}, {4}）",
+	"_root.slipped_on": "你在{0}上滑倒了！",
+	"_root.mood_thirst": "当前口渴度：{0}<br>",
+	"_root.mood_drunk": "当前醉酒度：{0}",
+	"_root.mood_personalities": "你的性格特征为：{0}。<br>",
+	"_root.mood_quirks": "你拥有以下特质：{0}。",
+	"_root.surgery_self_check": "其{0}！",
+	"_root.surgery_examine_list": "{0}的{1}。",
+	"_root.crystallizer_select_recipe": "请选择配方以查看所需条件",
+	"_root.crystallizer_need_header": "合成{0}需要：",
+	"_root.crystallizer_need_gas": "- {0} 摩尔{1}",
+	"_root.crystallizer_temp_range": "温度范围在 {0} K 至 {1} K 之间",
+	"_root.crystallizer_reaction_type": "该结晶反应为{0}反应",
+	"_root.examine_rr_opt_in": "回合移除自愿状态：{0}\n",
+	"_root.airlock_unres_passing": "无限制出口显示屏正在指示允许人员从{0}侧通行。"
 }

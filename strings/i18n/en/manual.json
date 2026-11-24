@@ -77,5 +77,19 @@
 	"datum.custom_clog_cap": "Maximum living mobs: {0}",
 	"datum.custom_clog_duration": "Maximum duration: {0} minutes",
 	"datum.custom_clog_interval": "Spawn interval: {0}-{1} seconds",
-	"datum.custom_clog_location": "Vent: {0} - {1} ({2}, {3}, {4})"
+	"datum.custom_clog_location": "Vent: {0} - {1} ({2}, {3}, {4})",
+	"_root.slipped_on": "You slipped on {0}!",
+	"_root.mood_thirst": "My current thirst: {0}<br>",
+	"_root.mood_drunk": "My current drunkenness: {0}",
+	"_root.mood_personalities": "You know yourself to be {0}.<br>",
+	"_root.mood_quirks": "You have these quirks: {0}.",
+	"_root.surgery_self_check": "Its {0}!",
+	"_root.surgery_examine_list": "{0}'s {1}.",
+	"_root.crystallizer_select_recipe": "Select a recipe to see the requirements",
+	"_root.crystallizer_need_header": "To create {0} you will need:",
+	"_root.crystallizer_need_gas": "-{0} moles of {1}",
+	"_root.crystallizer_temp_range": "In a temperature range between {0} K and {1} K",
+	"_root.crystallizer_reaction_type": "The crystallization reaction will be {0}",
+	"_root.examine_rr_opt_in": "Round Removal Opt-In Status: {0}\n",
+	"_root.airlock_unres_passing": "The unrestricted exit display is indicating that it is letting people pass from the {0}."
 }

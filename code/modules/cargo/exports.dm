@@ -253,7 +253,7 @@ Then the player gets the profit from selling his own wasted time.
 			msg += " "
 
 	if(message)
-		msg += message
+		msg += lang_reverse_text(message)
 
 	msg += "."
 	return msg

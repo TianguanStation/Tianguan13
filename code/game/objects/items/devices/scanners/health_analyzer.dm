@@ -410,7 +410,7 @@
 				var/list/compatible_types_readable = list()
 				for(var/datum/blood_type/comp_blood_type as anything in blood_type.compatible_types)
 					compatible_types_readable |= initial(comp_blood_type.name)
-				blood_type_format = span_tooltip("Can receive from types [english_list(compatible_types_readable)].", blood_type_format)
+				blood_type_format = span_tooltip("Can receive from types [lang_english_list(compatible_types_readable)].", blood_type_format)
 
 		render_list += LANG("_root.5fb7490182fcd8b8", list(cached_blood_volume < BLOOD_VOLUME_SAFE ? "alert" : "info", blood_type.get_blood_name(), level_format, blood_type_format))
 

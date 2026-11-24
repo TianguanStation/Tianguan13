@@ -156,7 +156,7 @@
 	// 的固定串），整串精确反查必然是安全的；而 say 的气泡装的是**玩家自己打的字**，放进反查链
 	// 只会把玩家原话改掉。判据用 extra_classes 里的 "emote" 标记，与下面那段加图标的判据同源。
 	// 例外：售货机、NPC 这类只说代码台词的说话者（lang_speaker_is_scripted），其 say 气泡同样可以落地。
-	if(extra_classes.Find("emote") || lang_speaker_is_scripted(target))
+	if((extra_classes.Find("emote") && findtextEx(text, "(LOOC: ") != 1) || lang_speaker_is_scripted(target))
 		text = lang_fallback_apply(text, GLOB.i18n_server_locale)
 	// ZH EDIT ADDITION END
 

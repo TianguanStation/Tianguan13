@@ -95,6 +95,12 @@ GLOBAL_VAR_INIT(i18n_ascii_letter_regex, regex(@"[A-Za-z]"))
 		return decorated
 	var/templated = FALSE
 	if(allow_template)
+		// 多句全文若每一句都能精确反查命中（如 "A slab of meat. It's been grilled." /
+		// "The round is over! You are now visible to the living."），优先走整句精确反查，
+		// 防止泛化骨架（"You are now {0}."）提前劫持第二句。
+		var/exact_sentences = lang_reverse_sentences_exact(text, locale, require_all = TRUE)
+		if(exact_sentences)
+			return exact_sentences
 		var/after_template = lang_template_apply(text, locale)
 		if(after_template != text)
 			text = after_template
@@ -117,7 +123,8 @@ GLOBAL_VAR_INIT(i18n_ascii_letter_regex, regex(@"[A-Za-z]"))
 		var/composed = lang_reverse_composed_name(stripped || text, locale, template_checked = allow_template)
 		if(composed)
 			return composed
-		var/area_prefixed = lang_reverse_area_prefixed(stripped || text, locale)
+		// 先拿原串试区域名（保留 `"The All-American Diner ..."` 的 `"The "` 前缀），未命中再试剥冠词版本
+		var/area_prefixed = lang_reverse_area_prefixed(text, locale) || (stripped && lang_reverse_area_prefixed(stripped, locale))
 		if(area_prefixed)
 			return area_prefixed
 		lang_count_layer_hit(I18N_LAYER_MISS)
@@ -148,23 +155,25 @@ GLOBAL_VAR_INIT(i18n_ascii_letter_regex, regex(@"[A-Za-z]"))
 	var/base = serial_head.group[2]
 	var/localized = lang_reverse_text_in(base, locale)
 	if(localized == base)
-		return null
+		localized = lang_reverse_composed_name(base, locale)
+		if(!localized)
+			return null
 	if(lang_contains_cjk(head) && lang_contains_cjk(localized))
 		return "[head][localized]" // 中文名词之间不留空格（同 MOD 主题拼名）
 	return "[head] [localized]"
 
 /// 运行期在名字两侧拼缀的组合名（显示边界、LANG 实参、TGUI 负载里都很常见）：
 ///   · `A (B)`  —— `tray (Watermelon Vines)`、`Thermomachine (Machine Board)`、`departmental card (Service Budget)`、
-///                 `Lin Muchen (Supply Foreman)`；
+///                 `Lin Muchen (Supply Foreman)`、`Karl (Police Officer (Engineering))`；
 ///   · `A - B`  —— `poster - Ion Rifle`、`painting - Helldiver`、`Departmental Techfab - Service`；
 ///   · `A's B`  —— `Lin Muchen's travel suitcase`、`Karl's lunchbox`；
-///   · `broken B` —— `broken Badminka vodka`（前缀骨架在 manual.json）。
+///   · `broken B` / `Intern B` / `vat-grown B` / `decayed B` / `tattered B` / `B Single-Pack`。
 /// 整串永远不是目录键，而每一段本身早就在目录里（或是人名/玩家自起的标题，本就不该翻）。
 /// 安全线：每段只做**整串精确反查**（可递归拆）；至少一段命中；没命中的那段必须**长得像专名**
 /// （没有小写开头的词）—— `Warning - the reactor is overheating` 这种散文不会被劈成「警告 - the reactor…」。
 /// 带句末标点、过长或含标签的一律不拆。不是这个形状、或没有任何一段命中时返回 null。
 /proc/lang_reverse_composed_name(text, locale, depth = 0, template_checked = FALSE)
-	if(!istext(text) || depth > 2 || length(text) > 80 || findtext(text, "<"))
+	if(!istext(text) || depth > 2 || length(text) > 100 || findtext(text, "<"))
 		return null
 	var/static/regex/terminal_punct = regex(@"[.!?:;,]$")
 	if(terminal_punct.Find(text))
@@ -174,11 +183,19 @@ GLOBAL_VAR_INIT(i18n_ascii_letter_regex, regex(@"[A-Za-z]"))
 	if(text_length > 3 && copytext(text, text_length - 2) == " ()")
 		var/head_piece = lang_composed_piece(copytext(text, 1, text_length - 2), locale, depth)
 		return head_piece && "[head_piece] ()"
-	var/static/regex/paren_suffix = regex(@"^(.+?) \(([^()]+)\)$")
+	// 支持嵌套括号（`Karl (Police Officer (Engineering))`）：找与末尾 `)` 配对的 ` (`。
+	var/paren_open = 0
+	if(text_length > 4 && text2ascii(text, text_length) == 41)
+		var/cand_open = lang_matching_paren_open(text)
+		if(cand_open > 2 && text2ascii(text, cand_open - 1) == 32)
+			paren_open = cand_open
 	var/static/regex/possessive = regex(@"^(.+?)'s (.+)$")
-	var/paren_shape = paren_suffix.Find(text)
 	var/dash = findtext(text, " - ")
-	if(!paren_shape && dash <= 1 && !possessive.Find(text) && findtext(text, "broken ") != 1)
+	var/has_single_pack = (text_length > 12 && copytext(text, text_length - 11) == " Single-Pack")
+	var/has_prefix = (findtext(text, "broken ") == 1 || findtextEx(text, "Intern ") == 1 || findtextEx(text, "vat-grown ") == 1 || findtextEx(text, "decayed ") == 1 || findtextEx(text, "tattered ") == 1)
+	var/has_paper_title = (text_length > 9 && findtextEx(text, "paper- '") == 1 && copytext(text, text_length) == "'")
+	var/has_paper_prefix = (findtextEx(text, "The paper- ") == 1 || findtextEx(text, "paper- ") == 1)
+	if(!paren_open && dash <= 1 && !possessive.Find(text) && !has_prefix && !has_single_pack && !has_paper_title && !has_paper_prefix)
 		return null
 	// 整条骨架（`{0} (Machine Board)`）比按段拆更具体：调用方没试过模板的（LANG 实参）先试一次。
 	// 捕获值会回到 lang_localize_arg，但它严格更短，必然收敛。
@@ -186,9 +203,25 @@ GLOBAL_VAR_INIT(i18n_ascii_letter_regex, regex(@"[A-Za-z]"))
 		var/templated = lang_template_apply(text, locale)
 		if(templated != text)
 			return templated
-	if(paren_shape && paren_suffix.Find(text))
-		var/list/parts = lang_composed_pieces(list(paren_suffix.group[1], paren_suffix.group[2]), locale, depth)
-		return parts && "[parts[1]] ([parts[2]])"
+	if(has_paper_title)
+		var/paper_title = copytext(text, 9, text_length)
+		var/loc_paper = lang_composed_piece(paper_title, locale, depth)
+		return "纸张 -《[loc_paper || paper_title]》"
+	if(paren_open)
+		var/piece_a = copytext(text, 1, paren_open - 1)
+		var/piece_b = copytext(text, paren_open + 1, text_length)
+		var/list/parts = lang_composed_pieces(list(piece_a, piece_b), locale, depth)
+		if(parts)
+			return "[parts[1]] ([parts[2]])"
+		// 括号里常是职位/备用职称（`Zoed (Intern Medical Doctor)` / `Karl (Police Officer (Engineering))`）
+		var/loc_b = lang_localize_job_title(piece_b, locale)
+		if(loc_b != piece_b)
+			var/loc_a = lang_composed_piece(piece_a, locale, depth)
+			if(loc_a)
+				return "[loc_a] ([loc_b])"
+			if(lang_composed_name_like(piece_a))
+				return "[piece_a] ([loc_b])"
+		return null
 	if(dash > 1)
 		var/list/parts = lang_composed_pieces(list(copytext(text, 1, dash), copytext(text, dash + 3)), locale, depth)
 		return parts && "[parts[1]] - [parts[2]]"
@@ -209,6 +242,27 @@ GLOBAL_VAR_INIT(i18n_ascii_letter_regex, regex(@"[A-Za-z]"))
 		var/localized_rest = lang_composed_piece(copytext(text, 8), locale, depth)
 		if(localized_rest)
 			return lang_template_text("_root.name_broken", list(localized_rest), locale)
+	if(findtextEx(text, "Intern ") == 1)
+		var/loc_intern = lang_localize_job_title(text, locale)
+		if(loc_intern != text)
+			return loc_intern
+	if(findtextEx(text, "vat-grown ") == 1)
+		var/localized_vg = lang_composed_piece(copytext(text, 11), locale, depth)
+		if(localized_vg)
+			return "培养槽培育的[localized_vg]"
+	if(findtextEx(text, "decayed ") == 1)
+		var/localized_dec = lang_composed_piece(copytext(text, 9), locale, depth)
+		if(localized_dec)
+			return "腐坏的[localized_dec]"
+	if(findtextEx(text, "tattered ") == 1)
+		var/localized_tat = lang_composed_piece(copytext(text, 10), locale, depth)
+		if(localized_tat)
+			return "破烂的[localized_tat]"
+	if(has_single_pack)
+		var/pack_head = copytext(text, 1, text_length - 11)
+		var/localized_pack = lang_composed_piece(pack_head, locale, depth)
+		if(localized_pack)
+			return "[localized_pack]单件装"
 	return null
 
 /// 切块器在标签边界切开后，块的两端常挂着半截装饰：`Third Degree Burns (`（后面是 `<span>中等</span>)`）、
@@ -450,10 +504,22 @@ GLOBAL_VAR_INIT(i18n_ascii_letter_regex, regex(@"[A-Za-z]"))
 		. = found + length(ender) - 1
 
 /// 见 lang_localize_chain 的「多行拼接」一段。至少两行、且至少一行落地才返回，否则 null。
+/// 同时支持 `\n` 与 TGUI 医疗记录/照片描述里的 `<br>`/`<br/>`/`</br>` 分行。
 /proc/lang_localize_lines(text, locale, allow_template)
-	if(!istext(text) || !findtext(text, "\n") || length(text) > 8192)
+	if(!istext(text) || length(text) > 8192)
 		return null
-	var/list/lines = splittext(text, "\n")
+	var/sep
+	if(findtext(text, "\n"))
+		sep = "\n"
+	else if(findtext(text, "<br>"))
+		sep = "<br>"
+	else if(findtext(text, "<br/>"))
+		sep = "<br/>"
+	else if(findtext(text, "</br>"))
+		sep = "</br>"
+	else
+		return null
+	var/list/lines = splittext(text, sep)
 	if(length(lines) < 2)
 		return null
 	var/regex/ascii_letter_regex = GLOB.i18n_ascii_letter_regex
@@ -466,11 +532,12 @@ GLOBAL_VAR_INIT(i18n_ascii_letter_regex, regex(@"[A-Za-z]"))
 		if(localized != line)
 			lines[i] = localized
 			hit_any = TRUE
-	return hit_any ? jointext(lines, "\n") : null
+	return hit_any ? jointext(lines, sep) : null
 
 /// 见 lang_localize_chain 的「多句拼接」一段。至少两句、且至少一句命中才返回，否则 null。
 /// 只认含拉丁字母的句子；已经是中文的句子（模板刚翻好的那句）原样跳过。
-/proc/lang_reverse_sentences_exact(text, locale)
+/// `require_all = TRUE` 时要求所有含拉丁字母的句子都必须整句命中，否则返回 null。
+/proc/lang_reverse_sentences_exact(text, locale, require_all = FALSE)
 	if(!istext(text) || length(text) > 4096)
 		return null
 	if(!findtext(text, ". ") && !findtext(text, "! ") && !findtext(text, "? ") && !findtext(text, "。 ") && !findtext(text, "！ ") && !findtext(text, "？ "))
@@ -497,6 +564,8 @@ GLOBAL_VAR_INIT(i18n_ascii_letter_regex, regex(@"[A-Za-z]"))
 			continue
 		var/hit = lang_reverse_text_in(piece, locale)
 		if(hit == piece)
+			if(require_all)
+				return null
 			continue
 		// 切点把空格留给了下一句：命中的那句要把前导空白接回去。
 		var/lead_length = spantext(piece, " \t\n")
@@ -552,9 +621,9 @@ GLOBAL_VAR_INIT(i18n_ascii_letter_regex, regex(@"[A-Za-z]"))
 	. = lang_reverse_text_in(stripped, locale)
 	if(. != stripped)
 		return
-	// 「类型名 + 编号」（无线电导航信标 `radio navigation gigabeacon 9-222` 说话时）。只在剥掉冠词之后
-	// 才试 —— 冠词已经证明它不是玩家角色名。
-	. = lang_reverse_serial_suffixed(stripped, locale)
+	// 「类型名 + 编号」（无线电导航信标 `radio navigation gigabeacon 9-222` 说话时）、区域前缀或组合名。
+	// 只在剥掉冠词之后才试 —— 冠词已经证明它不是玩家角色名。
+	. = lang_reverse_serial_suffixed(stripped, locale) || lang_reverse_area_prefixed(text, locale) || lang_reverse_area_prefixed(stripped, locale) || lang_reverse_composed_name(stripped, locale, template_checked = TRUE)
 	if(.)
 		return
 	// 漏翻采集：聊天里的说话者/emote 名字整块没翻。单词名（wolf/animal）在这里最常见，
@@ -703,8 +772,8 @@ GLOBAL_LIST_INIT(i18n_inline_tags, list(
 			if(seen_text)
 				return FALSE // 多于一个文本块 → 交给整行模板
 			seen_text = TRUE
-			// 与 lang_inline_run_lookup 同一条安全线：只认多词整句。
-			hit = findtext(chunk, " ") && lang_reverse_text_in(chunk, locale) != chunk
+			// 与 lang_inline_run_lookup 同一条安全线：只认多词整句（含逐句均命中的多句拼接）。
+			hit = findtext(chunk, " ") && (lang_reverse_text_in(chunk, locale) != chunk || !isnull(lang_reverse_sentences_exact(chunk, locale, require_all = TRUE)))
 		if(!tag_start)
 			break
 		var/tag_end = lang_html_tag_end(html, tag_start)
@@ -807,13 +876,7 @@ GLOBAL_LIST_INIT(i18n_inline_tags, list(
 		var/inlined = lang_localize_inline_runs(html, locale)
 		if(!isnull(inlined))
 			html = inlined
-		// 整行模板 pass：目录模板的字面段里带着标签
-		// （`{0}<br>Type <b>vote</b> or click <a href='byond://…'>here</a> to place your votes.…`），
-		// 只有在这个作用域里它们才与原文逐字节对得上；一旦按标签切块，字面段就再也拼不回来。
-		// 这条路对**含 `<a>` 的模板**尤其重要：剥标签变体（见 template_match.dm）会把链接弄没，
-		// 所以那 71 条一律不登记变体；而在整行作用域上匹配，zh 模板连同它自己的 `<a href>`
-		// 一起填回去，链接与排版都保住。整段精确没命中时它才有机会跑（上面那 pass 未命中会
-		// 原样交还），所以两条并不互斥。
+		// 整行模板 pass：目录模板的字面段里带着标签（如含 `<a href>` 的投票行）或被内联标签切开（如 `You can <b>...</b> to learn...`）。
 		var/templated = lang_template_apply(html, locale)
 		// **整串精确赢过泛化模板**，在整行作用域上同样成立。上面那条前置 pass 只管「被内联标签
 		// 切开的句子」（lang_inline_run_lookup 要求 saw_inline_tag），而绝大多数聊天行是

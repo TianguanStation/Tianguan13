@@ -564,7 +564,8 @@
 
 	if(!(lube & SLIDE_ICE))
 		// Ice slides are intended to be combo'd so don't give the feedback
-		to_chat(slipper, span_notice(LANG("turf.567ad8f7d400ee5e", list(slippable ? " on \the [slippable]" : ""))))
+		var/slip_msg = slippable ? LANG("_root.slipped_on", list(slippable)) : LANG("turf.567ad8f7d400ee5e", list(""))
+		to_chat(slipper, span_notice(slip_msg))
 		playsound(slipper.loc, 'sound/misc/slip.ogg', 50, TRUE, -3)
 
 	SEND_SIGNAL(slipper, COMSIG_ON_CARBON_SLIP)

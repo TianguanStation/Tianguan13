@@ -16,4 +16,4 @@
 		return
 	if(!saved_identification && !saved_job)
 		return
-	name = "[saved_identification] ([lang_reverse_text(saved_job)])"
+	name = "[saved_identification] ([lang_localize_job_title(saved_job)])"

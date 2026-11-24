@@ -95,7 +95,7 @@
 	status += "The emergency light is [A.emergency ? "on" : "off"]."
 
 	if(A.unres_latch)
-		status += "The unrestricted exit display is [A.unres_sides ? "indicating that it is letting people pass from the [dir2text(REVERSE_DIR(A.unres_sides))]" : "faintly flickering"]."
+		status += A.unres_sides ? LANG("_root.airlock_unres_passing", list(dir2text(REVERSE_DIR(A.unres_sides)))) : "The unrestricted exit display is faintly flickering."
 	else
 		status += "The unrestricted exit display is completely inactive."
 

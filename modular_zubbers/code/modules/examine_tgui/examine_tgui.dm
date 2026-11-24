@@ -104,7 +104,7 @@
 		if(CONFIG_GET(flag/use_rr_opt_in_preferences))
 			var/rr_prefs = preferences.read_preference(/datum/preference/toggle/be_round_removed)
 			ooc_notes += "\n"
-			ooc_notes += "Round Removal Opt-In Status: [rr_prefs ? "Yes" : "No"]\n"
+			ooc_notes += LANG("_root.examine_rr_opt_in", list(rr_prefs ? "Yes" : "No"))
 			ooc_notes += "\n"
 
 	if(ishuman(holder))

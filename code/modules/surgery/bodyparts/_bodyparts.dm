@@ -558,7 +558,7 @@
 
 	if(length(surgery_message))
 		return span_tooltip("Your limb is undergoing surgery. If no doctors are around, \
-			you could suture or cauterize yourself to cancel it.", span_smalldanger("Its [english_list(surgery_message)]!"))
+			you could suture or cauterize yourself to cancel it.", span_smalldanger(LANG("_root.surgery_self_check", list(lang_english_list(surgery_message)))))
 	return ""
 
 /// Returns surgery examine information for this bodypart
@@ -606,7 +606,7 @@
 		single_message = "[owner?.p_Their() || "The"] chest cavity is wide open!"
 
 	if(length(sub_messages) >= 2)
-		return span_smalldanger("[capital_zone]'s [english_list(sub_messages)].")
+		return span_smalldanger(LANG("_root.surgery_examine_list", list(capital_zone, lang_english_list(sub_messages))))
 	if(single_message)
 		return span_smalldanger(single_message)
 	return ""

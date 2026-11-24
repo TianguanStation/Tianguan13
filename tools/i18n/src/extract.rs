@@ -205,6 +205,7 @@ const SINK_VARS: &[&str] = &[
     // 运行时靠聊天 AC 子串层（I18N_CHAT_FALLBACK）在包裹串里命中替换（整串反查会因 span 包裹不匹配）。
     "gain_text",        // 脑创伤等获得时消息（45 处）。
     "lose_text",        // 失去时消息。
+    "medical_record_text", // 怪癖在医疗记录里的病历描述。
     "playstyle_string", // 特殊角色玩法说明。
     // /datum/disease 玩家可见字段（医疗/疫病 UI）。
     "cure_text",

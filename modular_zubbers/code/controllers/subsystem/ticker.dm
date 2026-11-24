@@ -50,15 +50,16 @@
 			else
 				display = prefs.read_preference(/datum/preference/name/real_name)
 		// If our player is a member of Command or a Silicon, we want to sort them to the top of the list. Otherwise, just add them to the end of the list.
+		var/entry = (GLOB.i18n_server_locale != DEFAULT_UI_LOCALE) ? "* [display] — [lang_localize_job_title(title)]" : "* [display] as [title]"
 		if(job_estimation.departments_bitflags & (DEPARTMENT_BITFLAG_COMMAND | DEPARTMENT_BITFLAG_SILICON))
-			player_ready_data.Insert(1, "* [display] as [title]")
+			player_ready_data.Insert(1, entry)
 		else
-			player_ready_data += "* [display] as [title]"
+			player_ready_data += entry
 
 	// The title line for the job estimation panel, obviously needs to be at the top
 	if(length(player_ready_data))
 		player_ready_data.Insert(1, "------------------")
-		player_ready_data.Insert(1, "Job Estimation:")
+		player_ready_data.Insert(1, (GLOB.i18n_server_locale != DEFAULT_UI_LOCALE) ? lang_reverse_text("Job Estimation:") : "Job Estimation:")
 		player_ready_data.Insert(1, "")
 	return player_ready_data
 

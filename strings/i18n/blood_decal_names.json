@@ -16,6 +16,7 @@
 	],
 	"zh-Hans": {
 		"base_name": {
+			"drop of": "一滴",
 			"pool of": "一滩",
 			"trail of": "一道"
 		},
@@ -23,7 +24,8 @@
 			"trail": "痕"
 		},
 		"dry_prefix": {
-			"dried": "干涸的"
+			"dried": "干涸的",
+			"rotting": "腐烂的"
 		}
 	}
 }

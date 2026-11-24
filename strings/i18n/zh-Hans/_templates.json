@@ -12,5 +12,14 @@
 	"{0} Higher Dimensional Affairs": "{0}高维事务部",
 	"Material from a pair of {0}.": "来自一副{0}的材料。",
 	"Material from {0}.": "来自{0}的材料。",
-	"Fibers from {0}.": "来自{0}的纤维。"
+	"Fibers from {0}.": "来自{0}的纤维。",
+	"This one has a rating of {0}.": "这个的额定值为 {0}。",
+	"This one has a rating of {0}, and you should not swallow it.": "这个的额定值为 {0}，请勿吞咽。",
+	"the patient must be dosed with >= {0}u {1}": "必须给患者施用不少于 {0}u 的{1}",
+	"The paper- '{0}'": "纸张 -《{0}》",
+	"The paper- {0} employment contract": "纸张 - {0} 的雇佣合同",
+	"paper- {0} employment contract": "纸张 - {0} 的雇佣合同",
+	"{0} - purchased by {1}": "{0} - 购买者：{1}",
+	"This is a photo of an area of {0} meters by {1} meters.": "这是一张拍摄了 {0} 米 × {1} 米区域的照片。",
+	"Over {0} shifts without a \"terrible\" \"accident\"!": "已 {0} 个班次没有发生“可怕的”“意外”！"
 }
