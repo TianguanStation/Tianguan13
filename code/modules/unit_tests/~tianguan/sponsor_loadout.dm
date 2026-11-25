@@ -53,6 +53,8 @@
 			TEST_FAIL("蓝红球召唤信标应标记 private_ckey_lock，否则赞助者解锁会清空它的 ckeywhitelist")
 		if(lanhongqiu_beacon.donator_only)
 			TEST_FAIL("蓝红球召唤信标不应被赞助者解锁改成 donator_only")
+		if(lanhongqiu_beacon.donator_tier)
+			TEST_FAIL("蓝红球召唤信标不应带有 donator_tier：实为 [lanhongqiu_beacon.donator_tier]")
 		for(var/owner in list("lanhongqiu", "lv19874900"))
 			if(!(owner in lanhongqiu_beacon.ckeywhitelist))
 				TEST_FAIL("蓝红球召唤信标的 ckeywhitelist 缺少 [owner]：实为 [jointext(lanhongqiu_beacon.ckeywhitelist, ", ")]")

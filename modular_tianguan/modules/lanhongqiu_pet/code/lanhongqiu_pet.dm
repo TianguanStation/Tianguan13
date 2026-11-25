@@ -70,38 +70,84 @@
 	charge = new charge_type(src)
 	charge.Grant(src)
 
+/mob/living/basic/pet/lanhongqiu/Destroy()
+	QDEL_NULL(charge)
+	clear_weapon(drop_to_loc = FALSE)
+	return ..()
+
+/mob/living/basic/pet/lanhongqiu/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == weapon)
+		clear_weapon(drop_to_loc = FALSE)
+
 /datum/action/cooldown/mob_cooldown/charge/basic_charge/dodgeroll
+	name = "翻滚闪避"
+	desc = "向指定方向快速翻滚并短暂闪避弹道。"
 	cooldown_time = 5 SECONDS
 	charge_delay = 0.1 SECONDS
 	charge_past = 0
 	charge_distance = 2
 	charge_damage = 0
 	destroy_objects = FALSE
+	recoil_duration = -1
+	knockdown_duration = -1
 
-/datum/action/cooldown/mob_cooldown/charge/basic_charge/dodgeroll/do_charge(atom/movable/charger, atom/target_atom, delay, past)
-	. = ..()
+/datum/action/cooldown/mob_cooldown/charge/basic_charge/dodgeroll/do_charge_indicator(atom/charger, atom/charge_target)
 	if(!isliving(charger))
 		return
 	ADD_TRAIT(charger, TRAIT_UNHITTABLE_BY_PROJECTILES, REF(src))
 	charger.SpinAnimation(FLIP_EMOTE_DURATION, 1)
-	addtimer(TRAIT_CALLBACK_REMOVE(charger, TRAIT_UNHITTABLE_BY_PROJECTILES, REF(src)), TAUNT_EMOTE_DURATION * 1)
+	addtimer(TRAIT_CALLBACK_REMOVE(charger, TRAIT_UNHITTABLE_BY_PROJECTILES, REF(src)), TAUNT_EMOTE_DURATION)
+
+/datum/action/cooldown/mob_cooldown/charge/basic_charge/dodgeroll/can_hit_target(atom/movable/source, atom/target)
+	return FALSE
+
+/datum/action/cooldown/mob_cooldown/charge/basic_charge/dodgeroll/on_moved(atom/source)
+	SIGNAL_HANDLER
+	return
 
 /mob/living/basic/pet/lanhongqiu/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
 	. = ..()
+	if(!. || !proximity_flag)
+		return
 	if(!isitem(A))
 		return
 
 	if(!weapon && istype(A, /obj/item/skysword))
-		visible_message(span_notice("[src] 拿起了 [A]."), span_notice("你拿起了 [A]."))
-		weapon = A
-		weapon.forceMove(src)
+		var/obj/item/skysword/sword = A
+		if(!isturf(sword.loc) || sword.anchored || QDELETED(sword))
+			return
+		sword.forceMove(src)
+		if(sword.loc != src)
+			return
+		weapon = sword
+		RegisterSignal(weapon, COMSIG_QDELETING, PROC_REF(on_weapon_qdel))
+		visible_message(span_notice("[src] 拿起了 [sword]。"), span_notice("你拿起了 [sword]。"))
 		melee_damage_lower = 18
 		melee_damage_upper = 22
 		armour_penetration = 0
 		wound_bonus = CANT_WOUND
 		update_icons()
-	else if(!weapon && !istype(A, /obj/item/spear))
+	else if(!weapon)
 		to_chat(src, span_warning("你不会使用[A]！"))
+
+/mob/living/basic/pet/lanhongqiu/proc/clear_weapon(drop_to_loc = FALSE)
+	if(!weapon)
+		return
+	var/obj/item/skysword/old_weapon = weapon
+	weapon = null
+	UnregisterSignal(old_weapon, COMSIG_QDELETING)
+	if(drop_to_loc && !QDELETED(old_weapon) && old_weapon.loc == src)
+		old_weapon.forceMove(drop_location())
+	melee_damage_lower = initial(melee_damage_lower)
+	melee_damage_upper = initial(melee_damage_upper)
+	armour_penetration = initial(armour_penetration)
+	wound_bonus = initial(wound_bonus)
+	update_icons()
+
+/mob/living/basic/pet/lanhongqiu/proc/on_weapon_qdel(datum/source)
+	SIGNAL_HANDLER
+	clear_weapon(drop_to_loc = FALSE)
 
 /mob/living/basic/pet/lanhongqiu/update_icons()
 	. = ..()
@@ -110,11 +156,8 @@
 	icon_state = weapon ? initial(icon_state) + "_sword" : initial(icon_state)
 
 /mob/living/basic/pet/lanhongqiu/death(gibbed)
-	if(weapon)
-		weapon.forceMove(get_turf(src))
-		weapon = null
-	update_icons()
-	. = ..()
+	clear_weapon(drop_to_loc = TRUE)
+	return ..()
 
 /obj/item/skysword
 	name = "天武剑"

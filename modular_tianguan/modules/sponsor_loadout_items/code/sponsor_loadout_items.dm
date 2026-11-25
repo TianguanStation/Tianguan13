@@ -135,8 +135,12 @@
 /// 在 modular_zzplurt/code/modules/loadout/loadout_items.dm 之后接管 /datum/loadout_item/New()：
 /// 清单条目、现存 ckeywhitelist 私人条目，以及各类 donator 条目统一开放给所有天关赞助者。
 /datum/loadout_item/New(category)
+	var/orig_donator_only = donator_only
+	var/orig_donator_tier = donator_tier
 	. = ..()
 	if(private_ckey_lock)
+		donator_only = orig_donator_only
+		donator_tier = orig_donator_tier
 		return
 	if(tianguan_sponsor_item_paths()[item_path] || LAZYLEN(ckeywhitelist) || donator_only || donator_tier)
 		tianguan_unlock_sponsor_item(src)
