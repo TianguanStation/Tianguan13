@@ -38,9 +38,6 @@
 	var/list/datum/paper_stamp/raw_stamp_data
 	/// Lazylist of all fields that have had some input added to them.
 	var/list/datum/paper_field/raw_field_input_data
-	/// Cosmetic stains visible when reading the sheet.
-	var/blood_stain = FALSE
-	var/dirt_stain = FALSE
 
 	/// Whether the icon should show little scribbly written words when the paper has some text on it.
 	var/show_written_words = TRUE
@@ -165,8 +162,7 @@
 
 	new_paper.raw_text_inputs = copy_raw_text()
 	new_paper.raw_field_input_data = copy_field_text()
-	new_paper.blood_stain = blood_stain
-	new_paper.dirt_stain = dirt_stain
+	copy_cosmetic_stains_to(new_paper) // TIANGUAN EDIT - Paper stains
 
 	if(colored)
 		new_paper.color = color
@@ -437,24 +433,6 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "重命名纸张", null)
 		user.put_in_hands(new_plane)
 	return new_plane
 
-/obj/item/paper/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
-	var/turf/open/floor/marked_floor = interacting_with
-	if(istype(interacting_with, /obj/effect/decal/cleanable/blood))
-		blood_stain = TRUE
-	else if(istype(marked_floor))
-		var/has_blood = locate(/obj/effect/decal/cleanable/blood) in marked_floor
-		var/has_dirt = locate(/obj/effect/decal/cleanable/dirt) in marked_floor
-		if(!has_blood && !has_dirt)
-			return ..()
-		blood_stain = blood_stain || has_blood
-		dirt_stain = dirt_stain || has_dirt
-	else
-		return ..()
-
-	update_static_data()
-	balloon_alert(user, "paper stained")
-	return ITEM_INTERACT_SUCCESS
-
 /obj/item/paper/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	// Enable picking paper up by clicking on it with a clipboard, paper bin, or folder
 	if(istype(tool, /obj/item/clipboard) || istype(tool, /obj/item/paper_bin) || istype(tool, /obj/item/folder))
@@ -680,8 +658,7 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "重命名纸张", null)
 
 	data[LIST_PAPER_COLOR] = color ? color : COLOR_WHITE
 	data[LIST_PAPER_NAME] = name
-	data[LIST_PAPER_BLOOD_STAIN] = blood_stain
-	data[LIST_PAPER_DIRT_STAIN] = dirt_stain
+	data += paper_stain_data() // TIANGUAN EDIT - Paper stains
 
 	return data
 
@@ -701,8 +678,7 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "重命名纸张", null)
 		add_atom_colour(new_color, FIXED_COLOUR_PRIORITY)
 
 	name = data[LIST_PAPER_NAME]
-	blood_stain = !!data[LIST_PAPER_BLOOD_STAIN]
-	dirt_stain = !!data[LIST_PAPER_DIRT_STAIN]
+	read_paper_stain_data(data) // TIANGUAN EDIT - Paper stains
 
 /obj/item/paper/ui_act(action, params, datum/tgui/ui)
 	. = ..()
@@ -995,8 +971,6 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "重命名纸张", null)
 
 /obj/item/paper/crumpled/bloody
 	icon_state = "scrap_bloodied"
-	blood_stain = TRUE
 
 /obj/item/paper/crumpled/muddy
 	icon_state = "scrap_mud"
-	dirt_stain = TRUE

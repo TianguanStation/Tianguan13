@@ -24,8 +24,6 @@
  */
 #define LIST_PAPER_COLOR "paper_color"
 #define LIST_PAPER_NAME "paper_name"
-#define LIST_PAPER_BLOOD_STAIN "paper_blood_stain"
-#define LIST_PAPER_DIRT_STAIN "paper_dirt_stain"
 
 #define LIST_PAPER_RAW_TEXT_INPUT "raw_text_input"
 #define LIST_PAPER_RAW_FIELD_INPUT "raw_field_input"

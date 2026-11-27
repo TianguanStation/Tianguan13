@@ -7,6 +7,8 @@
 	addiction_relief_treshold = MIN_NICOTINE_ADDICTION_REAGENT_AMOUNT
 	medium_withdrawal_moodlet = /datum/mood_event/nicotine_withdrawal_moderate
 	severe_withdrawal_moodlet = /datum/mood_event/nicotine_withdrawal_severe
+	var/withdrawal_stamina_multiplier = 1
+	var/withdrawal_message_class = "danger"
 
 /datum/addiction/nicotine/proc/trigger_random_side_effect(mob/living/carbon/affected_carbon, seconds_per_tick, strength = 1)
 	switch(rand(1, 4))
@@ -15,6 +17,8 @@
 				affected_carbon.adjust_nutrition(-10 * REM * seconds_per_tick)
 		if(2)
 			to_chat(affected_carbon, span_warning(LANG("datum.60d845f35de563d2", null)))
+			if(withdrawal_stamina_multiplier)
+				affected_carbon.adjust_stamina_loss(50 * REM * seconds_per_tick * withdrawal_stamina_multiplier)
 		if(3)
 			if(strength >= 2)
 				to_chat(affected_carbon, span_warning(LANG("datum.faca08ef61a393b6", null)))
@@ -22,31 +26,33 @@
 		if(4)
 			if(strength >= 2)
 				to_chat(affected_carbon, span_warning(LANG("datum.3c3a63b3af68cf4b", null)))
+				if(withdrawal_stamina_multiplier)
+					affected_carbon.adjust_stamina_loss(75 * REM * seconds_per_tick * withdrawal_stamina_multiplier)
 
 /datum/addiction/nicotine/withdrawal_enters_stage_1(mob/living/carbon/affected_carbon, seconds_per_tick)
 	. = ..()
-	to_chat(affected_carbon, span_warning("[withdrawal_stage_messages[1]]"))
+	to_chat(affected_carbon, span_class(withdrawal_message_class, "[withdrawal_stage_messages[1]]"))
 
 /datum/addiction/nicotine/withdrawal_enters_stage_2(mob/living/carbon/affected_carbon, seconds_per_tick)
 	. = ..()
-	to_chat(affected_carbon, span_warning("[withdrawal_stage_messages[2]]"))
+	to_chat(affected_carbon, span_class(withdrawal_message_class, "[withdrawal_stage_messages[2]]"))
 
 /datum/addiction/nicotine/withdrawal_enters_stage_3(mob/living/carbon/affected_carbon, seconds_per_tick)
 	. = ..()
-	to_chat(affected_carbon, span_warning("[withdrawal_stage_messages[3]]"))
+	to_chat(affected_carbon, span_class(withdrawal_message_class, "[withdrawal_stage_messages[3]]"))
 
 /datum/addiction/nicotine/withdrawal_stage_1_process(mob/living/carbon/affected_carbon, seconds_per_tick)
 	if(SPT_PROB(0.3, seconds_per_tick))
-		to_chat(affected_carbon, span_warning("[withdrawal_stage_messages[1]]"))
+		to_chat(affected_carbon, span_class(withdrawal_message_class, "[withdrawal_stage_messages[1]]"))
 
 /datum/addiction/nicotine/withdrawal_stage_2_process(mob/living/carbon/affected_carbon, seconds_per_tick)
 	if(SPT_PROB(0.5, seconds_per_tick))
 		trigger_random_side_effect(affected_carbon, seconds_per_tick, 1)
 	if(SPT_PROB(0.5, seconds_per_tick))
-		to_chat(affected_carbon, span_warning("[withdrawal_stage_messages[2]]"))
+		to_chat(affected_carbon, span_class(withdrawal_message_class, "[withdrawal_stage_messages[2]]"))
 
 /datum/addiction/nicotine/withdrawal_stage_3_process(mob/living/carbon/affected_carbon, seconds_per_tick)
 	if(SPT_PROB(0.7, seconds_per_tick))
 		trigger_random_side_effect(affected_carbon, seconds_per_tick, 2)
 	if(SPT_PROB(0.7, seconds_per_tick))
-		to_chat(affected_carbon, span_warning("[withdrawal_stage_messages[3]]"))
+		to_chat(affected_carbon, span_class(withdrawal_message_class, "[withdrawal_stage_messages[3]]"))

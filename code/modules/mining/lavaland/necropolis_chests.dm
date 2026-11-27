@@ -12,13 +12,33 @@
 	can_weld_shut = FALSE
 
 /obj/structure/closet/crate/necropolis/tendril
-	desc = "It's watching you closely."
+	desc = "It's watching you suspiciously. You need a skeleton key to open it."
 	integrity_failure = 0 //prevents bust_open from firing
+	/// var to check if it got opened by a key
+	var/spawned_loot = FALSE
 	/// What random loot spawner our chest uses
 	var/loot_to_spawn = /obj/effect/spawner/random/mining_loot
 
-/obj/structure/closet/crate/necropolis/tendril/PopulateContents()
+/obj/structure/closet/crate/necropolis/tendril/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(!istype(tool, /obj/item/skeleton_key) || spawned_loot)
+		return ..()
 	new loot_to_spawn(src)
+
+	spawned_loot = TRUE
+	qdel(tool)
+	to_chat(user, span_notice(LANG("obj.18d771eb872302a8", null)))
+	return ITEM_INTERACT_SUCCESS
+
+/obj/structure/closet/crate/necropolis/tendril/before_open(mob/living/user, force)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	if(!broken && !force && !spawned_loot)
+		balloon_alert(user, LANG("obj.d43b69873ab22a2f", null))
+		return FALSE
+
+	return TRUE
 
 //Megafauna chests
 

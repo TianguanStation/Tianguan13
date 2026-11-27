@@ -265,6 +265,8 @@
 	mineral_rarity = MATERIAL_RARITY_RARE
 	points_per_unit = 50 / SHEET_MATERIAL_AMOUNT
 	points_per_boulder_unit = 10 / SHEET_MATERIAL_AMOUNT
+	tradable = TRUE
+	tradable_base_quantity = MATERIAL_QUANTITY_EXOTIC
 	texture_layer_icon_state = "shine"
 
 /datum/material/bluespace/on_main_applied(atom/source, mat_amount, multiplier)

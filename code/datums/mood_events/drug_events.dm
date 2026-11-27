@@ -124,11 +124,11 @@
 
 /datum/mood_event/nicotine_withdrawal_moderate
 	description = "Haven't had a smoke in a while. Feeling a little on edge... "
-	mood_change = -3
+	mood_change = -5
 
 /datum/mood_event/nicotine_withdrawal_severe
 	description = "Head pounding. Cold sweating. Feeling anxious. Need a smoke to calm down!"
-	mood_change = -4
+	mood_change = -8
 
 /datum/mood_event/hauntium_spirits
 	description = "I feel my soul degrading!"

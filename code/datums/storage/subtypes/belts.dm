@@ -337,7 +337,7 @@
 
 /datum/storage/katana_sheath/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound)
 	. = ..()
-	set_holdable(list(/obj/item/katana, /obj/item/melee/forged_reagent_weapon/katana))
+	set_holdable(/obj/item/katana)
 
 ///Ninja energy katana sheath
 /datum/storage/ninja_sheath

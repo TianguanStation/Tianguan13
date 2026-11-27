@@ -34,6 +34,7 @@
 	antimagic_flags = NONE
 	var/jumpdistance = 5 //-1 from to see the actual distance, e.g 4 goes over 3 tiles
 	var/jumpspeed = 3
+	var/dash_stamina_cost = 40
 	var/datum/weakref/dash_action_ref
 	COOLDOWN_DECLARE(dash_cooldown)
 
@@ -66,7 +67,7 @@
 		COOLDOWN_START(src, dash_cooldown, 6 SECONDS)
 		var/mob/living/dash_user = owner
 		if(istype(dash_user))
-			dash_user.adjust_stamina_loss(37.5) // A dash at full stamina stays below the human slowdown threshold.
+			dash_user.adjust_stamina_loss(dash_stamina_cost)
 	else
 		to_chat(owner, span_warning(LANG("datum.9227c41df31765a4", null)))
 

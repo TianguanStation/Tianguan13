@@ -79,14 +79,6 @@
 	default_color = "#CCCCCC"
 	affected_bodyparts = HEAD
 
-// TianGuan: the Nova variant that preserves the original profile.
-/datum/body_marking/other/blank_face3
-	name = "Blank Round Face, Flat"
-	icon = 'modular_tianguan/modules/body_markings/icons/blank_face.dmi'
-	icon_state = "blankface3"
-	default_color = "#CCCCCC"
-	affected_bodyparts = HEAD
-
 /datum/body_marking/other/monster_mouth
 	name = "Monster Mouth"
 	icon_state = "monster"
