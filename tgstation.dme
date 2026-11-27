@@ -11310,6 +11310,7 @@
 #include "modular_tianguan\modules\pen_shortcut_hint\code\pen_shortcut_hint.dm"
 #include "modular_tianguan\modules\peering\code\peering.dm"
 #include "modular_tianguan\modules\faction_communications\code\faction_communications.dm"
+#include "modular_tianguan\modules\faction_flags\code\faction_flags.dm"
 #include "modular_tianguan\modules\paper_stains\code\paper_stains.dm"
 #include "modular_tianguan\modules\body_markings\code\body_markings.dm"
 #include "modular_tianguan\modules\crew_balance\code\crew_balance.dm"
