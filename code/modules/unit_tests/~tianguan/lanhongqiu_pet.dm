@@ -49,3 +49,14 @@
 	TEST_ASSERT(HAS_TRAIT(pet, TRAIT_UNHITTABLE_BY_PROJECTILES), "翻滚指示阶段应立即获得弹道免疫")
 	sleep(TAUNT_EMOTE_DURATION + 0.2 SECONDS)
 	TEST_ASSERT(!HAS_TRAIT(pet, TRAIT_UNHITTABLE_BY_PROJECTILES), "翻滚结束后应移除弹道免疫")
+
+	// 7. 趴着死亡再复活后，图标应与仍在休息的姿势一致。
+	pet.set_resting(TRUE, instant = TRUE)
+	TEST_ASSERT_EQUAL(pet.icon_state, "lanhongqiu_rest", "趴下后应显示休息图标")
+	pet.death()
+	TEST_ASSERT_EQUAL(pet.icon_state, "lanhongqiu_dead", "死亡后应显示死亡图标")
+	TEST_ASSERT(pet.revive(ALL), "蓝红球应能从死亡中复活")
+	TEST_ASSERT(pet.resting, "复活应保留原来的休息状态")
+	TEST_ASSERT_EQUAL(pet.icon_state, "lanhongqiu_rest", "复活后仍在休息时应显示休息图标")
+	pet.set_resting(FALSE, instant = TRUE)
+	TEST_ASSERT_EQUAL(pet.icon_state, "lanhongqiu", "结束休息后应恢复常态图标")
