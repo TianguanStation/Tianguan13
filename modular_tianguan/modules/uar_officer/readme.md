@@ -1,4 +1,4 @@
-https://github.com/TianguanStation/Tianguan13/pull/<!--PR Number-->
+https://github.com/TianguanStation/Tianguan13/pull/32
 
 ## 团结联盟印章（UAR_OFFICER 模块）
 
@@ -22,7 +22,7 @@ Module ID: `UAR_OFFICER`
 
 ### Modular Overrides:
 
-- N/A（只新增类型；`get_writing_implement_details()` 在基类上定义，本类型此前没有自己的版本，属新增覆盖而非改写他人实现）
+- `/obj/item/stamp/chameleon/get_writing_implement_details()`：变色龙印章选中团结联盟外观时，纸面窗口使用联盟章图。
 
 ### Defines:
 

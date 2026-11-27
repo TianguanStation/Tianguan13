@@ -177,6 +177,8 @@
 	cost = CARGO_MINIMUM_COST
 
 // ———————————————————————————————— 团结联盟印章（可盖在公文上）
+#define UAR_STAMP_SPRITE "uar_stamp"
+
 /// 继承上游 `/obj/item/stamp` ⇒ 盖公文那一整套机制照常可用：左键点纸张（读不了字时盲盖）、
 /// 右键速盖、`get_writing_implement_details()` 走 `MODE_STAMPING`。
 /// 三处贴图分工：
@@ -193,16 +195,19 @@
 	// 与上游安保主管印章同档（洗衣机的染色登记位，本仓对 stamp 没有别的消费点）
 	dye_color = DYE_HOS
 
-/// 只换纸面**窗口**里那张大印记，其余两项（物品图标、纸张物品图标上的小印记）保持上游红色印章。
-/// 覆盖合法：`/obj/item/stamp/get_writing_implement_details()` 定义在基类上，本类型此前没有自己的版本。
+/// 物品图标和纸张叠图沿用红章，纸面窗口单独使用联盟章图。
 /obj/item/stamp/uar/get_writing_implement_details()
-	var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet/simple/stamps)
-	return list(
-		interaction_mode = MODE_STAMPING,
-		stamp_icon_state = icon_state,
-		stamp_icon = icon,
-		stamp_class = sheet.icon_class_name("uar_stamp"),
-	)
+	. = ..()
+	var/datum/asset/spritesheet/simple/stamps/sheet = get_asset_datum(/datum/asset/spritesheet/simple/stamps)
+	.["stamp_class"] = sheet.icon_class_name(UAR_STAMP_SPRITE)
+
+/obj/item/stamp/chameleon/get_writing_implement_details()
+	. = ..()
+	// 安保主管章和联盟章共用物品图标，按变色龙当前选择区分纸面印记。
+	var/datum/action/item_action/chameleon/change/stamp/disguise = locate() in actions
+	if(disguise?.active_type == /obj/item/stamp/uar)
+		var/datum/asset/spritesheet/simple/stamps/sheet = get_asset_datum(/datum/asset/spritesheet/simple/stamps)
+		.["stamp_class"] = sheet.icon_class_name(UAR_STAMP_SPRITE)
 
 /// 静默失败守卫：精灵表缺条目不会报错，只会「纸上盖了、点开纸张窗口一片空白」，所以点名一次。
 /obj/item/stamp/uar/Initialize(mapload)
@@ -212,8 +217,10 @@
 		return
 	checked = TRUE
 	var/datum/asset/spritesheet/simple/stamps/sheet = get_asset_datum(/datum/asset/spritesheet/simple/stamps)
-	if(!sheet || !sheet.assets["uar_stamp"] || !get_writing_implement_details()["stamp_class"])
+	if(!sheet || !sheet.assets[UAR_STAMP_SPRITE] || !get_writing_implement_details()["stamp_class"])
 		log_world("UAR_OFFICER: ⚠ stamps 精灵表里没有可用的 \"uar_stamp\" 条目（code/modules/asset_cache/assets/paper.dm），纸面窗口里盖不出印章印记")
+
+#undef UAR_STAMP_SPRITE
 
 // ———————————————————————————————— 职业套装
 /datum/outfit/job/uar_inspector
