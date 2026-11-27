@@ -130,7 +130,7 @@
 
 	generated_domain.load_advanced_npcs(lucky_ghosts)
 	RegisterSignal(generated_domain, COMSIG_LAZY_TEMPLATE_LOADED, PROC_REF(on_template_loaded))
-	generated_domain.lazy_load()
+	domain_reservation = generated_domain.lazy_load()
 
 	return TRUE
 
@@ -225,9 +225,12 @@
 	sever_connections() /// just in case someone's connected
 	SEND_SIGNAL(src, COMSIG_BITRUNNER_DOMAIN_SCRUBBED) // avatar cleanup just in case
 
-	if(length(generated_domain.reservations))
-		var/datum/turf_reservation/res = generated_domain.reservations[1]
-		res.Release()
+	if(generated_domain)
+		UnregisterSignal(generated_domain, COMSIG_LAZY_TEMPLATE_LOADED)
+		generated_domain.reservations -= domain_reservation
+		generated_domain.secondary_loot_generated = 0
+		generated_domain.main_crate_points = 0
+	QDEL_NULL(domain_reservation)
 
 	var/list/creatures = spawned_threat_refs + mutation_candidate_refs
 	for(var/datum/weakref/creature_ref as anything in creatures)
@@ -236,9 +239,6 @@
 			continue
 
 		qdel(creature)
-
-	generated_domain.secondary_loot_generated = 0
-	generated_domain.main_crate_points = 0
 
 	avatar_connection_refs.Cut()
 	exit_turfs = list()

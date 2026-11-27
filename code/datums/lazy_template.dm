@@ -35,7 +35,7 @@
  * Does the grunt work of loading the template.
  */
 /datum/lazy_template/proc/lazy_load()
-	RETURN_TYPE(/turf)
+	RETURN_TYPE(/datum/turf_reservation)
 	// This is a static assosciative list that is used to ensure maps that have variations are correctly varied when spawned
 	// I want to make it to where you can make a range and it'll randomly pick'n'take from the available versions at random
 	// But that can be done later when I have the time
