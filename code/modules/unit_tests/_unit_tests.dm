@@ -406,6 +406,7 @@
 #include "~zh\localization_changelog.dm"
 #include "~zh\test_sharding.dm"
 #include "..\..\..\modular_zh\modules\bitrunning_cleanup\code\bitrunning_cleanup_test.dm"
+#include "..\..\..\modular_zh\modules\family_heirloom\code\family_heirloom_test.dm"
 #include "~zh\slime_naming.dm"
 #include "~zh\vore_default_i18n.dm"
 #include "~zh\tts_controls.dm"
