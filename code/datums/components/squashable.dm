@@ -48,6 +48,8 @@
 		return
 
 	var/mob/living/parent_as_living = parent
+	if(parent_as_living.stat == DEAD && HAS_TRAIT(parent_as_living, TRAIT_BUGKILLER_DEATH))
+		return
 	if((squash_flags & SQUASHED_DONT_SQUASH_IN_CONTENTS) && !isturf(parent_as_living.loc))
 		return
 

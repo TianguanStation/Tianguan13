@@ -160,11 +160,8 @@ by the automapper.
 	//To prevent the bodies of your fellow officers from decaying, or the antag with one million implants in them.
 	new /obj/item/reagent_containers/cup/bottle/formaldehyde(src)
 
-//Prevents secmed hours from counting towards HoS
-/datum/controller/subsystem/job/setup_occupations()
-	. = ..()
-	var/list/sec_exp_list = experience_jobs_map[EXP_TYPE_SECURITY]
-	for(var/datum/job/job_type in sec_exp_list)
-		if(istype(job_type, /datum/job/security_medic))
-			LAZYREMOVE(sec_exp_list, job_type)
-			break
+// Security medic time belongs in department totals, but does not qualify a player for HoS.
+/datum/job/head_of_security/get_exp_excluded_job(experience_type)
+	if(experience_type == EXP_TYPE_SECURITY)
+		return /datum/job/security_medic
+	return ..()

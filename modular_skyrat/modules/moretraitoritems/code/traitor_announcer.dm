@@ -17,7 +17,7 @@
 
 /proc/try_user_announce(mob/living/user, list/available_sounds = GLOB.announcer_keys)
 	//build our announcement
-	var/origin = reject_bad_text(tgui_input_text(user, LANG("_root.a18f70bf254e4106", null), LANG("_root.a13897ade2fbeac1", null), get_area_name(user), max_length = 28))
+	var/origin = reject_bad_text(tgui_input_text(user, LANG("_root.a18f70bf254e4106", null), LANG("_root.a13897ade2fbeac1", null), get_area_name(user), max_length = 28, encode = FALSE), max_length = 28, ascii_only = FALSE)
 	if(!origin)
 		user.balloon_alert(user, LANG("_root.7f313aa2d7137006", null))
 		return FALSE
@@ -29,23 +29,23 @@
 	if(!color)
 		user.balloon_alert(user, LANG("_root.cba9924c57671034", null))
 		return FALSE
-	var/title = reject_bad_text(tgui_input_text(user, LANG("_root.0d9126fb7f3f99ac", null), LANG("_root.fa4ed425405e3026", null), max_length = 42))
+	var/title = reject_bad_text(tgui_input_text(user, LANG("_root.0d9126fb7f3f99ac", null), LANG("_root.fa4ed425405e3026", null), max_length = 42, encode = FALSE), max_length = 42, ascii_only = FALSE)
 	if(!title)
 		user.balloon_alert(user, LANG("_root.355e60205342e8bb", null))
 		return FALSE
-	var/input = reject_bad_text(tgui_input_text(user, LANG("_root.f8e65aaf61ada8df", null), LANG("_root.d40536e84d989596", null), max_length = 512, multiline = TRUE))
+	var/input = reject_bad_text(tgui_input_text(user, LANG("_root.f8e65aaf61ada8df", null), LANG("_root.d40536e84d989596", null), max_length = 512, multiline = TRUE, encode = FALSE), ascii_only = FALSE)
 	if(!input)
 		user.balloon_alert(user, LANG("_root.76fac4a8183a3d8f", null))
 		return FALSE
 	//treat voice
-	var/list/message_data = user.treat_message(input)
+	var/list/message_data = user.treat_message(html_encode(input))
 	//send
 	priority_announce(
 		text = message_data["message"],
-		title = title,
+		title = html_encode(title),
 		sound = audio_key,
 		has_important_message = TRUE,
-		sender_override = origin,
+		sender_override = html_encode(origin),
 		color_override = color,
 		encode_text = FALSE,
 		encode_title = FALSE
@@ -53,7 +53,7 @@
 
 	deadchat_broadcast(" made a fake priority announcement from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
 	user.log_talk("\[Message title\]: [title], \[Message\]: [input], \[Audio key\]: [audio_key]", LOG_TELECOMMS, tag = "priority announcement")
-	message_admins("[ADMIN_LOOKUPFLW(user)] has made a fake announcement of [input].")
+	message_admins("[ADMIN_LOOKUPFLW(user)] has made a fake announcement of [html_encode(input)].")
 
 	return TRUE
 
