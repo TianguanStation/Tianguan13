@@ -47,6 +47,7 @@ export type CommsConsoleData = StationVoiceData & {
   alertLevel: string;
   alertLevelTick: number;
   aprilFools: BooleanLike;
+  associateDestinations?: { id: string; name: string }[];
   authenticated: BooleanLike;
   authorizeName: string;
   budget: number;

@@ -128,6 +128,20 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	return ACCESS_CAPTAIN in authorize_access
 // SKYRAT EDIT END
 
+/// TianGuan contacts available on the current routing table of a station console.
+/obj/machinery/computer/communications/proc/tianguan_associate_destinations()
+	var/static/list/station_contacts = list(
+		"uar_admin" = "团结联盟地方行政委员会",
+		"solar_defense_pact" = "太阳系联邦防御条约",
+	)
+	var/static/list/rerouted_contacts = list(
+		"socialist_republic" = "世界社会主义共和国",
+		"syndicate_independent_brigade" = "大辛迪加国第一独立旅",
+	)
+	if(syndicate)
+		return null
+	return (obj_flags & EMAGGED) ? rerouted_contacts : station_contacts
+
 /obj/machinery/computer/communications/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!isidcard(tool))
 		return NONE
@@ -262,21 +276,30 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
 				return
 
+			var/destination = params["destination"]
+			var/list/contacts = tianguan_associate_destinations()
+			var/recipient
+			if(!isnull(destination))
+				if(!istext(destination) || !contacts?[destination])
+					return
+				recipient = contacts[destination]
+
 			playsound(src, 'sound/machines/terminal/terminal_prompt_confirm.ogg', 50, FALSE)
 			var/message = trim(html_encode(params["message"]), MAX_MESSAGE_LEN)
+			var/request_message = recipient ? "[recipient]： [message]" : message
 
 			var/emagged = obj_flags & EMAGGED
 			if (emagged)
-				message_syndicate(message, user)
-				to_chat(user, span_danger(LANG("obj.c101b635129352e8", null)))
+				message_syndicate(request_message, user)
+				to_chat(user, span_danger(recipient ? "已向[recipient]发送消息。" : LANG("obj.c101b635129352e8", null)))
 			else if(syndicate)
 				message_syndicate(message, user)
 				to_chat(user, span_danger(LANG("obj.540e7c2ccd9621db", null)))
 			else
-				message_centcom(message, user)
-				to_chat(user, span_notice(LANG("obj.4fe931f70fbf022b", null)))
+				message_centcom(request_message, user)
+				to_chat(user, span_notice(recipient ? "已向[recipient]发送消息。" : LANG("obj.4fe931f70fbf022b", null)))
 
-			var/associates = (emagged || syndicate) ? "the Syndicate": "CentCom"
+			var/associates = recipient || ((emagged || syndicate) ? "the Syndicate" : "CentCom")
 			user.log_talk(message, LOG_SAY, tag = "message to [associates]")
 			deadchat_broadcast(" has messaged [associates], \"[message]\" at [span_name("[get_area_name(user, TRUE)]")].", span_name("[user.real_name]"), user, message_type = DEADCHAT_ANNOUNCEMENT)
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
@@ -648,6 +671,11 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 				if (authenticated_as_ai_or_captain(user))
 					data["canMessageAssociates"] = TRUE //Skyrat Edit | Allows AI to report to CC in the event of there being no command alive/to begin with
+					var/list/contacts = tianguan_associate_destinations()
+					var/list/contact_buttons = list()
+					for(var/contact in contacts)
+						contact_buttons += list(list("id" = contact, "name" = contacts[contact]))
+					data["associateDestinations"] = contact_buttons
 
 				if (SSshuttle.emergency.mode != SHUTTLE_IDLE && SSshuttle.emergency.mode != SHUTTLE_RECALL)
 					data["shuttleCalled"] = TRUE

@@ -22,6 +22,7 @@ export function PageMain(props) {
   const { act, data } = useBackend<CommsConsoleData>();
   const {
     alertLevel,
+    associateDestinations,
     callShuttleReasonMinLength,
     canBuyShuttles,
     canMakeAnnouncement,
@@ -50,7 +51,12 @@ export function PageMain(props) {
   } = data;
 
   const [callingShuttle, setCallingShuttle] = useState(false);
-  const [messagingAssociates, setMessagingAssociates] = useState(false);
+  const [messagingAssociates, setMessagingAssociates] = useState<string | null>(
+    null,
+  );
+  const selectedAssociate = associateDestinations?.find(
+    ({ id }) => id === messagingAssociates,
+  );
   const [messagingSector, setMessagingSector] = useState('');
   const [requestingNukeCodes, setRequestingNukeCodes] = useState(false);
 
@@ -243,11 +249,22 @@ export function PageMain(props) {
             <Button
               icon="comment-o"
               disabled={!importantActionReady}
-              onClick={() => setMessagingAssociates(true)}
+              onClick={() => setMessagingAssociates('')}
             >
               Send message to {emagged ? '[UNKNOWN]' : 'CentCom'}
             </Button>
           )}
+          {!!canMessageAssociates &&
+            associateDestinations?.map(({ id, name }) => (
+              <Button
+                key={id}
+                icon="comment-o"
+                disabled={!importantActionReady}
+                onClick={() => setMessagingAssociates(id)}
+              >
+                {name}
+              </Button>
+            ))}
 
           {!!canRequestNuke && (
             <Button
@@ -300,23 +317,27 @@ export function PageMain(props) {
         </Flex>
       </Section>
 
-      {!!canMessageAssociates && messagingAssociates && (
-        <MessageModal
-          label={`Message to transmit to ${
-            emagged ? '[ABNORMAL ROUTING COORDINATES]' : 'CentCom'
-          } via quantum entanglement`}
-          notice="Please be aware that this process is very expensive, and abuse will lead to...termination. Transmission does not guarantee a response."
-          icon="bullhorn"
-          buttonText="Send"
-          onBack={() => setMessagingAssociates(false)}
-          onSubmit={(message) => {
-            setMessagingAssociates(false);
-            act('messageAssociates', {
-              message,
-            });
-          }}
-        />
-      )}
+      {!!canMessageAssociates &&
+        (messagingAssociates === '' || selectedAssociate) && (
+          <MessageModal
+            label={
+              selectedAssociate
+                ? `向${selectedAssociate.name}发送消息`
+                : `Message to transmit to ${emagged ? '[ABNORMAL ROUTING COORDINATES]' : 'CentCom'} via quantum entanglement`
+            }
+            notice="Please be aware that this process is very expensive, and abuse will lead to...termination. Transmission does not guarantee a response."
+            icon="bullhorn"
+            buttonText="Send"
+            onBack={() => setMessagingAssociates(null)}
+            onSubmit={(message) => {
+              setMessagingAssociates(null);
+              act('messageAssociates', {
+                message,
+                destination: selectedAssociate?.id,
+              });
+            }}
+          />
+        )}
 
       {!!canRequestNuke && requestingNukeCodes && (
         <MessageModal
