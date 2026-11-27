@@ -15,3 +15,31 @@
 	TEST_ASSERT_NOTEQUAL(old_chest, replacement, "The species change should replace the old chest.")
 	TEST_ASSERT_NULL(old_chest.loc, "The old chest must not stay on the floor after the species change.")
 	TEST_ASSERT(QDELETED(bandage), "The old limb's bandage should be cleaned up.")
+
+/datum/unit_test/cursekin_undeath_quirk_reload/Run()
+	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human/consistent)
+	patient.set_species(/datum/species/lycan)
+	var/datum/quirk/undead/undeath = new
+	undeath.add_to_holder(patient, TRUE)
+	TEST_ASSERT(HAS_TRAIT_FROM(patient, TRAIT_NODEATH, TRAIT_UNDEAD), "Undeath must protect the lycan before the reload.")
+	patient.adjust_oxy_loss(patient.maxHealth + abs(HEALTH_THRESHOLD_DEAD) + 10, forced = TRUE)
+	TEST_ASSERT_EQUAL(patient.stat, HARD_CRIT, "Undeath must let a grievously hurt lycan remain alive.")
+
+	patient.set_species(/datum/species/human/cursekin, replace_missing = FALSE)
+	TEST_ASSERT_EQUAL(patient.stat, HARD_CRIT, "Changing shape should preserve the critical patient before quirk refresh.")
+	SSquirks.apply_quirk_overrides(patient, list(/datum/quirk/undead::name), spawn_items = FALSE)
+	TEST_ASSERT_EQUAL(patient.stat, HARD_CRIT, "Reloading the same Undeath quirk must not kill the patient.")
+	TEST_ASSERT(HAS_TRAIT_FROM(patient, TRAIT_NODEATH, TRAIT_UNDEAD), "Protection should come from the reloaded Undeath quirk.")
+	TEST_ASSERT_EQUAL(patient.mob_biotypes & (MOB_ORGANIC | MOB_UNDEAD), MOB_UNDEAD, "Reloading must restore the undead biotype.")
+	patient.adjust_oxy_loss(-patient.get_oxy_loss(), forced = TRUE)
+	TEST_ASSERT_EQUAL(patient.stat, STABLE, "The patient should regain consciousness after the injury is healed.")
+
+/datum/unit_test/lycan_suture_treatment/Run()
+	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human/consistent)
+	patient.set_species(/datum/species/lycan)
+	var/obj/item/stack/medical/suture/suture = allocate(/obj/item/stack/medical/suture)
+
+	TEST_ASSERT(!patient.try_inject(null, BODY_ZONE_CHEST), "The normal needle cannot penetrate lycan skin.")
+	var/obj/item/bodypart/chest/chest = patient.get_bodypart(BODY_ZONE_CHEST)
+	chest.receive_damage(brute = 20, wound_bonus = CANT_WOUND)
+	TEST_ASSERT(suture.try_heal_checks(patient, null, BODY_ZONE_CHEST, silent = TRUE), "Sutures should be usable on an injured lycan's chest.")
