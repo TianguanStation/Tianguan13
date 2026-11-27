@@ -38,4 +38,7 @@
 	name = "折叠的静日联盟旗帜"
 	item_path = /obj/item/sign/flag/heliostatic_coalition
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/sol_federation, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/heliostatic_coalition, 32)
+
 #undef FACTION_FLAGS_ICON

@@ -1,0 +1,5 @@
+#define MECHA_AMMO_TEARGAS "Teargas canister"
+#define MECHA_AMMO_RUBBER "Rubber bullet"
+#define MECHA_AMMO_SIEGE "Sabot slug"
+#define MECHA_AMMO_EMP "EMP pulse cell"
+#define MECHA_AMMO_NAPALM "Incendiary mortar shell"

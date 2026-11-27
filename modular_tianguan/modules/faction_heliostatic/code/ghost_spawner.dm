@@ -1,0 +1,64 @@
+// ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
+/obj/effect/mob_spawn/ghost_role/human/hc_officer
+	name = "HC Patrol Officer"
+	desc = "A comfortable-looking sleeper unit adorned with the insignia of the Heliostatic Coalition Internal Affairs Department."
+	prompt_name = "an HC Expeditionary Patrol Officer"
+	icon = 'modular_tianguan/modules/faction_heliostatic/assets/modules/cryosleep/icons/cryogenics.dmi'
+	icon_state = "cryopod"
+	mob_species = /datum/species/human
+	faction = list(FACTION_NEUTRAL)
+	you_are_text = "You are an officer of the Heliostatic Coalition Expeditionary Patrol."
+	flavour_text = "Your patrol vessel is conducting a Standard Compliance and Inspection operation on this remote facility. Your mandate, derived from Coalition Accords, grants you the authority to inspect, seize contraband, and use necessary force to protect Coalition interests. Vigilance is paramount; these stations are self-governing and not inherently trustworthy. Adhere to the Standard Operating Procedures at all times."
+	important_text = "Follow the chain of command. Your patrol leader's callsign is appended with 'Actual'. Maintain professional discipline and be prepared to escalate appropriately as the situation demands."
+	outfit = /datum/outfit/hc_officer
+	allow_custom_character = GHOSTROLE_TAKE_PREFS_APPEARANCE
+	quirks_enabled = TRUE
+	show_flavor = TRUE
+	/// To know whether or not we have an officer already, keep a ref to them
+	var/static/first_officer
+
+/obj/effect/mob_spawn/ghost_role/human/hc_officer/proc/apply_codename(mob/living/spawned_mob, mob/mob_possessor, apply_prefs)
+	var/callsign = pick(GLOB.callsigns_nri)
+	var/number = pick(GLOB.phonetic_alphabet_numbers)
+	var/full_name = "[callsign] [number]"
+	if(first_officer == REF(spawned_mob))
+		full_name += " Actual"
+	spawned_mob.fully_replace_character_name(spawned_mob.real_name, full_name)
+
+/obj/effect/mob_spawn/ghost_role/human/hc_officer/post_transfer_prefs(mob/living/spawned_mob)
+	. = ..()
+	spawned_mob.mind.add_antag_datum(/datum/antagonist/heliostatic_inspector)
+	spawned_mob.grant_language(/datum/language/spinwarder, source = LANGUAGE_SPAWNER)
+	spawned_mob.grant_language(/datum/language/uncommon, source = LANGUAGE_SPAWNER)
+	spawned_mob.grant_language(/datum/language/yangyu, source = LANGUAGE_SPAWNER)
+	spawned_mob.grant_language(/datum/language/akulan, source = LANGUAGE_SPAWNER)
+
+	// if this is the first officer, keep a reference to them
+	if(!first_officer)
+		first_officer = REF(spawned_mob)
+		to_chat(spawned_mob, span_bold(LANG("obj.cb61ec0858ef5ddc", null) \
+		))
+
+	to_chat(spawned_mob, "[span_boldnotice("Your primary duty is to the Heliostatic Coalition. \
+		This inspection is a right granted by treaty, not a request. \
+		Be firm, professional, and by-the-book. Trust must be earned, \
+		and violations of procedure are to be met with immediate challenges \
+		and elevated alert statuses. Your ship contains your SOP documents; \
+		consult them for rules of engagement, contraband categories, and Bluespace Artillery countermeasures.")] <br><br>\
+		[span_info("OOC Note: Your objectives are narrative guides for creating collaborative roleplay. \
+		They are not mechanical 'greentext' goals. Focus on the experience. If you have a creative idea for a gimmick or story direction, \
+		communicating with the admins and other players is encouraged.")]")
+	apply_codename(spawned_mob)
+
+/obj/effect/mob_spawn/ghost_role/human/hc_officer/equip(mob/living/spawned_mob)
+	. = ..()
+	var/obj/item/card/id/advanced/card = spawned_mob.get_idcard()
+	if(istype(card))
+		card.assignment = pick(first_officer == REF(spawned_mob) ? HC_LEADER_JOB_LIST : HC_JOB_LIST)
+		card.update_label()
+
+/obj/effect/mob_spawn/ghost_role/human/hc_officer/Destroy(force)
+	var/atom/drop_location = drop_location()
+	if(!QDELETED(drop_location))
+		new /obj/structure/showcase/machinery/oldpod/used(drop_location)
+	return ..()

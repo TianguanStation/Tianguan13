@@ -4,3 +4,4 @@
 /datum/asset/spritesheet_batched/mecha_equipment/create_spritesheets()
 	insert_all_icons("", 'icons/obj/devices/mecha_equipment.dmi')
 	insert_all_icons("", 'icons/obj/ore.dmi')
+	insert_solfed_equipment() // TIANGUAN EDIT - Solar Federation equipment icons.
