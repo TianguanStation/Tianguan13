@@ -52,6 +52,8 @@
 		var/mob/living/walker = crossing_movable
 		if(walker.tianguan_cannot_trample(parent_as_living))
 			return
+	if(parent_as_living.stat == DEAD && HAS_TRAIT(parent_as_living, TRAIT_BUGKILLER_DEATH))
+		return
 	if((squash_flags & SQUASHED_DONT_SQUASH_IN_CONTENTS) && !isturf(parent_as_living.loc))
 		return
 

@@ -11361,6 +11361,7 @@
 #include "modular_tianguan\modules\ocean_pubby\code\areas.dm"
 #include "modular_tianguan\modules\ocean_pubby\code\mapgen.dm"
 #include "modular_tianguan\modules\ocean_pubby\code\turfs.dm"
+#include "modular_tianguan\modules\star_jobs\code\star_jobs.dm"
 #include "modular_tianguan\modules\body_morpher\code\body_morpher.dm"
 #include "modular_tianguan\modules\persistence_minebot\code\persistence_minebot.dm"
 #include "modular_tianguan\modules\paper_stains\code\paper_stains.dm"

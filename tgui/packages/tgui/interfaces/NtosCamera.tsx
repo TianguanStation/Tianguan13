@@ -78,7 +78,7 @@ export const NtosCameraContent = (props) => {
               maxWidth="100%"
               height="auto"
               fixErrors
-              src={`data:image/jpeg;base64,${photo}`}
+              src={`data:image/png;base64,${photo}`}
             />
           </Stack.Item>
           <Stack.Item>

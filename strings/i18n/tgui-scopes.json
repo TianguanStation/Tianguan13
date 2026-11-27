@@ -34669,6 +34669,9 @@
     "tgui:JobsPage",
     "tgui:SpeciesPage"
   ],
+  "TianGuan updates": [
+    "tgui:Changelog"
+  ],
   "Tibbets": [
     "dm:labels"
   ],

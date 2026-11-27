@@ -243,6 +243,7 @@
 		return
 
 	//taking the actual picture
+	var/turf/flash_origin = flash_enabled ? get_turf(light_holder) : null
 	on_flash(target, user)
 	var/list/mobs_spotted = list()
 	var/list/dead_spotted = list()
@@ -289,7 +290,7 @@
 		if(!isnull(info))
 			desc += info
 
-	var/icon/get_icon = camera_get_icon(turfs, target_turf, clone_area)
+	var/icon/get_icon = camera_get_icon(turfs, target_turf, clone_area, flash_origin)
 	get_icon.Blend("#000", ICON_UNDERLAY)
 	qdel(clone_area)
 	for(var/mob/living/carbon/human/person in mobs)

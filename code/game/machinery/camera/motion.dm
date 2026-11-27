@@ -10,11 +10,13 @@
 		if (elapsed > alarm_delay)
 			triggerAlarm()
 	else if (detectTime == -1)
-		for (var/datum/weakref/targetref in getTargetList())
+		var/list/targets = getTargetList()
+		for(var/datum/weakref/targetref as anything in targets)
 			var/mob/target = targetref.resolve()
 			if(QDELETED(target) || target.stat == DEAD || (!area_motion && !in_range(src, target)))
-				//If not part of a monitored area and the camera is not in range or the target is dead
-				lost_target(target)
+				targets -= targetref
+		if(!length(targets))
+			cancelAlarm()
 
 /obj/machinery/camera/proc/getTargetList()
 	if(area_motion)

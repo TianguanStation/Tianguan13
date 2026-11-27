@@ -88,7 +88,7 @@
 		LAZYREMOVE(sent_alarms, alarm_type)
 
 	our_area.active_alarms[alarm_type] -= 1
-	if(!length(our_area.active_alarms))
+	if(!our_area.active_alarms[alarm_type])
 		our_area.active_alarms -= alarm_type
 
 	SEND_SIGNAL(src, COMSIG_ALARM_CLEARED, alarm_type, our_area)
@@ -101,7 +101,7 @@
 	///List of allowed areas. if this is null it's ignored
 	var/list/allowed_areas
 
-	///List of alarm type -> list of area name -> list(area, ref to area's cameras, list(sources))
+	///List of alarm type -> list of area -> list(area, ref to area's cameras, list(sources))
 	var/list/alarms = list()
 	///Should we allow alarm changes to go through or not
 	var/accepting_alarm_changes = TRUE
@@ -135,8 +135,8 @@
 		alarms[alarm_type] = list()
 		alarms_of_our_type = alarms[alarm_type]
 
-	if(alarms_of_our_type[source_area.name])
-		var/list/alarm = alarms_of_our_type[source_area.name]
+	if(alarms_of_our_type[source_area])
+		var/list/alarm = alarms_of_our_type[source_area]
 		var/list/sources = alarm[3]
 		sources |= handler
 		//Return if a source already exists, we don't want to send a signal or add a new entry
@@ -149,7 +149,7 @@
 		RegisterSignal(optional_camera, COMSIG_QDELETING, PROC_REF(clear_camera_ref), override = TRUE) //It's just fine to override, cause we clear all refs in the proc
 
 	//This does mean that only the first alarm of that camera type in the area will send a ping, but jesus what else can ya do
-	alarms_of_our_type[source_area.name] = list(source_area, cameras, list(handler))
+	alarms_of_our_type[source_area] = list(source_area, cameras, list(handler))
 	SEND_SIGNAL(src, COMSIG_ALARM_LISTENER_TRIGGERED, alarm_type, source_area)
 
 ///Removes an alarm to our alarms list, you probably shouldn't be calling this manually
@@ -165,17 +165,17 @@
 	if(!alarms_of_our_type)
 		return
 
-	if(!alarms_of_our_type[source_area.name])
+	if(!alarms_of_our_type[source_area])
 		return
 
-	var/list/alarm = alarms_of_our_type[source_area.name]
+	var/list/alarm = alarms_of_our_type[source_area]
 	var/list/sources = alarm[3]
 	sources -= handler
 
 	if (length(sources))
 		return //Return if there's still sources left, no sense clearing the list or bothering anyone about it
 
-	alarms_of_our_type -= source_area.name
+	alarms_of_our_type -= source_area
 
 	if(!length(alarms_of_our_type))
 		alarms -= alarm_type

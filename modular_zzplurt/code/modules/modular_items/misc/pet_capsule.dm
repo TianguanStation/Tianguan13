@@ -7,8 +7,8 @@
 	w_class = WEIGHT_CLASS_TINY
 	var/open_state = "pet_capsule_opened"
 	var/closed_state = "pet_capsule_closed"
-	var/mob/living/simple_animal/selected_pet
-	var/mob/living/simple_animal/stored_pet
+	var/mob/living/selected_pet
+	var/mob/living/stored_pet
 	var/new_name = "pet"
 	var/pet_picked = FALSE
 	var/open = FALSE
@@ -72,9 +72,17 @@
 	else if (!open && !is_in_hand && pet_picked)
 		open = TRUE
 		icon_state = open_state
-		var/turf/targetloc = location_atom
-		stored_pet = new selected_pet(targetloc) //stores reference to the pet to be able to do the recall
-		stored_pet.name = new_name //Apply the customized name
+		var/turf/targetloc = get_turf(location_atom)
+		if(!targetloc)
+			open = FALSE
+			icon_state = closed_state
+			return
+		stored_pet = new selected_pet(targetloc)
+		if(new_name)
+			stored_pet.name = new_name
+		var/mob/living/pet_owner = owner
+		if(istype(pet_owner) && !QDELETED(pet_owner))
+			stored_pet.befriend(pet_owner)
 
 		// smoke & message effect
 		loc.visible_message(LANG("obj.1d1bf1f0a275ea9d", list(src, stored_pet.name)))
@@ -88,7 +96,7 @@
 		open = FALSE
 		icon_state = closed_state
 		loc.visible_message(LANG("obj.d3a2f78a20730955", list(src, stored_pet.name)))
-		del(stored_pet)
+		QDEL_NULL(stored_pet)
 
 /obj/item/pet_capsule/attack_self(mob/user)
 	pet_capsule_triggered(loc,TRUE,user)

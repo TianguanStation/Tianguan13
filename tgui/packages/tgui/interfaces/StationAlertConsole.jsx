@@ -49,7 +49,7 @@ export const StationAlertConsoleContent = (props) => {
               <li className="color-good">Systems nominal</li>
             )}
             {category.alerts.map((alert) => (
-              <Stack key={alert.name} height="30px" align="baseline">
+              <Stack key={alert.ref} height="30px" align="baseline">
                 <Stack.Item grow>
                   <li className="color-average">
                     {alert.name}{' '}
@@ -74,6 +74,7 @@ export const StationAlertConsoleContent = (props) => {
                       }
                       onClick={() =>
                         act('select_camera', {
+                          category: category.name,
                           alert: alert.ref,
                         })
                       }

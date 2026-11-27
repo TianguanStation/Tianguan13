@@ -4,7 +4,7 @@
 /datum/unit_test/localization_changelog/Run()
 	var/datum/changelog/changelog = allocate(/datum/changelog)
 
-	var/list/dates = changelog.localization_changelog_dates()
+	var/list/dates = changelog.compiled_changelog_dates("localization")
 	TEST_ASSERT(length(dates), "No compiled months found in html/changelogs/localization/archive/")
 	for(var/date in dates)
 		TEST_ASSERT(findtext(date, regex(@"^\d{4}-\d{2}$")), "Unexpected localization changelog month name: [date]")
@@ -25,16 +25,32 @@
 		TEST_ASSERT_EQUAL((asset_name in server_mappings), fexists("html/changelogs/[archive]/[server_month].yml"), "Wrong archive mapping for [asset_name]")
 
 	// The first listed month is served, and serving it again reuses the same registered asset.
-	var/datum/asset/simple/changelog_month/item = changelog.get_localization_changelog_item(dates[1])
+	var/datum/asset/simple/changelog_month/item = changelog.get_compiled_changelog_item("localization", dates[1])
 	TEST_ASSERT_NOTNULL(item, "A listed month ([dates[1]]) was refused")
 	var/list/mappings = item.get_url_mappings()
 	TEST_ASSERT_EQUAL(length(mappings), 1, "Serve only the registered month file")
 	TEST_ASSERT(mappings["localization-[dates[1]].yml"], "Localization assets must be namespaced away from upstream's month assets")
-	TEST_ASSERT_EQUAL(changelog.get_localization_changelog_item(dates[1]), item, "The same month should reuse its registered asset")
+	TEST_ASSERT_EQUAL(changelog.get_compiled_changelog_item("localization", dates[1]), item, "The same month should reuse its registered asset")
 
 	// A requested date comes from the client and ends up in a file path; anything we did not list must be refused.
 	for(var/bad_date in list("../../config/admins", "2026-13", "", null, 5))
-		TEST_ASSERT_NULL(changelog.get_localization_changelog_item(bad_date), "Served a changelog asset for unlisted date [bad_date]")
+		TEST_ASSERT_NULL(changelog.get_compiled_changelog_item("localization", bad_date), "Served a changelog asset for unlisted date [bad_date]")
+
+/// TianGuan and localization both publish November, but must serve independent assets for it.
+/datum/unit_test/tianguan_changelog/Run()
+	var/datum/changelog/changelog = allocate(/datum/changelog)
+	var/list/static_data = changelog.ui_static_data()
+	var/list/dates = static_data["tianguan_dates"]
+	TEST_ASSERT("2026-11" in dates, "November should be listed for TianGuan")
+	var/datum/asset/simple/changelog_month/item = changelog.get_compiled_changelog_item("tianguan", "2026-11")
+	TEST_ASSERT_NOTNULL(item, "The TianGuan November archive was refused")
+	var/list/mappings = item.get_url_mappings()
+	TEST_ASSERT_EQUAL(length(mappings), 1, "Serve only the TianGuan month file")
+	TEST_ASSERT(mappings["tianguan-2026-11.yml"], "TianGuan assets must be namespaced away from the other tabs")
+	TEST_ASSERT_NOTEQUAL(item, changelog.get_compiled_changelog_item("localization", "2026-11"), "The same month in two archives should have distinct assets")
+	TEST_ASSERT_EQUAL(item, changelog.get_compiled_changelog_item("tianguan", "2026-11"), "A repeated request should reuse the TianGuan asset")
+	TEST_ASSERT_NULL(changelog.get_compiled_changelog_item("tianguan", "../../config/admins"), "Served an unlisted TianGuan month")
+	TEST_ASSERT_NULL(changelog.get_compiled_changelog_item("../../config", "2026-11"), "Served a month for an unknown archive")
 
 /// Upstream's changelog is served with its machine translation for months we translated, and only those.
 /datum/unit_test/upstream_changelog_translation

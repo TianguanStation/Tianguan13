@@ -141,11 +141,21 @@
 	)
 
 /datum/dna_block/identity/height/create_unique_block(mob/living/carbon/human/target)
+	// The five legacy ranges leave the largest hex value unused. Preserve their encoding.
+	if(target.get_base_mob_height() == HUMAN_HEIGHT_TALLEST)
+		return tallest_height_block()
 	var/max_height_index = length(dna_heights)
 	var/mob_height_index = dna_heights.Find(target.get_base_mob_height()) || dna_heights.Find(HUMAN_HEIGHT_MEDIUM)
 	return construct_block(mob_height_index, max_height_index, block_length)
 
 /datum/dna_block/identity/height/apply_to_mob(mob/living/carbon/human/target, dna_hash)
 	var/max_height_index = length(dna_heights)
-	var/mob_height_index = deconstruct_block(get_block(dna_hash), max_height_index, block_length)
-	target.set_mob_height(text2num(dna_heights[mob_height_index]) || HUMAN_HEIGHT_MEDIUM, update_dna = FALSE)
+	var/height_block = get_block(dna_hash)
+	var/height = HUMAN_HEIGHT_TALLEST
+	if(height_block != tallest_height_block())
+		var/mob_height_index = deconstruct_block(height_block, max_height_index, block_length)
+		height = dna_heights[mob_height_index]
+	target.set_mob_height(height, update_dna = FALSE)
+
+/datum/dna_block/identity/height/proc/tallest_height_block()
+	return num2hex((16 ** block_length) - 1, block_length)

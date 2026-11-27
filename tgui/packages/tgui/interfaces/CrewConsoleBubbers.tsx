@@ -26,7 +26,7 @@ const SORT_NAMES = {
 const STAT_LIVING = 0;
 const STAT_DEAD = 3;
 
-const SORT_OPTIONS = ['health', 'ijob', 'name', 'area'];
+const SORT_OPTIONS = ['ijob', 'health', 'name', 'area'];
 
 const jobIsHead = (jobId: number) => jobId % 10 === 0;
 
@@ -179,9 +179,14 @@ const CrewTable = () => {
   const sorted = sensors.filter(nameSearch).sort((a, b) => {
     switch (sortBy) {
       case 'name':
-        return sortAsc ? +(a.name > b.name) : +(b.name > a.name);
+        return sortAsc
+          ? a.name.localeCompare(b.name)
+          : b.name.localeCompare(a.name);
       case 'ijob':
-        return sortAsc ? a.ijob - b.ijob : b.ijob - a.ijob;
+        return (
+          (sortAsc ? a.ijob - b.ijob : b.ijob - a.ijob) ||
+          a.name.localeCompare(b.name)
+        );
       case 'health':
         return sortAsc ? healthSort(a, b) : healthSort(b, a);
       case 'area':
@@ -210,6 +215,7 @@ const CrewTable = () => {
         <Table.Row>
           <Table.Cell bold>Name</Table.Cell>
           <Table.Cell bold collapsing textAlign="center" />
+          <Table.Cell bold collapsing />
           <Table.Cell bold collapsing />
           <Table.Cell bold collapsing textAlign="center">
             Vitals

@@ -5,6 +5,8 @@
 	id = "lycan_beast_form"
 	alert_type = null // TODO - maybe add an alert??
 	var/datum/species/initial_species
+	/// The body size before the Large Transformation quirk was applied.
+	var/size_before_transformation
 
 /datum/status_effect/beast_form/on_apply()
 	. = ..()
@@ -20,6 +22,7 @@
 		return FALSE
 
 	initial_species = human_owner.dna.species
+	var/large_transformation = human_owner.has_quirk(/datum/quirk/big_transformation)
 
 	var/datum/species/human/cursekin/current_wolf = human_owner.dna.species
 	if(!istype(current_wolf))
@@ -50,7 +53,12 @@
 			human_owner.dna.update_dna_identity()
 
 			target_client.prefs.load_character(lycan_brain.last_slot)
+	else
+		human_owner.set_species(current_wolf.lycanthropy_species, TRUE, TRUE, FALSE)
 
+	if(large_transformation)
+		size_before_transformation = get_size(human_owner)
+		human_owner.update_size(RESIZE_BIG)
 	ADD_TRAIT(human_owner, TRAIT_BEAST_FORM, SPECIES_TRAIT)
 	playsound(human_owner, lycan_brain.to_lycan_sfx, 50)
 
@@ -63,6 +71,8 @@
 
 	var/obj/item/organ/brain/lycan/lycan_brain = human_owner.get_organ_by_type(/obj/item/organ/brain/lycan)
 	if (!istype(lycan_brain))
+		if(size_before_transformation)
+			human_owner.update_size(size_before_transformation)
 		return
 
 	human_owner.visible_message(span_warning(LANG("datum.546643253e4342bc", list(human_owner))))
@@ -79,6 +89,8 @@
 	else
 		human_owner.set_species(initial_species, TRUE, TRUE, FALSE)
 
+	if(size_before_transformation)
+		human_owner.update_size(size_before_transformation)
 	REMOVE_TRAIT(human_owner, TRAIT_BEAST_FORM, SPECIES_TRAIT)
 	playsound(human_owner, lycan_brain.to_human_sfx, 50)
 
