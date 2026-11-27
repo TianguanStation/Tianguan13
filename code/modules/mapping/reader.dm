@@ -354,6 +354,10 @@
 			bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]
 		)
 		for(var/turf/T as anything in turfs)
+			if(new_z)
+				CHECK_TICK
+				if(QDELETED(T))
+					continue
 			//we do this after we load everything in. if we don't, we'll have weird atmos bugs regarding atmos adjacent turfs
 			T.AfterChange(CHANGETURF_IGNORE_AIR)
 

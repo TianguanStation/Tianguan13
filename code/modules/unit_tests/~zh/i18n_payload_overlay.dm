@@ -99,6 +99,29 @@
 	TEST_ASSERT(!(I18N_OVERLAY_SINGLE in GLOB.i18n_tgui_phrase_cache), "单词值污染了有界短语缓存")
 	TEST_ASSERT(!(I18N_OVERLAY_SINGLE_NORMALIZED in GLOB.i18n_tgui_phrase_cache), "归一化单词值污染了有界短语缓存")
 
+	var/list/translation_cache = list()
+	var/list/cached_overlay = list()
+	var/list/dynamic_data = list("nested" = list(I18N_OVERLAY_SINGLE, I18N_OVERLAY_SINGLE))
+	var/list/static_data = list("desc" = I18N_OVERLAY_SINGLE)
+	var/exact_hits_before = lang_layer_hit_count(I18N_LAYER_EXACT)
+	lang_reverse_tree(dynamic_data, null, cached_overlay, translation_cache)
+	lang_reverse_tree(static_data, null, cached_overlay, translation_cache)
+	TEST_ASSERT_EQUAL(lang_layer_hit_count(I18N_LAYER_EXACT) - exact_hits_before, 1, "重复文本在同一份 TGUI 负载里只应查一次词")
+	TEST_ASSERT_EQUAL(cached_overlay[I18N_OVERLAY_SINGLE], "兹克夫", "重复值仍应进入 overlay")
+	TEST_ASSERT_EQUAL(static_data["desc"], "兹克夫", "复用译文时仍应就地改写散文字段")
+
+	var/untranslated = "zxqvmv xrptvg qzvpsj"
+	var/previous_log_misses = GLOB.i18n_log_misses
+	GLOB.i18n_log_misses = TRUE
+	lang_reverse_tree(list(untranslated, untranslated), null, list(), translation_cache)
+	GLOB.i18n_log_misses = previous_log_misses
+	var/miss_count = GLOB.i18n_miss_counts[untranslated]
+	GLOB.i18n_miss_counts -= untranslated
+	var/list/tgui_miss_runs = GLOB.i18n_miss_runs["tgui"]
+	if(tgui_miss_runs)
+		tgui_miss_runs -= untranslated
+	TEST_ASSERT_EQUAL(miss_count, 2, "复用未翻译的值仍应记录每次出现")
+
 	// ② 扁平串列表元素。
 	var/list/zones = payload["zones"]
 	TEST_ASSERT_EQUAL(zones[1], I18N_OVERLAY_FLAT, "扁平串列表元素被就地改写了（大气警报「清除」就是这么坏的）")

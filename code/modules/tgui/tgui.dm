@@ -327,12 +327,13 @@ GLOBAL_VAR_INIT(nova_tgui_serial, 0)
 	// 回传值与服务端持有的字符串逐字节相同 —— 「显示文本被当标识符回传」那一整类静默故障（点了
 	// 没反应、无报错）在结构上不可能发生。只有 policy.json 的 payload_prose_keys（证明不可能是
 	// 标识符的长散文）仍就地改写，因为那类常被渲染在 auto-localize 够不到的位置。
-	if(GLOB.i18n_server_locale != DEFAULT_UI_LOCALE)
+	if(GLOB.i18n_server_locale != DEFAULT_UI_LOCALE && (islist(data) || islist(static_data)))
 		var/list/i18n_overlay = list()
-		if(islist(json_data["data"]))
-			lang_reverse_tree(json_data["data"], null, i18n_overlay)
-		if(islist(json_data["static_data"]))
-			lang_reverse_tree(json_data["static_data"], null, i18n_overlay)
+		var/list/translation_cache = list()
+		if(islist(data))
+			lang_reverse_tree(data, null, i18n_overlay, translation_cache)
+		if(islist(static_data))
+			lang_reverse_tree(static_data, null, i18n_overlay, translation_cache)
 		if(length(i18n_overlay))
 			json_data["i18n"] = i18n_overlay
 	// ZH EDIT ADDITION END

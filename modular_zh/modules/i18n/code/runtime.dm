@@ -1238,6 +1238,10 @@ GLOBAL_LIST_EMPTY(i18n_reverse_norm)
 /proc/lang_normalize_lookup(text)
 	if(!istext(text) || !length(text))
 		return text
+	// Bare ASCII identifiers and words cannot contain any of the forms normalized below.
+	var/static/regex/non_token_character = regex(@"[^A-Za-z0-9_./:-]")
+	if(!non_token_character.Find(text))
+		return text
 	if(findtext(text, "\improper") || findtext(text, "\proper") || findtext(text, "\\improper") || findtext(text, "\\proper"))
 		text = lang_strip_grammar_macros(text)
 	if(findtext(text, "\\"))
@@ -2035,7 +2039,7 @@ GLOBAL_LIST_INIT(i18n_payload_prose_keys, build_i18n_policy_set("payload_prose_k
 
 /// 把一个负载字符串的译文「落地」：散文键（或无 overlay 的旧调用）就地改写；其余只登记进 overlay。
 /// `index` 对关联项是键、对 flat 元素是下标 —— 两者都能直接给 `data[index] = …` 用。
-/proc/lang_payload_localize(list/data, index, text, list/overlay, in_place)
+/proc/lang_payload_localize(list/data, index, text, list/overlay, in_place, list/translation_cache)
 	// 玩家角色名不翻（见 identity_names.dm）。overlay 里登记成原样：前端 overlay 先于静态目录查表，
 	// 这样静态目录里的同形词条也翻不动它。
 	// `?[]`：早期 load_strings_file 走到这里时这张 GLOB 表可能还没建。
@@ -2043,7 +2047,13 @@ GLOBAL_LIST_INIT(i18n_payload_prose_keys, build_i18n_policy_set("payload_prose_k
 		if(!isnull(overlay))
 			overlay[text] = text
 		return
-	var/localized = lang_reverse_phrase_tgui(text)
+	var/localized = translation_cache?[text]
+	if(isnull(localized))
+		localized = lang_reverse_phrase_tgui(text)
+		translation_cache?[text] = localized
+	else if(localized == text && GLOB.i18n_log_misses && findtext(text, " ") && GLOB.i18n_server_locale != DEFAULT_UI_LOCALE)
+		// The translation is cached for this payload. Count repeated misses using the existing scan memo.
+		lang_log_miss_scan(text, "tgui", text)
 	if(localized == text)
 		return
 	if(in_place || isnull(overlay))
@@ -2075,7 +2085,8 @@ GLOBAL_LIST_INIT(i18n_payload_prose_keys, build_i18n_policy_set("payload_prose_k
 /// 跳过。比深度上限更准：不截断任何合法有限嵌套，只在真正成环处停手。
 /// 注意：本 proc 只是**不再自己崩**；环仍留在 data 里，后续 json_encode 依旧会碰到（tgui 管线对环
 /// 不安全，故 tgstation 送 tgui 前会 deep_copy_without_cycles 剥环）。根治须打断产生环的源头。
-/proc/lang_reverse_tree(list/data, list/visited, list/overlay)
+/// translation_cache memoizes hits and misses across the data and static data of one payload.
+/proc/lang_reverse_tree(list/data, list/visited, list/overlay, list/translation_cache)
 	if(!islist(data))
 		return data
 	if(isnull(visited))
@@ -2093,16 +2104,16 @@ GLOBAL_LIST_INIT(i18n_payload_prose_keys, build_i18n_policy_set("payload_prose_k
 				continue
 			// 关联项：key -> value，只本地化 value
 			if(islist(value))
-				lang_reverse_tree(value, visited, overlay)
+				lang_reverse_tree(value, visited, overlay, translation_cache)
 			else if(istext(value))
-				lang_payload_localize(data, key, value, overlay, istext(key) && GLOB.i18n_payload_prose_keys?[key])
+				lang_payload_localize(data, key, value, overlay, istext(key) && GLOB.i18n_payload_prose_keys?[key], translation_cache)
 		else
 			// flat 元素（无关联值）
 			if(islist(key))
-				lang_reverse_tree(key, visited, overlay)
+				lang_reverse_tree(key, visited, overlay, translation_cache)
 			else if(istext(key))
 				// flat 元素没有键语境 → 一律按「可能是标识符」处理（大气警报的区域名列表即此）。
-				lang_payload_localize(data, i, key, overlay, FALSE)
+				lang_payload_localize(data, i, key, overlay, FALSE, translation_cache)
 	return data
 
 #undef I18N_TGUI_PHRASE_CACHE_MAX

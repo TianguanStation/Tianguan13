@@ -522,10 +522,23 @@
 
 ///Dismantles the excited group, puts allll the turfs to sleep
 /datum/excited_group/proc/dismantle()
+	var/list/active_turfs = SSair.active_turfs
+	if(length(turf_list) >= 2048 && length(active_turfs) >= 4096)
+		// Compact large queues in one ordered pass instead of shifting the list once per turf.
+		var/list/group_members = list()
+		for(var/turf/open/member as anything in turf_list)
+			group_members[member] = TRUE
+		var/remaining = 0
+		for(var/turf/open/active_turf as anything in active_turfs)
+			if(!group_members[active_turf])
+				active_turfs[++remaining] = active_turf
+		active_turfs.len = remaining
+	else
+		active_turfs -= turf_list
+
 	for(var/turf/open/current_turf as anything in turf_list)
 		current_turf.excited = FALSE
 		current_turf.significant_share_ticker = 0
-		SSair.active_turfs -= current_turf
 		#ifdef VISUALIZE_ACTIVE_TURFS //Use this when you want details about how the turfs are moving, display_all_groups should work for normal operation
 		current_turf.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, COLOR_VIBRANT_LIME)
 		#endif

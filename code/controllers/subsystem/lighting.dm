@@ -136,8 +136,12 @@ SUBSYSTEM_DEF(lighting)
 
 /// Takes a list of turfs in, and sets up static lighting for them as needed.
 /// Exactly what it says on the tin.
-/datum/controller/subsystem/lighting/proc/setup_static_lighting_if_needed(list/turfs)
+/datum/controller/subsystem/lighting/proc/setup_static_lighting_if_needed(list/turfs, allow_yield = FALSE)
 	for(var/turf/unlit as anything in turfs)
+		if(allow_yield)
+			CHECK_TICK
+			if(QDELETED(unlit))
+				continue
 		if(unlit.space_lit)
 			continue
 		var/area/loc_area = unlit.loc
