@@ -42,6 +42,9 @@
 	var/mutable_appearance/combat_overlay
 	///our current color, if any
 	var/selected_color
+	/// Radio implant and channel used for rescue alerts.
+	var/sos_radio_implant_type = /obj/item/implant/radio/mining
+	var/sos_radio_channel = RADIO_CHANNEL_SUPPLY
 	///the commands our owner can give us
 	var/static/list/pet_commands = list(
 		/datum/pet_command/idle/minebot,
@@ -87,7 +90,7 @@
 	grant_actions_by_list(innate_actions)
 
 	stored_gun = new(src)
-	var/obj/item/implant/radio/mining/comms = new(src)
+	var/obj/item/implant/radio/comms = new sos_radio_implant_type(src) // TIANGUAN EDIT - Use the configured SOS radio.
 	comms.implant(src)
 	assign_access()
 

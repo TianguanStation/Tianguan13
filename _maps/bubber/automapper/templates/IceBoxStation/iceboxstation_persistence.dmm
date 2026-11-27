@@ -22421,7 +22421,7 @@
 	},
 /area/ruin/space/has_grav/bubbers/persistance/sci/rnd)
 "Uw" = (
-/mob/living/basic/mining_drone/interdyne{
+/mob/living/basic/mining_drone/interdyne/persistence{
 	name = "Molly";
 	desc = "ABSOLUTE UNIT"
 	},

@@ -75,7 +75,7 @@
 
 /datum/bt_node/ai_behavior/send_sos_message/perform(seconds_per_tick, datum/ai_controller/controller)
 	var/mob/living/carbon/target = controller.blackboard[target_key]
-	var/mob/living/living_pawn = controller.pawn
+	var/mob/living/basic/mining_drone/living_pawn = controller.pawn // TIANGUAN EDIT - Use the minebot's SOS channel.
 	if(QDELETED(target) || is_station_level(target.z))
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 	var/turf/target_turf = get_turf(target)
@@ -83,7 +83,7 @@
 	if(!radio_implant)
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 	var/message = "ALERT, [target] in need of help at coordinates: [target_turf.x], [target_turf.y], [target_turf.z]!"
-	radio_implant.radio.talk_into(living_pawn, message, RADIO_CHANNEL_SUPPLY)
+	radio_implant.radio.talk_into(living_pawn, message, living_pawn.sos_radio_channel) // TIANGUAN EDIT
 	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
 
 /datum/bt_node/ai_behavior/send_sos_message/finish_action(datum/ai_controller/controller, succeeded)
