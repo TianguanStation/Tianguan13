@@ -143,6 +143,9 @@
 
 	if(!COOLDOWN_FINISHED(src, manual_teleport_cooldown))
 		return FALSE
+	if(!can_access_ore_pool())
+		balloon_alert(user, LANG("obj.1cd76a5d176c9ee4", null))
+		return FALSE
 	if(panel_open)
 		balloon_alert(user, LANG("obj.5ddfc4f037e5eca3", null))
 		return FALSE
@@ -151,6 +154,13 @@
 		return FALSE
 	playsound(src, MANUAL_TELEPORT_SOUND, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return TRUE
+
+/// Shared station ore is available only to matrices in the station or mining areas.
+/obj/machinery/brm/proc/can_access_ore_pool()
+	PRIVATE_PROC(TRUE)
+
+	var/area/matrix_area = get_area(src)
+	return istype(matrix_area, /area/station) || istype(matrix_area, /area/mine)
 
 /obj/machinery/brm/attack_ai(mob/user)
 	. = ..()
@@ -214,6 +224,9 @@
 		return
 	if(!is_operational || machine_stat & (BROKEN | NOPOWER))
 		return
+	if(!toggled_on && !can_access_ore_pool())
+		balloon_alert(user, LANG("obj.1cd76a5d176c9ee4", null))
+		return
 
 	toggled_on = ! toggled_on
 	if(toggled_on)
@@ -271,7 +284,7 @@
 	batch_processing = TRUE
 
 	//not within operation parameters
-	if(!anchored || panel_open || !is_operational || machine_stat & (BROKEN | NOPOWER))
+	if(!anchored || panel_open || !is_operational || machine_stat & (BROKEN | NOPOWER) || !can_access_ore_pool())
 		batch_processing = FALSE
 		return FALSE
 
