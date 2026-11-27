@@ -11316,6 +11316,7 @@
 #include "modular_tianguan\modules\laser_balance\code\laser_balance.dm"
 #include "modular_tianguan\modules\materials_market\code\materials_market.dm"
 #include "modular_tianguan\modules\engineering_orders\code\bluespace_miner.dm"
+#include "modular_tianguan\modules\emote_audio\code\emote_cooldown.dm"
 #include "modular_tianguan\modules\mining_balance\code\mining_balance.dm"
 #include "modular_tianguan\modules\research_experiments\code\research_experiments.dm"
 #include "modular_tianguan\modules\samurai_equipment\code\samurai_equipment.dm"
