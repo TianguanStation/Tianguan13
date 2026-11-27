@@ -4,7 +4,7 @@
 	/// Internal ID of blooper, must be unique
 	var/id = null
 	/// List of sounds, one is chosen randomly each time the blooper is played
-	var/list/sound/soundpath_list = list()
+	var/list/soundpath_list = list()
 
 	var/min_pitch = BLOOPER_DEFAULT_MINPITCH
 	var/max_pitch = BLOOPER_DEFAULT_MAXPITCH
@@ -25,8 +25,9 @@
  * * speed - How fast the bloopers will be, percentage between 0 - 100, converted and clamped to datum's min/max values
  * * pitch - How high-pitched the bloopers will be, percentage between 0 - 100, converted and clamped to datum's min/max values
  * * pitch_range - Amount of pitch variance for each blooper, percentage between 0 - 100,  converted and clamped to datum's max/min values
+ * * preview - Whether the user explicitly requested this preview from character settings
  */
-/datum/blooper/proc/play_bloop(atom/movable/speaker, list/listeners, message, distance, volume, speed, pitch, pitch_range)
+/datum/blooper/proc/play_bloop(atom/movable/speaker, list/listeners, message, distance, volume, speed, pitch, pitch_range, preview = FALSE)
 	if(!COOLDOWN_FINISHED(speaker, blooper_cooldown))
 		return
 	volume = min(volume, 100)
@@ -34,10 +35,14 @@
 	speed = round(min_speed + ((max_speed - min_speed) * ((100 - speed) / 100)), 0.01) // this one gets inverted because lower % = faster isn't intuitive
 	pitch = round(min_pitch + ((max_pitch - min_pitch) * (pitch / 100)), 0.01)
 	pitch_range = round(min_vary + ((max_vary - min_vary) * (pitch_range / 100)), 0.01)
-	for(var/mob/target_mob in listeners)
-		if(target_mob.client && !(target_mob.client.prefs.read_preference(/datum/preference/toggle/hear_blooper)))
-			listeners -= target_mob
-	var/sound/blooper_pick = pick(soundpath_list)
+	if(!preview)
+		listeners = listeners.Copy()
+		for(var/mob/target_mob in listeners)
+			if(target_mob.client && !target_mob.client.prefs.read_preference(/datum/preference/toggle/hear_blooper))
+				listeners -= target_mob
+	if(!length(listeners) || !length(soundpath_list))
+		return
+	var/blooper_pick = pick(soundpath_list)
 	var/num_bloopers = min(round(length(message) / speed, 1) + 1, BLOOPER_MAX_BLOOPERS)
 	var/total_delay = 0
 	for(var/i in 1 to num_bloopers)
@@ -48,7 +53,7 @@
 	COOLDOWN_START(speaker, blooper_cooldown, total_delay)
 
 /// Private callback function to actually play the sound, used for timers scheduled in play_bloop
-/datum/blooper/proc/play_callback(atom/movable/speaker, list/listeners, distance, volume, pitch, sound/voice)
+/datum/blooper/proc/play_callback(atom/movable/speaker, list/listeners, distance, volume, pitch, voice)
 	PRIVATE_PROC(TRUE)
 	for(var/mob/target_mob in listeners)
 		target_mob.playsound_local(

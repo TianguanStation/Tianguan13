@@ -1,7 +1,6 @@
 # Vocal Bloopers
 
-By default, no vocal bloopers are included in the repository, a sample config file is provided to demonstrate the format used.
-To set things up, copy `blooper_config.json.example` and rename it to `blooper_config.json`, then add an entry for each blooper.
+The default `blooper_config.json` includes entries backed by samples shipped with the game. To override a sample, place audio at the matching path relative to the bloopers directory. To add a voice, add an entry and its audio files. Voices without any available samples are omitted from the character settings.
 
 ## Config Format
 
