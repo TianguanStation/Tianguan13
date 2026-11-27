@@ -523,9 +523,6 @@ GAME_VERB_PROC(/mob/living, emote_merp, "> 咩噗", "Emotes+")
 GAME_VERB_PROC(/mob/living, emote_bark, "> 吠叫", "Emotes+")
 	src.emote("bark", intentional = TRUE)
 
-GAME_VERB_PROC(/mob/living, emote_bark2, "> 大声吠叫", "Emotes+")
-	src.emote("bark2", intentional = TRUE)
-
 GAME_VERB_PROC(/mob/living, emote_squish, "> 挤压声", "Emotes+")
 	src.emote("squish", intentional = TRUE)
 
