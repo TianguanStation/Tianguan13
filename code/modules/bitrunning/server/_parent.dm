@@ -15,6 +15,8 @@
 	var/capacitor_coefficient = 1
 	/// The loaded map template, map_template/virtual_domain
 	var/datum/lazy_template/virtual_domain/generated_domain
+	/// The reservation allocated for this run, owned by this server.
+	var/datum/turf_reservation/domain_reservation
 	/// If the current domain was a random selection
 	var/domain_randomized = FALSE
 	/// Whether the domain is finished, so the bitrunners can leave despite glitches
