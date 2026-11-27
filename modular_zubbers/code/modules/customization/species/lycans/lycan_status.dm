@@ -135,3 +135,13 @@
 	to_chat(user, custom_boxed_message("blue_box", output), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
 
 #undef BEAST_FORM_EXPOSITION_LINK
+
+/// Thick lycan skin blocks needles. A medic can manually suture an existing wound.
+/obj/item/stack/medical/suture/can_heal(mob/living/patient, mob/living/user, healed_zone, silent = FALSE)
+	if(!HAS_TRAIT_FROM(patient, TRAIT_LUPINE, SPECIES_TRAIT))
+		return ..()
+
+	var/injection_flags = INJECT_CHECK_IGNORE_SPECIES
+	if(!silent)
+		injection_flags |= INJECT_TRY_SHOW_ERROR_MESSAGE
+	return patient.try_inject(user, healed_zone, injection_flags)

@@ -249,3 +249,23 @@
 	heard_raw_message = hearing_args[HEARING_RAW_MESSAGE]
 
 #undef TTS_EAVESDROP_PHRASE
+
+/datum/unit_test/radio_tts_listener_consciousness/Run()
+	var/mob/living/carbon/human/listener = allocate(/mob/living/carbon/human)
+	TEST_ASSERT(can_receive_radio_speech(listener), "Awake listeners should be eligible for radio speech.")
+	ADD_TRAIT(listener, TRAIT_KNOCKEDOUT, REF(src))
+	TEST_ASSERT(!can_receive_radio_speech(listener), "Unconscious living listeners should not receive queued radio speech.")
+	REMOVE_TRAIT(listener, TRAIT_KNOCKEDOUT, REF(src))
+	TEST_ASSERT(can_receive_radio_speech(listener), "Listeners should become eligible again after waking.")
+	ADD_TRAIT(listener, TRAIT_DEAF, REF(src))
+	TEST_ASSERT(!can_receive_radio_speech(listener), "Deaf listeners should remain ineligible.")
+	var/mob/dead/observer/observer = allocate(/mob/dead/observer)
+	TEST_ASSERT(can_receive_radio_speech(observer), "Ghost-radio eligibility should continue to use the observer's preferences.")
+
+/datum/unit_test/priority_announcement_override/Run()
+	var/original = "Restricted announcement body."
+	var/replacement = "<b>Wait for the new intern.</b>"
+	var/visible_body = priority_announcement_visible_body(original, replacement, FALSE)
+	TEST_ASSERT_EQUAL(tts_prepare_announcement_message(visible_body, null), "Wait for the new intern.", "TTS must speak the same replacement body that appears in chat.")
+	TEST_ASSERT_EQUAL(priority_announcement_visible_body(original, replacement, TRUE), original, "Emergency announcements must bypass the replacement.")
+	TEST_ASSERT_EQUAL(priority_announcement_visible_body(original, null, FALSE), original, "The default announcer should retain the original body.")

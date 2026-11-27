@@ -284,3 +284,13 @@ GLOBAL_LIST_INIT(tts_mood_verbs, list(
 	"含糊不清地说",
 	"机械地说",
 ))
+
+/// Radio speech follows the living listener's hearing state, while observers use ghost-radio preferences.
+/proc/can_receive_radio_speech(mob/listener)
+	return listener && !HAS_TRAIT(listener, TRAIT_DEAF) && !IS_UNCONSCIOUS_AND_ALIVE(listener)
+
+/// Use the same body for spoken and written priority announcements.
+/proc/priority_announcement_visible_body(original, replacement, has_important_message)
+	if(replacement && !has_important_message)
+		return lang_reverse_text(replacement)
+	return original

@@ -25,8 +25,7 @@
 		return FALSE
 
 	// Replace biotypes
-	quirk_mob.mob_biotypes -= MOB_ORGANIC
-	quirk_mob.mob_biotypes += MOB_UNDEAD
+	quirk_mob.mob_biotypes = (quirk_mob.mob_biotypes & ~MOB_ORGANIC) | MOB_UNDEAD
 
 	// Add undead traits
 	// Based on the High-Functioning Zombie species
@@ -47,8 +46,8 @@
 		return
 
 	// Revert biotypes
-	quirk_mob.mob_biotypes += MOB_ORGANIC
-	quirk_mob.mob_biotypes -= MOB_UNDEAD
+	// A species change can already have restored the organic flag.
+	quirk_mob.mob_biotypes = (quirk_mob.mob_biotypes & ~MOB_UNDEAD) | MOB_ORGANIC
 
 	// Remove undead traits
 	quirk_mob.remove_traits(QUIRK_TRAITS_UNDEAD, TRAIT_UNDEAD)
