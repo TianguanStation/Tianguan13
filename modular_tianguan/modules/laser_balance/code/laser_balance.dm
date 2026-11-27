@@ -6,7 +6,10 @@
 	return ..()
 
 /obj/item/gun/energy/laser/proc/filter_tianguan_laser_recipes(list/recipes)
-	return recipes - /datum/crafting_recipe/laser/hellgun
+	// Slapcrafting elements share the recipe list across standard carbines.
+	var/static/list/filtered_recipes
+	filtered_recipes ||= recipes - /datum/crafting_recipe/laser/hellgun
+	return filtered_recipes
 
 /datum/crafting_recipe/laser/hellgun
 	abstract_type = /datum/crafting_recipe/laser/hellgun

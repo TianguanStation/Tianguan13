@@ -26,7 +26,7 @@
 
 /obj/structure/reagent_crafting_bench/New(loc, ...)
 	if(/datum/crafting_bench_recipe/wearable/plate_armor/plate_vest in allowed_choices)
-		allowed_choices += /datum/crafting_bench_recipe/wearable/plate_armor/samurai
+		allowed_choices = allowed_choices | /datum/crafting_bench_recipe/wearable/plate_armor/samurai
 	return ..()
 
 /obj/item/storage/belt/sheath/katana
