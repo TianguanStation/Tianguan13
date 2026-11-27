@@ -163,7 +163,9 @@
 	material_id = /datum/material/titanium
 	message = "cm3 of titanium"
 
-/datum/export/material/market/bscrystal
+/datum/export/material/bscrystal
+	cost = 300
+	k_elasticity = 0
 	message = "of bluespace crystals"
 	material_id = /datum/material/bluespace
 	export_types = list(
