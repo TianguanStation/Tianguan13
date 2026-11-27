@@ -338,9 +338,13 @@ xxx xxx xxx
 #undef DEFAULT_UNDERLAY_ICON_STATE
 
 //Icon smoothing helpers
-/proc/smooth_zlevel(zlevel, now = FALSE)
+/proc/smooth_zlevel(zlevel, now = FALSE, allow_yield = FALSE)
 	var/list/away_turfs = Z_TURFS(zlevel)
 	for(var/turf/turf_to_smooth as anything in away_turfs)
+		if(allow_yield)
+			CHECK_TICK
+			if(QDELETED(turf_to_smooth))
+				continue
 		if(turf_to_smooth.smoothing_flags & USES_SMOOTHING)
 			if(now)
 				turf_to_smooth.smooth_icon()

@@ -49,7 +49,7 @@
 			cached_map = parsed
 	return bounds
 
-/datum/map_template/proc/initTemplateBounds(list/bounds)
+/datum/map_template/proc/initTemplateBounds(list/bounds, allow_yield = FALSE)
 	if (!bounds) //something went wrong
 		stack_trace("[name] template failed to initialize correctly!")
 		return
@@ -57,7 +57,6 @@
 	var/list/obj/machinery/atmospherics/atmos_machines = list()
 	var/list/obj/structure/cable/cables = list()
 	var/list/atom/movable/movables = list()
-	var/list/obj/docking_port/stationary/ports = list()
 	var/list/area/areas = list()
 
 	var/list/turfs = block(
@@ -79,8 +78,6 @@
 				continue
 			if(istype(movable_in_turf, /obj/machinery/atmospherics))
 				atmos_machines += movable_in_turf
-			if(istype(movable_in_turf, /obj/docking_port/stationary))
-				ports += movable_in_turf
 
 	// Not sure if there is some importance here to make sure the area is in z
 	// first or not.  Its defined In Initialize yet its run first in templates
@@ -90,7 +87,7 @@
 		return
 
 	SSatoms.InitializeAtoms(areas + turfs + movables, returns_created_atoms ? created_atoms : null)
-	SSlighting.setup_static_lighting_if_needed(turfs)
+	SSlighting.setup_static_lighting_if_needed(turfs, allow_yield)
 
 	// NOTE, now that Initialize and LateInitialize run correctly, do we really
 	// need these two below?
@@ -103,6 +100,10 @@
 		bounds[MAP_MAXX]+1, bounds[MAP_MAXY]+1, bounds[MAP_MAXZ]
 	)
 	for(var/turf/affected_turf as anything in template_and_bordering_turfs)
+		if(allow_yield)
+			CHECK_TICK
+			if(QDELETED(affected_turf))
+				continue
 		affected_turf.air_update_turf(TRUE, TRUE)
 		affected_turf.levelupdate()
 
@@ -126,9 +127,9 @@
 
 	require_area_resort()
 	//initialize things that are normally initialized after map load
-	initTemplateBounds(bounds)
-	smooth_zlevel(world.maxz)
-	log_game("Z-level [name] loaded at [x],[y],[world.maxz]")
+	initTemplateBounds(bounds, allow_yield = TRUE)
+	smooth_zlevel(level.z_value, allow_yield = TRUE)
+	log_game("Z-level [name] loaded at [x],[y],[level.z_value]")
 
 	return level
 
