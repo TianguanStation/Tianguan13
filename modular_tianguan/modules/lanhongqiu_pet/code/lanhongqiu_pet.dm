@@ -11,6 +11,8 @@
 #define LANHONGQIU_ICON 'modular_tianguan/modules/lanhongqiu_pet/icons/pets.dmi'
 #define LANHONGQIU_HELD_LH 'modular_tianguan/modules/lanhongqiu_pet/icons/pets_held_lh.dmi'
 #define LANHONGQIU_HELD_RH 'modular_tianguan/modules/lanhongqiu_pet/icons/pets_held_rh.dmi'
+/// 戴在头上时用的图集（state 名与宠物 icon_state 同名，4 方向）
+#define LANHONGQIU_HEAD_ICON 'modular_tianguan/modules/lanhongqiu_pet/icons/pets_head.dmi'
 
 /// 可以领「蓝红球召唤信标」的玩家（New() 里会统一 ckey() 归一化，大小写无所谓）
 #define LANHONGQIU_OWNER_CKEYS list("lanhongqiu", "Lv19874900")
@@ -35,6 +37,9 @@
 	icon = LANHONGQIU_ICON
 	held_lh = LANHONGQIU_HELD_LH
 	held_rh = LANHONGQIU_HELD_RH
+	head_icon = LANHONGQIU_HEAD_ICON
+	/// 抱进宠物箱后可以戴在头上（/obj/item/mob_holder 的既有机制）
+	worn_slot_flags = ITEM_SLOT_HEAD
 	icon_state = "lanhongqiu"
 	icon_living = "lanhongqiu"
 	icon_dead = "lanhongqiu_dead"
@@ -149,11 +154,38 @@
 	SIGNAL_HANDLER
 	clear_weapon(drop_to_loc = FALSE)
 
-/mob/living/basic/pet/lanhongqiu/update_icons()
+/// 四种形态：死亡（基类） / 趴下休息 / 持天武剑 / 平常
+/mob/living/basic/pet/lanhongqiu/update_icon_state()
 	. = ..()
 	if(stat == DEAD)
 		return
-	icon_state = weapon ? initial(icon_state) + "_sword" : initial(icon_state)
+	if(resting)
+		icon_state = "[icon_living]_rest"
+		return
+	icon_state = weapon ? "[initial(icon_state)]_sword" : initial(icon_state)
+
+/mob/living/basic/pet/lanhongqiu/update_icons()
+	. = ..()
+	update_icon_state()
+
+/mob/living/basic/pet/lanhongqiu/update_resting()
+	. = ..()
+	if(stat != DEAD)
+		update_appearance(UPDATE_ICON_STATE)
+
+/// 像其他宠物（poppy / bumbles）一样自己找时机趴下、再自己起来
+/mob/living/basic/pet/lanhongqiu/Life(seconds_per_tick = SSMOBS_DT, times_fired)
+	. = ..()
+	if(client || stat)
+		return
+	if(!SPT_PROB(0.5, seconds_per_tick))
+		return
+	if(!resting)
+		manual_emote(pick("缩成一团趴了下来。", "伸了个懒腰，趴下休息。", "滚了滚，趴在地上。"))
+		set_resting(TRUE)
+	else
+		manual_emote(pick("晃了晃身体站了起来。", "抖抖身子站起来。", "抬起头，重新站好。"))
+		set_resting(FALSE)
 
 /mob/living/basic/pet/lanhongqiu/death(gibbed)
 	clear_weapon(drop_to_loc = TRUE)
@@ -180,6 +212,7 @@
 	selectable_atoms = list(/mob/living/basic/pet/lanhongqiu)
 
 #undef LANHONGQIU_OWNER_CKEYS
+#undef LANHONGQIU_HEAD_ICON
 #undef LANHONGQIU_HELD_RH
 #undef LANHONGQIU_HELD_LH
 #undef LANHONGQIU_ICON
