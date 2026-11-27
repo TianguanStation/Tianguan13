@@ -502,7 +502,24 @@ export class PreviewView extends Component<PreviewViewProps> {
 
   render() {
     const { data } = useBackend<PaperContext>();
-    const { paper_color, held_item_details } = data;
+    const {
+      paper_blood_stain,
+      paper_color,
+      paper_dirt_stain,
+      held_item_details,
+    } = data;
+    const stainLayers: string[] = [];
+    if (paper_blood_stain) {
+      stainLayers.push(
+        'radial-gradient(ellipse at 87% 9%, #a52b2452, #a52b2415 12%, transparent 21%)',
+        'radial-gradient(ellipse at 72% 13%, #a52b2440, transparent 5%)',
+      );
+    }
+    if (paper_dirt_stain) {
+      stainLayers.push(
+        'radial-gradient(ellipse at 7% 92%, #72522e55, #72522e18 14%, transparent 27%)',
+      );
+    }
     const interactMode =
       held_item_details?.interaction_mode || InteractionType.reading;
 
@@ -536,6 +553,7 @@ export class PreviewView extends Component<PreviewViewProps> {
           minHeight="100%"
           backgroundColor={paper_color}
           className="Paper__Page"
+          style={{ backgroundImage: stainLayers.join(', ') || undefined }}
           dangerouslySetInnerHTML={textHTML}
           p="10px"
         />
