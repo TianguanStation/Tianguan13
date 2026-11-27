@@ -1,4 +1,4 @@
-https://github.com/TianguanStation/Tianguan13/pull/<!--PR Number-->
+https://github.com/TianguanStation/Tianguan13/pull/33
 
 ## ID 卡编辑器（管理员面板）
 
