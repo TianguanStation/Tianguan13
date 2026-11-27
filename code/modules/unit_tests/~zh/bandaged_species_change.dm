@@ -1,0 +1,17 @@
+/datum/unit_test/bandaged_species_change/Run()
+	var/mob/living/carbon/human/player = allocate(/mob/living/carbon/human/consistent)
+	player.set_species(/datum/species/lycan)
+	var/obj/item/bodypart/chest/old_chest = player.get_bodypart(BODY_ZONE_CHEST)
+	var/datum/wound/slash/flesh/severe/cut = allocate(/datum/wound/slash/flesh/severe)
+	cut.apply_wound(old_chest, TRUE)
+	TEST_ASSERT_EQUAL(cut.limb, old_chest, "The lycan chest should have an open wound before bandaging.")
+
+	var/obj/item/stack/medical/wrap/gauze/bandage = allocate(/obj/item/stack/medical/wrap/gauze)
+	TEST_ASSERT(old_chest.apply_item(bandage, LIMB_ITEM_GAUZE), "The bandage should attach to the chest.")
+	player.set_species(/datum/species/human/cursekin, replace_missing = FALSE)
+
+	var/obj/item/bodypart/chest/replacement = player.get_bodypart(BODY_ZONE_CHEST)
+	TEST_ASSERT_NOTNULL(replacement, "The character should have a chest after reverting to Cursekin.")
+	TEST_ASSERT_NOTEQUAL(old_chest, replacement, "The species change should replace the old chest.")
+	TEST_ASSERT_NULL(old_chest.loc, "The old chest must not stay on the floor after the species change.")
+	TEST_ASSERT(QDELETED(bandage), "The old limb's bandage should be cleaned up.")
