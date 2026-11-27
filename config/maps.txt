@@ -71,9 +71,12 @@ map boxstation
 	webmap_url https://webmap.affectedarc07.co.uk/maps/bubber/boxstation/
 endmap
 
-# ZH EDIT - match the lowercase map config filename on Linux
-map pubbystation
+# TIANGUAN EDIT - restore the beach version in the public rotation.
+map oceanpubby
 	votable
+endmap
+
+map pubbystation
 	webmap_url https://webmap.affectedarc07.co.uk/maps/fulp/pubbystation/
 endmap
 
