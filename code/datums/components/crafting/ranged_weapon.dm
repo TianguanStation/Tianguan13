@@ -129,16 +129,6 @@
 	time = 10 SECONDS
 	category = CAT_WEAPON_RANGED
 
-/datum/crafting_recipe/laser/hellgun
-	name = "Hellfire Laser Gun"
-	result = /obj/item/gun/energy/laser/hellgun
-	reqs = list(
-		/obj/item/gun/energy/laser = 1,
-		/obj/item/weaponcrafting/gunkit/hellgun = 1,
-	)
-	time = 10 SECONDS
-	category = CAT_WEAPON_RANGED
-
 /datum/crafting_recipe/laser/ioncarbine
 	name = "Ion Carbine"
 	result = /obj/item/gun/energy/ionrifle/carbine

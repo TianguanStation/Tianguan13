@@ -133,15 +133,6 @@
 	access_view = ACCESS_WEAPONS
 	contains = list(/obj/item/gun/energy/disabler/smg)
 
-/datum/supply_pack/goody/hell_single
-	name = "Hellgun Kit Single-Pack"
-	desc = "Contains one hellgun degradation kit, to convert regular laser guns into an older pattern of laser gun, \
-		infamous for its ability to horribly disfigure targets with burns. \
-		Technically violates the Space Geneva Convention when used on humanoids."
-	cost = PAYCHECK_CREW * 2
-	access_view = ACCESS_WEAPONS
-	contains = list(/obj/item/weaponcrafting/gunkit/hellgun)
-
 /datum/supply_pack/goody/thermal_single
 	name = "Thermal Pistol Holster Single-Pack"
 	desc = "Contains twinned thermal pistols in a holster, ready for use in the field."

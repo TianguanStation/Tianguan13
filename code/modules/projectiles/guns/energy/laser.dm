@@ -10,11 +10,15 @@
 	light_color = COLOR_SOFT_RED
 
 /obj/item/gun/energy/laser/Initialize(mapload)
+	if(type == /obj/item/gun/energy/laser || type == /obj/item/gun/energy/laser/carbine)
+		selfcharge = TRUE
+		charge_delay = 15
+		projectile_damage_multiplier *= 0.8
 	. = ..()
 	// Only regular lasguns can be slapcrafted
 	if(type != /obj/item/gun/energy/laser)
 		return
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/laser/xraylaser, /datum/crafting_recipe/laser/hellgun, /datum/crafting_recipe/laser/ioncarbine)
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/laser/xraylaser, /datum/crafting_recipe/laser/ioncarbine)
 	AddElement(
 		/datum/element/slapcrafting,\
 		slapcraft_recipes = slapcraft_recipe_list,\
