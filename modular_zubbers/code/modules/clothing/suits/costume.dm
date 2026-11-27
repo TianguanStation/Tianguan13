@@ -105,6 +105,21 @@
 	worn_icon_teshari = 'modular_zubbers/icons/mob/clothing/suits/costume_teshari.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
+/obj/item/clothing/suit/costume/samurai/reinforced
+	name = "reinforced samurai armor"
+	desc = "Heavy armor built from forged plates over a leather lining."
+	body_parts_covered = CHEST | GROIN | ARMS
+	armor_type = /datum/armor/reinforced_samurai
+	resistance_flags = FIRE_PROOF
+	slowdown = 0.5
+
+/datum/armor/reinforced_samurai
+	melee = 30
+	bullet = 15
+	laser = 10
+	bio = 5
+	fire = 50
+
 /obj/item/clothing/suit/costume/yuri
 	worn_icon_digi = 'modular_zubbers/icons/mob/clothing/suits/costume_digi.dmi'
 	worn_icon_teshari = 'modular_zubbers/icons/mob/clothing/suits/costume_teshari.dmi'

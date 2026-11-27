@@ -37,6 +37,7 @@
 	var/list/allowed_choices = list(
 		/datum/crafting_bench_recipe/wearable/plate_armor/plate_helmet,
 		/datum/crafting_bench_recipe/wearable/plate_armor/plate_vest,
+		/datum/crafting_bench_recipe/wearable/plate_armor/samurai,
 		/datum/crafting_bench_recipe/wearable/plate_armor/plate_gloves,
 		/datum/crafting_bench_recipe/wearable/plate_armor/plate_boots,
 		/datum/crafting_bench_recipe/wearable/plate_armor/horse_shoes,

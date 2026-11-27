@@ -254,6 +254,17 @@
 	time_to_assemble = 3 SECONDS
 	completion_memory_given = /datum/memory/smithing/plate_vest
 
+/datum/crafting_bench_recipe/wearable/plate_armor/samurai
+	recipe_name = "reinforced samurai armor"
+	recipe_desc = "Heavy armor built from forged plates over a leather lining."
+	recipe_requirements = list(
+		/obj/item/stack/sheet/leather = 3,
+		/obj/item/forging/complete/plate = 2,
+	)
+	resulting_item = /obj/item/clothing/suit/costume/samurai/reinforced
+	time_to_assemble = 5 SECONDS
+	relevant_skill_level = SKILL_LEVEL_EXPERT
+
 /datum/crafting_bench_recipe/wearable/plate_armor/plate_gloves
 	recipe_name = "plate gloves"
 	recipe_desc = "Protective bracers. Smithing oil and perfected metalworking will make it even more protective."
