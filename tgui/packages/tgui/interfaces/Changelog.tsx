@@ -58,17 +58,29 @@ type ChangelogState = {
 type ChangelogData = {
   dates: string[];
   localization_dates?: string[]; // ZH EDIT ADDITION - I18N
+  tianguan_dates?: string[]; // TIANGUAN EDIT ADDITION
   translated_dates?: string[]; // ZH EDIT ADDITION - I18N
 };
 
-// ZH EDIT ADDITION START - I18N: the localization build's own changelog, shown as a separate tab.
-// It has its own archive (html/changelogs/localization) and asset names so upstream's never collide with it.
-type ChangelogSource = 'upstream' | 'localization';
+// ZH EDIT ADDITION START - I18N: custom tabs use separate archives and asset names.
+type ChangelogSource = 'upstream' | 'localization' | 'tianguan';
 
-const isLocalization = (source?: ChangelogSource) => source === 'localization';
+const sources = {
+  upstream: { dates: 'dates', action: 'get_month', prefix: '' },
+  localization: {
+    dates: 'localization_dates',
+    action: 'get_localization_month',
+    prefix: 'localization-',
+  },
+  tianguan: {
+    dates: 'tianguan_dates',
+    action: 'get_tianguan_month',
+    prefix: 'tianguan-',
+  },
+} as const;
 
-const sourceDates = (data: ChangelogData, source?: ChangelogSource) =>
-  (isLocalization(source) ? data.localization_dates : data.dates) || [];
+const sourceDates = (data: ChangelogData, source: ChangelogSource) =>
+  data[sources[source].dates] || [];
 
 // Upstream's entries are machine-translated at upstream sync into one "original text -> translation"
 // table per month. Looked up by the original text, so upstream editing a month never misaligns
@@ -121,7 +133,10 @@ export const translateChangelog = (
 };
 // ZH EDIT ADDITION END
 
-export class ChangelogContent extends Component<any, ChangelogState> {
+export class ChangelogContent extends Component<
+  { source: ChangelogSource },
+  ChangelogState
+> {
   dateChoices: string[];
 
   constructor(props) {
@@ -154,12 +169,11 @@ export class ChangelogContent extends Component<any, ChangelogState> {
 
   getData = async (date: string) => {
     const request = ++this.request;
-    const localization = isLocalization(this.props.source);
+    const { source } = this.props;
+    const { action, prefix } = sources[source];
     const { act, data } = useBackend<ChangelogData>();
-    act(localization ? 'get_localization_month' : 'get_month', { date });
-    const response = await fetchChangelogAsset(
-      localization ? `localization-${date}.yml` : `${date}.yml`,
-    );
+    act(action, { date });
+    const response = await fetchChangelogAsset(`${prefix}${date}.yml`);
     if (request !== this.request) return;
     if (!response) {
       this.setData('Failed to load changelog data.');
@@ -168,7 +182,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
     let changelog = yaml.load(await response.text(), {
       schema: yaml.CORE_SCHEMA,
     }) as ChangelogYaml;
-    if (!localization && data.translated_dates?.includes(date)) {
+    if (source === 'upstream' && data.translated_dates?.includes(date)) {
       const translations = await fetchTranslations(date);
       if (translations) changelog = translateChangelog(changelog, translations);
     }
@@ -186,12 +200,15 @@ export class ChangelogContent extends Component<any, ChangelogState> {
       });
       this.setSelectedDate(this.dateChoices[0]);
       this.getData(dates[0]);
+    } else {
+      this.setData('');
     }
   }
 
   render() {
     const { data } = useBackend<ChangelogData>();
-    const dates = sourceDates(data, this.props.source); // ZH EDIT CHANGE - I18N - ORIGINAL: const { dates = [] } = data;
+    const { source } = this.props;
+    const dates = sourceDates(data, source); // ZH EDIT CHANGE - I18N - ORIGINAL: const { dates = [] } = data;
     const { loaded_text, selectedIndex, selectedDate } = this
       .state as ChangelogState;
     const { dateChoices } = this;
@@ -304,7 +321,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
     );
 
     // Upstream's footer carries the Goon credits and licence text, which belong to the upstream tab.
-    const localizationFooter = <Section>{dateDropdown}</Section>;
+    const customFooter = dateDropdown && <Section>{dateDropdown}</Section>;
     // ZH EDIT ADDITION END
 
     const footer = (
@@ -411,7 +428,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
                         const changeType = Object.keys(change)[0];
                         const text = change[changeType];
                         const prLink =
-                          isLocalization(this.props.source) &&
+                          source !== 'upstream' &&
                           typeof text === 'string' &&
                           text.match(
                             / (https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/pull\/(\d+))$/,
@@ -460,11 +477,15 @@ export class ChangelogContent extends Component<any, ChangelogState> {
 
     return (
       <>
-        {isLocalization(this.props.source) ? localizationHeader : header}
+        {source === 'upstream' && header}
+        {source === 'localization' && localizationHeader}
+        {source === 'tianguan' && dateDropdown && (
+          <Section>{dateDropdown}</Section>
+        )}
         {/* ZH EDIT CHANGE - I18N - ORIGINAL: {header} */}
         {changes}
-        {typeof loaded_text === 'string' && <p>{loaded_text}</p>}
-        {isLocalization(this.props.source) ? localizationFooter : footer}
+        {typeof loaded_text === 'string' && loaded_text && <p>{loaded_text}</p>}
+        {source === 'upstream' ? footer : customFooter}
         {/* ZH EDIT CHANGE - I18N - ORIGINAL: {footer} */}
       </>
     );
@@ -473,6 +494,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
 
 export function ChangelogTabs({ children }: PropsWithChildren) {
   const [source, setSource] = useState<ChangelogSource>('upstream');
+  const { data } = useBackend<ChangelogData>();
   return (
     <>
       <Tabs>
@@ -488,11 +510,19 @@ export function ChangelogTabs({ children }: PropsWithChildren) {
         >
           Localization changes
         </Tabs.Tab>
+        {data.tianguan_dates?.length ? (
+          <Tabs.Tab
+            selected={source === 'tianguan'}
+            onClick={() => setSource('tianguan')}
+          >
+            TianGuan updates
+          </Tabs.Tab>
+        ) : null}
       </Tabs>
-      {source === 'localization' ? (
-        <ChangelogContent key="localization" source="localization" />
-      ) : (
+      {source === 'upstream' ? (
         children
+      ) : (
+        <ChangelogContent key={source} source={source} />
       )}
     </>
   );
