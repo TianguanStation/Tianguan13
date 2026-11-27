@@ -168,6 +168,10 @@
 	. = ..()
 	update_icon_state()
 
+/mob/living/basic/pet/lanhongqiu/look_alive()
+	. = ..()
+	update_appearance(UPDATE_ICON_STATE)
+
 /mob/living/basic/pet/lanhongqiu/update_resting()
 	. = ..()
 	if(stat != DEAD)
