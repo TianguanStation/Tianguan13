@@ -492,6 +492,8 @@
  *
  */
 /datum/action/innate/alter_form/proc/begin_character_alteration(mob/living/carbon/human/alterer)
+	if(!allow_full_character_change) // TIANGUAN EDIT - Full character changes are disabled.
+		return
 	var/list/mob/living/carbon/viable_targets = list()
 
 	to_chat(alterer, span_userdanger(LANG("datum.858be29afb0b3c99", null)))

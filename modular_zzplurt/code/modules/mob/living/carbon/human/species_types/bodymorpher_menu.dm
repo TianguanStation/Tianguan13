@@ -55,6 +55,7 @@
 
 	data["action_name"] = name
 	data["owner_name"] = alterer.real_name
+	data["allow_full_character_change"] = allow_full_character_change // TIANGUAN EDIT
 	data["preset_limit"] = BODYMORPHER_PRESET_LIMIT
 	data["presets"] = build_bodymorpher_preset_ui_data(alterer)
 	return data
@@ -95,6 +96,8 @@
 			SStgui.update_uis(src)
 			return TRUE
 		if("begin_character_alteration")
+			if(!allow_full_character_change) // TIANGUAN EDIT
+				return FALSE
 			before_state = capture_bodymorpher_snapshot(alterer)
 			begin_character_alteration(alterer)
 			log_bodymorph_if_changed(alterer, before_state, "changed their character")

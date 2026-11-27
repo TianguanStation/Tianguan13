@@ -15,6 +15,7 @@ import { Window } from '../layouts';
 type BodyMorpherData = {
   action_name: string;
   owner_name: string;
+  allow_full_character_change: boolean;
   preset_limit: number;
   presets: BodyMorpherPreset[];
 };
@@ -64,7 +65,13 @@ const actions = [
 export const BodyMorpher = (_props: unknown) => {
   const { data, act } = useBackend<BodyMorpherData>();
   const [tab, setTab] = useState<'actions' | 'presets'>('actions');
-  const { action_name, owner_name, preset_limit = 20, presets = [] } = data;
+  const {
+    action_name,
+    owner_name,
+    allow_full_character_change,
+    preset_limit = 20,
+    presets = [],
+  } = data;
 
   return (
     <Window title={action_name || 'Body Morpher'} width={560} height={480}>
@@ -85,7 +92,11 @@ export const BodyMorpher = (_props: unknown) => {
         </Tabs>
 
         {tab === 'actions' ? (
-          <ActionsTab ownerName={owner_name} act={act} />
+          <ActionsTab
+            ownerName={owner_name}
+            allowFullCharacterChange={allow_full_character_change}
+            act={act}
+          />
         ) : (
           <PresetsTab presets={presets} presetLimit={preset_limit} act={act} />
         )}
@@ -96,10 +107,19 @@ export const BodyMorpher = (_props: unknown) => {
 
 type ActionsTabProps = {
   ownerName: string;
+  allowFullCharacterChange: boolean;
   act: (action: string, payload?: Record<string, unknown>) => void;
 };
 
-const ActionsTab = ({ ownerName, act }: ActionsTabProps) => {
+const ActionsTab = ({
+  ownerName,
+  allowFullCharacterChange,
+  act,
+}: ActionsTabProps) => {
+  const availableActions = allowFullCharacterChange
+    ? actions
+    : actions.filter((action) => action.id !== 'begin_character_alteration');
+
   return (
     <Stack vertical>
       <Stack.Item>
@@ -108,7 +128,7 @@ const ActionsTab = ({ ownerName, act }: ActionsTabProps) => {
           options. Presets capture the result of these changes for quick reuse.
         </NoticeBox>
       </Stack.Item>
-      {actions.map((action) => (
+      {availableActions.map((action) => (
         <Stack.Item key={action.id}>
           <Section
             title={action.title}
