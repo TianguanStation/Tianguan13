@@ -11340,6 +11340,7 @@
 #include "modular_tianguan\modules\admin\loud_meow.dm"
 #include "modular_tianguan\modules\admin_countdown\code\admin_countdown.dm"
 #include "modular_tianguan\modules\admin_countdown\code\countdown_music.dm"
+#include "modular_tianguan\modules\admin_id_editor\code\admin_id_editor.dm"
 #include "modular_tianguan\modules\admin_sound_board\code\admin_sound_board.dm"
 #include "modular_tianguan\modules\guide_browser\code\guide_config.dm"
 #include "modular_tianguan\modules\guide_browser\code\guide_browser.dm"

@@ -52,6 +52,10 @@ ADMIN_VERB(secrets, R_NONE, "秘密", "Abuse harder than you ever have before wi
 	if(tianguan_countdown_ui_act(action, params, holder))
 		return
 	// TIANGUAN EDIT ADDITION END
+	// TIANGUAN EDIT ADDITION START - ADMIN_ID_EDITOR
+	if(tianguan_id_editor_ui_act(action, params, holder))
+		return
+	// TIANGUAN EDIT ADDITION END
 	switch(action)
 		//Generic Buttons anyone can use.
 		if("admin_log")
