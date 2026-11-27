@@ -176,6 +176,45 @@
 	contains = list(/obj/item/sign/flag/wsr)
 	cost = CARGO_MINIMUM_COST
 
+// ———————————————————————————————— 团结联盟印章（可盖在公文上）
+/// 继承上游 `/obj/item/stamp` ⇒ 盖公文那一整套机制照常可用：左键点纸张（读不了字时盲盖）、
+/// 右键速盖、`get_writing_implement_details()` 走 `MODE_STAMPING`。
+/// 三处贴图分工：
+///   · **物品图标** —— 沿用上游红色印章 `stamp-hos`（安保主管那枚，红章体）；
+///   · **纸张物品图标上的小印记** —— `add_stamp()` 取 `paper_<icon_state>` = 上游 `paper_stamp-hos`（红色斜矩形）；
+///   · **纸面窗口**（TGUI PaperSheet）里的大印记 —— 模块自带的联盟印章图 `icons/stamp_uar.png`
+///     （121×54，与上游印章同画布、1:1 原样；试过 2 倍会被判「太大」），
+///     走 stamps 精灵表的 `"uar_stamp"` 条目（那一行在 `code/modules/asset_cache/assets/paper.dm`，带 TIANGUAN EDIT 标记）。
+/obj/item/stamp/uar
+	name = "团结联盟印章"
+	desc = "团结联盟在此星区合法授权的凭证。\n章身铭刻——“祖国万岁”"
+	icon = 'icons/obj/service/bureaucracy.dmi'
+	icon_state = "stamp-hos"
+	// 与上游安保主管印章同档（洗衣机的染色登记位，本仓对 stamp 没有别的消费点）
+	dye_color = DYE_HOS
+
+/// 只换纸面**窗口**里那张大印记，其余两项（物品图标、纸张物品图标上的小印记）保持上游红色印章。
+/// 覆盖合法：`/obj/item/stamp/get_writing_implement_details()` 定义在基类上，本类型此前没有自己的版本。
+/obj/item/stamp/uar/get_writing_implement_details()
+	var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet/simple/stamps)
+	return list(
+		interaction_mode = MODE_STAMPING,
+		stamp_icon_state = icon_state,
+		stamp_icon = icon,
+		stamp_class = sheet.icon_class_name("uar_stamp"),
+	)
+
+/// 静默失败守卫：精灵表缺条目不会报错，只会「纸上盖了、点开纸张窗口一片空白」，所以点名一次。
+/obj/item/stamp/uar/Initialize(mapload)
+	. = ..()
+	var/static/checked = FALSE
+	if(checked)
+		return
+	checked = TRUE
+	var/datum/asset/spritesheet/simple/stamps/sheet = get_asset_datum(/datum/asset/spritesheet/simple/stamps)
+	if(!sheet || !sheet.assets["uar_stamp"] || !get_writing_implement_details()["stamp_class"])
+		log_world("UAR_OFFICER: ⚠ stamps 精灵表里没有可用的 \"uar_stamp\" 条目（code/modules/asset_cache/assets/paper.dm），纸面窗口里盖不出印章印记")
+
 // ———————————————————————————————— 职业套装
 /datum/outfit/job/uar_inspector
 	name = JOB_UAR_INSPECTOR
@@ -193,6 +232,7 @@
 	backpack_contents = list(
 		/obj/item/sign/flag/uar = 1,
 		/obj/item/choice_beacon/uar = 1,
+		/obj/item/stamp/uar = 1,
 	)
 
 // ———————————————————————————————— 指挥售货机（追加到 zzplurt_products & 分类，保留既有商品）
