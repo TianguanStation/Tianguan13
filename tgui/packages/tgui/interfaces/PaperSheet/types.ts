@@ -5,6 +5,8 @@ export type PaperContext = {
   max_input_field_length: number;
   max_length: number;
   paper_color: string;
+  paper_blood_stain?: boolean;
+  paper_dirt_stain?: boolean;
   paper_name: string;
   raw_field_input?: FieldInput[];
   raw_stamp_input?: StampInput[];
