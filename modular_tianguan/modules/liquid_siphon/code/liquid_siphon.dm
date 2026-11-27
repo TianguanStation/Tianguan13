@@ -215,7 +215,6 @@
 /datum/design/board/light_liquid_siphon
 	name = "轻量化液体虹吸器电路板"
 	desc = "用于组装一台轻量化液体虹吸器。"
-	id = "light_liquid_siphon"
 	build_path = /obj/item/circuitboard/machine/light_liquid_siphon
 	category = list(
 		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ATMOS

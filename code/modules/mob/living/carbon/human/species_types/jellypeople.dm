@@ -22,7 +22,7 @@
 	mutanteyes = /obj/item/organ/eyes/jelly
 	mutantheart = null
 	meat = /obj/item/food/meat/slab/human/mutant/slime
-	exotic_bloodtype = BLOOD_TYPE_TOX
+	exotic_bloodtype = /datum/blood_type/slime
 	blood_deficiency_drain_rate = JELLY_REGEN_RATE + BLOOD_DEFICIENCY_MODIFIER
 	coldmod = 6   // = 3x cold damage
 	heatmod = 0.5 // = 1/4x heat damage
@@ -77,14 +77,14 @@
 
 	// Blood regen thresholds use your real amount of blood.
 	if(slime.get_blood_volume() <= 0)
-		slime.adjust_blood_volume(JELLY_REGEN_RATE_EMPTY * slime.physiology.blood_regen_mod * seconds_per_tick)
+		slime.adjust_blood_volume(JELLY_REGEN_RATE_EMPTY * GET_PHYSIOLOGY(slime, PHYS_COEFF_BLOOD_REGEN) * seconds_per_tick)
 		slime.adjust_brute_loss(2.5 * seconds_per_tick)
 		to_chat(slime, span_danger(LANG("datum.cc505a622fe32ee0", null)))
 
 	// Same logic applies here.
 	if(slime.get_blood_volume() < BLOOD_VOLUME_NORMAL)
 		if(slime.nutrition >= NUTRITION_LEVEL_STARVING)
-			slime.adjust_blood_volume(JELLY_REGEN_RATE * slime.physiology.blood_regen_mod * seconds_per_tick)
+			slime.adjust_blood_volume(JELLY_REGEN_RATE * GET_PHYSIOLOGY(slime, PHYS_COEFF_BLOOD_REGEN) * seconds_per_tick)
 			if(slime.get_blood_volume() <= BLOOD_VOLUME_LOSE_NUTRITION) // don't lose nutrition if we are above a certain threshold, otherwise slimes on IV drips will still lose nutrition
 				slime.adjust_nutrition(-1.25 * seconds_per_tick)
 
@@ -129,7 +129,7 @@
 	to_chat(target, span_userdanger(LANG("datum.66645a3a77119984", list(consumed_limb.name))))
 	qdel(consumed_limb)
 
-	target.adjust_blood_volume(20 * target.physiology.blood_regen_mod)
+	target.adjust_blood_volume(20 * GET_PHYSIOLOGY(target, PHYS_COEFF_BLOOD_REGEN))
 
 /datum/species/jelly/get_species_description()
 	return "Jellypeople are a strange and alien species with three eyes, made entirely out of gel."
@@ -156,6 +156,18 @@
 		SPECIES_PERK_ICON = "tint",
 		SPECIES_PERK_NAME = LANG("datum.0a45e45bc636040a", null),
 		SPECIES_PERK_DESC = LANG("datum.23ede26d9117dd6f", list(plural_form, initial(blood_type.reagent_type.name))),
+	))
+
+	return to_add
+
+/datum/species/jelly/create_pref_unique_perks()
+	var/list/to_add = list()
+
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+		SPECIES_PERK_ICON = FA_ICON_PERSON_RUNNING,
+		SPECIES_PERK_NAME = LANG("datum.1018265307e81c70", null),
+		SPECIES_PERK_DESC = LANG("datum.7d5ecddcd459c120", list(plural_form)),
 	))
 
 	return to_add

@@ -1,4 +1,15 @@
+// ZH EDIT - I18N CODEMOD - 玩家可见字符串已改写为 LANG()；请勿手改 key，见 modular_zh/modules/i18n/readme.md
 /obj/item/toy/plush //SPLURT EDIT - What are you doing cutting a hole in that plushie?!
+
+/obj/item/toy/plush/attack_self(mob/user)
+	. = ..()
+	if(stuffed)
+		if(HAS_TRAIT(user, TRAIT_MONOPHOBIA))
+			to_chat(user, span_notice(LANG("obj.bf0c736cd2965868", null)))
+
+	else
+		if(HAS_TRAIT(user, TRAIT_MONOPHOBIA))
+			to_chat(user, span_warning(LANG("obj.1bf9264550231e13", null)))
 
 /obj/item/toy/plush/chaotic_toaster
 	name = "Chaotic toaster"
@@ -766,3 +777,14 @@
 	icon_state = "dominic_new"
 	gender = MALE
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/dwoop.ogg' = 1)
+
+// Plush for Sharkoink
+/obj/item/toy/plush/myra
+	name = "\improper Noble dragon-shark plushie"
+	desc = "Here to relieve you of your worries <b>and</b> your job!"
+	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
+	icon_state = "myra" // sprited by xPokee
+	attack_verb_simple = list("attack", "lay down the law to", "prbts!")
+	attack_verb_continuous = list("attacks", "lays down the law to", "prbts!")
+	squeak_override = list('modular_zubbers/code/modules/emotes/sound/voice/prbt.ogg' = 1)
+	gender = FEMALE

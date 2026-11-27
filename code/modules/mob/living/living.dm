@@ -56,6 +56,7 @@
 		QDEL_LIST(imaginary_group)
 	QDEL_LAZYLIST(diseases)
 	QDEL_LAZYLIST(quirks)
+	QDEL_NULL(inner_armor)
 
 	if(!isnull(unconscious_appearance))
 		// Not super necessary strictly speaking but just in case
@@ -598,7 +599,7 @@ GAME_VERB_HIDDEN(/mob/living, succumb, "succumb")
 			to_chat(src, span_warning(LANG("mob.efd06aee4dccc331", null)), type=MESSAGE_TYPE_INFO)
 			return
 	log_message("Has [whispered ? "whispered his final words" : "succumbed to death"] with [round(health, 0.1)] points of health!", LOG_ATTACK)
-	adjust_oxy_loss(health - HEALTH_THRESHOLD_DEAD)
+	adjust_oxy_loss(health - dead_threshold)
 	balloon_alert_to_viewers(LANG("mob.046cab9d83d28666", null), LANG("mob.043fecdd508e251e", null), 9) // BUBBER EDIT ADDITION - ALERT OBSERVERS THAT THEY SUCCUMBED
 	updatehealth()
 	if(!whispered)
@@ -647,7 +648,7 @@ GAME_VERB_HIDDEN(/mob/living, succumb, "succumb")
 
 // MOB PROCS //END
 
-GAME_VERB_PROC(/mob/living, mob_sleep, "睡眠", null)
+GAME_VERB_PROC(/mob/living, mob_sleep, "睡眠", "IC")
 
 	if(IsSleeping())
 		to_chat(src, span_warning(LANG("mob.bd5702d4e6b7d6d4", null)))
@@ -891,9 +892,10 @@ GAME_VERB_PROC(/mob/living, mob_sleep, "睡眠", null)
 	update_stamina()
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
-/mob/living/update_health_hud()
+/mob/living/update_health_hud(healthpercent)
 	var/severity = 0
-	var/healthpercent = (health/maxHealth) * 100
+	if(!healthpercent)
+		healthpercent = (health/maxHealth) * 100
 	var/atom/movable/screen/healthdoll/living/livingdoll = hud_used?.screen_objects[HUD_MOB_HEALTHDOLL]
 	if(istype(livingdoll)) //to really put you in the boots of a simplemob
 		switch(healthpercent)
@@ -921,6 +923,8 @@ GAME_VERB_PROC(/mob/living, mob_sleep, "睡眠", null)
 			livingdoll.add_filter("mob_shape_mask", 1, alpha_mask_filter(icon = mob_mask))
 			livingdoll.add_filter("inset_drop_shadow", 2, drop_shadow_filter(size = -1))
 		livingdoll.health_overlay.maptext = MAPTEXT("<div align='center' valign='middle' style='position:relative'>[round(healthpercent, 1)]%</div>")
+		if(livingdoll.hovering)
+			livingdoll.update_appearance(UPDATE_ICON)
 
 	if(severity > 0)
 		overlay_fullscreen("brute", /atom/movable/screen/fullscreen/brute, severity)
@@ -1094,7 +1098,7 @@ GAME_VERB_PROC(/mob/living, mob_sleep, "睡眠", null)
 	//BUBBER ADDITION END
 	if(HAS_TRAIT(src, TRAIT_NODEATH))
 		return TRUE
-	if(health > HEALTH_THRESHOLD_DEAD)
+	if(health > dead_threshold)
 		return TRUE
 	return FALSE
 
@@ -1721,8 +1725,8 @@ GAME_VERB_PROC(/mob/living, mob_sleep, "睡眠", null)
 				/mob/living/basic/mining/mook/worker,
 				/mob/living/basic/mining/mook/worker/bard,
 				/mob/living/basic/mining/mook/worker/tribal_chief,
-				/mob/living/basic/mining/legion/monkey,
-				/mob/living/basic/mining/legion/monkey/snow,
+				/mob/living/basic/mining/legion/lesser,
+				/mob/living/basic/mining/legion/lesser/snow,
 				/mob/living/basic/mining/lobstrosity,
 				/mob/living/basic/mining/lobstrosity/lava,
 				/mob/living/basic/mining/ice_demon,
@@ -2220,6 +2224,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_DELUSION_HALLUCINATION, "Give Delusion Hallucination")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_GUARDIAN_SPIRIT, "Give Guardian Spirit")
 	VV_DROPDOWN_OPTION(VV_HK_ADMIN_RENAME, "Force Change Name")
+	VV_DROPDOWN_OPTION(VV_HK_NAVIGATE_TO_MARKED_OBJECT, "Navigate To Marked Object")
 
 /mob/living/vv_do_topic(list/href_list)
 	. = ..()
@@ -2267,6 +2272,18 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 			"updated_prefs" = replace_preferences,
 		))
 		message_admins("[key_name_admin(usr)] has forcibly changed the real name of [key_name(src)] from '[old_name]' to '[real_name]'[(replace_preferences ? " and their preferences" : "")]")
+
+	if(href_list[VV_HK_NAVIGATE_TO_MARKED_OBJECT])
+		if(!check_rights(R_ADMIN))
+			return
+
+		if(!usr.client.holder.marked_datum)
+			to_chat(usr, span_warning(LANG("mob.0171f97f12317117", null)))
+		else if(!isatom(usr.client.holder.marked_datum))
+			to_chat(usr, span_warning(LANG("mob.5b770ae034b18be9", null)))
+		else
+			create_navigation_line(usr.client.holder.marked_datum)
+
 
 /mob/living/proc/move_to_error_room()
 	var/obj/effect/landmark/error/error_landmark = locate(/obj/effect/landmark/error) in GLOB.landmarks_list

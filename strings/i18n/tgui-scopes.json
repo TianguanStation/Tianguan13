@@ -903,6 +903,9 @@
   "Active Power Cost (Watts)": [
     "tgui:MODsuit"
   ],
+  "Active Reactions": [
+    "tgui:GasmixParser"
+  ],
   "Active Rulesets": [
     "tgui:DynamicAdmin"
   ],
@@ -924,6 +927,9 @@
   ],
   "Activity Filter": [
     "tgui:AdminTicketStats"
+  ],
+  "Actor": [
+    "dm:labels"
   ],
   "Adamantine Armor": [
     "dm:labels"
@@ -1205,6 +1211,9 @@
   "Adventure Status": [
     "tgui:OrionGame"
   ],
+  "Adventurer": [
+    "dm:labels"
+  ],
   "Adventurous Synth Plushie": [
     "dm:labels"
   ],
@@ -1242,6 +1251,9 @@
     "dm:labels"
   ],
   "Aesculapian Halo": [
+    "dm:labels"
+  ],
+  "Aethestician": [
     "dm:labels"
   ],
   "Affected Nodes": [
@@ -1392,6 +1404,9 @@
   "Albuterol": [
     "dm:labels"
   ],
+  "Alchemist": [
+    "dm:labels"
+  ],
   "Alcohol": [
     "dm:labels"
   ],
@@ -1536,6 +1551,9 @@
   "All zombie types will be detected, including dormant zombies.": [
     "tgui:ScannerGate"
   ],
+  "All-American Diner Employee": [
+    "dm:labels"
+  ],
   "All-American Diner Staff": [
     "dm:labels"
   ],
@@ -1618,8 +1636,14 @@
   "Always Human as Operative": [
     "tgui:operative_species"
   ],
+  "Always On": [
+    "dm:labels"
+  ],
   "Always randomize": [
     "tgui:RandomizationButton"
+  ],
+  "Always/Whenever": [
+    "dm:labels"
   ],
   "Amanitin": [
     "dm:labels"
@@ -1643,6 +1667,9 @@
     "dm:labels"
   ],
   "Amazon": [
+    "dm:labels"
+  ],
+  "Ambassador": [
     "dm:labels"
   ],
   "Ambience refers to the more noticeable ambient sounds that play on occasion.": [
@@ -1766,6 +1793,9 @@
   "Angeler": [
     "dm:labels"
   ],
+  "Anger Management": [
+    "dm:labels"
+  ],
   "Angle": [
     "tgui:LightController",
     "tgui:LightSpawn",
@@ -1823,7 +1853,13 @@
   "Announcer Preference": [
     "tgui:sound"
   ],
+  "Annoy the heads of staff as much as possible without harming them.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Annoying Cat Plush": [
+    "dm:labels"
+  ],
+  "Anomalist": [
     "dm:labels"
   ],
   "Anomaly Refinery": [
@@ -1898,6 +1934,9 @@
   "Anubus": [
     "dm:labels"
   ],
+  "Anus": [
+    "dm:labels"
+  ],
   "Any": [
     "dm:labels"
   ],
@@ -1923,6 +1962,15 @@
     "tgui:Newspaper"
   ],
   "Apathetic": [
+    "dm:labels"
+  ],
+  "Aphrodisiacal Bite": [
+    "dm:labels"
+  ],
+  "Apiarist": [
+    "dm:labels"
+  ],
+  "Apiculturist": [
     "dm:labels"
   ],
   "Apparel": [
@@ -1995,6 +2043,15 @@
   "Apprentice": [
     "dm:labels"
   ],
+  "Apprentice Engineer": [
+    "dm:labels"
+  ],
+  "Apprentice Miner": [
+    "dm:labels"
+  ],
+  "Apprentice Roboticist": [
+    "dm:labels"
+  ],
   "Apprentice of Destruction": [
     "tgui:ApprenticeContract"
   ],
@@ -2063,6 +2120,9 @@
   "Arcane Randomizer": [
     "tgui:TableOfContents"
   ],
+  "Archaeologist": [
+    "dm:labels"
+  ],
   "Archive": [
     "tgui:AchievementsAdminPanel",
     "tgui:PopoutMenu",
@@ -2080,6 +2140,9 @@
   ],
   "Archives from the Nanotrasen News Network!": [
     "tgui:NtosNewsArchive"
+  ],
+  "Archivist": [
+    "dm:labels"
   ],
   "Are you absolutely sure you want to proceed?": [
     "tgui:Forbidden"
@@ -2180,6 +2243,18 @@
   "Armored Harness": [
     "dm:labels"
   ],
+  "Armorsmith": [
+    "dm:labels"
+  ],
+  "Armory Superintendent": [
+    "dm:labels"
+  ],
+  "Aro/Ace": [
+    "dm:labels"
+  ],
+  "Aromantic": [
+    "dm:labels"
+  ],
   "Arrest. Target must have valid crimes to set this status.": [
     "tgui:constants"
   ],
@@ -2202,6 +2277,9 @@
     "dm:labels"
   ],
   "Artificial Intelligence": [
+    "dm:labels"
+  ],
+  "Artist": [
     "dm:labels"
   ],
   "Artistic module": [
@@ -2240,6 +2318,9 @@
   "Ascetic": [
     "dm:labels"
   ],
+  "Asexual": [
+    "dm:labels"
+  ],
   "Asexual Flag": [
     "dm:labels"
   ],
@@ -2256,6 +2337,12 @@
     "dm:labels"
   ],
   "Ashtongue": [
+    "dm:labels"
+  ],
+  "Ask": [
+    "dm:labels"
+  ],
+  "Ask (L)OOC": [
     "dm:labels"
   ],
   "Ask For Update": [
@@ -2303,6 +2390,15 @@
     "dm:labels"
   ],
   "Assistant Formal": [
+    "dm:labels"
+  ],
+  "Assistant Manager Supervisor Junior": [
+    "dm:labels"
+  ],
+  "Assistant to the Captain": [
+    "dm:labels"
+  ],
+  "Assistant to the Regional Manager": [
     "dm:labels"
   ],
   "Assistant's Formal Winter Coat": [
@@ -2357,6 +2453,9 @@
     "tgui:AlarmStatus"
   ],
   "Atmospheric": [
+    "dm:labels"
+  ],
+  "Atmospheric Security": [
     "dm:labels"
   ],
   "Atmospheric Technician": [
@@ -2577,8 +2676,17 @@
   "Automated Announcement System": [
     "tgui:AutomatedAnnouncement"
   ],
+  "Automated Overseer": [
+    "dm:labels"
+  ],
   "Automatic": [
     "tgui:CyborgBootDebug"
+  ],
+  "Automatically close the voting HUD element after you select a choice.": [
+    "tgui:mapvote_hud"
+  ],
+  "Automatically close voting HUD after voting": [
+    "tgui:mapvote_hud"
   ],
   "Automation": [
     "tgui:CrimeWatcher",
@@ -2728,9 +2836,6 @@
     "tgui:ColorSetter",
     "tgui:Generators"
   ],
-  "B@L00NY skillchip": [
-    "dm:labels"
-  ],
   "BASE LOCKED": [
     "tgui:ShuttleConsole"
   ],
@@ -2843,6 +2948,9 @@
   "Bait": [
     "tgui:FishingCalculator"
   ],
+  "Baker": [
+    "dm:labels"
+  ],
   "Balaclava": [
     "dm:labels"
   ],
@@ -2863,6 +2971,15 @@
     "dm:labels"
   ],
   "Baldium": [
+    "dm:labels"
+  ],
+  "Ball Gag": [
+    "dm:labels"
+  ],
+  "Ball Mittens": [
+    "dm:labels"
+  ],
+  "Ballet Heels": [
     "dm:labels"
   ],
   "Balloon Mace": [
@@ -2931,13 +3048,28 @@
   "Bar of Soap": [
     "dm:labels"
   ],
+  "Barbed, Knotted": [
+    "dm:labels"
+  ],
+  "Barbed, Knotted (Alt)": [
+    "dm:labels"
+  ],
   "Barber": [
     "dm:labels"
   ],
   "Barefoot": [
     "dm:labels"
   ],
+  "Barista": [
+    "dm:labels"
+  ],
+  "Barkeeper": [
+    "dm:labels"
+  ],
   "Baroness Dress": [
+    "dm:labels"
+  ],
+  "Barrister": [
     "dm:labels"
   ],
   "Bars": [
@@ -3244,6 +3376,9 @@
   "Beehive 2": [
     "dm:labels"
   ],
+  "Beekeeper": [
+    "dm:labels"
+  ],
   "Beeps Jingle": [
     "dm:labels"
   ],
@@ -3515,7 +3650,16 @@
   "Biomass": [
     "tgui:Biogenerator"
   ],
+  "Biomechanical Engineer": [
+    "dm:labels"
+  ],
+  "Biorobotics Director": [
+    "dm:labels"
+  ],
   "Biotech Compatibility": [
+    "dm:labels"
+  ],
+  "Bisexual": [
     "dm:labels"
   ],
   "Bisexual Flag": [
@@ -3531,6 +3675,9 @@
     "dm:labels"
   ],
   "Bit Avatar": [
+    "dm:labels"
+  ],
+  "Bitdomain Technician": [
     "dm:labels"
   ],
   "Biter's Horns": [
@@ -3890,6 +4037,9 @@
   "Blow": [
     "tgui:GlassBlowing"
   ],
+  "Blow up the Research Director with a bomb.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Blue": [
     "dm:labels"
   ],
@@ -4131,9 +4281,6 @@
   "Body Gloss": [
     "dm:labels"
   ],
-  "Body Height": [
-    "tgui:height_scaling"
-  ],
   "Body Markings": [
     "tgui:species_features"
   ],
@@ -4151,6 +4298,9 @@
     "tgui:BodyMorpher"
   ],
   "Body Purist": [
+    "dm:labels"
+  ],
+  "Body Retrieval Specialist": [
     "dm:labels"
   ],
   "Body Scan Needed": [
@@ -4272,6 +4422,9 @@
   "Botanical Encyclopedia": [
     "dm:labels"
   ],
+  "Botanical Researcher": [
+    "dm:labels"
+  ],
   "Botanist": [
     "dm:labels"
   ],
@@ -4313,6 +4466,15 @@
   ],
   "Bottles": [
     "tgui:ChemPress"
+  ],
+  "Bottom - Dom": [
+    "dm:labels"
+  ],
+  "Bottom - Sub": [
+    "dm:labels"
+  ],
+  "Bottom - Switch": [
+    "dm:labels"
   ],
   "Bouncer": [
     "dm:labels"
@@ -4361,6 +4523,9 @@
   "Box of Candles": [
     "dm:labels"
   ],
+  "Box of Condoms": [
+    "dm:labels"
+  ],
   "Box of Crayons": [
     "dm:labels"
   ],
@@ -4394,6 +4559,9 @@
   "Bra - Bee-kini": [
     "dm:labels"
   ],
+  "Bra - Chastity": [
+    "dm:labels"
+  ],
   "Bra - Commie": [
     "dm:labels"
   ],
@@ -4407,6 +4575,12 @@
     "dm:labels"
   ],
   "Bra - Halterneck (Alt)": [
+    "dm:labels"
+  ],
+  "Bra - Latex": [
+    "dm:labels"
+  ],
+  "Bra - Lingerie": [
     "dm:labels"
   ],
   "Bra - Neko": [
@@ -4527,10 +4701,58 @@
     "dm:labels",
     "tgui:AntagInfoBloodWorm"
   ],
+  "Bribe the Quartermaster to self-exile.": [
+    "tgui:AntagInfoRevolution"
+  ],
+  "Bridge Aide": [
+    "dm:labels"
+  ],
   "Bridge Assistant": [
     "dm:labels"
   ],
-  "Bridge Pipe": [
+  "Bridge Attendant": [
+    "dm:labels"
+  ],
+  "Bridge Butler": [
+    "dm:labels"
+  ],
+  "Bridge Caretaker": [
+    "dm:labels"
+  ],
+  "Bridge Coffee Maker": [
+    "dm:labels"
+  ],
+  "Bridge Concierge": [
+    "dm:labels"
+  ],
+  "Bridge Custodian": [
+    "dm:labels"
+  ],
+  "Bridge Liaison": [
+    "dm:labels"
+  ],
+  "Bridge Maid": [
+    "dm:labels"
+  ],
+  "Bridge Secretary": [
+    "dm:labels"
+  ],
+  "Bridge Steward": [
+    "dm:labels"
+  ],
+  "Bridge Support": [
+    "dm:labels"
+  ],
+  "Bridge Taskrunner": [
+    "dm:labels"
+  ],
+  "Bridge Tour Coordinator": [
+    "dm:labels"
+  ],
+  "Bridge Underling": [
+    "dm:labels"
+  ],
+  "Bridle": [
     "dm:labels"
   ],
   "Brief outfit": [
@@ -4554,7 +4776,22 @@
   "Briefs": [
     "dm:labels"
   ],
+  "Brig Governor": [
+    "dm:labels"
+  ],
+  "Brig Officer": [
+    "dm:labels"
+  ],
+  "Brig Physician": [
+    "dm:labels"
+  ],
   "Brig Physician's tailcoat": [
+    "dm:labels"
+  ],
+  "Brig Sentry": [
+    "dm:labels"
+  ],
+  "Brig Sergeant": [
     "dm:labels"
   ],
   "Bright Cosmos cigar": [
@@ -4829,7 +5066,13 @@
   "Bunny Lunchbox": [
     "dm:labels"
   ],
+  "Bunny Suit": [
+    "dm:labels"
+  ],
   "Bunny Tailcoat": [
+    "dm:labels"
+  ],
+  "Buns of Thunder": [
     "dm:labels"
   ],
   "Bureaucratic Goat Plush": [
@@ -4896,10 +5139,25 @@
   "Business Hair 4": [
     "dm:labels"
   ],
+  "Businessman": [
+    "dm:labels"
+  ],
+  "Businesswoman": [
+    "dm:labels"
+  ],
+  "Butcher": [
+    "dm:labels"
+  ],
+  "Butler": [
+    "dm:labels"
+  ],
   "Butt": [
     "dm:labels"
   ],
   "Butter": [
+    "dm:labels"
+  ],
+  "Buttplug": [
     "dm:labels"
   ],
   "Buy": [
@@ -5018,6 +5276,9 @@
   ],
   "CID": [
     "tgui:PlayerPanel"
+  ],
+  "CID Officer": [
+    "dm:labels"
   ],
   "CKey": [
     "tgui:AdminVerbPanel"
@@ -5177,6 +5438,9 @@
     "dm:labels"
   ],
   "Camouflage Uniform": [
+    "dm:labels"
+  ],
+  "Camphor": [
     "dm:labels"
   ],
   "Can Run": [
@@ -5365,6 +5629,9 @@
   "Captain Pete's Guide to Pirate Lingo": [
     "dm:labels"
   ],
+  "Captain's Assistant": [
+    "dm:labels"
+  ],
   "Captain's Campaign Hat": [
     "dm:labels"
   ],
@@ -5385,6 +5652,9 @@
   ],
   "Caption:": [
     "tgui:NtosCamera"
+  ],
+  "Capture anyone with a mindshield and have it surgically removed.": [
+    "tgui:AntagInfoRevolution"
   ],
   "Caramel": [
     "dm:labels"
@@ -5675,6 +5945,12 @@
   "CentCom Commander": [
     "dm:labels"
   ],
+  "CentCom Head Intern": [
+    "dm:labels"
+  ],
+  "CentCom Intern": [
+    "dm:labels"
+  ],
   "CentCom Message": [
     "tgui:CargoStatus"
   ],
@@ -5864,6 +6140,7 @@
     "tgui:species_features"
   ],
   "Character Height": [
+    "tgui:height",
     "tgui:spacer_born"
   ],
   "Character Laugh": [
@@ -5959,6 +6236,12 @@
   "Chassis": [
     "dm:labels"
   ],
+  "Chastity Belt": [
+    "dm:labels"
+  ],
+  "Chastity Cage": [
+    "dm:labels"
+  ],
   "Chat Client": [
     "dm:labels"
   ],
@@ -5993,6 +6276,9 @@
     "tgui:CivCargoHoldTerminal"
   ],
   "Check OOC": [
+    "dm:labels"
+  ],
+  "Check OOC Notes": [
     "dm:labels"
   ],
   "Check Tram Controller!": [
@@ -6138,6 +6424,9 @@
   "Chicken Suit": [
     "dm:labels"
   ],
+  "Chief Constable": [
+    "dm:labels"
+  ],
   "Chief Engineer": [
     "dm:labels"
   ],
@@ -6147,6 +6436,9 @@
   "Chief Engineers winter coat": [
     "dm:labels"
   ],
+  "Chief Executive Officer": [
+    "dm:labels"
+  ],
   "Chief Medical Officer": [
     "dm:labels"
   ],
@@ -6154,6 +6446,21 @@
     "dm:labels"
   ],
   "Chief Medical Officers winter coat": [
+    "dm:labels"
+  ],
+  "Chief Physician": [
+    "dm:labels"
+  ],
+  "Chief Science Officer": [
+    "dm:labels"
+  ],
+  "Chief Security Officer": [
+    "dm:labels"
+  ],
+  "Chief Technical Officer": [
+    "dm:labels"
+  ],
+  "Chief of Security": [
     "dm:labels"
   ],
   "Chimpanzee": [
@@ -6205,6 +6512,9 @@
   "Chlorine": [
     "dm:labels"
   ],
+  "Choke Slut": [
+    "dm:labels"
+  ],
   "Choker": [
     "dm:labels"
   ],
@@ -6232,7 +6542,7 @@
   "Choose which announcer you'd like hear.": [
     "tgui:sound"
   ],
-  "Choose which sound prompt to play on getting ghost polls.": [
+  "Choose which sound prompt to play on getting ghost polls. Disabled also hides their chat message.": [
     "tgui:sounds"
   ],
   "Christianity": [
@@ -6314,6 +6624,9 @@
     "tgui:CircuitAdminPanel"
   ],
   "Circuitboard": [
+    "dm:labels"
+  ],
+  "Circuitry Designer": [
     "dm:labels"
   ],
   "Circuits": [
@@ -6500,6 +6813,9 @@
   "Cleavage": [
     "dm:labels"
   ],
+  "Cleric": [
+    "dm:labels"
+  ],
   "Clever": [
     "dm:labels"
   ],
@@ -6548,6 +6864,9 @@
   "Click your target...": [
     "tgui:index"
   ],
+  "Clicker": [
+    "dm:labels"
+  ],
   "Clicking on something as a ghost will examine it.": [
     "tgui:ghost"
   ],
@@ -6557,6 +6876,12 @@
   "Clipboard": [
     "dm:labels",
     "tgui:Clipboard"
+  ],
+  "Clipboard Jockey": [
+    "dm:labels"
+  ],
+  "Cloaca": [
+    "dm:labels"
   ],
   "Clock In": [
     "tgui:TimeClock"
@@ -6569,6 +6894,9 @@
   ],
   "Clockwork Marauders": [
     "tgui:ClockworkSlab"
+  ],
+  "Clockwork Priest": [
+    "dm:labels"
   ],
   "Clockwork Slab": [
     "tgui:ClockworkSlab"
@@ -6711,6 +7039,15 @@
   "Clumsy Tail": [
     "dm:labels"
   ],
+  "Clussy gloves": [
+    "dm:labels"
+  ],
+  "Clussy heels": [
+    "dm:labels"
+  ],
+  "Clussy outfit": [
+    "dm:labels"
+  ],
   "Cobra Hood": [
     "dm:labels"
   ],
@@ -6786,7 +7123,13 @@
   "Coffee": [
     "dm:labels"
   ],
+  "Coffee Brewer": [
+    "dm:labels"
+  ],
   "Coffee House": [
+    "dm:labels"
+  ],
+  "Coffee Officer": [
     "dm:labels"
   ],
   "Coffeepot": [
@@ -6846,9 +7189,6 @@
   "Collisions": [
     "tgui:TramPlaque"
   ],
-  "Colonial": [
-    "dm:labels"
-  ],
   "Colonial Cap": [
     "dm:labels"
   ],
@@ -6862,6 +7202,9 @@
     "dm:labels"
   ],
   "Colonial Outfit": [
+    "dm:labels"
+  ],
+  "Colonist": [
     "dm:labels"
   ],
   "Color": [
@@ -6926,6 +7269,9 @@
   ],
   "Coloring: {0}": [
     "tgui:Colormate"
+  ],
+  "Colorist": [
+    "dm:labels"
   ],
   "Colors": [
     "tgui:GreyscaleModifyMenu"
@@ -7039,6 +7385,9 @@
   "Combat Cybernetic Organs": [
     "dm:labels"
   ],
+  "Combat Medic": [
+    "dm:labels"
+  ],
   "Combat Mode": [
     "tgui:index"
   ],
@@ -7049,6 +7398,9 @@
     "dm:labels"
   ],
   "Combover": [
+    "dm:labels"
+  ],
+  "Comedian": [
     "dm:labels"
   ],
   "Comet": [
@@ -7063,10 +7415,40 @@
   "Command": [
     "dm:labels"
   ],
+  "Command Advisor": [
+    "dm:labels"
+  ],
+  "Command Aide": [
+    "dm:labels"
+  ],
+  "Command Bikini": [
+    "dm:labels"
+  ],
   "Command Boatcloak": [
     "dm:labels"
   ],
+  "Command Bodyguard": [
+    "dm:labels"
+  ],
+  "Command Cadet": [
+    "dm:labels"
+  ],
   "Command Consoles": [
+    "dm:labels"
+  ],
+  "Command Consultant": [
+    "dm:labels"
+  ],
+  "Command Deck Assistant": [
+    "dm:labels"
+  ],
+  "Command Entertainment Officer": [
+    "dm:labels"
+  ],
+  "Command Protection Officer": [
+    "dm:labels"
+  ],
+  "Command Security Specialist": [
     "dm:labels"
   ],
   "Command Utility Uniform": [
@@ -7075,10 +7457,16 @@
   "Commander": [
     "dm:labels"
   ],
+  "Commander of the Guard": [
+    "dm:labels"
+  ],
   "Commander's Pauldron": [
     "dm:labels"
   ],
   "Commanding Fox Plushie": [
+    "dm:labels"
+  ],
+  "Commanding Officer": [
     "dm:labels"
   ],
   "Commanding Teshari Plushy": [
@@ -7094,6 +7482,12 @@
     "dm:labels"
   ],
   "Commie Boxers": [
+    "dm:labels"
+  ],
+  "Commissioner of Security": [
+    "dm:labels"
+  ],
+  "Commodities Trader": [
     "dm:labels"
   ],
   "Common Second Language": [
@@ -7182,7 +7576,13 @@
   "Concerningly Large Merseed Plush": [
     "dm:labels"
   ],
+  "Concierge": [
+    "dm:labels"
+  ],
   "Concrete": [
+    "dm:labels"
+  ],
+  "Concubus": [
     "dm:labels"
   ],
   "Condense": [
@@ -7206,6 +7606,12 @@
     "tgui:ChemMixingChamber",
     "tgui:ChemReactionChamber",
     "tgui:SpawnersMenu"
+  ],
+  "Condom": [
+    "dm:labels"
+  ],
+  "Confectionist": [
+    "dm:labels"
   ],
   "Confetti": [
     "dm:labels"
@@ -7342,6 +7748,9 @@
   "Consent": [
     "tgui:TtsVoiceReview"
   ],
+  "Conservator": [
+    "dm:labels"
+  ],
   "Console": [
     "dm:labels",
     "tgui:DnaConsoleStorage"
@@ -7363,6 +7772,9 @@
   ],
   "Construction Mode": [
     "tgui:ModulesPane"
+  ],
+  "Consultant Bikini": [
+    "dm:labels"
   ],
   "Consumable": [
     "dm:labels"
@@ -7424,8 +7836,14 @@
   "Contraband": [
     "dm:labels"
   ],
+  "Contract Miner": [
+    "dm:labels"
+  ],
   "Contract?": [
     "tgui:SparringContract"
+  ],
+  "Contractor": [
+    "dm:labels"
   ],
   "Contractor Red": [
     "dm:labels"
@@ -7642,6 +8060,18 @@
   "Coroner winter coat": [
     "dm:labels"
   ],
+  "Corporate Diplomat": [
+    "dm:labels"
+  ],
+  "Corporate Interest Officer": [
+    "dm:labels"
+  ],
+  "Corporate Liaison": [
+    "dm:labels"
+  ],
+  "Corporate Representative": [
+    "dm:labels"
+  ],
   "Corpsman": [
     "dm:labels"
   ],
@@ -7752,6 +8182,9 @@
   "Could not retrieve the global table. Was it corrupted or shadowed?": [
     "tgui:index"
   ],
+  "Counsellor": [
+    "dm:labels"
+  ],
   "Count": [
     "tgui:FishingCalculator",
     "tgui:constants"
@@ -7828,6 +8261,9 @@
   "Cranberry Cadillac": [
     "dm:labels"
   ],
+  "Crate Pusher": [
+    "dm:labels"
+  ],
   "Crate already shipped! No cancelling now!": [
     "tgui:NtosDeptOrder"
   ],
@@ -7879,6 +8315,9 @@
   ],
   "Create a new shuttle using a shuttle frame.": [
     "tgui:ShuttleBlueprints"
+  ],
+  "Create an army of mechs to march on the bridge.": [
+    "tgui:AntagInfoRevolution"
   ],
   "Create case": [
     "tgui:index"
@@ -7954,6 +8393,9 @@
     "tgui:CrewConsole",
     "tgui:CrewConsoleBubbers"
   ],
+  "Crew Supervisor": [
+    "dm:labels"
+  ],
   "Crew for 7 Food, 7 Fuel": [
     "tgui:OrionGame"
   ],
@@ -7965,6 +8407,9 @@
   ],
   "Criminal Activity": [
     "tgui:Newscaster"
+  ],
+  "Criminal Investigator": [
+    "dm:labels"
   ],
   "Criminal Name": [
     "tgui:Newscaster"
@@ -8008,6 +8453,9 @@
   ],
   "Criticality": [
     "tgui:RBMK2"
+  ],
+  "Crocin": [
+    "dm:labels"
   ],
   "Crop Top Turtleneck": [
     "dm:labels"
@@ -8086,6 +8534,12 @@
   ],
   "Cuisines": [
     "tgui:index"
+  ],
+  "Culinary Artist": [
+    "dm:labels"
+  ],
+  "Cult": [
+    "dm:labels"
   ],
   "Cultist": [
     "dm:antagonists"
@@ -8307,6 +8761,9 @@
   "Custodial Locator": [
     "dm:labels"
   ],
+  "Custodial Technician": [
+    "dm:labels"
+  ],
   "Custodian": [
     "dm:labels"
   ],
@@ -8330,6 +8787,9 @@
   ],
   "Custom Damage": [
     "tgui:constants"
+  ],
+  "Custom Dildo": [
+    "dm:labels"
   ],
   "Custom Outfit Manager": [
     "tgui:OutfitManager"
@@ -8377,6 +8837,9 @@
   ],
   "Cut Hair": [
     "dm:labels"
+  ],
+  "Cut off the air supply to the brig.": [
+    "tgui:AntagInfoRevolution"
   ],
   "Cutout": [
     "dm:labels"
@@ -8477,6 +8940,9 @@
   "Cybernetic Wolf (Inverted)": [
     "dm:labels"
   ],
+  "Cybernetic bladder": [
+    "dm:labels"
+  ],
   "Cybernetic eyes": [
     "dm:labels"
   ],
@@ -8484,6 +8950,9 @@
     "dm:labels"
   ],
   "Cybernetic tongue": [
+    "dm:labels"
+  ],
+  "Cyberneticist": [
     "dm:labels"
   ],
   "Cybernetics": [
@@ -8587,6 +9056,9 @@
     "dm:labels"
   ],
   "Cyclops Sclera": [
+    "dm:labels"
+  ],
+  "Cytologist": [
     "dm:labels"
   ],
   "Cyvian": [
@@ -8818,6 +9290,9 @@
     "tgui:NanopaintSelectDialog",
     "tgui:NtosFileManager"
   ],
+  "Data Retrieval Specialist": [
+    "dm:labels"
+  ],
   "Data Type": [
     "tgui:ServerMonitor"
   ],
@@ -8908,6 +9383,9 @@
   "Death Degradation Disorder": [
     "dm:labels"
   ],
+  "Death Mimicry": [
+    "dm:labels"
+  ],
   "Deathhawk": [
     "dm:labels"
   ],
@@ -8947,6 +9425,12 @@
   "Decides the spread type.": [
     "tgui:Symptom",
     "tgui:Virus"
+  ],
+  "Deck Chief": [
+    "dm:labels"
+  ],
+  "Deck Worker": [
+    "dm:labels"
   ],
   "Deckers Hat": [
     "dm:labels"
@@ -9044,6 +9528,12 @@
   ],
   "Defense": [
     "tgui:ClockworkSlab"
+  ],
+  "Defense Attorney": [
+    "dm:labels"
+  ],
+  "Defense Contractor": [
+    "dm:labels"
   ],
   "Defensive": [
     "tgui:constants"
@@ -9189,6 +9679,9 @@
   "Demonic Powers": [
     "tgui:AntagInfoDemon"
   ],
+  "Dentata": [
+    "dm:labels"
+  ],
   "Deny": [
     "tgui:Interview",
     "tgui:OpposingForcePanel"
@@ -9260,6 +9753,15 @@
     "tgui:StripMenu"
   ],
   "Depression": [
+    "dm:labels"
+  ],
+  "Deprivation Helmet": [
+    "dm:labels"
+  ],
+  "Deputy Commissioner": [
+    "dm:labels"
+  ],
+  "Deputy Commissioner of Security": [
     "dm:labels"
   ],
   "Deputy Hat": [
@@ -9540,9 +10042,6 @@
   "Difficulty": [
     "tgui:FishingCalculator"
   ],
-  "Digital Valve": [
-    "dm:labels"
-  ],
   "Digitigrade": [
     "dm:labels"
   ],
@@ -9559,6 +10058,9 @@
     "dm:labels"
   ],
   "Digitigrade prosthetic right leg": [
+    "dm:labels"
+  ],
+  "Dildo": [
     "dm:labels"
   ],
   "Diligent": [
@@ -9586,6 +10088,9 @@
     "dm:labels"
   ],
   "Diphenhydramine": [
+    "dm:labels"
+  ],
+  "Diplomat": [
     "dm:labels"
   ],
   "Dipped": [
@@ -9753,6 +10258,9 @@
   "Disguise": [
     "tgui:AbductorConsole"
   ],
+  "Disguise as the heads of staff and confuse the crew.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Dishes": [
     "tgui:index"
   ],
@@ -9785,6 +10293,9 @@
   ],
   "Dismissed Wanted Issue:": [
     "tgui:Newscaster"
+  ],
+  "Dispatch Officer": [
+    "dm:labels"
   ],
   "Dispense": [
     "tgui:ChemDispenser",
@@ -9931,6 +10442,18 @@
   "Dome": [
     "dm:labels"
   ],
+  "Dominant Aura": [
+    "dm:labels"
+  ],
+  "Dominant Cap": [
+    "dm:labels"
+  ],
+  "Dominant Heels": [
+    "dm:labels"
+  ],
+  "Dominatrix Dress": [
+    "dm:labels"
+  ],
   "Don gamer cloak": [
     "tgui:playtime_reward_cloak"
   ],
@@ -9977,7 +10500,16 @@
   "Doorcrawling": [
     "tgui:AntagInfoBloodWorm"
   ],
+  "Doorman": [
+    "dm:labels"
+  ],
   "Doors": [
+    "dm:labels"
+  ],
+  "Doorwoman": [
+    "dm:labels"
+  ],
+  "Dopamine": [
     "dm:labels"
   ],
   "Dorsal Down": [
@@ -9987,6 +10519,9 @@
     "dm:labels"
   ],
   "Double Bun": [
+    "dm:labels"
+  ],
+  "Double Dildo": [
     "dm:labels"
   ],
   "Double Drills": [
@@ -10121,6 +10656,9 @@
   "Dreamhead (Splurt)": [
     "dm:labels"
   ],
+  "Dredger": [
+    "dm:labels"
+  ],
   "Drider": [
     "dm:labels"
   ],
@@ -10128,6 +10666,9 @@
     "dm:labels"
   ],
   "Drill Hair (Extended)": [
+    "dm:labels"
+  ],
+  "Drill Technician": [
     "dm:labels"
   ],
   "Drillruru": [
@@ -10192,10 +10733,19 @@
   "Dry": [
     "tgui:SmartVend"
   ],
+  "Duchess": [
+    "dm:labels"
+  ],
   "Duck (Splurt)": [
     "dm:labels"
   ],
+  "Duke": [
+    "dm:labels"
+  ],
   "Dullahan": [
+    "dm:labels"
+  ],
+  "Dumb For Cum": [
     "dm:labels"
   ],
   "Dump": [
@@ -10296,6 +10846,9 @@
   "ENGINES:": [
     "tgui:EmergencyShuttleConsole"
   ],
+  "ENT-PET Mk.II ULTRA skillchip": [
+    "dm:labels"
+  ],
   "ERROR": [
     "dm:labels",
     "tgui:AppearanceInfo",
@@ -10331,6 +10884,9 @@
   ],
   "ETA: {0}{1}": [
     "tgui:ExodroneConsole"
+  ],
+  "EVA Technician": [
+    "dm:labels"
   ],
   "EXECUTE": [
     "tgui:NtosNetDos"
@@ -10682,6 +11238,9 @@
   "Electrical Assemblies": [
     "dm:labels"
   ],
+  "Electrician": [
+    "dm:labels"
+  ],
   "Electrified": [
     "tgui:AiAirlock"
   ],
@@ -10730,6 +11289,12 @@
   "Emergency Access": [
     "tgui:AiAirlock"
   ],
+  "Emergency Damage Control Technician": [
+    "dm:labels"
+  ],
+  "Emergency Fire Technician": [
+    "dm:labels"
+  ],
   "Emergency Lighting": [
     "tgui:Apc"
   ],
@@ -10740,6 +11305,9 @@
     "tgui:KeycardAuth"
   ],
   "Emergency Medical": [
+    "dm:labels"
+  ],
+  "Emergency Medical Technician": [
     "dm:labels"
   ],
   "Emergency Response Team Commander": [
@@ -10761,6 +11329,9 @@
     "tgui:AbductorConsole"
   ],
   "Emergency Toolbox": [
+    "dm:labels"
+  ],
+  "Emergency aphrodisiac shot": [
     "dm:labels"
   ],
   "Emission's Helmet": [
@@ -10814,6 +11385,9 @@
   "Emotes will show above heads.": [
     "tgui:runechat"
   ],
+  "Emotional Support Animal": [
+    "dm:labels"
+  ],
   "Empath": [
     "dm:labels"
   ],
@@ -10828,6 +11402,9 @@
   ],
   "Employer thoughts:{0}": [
     "tgui:AntagInfoTraitor"
+  ],
+  "Employment Officer": [
+    "dm:labels"
   ],
   "Empties the container and reclaims {0}% of its rounds' base materials{1}.": [
     "tgui:AmmoWorkbench"
@@ -11112,6 +11689,9 @@
   "Engine Parts: {0}": [
     "tgui:OrionGame"
   ],
+  "Engine Technician": [
+    "dm:labels"
+  ],
   "Engine Technician Harness": [
     "dm:labels"
   ],
@@ -11137,6 +11717,9 @@
     "dm:labels"
   ],
   "Engineering Equipment": [
+    "dm:labels"
+  ],
+  "Engineering Foreman": [
     "dm:labels"
   ],
   "Engineering Guard": [
@@ -11247,6 +11830,9 @@
   "Enterprise Resource Planning": [
     "tgui:NtosSelfServe"
   ],
+  "Entertainer": [
+    "dm:labels"
+  ],
   "Entertainers": [
     "dm:labels"
   ],
@@ -11308,6 +11894,9 @@
   "Epicenter Radius": [
     "tgui:DopplerArray"
   ],
+  "Epidemiologist": [
+    "dm:labels"
+  ],
   "Epilepsy": [
     "dm:labels"
   ],
@@ -11317,6 +11906,12 @@
   "Eqp": [
     "tgui:ApcControl",
     "tgui:PowerMonitor"
+  ],
+  "Equine": [
+    "dm:labels"
+  ],
+  "Equip your leaders with the best gear you can find.": [
+    "tgui:AntagInfoRevolution"
   ],
   "Equipment": [
     "dm:labels",
@@ -11463,6 +12058,9 @@
   "Excalibur": [
     "dm:labels"
   ],
+  "Excavator": [
+    "dm:labels"
+  ],
   "Exceeds 100% - each reagent will be proportionally reduced in the product.": [
     "tgui:Seed"
   ],
@@ -11491,7 +12089,13 @@
   "Execute this ruleset": [
     "tgui:DynamicAdmin"
   ],
+  "Executive Officer": [
+    "dm:labels"
+  ],
   "Executive Pencilskirt": [
+    "dm:labels"
+  ],
+  "Executive Protection Agent": [
     "dm:labels"
   ],
   "Executive Suit": [
@@ -11608,6 +12212,9 @@
   "Explore": [
     "tgui:ExodroneConsole"
   ],
+  "Explorer Stripper Outfit": [
+    "dm:labels"
+  ],
   "Explosion": [
     "tgui:PlayerPanel"
   ],
@@ -11626,6 +12233,9 @@
   ],
   "Export To Disk": [
     "tgui:DnaConsoleEnzymes"
+  ],
+  "Export Value:": [
+    "tgui:AtmosHandbook"
   ],
   "Export an application as a .json file.": [
     "tgui:OpposingForcePanel"
@@ -11692,6 +12302,9 @@
   "Extra height shot": [
     "dm:labels"
   ],
+  "Extra-Productive Genitals": [
+    "dm:labels"
+  ],
   "Extract": [
     "tgui:SkillStation"
   ],
@@ -11715,9 +12328,6 @@
   ],
   "Extrashield Green": [
     "dm:labels"
-  ],
-  "Extreme": [
-    "tgui:calculateDangerLevel"
   ],
   "Extreme Cold": [
     "tgui:AntagInfoBloodWorm"
@@ -11821,6 +12431,9 @@
   ],
   "Facial hair gradient color": [
     "tgui:species_features"
+  ],
+  "Facility Director": [
+    "dm:labels"
   ],
   "Faction": [
     "tgui:PlayerPanel"
@@ -11945,6 +12558,9 @@
   ],
   "Fantastical Army": [
     "tgui:constants"
+  ],
+  "Farmer": [
+    "dm:labels"
   ],
   "Farsight": [
     "dm:labels"
@@ -12155,6 +12771,9 @@
   "Fibers {0}/{1}": [
     "tgui:ForensicsSpoofer"
   ],
+  "Field Medic": [
+    "dm:labels"
+  ],
   "Fiery": [
     "tgui:constants"
   ],
@@ -12255,6 +12874,9 @@
   "Find hidden influences and ways to gain magical powers and become powerful as one of several paths.": [
     "dm:antagonists"
   ],
+  "Find the remaining heads of staff and eliminate them.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Find your own path.": [
     "tgui:AntagInfoHereticV2"
   ],
@@ -12298,6 +12920,9 @@
   "Fire Immunity": [
     "dm:labels"
   ],
+  "Firefighter": [
+    "dm:labels"
+  ],
   "Firewatch": [
     "dm:labels"
   ],
@@ -12336,6 +12961,15 @@
   "Fish has no traits!": [
     "tgui:FishAnalyzer"
   ],
+  "Fisher": [
+    "dm:labels"
+  ],
+  "Fisherman": [
+    "dm:labels"
+  ],
+  "Fisherwoman": [
+    "dm:labels"
+  ],
   "Fishing": [
     "dm:labels"
   ],
@@ -12365,6 +12999,9 @@
   ],
   "Fistbump": [
     "dm:interactions"
+  ],
+  "Fitness Instructor": [
+    "dm:labels"
   ],
   "Fitted Wetsuit": [
     "dm:labels"
@@ -12397,6 +13034,12 @@
     "dm:labels"
   ],
   "Flare": [
+    "dm:labels"
+  ],
+  "Flared": [
+    "dm:labels"
+  ],
+  "Flared (Alt)": [
     "dm:labels"
   ],
   "Flash": [
@@ -12457,6 +13100,9 @@
   "Fleet Admiral": [
     "dm:labels"
   ],
+  "Fleshlight": [
+    "dm:labels"
+  ],
   "Fleshy Belly": [
     "tgui:BellyUI"
   ],
@@ -12500,6 +13146,9 @@
     "tgui:species_features"
   ],
   "Floral aspect (Emotes)": [
+    "dm:labels"
+  ],
+  "Florist": [
     "dm:labels"
   ],
   "Flour": [
@@ -12678,6 +13327,9 @@
   "Follow the directives at any cost!": [
     "tgui:AntagInfoBrainwashed"
   ],
+  "Follow your leaders as closely as possible.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Font": [
     "tgui:PlayerPanel"
   ],
@@ -12779,8 +13431,23 @@
   "Foreigner": [
     "dm:labels"
   ],
+  "Forensic Pathologist": [
+    "dm:labels"
+  ],
+  "Forensic Scientist": [
+    "dm:labels"
+  ],
+  "Forensic Technician": [
+    "dm:labels"
+  ],
   "Forensics Spoofing Device": [
     "tgui:ForensicsSpoofer"
+  ],
+  "Forge Artisan": [
+    "dm:labels"
+  ],
+  "Forgemaster": [
+    "dm:labels"
   ],
   "Forget {0}": [
     "tgui:LanguagesMenu"
@@ -12897,6 +13564,9 @@
     "dm:labels"
   ],
   "Freedom Boxers": [
+    "dm:labels"
+  ],
+  "Freelancer": [
     "dm:labels"
   ],
   "Freerunning": [
@@ -13038,6 +13708,9 @@
   "Fruits": [
     "dm:labels"
   ],
+  "Fry Cook": [
+    "dm:labels"
+  ],
   "Fuchsia Lipstick": [
     "dm:labels"
   ],
@@ -13141,7 +13814,13 @@
   "Funding:": [
     "tgui:NtosScipaper"
   ],
+  "Funeral Director": [
+    "dm:labels"
+  ],
   "Furniture": [
+    "dm:labels"
+  ],
+  "Furred": [
     "dm:labels"
   ],
   "Furred Jacket": [
@@ -13301,10 +13980,19 @@
   "Game Panel": [
     "tgui:PodStatusPage"
   ],
+  "Gameplay Only": [
+    "dm:labels"
+  ],
   "Gamer": [
     "dm:labels"
   ],
   "Games": [
+    "dm:labels"
+  ],
+  "Gaping": [
+    "dm:labels"
+  ],
+  "Gardener": [
     "dm:labels"
   ],
   "Garibaldi": [
@@ -13332,12 +14020,6 @@
   "Gas Monitoring": [
     "tgui:Temperatures"
   ],
-  "Gas Pump": [
-    "dm:labels"
-  ],
-  "Gas Reactions": [
-    "tgui:GasmixParser"
-  ],
   "Gas Selection": [
     "tgui:exotic_respiration"
   ],
@@ -13348,6 +14030,7 @@
     "dm:labels"
   ],
   "Gases": [
+    "tgui:AtmosHandbook",
     "tgui:Crystallizer",
     "tgui:Supermatter",
     "tgui:TankCompressor"
@@ -13357,6 +14040,12 @@
   ],
   "Gateway Unpowered": [
     "tgui:Gateway"
+  ],
+  "Gather weapons and armor.": [
+    "tgui:AntagInfoRevolution"
+  ],
+  "Gay": [
+    "dm:labels"
   ],
   "Gear": [
     "dm:labels"
@@ -13396,6 +14085,12 @@
   "Genderfluid": [
     "dm:labels"
   ],
+  "Gene Tailor": [
+    "dm:labels"
+  ],
+  "Genemancer": [
+    "dm:labels"
+  ],
   "General": [
     "tgui:PlayerPanel",
     "tgui:constants"
@@ -13404,6 +14099,9 @@
     "tgui:OrionGame"
   ],
   "General Modules": [
+    "dm:labels"
+  ],
+  "General Practitioner": [
     "dm:labels"
   ],
   "General Records": [
@@ -13444,6 +14142,9 @@
   "Genetic Damage": [
     "tgui:DnaScanner"
   ],
+  "Genetic Engineer": [
+    "dm:labels"
+  ],
   "Genetic Makeup Buffers": [
     "tgui:DnaConsoleEnzymes"
   ],
@@ -13469,6 +14170,12 @@
     "dm:labels"
   ],
   "Genetics Machines": [
+    "dm:labels"
+  ],
+  "Genetics Researcher": [
+    "dm:labels"
+  ],
+  "Genital Sniffer": [
     "dm:labels"
   ],
   "Genome Sequencer™": [
@@ -13709,6 +14416,9 @@
   "Go in for the kill!": [
     "tgui:NtosArcade"
   ],
+  "Go out in a blaze of glory.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Go to Destination.": [
     "tgui:NtosRoboControl"
   ],
@@ -13815,6 +14525,9 @@
     "dm:labels"
   ],
   "Gradient": [
+    "dm:labels"
+  ],
+  "Graduate Student": [
     "dm:labels"
   ],
   "Graft gains the following trait:": [
@@ -14072,6 +14785,9 @@
   "Gross food": [
     "dm:labels"
   ],
+  "Groundskeeper": [
+    "dm:labels"
+  ],
   "Group By": [
     "tgui:AdminTicketStats"
   ],
@@ -14089,6 +14805,9 @@
   ],
   "Growth Stages": [
     "tgui:AntagInfoBloodWorm"
+  ],
+  "Guard": [
+    "dm:labels"
   ],
   "Guest": [
     "tgui:HilbertsHotelRoomControl"
@@ -14111,6 +14830,9 @@
   "Gum": [
     "dm:labels"
   ],
+  "Gumshoe": [
+    "dm:labels"
+  ],
   "Gun Info": [
     "tgui:MicrofusionGunControl"
   ],
@@ -14131,6 +14853,9 @@
   ],
   "Gur Fbeprere": [
     "tgui:PopoutMenu"
+  ],
+  "Guru": [
+    "dm:labels"
   ],
   "Gygax": [
     "dm:labels"
@@ -14176,12 +14901,21 @@
   "HUMANS_ONLY": [
     "dm:labels"
   ],
+  "HVAC Engineer": [
+    "dm:labels"
+  ],
+  "Habitability Technician": [
+    "dm:labels"
+  ],
   "Hack": [
     "tgui:MessageMonitor",
     "tgui:RoboticsControlConsole"
   ],
   "Hack Door": [
     "tgui:Installed"
+  ],
+  "Hacked APCs:": [
+    "tgui:MalfunctionModulePicker"
   ],
   "Hacked Synthetic": [
     "dm:antagonists"
@@ -14222,6 +14956,9 @@
   "Hairfre": [
     "dm:labels"
   ],
+  "Hairy": [
+    "dm:labels"
+  ],
   "Hakka-Mate": [
     "dm:labels"
   ],
@@ -14230,6 +14967,9 @@
   ],
   "Half Height Aperture:": [
     "tgui:NtosCamera"
+  ],
+  "Half Latex Catsuit": [
+    "dm:labels"
   ],
   "Half Mask Respirator": [
     "dm:labels"
@@ -14531,8 +15271,26 @@
   "Head Accessories Selection": [
     "tgui:species_features"
   ],
+  "Head Assistant": [
+    "dm:labels"
+  ],
+  "Head Crate Pusher": [
+    "dm:labels"
+  ],
+  "Head Crystallomancer": [
+    "dm:labels"
+  ],
+  "Head Physician": [
+    "dm:labels"
+  ],
   "Head Revolutionary": [
     "dm:antagonists"
+  ],
+  "Head of Engineering": [
+    "dm:labels"
+  ],
+  "Head of Medical": [
+    "dm:labels"
   ],
   "Head of Personnel": [
     "dm:labels"
@@ -14558,11 +15316,17 @@
   "Head of Security's Navy Blue Formal Jacket": [
     "dm:labels"
   ],
+  "Head of Supply": [
+    "dm:labels"
+  ],
   "Headcrab Plushie": [
     "dm:labels"
   ],
   "Headpat": [
     "dm:interactions"
+  ],
+  "Headpat Slut": [
+    "dm:labels"
   ],
   "Headphones": [
     "dm:labels"
@@ -14644,9 +15408,6 @@
     "dm:labels"
   ],
   "Heat Exchange": [
-    "dm:labels"
-  ],
-  "Heat Exchanger": [
     "dm:labels"
   ],
   "Heat Glasses": [
@@ -14752,6 +15513,12 @@
   "Helpful": [
     "tgui:Secrets"
   ],
+  "Hemi": [
+    "dm:labels"
+  ],
+  "Hemi (Alt)": [
+    "dm:labels"
+  ],
   "Hemiplegic": [
     "dm:labels",
     "tgui:hemiplegic"
@@ -14768,6 +15535,9 @@
   "Hemostat": [
     "dm:labels"
   ],
+  "Henchman": [
+    "dm:labels"
+  ],
   "Henchmen Coat": [
     "dm:labels"
   ],
@@ -14781,6 +15551,9 @@
     "dm:labels"
   ],
   "Hephaestus Industries 2.0": [
+    "dm:labels"
+  ],
+  "Herbalist": [
     "dm:labels"
   ],
   "Hercuri": [
@@ -14818,6 +15591,9 @@
     "tgui:ColorSetter"
   ],
   "Hexacrete": [
+    "dm:labels"
+  ],
+  "Hexacrocin": [
     "dm:labels"
   ],
   "Hexagon": [
@@ -14871,8 +15647,7 @@
   ],
   "High": [
     "dm:labels",
-    "tgui:JobsPage",
-    "tgui:calculateDangerLevel"
+    "tgui:JobsPage"
   ],
   "High Heat": [
     "tgui:AntagInfoBloodWorm"
@@ -14884,6 +15659,12 @@
     "tgui:HighLuminosityEyesMenu"
   ],
   "High Luminosity Moth Eyes": [
+    "dm:labels"
+  ],
+  "High Priest": [
+    "dm:labels"
+  ],
+  "High Priestess": [
     "dm:labels"
   ],
   "High Priority": [
@@ -14965,10 +15746,16 @@
   "Histamine": [
     "dm:labels"
   ],
+  "Historian": [
+    "dm:labels"
+  ],
   "History": [
     "tgui:Fax"
   ],
   "Hitop": [
+    "dm:labels"
+  ],
+  "Hobbyist": [
     "dm:labels"
   ],
   "Holding Tank": [
@@ -15263,6 +16050,9 @@
   "Human": [
     "dm:labels"
   ],
+  "Human (Alt)": [
+    "dm:labels"
+  ],
   "Human Authority Whitelist Setting": [
     "dm:labels"
   ],
@@ -15276,6 +16066,9 @@
     "dm:labels"
   ],
   "Human Laugh": [
+    "dm:labels"
+  ],
+  "Human Resources Agent": [
     "dm:labels"
   ],
   "Human Scream": [
@@ -15327,6 +16120,9 @@
   "Hydrophilic": [
     "dm:labels"
   ],
+  "Hydroponicist": [
+    "dm:labels"
+  ],
   "Hydroponics Winter Coat": [
     "dm:labels"
   ],
@@ -15366,10 +16162,28 @@
   "Hypersensitive": [
     "dm:labels"
   ],
+  "Hypersexual": [
+    "dm:labels"
+  ],
   "Hypertorus Fusion Reactor control panel": [
     "tgui:index"
   ],
   "Hypnodemon's Ring": [
+    "dm:labels"
+  ],
+  "Hypnophrase": [
+    "dm:labels"
+  ],
+  "Hypnotic": [
+    "dm:labels"
+  ],
+  "Hypnotic Gaze": [
+    "dm:labels"
+  ],
+  "Hypnotic Goggles": [
+    "dm:labels"
+  ],
+  "Hypnotic Optics": [
     "dm:labels"
   ],
   "Hypovial": [
@@ -15613,6 +16427,9 @@
   "If true, you will be permanently killed on permaghost as well.": [
     "tgui:death_degradation"
   ],
+  "If unchecked, this event cannot randomly trigger.": [
+    "tgui:ForceEvent"
+  ],
   "If unchecked, you'll only be able to understand the language, but not speak it.": [
     "tgui:language"
   ],
@@ -15682,6 +16499,9 @@
   "Ignore Command": [
     "tgui:PortableTurret"
   ],
+  "Ilkhan": [
+    "dm:labels"
+  ],
   "Illegal Designs": [
     "dm:labels"
   ],
@@ -15696,6 +16516,9 @@
   ],
   "Image": [
     "tgui:AppearanceInfo"
+  ],
+  "Imam": [
+    "dm:labels"
   ],
   "Immovable Rod Plushie": [
     "dm:labels"
@@ -15826,6 +16649,9 @@
   "In chemistry, pH is a scale used to specify the acidity or basicity of an aqueous solution. Acidic solutions are measured to have lower pH values than basic or alkaline solutions. The pH scale is logarithmic and inversely indicates the concentration of hydrogen ions in the solution.": [
     "tgui:ChemReactionChamber"
   ],
+  "In simpler terms: The lower the specific heat of the gas, the harder it will be to heat it up.": [
+    "tgui:AtmosHandbook"
+  ],
   "In the 2200's, the Orion trail was established as a dangerous yet opportunistic trail through space for those willing to risk it. Many pioneers seeking new lives on the galactic frontier would find exactly what they were seeking... or lose their lives on the way.": [
     "tgui:OrionGame"
   ],
@@ -15886,6 +16712,9 @@
   "Incuboi Plushie": [
     "dm:labels"
   ],
+  "Incubus draft autoinjector": [
+    "dm:labels"
+  ],
   "Indebted": [
     "dm:labels"
   ],
@@ -15911,6 +16740,9 @@
     "dm:labels"
   ],
   "Inferno Suit": [
+    "dm:labels"
+  ],
+  "Infertile": [
     "dm:labels"
   ],
   "Infinite": [
@@ -16156,9 +16988,6 @@
   "Insignia of Steele": [
     "dm:labels"
   ],
-  "Insignificant": [
-    "tgui:calculateDangerLevel"
-  ],
   "Inspect and edit this plane": [
     "tgui:PlaneMaster"
   ],
@@ -16261,6 +17090,9 @@
   "Interactions": [
     "tgui:MainContent"
   ],
+  "Interdimensional Terrorist Plushie": [
+    "dm:labels"
+  ],
   "Interdyne": [
     "dm:labels"
   ],
@@ -16295,12 +17127,16 @@
     "dm:labels"
   ],
   "Internal": [
+    "dm:labels",
     "tgui:AtmosControls"
   ],
   "Internal & External": [
     "tgui:ModularShieldGen"
   ],
   "Internal Affairs": [
+    "dm:labels"
+  ],
+  "Internal Affairs Agent": [
     "dm:labels"
   ],
   "Internal Buffer": [
@@ -16367,6 +17203,9 @@
   ],
   "Inventory": [
     "tgui:PopoutMenu"
+  ],
+  "Inventory Associate": [
+    "dm:labels"
   ],
   "Inverse purity": [
     "tgui:RecipeLookup"
@@ -16519,6 +17358,9 @@
   "Items": [
     "tgui:AntagInfoBloodsucker"
   ],
+  "Ithastrist": [
+    "dm:labels"
+  ],
   "Itty Bitty Mandibles": [
     "dm:labels"
   ],
@@ -16527,6 +17369,9 @@
   ],
   "Ivy": [
     "dm:labels"
+  ],
+  "J/(mol * K)": [
+    "tgui:AtmosHandbook"
   ],
   "JACKPOT SOON!": [
     "tgui:SlotMachine"
@@ -16575,6 +17420,9 @@
   ],
   "Jail Time": [
     "tgui:AntagInfoBloodWorm"
+  ],
+  "Jailer": [
+    "dm:labels"
   ],
   "Jamjar Glasses": [
     "dm:labels"
@@ -16639,6 +17487,9 @@
   "Jessica": [
     "dm:labels"
   ],
+  "Jester": [
+    "dm:labels"
+  ],
   "Jester Shoes": [
     "dm:labels"
   ],
@@ -16672,6 +17523,9 @@
   "Jobs": [
     "tgui:TrackedPlaytime"
   ],
+  "Jockstrap": [
+    "dm:labels"
+  ],
   "Joestar": [
     "dm:labels"
   ],
@@ -16696,10 +17550,16 @@
   "Join?": [
     "tgui:HilbertsHotelCheckout"
   ],
+  "Joker": [
+    "dm:labels"
+  ],
   "Joker on cooldown ({0}s)": [
     "tgui:DnaConsoleSequencer"
   ],
   "Jolly": [
+    "dm:labels"
+  ],
+  "Journalist": [
     "dm:labels"
   ],
   "Joy Mask": [
@@ -16759,6 +17619,24 @@
     "dm:labels"
   ],
   "Jungle Grayscale": [
+    "dm:labels"
+  ],
+  "Junior Botanist": [
+    "dm:labels"
+  ],
+  "Junior Chef": [
+    "dm:labels"
+  ],
+  "Junior Officer": [
+    "dm:labels"
+  ],
+  "Junior Officer of the Deck": [
+    "dm:labels"
+  ],
+  "Junior Pathologist": [
+    "dm:labels"
+  ],
+  "Junior Runner": [
     "dm:labels"
   ],
   "Junk food": [
@@ -16897,6 +17775,12 @@
   "Kinetic prosthetic right leg": [
     "dm:labels"
   ],
+  "Kinky Collar": [
+    "dm:labels"
+  ],
+  "Kiss Slut": [
+    "dm:labels"
+  ],
   "Kitchen Machines": [
     "dm:labels"
   ],
@@ -17020,6 +17904,18 @@
   "Knot": [
     "tgui:StripMenu"
   ],
+  "Knotted": [
+    "dm:labels"
+  ],
+  "Knotted (Alt)": [
+    "dm:labels"
+  ],
+  "Knotted Hemi": [
+    "dm:labels"
+  ],
+  "Knotted Hemi (Alt)": [
+    "dm:labels"
+  ],
   "Knowledge Shop": [
     "tgui:AntagInfoHeretic"
   ],
@@ -17113,6 +18009,12 @@
   "LUCKY SPIN!": [
     "tgui:SlotMachine"
   ],
+  "La Coom Bomb": [
+    "dm:labels"
+  ],
+  "Lab Technician": [
+    "dm:labels"
+  ],
   "Labcoat": [
     "dm:labels"
   ],
@@ -17130,6 +18032,9 @@
     "dm:labels"
   ],
   "Laceup Shoes (Recolorable)": [
+    "dm:labels"
+  ],
+  "Lackey": [
     "dm:labels"
   ],
   "Lait": [
@@ -17257,6 +18162,42 @@
   "Latejoin Start": [
     "tgui:DynamicAdmin"
   ],
+  "Latex Catsuit": [
+    "dm:labels"
+  ],
+  "Latex Gas Mask": [
+    "dm:labels"
+  ],
+  "Latex Gloves": [
+    "dm:labels"
+  ],
+  "Latex Half-Catsuit": [
+    "dm:labels"
+  ],
+  "Latex Heels": [
+    "dm:labels"
+  ],
+  "Latex Maid Apron": [
+    "dm:labels"
+  ],
+  "Latex Maid Costume": [
+    "dm:labels"
+  ],
+  "Latex Paw Mittens": [
+    "dm:labels"
+  ],
+  "Latex Sleeping Bag": [
+    "dm:labels"
+  ],
+  "Latex Socks": [
+    "dm:labels"
+  ],
+  "Latex Straight Jacket": [
+    "dm:labels"
+  ],
+  "Latex sleeves": [
+    "dm:labels"
+  ],
   "Lauded Halo": [
     "dm:labels"
   ],
@@ -17340,6 +18281,9 @@
   "Lead": [
     "dm:labels"
   ],
+  "Lead Researcher": [
+    "dm:labels"
+  ],
   "Leaf": [
     "dm:labels"
   ],
@@ -17362,6 +18306,7 @@
     "tgui:LanguagesMenu"
   ],
   "Leash": [
+    "dm:labels",
     "tgui:PaiCard"
   ],
   "Leather Apron": [
@@ -17389,6 +18334,9 @@
     "dm:labels"
   ],
   "Leather Satchel": [
+    "dm:labels"
+  ],
+  "Leather Whip": [
     "dm:labels"
   ],
   "Leather coat with fur": [
@@ -17455,9 +18403,6 @@
   "Left click pins operation to the top.": [
     "tgui:PatientStateView"
   ],
-  "Left click to pin this recipe.": [
-    "tgui:ChemDispenser"
-  ],
   "Left click unpins operation from the top.": [
     "tgui:PatientStateView"
   ],
@@ -17469,6 +18414,9 @@
   ],
   "Leg type": [
     "tgui:species_features"
+  ],
+  "Legal Clerk": [
+    "dm:labels"
   ],
   "Legendary Healer's Cloak": [
     "dm:labels"
@@ -17512,6 +18460,9 @@
   "Leporid": [
     "dm:labels"
   ],
+  "Lesbian": [
+    "dm:labels"
+  ],
   "Lesbian Flag": [
     "dm:labels"
   ],
@@ -17537,6 +18488,12 @@
   "Level: [{0}]": [
     "tgui:SkillPanel"
   ],
+  "Lewd Toys": [
+    "dm:labels"
+  ],
+  "Lewd medipen box": [
+    "dm:labels"
+  ],
   "Lexorin": [
     "dm:labels"
   ],
@@ -17551,6 +18508,9 @@
     "dm:labels"
   ],
   "Libitoil": [
+    "dm:labels"
+  ],
+  "Librarian": [
     "dm:labels"
   ],
   "Library Inventory": [
@@ -17577,6 +18537,9 @@
   "Lidopaine": [
     "dm:labels"
   ],
+  "Lie low until we have enough numbers to strike.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Lieutenant": [
     "dm:labels"
   ],
@@ -17594,6 +18557,9 @@
   ],
   "Life Support": [
     "tgui:AntagInfoBloodWorm"
+  ],
+  "Life Support Technician": [
+    "dm:labels"
   ],
   "Lifebringer": [
     "dm:labels"
@@ -17735,6 +18701,9 @@
     "tgui:AvatarHelp"
   ],
   "Limper": [
+    "dm:labels"
+  ],
+  "Line Cook": [
     "dm:labels"
   ],
   "Line {0}:{1}{2}{3}": [
@@ -18029,6 +18998,7 @@
   "Locked": [
     "tgui:AbductorConsole",
     "tgui:Achievements",
+    "tgui:BuyingShuttle",
     "tgui:CyborgBootDebug",
     "tgui:DnaScanner",
     "tgui:Experimentor",
@@ -18085,6 +19055,9 @@
     "tgui:index"
   ],
   "Logistician Halo": [
+    "dm:labels"
+  ],
+  "Logistics Coordinator": [
     "dm:labels"
   ],
   "Logo": [
@@ -18320,8 +19293,7 @@
   ],
   "Low": [
     "dm:labels",
-    "tgui:JobsPage",
-    "tgui:calculateDangerLevel"
+    "tgui:JobsPage"
   ],
   "Low External Power": [
     "tgui:constants"
@@ -18386,9 +19358,6 @@
   "Lunar Halo": [
     "dm:labels"
   ],
-  "Luna娃娃": [
-    "dm:labels"
-  ],
   "Lunchbox Design": [
     "tgui:lunchbox"
   ],
@@ -18396,6 +19365,12 @@
     "dm:labels"
   ],
   "Lustrous": [
+    "dm:labels"
+  ],
+  "Lustwish": [
+    "dm:labels"
+  ],
+  "Lustwish MOD Plating": [
     "dm:labels"
   ],
   "Luxuries": [
@@ -18443,6 +19418,12 @@
   ],
   "MELTDOWN": [
     "tgui:RBMK2"
+  ],
+  "MKUltra": [
+    "dm:labels"
+  ],
+  "MOD Hypnotic Visor Module": [
+    "dm:labels"
   ],
   "MOD Interface Panel": [
     "tgui:MODsuit"
@@ -18515,6 +19496,9 @@
     "dm:labels",
     "tgui:RecipeContent"
   ],
+  "Machinist": [
+    "dm:labels"
+  ],
   "Mafia": [
     "dm:labels",
     "tgui:MafiaPanel",
@@ -18523,10 +19507,19 @@
   "Magic Eightball": [
     "dm:labels"
   ],
+  "Magic Wand": [
+    "dm:labels"
+  ],
   "Magical Transportation": [
     "tgui:TableOfContents"
   ],
   "Magillitis": [
+    "dm:labels"
+  ],
+  "Magister": [
+    "dm:labels"
+  ],
+  "Magistrate": [
     "dm:labels"
   ],
   "Magnetic Constrictor": [
@@ -18541,6 +19534,9 @@
   "Magus (Splurt)": [
     "dm:labels"
   ],
+  "Maid": [
+    "dm:labels"
+  ],
   "Maid Apron": [
     "dm:labels"
   ],
@@ -18553,7 +19549,16 @@
   "Mail Cap": [
     "dm:labels"
   ],
+  "Mail Carrier": [
+    "dm:labels"
+  ],
+  "Mailman": [
+    "dm:labels"
+  ],
   "Mailman Jumpsuit": [
+    "dm:labels"
+  ],
+  "Mailwoman": [
     "dm:labels"
   ],
   "Main": [
@@ -18619,6 +19624,9 @@
   ],
   "Make group into antagonists?": [
     "tgui:SentienceFunBalloon"
+  ],
+  "Make revolutionary artwork and vandalize the station with it.": [
+    "tgui:AntagInfoRevolution"
   ],
   "Make your character use a sharp or fuzzy appearance.": [
     "tgui:genitals"
@@ -18755,6 +19763,9 @@
   "Manage Skills": [
     "tgui:SkillPanel"
   ],
+  "Manager Representative": [
+    "dm:labels"
+  ],
   "Manbun": [
     "dm:labels"
   ],
@@ -18814,9 +19825,6 @@
   ],
   "Manual Control": [
     "tgui:PortableTurret"
-  ],
-  "Manual Valve": [
-    "dm:labels"
   ],
   "Manual Welding Eyes": [
     "dm:labels"
@@ -18923,6 +19931,9 @@
   "Masks": [
     "dm:labels"
   ],
+  "Masochism": [
+    "dm:labels"
+  ],
   "Masquerade Mask": [
     "dm:labels"
   ],
@@ -18953,6 +19964,12 @@
   "Mass Spectroscopy": [
     "tgui:MassSpec"
   ],
+  "Mass produce picket signs and wave them around the station.": [
+    "tgui:AntagInfoRevolution"
+  ],
+  "Masseuse": [
+    "dm:labels"
+  ],
   "Master": [
     "tgui:PaiCard",
     "tgui:System"
@@ -18967,6 +19984,9 @@
   ],
   "Master Overview": [
     "tgui:OverviewSection"
+  ],
+  "Master-at-Arms": [
+    "dm:labels"
   ],
   "Match Color": [
     "tgui:HighLuminosityEyesMenu"
@@ -19017,6 +20037,7 @@
     "tgui:AtmosPump",
     "tgui:AtmosTempGate",
     "tgui:AtmosTempPump",
+    "tgui:ModulesPane",
     "tgui:NumberInputModal"
   ],
   "Max ({0})": [
@@ -19045,6 +20066,9 @@
   ],
   "Max temperature": [
     "tgui:Recipes"
+  ],
+  "Maximum Security Prisoner": [
+    "dm:labels"
   ],
   "Maximum Temperature": [
     "tgui:MicrofusionGunControl",
@@ -19080,16 +20104,28 @@
   "Mech status": [
     "tgui:MechBayPowerConsole"
   ],
+  "Mechanic": [
+    "dm:labels"
+  ],
   "Mechanic's Overalls": [
     "dm:labels"
   ],
   "Mechanical Status": [
     "tgui:TramController"
   ],
+  "Mechanical and Roleplay": [
+    "dm:labels"
+  ],
+  "Mechanical only": [
+    "dm:labels"
+  ],
   "Mechanist Fox Plushie": [
     "dm:labels"
   ],
   "Mechanist Halo": [
+    "dm:labels"
+  ],
+  "Mechatronic Engineer": [
     "dm:labels"
   ],
   "Mechs": [
@@ -19185,6 +20221,9 @@
   "Medical Ammunition": [
     "dm:labels"
   ],
+  "Medical Attendant": [
+    "dm:labels"
+  ],
   "Medical Beret": [
     "dm:labels"
   ],
@@ -19212,16 +20251,25 @@
   "Medical Dept. Guard Jacket (Light)": [
     "dm:labels"
   ],
+  "Medical Director": [
+    "dm:labels"
+  ],
   "Medical Doctor": [
     "dm:labels"
   ],
   "Medical Equipment": [
     "dm:labels"
   ],
+  "Medical Examiner": [
+    "dm:labels"
+  ],
   "Medical Eyepatch": [
     "dm:labels"
   ],
   "Medical Eyepatch (Skyrat)": [
+    "dm:labels"
+  ],
+  "Medical Guard": [
     "dm:labels"
   ],
   "Medical HUD Aviators": [
@@ -19249,10 +20297,22 @@
     "dm:labels",
     "tgui:index"
   ],
+  "Medical Resident": [
+    "dm:labels"
+  ],
   "Medical Response Officer": [
     "dm:labels"
   ],
   "Medical Scrying Lens Disk": [
+    "dm:labels"
+  ],
+  "Medical Skulldog Plushie": [
+    "dm:labels"
+  ],
+  "Medical Student": [
+    "dm:labels"
+  ],
+  "Medical Support Technician": [
     "dm:labels"
   ],
   "Medical Technical Jacket (Black)": [
@@ -19355,6 +20415,12 @@
   "Menthol": [
     "dm:labels"
   ],
+  "Merchantman": [
+    "dm:labels"
+  ],
+  "Merchantwoman": [
+    "dm:labels"
+  ],
   "Mercurial Halo": [
     "dm:labels"
   ],
@@ -19443,13 +20509,19 @@
   "Metal Storage": [
     "tgui:ProteanUI"
   ],
+  "Metal Worker": [
+    "dm:labels"
+  ],
   "Metalgen": [
     "dm:labels"
   ],
   "Metallic-Hydrogen robes": [
     "dm:labels"
   ],
-  "Meter": [
+  "Metalsmith": [
+    "dm:labels"
+  ],
+  "Metalurgist": [
     "dm:labels"
   ],
   "Methamphetamine": [
@@ -19588,7 +20660,11 @@
     "tgui:MinigamesMenu"
   ],
   "Minimize": [
+    "tgui:ModulesPane",
     "tgui:NtosWindow"
+  ],
+  "Minimum Security Prisoner": [
+    "dm:labels"
   ],
   "Minimum Temp": [
     "tgui:constants"
@@ -19628,9 +20704,6 @@
   ],
   "Minions": [
     "tgui:AntagInfoBlob"
-  ],
-  "Miniscule": [
-    "tgui:calculateDangerLevel"
   ],
   "Minor Disabilities": [
     "tgui:RecordView"
@@ -19704,6 +20777,9 @@
   "Mixed Bouquet": [
     "dm:labels"
   ],
+  "Mixologist": [
+    "dm:labels"
+  ],
   "Mjolnir": [
     "dm:labels"
   ],
@@ -19750,9 +20826,6 @@
     "tgui:NtosRoboControl",
     "tgui:NtosRobotact",
     "tgui:RoboticsControlConsole"
-  ],
-  "Moderate": [
-    "tgui:calculateDangerLevel"
   ],
   "Moderator": [
     "tgui:Temperatures"
@@ -19892,9 +20965,6 @@
   "Monarch Antlers": [
     "dm:labels"
   ],
-  "Mona娃娃": [
-    "dm:labels"
-  ],
   "Money Available: {0}cr": [
     "tgui:NtosSpaceBetting"
   ],
@@ -19905,6 +20975,9 @@
     "dm:labels"
   ],
   "Monitoring": [
+    "dm:labels"
+  ],
+  "Monk": [
     "dm:labels"
   ],
   "Monkey": [
@@ -19952,9 +21025,6 @@
   "Month": [
     "tgui:AdminTicketStats"
   ],
-  "Mood is disabled on this server. You can still select personalities, but they will have no effect.": [
-    "tgui:PersonalityPage"
-  ],
   "Moon Fly": [
     "dm:labels"
   ],
@@ -19989,6 +21059,9 @@
     "dm:labels"
   ],
   "Morphine": [
+    "dm:labels"
+  ],
+  "Mortician": [
     "dm:labels"
   ],
   "Most recent shuttle call/recall traced to: {0}": [
@@ -20279,6 +21352,9 @@
   "Mouth implant": [
     "dm:labels"
   ],
+  "Mouthwash": [
+    "dm:labels"
+  ],
   "Move Down": [
     "tgui:LayerManager",
     "tgui:ListMapper"
@@ -20329,9 +21405,6 @@
   "Multi": [
     "tgui:RapidPipeDispenser"
   ],
-  "Multi-Deck Adapter": [
-    "dm:labels"
-  ],
   "Multi-Paragraph": [
     "dm:labels"
   ],
@@ -20349,6 +21422,9 @@
     "tgui:Telecomms"
   ],
   "Multiver": [
+    "dm:labels"
+  ],
+  "Mummer": [
     "dm:labels"
   ],
   "Murid": [
@@ -20417,6 +21493,9 @@
   "Mutation Info": [
     "tgui:DnaConsoleStorage"
   ],
+  "Mutation Researcher": [
+    "dm:labels"
+  ],
   "Mutations": [
     "tgui:DnaConsoleStorage"
   ],
@@ -20442,6 +21521,9 @@
   "Mute this User": [
     "tgui:NtosNetChat"
   ],
+  "Mycologist": [
+    "dm:labels"
+  ],
   "N/A": [
     "tgui:AdminTicketStats",
     "tgui:AtmosControls",
@@ -20449,6 +21531,7 @@
     "tgui:ChemAutomaticBuffer",
     "tgui:ChemMaster",
     "tgui:CivCargoHoldTerminal",
+    "tgui:LanguageMenu",
     "tgui:LawRack",
     "tgui:Newscaster",
     "tgui:NtosCivCargoHoldTerminal",
@@ -20710,10 +21793,16 @@
   "Nanotrasen": [
     "tgui:AdminFax"
   ],
+  "Nanotrasen Advisor": [
+    "dm:labels"
+  ],
   "Nanotrasen Consultant": [
     "dm:labels"
   ],
   "Nanotrasen Crew Trainer": [
+    "dm:labels"
+  ],
+  "Nanotrasen Diplomat": [
     "dm:labels"
   ],
   "Nanotrasen Halo": [
@@ -20723,6 +21812,9 @@
     "tgui:index"
   ],
   "Nanotrasen Intern": [
+    "dm:labels"
+  ],
+  "Nanotrasen Liaison": [
     "dm:labels"
   ],
   "Nanotrasen Lunchbox": [
@@ -20741,6 +21833,9 @@
     "tgui:NtosNotepad"
   ],
   "Nanotrasen Pay System": [
+    "dm:labels"
+  ],
+  "Nanotrasen Representative": [
     "dm:labels"
   ],
   "Nanotrasen Representative's Campaign Hat": [
@@ -20907,6 +22002,9 @@
   "Net Pod": [
     "tgui:NetpodOutfits"
   ],
+  "Netdiver": [
+    "dm:labels"
+  ],
   "Nethead": [
     "dm:labels"
   ],
@@ -20921,6 +22019,9 @@
   ],
   "Network Buffer": [
     "tgui:NtnetRelay"
+  ],
+  "Network Engineer": [
+    "dm:labels"
   ],
   "Network Entity": [
     "tgui:TelecommsMonitor"
@@ -20943,6 +22044,7 @@
     "tgui:FoodPreferences"
   ],
   "Never": [
+    "dm:labels",
     "tgui:GeneralPrefs"
   ],
   "New": [
@@ -21174,6 +22276,9 @@
     "tgui:DopplerArray",
     "tgui:TankCompressor"
   ],
+  "No ERP": [
+    "dm:labels"
+  ],
   "No Experiment Machine Detected": [
     "tgui:AbductorConsole"
   ],
@@ -21185,6 +22290,9 @@
   ],
   "No Gas Present": [
     "tgui:AnomalyRefinery"
+  ],
+  "No Gas Selected": [
+    "tgui:AtmosHandbook"
   ],
   "No Generators Connected": [
     "tgui:ModularShieldConsole"
@@ -21752,11 +22860,11 @@
   "No radio channel": [
     "tgui:BotAnnouncement"
   ],
+  "No reaction selected": [
+    "tgui:AtmosHandbook"
+  ],
   "No reaction selected!": [
     "tgui:RecipeLookup"
-  ],
-  "No reactions detected": [
-    "tgui:GasmixParser"
   ],
   "No reactions found.": [
     "tgui:ChemDispenser"
@@ -21960,6 +23068,9 @@
   "Noble Boots": [
     "dm:labels"
   ],
+  "Noble Dragon-Shark Plushie": [
+    "dm:labels"
+  ],
   "Noble Gambeson": [
     "dm:labels"
   ],
@@ -22004,6 +23115,12 @@
   "Nonbinary": [
     "dm:labels"
   ],
+  "Nondescript": [
+    "dm:labels"
+  ],
+  "Nondescript (Alt)": [
+    "dm:labels"
+  ],
   "None": [
     "dm:labels",
     "tgui:AlarmStatus",
@@ -22031,7 +23148,6 @@
     "tgui:SpaceHeater",
     "tgui:SpawnersMenu",
     "tgui:Symptom",
-    "tgui:calculateDangerLevel",
     "tgui:constants"
   ],
   "None provided - name will be randomized.": [
@@ -22347,6 +23463,12 @@
   "Nude": [
     "dm:labels"
   ],
+  "Nude Only": [
+    "dm:labels"
+  ],
+  "Nudist": [
+    "dm:labels"
+  ],
   "Nuke": [
     "tgui:MafiaPanel"
   ],
@@ -22364,6 +23486,12 @@
   ],
   "Number of players:{0}": [
     "tgui:DynamicTester"
+  ],
+  "Nun": [
+    "dm:labels"
+  ],
+  "Nurse": [
+    "dm:labels"
   ],
   "Nurse Hat": [
     "dm:labels"
@@ -22567,6 +23695,9 @@
   "Occupations": [
     "tgui:index"
   ],
+  "Occupy the bridge and hold it until the heads of staff surrender.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Oculater": [
     "dm:labels"
   ],
@@ -22647,6 +23778,12 @@
   "Off-Duty": [
     "tgui:NtosSelfServe"
   ],
+  "Off-Duty Crew": [
+    "dm:labels"
+  ],
+  "Off-Duty Staff": [
+    "dm:labels"
+  ],
   "Offensive": [
     "tgui:constants"
   ],
@@ -22723,6 +23860,9 @@
     "dm:labels"
   ],
   "Omnigender": [
+    "dm:labels"
+  ],
+  "Omnisexual": [
     "dm:labels"
   ],
   "Omnizine": [
@@ -22891,6 +24031,7 @@
     "tgui:ProbingConsole",
     "tgui:Safe",
     "tgui:Sleeper",
+    "tgui:StripMenu",
     "tgui:TransferValve",
     "tgui:Vendatray",
     "tgui:constants",
@@ -23028,6 +24169,9 @@
     "tgui:PrisonerManagement",
     "tgui:ProcCallMenu"
   ],
+  "Oracle": [
+    "dm:labels"
+  ],
   "Orange Armband": [
     "dm:labels"
   ],
@@ -23109,6 +24253,9 @@
     "tgui:MatMarket"
   ],
   "Orderly": [
+    "dm:labels"
+  ],
+  "Ordnance Technician": [
     "dm:labels"
   ],
   "Ore Container": [
@@ -23313,7 +24460,7 @@
     "tgui:MicrofusionGunControl",
     "tgui:RBMK2"
   ],
-  "Overclocking ({0}%)": [
+  "Overclocking": [
     "tgui:AlertPane"
   ],
   "Overclocking will allow the vent to overpower extreme pressure conditions. However, it will also cause the vent to become damaged over time and eventually fail. The lower the integrity, the less effective the vent will be when in normal operation.": [
@@ -23367,6 +24514,9 @@
   ],
   "Overwrite Objectives Data": [
     "tgui:constants"
+  ],
+  "Oviparity": [
+    "dm:labels"
   ],
   "Owl (Splurt)": [
     "dm:labels"
@@ -23565,6 +24715,12 @@
   "Painting Information": [
     "tgui:PaintingAdminPanel"
   ],
+  "Pair": [
+    "dm:labels"
+  ],
+  "Pair (Alt)": [
+    "dm:labels"
+  ],
   "Pair of Binoculars": [
     "dm:labels"
   ],
@@ -23582,6 +24738,9 @@
   ],
   "Panic Siphon": [
     "tgui:Home"
+  ],
+  "Pansexual": [
+    "dm:labels"
   ],
   "Pansexual Flag": [
     "dm:labels"
@@ -23610,6 +24769,12 @@
   "Panties - Freedom": [
     "dm:labels"
   ],
+  "Panties - Latex": [
+    "dm:labels"
+  ],
+  "Panties - Lingerie": [
+    "dm:labels"
+  ],
   "Panties - Neko": [
     "dm:labels"
   ],
@@ -23626,6 +24791,9 @@
     "dm:labels"
   ],
   "Panties - UK": [
+    "dm:labels"
+  ],
+  "Pantomimist": [
     "dm:labels"
   ],
   "Pantyhose": [
@@ -23658,6 +24826,9 @@
   ],
   "Paper name...": [
     "tgui:AdminFax"
+  ],
+  "Paperwork Specialist": [
+    "dm:labels"
   ],
   "Paradox Clone": [
     "dm:antagonists",
@@ -23734,14 +24905,8 @@
   "Parts not connected, close all mantainence panels/use a multitool on the rotor before trying again": [
     "tgui:TurbineComputer"
   ],
-  "Passive Gate": [
-    "dm:labels"
-  ],
   "Passive Heat Dissipation": [
     "tgui:MicrofusionGunControl"
-  ],
-  "Passive Vent": [
-    "dm:labels"
   ],
   "Passive: {0}": [
     "tgui:AntagInfoHeretic"
@@ -23761,7 +24926,16 @@
   "Past Security Records": [
     "tgui:RecordView"
   ],
+  "Pasties": [
+    "dm:labels"
+  ],
+  "Pasties (Alt)": [
+    "dm:labels"
+  ],
   "Pastry": [
+    "dm:labels"
+  ],
+  "Pastry Chef": [
     "dm:labels"
   ],
   "Pat": [
@@ -23786,6 +24960,9 @@
     "tgui:AntagInfoHereticV2"
   ],
   "Pathfinder": [
+    "dm:labels"
+  ],
+  "Pathologist": [
     "dm:labels"
   ],
   "Paths": [
@@ -23847,6 +25024,9 @@
   "Peaceful": [
     "tgui:QuantumConsole"
   ],
+  "Peacekeeper": [
+    "dm:labels"
+  ],
   "Peacekeeper Beret": [
     "dm:labels"
   ],
@@ -23875,6 +25055,9 @@
   "Penlight": [
     "dm:labels"
   ],
+  "Pentacamphor": [
+    "dm:labels"
+  ],
   "Pentaerythritol": [
     "dm:labels"
   ],
@@ -23898,6 +25081,9 @@
   ],
   "Perform Experiment": [
     "tgui:ExperimentConfigure"
+  ],
+  "Performer": [
+    "dm:labels"
   ],
   "Performers one piece": [
     "dm:labels"
@@ -23965,6 +25151,12 @@
   "Personal Gene Therapy": [
     "tgui:DnaVault"
   ],
+  "Personal Physician": [
+    "dm:labels"
+  ],
+  "Personal Space": [
+    "dm:labels"
+  ],
   "Personal View": [
     "tgui:AtmosControlPanel"
   ],
@@ -24024,10 +25216,19 @@
   "Petri Dish Sample": [
     "tgui:Microscope"
   ],
+  "Phallic Ball Gag (Dangerous)": [
+    "dm:labels"
+  ],
   "Phantom Glasses": [
     "dm:labels"
   ],
+  "Pharmacist": [
+    "dm:labels"
+  ],
   "Pharmacist's Labcoat": [
+    "dm:labels"
+  ],
+  "Pharmacologist": [
     "dm:labels"
   ],
   "Phase Emitter": [
@@ -24065,7 +25266,6 @@
     "tgui:ChatScreen"
   ],
   "Photocopier": [
-    "dm:labels",
     "tgui:Photocopier"
   ],
   "Photographer": [
@@ -24091,6 +25291,9 @@
   ],
   "Physical age represents how far your character has grown physically and mentally. Includes 'normal' aging, such as experiences which physically age the body, and 'anti-aging' medical procedures. Does not include time spent in cryo-sleep.": [
     "tgui:age"
+  ],
+  "Physician": [
+    "dm:labels"
   ],
   "Phytotoxin": [
     "dm:labels"
@@ -24237,10 +25440,25 @@
   "Pink": [
     "dm:labels"
   ],
+  "Pink Clown Gloves": [
+    "dm:labels"
+  ],
+  "Pink Clown Heels": [
+    "dm:labels"
+  ],
   "Pink Clown Shoes": [
     "dm:labels"
   ],
+  "Pink Clown Skirt": [
+    "dm:labels"
+  ],
+  "Pink Clown Wig": [
+    "dm:labels"
+  ],
   "Pink Fannypack": [
+    "dm:labels"
+  ],
+  "Pink Heels": [
     "dm:labels"
   ],
   "Pink Scarf": [
@@ -24254,9 +25472,6 @@
   ],
   "Pink workout short": [
     "dm:labels"
-  ],
-  "Pinnacle": [
-    "tgui:calculateDangerLevel"
   ],
   "Pinwheel Hat": [
     "dm:labels"
@@ -24360,6 +25575,9 @@
   "Plasma": [
     "dm:labels",
     "tgui:constants"
+  ],
+  "Plasma Researcher": [
+    "dm:labels"
   ],
   "Plasmafire": [
     "dm:labels"
@@ -24654,6 +25872,9 @@
   "Pod Female": [
     "dm:labels"
   ],
+  "Pod Jockey": [
+    "dm:labels"
+  ],
   "Pod Male": [
     "dm:labels"
   ],
@@ -24749,6 +25970,9 @@
   "Polyjuice": [
     "dm:labels"
   ],
+  "Polysexual": [
+    "dm:labels"
+  ],
   "Pompadour": [
     "dm:labels"
   ],
@@ -24760,6 +25984,9 @@
   ],
   "Pondering something not included here? When in doubt, ask the QM!": [
     "tgui:CargoHelp"
+  ],
+  "Pontifex": [
+    "dm:labels"
   ],
   "Ponytail": [
     "dm:labels"
@@ -24876,6 +26103,9 @@
   "Port Tarkon neckpin": [
     "dm:labels"
   ],
+  "Portal Fleshlight and Underwear": [
+    "dm:labels"
+  ],
   "Portrait Picker": [
     "tgui:PortraitPicker"
   ],
@@ -24928,6 +26158,12 @@
     "dm:labels"
   ],
   "Poster Boy": [
+    "dm:labels"
+  ],
+  "Postman": [
+    "dm:labels"
+  ],
+  "Postwoman": [
     "dm:labels"
   ],
   "Potassium": [
@@ -25025,11 +26261,17 @@
   "Pragmatic Halo": [
     "dm:labels"
   ],
+  "Prankster": [
+    "dm:labels"
+  ],
   "Prayer": [
     "dm:labels"
   ],
   "Pre": [
     "tgui:constants"
+  ],
+  "Preacher": [
+    "dm:labels"
   ],
   "Prefabrication": [
     "tgui:Telecomms"
@@ -25154,9 +26396,6 @@
     "tgui:AtmosControls",
     "tgui:Tank"
   ],
-  "Pressure Valve": [
-    "dm:labels"
-  ],
   "Pressures above 4500 kPa begin to increasingly slow down the reaction, with the slowest speed by 18,000 kPa. Safety systems will trigger at pressures exceeding 9000 kPa.": [
     "tgui:RBMK2"
   ],
@@ -25223,6 +26462,12 @@
     "dm:labels"
   ],
   "Pride Scarf": [
+    "dm:labels"
+  ],
+  "Priest": [
+    "dm:labels"
+  ],
+  "Priestess": [
     "dm:labels"
   ],
   "Primal Podperson": [
@@ -25331,6 +26576,9 @@
     "tgui:NtosJobManager",
     "tgui:SiliconJobManager"
   ],
+  "Prison Guard": [
+    "dm:labels"
+  ],
   "Prisoner": [
     "dm:labels"
   ],
@@ -25351,6 +26599,9 @@
   ],
   "Private": [
     "tgui:Newscaster"
+  ],
+  "Private Investigator": [
+    "dm:labels"
   ],
   "Private Message": [
     "tgui:PlayerPanel"
@@ -25424,6 +26675,9 @@
   "Produced gases": [
     "tgui:Recipes"
   ],
+  "Producepad": [
+    "dm:labels"
+  ],
   "Produces advanced gases. Massively increases radiation, and accelerates the rate of temperature change. Make sure you have enough cooling.": [
     "tgui:Gases"
   ],
@@ -25454,6 +26708,12 @@
     "dm:labels",
     "tgui:RecipeLookup",
     "tgui:Vending"
+  ],
+  "Professional Gamer": [
+    "dm:labels"
+  ],
+  "Professor": [
+    "dm:labels"
   ],
   "Profit on Sale": [
     "tgui:NtosShipping"
@@ -25501,10 +26761,16 @@
   "Pros": [
     "tgui:AntagInfoHeretic"
   ],
+  "Prosecutor": [
+    "dm:labels"
+  ],
   "Prosopagnosia": [
     "dm:labels"
   ],
   "Prospacillin": [
+    "dm:labels"
+  ],
+  "Prospector": [
     "dm:labels"
   ],
   "Prosthetic": [
@@ -25550,15 +26816,27 @@
   "Protean Match tag": [
     "dm:labels"
   ],
+  "Protect your leaders at all costs, even if it means sacrifice.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Protection from cures and natural recovery.": [
     "tgui:Symptom",
     "tgui:Virus"
   ],
+  "Protective Custody Prisoner": [
+    "dm:labels"
+  ],
   "Protective Custody Prisoner Jumpsuit": [
+    "dm:labels"
+  ],
+  "Protective Protogen Plushie": [
     "dm:labels"
   ],
   "Protein": [
     "dm:labels"
+  ],
+  "Protest in front of the bridge.": [
+    "tgui:AntagInfoRevolution"
   ],
   "Proto Nitrate": [
     "tgui:constants"
@@ -25632,6 +26910,9 @@
   "Psych Glasses": [
     "dm:labels"
   ],
+  "Psychiatrist": [
+    "dm:labels"
+  ],
   "Psychoactive Status": [
     "tgui:MedicalKiosk"
   ],
@@ -25643,6 +26924,9 @@
   ],
   "Public": [
     "tgui:Newscaster"
+  ],
+  "Public Defender": [
+    "dm:labels"
   ],
   "Publications": [
     "tgui:NtosScipaper"
@@ -25666,6 +26950,9 @@
     "dm:labels"
   ],
   "Puffer Vest": [
+    "dm:labels"
+  ],
+  "Puffy": [
     "dm:labels"
   ],
   "Pull": [
@@ -25836,6 +27123,12 @@
   "Quaalude": [
     "dm:labels"
   ],
+  "Quad": [
+    "dm:labels"
+  ],
+  "Quad (Alt)": [
+    "dm:labels"
+  ],
   "Quad Antennae": [
     "dm:labels"
   ],
@@ -26001,6 +27294,9 @@
   "RUNECHAT": [
     "tgui:looc",
     "tgui:runechat"
+  ],
+  "Rabbi": [
+    "dm:labels"
   ],
   "Rabbit": [
     "dm:labels"
@@ -26330,10 +27626,8 @@
   "Reaction search": [
     "tgui:BorgShaker"
   ],
-  "Reaction: {0}": [
-    "tgui:AtmosHandbook"
-  ],
   "Reactions": [
+    "tgui:AtmosHandbook",
     "tgui:ChemDispenser",
     "tgui:ChemHeater",
     "tgui:ChemRecipeDebug"
@@ -26475,6 +27769,9 @@
   ],
   "Receiving": [
     "tgui:Telecomms"
+  ],
+  "Receiving Clerk": [
+    "dm:labels"
   ],
   "Recharge your magic!": [
     "tgui:NtosArcade"
@@ -27009,10 +28306,7 @@
   "Release Verb": [
     "tgui:BellyUI"
   ],
-  "Relevant Factors:": [
-    "tgui:AtmosHandbook"
-  ],
-  "Relevant Reactions:": [
+  "Relevant Reactions": [
     "tgui:AtmosHandbook"
   ],
   "Relieve of Duty": [
@@ -27047,6 +28341,9 @@
   ],
   "Remote Robot Control": [
     "tgui:RemoteRobotControl"
+  ],
+  "Remote Vibroegg": [
+    "dm:labels"
   ],
   "Remotely Controlled": [
     "tgui:PortableTurret"
@@ -27182,6 +28479,9 @@
   ],
   "Repair Node Drones": [
     "tgui:MineBot"
+  ],
+  "Repairs Technician": [
+    "dm:labels"
   ],
   "Repeal All": [
     "tgui:EmergencyShuttleConsole"
@@ -27337,11 +28637,17 @@
   "Reschedule": [
     "tgui:ZubbersStoryteller"
   ],
+  "Rescue other revolutionaries from the brig.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Research": [
     "tgui:AntagInfoHeretic",
     "tgui:AntagInfoHereticV2",
     "tgui:ClockworkSlab",
     "tgui:TechNode"
+  ],
+  "Research Assistant": [
+    "dm:labels"
   ],
   "Research Consoles": [
     "dm:labels",
@@ -27368,6 +28674,9 @@
   "Research Directors winter coat": [
     "dm:labels"
   ],
+  "Research Guard": [
+    "dm:labels"
+  ],
   "Research History": [
     "tgui:ServerControl"
   ],
@@ -27385,6 +28694,9 @@
   ],
   "Research Servers": [
     "tgui:ServerControl"
+  ],
+  "Research Supervisor": [
+    "dm:labels"
   ],
   "Research Tree": [
     "tgui:AntagInfoHeretic"
@@ -27499,6 +28811,9 @@
   "Reset cooldown": [
     "tgui:VotePanel"
   ],
+  "Reset forced plane": [
+    "tgui:index"
+  ],
   "Reset sorting": [
     "tgui:SeedTable"
   ],
@@ -27553,6 +28868,9 @@
   ],
   "Resolve Weakref": [
     "tgui:ProcCallMenu"
+  ],
+  "Resonance Researcher": [
+    "dm:labels"
   ],
   "Resource Blobs": [
     "tgui:AntagInfoBlob"
@@ -27695,7 +29013,13 @@
   "Revealing Christmas Suit": [
     "dm:labels"
   ],
+  "Revealing Dress": [
+    "dm:labels"
+  ],
   "Revealing Green Christmas Suit": [
+    "dm:labels"
+  ],
+  "Revealing office uniform": [
     "dm:labels"
   ],
   "Reveals the per-limb transparency sliders for your arms and legs. While off, those limbs stay fully opaque.": [
@@ -27706,6 +29030,9 @@
   ],
   "Revenant": [
     "dm:antagonists",
+    "dm:labels"
+  ],
+  "Reverend": [
     "dm:labels"
   ],
   "Reverse": [
@@ -27766,6 +29093,9 @@
   "Rigel Prime, the center of the Rigel system, burns hot, basking its planetary bodies in warmth and radiation.": [
     "tgui:OrionGame"
   ],
+  "Rigger": [
+    "dm:labels"
+  ],
   "Right": [
     "tgui:ChemFilter",
     "tgui:ChemSplitter"
@@ -27809,9 +29139,6 @@
   "Right click opens operation info.": [
     "tgui:PatientStateView"
   ],
-  "Right click to search for this recipe.": [
-    "tgui:ChemDispenser"
-  ],
   "Right peg arm": [
     "dm:labels"
   ],
@@ -27826,6 +29153,9 @@
   ],
   "Rights are currently extended to {0} only.": [
     "tgui:BubberChangelog"
+  ],
+  "Ring Gag": [
+    "dm:labels"
   ],
   "Ring Tail (Long)": [
     "dm:labels"
@@ -27868,6 +29198,9 @@
     "tgui:ApprenticeContract"
   ],
   "RoboTact": [
+    "dm:labels"
+  ],
+  "Robot": [
     "dm:labels"
   ],
   "Robot Control Console": [
@@ -27954,6 +29287,9 @@
   "Role list{0}": [
     "tgui:MafiaPanel"
   ],
+  "Roleplay only": [
+    "dm:labels"
+  ],
   "Roll target random job. You can re-roll or cancel your random job if you don't like it.": [
     "tgui:JobSelection"
   ],
@@ -28009,6 +29345,9 @@
     "tgui:HilbertsHotelCheckout"
   ],
   "Rootroll": [
+    "dm:labels"
+  ],
+  "Rope bunny": [
     "dm:labels"
   ],
   "Rose": [
@@ -28153,6 +29492,9 @@
   "Runtime at {0}:{1}: {2}{3}": [
     "tgui:Log"
   ],
+  "Rush the Captain and take his hat.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Russian Boots": [
     "dm:labels"
   ],
@@ -28274,6 +29616,9 @@
   "Sabitsuki": [
     "dm:labels"
   ],
+  "Sabotage the station's power grid.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Sabresune": [
     "dm:labels"
   ],
@@ -28281,6 +29626,9 @@
     "dm:labels"
   ],
   "Saddlebags": [
+    "dm:labels"
+  ],
+  "Sadism": [
     "dm:labels"
   ],
   "Sadness": [
@@ -28344,6 +29692,12 @@
   "Salbutamol": [
     "dm:labels"
   ],
+  "Salon Manager": [
+    "dm:labels"
+  ],
+  "Salon Technician": [
+    "dm:labels"
+  ],
   "Salt": [
     "dm:labels"
   ],
@@ -28387,6 +29741,9 @@
     "dm:labels"
   ],
   "Sanguirite": [
+    "dm:labels"
+  ],
+  "Sanitation Technician": [
     "dm:labels"
   ],
   "Sanraizusōda": [
@@ -28847,6 +30204,9 @@
   "Search all emotes...": [
     "tgui:EmotePanel"
   ],
+  "Search and Rescue Technician": [
+    "dm:labels"
+  ],
   "Search blank...": [
     "tgui:Photocopier"
   ],
@@ -29048,6 +30408,9 @@
   "Security Alert Level": [
     "tgui:StatusDisplayControls"
   ],
+  "Security Assistant": [
+    "dm:labels"
+  ],
   "Security Badge": [
     "dm:labels"
   ],
@@ -29057,10 +30420,25 @@
   "Security Bomber Jacket": [
     "dm:labels"
   ],
+  "Security Cadet": [
+    "dm:labels"
+  ],
   "Security Cape": [
     "dm:labels"
   ],
+  "Security Commander": [
+    "dm:labels"
+  ],
+  "Security Commissioner": [
+    "dm:labels"
+  ],
   "Security Consoles": [
+    "dm:labels"
+  ],
+  "Security Constable": [
+    "dm:labels"
+  ],
+  "Security Corpsman": [
     "dm:labels"
   ],
   "Security Cyborg": [
@@ -29082,6 +30460,9 @@
     "dm:labels"
   ],
   "Security Gloves": [
+    "dm:labels"
+  ],
+  "Security Guard": [
     "dm:labels"
   ],
   "Security HUD": [
@@ -29174,6 +30555,9 @@
   "Security Officer's Navy Blue beret": [
     "dm:labels"
   ],
+  "Security Operative": [
+    "dm:labels"
+  ],
   "Security Praetorian Jacket": [
     "dm:labels"
   ],
@@ -29206,6 +30590,12 @@
     "dm:labels"
   ],
   "Security Soft Cap": [
+    "dm:labels"
+  ],
+  "Security Specialist": [
+    "dm:labels"
+  ],
+  "Security Stripper Outfit": [
     "dm:labels"
   ],
   "Security Systems": [
@@ -29625,6 +31015,9 @@
   "Service Equipment": [
     "dm:labels"
   ],
+  "Service Guard": [
+    "dm:labels"
+  ],
   "Service Machines": [
     "dm:labels"
   ],
@@ -29667,6 +31060,9 @@
   "Set Exp": [
     "tgui:SkillPanel"
   ],
+  "Set Forced Plane": [
+    "tgui:index"
+  ],
   "Set Group": [
     "tgui:ImplantPad"
   ],
@@ -29702,6 +31098,9 @@
   ],
   "Set Wanted Issue": [
     "tgui:Newscaster"
+  ],
+  "Set a conversion guideline: This text is shown only to newly converted revolutionaries.": [
+    "tgui:AntagInfoRevolution"
   ],
   "Set a forced fee rather than pay what you want.": [
     "tgui:HoloPay"
@@ -29796,6 +31195,15 @@
   ],
   "Severity": [
     "tgui:Virus"
+  ],
+  "Sex Holosign Projector": [
+    "dm:labels"
+  ],
+  "Sextuple": [
+    "dm:labels"
+  ],
+  "Sextuple (Alt)": [
+    "dm:labels"
   ],
   "Sexy Snoodle Plushie": [
     "dm:labels"
@@ -29971,6 +31379,12 @@
   "Shears": [
     "tgui:GlassBlowing"
   ],
+  "Sheath": [
+    "dm:labels"
+  ],
+  "Sheathed pair": [
+    "dm:labels"
+  ],
   "Shell": [
     "tgui:AirlockElectronics"
   ],
@@ -29983,11 +31397,26 @@
   "Shepherd Spot": [
     "dm:labels"
   ],
+  "Sheriff": [
+    "dm:labels"
+  ],
   "Sheriff Hat": [
+    "dm:labels"
+  ],
+  "Shibari": [
+    "dm:labels"
+  ],
+  "Shibari Ropes": [
+    "dm:labels"
+  ],
+  "Shibari Sleeves": [
     "dm:labels"
   ],
   "Shield Strength": [
     "tgui:ModularShieldGen"
+  ],
+  "Shieldguard": [
+    "dm:labels"
   ],
   "Shielding-OFF": [
     "tgui:Canister"
@@ -30118,7 +31547,13 @@
   "Shochu": [
     "dm:labels"
   ],
+  "Shock Collar Kit": [
+    "dm:labels"
+  ],
   "Shock Touch": [
+    "dm:labels"
+  ],
+  "Shockcollar": [
     "dm:labels"
   ],
   "Shockwave Radius": [
@@ -30288,7 +31723,7 @@
   "Shorter Long Bedhead": [
     "dm:labels"
   ],
-  "Shortest": [
+  "Shot of concentrated lust": [
     "dm:labels"
   ],
   "Should it be sent to everyone?": [
@@ -30361,6 +31796,9 @@
   "Show all admins regardless of activity": [
     "tgui:AdminTicketStats"
   ],
+  "Show any new votes as a HUD element on the top-right section of the screen": [
+    "tgui:mapvote_hud"
+  ],
   "Show exploitables": [
     "tgui:RecordManifest"
   ],
@@ -30372,6 +31810,9 @@
   ],
   "Show only admins with ticket activity": [
     "tgui:AdminTicketStats"
+  ],
+  "Show votes as a HUD element": [
+    "tgui:mapvote_hud"
   ],
   "Show/Hide my emote effect overlays": [
     "tgui:emote_overlay"
@@ -30398,6 +31839,15 @@
     "dm:labels"
   ],
   "Shrike 3 Layer": [
+    "dm:labels"
+  ],
+  "Shrine Guardian": [
+    "dm:labels"
+  ],
+  "Shrine Maiden": [
+    "dm:labels"
+  ],
+  "Shrink": [
     "dm:labels"
   ],
   "Shrub": [
@@ -30507,9 +31957,6 @@
   "Signer": [
     "dm:labels"
   ],
-  "Significant": [
-    "tgui:calculateDangerLevel"
-  ],
   "Signs you up for the next game. If there is an ongoing one, you will be signed up for the next.": [
     "tgui:BasketballPanel",
     "tgui:MafiaPanel"
@@ -30533,6 +31980,9 @@
     "dm:labels"
   ],
   "Silicon": [
+    "dm:labels"
+  ],
+  "Silicon Administrator": [
     "dm:labels"
   ],
   "Silicon Administrator Vest": [
@@ -30664,9 +32114,15 @@
   "Site Data": [
     "tgui:ExoscannerConsole"
   ],
+  "Site Manager": [
+    "dm:labels"
+  ],
   "Size": [
     "tgui:NtosFileManager",
     "tgui:PlayerPanel"
+  ],
+  "Size Collar": [
+    "dm:labels"
   ],
   "Skateboard": [
     "dm:labels"
@@ -30711,6 +32167,9 @@
     "tgui:index"
   ],
   "Skittish": [
+    "dm:labels"
+  ],
+  "Skoliosexual": [
     "dm:labels"
   ],
   "Skreking Vox Plushie": [
@@ -30858,6 +32317,9 @@
     "dm:labels"
   ],
   "Slimeperson": [
+    "dm:labels"
+  ],
+  "Slit": [
     "dm:labels"
   ],
   "Slither": [
@@ -31042,6 +32504,9 @@
   "Sock": [
     "dm:labels"
   ],
+  "Socks - Latex": [
+    "dm:labels"
+  ],
   "Socks color": [
     "tgui:species_features"
   ],
@@ -31145,6 +32610,9 @@
   "Source Type": [
     "tgui:IndividualLogViewer"
   ],
+  "Sous-Chef": [
+    "dm:labels"
+  ],
   "South": [
     "tgui:AirlockElectronics"
   ],
@@ -31229,6 +32697,9 @@
   "Spaniel (Le Goom)": [
     "dm:labels"
   ],
+  "Spanking Pad": [
+    "dm:labels"
+  ],
   "Spare Cassette Tape": [
     "dm:labels"
   ],
@@ -31291,6 +32762,9 @@
     "tgui:NaniteProgrammer",
     "tgui:TrackedPlaytime"
   ],
+  "Special Operations Medic": [
+    "dm:labels"
+  ],
   "Special Ops Officer": [
     "dm:labels"
   ],
@@ -31309,6 +32783,9 @@
     "tgui:RecordView",
     "tgui:ScannerGate",
     "tgui:ZubbersCharacterDirectory"
+  ],
+  "Specific Heat:": [
+    "tgui:AtmosHandbook"
   ],
   "Specific Target": [
     "tgui:constants"
@@ -31352,6 +32829,9 @@
   ],
   "Spells and items geared towards improving your survivability or reducing foes' ability to attack.": [
     "tgui:constants"
+  ],
+  "Spelunker": [
+    "dm:labels"
   ],
   "Spewium": [
     "dm:labels"
@@ -31568,6 +33048,9 @@
   "Squish-Me-Tesh Plush": [
     "dm:labels"
   ],
+  "Squished": [
+    "dm:labels"
+  ],
   "Squishy Shadekin Plush": [
     "dm:labels"
   ],
@@ -31608,8 +33091,7 @@
     "tgui:MessageMonitor"
   ],
   "Standard": [
-    "dm:labels",
-    "tgui:calculateDangerLevel"
+    "dm:labels"
   ],
   "Standard Blue": [
     "dm:labels"
@@ -31694,6 +33176,9 @@
   "Start a chaos vote for the next event.": [
     "tgui:EventPanel"
   ],
+  "Start a cult worshipping the proletariat.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Start a vote for the next event.": [
     "tgui:EventPanel"
   ],
@@ -31747,6 +33232,9 @@
   "Station Bounties": [
     "tgui:CivCargoHoldTerminal"
   ],
+  "Station Commander": [
+    "dm:labels"
+  ],
   "Station Created Sentience": [
     "tgui:GhostPoolProtection"
   ],
@@ -31754,6 +33242,9 @@
     "dm:labels"
   ],
   "Station Equipment": [
+    "dm:labels"
+  ],
+  "Station Intelligence": [
     "dm:labels"
   ],
   "Station Time : {0}": [
@@ -31833,6 +33324,9 @@
   ],
   "Status:{0}": [
     "tgui:InstrumentEditor"
+  ],
+  "Steal the Head of Personnel's pet dog.": [
+    "tgui:AntagInfoRevolution"
   ],
   "Stealth": [
     "dm:labels",
@@ -32110,6 +33604,9 @@
   "Strapless Two-Piece Swimsuit": [
     "dm:labels"
   ],
+  "Strapon": [
+    "dm:labels"
+  ],
   "Strawberry Daiquiri": [
     "dm:labels"
   ],
@@ -32170,6 +33667,9 @@
   "Striped tail": [
     "dm:labels"
   ],
+  "Stripper Outfit": [
+    "dm:labels"
+  ],
   "Stripping {0}": [
     "tgui:StripMenu"
   ],
@@ -32224,6 +33724,9 @@
   "Styles": [
     "tgui:ChemPress",
     "tgui:ModifyPanel"
+  ],
+  "Stylist": [
+    "dm:labels"
   ],
   "Sub-Optimal": [
     "tgui:Teleporter"
@@ -32285,6 +33788,9 @@
   "Subtle Message": [
     "tgui:PlayerPanel"
   ],
+  "Subvert the AI to betray the heads of staff.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Success Ping": [
     "dm:labels"
   ],
@@ -32307,6 +33813,9 @@
     "dm:labels"
   ],
   "Succubus Tattoo 3 Layer": [
+    "dm:labels"
+  ],
+  "Succubus milk autoinjector": [
     "dm:labels"
   ],
   "Suffix": [
@@ -32378,6 +33887,9 @@
   "Sunglasses and Aviators": [
     "dm:labels"
   ],
+  "SuperMax Security Prisoner": [
+    "dm:labels"
+  ],
   "Superconductors: {0}": [
     "tgui:AtmosControlPanel"
   ],
@@ -32388,6 +33900,9 @@
     "dm:labels"
   ],
   "Superstar Cop Uniform": [
+    "dm:labels"
+  ],
+  "Supervisor of Coffee": [
     "dm:labels"
   ],
   "Supplemental": [
@@ -32401,6 +33916,12 @@
     "tgui:PowerMonitor"
   ],
   "Supply Beret": [
+    "dm:labels"
+  ],
+  "Supply Foreman": [
+    "dm:labels"
+  ],
+  "Supply Guard": [
     "dm:labels"
   ],
   "Supply Jacket": [
@@ -32429,6 +33950,9 @@
   ],
   "Supressives": [
     "tgui:Microscope"
+  ],
+  "Surgeon": [
+    "dm:labels"
   ],
   "Surgery Goggles": [
     "dm:labels"
@@ -32470,6 +33994,9 @@
     "dm:labels"
   ],
   "Suspicious Spider Plushie": [
+    "dm:labels"
+  ],
+  "Suspiciously Glossy Headphones": [
     "dm:labels"
   ],
   "Suspiciously Glossy Ring": [
@@ -32736,6 +34263,9 @@
   "Synthesizing": [
     "tgui:ModulesPane"
   ],
+  "Synthetic": [
+    "dm:labels"
+  ],
   "Synthetic Big Legs": [
     "dm:labels"
   ],
@@ -32872,6 +34402,9 @@
     "dm:labels"
   ],
   "Syriniver": [
+    "dm:labels"
+  ],
+  "Sysadmin": [
     "dm:labels"
   ],
   "System": [
@@ -33148,11 +34681,11 @@
   "Take Dish": [
     "tgui:Microscope"
   ],
+  "Take the Chief Medical Officer hostage.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Taking this item will lock you from further purchasing from the marketplace. Additionally, if you have already purchased an item, you will not be able to purchase this.": [
     "tgui:index"
-  ],
-  "Tall": [
-    "dm:labels"
   ],
   "Tall Eyes": [
     "dm:labels"
@@ -33161,12 +34694,6 @@
     "dm:labels"
   ],
   "Tall Tipped Ears": [
-    "dm:labels"
-  ],
-  "Taller": [
-    "dm:labels"
-  ],
-  "Tallest": [
     "dm:labels"
   ],
   "Tan Pencilskirt": [
@@ -33248,6 +34775,12 @@
     "tgui:NtosPhysScanner"
   ],
   "Taperecorder": [
+    "dm:labels"
+  ],
+  "Tapered": [
+    "dm:labels"
+  ],
+  "Tapered (Alt)": [
     "dm:labels"
   ],
   "Tarantula": [
@@ -33374,6 +34907,12 @@
   "Taur Selection": [
     "tgui:species_features"
   ],
+  "Tavern Chef": [
+    "dm:labels"
+  ],
+  "Tavernkeeper": [
+    "dm:labels"
+  ],
   "Tayama": [
     "dm:labels"
   ],
@@ -33479,17 +35018,11 @@
     "tgui:Supermatter",
     "tgui:ThermoMachine"
   ],
-  "Temperature Gate": [
-    "dm:labels"
-  ],
   "Temperature Inlet: {0} K / Outlet: {1} K": [
     "tgui:ThermoElectricGenerator"
   ],
   "Temperature Limit": [
     "tgui:Supermatter"
-  ],
-  "Temperature Pump": [
-    "dm:labels"
   ],
   "Temperature Throttle Percent": [
     "tgui:MicrofusionGunControl"
@@ -33557,6 +35090,12 @@
     "dm:labels"
   ],
   "Tentacle, Alt": [
+    "dm:labels"
+  ],
+  "Tentacled": [
+    "dm:labels"
+  ],
+  "Tentacled (Alt)": [
     "dm:labels"
   ],
   "Tequila": [
@@ -33880,6 +35419,12 @@
   "The age at which the plant starts withering. Improves quality of resulting food & drinks.": [
     "tgui:Seed"
   ],
+  "The amount of energy required to raise the temperature of one mole of gas by one Kelvin.": [
+    "tgui:AtmosHandbook"
+  ],
+  "The amount of {0} gained per mol of gas exported.": [
+    "tgui:AtmosHandbook"
+  ],
   "The app will update its gas mixture reading automatically.": [
     "tgui:NtosGasAnalyzer"
   ],
@@ -34142,6 +35687,12 @@
     "dm:labels"
   ],
   "Themeify": [
+    "dm:labels"
+  ],
+  "Theoretical Physicist": [
+    "dm:labels"
+  ],
+  "Therapist": [
     "dm:labels"
   ],
   "There are no NIFSofts currently installed.": [
@@ -34561,6 +36112,9 @@
   "This shows/hides the animated overlays displayed on emotes for yourself.": [
     "tgui:emote_overlay"
   ],
+  "This shuttle can only be purchased if {0} Department has biggest number of employees!": [
+    "tgui:BuyingShuttle"
+  ],
   "This silicon has a null law datum. This isn't supposed to ever happen! Issue report and then click this this give them one.": [
     "tgui:Lawpanel"
   ],
@@ -34610,6 +36164,18 @@
   "Thong": [
     "dm:labels"
   ],
+  "Thong (Alt)": [
+    "dm:labels"
+  ],
+  "Thong - Cheetah": [
+    "dm:labels"
+  ],
+  "Thong - Cow": [
+    "dm:labels"
+  ],
+  "Thong - Zebra": [
+    "dm:labels"
+  ],
   "Thread-Waisted Wasp": [
     "dm:labels"
   ],
@@ -34621,9 +36187,6 @@
   ],
   "Threat Parameters": [
     "tgui:TacVisorEyesMenu"
-  ],
-  "Threat passively increases by {0} every minute": [
-    "tgui:index"
   ],
   "Three Piece Bomber Jacket": [
     "dm:labels"
@@ -34652,6 +36215,9 @@
   ],
   "Throw Range": [
     "tgui:index"
+  ],
+  "Throw the Chief Engineer into the Supermatter.": [
+    "tgui:AntagInfoRevolution"
   ],
   "Throwing Arm": [
     "dm:labels"
@@ -35160,6 +36726,15 @@
   "Top (White)": [
     "dm:labels"
   ],
+  "Top - Dom": [
+    "dm:labels"
+  ],
+  "Top - Sub": [
+    "dm:labels"
+  ],
+  "Top - Switch": [
+    "dm:labels"
+  ],
   "Top Hat": [
     "dm:labels"
   ],
@@ -35229,6 +36804,9 @@
     "dm:labels"
   ],
   "Tourette's Syndrome": [
+    "dm:labels"
+  ],
+  "Tourist": [
     "dm:labels"
   ],
   "Towel": [
@@ -35304,8 +36882,14 @@
     "tgui:CrewConsoleBubbersSec",
     "tgui:SolarControl"
   ],
+  "Tracking Collar": [
+    "dm:labels"
+  ],
   "Tracks": [
     "tgui:ZubbersStoryteller"
+  ],
+  "Trader": [
+    "dm:labels"
   ],
   "Trading at {0}{1} cr.": [
     "tgui:MatMarket"
@@ -35318,6 +36902,9 @@
   ],
   "Traditional Games Space Station 13 is thankful to the GoonStation 13 Development Team for its work on the game up to the r4407 release. The changelog for changes up to r4407 can be seen {0}.": [
     "tgui:Changelog"
+  ],
+  "Trainee Pharmacist": [
+    "dm:labels"
   ],
   "Training Machine": [
     "tgui:TrainingMachine"
@@ -35345,6 +36932,9 @@
   ],
   "Tram Information Plaque": [
     "tgui:TramPlaque"
+  ],
+  "Tram Technician": [
+    "dm:labels"
   ],
   "Tranquility": [
     "dm:labels"
@@ -35433,6 +37023,9 @@
   "Trauma Response Halo": [
     "dm:labels"
   ],
+  "Trauma Team Responder": [
+    "dm:labels"
+  ],
   "Traumatic Damage": [
     "tgui:ModulesPane"
   ],
@@ -35510,6 +37103,9 @@
   ],
   "Tribal Salamander Plushie": [
     "dm:labels"
+  ],
+  "Trick the heads of staff into exiling themselves.": [
+    "tgui:AntagInfoRevolution"
   ],
   "Tricks": [
     "tgui:NtosVirtualPet"
@@ -35650,6 +37246,9 @@
   "Turfs": [
     "tgui:AtmosControlPanel"
   ],
+  "Turn the Head of Security's team against them.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Turn your back on the Mansus to accomplish a task of your choosing. Selecting this option will prevent you from ascending!": [
     "tgui:AntagInfoHeretic"
   ],
@@ -35747,6 +37346,7 @@
   ],
   "UI": [
     "tgui:auto_fit_viewport",
+    "tgui:mapvote_hud",
     "tgui:pixel_size",
     "tgui:ready_job",
     "tgui:scaling_method",
@@ -35809,9 +37409,6 @@
   ],
   "Unanchored Objects": [
     "tgui:constants"
-  ],
-  "Unary Vent": [
-    "dm:labels"
   ],
   "Unassigned Crewmember": [
     "dm:labels"
@@ -35900,6 +37497,9 @@
   "Understood? {0}": [
     "tgui:LanguagesMenu"
   ],
+  "Undertaker": [
+    "dm:labels"
+  ],
   "Underwear": [
     "dm:labels"
   ],
@@ -35940,6 +37540,18 @@
     "tgui:NifProgram"
   ],
   "Unintelligible": [
+    "dm:labels"
+  ],
+  "Union Associate": [
+    "dm:labels"
+  ],
+  "Union Bitrunner": [
+    "dm:labels"
+  ],
+  "Union Miner": [
+    "dm:labels"
+  ],
+  "Union Requisitions Officer": [
     "dm:labels"
   ],
   "Union of Allied Republics": [
@@ -36188,6 +37800,9 @@
   "Urban Puffer Vest": [
     "dm:labels"
   ],
+  "Urine": [
+    "dm:labels"
+  ],
   "Use": [
     "tgui:TtsVoiceStudio",
     "tgui:constants"
@@ -36411,6 +38026,9 @@
   "Vegetarian": [
     "dm:labels"
   ],
+  "Velvet": [
+    "dm:labels"
+  ],
   "Velvet Kiss": [
     "dm:labels"
   ],
@@ -36424,6 +38042,9 @@
     "dm:labels"
   ],
   "Venom": [
+    "dm:labels"
+  ],
+  "Venom Siphon": [
     "dm:labels"
   ],
   "Venom Type": [
@@ -36470,6 +38091,33 @@
   "Vermouth": [
     "dm:labels"
   ],
+  "Verse - Dom": [
+    "dm:labels"
+  ],
+  "Verse - Sub": [
+    "dm:labels"
+  ],
+  "Verse - Switch": [
+    "dm:labels"
+  ],
+  "Verse-Bottom - Dom": [
+    "dm:labels"
+  ],
+  "Verse-Bottom - Sub": [
+    "dm:labels"
+  ],
+  "Verse-Bottom - Switch": [
+    "dm:labels"
+  ],
+  "Verse-Top - Dom": [
+    "dm:labels"
+  ],
+  "Verse-Top - Sub": [
+    "dm:labels"
+  ],
+  "Verse-Top - Switch": [
+    "dm:labels"
+  ],
   "Version 7815696ecbf1c96e6894b779456d330e": [
     "tgui:NtosNotepad"
   ],
@@ -36503,6 +38151,9 @@
   "Very Short Over Eye": [
     "dm:labels"
   ],
+  "Veteran Adventurer": [
+    "dm:labels"
+  ],
   "Veteran Security Advisor": [
     "dm:labels"
   ],
@@ -36511,6 +38162,9 @@
   ],
   "Vials": [
     "tgui:ChemPress"
+  ],
+  "Vibrator": [
+    "dm:labels"
   ],
   "Vice Officer Jumpsuit": [
     "dm:labels"
@@ -36621,6 +38275,9 @@
     "dm:labels"
   ],
   "Viper": [
+    "dm:labels"
+  ],
+  "Virologist": [
     "dm:labels"
   ],
   "Virologist Beret": [
@@ -36791,9 +38448,6 @@
   ],
   "Volume Mulx": [
     "tgui:ChemRecipeDebug"
-  ],
-  "Volume Pump": [
-    "dm:labels"
   ],
   "Volume of admin musics.": [
     "tgui:sounds"
@@ -37145,8 +38799,14 @@
   "Wait for dropoff slot or pick up immediately": [
     "tgui:index"
   ],
+  "Wait for the emergency shuttle, then strike in the chaos.": [
+    "tgui:AntagInfoRevolution"
+  ],
   "Wait!": [
     "tgui:DeleteCharacterPopup"
+  ],
+  "Waiter": [
+    "dm:labels"
   ],
   "Waiter's Suit": [
     "dm:labels"
@@ -37201,6 +38861,12 @@
   "Warden's Navy Blue beret": [
     "dm:labels"
   ],
+  "Warehouse Supervisor": [
+    "dm:labels"
+  ],
+  "Warehouse Technician": [
+    "dm:labels"
+  ],
   "Warhammer": [
     "dm:labels"
   ],
@@ -37239,6 +38905,9 @@
   ],
   "Waste Multiplier": [
     "tgui:Supermatter"
+  ],
+  "Waste the station's funds and resources.": [
+    "tgui:AntagInfoRevolution"
   ],
   "Watching: {0}": [
     "tgui:index"
@@ -37298,6 +38967,9 @@
   ],
   "Weapons:": [
     "tgui:SparringContract"
+  ],
+  "Weaponsmith": [
+    "dm:labels"
   ],
   "Wearer Transformation": [
     "tgui:ProteanUI"
@@ -37396,6 +39068,9 @@
   "Welded": [
     "tgui:LawRack"
   ],
+  "Well-Trained": [
+    "dm:labels"
+  ],
   "Well-worn Graphic Shirt": [
     "dm:labels"
   ],
@@ -37409,6 +39084,9 @@
     "dm:labels"
   ],
   "Wench's Dress": [
+    "dm:labels"
+  ],
+  "Werewolf": [
     "dm:labels"
   ],
   "West": [
@@ -37910,6 +39588,9 @@
   "Wireless Connectivity": [
     "tgui:NtosNetMonitor"
   ],
+  "Wireless Operator": [
+    "dm:labels"
+  ],
   "Wisp": [
     "dm:labels"
   ],
@@ -38090,6 +39771,9 @@
   "Xeno Scream": [
     "dm:labels"
   ],
+  "Xenoarchaeologist": [
+    "dm:labels"
+  ],
   "Xenoarchaeology Equipment": [
     "dm:labels"
   ],
@@ -38100,6 +39784,9 @@
     "dm:labels"
   ],
   "Xenoarchaeology Tools (Advanced)": [
+    "dm:labels"
+  ],
+  "Xenobiologist": [
     "dm:labels"
   ],
   "Xenobiology Equipment": [
@@ -38188,6 +39875,9 @@
   "Yellow Fannypack": [
     "dm:labels"
   ],
+  "Yellow Flashy": [
+    "dm:labels"
+  ],
   "Yellow Gloves": [
     "dm:labels"
   ],
@@ -38226,6 +39916,21 @@
     "tgui:SentienceFunBalloon",
     "tgui:TurretControl",
     "tgui:ZubbersStoryteller"
+  ],
+  "Yes - Dom": [
+    "dm:labels"
+  ],
+  "Yes - Pred": [
+    "dm:labels"
+  ],
+  "Yes - Prey": [
+    "dm:labels"
+  ],
+  "Yes - Sub": [
+    "dm:labels"
+  ],
+  "Yes - Switch": [
+    "dm:labels"
   ],
   "Yes.": [
     "tgui:AntagInfoSeparatist"
@@ -38636,9 +40341,6 @@
   "You need to use shears.": [
     "tgui:GlassBlowing"
   ],
-  "You need {0} more {1}.": [
-    "tgui:BuyingShuttle"
-  ],
   "You regenerate your health slowly, you're weak to fire, and you depend on blood to survive. Don't allow your blood to run too low, or you'll enter a": [
     "tgui:AntagInfoBloodsucker"
   ],
@@ -38743,9 +40445,6 @@
   ],
   "Your character will enjoy anything that's liked.": [
     "tgui:FoodPreferences"
-  ],
-  "Your current level of threat.": [
-    "tgui:index"
   ],
   "Your current objectives": [
     "tgui:Objectives"
@@ -39153,9 +40852,6 @@
   "box": [
     "tgui:Tutorial"
   ],
-  "box of long balloons": [
-    "dm:labels"
-  ],
   "breaking the Masquerade": [
     "tgui:AntagInfoBloodsucker"
   ],
@@ -39275,6 +40971,9 @@
   "cube": [
     "tgui:Tutorial"
   ],
+  "cum": [
+    "dm:labels"
+  ],
   "cup of frisky kitty": [
     "dm:labels"
   ],
@@ -39373,6 +41072,12 @@
   ],
   "false": [
     "tgui:Fax"
+  ],
+  "fashionable sheer miniskirt": [
+    "dm:labels"
+  ],
+  "femcum": [
+    "dm:labels"
   ],
   "filters": [
     "tgui:AppearanceInfo"
@@ -40001,6 +41706,9 @@
   "ph:": [
     "tgui:ChemReactionChamber"
   ],
+  "pillow weapons": [
+    "dm:labels"
+  ],
   "pixel_location = position + (velocity * ticks_elapsed) +(0.5 * (average_drift_during_ticks + gravity - (velocity * friction{0})) * ticks_elapsed{1})": [
     "tgui:Tutorial"
   ],
@@ -40063,6 +41771,9 @@
     "tgui:Tutorial"
   ],
   "pulsating tumor": [
+    "dm:labels"
+  ],
+  "r.u.t.t. ring": [
     "dm:labels"
   ],
   "r4407 release. The changelog for changes up to r4407 can be seen": [
@@ -40152,6 +41863,9 @@
     "dm:labels"
   ],
   "shadowling tumor": [
+    "dm:labels"
+  ],
+  "sheer dress": [
     "dm:labels"
   ],
   "sheet": [
@@ -40374,6 +42088,9 @@
   "toxin filter": [
     "dm:labels"
   ],
+  "toys": [
+    "dm:labels"
+  ],
   "tracheae": [
     "dm:labels"
   ],
@@ -40446,10 +42163,10 @@
   "v": [
     "tgui:Sort"
   ],
-  "vampire heart": [
+  "vampire fangs": [
     "dm:labels"
   ],
-  "vampire teeth": [
+  "vampire heart": [
     "dm:labels"
   ],
   "vault suit": [
@@ -40731,9 +42448,6 @@
     "tgui:DynamicAdmin"
   ],
   "{0} TILES": [
-    "tgui:index"
-  ],
-  "{0} Threat determines what items you can purchase. {1}{2}": [
     "tgui:index"
   ],
   "{0} Units": [

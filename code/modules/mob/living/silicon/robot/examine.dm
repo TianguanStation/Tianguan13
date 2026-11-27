@@ -10,7 +10,7 @@
 	var/obj/act_module = get_active_held_item()
 	if(act_module)
 		. += LANG("mob.49de57985408e2cb", list(p_Theyre(), icon2html(act_module, user), act_module))
-	. += get_status_effect_examinations()
+	. += get_status_effect_examinations(user)
 	if (get_brute_loss())
 		if (get_brute_loss() < maxHealth*0.5)
 			. += span_warning(LANG("mob.c487477b1d7f722c", list(p_They(), p_s())))
@@ -32,7 +32,13 @@
 	if(opened)
 		. += span_warning(LANG("mob.2d2c85ca4c9d081e", list(p_Their(), cell ? "installed" : "missing")))
 	else
-		. += LANG("mob.9883c04bf549efdc", list(p_Their(), locked ? "" : ", and looks unlocked"))
+		var/cover_message = "[p_Their()] cover is closed"
+		if(locked)
+			if(user == src)
+				cover_message += LANG("mob.4b3e867884ce0e28", list(REF(src)))
+		else
+			cover_message += LANG("mob.d62571f4ddc8d506", null)
+		. += span_notice("[cover_message].")
 
 	if(cell && cell.charge <= 0)
 		. += span_warning(LANG("mob.1269489e36a154ec", list(p_Their())))

@@ -23,7 +23,7 @@
 /area/station/commons/toilet/restrooms)
 "aaN" = (
 /obj/structure/table,
-/obj/item/relic,
+/obj/item/assembly/relic,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "aaU" = (
@@ -2846,7 +2846,7 @@
 /area/station/security/evidence)
 "bjy" = (
 /obj/structure/closet,
-/obj/item/relic,
+/obj/item/assembly/relic,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/central)
 "bjA" = (
@@ -17026,7 +17026,7 @@
 /obj/item/clothing/head/costume/xenos,
 /obj/effect/spawner/random/maintenance/two,
 /obj/item/crowbar,
-/obj/item/relic,
+/obj/item/assembly/relic,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine/atmos)
 "gEd" = (
@@ -17915,7 +17915,7 @@
 "gVI" = (
 /obj/effect/decal/cleanable/generic,
 /obj/structure/closet/crate/trashcart/filled,
-/obj/item/relic,
+/obj/item/assembly/relic,
 /turf/open/floor/plating,
 /area/station/maintenance/department/cargo)
 "gVK" = (
@@ -19052,7 +19052,7 @@
 "hqe" = (
 /obj/structure/table,
 /obj/item/book/random,
-/obj/item/relic,
+/obj/item/assembly/relic,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "hql" = (
@@ -20344,7 +20344,7 @@
 	pixel_x = 7;
 	pixel_y = 9
 	},
-/obj/item/mmi,
+/obj/item/brain_processor/organic,
 /obj/effect/turf_decal/siding/dark,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
@@ -54269,7 +54269,7 @@
 "ukb" = (
 /obj/structure/table,
 /obj/item/book/manual/wiki/experimentor,
-/obj/item/relic,
+/obj/item/assembly/relic,
 /obj/machinery/light_switch/directional/south{
 	pixel_x = -8;
 	pixel_y = -22

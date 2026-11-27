@@ -551,6 +551,7 @@
 		offerer.add_mood_event("high_five", /datum/mood_event/down_low)
 		rube.add_mood_event("high_five", /datum/mood_event/too_slow)
 		offerer.remove_status_effect(/datum/status_effect/offering/no_item_received/high_five)
+		offerer.client?.give_award(/datum/award/achievement/misc/down_low_too_slow, offerer)
 
 	qdel(src)
 
@@ -1013,6 +1014,7 @@
 			context[SCREENTIP_CONTEXT_ALT_LMB] = "[selected_never ? "Cancel " : ""]Never For This Round"
 		if(poll.jump_to_me && isobserver(owner))
 			context[SCREENTIP_CONTEXT_CTRL_LMB] = "Jump To"
+		context[SCREENTIP_CONTEXT_RMB] = "Dismiss" //BUBBER EDIT ADDITION - ANTAG PROMPT
 	return CONTEXTUAL_SCREENTIP_SET
 
 /atom/movable/screen/alert/poll_alert/process()
@@ -1031,8 +1033,15 @@
 	if(!. || isnull(poll))
 		return
 	var/list/modifiers = params2list(params)
+	//BUBBER EDIT ADDITION BEGIN - ANTAG PROMPT - right click closes the prompt
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		dismiss_poll()
+		return
+	//BUBBER EDIT ADDITION END - ANTAG PROMPT
 	if(LAZYACCESS(modifiers, ALT_CLICK) && poll.ignoring_category)
-		set_never_round()
+		//BUBBER EDIT CHANGE - ANTAG PROMPT - antag prompts confirm first, they blanket every roll
+		//set_never_round() - BUBBER EDIT ORIGINAL
+		confirm_never_round()
 		return
 	if(LAZYACCESS(modifiers, CTRL_CLICK) && poll.jump_to_me)
 		jump_to_jump_target()
@@ -1080,7 +1089,7 @@
 
 /atom/movable/screen/alert/poll_alert/proc/update_candidates_number_overlay()
 	cut_overlay(candidates_num_overlay)
-	if(!length(poll.signed_up))
+	if(!length(poll.signed_up) || !poll.show_candidate_amount) //BUBBER EDIT - ANTAG PROMPT - some polls hide their signup count
 		return
 	candidates_num_overlay = new
 	candidates_num_overlay.maptext = MAPTEXT("<span style='text-align: right; color: aqua'>[length(poll.signed_up)]</span>")

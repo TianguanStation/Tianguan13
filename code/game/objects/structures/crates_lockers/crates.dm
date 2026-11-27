@@ -423,7 +423,7 @@
 	base_icon_state = "robo"
 
 /obj/structure/closet/crate/mod
-	name = "MOD crate"
+	name = "\improper MOD crate"
 	icon_state = "robo"
 	base_icon_state = "robo"
 

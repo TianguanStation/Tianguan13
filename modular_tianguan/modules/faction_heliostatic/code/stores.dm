@@ -1,14 +1,14 @@
 /obj/item/disk/design_disk/limbs/lizard
 	name = "Lizard Organ Design Disk"
-	limb_designs = list(/datum/design/lizard_tail, /datum/design/lizard_tongue)
+	blueprints = list(/datum/design/lizard_tail, /datum/design/lizard_tongue)
 
 /obj/item/disk/design_disk/limbs/plasmaman
 	name = "Plasmaman Organ Design Disk"
-	limb_designs = list(/datum/design/plasmaman_stomach, /datum/design/plasmaman_liver, /datum/design/plasmaman_lungs, /datum/design/plasmaman_tongue)
+	blueprints = list(/datum/design/plasmaman_stomach, /datum/design/plasmaman_liver, /datum/design/plasmaman_lungs, /datum/design/plasmaman_tongue)
 
 /obj/item/disk/design_disk/limbs/ethereal
 	name = "Ethereal Organ Design Disk"
-	limb_designs = list(/datum/design/ethereal_stomach, /datum/design/ethereal_tongue, /datum/design/ethereal_lungs)
+	blueprints = list(/datum/design/ethereal_stomach, /datum/design/ethereal_tongue, /datum/design/ethereal_lungs)
 
 /obj/item/melee/baton/security/stun_gun
 	name = "\improper Kopřiva stun gun"

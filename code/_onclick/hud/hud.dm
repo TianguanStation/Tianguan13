@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	"Glass" = 'icons/hud/screen_glass.dmi',
 	"Trasen-Knox" = 'icons/hud/screen_trasenknox.dmi',
 	"Detective" = 'icons/hud/screen_detective.dmi',
-	"Blue - 98" = 'modular_zubbers/master_files/icons/hud/screen_blue98.dmi' // Bubber Addition
+	"Blue - 98" = 'modular_zubbers/icons/hud/screen_blue98.dmi' // Bubber Addition
 ))
 
 /proc/ui_style2icon(ui_style)
@@ -32,6 +32,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	/// This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
 	var/atom/movable/screen/ammo_counter //SKYRAT EDIT ADDITION
+	var/atom/movable/screen/mapvote_hud/mapvote_hud // BUBBER EDIT ADDITION
 	var/hotkey_ui_hidden = FALSE
 
 	/// Assoc list of key => "plane master groups"
@@ -39,12 +40,6 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	var/list/datum/plane_master_group/master_groups = list()
 	///Assoc list of controller groups, associated with key string group name with value of the plane master controller ref
 	var/list/atom/movable/plane_master_controller/plane_master_controllers = list()
-
-	/// Think of multiz as a stack of z levels. Each index in that stack has its own group of plane masters
-	/// This variable is the plane offset our mob/client is currently "on"
-	/// We use it to track what we should show/not show
-	/// Goes from 0 to the max (z level stack size - 1)
-	var/current_plane_offset = 0
 
 	/// UI for screentips that appear when you mouse over things
 	/// Stored directly as it is used in very hot MouseEntered code
@@ -110,6 +105,11 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	screentips_enabled = preferences?.read_preference(/datum/preference/choiced/enable_screentips)
 	screentip_images = preferences?.read_preference(/datum/preference/toggle/screentip_images)
 	screentip_text = add_screen_object(/atom/movable/screen/screentip, HUD_MOB_SCREENTIP)
+// BUBBER EDIT ADDITION START
+	if(preferences?.read_preference(/datum/preference/toggle/mapvote_hud))
+		mapvote_hud = new(null, src, preferences)
+		add_screen_object(mapvote_hud, null, HUD_GROUP_STATIC)
+// BUBBER EDIT ADDITION END
 
 	for(var/mytype in subtypesof(/atom/movable/plane_master_controller))
 		var/atom/movable/plane_master_controller/controller_instance = new mytype(null,src)
@@ -143,6 +143,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	QDEL_LIST(floating_actions)
 	screentip_text = null
 	screen_groups = null
+	mapvote_hud = null // BUBBER EDIT ADDITION
 	inventory_slots.Cut()
 	QDEL_LIST_ASSOC_VAL(screen_objects)
 	QDEL_LIST_ASSOC_VAL(master_groups)
@@ -234,7 +235,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 
 	for(var/group_key in master_groups)
 		var/datum/plane_master_group/group = master_groups[group_key]
-		group.build_planes_offset(src, current_plane_offset)
+		group.refresh_planes_offset()
 
 /datum/hud/proc/should_use_scale()
 	return should_sight_scale(mymob.sight)
@@ -244,21 +245,10 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 
 /datum/hud/proc/eye_z_changed(atom/eye)
 	SIGNAL_HANDLER
-	update_parallax_pref() // If your eye changes z level, so should your parallax prefs
 	var/turf/eye_turf = get_turf(eye)
 	if(!eye_turf)
 		return
 	SEND_SIGNAL(src, COMSIG_HUD_Z_CHANGED, eye_turf.z)
-	var/new_offset = GET_TURF_PLANE_OFFSET(eye_turf)
-	if(current_plane_offset == new_offset)
-		return
-	var/old_offset = current_plane_offset
-	current_plane_offset = new_offset
-
-	SEND_SIGNAL(src, COMSIG_HUD_OFFSET_CHANGED, old_offset, new_offset)
-	for(var/group_key in master_groups)
-		var/datum/plane_master_group/group = master_groups[group_key]
-		group.build_planes_offset(src, new_offset)
 
 /datum/hud/proc/on_plane_increase(datum/source, old_max_offset, new_max_offset)
 	SIGNAL_HANDLER
@@ -328,6 +318,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	// I'm sorry
 	screenmob.client.clear_screen()
 	screenmob.client.apply_clickcatcher()
+	screenmob.client.apply_parallax()
 
 	var/display_hud_version = version
 	if (!display_hud_version) // If 0 or blank, display the next hud version
@@ -403,11 +394,6 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	// Handles alerts - the things on the right side of the screen
 	reorganize_alerts(screenmob)
 	screenmob.reload_fullscreen()
-
-	if(screenmob == mymob)
-		update_parallax_pref()
-	else
-		viewmob.hud_used.update_parallax_pref()
 
 	update_reuse(screenmob)
 

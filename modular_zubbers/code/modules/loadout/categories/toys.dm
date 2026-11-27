@@ -167,3 +167,7 @@
 	name = "Blue Synth Plushie"
 	item_path = /obj/item/toy/plush/blue_synth
 
+/datum/loadout_item/toys/plush/myra
+	name = "Noble Dragon-Shark Plushie"
+	item_path = /obj/item/toy/plush/myra
+

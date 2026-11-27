@@ -208,6 +208,11 @@
 				viewer.show_message(span_emote("<b>[user_display]</b> [msg]"), MSG_AUDIBLE)
 			else if(is_visual)
 				viewer.show_message(span_emote("<b>[user_display]</b> [msg]"), MSG_VISUAL)
+
+		// AI-eye emotes
+		if(is_visual)
+			relay_visual_emote_to_ai_runechat(user, msg)
+
 		return // Early exit so no dchat message
 
 	// The emote has some important information, and should always be shown to the user
@@ -249,7 +254,7 @@
 	else
 		CRASH("Emote [type] has no valid emote type set!")
 
-	// SKYRAT EDIT -- BEGIN -- ADDITION -- AI QOL - RELAY EMOTES OVER HOLOPADS
+	// BUBBER EDIT BEGIN ADDITION -- AI QOL - RELAY EMOTES OVER HOLOPADS
 	var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
 	if(hologram)
 		if(is_important)
@@ -258,7 +263,7 @@
 		else if(is_visual && is_audible)
 			hologram.audible_message(
 				message = msg,
-				deaf_message = LANG("datum.3b266acd31b1d21f", list(user, msg)),
+				deaf_message = span_emote(LANG("datum.925c6790ca04918f", list(user_display, msg))),
 				self_message = msg,
 				audible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE,
 				separation = space,
@@ -277,7 +282,7 @@
 				visible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE,
 				separation = space,
 			)
-	// SKYRAT EDIT -- END
+	// BUBBER EDIT END ADDITION
 
 	if(!isnull(user.client))
 		var/dchatmsg = "<b>[user_display]</b>[space][msg]" // SKYRAT EDIT - Better emotes - Original: var/dchatmsg = "<b>[user]</b> [msg]"
@@ -401,7 +406,7 @@
 		. = message_larva
 	else if(isAI(user) && message_AI)
 		. = message_AI
-	else if(ismonkey(user) && message_monkey)
+	else if(HAS_TRAIT(user, TRAIT_LESSER_HUMANOID) && message_monkey)
 		. = message_monkey
 	else if((iscyborg(user) || (living_user.mob_biotypes & MOB_ROBOTIC)) && message_robot)
 		. = message_robot
@@ -519,6 +524,7 @@
 	if (log_emote)
 		log_message(text, LOG_EMOTE)
 	visible_message(text, visible_message_flags = EMOTE_MESSAGE)
+
 	return TRUE
 
 /mob/manual_emote(text, log_emote = null)
@@ -529,6 +535,9 @@
 	. = ..(text, log_emote)
 	if (!.)
 		return FALSE
+
+	relay_visual_emote_to_ai_runechat(src, text)
+
 	if (!client)
 		return TRUE
 	var/ghost_text = "<b>[src]</b> [text]"
@@ -539,3 +548,50 @@
 		if(get_chat_toggles(ghost.client) & CHAT_GHOSTSIGHT && !(ghost in viewers(origin_turf, null)))
 			ghost.show_message("[FOLLOW_LINK(ghost, src)] [ghost_text]")
 	return TRUE
+
+/// AI can also see emotes!
+/proc/ai_eye_turf_in_view(mob/eye/camera/ai/eye, turf/target_turf)
+	if(!eye || !target_turf)
+		return FALSE
+
+	var/turf/eye_turf = get_turf(eye)
+	if(!eye_turf || eye_turf.z != target_turf.z)
+		return FALSE
+
+	if(!SScameras || !SScameras.is_visible_by_cameras(eye_turf) || !SScameras.is_visible_by_cameras(target_turf))
+		return FALSE
+
+	return (target_turf in eye.get_visible_turfs())
+
+/proc/relay_visual_emote_to_ai_runechat(mob/user, msg)
+	var/turf/user_turf = get_turf(user)
+	if(!user_turf)
+		return
+
+	for(var/mob/living/silicon/ai/AI as anything in GLOB.ai_list)
+		if(!AI?.client)
+			continue
+
+		if(AI in viewers(user))// Avoid duplicates if the AI is nearby
+			continue
+
+		var/relayed = FALSE
+
+		var/atom/active_eye = AI.client.eye
+		if(istype(active_eye, /mob/eye/camera/ai))
+			var/mob/eye/camera/ai/ai_eye = active_eye
+			if(ai_eye.ai == AI && ai_eye_turf_in_view(ai_eye, user_turf))
+				to_chat(AI, span_emote(LANG("_root.925c6790ca04918f", list(user, msg))))
+
+				if(user.runechat_prefs_check(AI, EMOTE_MESSAGE))
+					AI.create_chat_message(speaker = user, raw_message = msg, runechat_flags = EMOTE_MESSAGE)
+				relayed = TRUE
+
+		if(!relayed && AI.multicam_on) // Multicam
+			for(var/mob/eye/camera/ai/ai_eye as anything in AI.all_eyes)
+				if(ai_eye_turf_in_view(ai_eye, user_turf))
+					to_chat(AI, span_emote(LANG("_root.925c6790ca04918f", list(user, msg))))
+
+					if(user.runechat_prefs_check(AI, EMOTE_MESSAGE))
+						AI.create_chat_message(speaker = user, raw_message = msg, runechat_flags = EMOTE_MESSAGE)
+					break

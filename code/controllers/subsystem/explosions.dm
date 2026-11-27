@@ -352,9 +352,14 @@ ADMIN_VERB(check_bomb_impacts, R_DEBUG, "检查炸弹威力", "See what the effe
 		else if(ismob(fired_projectile.firer))
 			who_did_it = "\[Projectile firer: [ADMIN_LOOKUPFLW(fired_projectile.firer)]\]"
 			who_did_it_game_log = "\[Projectile firer: [key_name(fired_projectile.firer)]\]"
-		else
+		// BUBBER EDIT BEGIN - Headless projectiles summoned by events
+		else if(fired_projectile.firer)
 			who_did_it = "\[Projectile firer: [ADMIN_LOOKUPFLW(fired_projectile.firer?.fingerprintslast)]\]"
 			who_did_it_game_log = "\[Projectile firer: [key_name(fired_projectile.firer.fingerprintslast)]\]"
+		else
+			who_did_it = "\[Projectile firer: Headless, probably from an event/admin spawn\]"
+			who_did_it_game_log = "\[Projectile firer: Headless, probably from an event/admin spawn\]"
+		// BUBBER EDIT END
 	// Otherwise if the explosion cause is an atom, try get the fingerprints.
 	else if(istype(explosion_cause))
 		who_did_it = ADMIN_LOOKUPFLW(explosion_cause.fingerprintslast)

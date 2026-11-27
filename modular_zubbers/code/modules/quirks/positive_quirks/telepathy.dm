@@ -99,24 +99,13 @@
 	if (copytext(message, 1, 2) == "#")
 		subtler = TRUE
 		message = copytext(message, 2) // Strip the leading #
+
 	to_chat(owner, span_boldnotice(LANG("datum.db13527cc2930cae", list(target, span_purple(message)))))
 	// flub a runechat chat message, do something with the language later
 	if(owner.client?.prefs.read_preference(/datum/preference/toggle/enable_runechat))
 		owner.create_chat_message(owner, owner.get_selected_language(), message, list("italics"))
-	if(!target.can_block_magic(antimagic_flags, charge_cost = 0) && target.client && !(HAS_TRAIT(target, TRAIT_PSIONIC_DAMPENER))) //make sure we've got a client before we bother sending anything
-		//different messaging if the target has the telepathy mutation themselves themselves
-		if (ishuman(caster))
-			var/mob/living/carbon/human/human_caster = caster
-			var/datum/mutation/telepathy/tele_mut = human_caster.dna.get_mutation(/datum/mutation/telepathy)
 
-			if (tele_mut)
-				to_chat(target, span_boldnotice(LANG("datum.4660e348b28d8e0e", list(span_purple(message)))))
-			else
-				to_chat(target, span_boldnotice(LANG("datum.2c5cb7b9feb0b25d", list(caster, span_purple(message)))))
-
-		if(target.client?.prefs.read_preference(/datum/preference/toggle/enable_runechat))
-			target.create_chat_message(target, target.get_selected_language(), message, list("italics")) // it appears over them since they hear it in their head
-	else
+	if(!communicate(caster, target, message))
 		owner.balloon_alert(owner, LANG("datum.072288c904000437", null))
 		to_chat(owner, span_warning(LANG("datum.3719244803f34715", null)))
 		return
@@ -134,6 +123,37 @@
 		var/to_mob_name = span_name("[target]")
 
 		to_chat(ghost, "[from_link] " + span_purple("<b>\[Telepathy\]</b> [from_mob_name] transmits, \"[message]\"") + " to [to_mob_name] [to_link]")
+
+// it is a mouthful
+#define CHECK_RUNECHAT_PREF(creature) creature.client?.prefs.read_preference(/datum/preference/toggle/enable_runechat)
+
+/// the actual proc responsible for sanity checks and sending the message
+/// returns TRUE if it transmitted, FALSE if for whatever reason it wasn't possible
+/datum/action/cooldown/spell/pointed/telepathy/proc/communicate(mob/living/caster, mob/living/target, message)
+	if(target.can_block_magic(antimagic_flags, charge_cost = 0))
+		return FALSE
+	
+	if(!target.client)
+		return FALSE
+	
+	if((HAS_TRAIT(target, TRAIT_PSIONIC_DAMPENER)))
+		return FALSE
+
+	var/datum/dna/dna = caster.has_dna()
+	// you have to focus on them REALLY HARD if you don't have the mutation
+	if (isnull(dna) || !dna.get_mutation(/datum/mutation/telepathy))
+		caster.balloon_alert_to_viewers(
+			LANG("datum.f7ffc2f37d231f36", list(caster, target)),
+			LANG("datum.c1890ebb463b5cfc", list(target))
+			)
+
+	to_chat(target, span_boldnotice(LANG("datum.4660e348b28d8e0e", list(span_purple(message)))))
+	if(CHECK_RUNECHAT_PREF(target))
+		target.create_chat_message(target, target.get_selected_language(), message, list("italics")) // it appears over them since they hear it in their head
+
+	return TRUE
+
+#undef CHECK_RUNECHAT_PREF
 
 /datum/quirk/telepathic
 	name = "Telepathic"

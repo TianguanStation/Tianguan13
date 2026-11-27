@@ -1,7 +1,6 @@
 /datum/design/cybernetic_brain_cortical
 	name = "Cortical Cybernetic Brain"
 	desc = "An advanced cybernetic brain with enhanced cortical capabilities."
-	id = "cybernetic_brain_cortical"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 15 SECONDS
 	materials = list(

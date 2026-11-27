@@ -78,11 +78,11 @@
 		human.update_sight()
 	return ..()
 
-/obj/vehicle/sealed/mecha/solfed/hermes/mmi_moved_inside(obj/item/mmi/MMI, mob/user)
+/obj/vehicle/sealed/mecha/solfed/hermes/mmi_moved_inside(obj/item/brain_processor/brain_processor, mob/user)
 	. = ..()
-	if(. && !isnull(MMI.brainmob) && !HAS_TRAIT(MMI.brainmob, TRAIT_THERMAL_VISION))
-		ADD_TRAIT(MMI.brainmob, TRAIT_THERMAL_VISION, VEHICLE_TRAIT)
-		MMI.brainmob.update_sight()
+	if(. && !isnull(brain_processor.brainmob) && !HAS_TRAIT(brain_processor.brainmob, TRAIT_THERMAL_VISION))
+		ADD_TRAIT(brain_processor.brainmob, TRAIT_THERMAL_VISION, VEHICLE_TRAIT)
+		brain_processor.brainmob.update_sight()
 
 /datum/action/vehicle/sealed/mecha/hermes_toggle_chameleon
 	name = "Toggle Chameleon Skin"
