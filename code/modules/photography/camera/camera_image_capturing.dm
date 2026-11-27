@@ -14,11 +14,14 @@
 
 #define PHYSICAL_POSITION(atom) ((atom.y * ICON_SIZE_Y) + (atom.pixel_y))
 
-/obj/item/camera/proc/camera_get_icon(list/turfs, turf/center, datum/turf_reservation/clone_area)
+/obj/item/camera/proc/camera_get_icon(list/turfs, turf/center, datum/turf_reservation/clone_area, turf/flash_origin)
 	PRIVATE_PROC(TRUE)
 
 	var/list/atoms = list()
 	var/list/lighting = list()
+	var/list/flash_exposure = list()
+	// The live flash is a movable light overlay, outside the static light used by the photo.
+	var/list/flash_turfs = (flash_origin && light_range > 0) ? get_hear_turfs(CEILING(light_range, 1), flash_origin) : null
 	var/skip_normal = FALSE
 	var/wipe_atoms = FALSE
 
@@ -45,6 +48,9 @@
 			lighting_overlay.underlays += backdrop
 			lighting_overlay.blend_mode = BLEND_MULTIPLY
 			lighting += lighting_overlay
+			if(T in flash_turfs)
+				var/distance = get_dist(flash_origin, T)
+				flash_exposure[lighting_overlay] = CLAMP01(light_power * (1 - distance / light_range))
 		for(var/atom/found_atom as anything in T.contents)
 			if(HAS_TRAIT(found_atom, TRAIT_INVISIBLE_TO_CAMERA))
 				if(see_ghosts)
@@ -123,6 +129,9 @@
 			if(!img)
 				CHECK_TICK
 				continue
+			var/exposure = flash_exposure[clone]
+			if(exposure)
+				img.MapColors(1,0,0, 0,1,0, 0,0,1, exposure,exposure,exposure)
 			// Center of the image in X
 			var/xo = (clone.x - center.x) * ICON_SIZE_X + clone.pixel_x + xcomp + clone.step_x
 			// Center of the image in Y
