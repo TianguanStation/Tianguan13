@@ -112,6 +112,8 @@
 		/mob/living/proc/emote_mousesqueak,
 		/mob/living/proc/emote_merp,
 		/mob/living/proc/emote_bark,
+		/mob/living/proc/emote_bark2,
+		/mob/living/proc/emote_growl,
 		/mob/living/proc/emote_squish,
 		/mob/living/proc/emote_meow,
 		/mob/living/proc/emote_hiss1,
@@ -522,6 +524,12 @@ GAME_VERB_PROC(/mob/living, emote_merp, "> 咩噗", "Emotes+")
 GAME_VERB_PROC(/mob/living, emote_bark, "> 吠叫", "Emotes+")
 	src.emote("bark", intentional = TRUE)
 
+GAME_VERB_PROC(/mob/living, emote_bark2, "> 大声吠叫", "Emotes+")
+	src.emote("bark2", intentional = TRUE)
+
+GAME_VERB_PROC(/mob/living, emote_growl, "> 低吼", "Emotes+")
+	src.emote("growl", intentional = TRUE)
+
 GAME_VERB_PROC(/mob/living, emote_squish, "> 挤压声", "Emotes+")
 	src.emote("squish", intentional = TRUE)
 
@@ -529,7 +537,7 @@ GAME_VERB_PROC(/mob/living, emote_meow, "> 喵", "Emotes+")
 	src.emote("meow", intentional = TRUE)
 
 GAME_VERB_PROC(/mob/living, emote_hiss1, "> 嘶嘶", "Emotes+")
-	src.emote("hiss1", intentional = TRUE)
+	src.emote("hiss", intentional = TRUE)
 
 GAME_VERB_PROC(/mob/living, emote_chitter, "> 愉快啾鸣", "Emotes+")
 	src.emote("chitter", intentional = TRUE)
