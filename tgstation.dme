@@ -9186,6 +9186,7 @@
 #include "modular_zh\modules\bitrunning_cleanup\code\bitrunning_cleanup.dm"
 #include "modular_zh\modules\character_bloopers\code\character_bloopers.dm"
 #include "modular_zh\modules\emote_panel\code\emote_panel.dm"
+#include "modular_zh\modules\weapon_descriptions\code\bulldog.dm"
 #include "modular_zubbers\code\__DEFINES\bloodsucker_defines.dm"
 #include "modular_zubbers\code\__DEFINES\guardian_defines.dm"
 #include "modular_zubbers\code\__DEFINES\loadout.dm"
