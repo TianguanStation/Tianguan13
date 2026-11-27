@@ -21,7 +21,8 @@ GLOBAL_PROTECT(exp_to_update)
 	if(is_job_exempt_from(C.ckey, title))
 		return 0
 	// BUBBER EDIT END
-	var/my_exp = C.calc_exp_type(get_exp_req_type())
+	var/experience_type = get_exp_req_type()
+	var/my_exp = C.calc_exp_type(experience_type, get_exp_excluded_job(experience_type))
 	var/job_requirement = get_exp_req_amount()
 	if(my_exp >= job_requirement)
 		return 0
@@ -44,13 +45,19 @@ GLOBAL_PROTECT(exp_to_update)
 	return exp_required_type
 
 
-/client/proc/calc_exp_type(exptype)
+/// Optional job path to exclude from this particular qualification, without changing department totals.
+/datum/job/proc/get_exp_excluded_job(experience_type)
+	return null
+
+/client/proc/calc_exp_type(exptype, exclude_job_type)
 	var/list/job_list = SSjob.experience_jobs_map[exptype]
 	if(!job_list)
 		return -1
 	var/list/exp_map = prefs.exp.Copy()
 	. = 0
 	for(var/datum/job/job as anything in job_list)
+		if(exclude_job_type && istype(job, exclude_job_type))
+			continue
 		. += exp_map[job.title]
 
 

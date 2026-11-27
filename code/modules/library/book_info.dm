@@ -21,7 +21,13 @@
 	if(trusted)
 		title = _title
 		return
-	title = reject_bad_text(trim(html_encode(_title), 30))
+	if(!istext(_title))
+		return FALSE
+	var/checked_title = reject_bad_text(trim(_title), max_length = 30, ascii_only = FALSE)
+	if(!checked_title)
+		return FALSE
+	title = html_encode(checked_title)
+	return TRUE
 
 /datum/book_info/proc/get_title(default="N/A") //Loads in an html decoded version of the title. Only use this for tgui menus, absolutely nothing else.
 	return html_decode(title) || "N/A"

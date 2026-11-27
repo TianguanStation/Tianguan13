@@ -49,7 +49,7 @@
 				"name" = get_area_name(alert_details[1], TRUE),
 				"cameras" = camera_view ? length(alert_details[2]) : null,
 				"sources" = camera_view ? length(alert_details[3]) : null,
-				"ref" = camera_view ? REF(alert) : null,
+				"ref" = REF(alert),
 			))
 		data["alarms"] += list(alarm_category)
 		nominal_types -= alarm_type
@@ -73,15 +73,11 @@
 			if(!istype(ai))
 				return
 
-			var/list/alarms = listener.alarms
-			var/list/alerts = list()
-			for(var/alarm_type in alarms)
-				alerts += alarms[alarm_type]
-
-			var/list/our_alert = locate(params["alert"]) in alerts
-			if(!length(our_alert))
+			var/list/alerts = listener.alarms[params["category"]]
+			var/area/our_alert = locate(params["alert"])
+			var/list/chosen_alert = alerts?[our_alert]
+			if(!chosen_alert)
 				return
-			var/chosen_alert = alerts[our_alert]
 			var/list/cameras = chosen_alert[2]
 			if(!length(cameras))
 				return
@@ -97,7 +93,7 @@
 				if(isnull(chosen_camera))
 					return
 			var/obj/machinery/camera/selected_camera = named_cameras[chosen_camera]
-			if(!selected_camera.can_use())
+			if(QDELETED(selected_camera) || !selected_camera.can_use())
 				to_chat(ai, span_warning(LANG("datum.783ddddadb3471ed", null)))
 				return
 			ai.switchCamera(selected_camera)

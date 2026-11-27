@@ -197,7 +197,7 @@
 	return NONE
 
 /obj/item/book/proc/vandalize_title(mob/living/user, obj/item/tool)
-	var/newtitle = reject_bad_text(tgui_input_text(user, LANG("obj.14cba6fcaeb052bc", null), LANG("obj.7e7c2662d791ec16", null), max_length = 30))
+	var/newtitle = tgui_input_text(user, LANG("obj.14cba6fcaeb052bc", null), LANG("obj.7e7c2662d791ec16", null), max_length = 30, encode = FALSE)
 	if(!newtitle)
 		balloon_alert(user, LANG("obj.4b1a454f1fd06b8f", null))
 		return ITEM_INTERACT_BLOCKING
@@ -207,8 +207,10 @@
 	if(!can_vandalize(user, tool))
 		return ITEM_INTERACT_BLOCKING
 
-	name = newtitle
-	book_data.set_title(html_decode(newtitle)) //Don't want to double encode here
+	if(!book_data.set_title(newtitle))
+		balloon_alert(user, LANG("obj.4b1a454f1fd06b8f", null))
+		return ITEM_INTERACT_BLOCKING
+	name = book_data.title
 	playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 	return ITEM_INTERACT_SUCCESS
 
