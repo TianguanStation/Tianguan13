@@ -309,7 +309,9 @@
 	owner = null
 
 	if(LAZYLEN(applied_items))
-		QDEL_LIST_ASSOC_VAL(applied_items)
+		// Exited() removes each departing item and may null the live list.
+		var/list/items_to_remove = applied_items.Copy()
+		QDEL_LIST_ASSOC_VAL(items_to_remove)
 	QDEL_LAZYLIST(scars)
 
 	// Overlays and textures may be owned by something else like a status effect,

@@ -386,6 +386,7 @@
 #include "~zubbers\vitezstvi_turret_flags.dm"
 // SPLURT EDIT END
 // ZH EDIT START - localization tests
+#include "~zh\bandaged_species_change.dm"
 #include "~zh\i18n_chat_layers.dm"
 #include "~zh\i18n_display_boundary.dm"
 #include "~zh\i18n_display_leaks.dm"
