@@ -185,54 +185,6 @@
 	desc = "The clear plastic reveals that this no longer holds tasty treats for your winged friends."
 	icon_state = "moth_bag_trash"
 
-/obj/item/reagent_containers/cup/soda_cans/skyrat/lemonade
-	name = "\improper Gyárhajó 1023: Lemonade"
-	desc = "A can of lemonade, for those who are into that kind of thing, or just have no choice."
-	icon_state = "lemonade"
-	list_reagents = list(/datum/reagent/consumable/lemonade = 30)
-	drink_type = FRUIT
-
-/obj/item/reagent_containers/cup/soda_cans/skyrat/lemonade/examine_more(mob/user)
-	. = ..()
-	. += span_notice(LANG("obj.6a538e3baa20118c", null))
-	return .
-
-/obj/item/reagent_containers/cup/soda_cans/skyrat/navy_rum
-	name = "\improper Gyárhajó 1506: Navy Rum"
-	desc = "A can of navy rum brewed up and imported from a detachment of the nomad fleet, or so the can says."
-	icon_state = "navy_rum"
-	list_reagents = list(/datum/reagent/consumable/ethanol/navy_rum = 30)
-	drink_type = ALCOHOL
-
-/obj/item/reagent_containers/cup/soda_cans/skyrat/navy_rum/examine_more(mob/user)
-	. = ..()
-	. += span_notice(LANG("obj.0eaa5386f06ff5d7", null))
-	return .
-
-/obj/item/reagent_containers/cup/soda_cans/skyrat/soda_water_moth
-	name = "\improper Gyárhajó 1023: Soda Water"
-	desc = "A can of soda water. Why not make a rum and soda? Now that you think of it, maybe not."
-	icon_state = "soda_water"
-	list_reagents = list(/datum/reagent/consumable/sodawater = 30)
-	drink_type = SUGAR
-
-/obj/item/reagent_containers/cup/soda_cans/skyrat/soda_water_moth/examine_more(mob/user)
-	. = ..()
-	. += span_notice(LANG("obj.6a538e3baa20118c", null))
-	return .
-
-/obj/item/reagent_containers/cup/soda_cans/skyrat/ginger_beer
-	name = "\improper Gyárhajó 1023: Ginger Beer"
-	desc = "A can of ginger beer, don't let the beer part mislead you, this is entirely non-alcoholic."
-	icon_state = "gingie_beer"
-	list_reagents = list(/datum/reagent/consumable/sol_dry = 30)
-	drink_type = SUGAR
-
-/obj/item/reagent_containers/cup/soda_cans/skyrat/ginger_beer/examine_more(mob/user)
-	. = ..()
-	. += span_notice(LANG("obj.6a538e3baa20118c", null))
-	return .
-
 /*
 *	Tiziran Snacks
 */
@@ -295,9 +247,4 @@
 	list_reagents = list(/datum/reagent/consumable/mushroom_tea = 40)
 	custom_price = PAYCHECK_LOWER * 2
 
-/obj/item/reagent_containers/cup/soda_cans/skyrat/kortara
-	name = "kortara"
-	desc = "A can of kortara, alcohol brewed from korta seeds, which gives it a unique peppery spice flavor."
-	icon_state = "kortara"
-	list_reagents = list(/datum/reagent/consumable/ethanol/kortara = 30)
-	drink_type = ALCOHOL
+

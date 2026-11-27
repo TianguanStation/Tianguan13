@@ -173,7 +173,7 @@
 		if(POINT_TYPE_SCIENCE)
 			var/datum/techweb/station_techweb = locate(/datum/techweb/science) in SSresearch.techwebs
 			if(station_techweb)
-				station_techweb.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = points_awarded))
+				station_techweb.adjust_points(TECHWEB_POINT_TYPE_GENERIC, points_awarded)
 			else
 				say(LANG("obj.97318dfca34c1478", null))
 		else

@@ -38,7 +38,7 @@ GLOBAL_LIST_INIT(zh_hud_icon_variants, list(
 	'icons/hud/screen_clockwork.dmi' = 'modular_zh/modules/i18n/icons/hud/screen_clockwork.dmi',
 	'icons/hud/screen_glass.dmi' = 'modular_zh/modules/i18n/icons/hud/screen_glass.dmi',
 	'icons/hud/screen_detective.dmi' = 'modular_zh/modules/i18n/icons/hud/screen_detective.dmi',
-	'modular_zubbers/master_files/icons/hud/screen_blue98.dmi' = 'modular_zh/modules/i18n/icons/hud/screen_blue98.dmi',
+	'modular_zubbers/icons/hud/screen_blue98.dmi' = 'modular_zh/modules/i18n/icons/hud/screen_blue98.dmi',
 	'icons/hud/screen_alien.dmi' = 'modular_zh/modules/i18n/icons/hud/screen_alien.dmi',
 	'icons/hud/screen_cyborg.dmi' = 'modular_zh/modules/i18n/icons/hud/screen_cyborg.dmi',
 	'modular_skyrat/master_files/icons/hud/screen_cyborg.dmi' = 'modular_zh/modules/i18n/icons/hud/screen_cyborg_skyrat.dmi',

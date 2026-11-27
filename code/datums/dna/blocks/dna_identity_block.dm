@@ -154,7 +154,7 @@
 	var/height = HUMAN_HEIGHT_TALLEST
 	if(height_block != tallest_height_block())
 		var/mob_height_index = deconstruct_block(height_block, max_height_index, block_length)
-		height = dna_heights[mob_height_index]
+		height = dna_heights[mob_height_index] || HUMAN_HEIGHT_MEDIUM
 	target.set_mob_height(height, update_dna = FALSE)
 
 /datum/dna_block/identity/height/proc/tallest_height_block()

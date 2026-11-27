@@ -16,6 +16,7 @@
 	pass_flags = PASSTABLE | PASSGRILLE
 	gender = NEUTER
 	faction = list(FACTION_SLIME, FACTION_NEUTRAL)
+	hud_type = /datum/hud/living/slime
 
 	icon_living = "grey-baby"
 	icon_dead = "grey-baby-dead"
@@ -32,7 +33,7 @@
 	wound_bonus = -45
 	can_buckle_to = FALSE
 
-	damage_coeff = list(BRUTE = 1, BURN = -1, TOX = 1, STAMINA = 1, OXY = 1) //Healed by fire
+	physiology = list(BURN = -1) //Healed by fire
 	unsuitable_cold_damage = 15
 	unsuitable_heat_damage = 0
 	maximum_survivable_temperature = INFINITY
@@ -188,6 +189,8 @@
 	. = ..()
 	nutrition = min(nutrition, SLIME_MAX_NUTRITION)
 
+/mob/living/basic/slime/get_fullness(only_consumable)
+	return round((nutrition / SLIME_MAX_NUTRITION) * NUTRITION_LEVEL_FAT)
 
 /mob/living/basic/slime/update_name()
 	// ZH EDIT - Remember generated names instead of parsing their localized spelling.
@@ -215,13 +218,6 @@
 		icon_state = icon_dead
 
 	return ..()
-
-/mob/living/basic/slime/get_status_tab_items()
-	. = ..()
-	if(!hunger_disabled)
-		. += LANG("mob.2a47f665c5b214de", list(nutrition, SLIME_MAX_NUTRITION))
-		. += LANG("mob.cf98c2408cb411b9", list(amount_grown, SLIME_EVOLUTION_THRESHOLD))
-		. += LANG("mob.29e74d49feca76d4", list(powerlevel, SLIME_MAX_POWER))
 
 /mob/living/basic/slime/mouse_drop_dragged(atom/target_atom, mob/user)
 	if(isliving(target_atom) && target_atom != src && user == src)
@@ -312,7 +308,7 @@
 		do_sparks(5, TRUE, borg_target)
 		var/stunprob = our_slime.powerlevel * SLIME_SHOCK_PERCENTAGE_PER_LEVEL + SLIME_BASE_SHOCK_PERCENTAGE
 		if(prob(stunprob) && our_slime.powerlevel >= SLIME_EXTRA_SHOCK_COST)
-			our_slime.powerlevel = clamp(our_slime.powerlevel - SLIME_EXTRA_SHOCK_COST, SLIME_MIN_POWER, SLIME_MAX_POWER)
+			our_slime.adjust_power_level(-SLIME_EXTRA_SHOCK_COST)
 			borg_target.apply_damage(our_slime.powerlevel * rand(6, 10), BRUTE, spread_damage = TRUE, wound_bonus = CANT_WOUND)
 			borg_target.visible_message(span_danger(LANG("mob.c6b46e10621079a5", list(our_slime, borg_target))), span_userdanger(LANG("mob.4f1c8faa98afdfeb", list(our_slime))))
 		else
@@ -334,7 +330,7 @@
 		carbon_target.Knockdown(power * 2 SECONDS)
 		carbon_target.set_stutter_if_lower(power * 2 SECONDS)
 		if (prob(stunprob) && our_slime.powerlevel >= SLIME_EXTRA_SHOCK_COST)
-			our_slime.powerlevel = clamp(our_slime.powerlevel - SLIME_EXTRA_SHOCK_COST, SLIME_MIN_POWER, SLIME_MAX_POWER)
+			adjust_power_level(-SLIME_EXTRA_SHOCK_COST)
 			carbon_target.apply_damage(our_slime.powerlevel * rand(6, 10), BURN, spread_damage = TRUE, wound_bonus = CANT_WOUND)
 
 	if(isslime(target))

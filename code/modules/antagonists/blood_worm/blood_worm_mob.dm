@@ -12,7 +12,7 @@
 	basic_mob_flags = FLAMMABLE_MOB
 	status_flags = CANPUSH // No CANSTUN, blood worms are immune to stuns by design.
 
-	damage_coeff = list(BRUTE = 1, BURN = 1.5, TOX = 0, STAMINA = 0, OXY = 0)
+	physiology = list(BURN = 1.5, TOX = 0, STAMINA = 0, OXY = 0)
 
 	pressure_resistance = 200
 
@@ -169,11 +169,14 @@
 		return FALSE
 	if (host)
 		ADD_TRAIT(host, TRAIT_MIND_TEMPORARILY_GONE, BLOOD_WORM_HOST_TRAIT)
+	var/atom/movable/screen/alert/bloodworm_info/info_alert = throw_alert(ALERT_BLOODWORM_INFO, /atom/movable/screen/alert/bloodworm_info)
+	info_alert.worm_owner = src
 
 /mob/living/basic/blood_worm/Logout()
 	. = ..()
 	if (host)
 		REMOVE_TRAIT(host, TRAIT_MIND_TEMPORARILY_GONE, BLOOD_WORM_HOST_TRAIT)
+	clear_alert(ALERT_BLOODWORM_INFO)
 
 /mob/living/basic/blood_worm/process(seconds_per_tick, times_fired)
 	if (!host)
@@ -201,8 +204,18 @@
 	name = "[lang_reverse_text(initial(name))] ([id_number])" // ZH EDIT - retain localized name after updating
 	real_name = name
 
-/mob/living/basic/blood_worm/adjust_health(amount, updating_health, forced)
-	return host ? 0 : ..() // Prevents damage from adjust_x_loss while in a host, because that damage would be nullified by the next [proc/sync_health] call. Adjust host blood volume instead.
+// Prevents damage from adjust_x_loss while in a host, because that damage would be nullified by the next [proc/sync_health] call. Adjust host blood volume instead.
+/mob/living/basic/blood_worm/can_adjust_brute_loss(amount, forced, required_bodytype)
+	return host ? FALSE : ..()
+
+/mob/living/basic/blood_worm/can_adjust_fire_loss(amount, forced, required_bodytype)
+	return host ? FALSE : ..()
+
+/mob/living/basic/blood_worm/can_adjust_tox_loss(amount, forced, required_bodytype)
+	return host ? FALSE : ..()
+
+/mob/living/basic/blood_worm/can_adjust_oxy_loss(amount, forced, required_bodytype)
+	return host ? FALSE : ..()
 
 /mob/living/basic/blood_worm/set_stat(new_stat)
 	. = ..()
@@ -269,6 +282,14 @@
 /obj/effect/temp_visual/blood_worm_invade_host/Initialize(mapload, effect_name)
 	. = ..()
 	icon_state = "invade-[effect_name]"
+
+/mob/living/basic/blood_worm/lazarus_revive(mob/living/reviver, malfunctioning)
+	if(!IS_BLOODWORM(src)) //checks to see if this isn't just a poly'd bloodworm
+		return ..()
+
+	revive(HEAL_ALL)
+	to_chat(reviver, span_userdanger(LANG("mob.517bec8e707511e6", list(src))))
+	balloon_alert(reviver, LANG("mob.4af409be8d19b752", null))
 
 /mob/living/basic/blood_worm/hatchling
 	name = "hatchling blood worm"

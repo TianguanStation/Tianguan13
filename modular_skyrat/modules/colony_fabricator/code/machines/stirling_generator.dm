@@ -41,15 +41,23 @@
 	setDir(dir)
 
 
+/obj/machinery/power/stirling_generator/post_machine_initialize()
+	. = ..()
+	// the connector only half joins the pipe network when built
+	connected_chamber?.reconnect_connector()
+
+
 /obj/machinery/power/stirling_generator/examine(mob/user)
 	. = ..()
 	. += span_notice(LANG("obj.39a3ff4b85ba6035", null))
+	. += span_notice(LANG("obj.0ce53749ec59efff", list(PIPING_LAYER_DEFAULT)))
 	. += span_notice(LANG("obj.0b312feac86ad375", null))
 	. += span_notice(LANG("obj.b75acd09e32f11a5", list(current_power_generation / 1000)))
 	. += span_notice(LANG("obj.b670cab8adfcebd1", list(max_power_output / 1000, max_efficient_heat_difference)))
 
 
 /obj/machinery/power/stirling_generator/Destroy()
+	QDEL_NULL(soundloop)
 	QDEL_NULL(connected_chamber)
 	return ..()
 
@@ -86,7 +94,7 @@
 
 /obj/machinery/power/stirling_generator/process()
 	var/power_output = round(current_power_generation)
-	add_avail(power_output)
+	add_avail(power_to_energy(power_output))
 	var/new_icon_state = (power_output ? "stirling_on" : "stirling")
 	icon_state = new_icon_state
 	if(soundloop.is_active() && !power_output)
@@ -117,10 +125,6 @@
 	SEND_SIGNAL(src, COMSIG_MACHINERY_DEFAULT_ROTATE_WRENCH, user, wrench)
 	return TRUE
 
-
-/obj/machinery/power/stirling_generator/Destroy()
-	QDEL_NULL(connected_chamber)
-	return ..()
 
 
 // Item for creating stirling generators

@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	name = "gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. Good for concealing your identity and with a filter slot to help remove those toxins." //More accurate
 	icon_state = "gas_alt"
-	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS | GAS_FILTERING
+	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	w_class = WEIGHT_CLASS_NORMAL
 	inhand_icon_state = "gas_alt"
@@ -358,6 +358,13 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		update_item_action_buttons()
 		to_chat(user, span_notice(LANG("obj.b3ec1c05db7ca0c7", list(choice))))
 		return TRUE
+
+/obj/item/clothing/mask/gas/clown_hat/clownops
+	name = "tactical clown wig and mask"
+	desc = "A tactical twist on a troubadour's tradition."
+	flash_protect = FLASH_PROTECTION_FLASH
+	resistance_flags = FIRE_PROOF
+	flags_cover = MASKCOVERSEYES | PEPPERPROOF
 
 /obj/item/clothing/mask/gas/sexyclown
 	name = "sexy-clown wig and mask"

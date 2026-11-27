@@ -151,10 +151,14 @@
 
 // Headset
 
+/// Charge spent per message sent without a relay
+#define FRONTIER_RADIO_TRANSMIT_COST LASER_SHOTS(50, STANDARD_CELL_CHARGE)
+
 /obj/item/radio/headset/headset_frontier_colonist
 	name = "frontier radio headset"
 	desc = "A bulky headset that should hopefully survive exposure to the elements better than station headsets might. \
-		Has a built-in antenna allowing the headset to work independently of a communications network. Unable to use encryption keys."
+		Has a battery-powered antenna allowing the headset to work independently of a communications network, \
+		and room for a single encryption key."
 	icon = 'modular_skyrat/modules/kahraman_equipment/icons/clothes/clothing.dmi'
 	icon_state = "radio"
 	worn_icon = 'modular_skyrat/modules/kahraman_equipment/icons/clothes/clothing_worn.dmi'
@@ -166,6 +170,8 @@
 	radiosound = 'modular_skyrat/modules/kahraman_equipment/sound/morse_signal.wav'
 	radio_sound_volume = 20
 	freqlock = RADIO_FREQENCY_LOCKED
+	/// Powers the antenna when there is no relay
+	var/obj/item/stock_parts/power_store/cell = /obj/item/stock_parts/power_store/cell
 
 /obj/item/radio/headset/headset_frontier_colonist/wide
 	worn_icon_state = "radio_wide"
@@ -173,6 +179,77 @@
 /obj/item/radio/headset/headset_frontier_colonist/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_KAHRAMAN)
+	if(ispath(cell))
+		cell = new cell(src)
+
+/obj/item/radio/headset/headset_frontier_colonist/Destroy()
+	QDEL_NULL(cell)
+	return ..()
+
+/obj/item/radio/headset/headset_frontier_colonist/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == cell)
+		cell = null
+
+/obj/item/radio/headset/headset_frontier_colonist/examine(mob/user)
+	. = ..()
+	if(isnull(cell))
+		. += span_warning(LANG("obj.e5bcd18d588f5a9a", null))
+	else
+		. += span_notice(LANG("obj.64f83a05d565e23c", list(cell.name, round(cell.percent()))))
+	. += span_notice(LANG("obj.96acc301afabd0f7", null))
+
+// one key, ignoring the frequency lock
+/obj/item/radio/headset/headset_frontier_colonist/install_key(mob/living/user, obj/item/encryptionkey/key)
+	if(keyslot)
+		loc.balloon_alert(user, LANG("obj.00ff68a181783fb4", null))
+		return ITEM_INTERACT_BLOCKING
+	if(!user.transferItemToLoc(key, src))
+		loc.balloon_alert(user, LANG("obj.b3c67530261e2e10", null))
+		return ITEM_INTERACT_BLOCKING
+	keyslot = key
+	recalculateChannels()
+	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
+	loc.balloon_alert(user, LANG("obj.40711314e0f6385a", null))
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/radio/headset/headset_frontier_colonist/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(!istype(tool, /obj/item/stock_parts/power_store/cell))
+		return ..()
+	if(!isnull(cell))
+		loc.balloon_alert(user, LANG("obj.8d55adc6b83630ff", null))
+		return ITEM_INTERACT_BLOCKING
+	if(!user.transferItemToLoc(tool, src))
+		return ITEM_INTERACT_BLOCKING
+	cell = tool
+	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
+	loc.balloon_alert(user, LANG("obj.f5a5d99208a3dfcb", null))
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/radio/headset/headset_frontier_colonist/screwdriver_act(mob/living/user, obj/item/tool)
+	var/removed_anything = length(remove_keys(user)) > 0
+	if(!isnull(cell))
+		user.put_in_hands(cell)
+		removed_anything = TRUE
+	if(!removed_anything)
+		loc.balloon_alert(user, LANG("obj.44a5e7e006c9bd4d", null))
+		return ITEM_INTERACT_BLOCKING
+	tool.play_tool_sound(src, 10)
+	loc.balloon_alert(user, LANG("obj.8fe3da7428b6bfd9", null))
+	return ITEM_INTERACT_SUCCESS
+
+// only runs when no relay carried the message
+/obj/item/radio/headset/headset_frontier_colonist/backup_transmission(datum/signal/subspace/vocal/signal)
+	var/turf/our_turf = get_turf(src)
+	if(signal.data["done"] && (our_turf?.z in signal.levels))
+		return
+	if(isnull(cell) || !cell.use(FRONTIER_RADIO_TRANSMIT_COST))
+		if(ismob(loc))
+			to_chat(loc, span_warning(LANG("obj.bda31395f88b911f", list(src))))
+		return
+	return ..()
+
+#undef FRONTIER_RADIO_TRANSMIT_COST
 
 // Gloves
 

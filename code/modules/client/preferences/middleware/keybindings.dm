@@ -164,4 +164,3 @@
 			repaired = TRUE
 		key_bindings[keybind_name] = text_keys
 	return repaired
-

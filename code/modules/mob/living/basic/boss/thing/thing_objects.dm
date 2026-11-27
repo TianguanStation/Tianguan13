@@ -107,6 +107,10 @@
 	for(var/turf/open/open in RANGE_TURFS(1, loc))
 		new /obj/effect/thing_acid(open)
 
+GLOBAL_LIST_INIT(thing_acid_connections, list(
+	COMSIG_ATOM_ENTERED = TYPE_PROC_REF(/obj/effect/thing_acid, on_entered),
+))
+
 /obj/effect/thing_acid
 	name = "stomach acid"
 	icon = 'icons/effects/acid.dmi'
@@ -119,10 +123,7 @@
 
 /obj/effect/thing_acid/Initialize(mapload)
 	. = ..()
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
+	AddElement(/datum/element/connect_loc, GLOB.thing_acid_connections)
 	QDEL_IN(src, duration_time)
 
 /obj/effect/thing_acid/proc/on_entered(datum/source, mob/living/victim)

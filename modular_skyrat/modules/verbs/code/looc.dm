@@ -91,13 +91,13 @@ GAME_VERB_DESC(/client, looc_wallpierce, "LOOC（穿墙）", "Local OOC, seen by
 
 		var/pierce_tag = wall_pierce ? (GLOB.i18n_server_locale != DEFAULT_UI_LOCALE ? " ([lang_reverse_text("WALL PIERCE")])" : " (WALL PIERCE)") : ""
 		if(holder && isdead(src.mob)) // Admins ghosted display ckey
-			to_chat(hearing_client, span_looc(span_prefix("LOOC[pierce_tag]:</span> <EM>[src.ckey]:</EM> <span class='message'>[msg]")), type = MESSAGE_TYPE_LOOC, skip_i18n_fallback = TRUE)
+			to_chat(hearing_client, span_looc(span_prefix(LANG("client.a8a8497952cfab3d", list(pierce_tag, src.ckey, msg)))), type = MESSAGE_TYPE_LOOC, skip_i18n_fallback = TRUE)
 		else
-			to_chat(hearing_client, span_looc(span_prefix("LOOC[pierce_tag]:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]")), type = MESSAGE_TYPE_LOOC, skip_i18n_fallback = TRUE)
+			to_chat(hearing_client, span_looc(span_prefix(LANG("client.a8a8497952cfab3d", list(pierce_tag, src.mob.name, msg)))), type = MESSAGE_TYPE_LOOC, skip_i18n_fallback = TRUE)
 
 	var/pierce_admin_tag = wall_pierce ? (GLOB.i18n_server_locale != DEFAULT_UI_LOCALE ? " ([lang_reverse_text("WALL PIERCE")])" : " (WALL PIERCE)") : ""
 	for(var/client/cli_client as anything in GLOB.admins)
 		if (admin_seen[cli_client])
-			to_chat(cli_client, span_looc("[ADMIN_FLW(usr)] <span class='prefix'>LOOC[pierce_admin_tag]:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"), type = MESSAGE_TYPE_LOOC, skip_i18n_fallback = TRUE)
+			to_chat(cli_client, span_looc(LANG("client.ddee0ba1f4b4d727", list(ADMIN_FLW(usr), pierce_admin_tag, src.key, src.mob.name, msg))), type = MESSAGE_TYPE_LOOC, skip_i18n_fallback = TRUE)
 		else if (cli_client.prefs.read_preference(/datum/preference/toggle/admin/see_looc))
-			to_chat(cli_client, span_rlooc("[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC[pierce_admin_tag]:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"), type = MESSAGE_TYPE_LOOC, skip_i18n_fallback = TRUE)
+			to_chat(cli_client, span_rlooc(LANG("client.a21ff7fd649bce92", list(ADMIN_FLW(usr), pierce_admin_tag, src.key, src.mob.name, msg))), type = MESSAGE_TYPE_LOOC, skip_i18n_fallback = TRUE)

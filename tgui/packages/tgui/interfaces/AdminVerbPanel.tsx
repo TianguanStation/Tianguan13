@@ -1,4 +1,5 @@
 import { storage } from 'common/storage';
+import { fetchRetry } from 'tgui-core/http';
 import {
   ARG_SOURCE_LIST,
   ARG_TYPE_MESSAGE,
@@ -8,8 +9,8 @@ import {
   ARG_TYPE_SOUND,
   ARG_TYPE_TEXT,
   ARG_TYPE_TYPEPATH,
+  filterTypepaths,
   isEntityArg,
-  isTypepathArg,
 } from 'common/verb-constants';
 import { useCallback, useEffect, useState } from 'react';
 import {
@@ -24,6 +25,7 @@ import {
   TextArea,
 } from 'tgui-core/components';
 
+import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { searchableText } from '../i18n/search';
 import { Window } from '../layouts';
@@ -55,16 +57,10 @@ type TargetEntry = {
   job?: string;
 };
 
-type TypepathData = {
-  parent: string;
-  paths: string[];
-};
-
 type Data = {
   verbs: Verb[];
   categories: string[];
   targets: TargetEntry[];
-  typepaths?: TypepathData;
 };
 
 function isPickableEntityArg(arg: VerbArgument): boolean {
@@ -181,9 +177,6 @@ export function AdminVerbPanel() {
     setArgValues({});
     setSelectedTarget(null);
     act('select_verb', { verb_type: verb.type });
-    if (verb.arguments.some(isTypepathArg)) {
-      act('request_typepaths', { parent: '/datum' });
-    }
   };
 
   const entityArg = selectedVerb?.arguments.find(isPickableEntityArg) ?? null;
@@ -645,35 +638,24 @@ type TypepathInputProps = {
 
 function TypepathInput(props: TypepathInputProps) {
   const { arg, value, onChange } = props;
-  const { act, data } = useBackend<Data>();
-  const [lastRequested, setLastRequested] = useState('');
-  const typepaths = data.typepaths;
-  const children = typepaths?.paths || [];
+  const [allTypepaths, setAllTypepaths] = useState<string[]>([]);
   const inputValue = (value as string) || '';
 
-  const suggestions = inputValue
-    ? children.filter((p) =>
-        p.toLowerCase().startsWith(inputValue.toLowerCase()),
-      )
-    : children;
+  useEffect(() => {
+    fetchRetry(resolveAsset('spawn_menu_atom_data.json'))
+      .then((response) => response.json())
+      .then((data: { types: Record<string, string> }) => {
+        setAllTypepaths(Object.keys(data.types));
+      })
+      .catch(() => {});
+  }, []);
 
-  const handleChange = (val: string) => {
-    onChange(val);
-    if (val.endsWith('/')) {
-      const parent = val.slice(0, -1) || '/datum';
-      if (parent !== lastRequested) {
-        setLastRequested(parent);
-        act('request_typepaths', { parent });
-      }
-    }
-  };
+  const suggestions = inputValue.startsWith('/')
+    ? filterTypepaths(allTypepaths, inputValue)
+    : [];
 
   const selectPath = (path: string) => {
     onChange(`${path}/`);
-    if (path !== lastRequested) {
-      setLastRequested(path);
-      act('request_typepaths', { parent: path });
-    }
   };
 
   return (
@@ -685,7 +667,7 @@ function TypepathInput(props: TypepathInputProps) {
             <Input
               fluid
               value={inputValue}
-              onChange={handleChange}
+              onChange={onChange}
               placeholder="/datum/..."
             />
           </Stack.Item>

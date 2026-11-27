@@ -279,7 +279,7 @@
 		/obj/item/scalpel, // culty
 		/obj/item/camera, // culty
 		/obj/item/food/meat/slab, // culty
-		/obj/item/relic, // culty
+		/obj/item/assembly/relic, // culty
 	)
 
 	// harder items

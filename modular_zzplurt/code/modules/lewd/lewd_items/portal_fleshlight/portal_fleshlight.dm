@@ -8,7 +8,6 @@
 	icon = 'modular_zzplurt/icons/obj/lewd/fleshlight.dmi'
 	icon_state = "unpaired"
 	w_class = WEIGHT_CLASS_SMALL
-	clothing_flags = INEDIBLE_CLOTHING
 
 	/// The linked portal panties
 	var/obj/item/clothing/sextoy/portal_panties/linked_panties = null
@@ -70,6 +69,9 @@
 			BODY_ZONE_L_LEG = null
 		)
 	)
+
+/obj/item/clothing/sextoy/portal_fleshlight/create_moth_snack()
+	return null
 
 /obj/item/clothing/sextoy/portal_fleshlight/Initialize(mapload)
 	. = ..()
