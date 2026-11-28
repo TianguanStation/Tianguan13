@@ -280,6 +280,17 @@ const FunTab = (props) => {
   const { act } = useBackend();
   return (
     <Stack fill vertical>
+      {/* TIANGUAN EDIT ADDITION START - ADMIN_ID_EDITOR */}
+      <Stack.Item>
+        <Section title="ID 卡">
+          <Button
+            icon="id-card"
+            content="打开 ID 卡编辑器（外观 / 印记 / 权限 / 一键生成）"
+            onClick={() => act('id_card_editor')}
+          />
+        </Section>
+      </Stack.Item>
+      {/* TIANGUAN EDIT ADDITION END */}
       <Stack.Item>
         <Stack fill>
           <Stack.Item>
