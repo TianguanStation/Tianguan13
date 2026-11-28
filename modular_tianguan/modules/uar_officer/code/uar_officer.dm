@@ -5,6 +5,8 @@
 #define UAR_OBJ_ICON     'modular_tianguan/modules/uar_officer/icons/uar_clothing_obj.dmi'
 #define UAR_WORN_ICON    'modular_tianguan/modules/uar_officer/icons/uar_worn.dmi'
 #define UAR_CARD_ICON    'modular_tianguan/modules/uar_officer/icons/uar_card.dmi'
+/// secHUD 图标（职业列表 / 角色旁边那个小图标用的图集；缺了它会去默认 hud.dmi 找同名状态 ⇒ 显示成别的图标）
+#define UAR_HUD_ICON     'modular_tianguan/modules/uar_officer/icons/uar_hud.dmi'
 #define UAR_FLAG_ICON    'modular_tianguan/modules/uar_officer/icons/uar_flags.dmi'
 
 #define UAR_TIER3_ARMOR /datum/armor/uar_tier3
@@ -107,6 +109,7 @@
 	trim_state = "trim_uar_inspector"
 	department_color = UAR_DEPARTMENT_COLOR
 	subdepartment_color = "#1f3a8a"
+	sechud_icon = UAR_HUD_ICON
 	sechud_icon_state = "huduar_inspector"
 	job = /datum/job/uar_inspector
 
@@ -342,6 +345,7 @@
 #undef UAR_OBJ_ICON
 #undef UAR_WORN_ICON
 #undef UAR_CARD_ICON
+#undef UAR_HUD_ICON
 #undef UAR_HUD_ICON
 #undef UAR_FLAG_ICON
 #undef UAR_TIER3_ARMOR
